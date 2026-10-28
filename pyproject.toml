@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fm-toolkit"
+version = "1.0.0"
+description = "Football Manager Save Parser, Reverse-Engineering Toolkit, Engine Formula Analyzer & Multi-Format Exporter"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "FM Toolkit Contributors"}
+]
+dependencies = [
+    "zstandard>=0.22.0",
+    "backports-zstd>=1.0.0; python_version < '3.14'",
+]
+
+[project.scripts]
+fm-toolkit = "fm26save.cli:main"
+fm26save = "fm26save.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["fm26save*"]
