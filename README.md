@@ -42,7 +42,8 @@ All technical documentation and empirical reports are written in **English** und
 | Document | Contents |
 | :--- | :--- |
 | **[`docs/FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md`](./docs/FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md)** | Step-by-step reverse-engineering methodology (`\x02\x01fmf.` trailer directory & Zstd framing, `.jsb` binary opcodes, FourCC alignment, differential save analysis, `client_db.dat` 43-byte city record layout) and **complete annotated file trees** for the game installation directory, `.fm` save container, and library architecture. |
-| **[`docs/FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md`](./docs/FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md)** | Complete specification of all decoded "unknown" save binary fields and empirical tables for all 8 reverse-engineered game installation systems. |
+| **[`docs/FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md`](./docs/FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md)** | Deep-dive reference into **10 core internal simulation logics** extracted from the engine files: Youth Intake & Newgen Pipeline (`NYRt`, `Crcb`, `Cytv`, `Cyfb`, `HOYD`, Height-to-Jumping caps), AI Team Selection (`4` `TPS_*` × `40` `TSF_*` weights), Match Rating (`6.70` base & `52` action deltas), Weekly Training (`44` sessions & `62` item effects), Player Progression & Coaching Stars, `xG`/`Momentum`/`QME`, `OOP` 24-zone grid, Medical/Injuries (`136`), Sugar Daddy/Takeovers/Work Permits, and Dynamics/Mentoring. |
+| **[`docs/FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md`](./docs/FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md)** | Complete specification of all decoded "unknown" save binary fields and empirical tables for all 12 reverse-engineered game installation systems. |
 | **[`docs/FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md`](./docs/FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md)** | Exact mathematical formulations for Official `.fmf` Engine Models (`xG`, Match Rating `6.70` baseline, Momentum, `QME`, `OP*` attribute bitmasks & proximity grids, AI Team Selection weights) and Empirical/Heuristic Save Models (Role Suitability, `CA`/`PA` attribute weights, Transfer Value & Wage OLS). |
 | **[`docs/FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md`](./docs/FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md)** | Complete 6-dimensional breakdown of all 50 In-Possession roles (`93` Role+Duty variants), 39 Out-Of-Possession (`OP*`) roles, Dual-Role combinations, Duties, and 11 Archetypes. |
 | **[`docs/FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md`](./docs/FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md)** | Complete catalog of all 28 structured tables, their columns/types, and all 81 `.dat` / `.cmt` Zstandard sections inside an `.fm` save file. |
@@ -103,7 +104,7 @@ with open_save(save_path) as sv:
     # 7. Export Full Save to SQLite (.db), CSV, JSON, or JSONL
     sv.export_sqlite("career_export.db")
 
-# 8. Extract Official Game Installation Files (All 11 Systems)
+# 8. Extract Official Game Installation Files (All 12 Systems)
 summary = extract_all_game_files_summary()
 master_db = extract_master_db_tables(sample_limit=10)
 ```
