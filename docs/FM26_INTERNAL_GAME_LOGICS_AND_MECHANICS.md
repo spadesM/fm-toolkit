@@ -1,7 +1,7 @@
 # Football Manager 26 — Internal Game Logics & Simulation Mechanics Reference
 
 > **Repository:** [`fm-toolkit`](../)  
-> **Scope:** Complete reverse-engineered reference of **10 core internal simulation logics** in Football Manager 26 (`v26.2.0` / Build `2620`), extracted directly from `.fmf` / `.jsb` engine archives (`simatch.fmf`, `training.fmf`, `tables.fmf`, `simatchshared.fmf`, `editor.fmf`), pre-game master databases (`client_db.dat`, `server_db.dat`, `.edt`), IL2CPP symbols (`global-metadata.dat`, `il2cpp.usym`), and `.fm` save containers (`game_db.dat`).
+> **Scope:** Complete reverse-engineered reference of **18 core internal simulation algorithms and game logics** in Football Manager 26 (`v26.2.0` / Build `2620`), extracted directly from `.fmf` / `.jsb` engine archives (`simatch.fmf`, `training.fmf`, `tables.fmf`, `simatchshared.fmf`, `editor.fmf`), pre-game master databases (`client_db.dat`, `server_db.dat`, `.edt`), IL2CPP symbols (`global-metadata.dat`, `il2cpp.usym`), and `.fm` save containers (`game_db.dat`).
 
 ---
 
@@ -17,6 +17,14 @@
 8. [Medical Centre & Injury Simulation Engine (`server_db.dat` — 136 Injuries)](#8-medical-centre--injury-simulation-engine-server_dbdat)
 9. [Sugar Daddy Tycoons, Board Takeovers, International Treaties & Transfer Valuation Logic](#9-sugar-daddy-tycoons-board-takeovers-international-treaties--transfer-valuation-logic)
 10. [Squad Dynamics, Mentoring Groups & Hidden `PersonBlock` Relationships](#10-squad-dynamics-mentoring-groups--hidden-personblock-relationships)
+11. [Team Talks, Touchline Shouts, Press Conferences (`media.fmf`) & Morale / Body Language Algorithm](#11-team-talks-touchline-shouts-press-conferences-mediafmf--morale--body-language-algorithm)
+12. [Scouting Knowledge (`0..100%`), Dual-Role Recruitment Focuses & Star Rating ("Fog of War") Algorithm](#12-scouting-knowledge-0100-dual-role-recruitment-focuses--star-rating-fog-of-war-algorithm)
+13. [Dynamic League Reputation, 5-Year & 10-Year Continental Coefficients & Prize Money Algorithm](#13-dynamic-league-reputation-5-year--10-year-continental-coefficients--prize-money-algorithm)
+14. [Contract Negotiations (`contract_offer.xml` — 66 FourCCs), Agent Patience & Transfer Bid Evaluation Algorithm](#14-contract-negotiations-contract_offerxml--66-fourccs-agent-patience--transfer-bid-evaluation-algorithm)
+15. [Financial Fair Play (`FFP`), Crowd Attendance (`CrowdAttendanceScalar`), Ticket Prices & Dynamic Sponsorships](#15-financial-fair-play-ffp-crowd-attendance-crowdattendancescalar-ticket-prices--dynamic-sponsorships)
+16. [Board Confidence, Supporter Confidence & `ClubVision` Composite Scoring Algorithm](#16-board-confidence-supporter-confidence--clubvision-composite-scoring-algorithm)
+17. [Match Environment Physics: 4-Season Weather (`weather.xml`), Altitude (`altitude_ft`), Pitch Dimensions & Referees (`official.xml`)](#17-match-environment-physics-4-season-weather-weatherxml-altitude-altitude_ft-pitch-dimensions--referees-officialxml)
+18. [Automated Set-Piece Priority Matrix, Hat-Trick Penalty Rule & Ballon d'Or / Hall of Fame Scoring Algorithm](#18-automated-set-piece-priority-matrix-hat-trick-penalty-rule--ballon-dor--hall-of-fame-scoring-algorithm)
 
 ---
 
@@ -403,3 +411,222 @@ Inside `game_db.dat`, every `PersonBlock` (`18 bytes` per entry) stores bilatera
 - `(4, 2)` = **Disliked Person / Rivalry**
 - `(1, 4)` = **Idol / Club Legend**
 - `(5, 3)` = **Family Relation (Brother / Father / Son)** — also generated rarely (~`1%` chance) during **Youth Intake** when a long-serving player or club icon is at the club!
+---
+
+## 11. Team Talks, Touchline Shouts, Press Conferences (`media.fmf`) & Morale / Body Language Algorithm
+
+### 11.1 Team Talk & Touchline Shout Delivery Tones (`global-metadata.dat`)
+In `global-metadata.dat`, the engine dispatches six distinct delivery tones for Pre-Match (`ShouldShowPreMatchTeamTalks`), Half-Time, Full-Time (`FullTimeTeamTalk`), Substitution (`SubstitutionTeamTalkEnabled`), and Touchline Shouts (`IndividualTouchlineShoutPanel`):
+1. **`Aggressive`** (`EventAggressiveTouchlineTeamTalkIssued`)
+2. **`Assertive`** (`EventAssertiveTouchlineTeamTalkIssued`)
+3. **`Passionate`** (`EventPassionateTouchlineTeamTalkIssued`)
+4. **`Calm`** (`EventCalmTouchlineTeamTalkIssued`)
+5. **`Cautious`** (`EventCautiousTouchlineTeamTalkIssued`)
+6. **`Reluctant`** (`EventReluctantTouchlineTeamTalkIssued`)
+
+### 11.2 How a Player's Body Language (`InteractionBodyLanguage`) & Morale React
+When a team talk, shout, or 1-on-1 conversation is issued (`EventFmxTeamTalkProcessTalk`), each listening player rolls a reaction (`Inspired`, `Motivated`, `Focused`, `Composed`, `Listening`, `Complacent`, `Nervous`, `Anxious`, `Frustrated`, `Angry`, `Demoralised`) computed from four inputs:
+1. **Manager Authority Score:** `Manager Reputation + Motivating (1..20) + Level of Discipline (1..20) + Man Management / People Management (1..20) + Leadership (1..20)`.
+2. **Expectation vs. Scoreline Context (`expected_score_data`):** Praising a team when drawing against a heavy underdog triggers **`Complacent`** in low-Professionalism players and **`Angry / Confused`** in high-Ambition/Determination leaders, whereas `Aggressive / Assertive` criticism when trailing at half-time as heavy favourites triggers **`Fired Up / Motivated`** in high-Determination/Pressure players.
+3. **Player Hidden Personality (`block_40`):**
+   - Low `Pressure` (`< 8`) + high `Nervousness` players react negatively (`Anxious / Apprehensive`) to `"I expect a win"` or `Aggressive` demands.
+   - High `Controversy` + low `Temperament` + low `Professionalism` players push back against fines and criticism.
+4. **Manager–Player Relationship (`PersonBlock`):** Being in the player's `Favoured Personnel` (`(2, 1)`, intensity `1..100`) grants a large positive buffer on every interaction roll.
+
+### 11.3 Press Conference & Backroom Advice Reaction Schema (`media.fmf` — 650 XML Frames)
+Inside `data/game_simulation/media.fmf` (`3,934` questions `QID_*`, alternative answers `pcaa`, and backroom advice rules `barl`), every answer record encodes explicit delta tags:
+- **`tone`** & **`topi`** (Topic) & **`cntx`** (Context) & **`rule` / `rulf`** (Trigger pre-conditions)
+- **`pamd`**: **Player / Audience Morale Delta**
+- **`papd`**: **Player / Audience Pressure Delta** (shifts pre-match nervousness/complacency)
+- **`pafd`**: **Supporter / Fan Confidence Delta**
+- **`pafm`**: **Board / Media Confidence Delta**
+- **`padm` / `paep`**: **Dressing Room / Journalist Relationship Delta** (`JournalistRelationshipWithHuman`)
+- **`dcsl`, `dcsr`, `dcmr`, `dcpr`, `dcpt`, `dcwg`**: **Club / Squad Reaction Modifiers**
+
+### 11.4 Composite Player Happiness (`HappinessCategoryReference`)
+A player's overall morale and long-term happiness (`HappinessPlayers`) is aggregated across seven tracked categories:
+1. **`PlayingTimeHappinessLevel`**: Actual starts/minutes vs. contract `Squad Status` (`PFms`: *Star Player, Important Player, Regular Starter, Squad Player, Fringe Player*).
+2. **`PlayerWaitingOnPromiseForHappiness`**: Active time-bounded promises (`TSF_FOOTBALL_PROMISES`).
+3. **Training Happiness**: Affected by schedule workload and `training_item_effects.jsb` (`happiness` deltas).
+4. **Contract & Wage Satisfaction**: Current wage vs. squad peers of equal `CA`/`Reputation`.
+5. **Club Treatment & Discipline**: Reactions to fines or transfer-list status.
+6. **Dressing Room & Social Group Fit**: Hierarchy support and language/nationality integration (`TSF_INTEGRATION`).
+7. **`LoanHappiness`**: Playing time and position compliance while out on loan.
+
+---
+
+## 12. Scouting Knowledge (`0..100%`), Dual-Role Recruitment Focuses & Star Rating ("Fog of War") Algorithm
+
+### 12.1 Star Ratings (`FMStarRatingSettings` — `0.5★` to `5.0★`)
+Player Star Ratings (`PerceivedAbility` and `PerceivedPotential`) are **contextual relative scores**, not raw `CA`/`PA` numbers:
+1. **Baseline Reference (`3.0★`):** Represents the **mean `CA` of your club's current first-team starters in that positional group**, blended with your division's average starter `CA`.
+   - A `CA = 135` midfielder is rated **`4.5★`** at a club whose midfield averages `CA = 115`, but **`2.5★`** at Manchester City or Real Madrid where starters average `CA = 165`.
+2. **Perceived `CA` vs. True `CA` Modifiers:**
+   - Recent **Form (`TSF_LAST_RATINGS`)** and **Player Reputation** temporarily pull `PerceivedAbility` up or down by `0.5★–1.0★`.
+3. **White / Silver Stars (Uncertainty Interval on `PerceivedPotential`):**
+   - The width of the uncertain potential band (shown as white/grey stars above gold stars) is governed by:
+     $$\text{UncertaintyWidth} \propto (20 - \text{Scout}_{\text{JPP}}) \times (1 - \text{ScoutingKnowledge}) \times \max(0, 23 - \text{Age})$$
+   - Once a player reaches **Age `22–24`**, developmental variance collapses and white stars disappear.
+
+### 12.2 Attribute Fog-of-War & Scouting Knowledge (`0..100%`)
+- When **Attribute Masking** is enabled, un-scouted players (`0%` knowledge) display wide attribute intervals (e.g. `10–17`) or hidden `-` values.
+- Each scouting report update increases knowledge (`0% -> 20% -> 40% -> 60% -> 80% -> 100%`) at a speed determined by the scout's **`Adaptability`**, existing **Nation/Region Knowledge**, **`Judging Player Ability (JPA)`**, and **`Judging Player Potential (JPP)`**. At `100%`, all `60` attributes resolve to exact values.
+
+### 12.3 FM26 Dual-Role Recruitment Focus Engine (`EventFmxRecruitmentFocus*`)
+In FM26, `RecruitmentFocusHandlerModule` evaluates transfer targets across five simultaneous filters:
+1. **`IpRoleProficiency`** (`EventFmxRecruitmentFocusIpRoleProficiencyUpdated` — In-Possession Role Suitability)
+2. **`OopRoleProficiency`** (`EventFmxRecruitmentFocusOopRoleProficiencyUpdated` — Out-Of-Possession `OP*` Role Suitability)
+3. **`CurrentAbility` & `PotentialAbility`** star thresholds
+4. **`StatObjective`** (`EventFmxRecruitmentFocusAddStatObjective` — per-90 statistical filters from match telemetry)
+5. **Scouting Area & Age / Transfer Value / Contract Expiry bounds**
+
+---
+
+## 13. Dynamic League Reputation, 5-Year & 10-Year Continental Coefficients & Prize Money Algorithm
+
+In `global-metadata.dat` and `sicomps/comps.dbc`, continental progression and dynamic league standing are governed by three coupled algorithms:
+1. **5-Year Rolling Nation & Club Coefficients (`FiveYearTotalCoefficient` / `TimelineAdjustedFiveYearTotalCoefficientAdjustmentRules`):**
+   - Tracks `YearCoefficient0 .. YearCoefficient4` across continental club competitions.
+   - Directly determines **`FiveYearCoefficientPosition`** and **`SeasonSummaryContinentalQualification`** (how many Champions League / Europa / Conference League or Libertadores/ACL berths a nation receives and at which qualifying round).
+2. **10-Year Historical Club Coefficient (`TenYearTotalCoefficient` / `YearCoefficient0 .. YearCoefficient10`):**
+   - Tracks a club's 10-year continental points (`TenYearCoefficientPosition`) to allocate the **Value Pillar / Historical Coefficient Share** of continental TV & prize pools (`SquadRewardsPrizeMoney`).
+3. **Dynamic `CompetitionReputation` (`1..10000`):**
+   - Recalculated annually based on:
+     1. The 5-year continental coefficient delta of the nation's clubs.
+     2. The average `CA` and `World Reputation` of the top `N` players registered in the division.
+     3. Continental trophy winners/finalists from that league.
+   - As `CompetitionReputation` rises, domestic TV/sponsorship renewals (`DynamicSponsorshipDebugInfo`), player transfer values, and maximum player willingness to join clubs in that league scale upward automatically.
+
+---
+
+## 14. Contract Negotiations (`contract_offer.xml` — 66 FourCCs), Agent Patience & Transfer Bid Evaluation Algorithm
+
+### 14.1 Complete 66-Property Contract Offer & Clause Schema (`editor.fmf` Frame `#035`)
+Every contract offer in FM26 is represented internally by the `CntF` record (`contract_offer.xml`):
+
+| FourCC | Clause / Contract Field | FourCC | Clause / Contract Field |
+| :---: | :--- | :---: | :--- |
+| **`PFwa`** | Weekly / Annual Base Wage | **`PFms`** | Promised Squad Status (*Star..Fringe*) |
+| **`PFdt` / `PFed`** | Date Signed / Contract Expiry Date | **`PFrc`** | On Rolling Contract (`bool`) |
+| **`PFap` / `PFgb`** | Appearance Fee / Goal Bonus | **`PFab` / `PFcb`** | Assist Bonus / Clean Sheet Bonus |
+| **`PFTY` / `PFTG`** | Division Team of the Year / Top Scorer Bonus | **`PFib`** | International Cap Bonus |
+| **`PLiC` (`PLIc`/`PLim`)** | Wage After Reaching `N` Club League Games | **`PWiC` (`PWic`/`PWim`)** | Wage After Reaching `N` International Caps |
+| **`PWgB` (`PWgC`/`PWgG`)** | Seasonal Landmark Goal Bonus | **`PYgB` (`PYgC`/`PYgA`)** | Seasonal Landmark Assist Bonus |
+| **`PZgB` (`PZgC`/`PZgG`)** | Seasonal Landmark Combined `Goals + Assists` Bonus | **`PFwi` / `PFpi` / `PFrd`** | Yearly Wage Rise % / Promotion Rise % / Relegation Drop % |
+| **`PFxP` / `PFCX`** | Extension After Promotion / Optional Club Extension | **`PFLG` / `PF1P` / `PF1A`** | 1-Year Extension After `N` Final-Season League Apps |
+| **`PFfr` (`PFfe`)** | Minimum Fee Release Clause (& Expiry Date) | **`PFfF` (`PFfd`)** | Release Clause (Foreign Clubs) |
+| **`PFfD` (`PFDd`)** | Release Clause (Domestic Clubs) | **`PFfH` (`PFHd`)** | Release Clause (Domestic Clubs in Higher Division) |
+| **`PFfC` (`PFCd`)** | Release Clause (Clubs in a Continental Comp) | **`PFrf` / `PFpr`** | Relegation / Non-Promotion Release Clause |
+| **`PSOF` / `PSPP`** | Sell-On Fee % / Sell-On Fee Profit % | **`PFmh` / `PFir`** | **Match Highest Earner Clause** / **Injury Release Clause** |
+| **`CPCL`** | % of Club Compensation Required for Managerial Role | **`FTbl` (`cbcp`/`cbch`)** | Competition Stage / Trophy Cash Bonuses |
+
+### 14.2 How Players & Agents Evaluate an Offer (`agent_manager.dat` & `contract_man.dat`)
+1. **Package Equivalence Score:**
+   - The player/agent converts the offer into an **Expected Annual Package Value** combining `Base Wage (PFwa)` + `Expected Appearances * PFap` + `Loyalty Bonus / Contract Years` + `Landmark Bonuses` + `Release Clause Flexibility Penalty` (if locking in a high release clause).
+   - Meanwhile, the club's board checks `HasFFPContributionContractNegotiationRemaining` to verify the offer does not breach FFP wage-cap rules.
+2. **Agent Hidden Personality (`agent_manager.dat`):**
+   - Each agent (`person_type = 5`) has three core behavioral parameters:
+     - **Fee Demand (`1..20`):** How aggressively the agent demands a large upfront `agent_fee` (`money_b`).
+     - **Patience (`1..20`):** How many counter-offer rounds are tolerated before negotiations collapse (`amber -> red`).
+     - **Willingness to Tout Clients (`1..20`):** How frequently the agent offers the player to rival clubs (`AgentsOfferingServicesCount`) or demands a new contract after a run of good form.
+
+---
+
+## 15. Financial Fair Play (`FFP`), Crowd Attendance (`CrowdAttendanceScalar`), Ticket Prices & Dynamic Sponsorships
+
+### 15.1 Financial Fair Play (`FFPDetailsReference`) & Administration Algorithm
+In `global-metadata.dat`, the financial compliance engine tracks:
+- **`FinanceDebugFFPRunningTotal` & `FinanceDebugPreviousSeasonFFPAmounts`:** Rolling multi-season profit/loss ledger (`ProfitLossTaxes` minus exempt academy/infrastructure spending and allowable owner equity `FinanceDebugFFPEquityInvestmentDB`).
+- **`FinanceDebugFFPWagesTotal` & `FinanceDebugFFPWagesExcludingForeignPlayersTotal`:** Wage-to-turnover ratio and division salary caps.
+- **Breach Consequences:**
+  - Failing continental checks (`ContinentalFFPFail`) triggers European competition exclusion or squad-registration reductions.
+  - Failing domestic checks or entering insolvency (`Administration`) triggers **`TeamPointsDeduction`** (typically `-9` to `-12` league points) and **`FinanceDebugEmbargo`** (transfer embargo).
+
+### 15.2 Crowd Attendance Algorithm (`CrowdAttendanceScalar`)
+For every home fixture, announced attendance (`AnnouncedAttendance`, capped at `UsedCapacity` in `server_db.dat` `Frame #22`) is computed from:
+$$	ext{Attendance} = \min\!\Big(	ext{UsedCapacity},\; 	ext{SeasonTicketHolders} + 	ext{WalkUpPool} 	imes 	ext{CrowdAttendanceScalar}\Big)$$
+where `CrowdAttendanceScalar` combines:
+1. **Base Demand:** `ExpectedAttendance` (`offset +45` in `finances.py`) and `SeasonTicketWaitingList`.
+2. **Fixture Attractiveness:** `Opposition Reputation`, `Derby / Rivalry Flag` (`1,683` Derbies in `client_db.dat` `Frame #10`), `Competition Importance`, and recent `DynamicSupportValueChange`.
+3. **Price & City Elasticity:** `MatchTicketPriceInfo` relative to national `Economic Factor (1..20)`, `City Attraction (1..20)` & `Inhabitants Bracket` (`client_db.dat` `Frame #02`), and matchday **Weather (`weather.xml`)**.
+
+---
+
+## 16. Board Confidence, Supporter Confidence & `ClubVision` Composite Scoring Algorithm
+
+In `global-metadata.dat`, manager job security (`TakeoverBoardConfidenceOverallGrade` & `SupporterConfidenceOverallGrade`) is computed from two parallel composite scores:
+
+```mermaid
+flowchart LR
+    subgraph Board["Board Confidence (DebugBoardConfidenceOverallScore)"]
+        B1["Club Vision Score
+(YearOneCompScore + LongTermCompScore
++ ClubCultureScore)"]
+        B2["Match Score
+(DebugBoardMatchScore)"]
+        B3["Financial Compliance
+(DebugCompAnalysisClubFinances)"]
+        B4["Squad & Transfer Rating
+(DebugCompAnalysisSquadMakeUp)"]
+        B5["Tenure & Reputation Shield
+(DebugBoardConfidenceModifier)"]
+    end
+    subgraph Fans["Supporter Confidence (SupporterConfidenceOverallGrade)"]
+        S1["Supporter Vision Objectives
+(DebugSupporterClubVisionOverallScore)"]
+        S2["Match & Derby Results
++ Tactical Entertainment"]
+        S3["Star Player Retention &
+Transfer Approval"]
+    end
+    B1 & B2 & B3 & B4 & B5 --> J["Job Security & Ultimatum Check"]
+    S1 & S2 & S3 --> J
+```
+
+- **Objective Weighting (`ClubVisionObjectiveReference`):** Each objective carries an importance tier (*Required, Desired, Preferred, Favoured*). Failing a **Required** Year-1 competition target (`DebugBoardClubVisionYearOneCompScore`) while `DebugBoardMatchScore` is low triggers the board confidence crisis meeting (`1-match` or `5-match points target` ultimatum).
+
+---
+
+## 17. Match Environment Physics: 4-Season Weather (`weather.xml`), Altitude (`altitude_ft`), Pitch Dimensions & Referees (`official.xml`)
+
+### 17.1 4-Season Regional Weather Engine (`editor.fmf` Frame `#056: weather.xml`)
+Every city (`58,349` in `client_db.dat` `Frame #02`) references a `weather_profile_id` (`offset +27`). Each weather profile splits the calendar year into **4 seasonal windows (`w0..w3`)** with `Start Day` (`w0sd..w3sd`) and probability distributions over:
+- **5 Precipitation States (`p0..p4`):** `Dry`, `Wet`, `Drizzle`, `Shower`, `Down Pour` (affects ball skid speed, bounce height, handling errors, and pass drag).
+- **5 Wind States (`w0..w4`):** `Calm`, `Breezy`, `Gusty`, `Strong`, `Gale` (deflects long balls, crosses, and goal kicks).
+- **10 Temperature Brackets (`te, tv, t0..t7`):** `Extremely Freezing (<= -16°C)` through `Extremely Hot (>= 43°C)` plus `Day/Night Variance` (`dn`) — high heat (`t5..t7`, `>= 29°C`) accelerates match `Condition` drain.
+
+### 17.2 City Elevation (`altitude_ft`) & Stadium Pitch Dimensions (`server_db.dat` Frame `#22`)
+1. **Altitude Stamina Drain (`altitude_ft` at `offset +20` in `client_db.dat` `Frame #02`):**
+   - Cities at high elevation (`> 5,000 ft / 1,500 m`, up to `> 11,000 ft / 3,400 m` in South America) impose an additional stamina/condition drain multiplier on visiting teams whose home city is near sea level.
+2. **Pitch Dimensions (`pitch_length_m` × `pitch_width_m` at `offset +27` in `server_db.dat` `Frame #22`):**
+   - Stored in decimeters (`e.g., 1050 × 680 dm = 105.0m × 68.0m`, bounded by `min_pitch` and `max_pitch` at `offset +56`). Narrow/short pitches compress the `24` `OOP` zones (`oop_pitch_proximity_scores.jsb`), favoring compact low blocks (`Catenaccio / Route One`), whereas wide/long pitches stretch horizontal recovery distances against `Wing Play` and `Tiki-Taka`.
+
+### 17.3 Referee & Assistant Official Simulation (`editor.fmf` Frame `#047: official.xml`)
+Every match official (`9,872` in `basic_people_db.dat`, `34` bytes) is governed by `16` properties in `official.xml`:
+- **`Oalf` (`Allowing Flow`, `1..20`):** High values reduce whistle frequency on marginal contact (`Tackles Lost` / `Fouls Committed`).
+- **`Odis` (`Discipline`, `1..20`):** Probability of issuing a `Yellow Card` (`-50` match rating) or `Red Card` (`-300` match rating) for a given foul severity.
+- **`Oimm` (`Important Matches`, `1..20`) & `Oprs` (`Pressure`, `1..20`):** Resistance to home-crowd pressure (`CrowdAttendanceScalar`) on penalty/card calls in high-stakes fixtures.
+- **`Oref` (`Refereeing`, `1..20`) & `Orun` (`Running Line`, `1..20`):** Accuracy of foul/penalty decisions and assistant offside calls in competitions without VAR.
+- **`Otkp` (`Time Keeping`, `1..20`):** Precision of added stoppage time (`TotalStoppagesAllowed`) relative to actual ball-out-of-play events.
+
+---
+
+## 18. Automated Set-Piece Priority Matrix, Hat-Trick Penalty Rule & Ballon d'Or / Hall of Fame Scoring Algorithm
+
+### 18.1 Set-Piece Priority Matrix & Dynamic Penalty Selector (`EventFmxSetPiece*`)
+In `global-metadata.dat` and `set_piece_manager.dat`, FM26 automates set-piece assignments via **ranked attribute priority queues** (`EventFmxSetPieceCategoryPriorityMove`) so substitutions never break corner/free-kick structures:
+1. **Aerial Threat Queue:** Ranked by `Jumping Reach + Heading + Strength + Bravery + Aggression` (assigns `Near Post`, `Far Post`, `Attack Ball` roles).
+2. **Box Threat & Creator Queues:** Ranked by `Anticipation + Off The Ball + Finishing + Composure` (for `Lurk Outside Area` / `Mark Keeper`) and `Crossing + Corners + Free Kick Taking + Technique` (for `Takers`).
+3. **Recovery Defenders Queue:** Ranked by `Pace + Acceleration + Positioning + Decisions + Anticipation` (for `Stay Back` / `Stay Back If Needed`).
+4. **3 Built-in Dynamic Penalty Taker Rules (`global-metadata.dat`):**
+   - **`EventFmxSetPieceToggleChangeIfAlreadyMissed`:** Automatically hands the next penalty to `#2` on the list if Taker `#1` missed a penalty earlier in the match.
+   - **`EventFmxSetPieceToggleChangeIfAlreadyTaken`:** Rotates penalty takers if a second penalty is awarded in the same match.
+   - **`EventFmxSetPieceToggleTwoGoalsScorers` (The Hat-Trick Rule):** If a teammate is currently on **`2` goals** in the match, the designated penalty taker automatically lets them take the penalty to complete their **hat-trick**!
+
+### 18.2 Ballon d'Or (`award_manager.dat`) & Hall of Fame (`hall_of_fame.dat`) Scoring Algorithms
+1. **World Player of the Year / Ballon d'Or Voting (`award_manager.dat`):**
+   - Candidates are scored over the voting window by:
+     $$	ext{AwardScore} = w_1 ig(\overline{	ext{Rating}} 	imes 	ext{CompRepFactor}ig) + w_2 (	ext{Goals} + 0.7 	imes 	ext{Assists} + 	ext{PoM}) + w_3 	ext{WorldReputation} + w_4 	ext{TrophyPoints}$$
+   - Because `WorldReputation` and `CompRepFactor` carry substantial weight, a player averaging `7.45` in a top-5 European league + Champions League outscores a player averaging `7.90` in a lower-reputation league.
+2. **Manager Hall of Fame (`hall_of_fame.dat` & `HallOfFameEntryCompetitionReference`):**
+   - Tracked across Worldwide, Continental (`HallOfFameContinents`), and National (`HallOfFameNations` / `HallOfFameNationalities`) leaderboards (`extra_sections.py`), awarding points strictly for **First-Team Major Trophies** scaled by the competition's reputation tier (`Continental Club Cup > Top-Flight Domestic League > Major Domestic Cup > Second-Tier / Super Cups`).

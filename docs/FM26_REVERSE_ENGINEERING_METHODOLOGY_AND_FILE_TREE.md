@@ -383,7 +383,7 @@ fm-toolkit\
 │
 ├── docs\                                       # Complete English Technical & Reverse-Engineering Documentation Suite
 │   ├── FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md   # (This document) Methodology & annotated file trees
-│   ├── FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md              # 10 core internal game logics (Youth Intake, AI Picking, Match Ratings, Training, xG/QME, etc.)
+│   ├── FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md              # 18 core internal game logics (Youth Intake, AI Picking, Match Ratings, Training, xG/QME, etc.)
 │   ├── FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md         # Unknown binary fields & all 12 game-file systems reference
 │   ├── FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md                # Official .fmf Engine Formulas & Empirical Save Estimators
 │   ├── FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md                   # 50 In-Possession roles (93 Role+Duty), 39 OP* roles, Dual-Roles & 11 Archetypes
