@@ -383,7 +383,7 @@ fm-toolkit\
 │
 ├── docs\                                       # Complete English Technical & Reverse-Engineering Documentation Suite
 │   ├── FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md   # (This document) Methodology & annotated file trees
-│   ├── FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md         # Unknown binary fields & all 11 game-file systems reference
+│   ├── FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md         # Unknown binary fields & all 12 game-file systems reference
 │   ├── FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md                # Official .fmf Engine Formulas & Empirical Save Estimators
 │   ├── FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md                   # 50 In-Possession roles (93 Role+Duty), 39 OP* roles, Dual-Roles & 11 Archetypes
 │   └── FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md            # Complete schema of all 28 core tables & 81 .fm container sections
@@ -396,7 +396,7 @@ fm-toolkit\
     ├── enrichment.py                           # Decoders for hidden staff attributes, contract bonuses, facilities, PersonBlock relations & lineups
     ├── extra_sections.py                       # Binary scanners/parsers for `hall_of_fame`, `board_takeovers`, `shortlists`, `offers`, `agents`, `news`
     ├── formulas.py                             # Official .fmf/.jsb formula loader (`parse_jsb`), 6D Role Breakdowns, CA/PA cost, & Value/Wage OLS models
-    ├── game_files.py                           # Extractors for all 11 FM26 Installation Game-File Systems (`QME`, `Momentum`, `OOP Grid`, `xG`, `Editor XML`, `Master DB`, `Media`, `IL2CPP`, `People/History DB`, `.dbc/.lnc`, `Aux .fmf`)
+    ├── game_files.py                           # Extractors for all 12 FM26 Installation Game-File Systems (`QME`, `Momentum`, `OOP Grid`, `xG`, `Editor XML`, `Master DB`, `Media`, `IL2CPP`, `People/History DB`, `.dbc/.lnc`, `Aux .fmf`, `Multi-Version 2300..2620`)
     ├── diff.py                                 # `diff_saves()` byte-level differential analyzer across all 81 `.fm` sections
     ├── exporter.py                             # Multi-format exporters for CSV (UTF-8-BOM), JSON, JSONL, and SQLite (`.db`)
     │

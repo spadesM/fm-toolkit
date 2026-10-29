@@ -63,7 +63,7 @@ def main(argv: list[str] | None = None) -> int:
     p_rol.add_argument("--top", type=int, default=5, help="Top N roles per breakdown group")
 
     # 7. game-files
-    p_gf = sub.add_parser("game-files", help="Reverse-engineer and extract all 11 FM26 Game Installation File Systems")
+    p_gf = sub.add_parser("game-files", help="Reverse-engineer and extract all 12 FM26 Game Installation File Systems")
     p_gf.add_argument(
         "--system",
         choices=[
@@ -82,6 +82,7 @@ def main(argv: list[str] | None = None) -> int:
             "people_db",
             "dbc_lnc",
             "aux_fmfs",
+            "multi_version",
         ],
         default="all",
         help="Which game-file system to extract",
@@ -200,6 +201,7 @@ def main(argv: list[str] | None = None) -> int:
             extract_master_db_tables,
             extract_media_interaction_trees,
             extract_momentum_weightings,
+            extract_multi_version_database_evolution,
             extract_oop_pitch_proximity_grid,
             extract_permanent_edt_rules,
             extract_pregame_people_and_history_db,
@@ -226,6 +228,7 @@ def main(argv: list[str] | None = None) -> int:
             "people_db": extract_pregame_people_and_history_db,
             "dbc_lnc": extract_dbc_and_lnc_rules,
             "aux_fmfs": extract_simulation_aux_fmf_archives,
+            "multi_version": extract_multi_version_database_evolution,
         }
         print(json.dumps(dispatch[args.system](args.fm_dir), ensure_ascii=False, indent=2))
         return 0

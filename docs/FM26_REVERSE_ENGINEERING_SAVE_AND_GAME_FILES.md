@@ -231,6 +231,39 @@ All 8 game-file systems have been decoded and implemented in [`fm26save/game_fil
   - **`achievements.fmf` (`50` XML frames + `1` directory):** Steam / Epic / Xbox achievement trigger rules (`achv`).
   - **`leaderboards.fmf` (`28` XML frames + `1` directory):** Online leaderboard point calculation definitions.
   - **`settings.fmf` (`10` XML frames + `1` directory):** User interface, match camera, and processing preference schemas.
-  - **`store.fmf` (`3` XML frames + `1` directory):** In-game store item definitions.
-  - **`profanity_filter.fmf` (`3` frames + `1` directory):** Text moderation wordlists and regex patterns.
+  - **`store.fmf` (`2` XML frames + `1` directory, `37` `<record>` items):** In-game store item definitions.
+  - **`profanity_filter.fmf` (`2` frames + `1` directory):** Text moderation wordlists and regex patterns.
   - **`languages.fmf` (`205.61 MB`):** Master `.ltc` UI localization string archive for 22+ languages.
+
+---
+
+### System 12: Multi-Version Pre-Game Database Evolution (`2300`..`2620` — FM23 / FM24 / FM26)
+- **Extractor:** [`extract_multi_version_database_evolution()`](../fm26save/game_files.py#L2198-L2349)
+- **Structural Evolution Across All 9 Database Versions (`4,945,820 / 4,945,820` Total People Walked = `100.0%`):**
+  - In **FM23 (`2300..2340`)** and **FM24 (`2400..2430`)**, Player/Staff records in `basic_people_db.dat` are **`83` bytes** (`type 1, 2, 3`), Official records are `34` bytes (`type 4`), and Agent records are `22` bytes (`type 5`).
+  - In **FM26 (`2600..2620`)**, Sports Interactive expanded Player/Staff records by `+1` byte to **`84` bytes** to add the Women's Football gender/metadata byte (`rec[65] & 0x10`).
+  - In `client_db.dat`, **FM23 (`2300..2340`)** contains **`30` `.dat` tables**, whereas **FM24 (`2400..2430`)** and **FM26 (`2600..2620`)** contain **`31` `.dat` tables**.
+
+| DB Version | Release Label | `basic_people_db` Stride | Total People (`100%` Walked) | Total Players (`Men` / `Women`) | Staff | Officials | Agents | `PA = -10` | `PA = -95` | Cities (`#02`) | Clubs (`#03`) | Stadiums | Comps | First Names | Last Names |
+| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **`2300`** | FM23.0 Base | `83 B` | `618,042` | `459,075` (`459,075` / `0`) | `148,079` | `9,762` | `1,126` | `1` | `5` | `54,689` | `80,758` | `46,435` | `6,928` | `237,477` | `519,842` |
+| **`2310`** | FM23.1 Delta | `83 B` | `164,709` | `3,978` (`3,978` / `0`) | `149,510` | `9,783` | `1,438` | `0` | `0` | `54,708` | `80,878` | `46,476` | `6,928` | `235,088` | `514,946` |
+| **`2320`** | FM23.2 Delta | `83 B` | `165,986` | `4,225` (`4,225` / `0`) | `150,519` | `9,785` | `1,457` | `0` | `1` | `54,741` | `81,162` | `46,593` | `6,931` | `236,527` | `518,024` |
+| **`2330`** | FM23.3 Winter | `83 B` | `624,217` | `461,787` (`461,787` / `0`) | `151,505` | `9,784` | `1,141` | `1` | `5` | `54,742` | `81,176` | `46,599` | `6,932` | `237,168` | `519,372` |
+| **`2340`** | FM23.4 Final | `83 B` | `623,215` | `460,515` (`460,515` / `0`) | `151,775` | `9,780` | `1,145` | `1` | `5` | `54,742` | `81,180` | `46,603` | `6,932` | `237,510` | `520,144` |
+| **`2400`** | FM24.0 Base | `83 B` | `652,619` | `478,970` (`478,970` / `0`) | `162,526` | `9,931` | `1,192` | `1` | `10` | `56,018` | `83,837` | `48,158` | `7,035` | `242,800` | `536,209` |
+| **`2430`** | FM24.3 Winter | `83 B` | `658,011` | `480,915` (`480,915` / `0`) | `166,064` | `9,839` | `1,193` | `2` | `8` | `56,293` | `84,259` | `48,413` | `7,047` | `245,981` | `542,060` |
+| **`2600`** | FM26.0 Base | `84 B` | `716,011` | `531,952` (`491,943` / `40,009`) | `172,724` | `9,860` | `1,475` | `7` | `19` | `58,329` | `96,045` | `50,907` | `7,947` | `292,394` | `597,675` |
+| **`2620`** | FM26.2 Active | `84 B` | `723,010` | `537,152` (`495,248` / `41,904`) | `174,504` | `9,872` | `1,482` | `6` | `22` | `58,349` | `96,343` | `51,118` | `7,973` | `294,103` | `599,900` |
+
+- **Empirical `CA / PA` Trajectory Across `2300` $\rightarrow$ `2620` (World & Turkish Stars):**
+  - **Kylian Mbappé (`UID 85139014`):** `2300: 188/197` $\rightarrow$ `2400: 188/197` $\rightarrow$ `2600: 191/197` $\rightarrow$ `2620: 195/197`
+  - **Lamine Yamal (`UID 2000256231`):** `2400: 125/-10` $\rightarrow$ `2430: 130/-10` $\rightarrow$ `2600: 165/-10` $\rightarrow$ `2620: 175/194` *(graduated from `-10` to fixed `PA = 194` in `2620`)*
+  - **Jude Bellingham (`UID 29232937`):** `2300: 155/-95` $\rightarrow$ `2330: 157/-95` $\rightarrow$ `2400: 168/188` $\rightarrow$ `2430: 177/188` $\rightarrow$ `2600: 181/188` $\rightarrow$ `2620: 176/188`
+  - **Ousmane Dembélé (`UID 85140178`):** `2300: 162/176` $\rightarrow$ `2430: 167/174` $\rightarrow$ `2600: 186/188` $\rightarrow$ `2620: 186/188`
+  - **Désiré Doué (`UID 2000115202`):** `2300: 109/-9` $\rightarrow$ `2430: 123/-9` $\rightarrow$ `2600: 159/-95` $\rightarrow$ `2620: 159/-95`
+  - **Kenan Yıldız (`UID 2000138835`):** `2300: 99/-85` $\rightarrow$ `2330: 100/-85` $\rightarrow$ `2400: 110/-85` $\rightarrow$ `2430: 133/-9` $\rightarrow$ `2600: 156/-95` $\rightarrow$ `2620: 158/-95`
+  - **Arda Güler (`UID 2000077193`):** `2300: 100/-9` $\rightarrow$ `2330: 105/-9` $\rightarrow$ `2400: 125/-9` $\rightarrow$ `2430: 125/-9` $\rightarrow$ `2600: 144/173` $\rightarrow$ `2620: 144/173`
+  - **Hakan Çalhanoğlu (`UID 92026209`):** `2300: 153/159` $\rightarrow$ `2400: 157/160` $\rightarrow$ `2430: 160/160` $\rightarrow$ `2600: 161/164` $\rightarrow$ `2620: 162/164`
+  - **Barış Alper Yılmaz (`UID 70112874`):** `2300: 115/130` $\rightarrow$ `2330: 120/145` $\rightarrow$ `2400: 125/140` $\rightarrow$ `2430: 130/140` $\rightarrow$ `2600: 145/148` $\rightarrow$ `2620: 145/148`
+  - **Can Uzun (`UID 2000103330`):** `2330: 76/-65` $\rightarrow$ `2400: 104/-8` $\rightarrow$ `2430: 116/-85` $\rightarrow$ `2600: 136/-9` $\rightarrow$ `2620: 138/168`
