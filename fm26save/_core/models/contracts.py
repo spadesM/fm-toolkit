@@ -280,8 +280,9 @@ class Contract:
 
     @property
     def option_or_reference_year(self) -> int | None:
-        """Contract option or reference year decoded from unknown['e12']."""
-        return self.unknown.get("e12")
+        """Contract option or reference year decoded from unknown['e12'] (1900 is null-date sentinel)."""
+        val = self.unknown.get("e12")
+        return None if val is None or val <= 1900 else val
 
 
 register_field_statuses(

@@ -1,12 +1,12 @@
 """FM26 Game Installation File Reverse-Engineering Extractors (All 8 Systems).
 
 Extracts and decodes official Football Manager 26 installation archives (.fmf, .dat, .jsb, .edt, .usym):
-1. Quick Match Engine (QME) Statistical Distributions (`simatch.fmf` Frames #118, #119 — 3,137 Normal/Binned distributions)
+1. Quick Match Engine (QME) Statistical Distributions (`simatch.fmf` Frames #119, #120 — 3,137 Normal/Binned distributions & 22 stat-relevant attribute sets) & Player Match Ratings (`Frame #118` — 6 versions, start_value = 6.70)
 2. Match Momentum Spatial Engine (`simatch.fmf` Frame #113 — 48 event × zone momentum rules)
-3. Out-Of-Possession (OP*) 2D Pitch Proximity Tactical Grid (`simatch.fmf` Frame #115 — 118 Role entries × 24 spatial zones)
-4. 11 Shot-Type xG Logistic Regression Models (`simatch.fmf` Frames #90..#100, v26.1.4.1) & 101 Dual-Formation Tactical Presets (`Frames #121..#222`)
+3. Out-Of-Possession (OP*) Attribute Scoring (`Frame #114` — 39 RolePosition bitmasks) & 2D Pitch Proximity Tactical Grid (`Frame #115` — 118 Role entries × 24 spatial zones)
+4. 11 Shot-Type xG Logistic Regression Models (`simatch.fmf` Frames #002..#100 across 9 versions `23.1.1.9`..`26.1.4.1`), 101 Dual-Formation Tactical Presets (`Frames #121..#222`), & AI Team Selection Weights (`Frame #223` — 4 profiles × 40 `TSF_*` factors)
 5. 106 Internal Database XML Schemas & Master FourCC Enums (`shared/data/editor.fmf` — 444 enum groups + entity schemas)
-6. Pre-Game Master Databases (`client_db.dat`, `lang_update_db.dat`, `server_db.dat` — 58,349 Cities with Lat/Lon/Attraction, 96,343 Clubs, 51,118 Stadiums, 7,973 Competitions, 3,884 Awards, 2,527 Regions, 1,683 Derbies, 251 Nations, 136 Injuries) & `.edt` Permanent Rule Files
+6. Pre-Game Master Databases (`client_db.dat` 32 frames, `lang_update_db.dat` 401 frames = 25 languages × 16 tables + 1 directory, `server_db.dat` 78 frames — 58,349 Cities with Lat/Lon/Altitude(ft)/Attraction, 96,343 Clubs, 51,118 Stadiums, 7,973 Competitions, 3,884 Awards, 2,527 Regions, 1,683 Derbies, 251 Nations, 136 Injuries) & `.edt` Permanent Rule Files
 7. Press Conference, Backroom Advice, Training Schedules & Newgen Demographics (`media.fmf` 650 XMLs, `training.fmf` 300 schedules, `simatchshared.fmf` 135 newgen appearance rules)
 8. IL2CPP Metadata & Native Symbol Table (`il2cpp.usym` 1,593,548 symbols & `global-metadata.dat` C# engine symbols)
 """
@@ -47,26 +47,30 @@ def _as_jsb_array(obj: Any) -> list[Any]:
 
 
 # ==============================================================================
-# 1. QUICK MATCH ENGINE (QME) STATISTICAL DISTRIBUTIONS (simatch.fmf #118, #119)
+# 1. QUICK MATCH ENGINE (QME) STATISTICAL DISTRIBUTIONS (simatch.fmf #119, #120)
+#    & PLAYER MATCH RATINGS (simatch.fmf #118)
 # ==============================================================================
 def extract_qme_distributions(
     fm_install_dir: str | os.PathLike[str] | None = None,
     *,
     sample_limit: int | None = None,
 ) -> dict[str, Any]:
-    """Decode `qme_distribution_data.jsb` (Frame #119, 3,137 Normal/Binned distributions)
-    and `qme_attribute_combination_weights_data.jsb` (Frame #118, 68 weights) from `simatch.fmf`."""
+    """Decode `qme_distribution_data.jsb` (Frame #119, 3,137 Normal/Binned distributions),
+    `qme_stat_relevant_attribute_data.jsb` (Frame #120, 22 stat -> relevant_attributes mappings),
+    and `player_ratings_data.jsb` (Frame #118, 6 versions, start_value = 6.70) from `simatch.fmf`."""
     root = _resolve_fm26_dir(fm_install_dir)
     sim_fmf = root / "shared/data/simatch.fmf"
     if not sim_fmf.exists():
         return {"available": False, "path": str(sim_fmf)}
 
     frames = extract_fmf_frames(sim_fmf)
-    attr_weights_obj, _ = parse_jsb(frames[118][1], 0)
+    ratings_obj, _ = parse_jsb(frames[118][1], 0)
     dist_obj, _ = parse_jsb(frames[119][1], 0)
+    rel_attr_obj, _ = parse_jsb(frames[120][1], 0)
 
-    raw_weights = _as_jsb_array(attr_weights_obj)
+    raw_rel_attrs = _as_jsb_array(rel_attr_obj)
     raw_dists = _as_jsb_array(dist_obj)
+    ratings_versions = ratings_obj.get("values", []) if isinstance(ratings_obj, dict) else _as_jsb_array(ratings_obj)
 
     stat_type_counts: Counter[str] = Counter()
     position_counts: Counter[str] = Counter()
@@ -97,9 +101,15 @@ def extract_qme_distributions(
 
     return {
         "available": True,
-        "source": "shared/data/simatch.fmf (Frames #118 & #119)",
-        "attribute_combination_weights_count": len(raw_weights),
-        "attribute_combination_weights": raw_weights,
+        "source": "shared/data/simatch.fmf (Frames #118, #119, #120)",
+        "stat_relevant_attributes_count": len(raw_rel_attrs),
+        "stat_relevant_attributes": raw_rel_attrs,
+        "attribute_combination_weights_count": len(raw_rel_attrs),
+        "attribute_combination_weights": raw_rel_attrs,
+        "player_ratings_versions_count": len(ratings_versions),
+        "player_ratings_latest_start_value": (
+            ratings_versions[-1].get("start_value", 6700) / 1000.0 if ratings_versions else 6.70
+        ),
         "distributions_total_count": len(raw_dists),
         "distribution_types": dict(dist_type_counts),
         "stat_types_histogram": {str(k): v for k, v in sorted(stat_type_counts.items())},
@@ -147,20 +157,29 @@ def extract_momentum_weightings(
 
 
 # ==============================================================================
-# 3. OUT-OF-POSSESSION (OP*) 2D PITCH PROXIMITY TACTICAL GRID (simatch.fmf #115)
+# 3. OUT-OF-POSSESSION (OP*) ATTRIBUTE SCORING (#114) & 2D PITCH PROXIMITY GRID (#115)
 # ==============================================================================
 def extract_oop_pitch_proximity_grid(
     fm_install_dir: str | os.PathLike[str] | None = None,
     *,
     role_filter: int | None = None,
 ) -> dict[str, Any]:
-    """Decode `oop_pitch_proximity_scores.jsb` (Frame #115, 93.5 KB, 118 Position+Role entries × 24 spatial zones)."""
+    """Decode `oop_attributes_scoring.jsb` (Frame #114, 39 RolePosition bitmasks) and
+    `oop_pitch_proximity_scores.jsb` (Frame #115, 95,708 B, 118 Position+Role entries × 24 spatial zones)."""
     root = _resolve_fm26_dir(fm_install_dir)
     sim_fmf = root / "shared/data/simatch.fmf"
     if not sim_fmf.exists():
         return {"available": False, "path": str(sim_fmf)}
 
     frames = extract_fmf_frames(sim_fmf)
+    attr_obj, _ = parse_jsb(frames[114][1], 0)
+    attr_scoring_list = attr_obj.get("SCORING", []) if isinstance(attr_obj, dict) else _as_jsb_array(attr_obj)
+    attr_scores = (
+        attr_scoring_list[0].get("SCORES", [])
+        if (attr_scoring_list and isinstance(attr_scoring_list[0], dict) and "SCORES" in attr_scoring_list[0])
+        else attr_scoring_list
+    )
+
     prox_obj, _ = parse_jsb(frames[115][1], 0)
     scoring_list = prox_obj.get("SCORING", []) if isinstance(prox_obj, dict) else _as_jsb_array(prox_obj)
     arr = scoring_list[0].get("SCORES", []) if (scoring_list and isinstance(scoring_list[0], dict) and "SCORES" in scoring_list[0]) else scoring_list
@@ -198,7 +217,9 @@ def extract_oop_pitch_proximity_grid(
 
     return {
         "available": True,
-        "source": "shared/data/simatch.fmf (Frame #115 — oop_pitch_proximity_scores.jsb)",
+        "source": "shared/data/simatch.fmf (Frame #114 oop_attributes_scoring.jsb & Frame #115 oop_pitch_proximity_scores.jsb)",
+        "oop_role_attribute_scoring_count": len(attr_scores),
+        "oop_role_attribute_scoring": attr_scores,
         "total_position_role_entries": len(arr),
         "total_spatial_zone_couples": total_couples,
         "unique_position_codes": sorted(unique_positions),
@@ -208,38 +229,62 @@ def extract_oop_pitch_proximity_grid(
 
 
 # ==============================================================================
-# 4. ALL 11 SHOT-TYPE xG MODELS (#90..#100) & 101 TACTICAL STYLE PRESETS (#121..#222)
+# 4. ALL 11 SHOT-TYPE xG MODELS (#002..#100, 9 VERSIONS) & 101 TACTICAL PRESETS (#121..#222)
 # ==============================================================================
 def extract_xg_shot_models(
     fm_install_dir: str | os.PathLike[str] | None = None,
 ) -> dict[str, Any]:
-    """Extract all 11 Shot-Type xG Logistic Regression models (Frames #90..#100, Version 26.1.4.1) from `simatch.fmf`."""
+    """Extract all 11 Shot-Type xG Logistic Regression models from `simatch.fmf` (Frames #002..#100 across 9 versions; active v26.1.4.1 in Frames #090..#100)."""
     root = _resolve_fm26_dir(fm_install_dir)
     sim_fmf = root / "shared/data/simatch.fmf"
     if not sim_fmf.exists():
         return {"available": False, "path": str(sim_fmf)}
 
     frames = extract_fmf_frames(sim_fmf)
+    all_versions: list[str] = []
+    for base_fidx in range(2, 101, 11):
+        if base_fidx < len(frames):
+            v_obj, _ = parse_jsb(frames[base_fidx][1], 0)
+            vn = v_obj.get("version_number", "")
+            if isinstance(vn, dict):
+                ver_str = f"{vn.get('version_year', 0)}.{vn.get('version_major', 0)}.{vn.get('version_minor', 0)}.{vn.get('version_release', 0)}"
+            else:
+                ver_str = str(vn)
+            if ver_str and ver_str not in all_versions:
+                all_versions.append(ver_str)
+
     models: dict[str, Any] = {}
     for fidx in range(90, 101):
         obj, _ = parse_jsb(frames[fidx][1], 0)
         shot_type = str(obj.get("shot_type", f"frame_{fidx}"))
+        raw_int = int(obj.get("intercept", 0))
         coeffs = obj.get("coefficients", {})
-        scaled_coeffs = (
+        coeffs_1e7 = (
+            {k: round(float(v) / 1e7, 8) for k, v in coeffs.items()} if isinstance(coeffs, dict) else coeffs
+        )
+        coeffs_1e8 = (
             {k: round(float(v) / 1e8, 8) for k, v in coeffs.items()} if isinstance(coeffs, dict) else coeffs
         )
         models[shot_type] = {
             "frame_index": fidx,
             "shot_type": shot_type,
             "version": obj.get("version_number", "26.1.4.1"),
-            "intercept": round(float(obj.get("intercept", 0)) / 1e8, 8),
-            "coefficients": scaled_coeffs,
+            "raw_intercept": raw_int,
+            "intercept_1e7": round(float(raw_int) / 1e7, 8),
+            "intercept_1e8": round(float(raw_int) / 1e8, 8),
+            "intercept": round(float(raw_int) / 1e7, 8),
+            "raw_coefficients": coeffs,
+            "coefficients_1e7": coeffs_1e7,
+            "coefficients_1e8": coeffs_1e8,
+            "coefficients": coeffs_1e7,
             "formula": "P(Goal) = 1 / (1 + exp(-(intercept + sum(coeff_i * x_i))))",
         }
 
     return {
         "available": True,
-        "source": "shared/data/simatch.fmf (Frames #90..#100)",
+        "source": "shared/data/simatch.fmf (Frames #002..#100 across 9 versions; active v26.1.4.1 at Frames #090..#100)",
+        "versions_available_count": len(all_versions),
+        "versions_available": all_versions,
         "models_count": len(models),
         "models": models,
     }
@@ -560,7 +605,7 @@ def _parse_lang_cities_and_coords(
                 "<ffBIIHB", rec, 3
             )
             weather_id = struct.unpack_from("<H", rec, 27)[0]
-            cid_db, uid_db = struct.unpack_from("<II", rec, 33)
+            cid_db, uid_db = struct.unpack_from("<II", rec, 32)
             entry.update(
                 {
                     "latitude": round(lat, 5),
@@ -568,6 +613,7 @@ def _parse_lang_cities_and_coords(
                     "attraction_1_20": attraction,
                     "nation_id": nation_id,
                     "local_region_id": region_id,
+                    "altitude_ft": alt_raw,
                     "altitude_raw": alt_raw,
                     "inhabitants_bracket": inhab_code,
                     "weather_profile_id": weather_id,
@@ -818,9 +864,14 @@ def extract_master_db_tables(
     return {
         "available": True,
         "source": "shared/data/database/db/2620/2620_fm/ (client_db.dat, lang_update_db.dat, server_db.dat)",
+        "client_db_total_frames": len(c_frames),
         "client_db_frames_count": len(c_frames) - 1,
+        "server_db_total_frames": len(s_frames),
         "server_db_frames_count": max(0, len(s_frames) - 1),
+        "lang_update_db_total_frames": len(l_frames),
         "lang_update_db_frames_count": len(l_frames) - 1,
+        "lang_update_db_languages_count": (len(l_frames) - 1) // 16 if len(l_frames) >= 17 else 1,
+        "lang_update_db_tables_per_language": 16,
         "client_db_tables": client_tables_summary,
         "counts": {
             "nations": len(nations),
@@ -1068,7 +1119,10 @@ def extract_all_game_files_summary(
     return {
         "1_qme_statistical_distributions": {
             "total_distributions": qme.get("distributions_total_count", 0),
+            "stat_relevant_attributes_count": qme.get("stat_relevant_attributes_count", 0),
             "attribute_combination_weights": qme.get("attribute_combination_weights_count", 0),
+            "player_ratings_versions_count": qme.get("player_ratings_versions_count", 0),
+            "player_ratings_latest_start_value": qme.get("player_ratings_latest_start_value", 6.70),
             "distribution_types": qme.get("distribution_types", {}),
             "sample": qme.get("distributions", []),
         },
@@ -1078,6 +1132,7 @@ def extract_all_game_files_summary(
             "rules_by_event": momentum.get("rules_by_event", {}),
         },
         "3_oop_2d_pitch_proximity_grid": {
+            "oop_role_attribute_scoring_count": oop_grid.get("oop_role_attribute_scoring_count", 0),
             "total_position_role_entries": oop_grid.get("total_position_role_entries", 0),
             "total_spatial_zone_couples": oop_grid.get("total_spatial_zone_couples", 0),
             "unique_position_codes": oop_grid.get("unique_position_codes", []),
@@ -1085,6 +1140,8 @@ def extract_all_game_files_summary(
             "sample_entry": (oop_grid.get("entries") or [None])[0],
         },
         "4_xg_shot_models_and_tactical_presets": {
+            "xg_versions_available_count": xg_models.get("versions_available_count", 0),
+            "xg_versions_available": xg_models.get("versions_available", []),
             "xg_shot_models_count": xg_models.get("models_count", 0),
             "xg_shot_models": xg_models.get("models", {}),
             "tactical_styles_xml_count": styles.get("tactical_styles_xml_count", 0),
@@ -1099,6 +1156,10 @@ def extract_all_game_files_summary(
             },
         },
         "6_pregame_master_databases_and_edt_rules": {
+            "client_db_total_frames": master_db.get("client_db_total_frames", 0),
+            "lang_update_db_total_frames": master_db.get("lang_update_db_total_frames", 0),
+            "lang_update_db_languages_count": master_db.get("lang_update_db_languages_count", 0),
+            "server_db_total_frames": master_db.get("server_db_total_frames", 0),
             "counts": master_db.get("counts", {}),
             "cities_coord_showcase": master_db.get("cities_coord_showcase", []),
             "edt_files": {

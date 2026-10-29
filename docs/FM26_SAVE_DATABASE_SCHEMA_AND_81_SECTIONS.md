@@ -1,6 +1,6 @@
 # Football Manager 26 — Complete 28-Table Save Database Schema & 81 Container Sections Reference
 
-> **Repository:** [`fm26save`](../)  
+> **Repository:** [`fm-toolkit`](../)  
 > **Core Readers:** [`fm26save/_core/readers/`](../fm26save/_core/readers), [`fm26save/container.py`](../fm26save/container.py), [`fm26save/extra_sections.py`](../fm26save/extra_sections.py)
 
 ---
@@ -12,7 +12,7 @@ All 28 structured tables are extracted from `game_db.dat`, `pl_hist_dt.dat`, `ta
 | # | Table Name (`CLI`) | Python Method (`FM26Save`) | Rows (`Fenerbahce.fm` — Jul 2025) | Rows (`Project_Super_Lig.fm` — Mar 2041) | Primary Key / Foreign Keys | Key Fields & Enriched Properties |
 | :---: | :--- | :--- | ---: | ---: | :--- | :--- |
 | **1** | `players` | `sv.table("players")` | `134,884` | `156,192` | `uid`, `db_id`, `club_uid`, `nation_id` | `name`, `first_name`, `last_name`, `date_of_birth`, `height_cm`, `weight_kg`, `ability` (`current`, `potential`), `attributes` (`43` fields on `1..100` & `1..20` scales), `positions` (`11` slots `1..20`), `contract`, `second_nationalities`, plus enriched `shirt_number`, `rca`, `favoured_clubs`, `favoured_people`, `languages`. |
-| **2** | `contracts` | `sv.table("contracts")` | `87,412` | `96,093` | `player_uid`, `club_uid` | `wage` (weekly), `start_date`, `expiry_date`, `squad_status`, `clauses` (`list`), `bonuses` (`list`), plus decoded `.signing_or_loyalty_fee` (`money_a`), `.agent_fee` (`money_b`), `.package_bonus` (`money_c`), `.option_or_reference_year` (`e12`). |
+| **2** | `contracts` | `sv.table("contracts")` | `87,412` | `96,093` | `player_uid`, `club_uid` | `wage` (weekly), `start_date`, `expiry_date`, `squad_status`, `clauses` (`list`), `bonuses` (`list`), plus decoded `.signing_or_loyalty_fee` (`money_a`), `.agent_fee` (`money_b`), `.package_bonus` (`money_c`), `.option_or_reference_year` (`e12`, with `1900` null sentinel mapped to `None`). |
 | **3** | `suspensions` | `sv.table("suspensions")` | `1,108` | `1,842` | `player_uid`, `competition_uid` | `matches_remaining`, `reason_code`, `start_date`, `competition_type`. |
 | **4** | `injuries` | `sv.table("injuries")` | `3,419` | `4,112` | `player_uid`, `injury_type_id` | `injury_name`, `start_date`, `return_date`, `days_remaining`, `severity`. |
 | **5** | `injury-types` | `sv.table("injury_types")` | `136` | `136` | `id`, `uid` | `name`, `sentence_name`, `category`, `min_days`, `extra_days`, `is_contagious`, `career_threatening_age`. |
@@ -26,7 +26,7 @@ All 28 structured tables are extracted from `game_db.dat`, `pl_hist_dt.dat`, `ta
 | **13** | `facilities` | `sv.table("facilities")` | `61,329` | `61,334` | `club_uid`, `stadium_id` | `training` (`1..20`), `youth_facilities` (`1..20`), `youth_academy` (`1..20`), `youth_recruitment` (`1..20`), plus enriched `corporate_facilities_1_20` (`+50`), `season_ticket_holders` (`+41`), `expected_attendance` (`+45`), `fanbase_commercial_index` (`+33`). |
 | **14** | `stadiums` | `sv.table("stadiums")` | `49,812` | `50,140` | `id`, `uid`, `city_id`, `owner_club_uid` | `name`, `capacity`, `seated_capacity`, `expansion_capacity`, `pitch_length_m`, `pitch_width_m`, `surface_type`, `roof_type`, `build_date`. |
 | **15** | `affiliates` | `sv.table("affiliates")` | `9,840` | `10,412` | `parent_club_uid`, `affiliate_club_uid` | `affiliation_type` (Loan, First Option, Commercial, Youth, B-Team), `annual_fee`, `start_date`. |
-| **16** | `staff` | `sv.table("staff")` | `68,112` | `78,904` | `uid`, `db_id`, `club_uid`, `nation_id` | `name`, `date_of_birth`, `kind` (`contracted`, `listed`, `human`), `current_ability`, `potential_ability`, `tactical_attributes`, `mental_attributes`, plus baked-in `b40_20_0..25` (**26 hidden Coaching, Scouting, Medical & Mental attributes on `1..20` scale**) and decoded `r4` job role (`0..66`). |
+| **16** | `staff` | `sv.table("staff")` | `68,112` | `78,904` | `uid`, `db_id`, `club_uid`, `nation_id` | `name`, `date_of_birth`, `kind` (`contracted`, `listed`, `human`), `current_ability`, `potential_ability`, `tactical_attributes`, `mental_attributes`, plus baked-in `b40_20_0..25` (**26 hidden `1..100` (`5`-step) staff attribute slots mapped to `1..20` scale**) and decoded `r4` job role (`0..88`). |
 | **17** | `staff-lists` | `sv.table("staff_lists")` | `61,329` | `61,334` | `club_uid` | Per-club departmental staff roster lists (`0` = Medical, `1` = Coaching, `2` = Scouting/Recruitment). |
 | **18** | `tactics` | `sv.table("tactics")` | `42` | `68` | `club_uid`, `slot_index` | `formation_name`, `mentality`, `in_possession_instructions`, `out_of_possession_instructions`, `transition_instructions`, `player_slots` (`11` positions & roles), and `selectors` (`Starting XI` + `Bench`). |
 | **19** | `set-pieces` | `sv.table("set_pieces")` | `18` | `24` | `club_uid`, `routine_type` | Corner, free-kick, and throw-in routines, zone assignments, and taker priority lists. |
@@ -44,7 +44,7 @@ All 28 structured tables are extracted from `game_db.dat`, `pl_hist_dt.dat`, `ta
 
 ## Part 2: Complete Catalog of the 81 Zstandard Sections Inside an FM26 `.fm` Save Container
 
-Every `.fm` save file contains **81 named `.dat` and `.cmt` Zstandard-compressed sections** indexed in the `TADF` directory header (`sv.container.list_entries()`). Below is the complete reference of those sections grouped by engine subsystem:
+Every `.fm` save file is a `\x02\x01fmf.` multi-frame Zstandard container with a 26-byte outer header and a Zstandard-compressed trailer directory (`sv.container.list_entries()`) indexing **81 named `.dat` and `.cmt` sections**. Below is the complete reference of those sections grouped by engine subsystem:
 
 ### 2.1 Core Database & Historical Ledgers (`4` Sections — `~85%` of Save Size)
 | Section Name | Typical Compressed Size | Typical Decompressed Size | Contents & Binary Structure |
@@ -54,7 +54,8 @@ Every `.fm` save file contains **81 named `.dat` and `.cmt` Zstandard-compressed
 | **`non_pl_hist_dt.dat`** | `~3–7 MB` | `~20–35 MB` | Complete career history for managers, coaches, scouts, physios, and club officials. |
 | **`person_history_index.dat`** | `~1.2–2.4 MB` | `~4.5–9.0 MB` | Binary `(person_uid -> byte_offset, record_count)` lookup table for instant random access into `pl_hist_dt.dat` and `non_pl_hist_dt.dat`. |
 
-### 2.2 Dedicated Extra Section Parsers in [`fm26save/extra_sections.py`](../fm26save/extra_sections.py) (`6` Sections + Universal Inspector)
+### 2.2 Dedicated Extra Section Scanners & Parsers in [`fm26save/extra_sections.py`](../fm26save/extra_sections.py) (`6` Sections + Universal Inspector)
+*(Note: Because these smaller `.dat` manager sections use dynamic variable-length serialization without fixed-stride row headers, `extra_sections.py` implements targeted binary signature/string/UID heuristic scanners over the decompressed section streams.)*
 | Section Name | Python Method | Contents & Reverse-Engineered Record Fields |
 | :--- | :--- | :--- |
 | **`hall_of_fame.dat`** | [`sv.hall_of_fame()`](../fm26save/extra_sections.py) | Worldwide, national, and continental Hall of Fame manager records (`first_name`, `last_name`, `nationality_id`, `major_trophies`, `minor_trophies`, `hof_points`). |

@@ -171,7 +171,7 @@ class FM26Save:
         return analyze_player_role_breakdown(player, top_n_per_group=top_n_per_group)
 
     def role_catalog_breakdown(self) -> dict[str, Any]:
-        """Return complete FM26 catalog of In-Possession roles, Duties, Archetypes, and 33 Out-Of-Possession (OP*) roles."""
+        """Return complete FM26 catalog of In-Possession roles, Duties, Archetypes, and 39 Out-Of-Possession (OP*) roles."""
         return get_role_catalog_breakdown()
 
     def engine_formulas(self) -> dict[str, Any]:

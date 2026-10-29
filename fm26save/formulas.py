@@ -1458,36 +1458,71 @@ def estimate_transfer_value(
     ca: int,
     pa: int,
     age: int,
-    weekly_wage: int,
+    weekly_wage: int | None = None,
     remaining_contract_years: float = 2.5,
     player_reputation: int = 5000,
     player_world_reputation: int = 3500,
     club_reputation: int = 6000,
     is_star_or_important: bool = False,
 ) -> dict[str, Any]:
-    """Estimate FM26 Market / Transfer Value using the empirical log-linear model (R² = 0.805)."""
+    """Estimate FM26 Market / Transfer Value using empirical log-linear OLS models fitted on save data (80/20 train/test split, N=22,744).
+
+    Note: This is an empirical statistical estimator fitted on save-file records, not an official `.fmf` formula.
+    Provides both a non-circular Fundamental Model (without `weekly_wage`, Test R² = 0.6483) and, when `weekly_wage`
+    is provided, a Wage-Augmented Model (Test R² = 0.7713).
+    """
     rem_y = max(0.08, float(remaining_contract_years))
-    wage = max(50.0, float(weekly_wage))
     youth_pot = max(0.0, 24.0 - float(age)) * max(0.0, float(pa - ca)) / 100.0
-    log_v = (
-        5.72207
-        + 0.04063 * float(ca)
-        + 0.00666 * max(0.0, float(ca) - 115.0)
-        + 0.16353 * (float(player_reputation) / 1000.0)
-        - 0.07339 * (float(player_world_reputation) / 1000.0)
-        - 0.17025 * (float(club_reputation) / 1000.0)
-        - 0.16164 * float(age)
-        + 0.03968 * max(0.0, float(age) - 28.0)
-        + 0.66654 * math.log(rem_y)
-        + 0.82278 * math.log(wage)
-        + 0.43513 * youth_pot
-        - 0.26591 * (1.0 if is_star_or_important else 0.0)
+
+    # 1. Non-circular Fundamental Model (no weekly_wage input; Train R² = 0.6603, Test R² = 0.6483)
+    log_v_fundamental = (
+        5.00991
+        + 0.06394 * float(ca)
+        + 0.00870 * max(0.0, float(ca) - 115.0)
+        + 0.37803 * (float(player_reputation) / 1000.0)
+        - 0.15045 * (float(player_world_reputation) / 1000.0)
+        - 0.10709 * (float(club_reputation) / 1000.0)
+        - 0.02096 * float(age)
+        - 0.01051 * max(0.0, float(age) - 28.0)
+        + 0.88464 * math.log(rem_y)
+        + 0.50407 * youth_pot
+        - 0.10433 * (1.0 if is_star_or_important else 0.0)
     )
-    mid_val = int(round(math.exp(log_v), -3))
+    fund_val = int(round(math.exp(log_v_fundamental), -3))
+
+    # 2. Wage-Augmented Model when weekly_wage is supplied (Train R² = 0.7807, Test R² = 0.7713)
+    if weekly_wage is not None and weekly_wage > 0:
+        wage = max(50.0, float(weekly_wage))
+        log_v_aug = (
+            5.04580
+            + 0.05068 * float(ca)
+            + 0.00288 * max(0.0, float(ca) - 115.0)
+            + 0.15565 * (float(player_reputation) / 1000.0)
+            - 0.11417 * (float(player_world_reputation) / 1000.0)
+            - 0.19934 * (float(club_reputation) / 1000.0)
+            - 0.13142 * float(age)
+            + 0.07498 * max(0.0, float(age) - 28.0)
+            + 0.56851 * math.log(rem_y)
+            + 0.74275 * math.log(wage)
+            + 0.53800 * youth_pot
+            - 0.18352 * (1.0 if is_star_or_important else 0.0)
+        )
+        aug_val = int(round(math.exp(log_v_aug), -3))
+        mid_val = aug_val
+        model_used = "empirical_ols_wage_augmented"
+    else:
+        aug_val = None
+        mid_val = fund_val
+        model_used = "empirical_ols_fundamental_no_wage"
+
     min_val = int(round(mid_val * 0.85, -3))
     max_val = int(round(mid_val * 1.20, -3))
     return {
+        "model_source": "empirical_save_regression",
+        "model_used": model_used,
         "estimated_value": mid_val,
+        "fundamental_estimated_value": fund_val,
+        "wage_augmented_estimated_value": aug_val,
         "estimated_range_min": min_val,
         "estimated_range_max": max_val,
     }
@@ -1502,7 +1537,7 @@ def estimate_wage_and_fees(
     player_world_reputation: int = 3500,
     squad_status: str = "REGULAR_STARTER",
 ) -> dict[str, Any]:
-    """Estimate FM26 Weekly Wage, Signing/Loyalty Fee (money_a) & Agent Fee (money_b)."""
+    """Estimate FM26 Weekly Wage, Signing/Loyalty Fee (money_a) & Agent Fee (money_b) via empirical save regression."""
     st = squad_status.upper()
     log_w = (
         1.04103
@@ -1522,12 +1557,17 @@ def estimate_wage_and_fees(
     weekly_wage = int(round(math.exp(log_w), -1))
     annual_wage = weekly_wage * 52
     return {
+        "model_source": "empirical_save_regression",
         "estimated_weekly_wage": weekly_wage,
         "estimated_annual_wage": annual_wage,
+        "estimated_signing_or_loyalty_fee_unconditional_median": int(round(annual_wage * 0.050, -2)),
         "estimated_signing_or_loyalty_fee_median": int(round(annual_wage * 0.185, -2)),
         "estimated_signing_or_loyalty_fee_mean": int(round(annual_wage * 0.241, -2)),
+        "signing_or_loyalty_fee_nonzero_share": 0.61,
+        "estimated_agent_fee_unconditional_median": 0,
         "estimated_agent_fee_median": int(round(annual_wage * 0.052, -2)),
         "estimated_agent_fee_mean": int(round(annual_wage * 0.059, -2)),
+        "agent_fee_nonzero_share": 0.29,
     }
 
 
@@ -1651,22 +1691,40 @@ def load_engine_formulas(fm_install_dir: str | Path = DEFAULT_FM26_INSTALL_DIR) 
             for fidx in range(90, 101):
                 m_obj, _ = parse_jsb(sframes[fidx][1], 0)
                 st = m_obj.get("shot_type", f"frame_{fidx}")
+                raw_int = int(m_obj.get("intercept", 0))
+                raw_coeffs = m_obj.get("coefficients", {})
                 xg_models_v26[st] = {
                     "version": m_obj.get("version_number"),
-                    "intercept": round(m_obj.get("intercept", 0) / 1e8, 6),
+                    "raw_intercept": raw_int,
+                    "intercept_1e7": round(raw_int / 1e7, 6),
+                    "intercept_1e8": round(raw_int / 1e8, 6),
+                    "intercept": round(raw_int / 1e7, 6),
+                    "raw_coefficients": raw_coeffs,
+                    "coefficients_1e7": {
+                        k: round(v / 1e7, 6) for k, v in raw_coeffs.items()
+                    } if isinstance(raw_coeffs, dict) else raw_coeffs,
+                    "coefficients_1e8": {
+                        k: round(v / 1e8, 6) for k, v in raw_coeffs.items()
+                    } if isinstance(raw_coeffs, dict) else raw_coeffs,
                     "coefficients": {
-                        k: round(v / 1e8, 6) for k, v in m_obj.get("coefficients", {}).items()
-                    } if isinstance(m_obj.get("coefficients"), dict) else m_obj.get("coefficients"),
+                        k: round(v / 1e7, 6) for k, v in raw_coeffs.items()
+                    } if isinstance(raw_coeffs, dict) else raw_coeffs,
                 }
             out["xg_models_all_11_shot_types_v26"] = xg_models_v26
             out["momentum_weightings"], _ = parse_jsb(sframes[113][1], 0)
             out["oop_role_attribute_scoring"], _ = parse_jsb(sframes[114][1], 0)
             out["oop_pitch_proximity_scores"], _ = parse_jsb(sframes[115][1], 0)
             p_rat, _ = parse_jsb(sframes[118][1], 0)
+            latest_rat = p_rat["values"][-1]
             out["player_match_ratings_formula"] = {
-                "start_value": p_rat["values"][0]["start_value"] / 1000.0,
-                "expected_score_multipliers": p_rat["values"][0]["expected_score_data"],
-                "action_coefficients": p_rat["values"][0]["role_data"][0]["coefficients"],
+                "version": latest_rat.get("version"),
+                "all_versions_count": len(p_rat["values"]),
+                "start_value": latest_rat["start_value"] / 1000.0,
+                "start_value_raw": latest_rat["start_value"],
+                "expected_score_multipliers": latest_rat["expected_score_data"],
+                "action_coefficients": latest_rat["role_data"][0]["coefficients"],
+                "role_lookup_data": latest_rat.get("role_lookup_data", []),
+                "all_role_data": latest_rat.get("role_data", []),
             }
             out["qme_stat_distributions"], _ = parse_jsb(sframes[119][1], 0)
             out["qme_stat_relevant_attributes"], _ = parse_jsb(sframes[120][1], 0)

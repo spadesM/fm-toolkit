@@ -179,6 +179,8 @@ def decode_contracts_enriched(
         if club_uid is not None and c.club_uid != club_uid:
             continue
         uk = dict(c.unknown)
+        raw_e12 = uk.get("e12")
+        ref_year_e12 = None if raw_e12 is None or raw_e12 <= 1900 else raw_e12
         rows.append(
             {
                 "player_uid": c.player_uid,
@@ -193,7 +195,8 @@ def decode_contracts_enriched(
                 "signing_or_loyalty_fee_money_a": uk.get("money_a", 0),
                 "agent_fee_money_b": uk.get("money_b", 0),
                 "package_bonus_money_c": uk.get("money_c", 0),
-                "reference_or_option_year_e12": uk.get("e12"),
+                "reference_or_option_year_e12": ref_year_e12,
+                "raw_e12": raw_e12,
                 "promised_squad_status_e38": uk.get("e38"),
                 "squad_status_subcode_e37": uk.get("e37"),
                 "contract_status_flags_e39": uk.get("e39"),
@@ -284,6 +287,14 @@ def decode_players_enriched_relations(
     city_map = build_city_map(save)
 
     players_by_uid = {p.uid: p for p in save.players()}
+    person_name_by_pindex: dict[int, str] = {}
+    for pindex_val, pos_idx in player_records.position_by_pindex.items():
+        if 0 <= pos_idx < len(player_records.uids):
+            p_uid = player_records.uids[pos_idx] + 1
+            p_rec = players_by_uid.get(p_uid)
+            if p_rec and p_rec.name:
+                person_name_by_pindex[pindex_val] = p_rec.name
+                person_name_by_pindex[pindex_val + 1] = p_rec.name
     person_name_by_id: dict[int, str] = {}
     for p in players_by_uid.values():
         if p.name:
@@ -313,11 +324,19 @@ def decode_players_enriched_relations(
                 else len(game_db)
             )
 
-            # 1. Hidden tail bytes around height_offset (112..130)
+            # 1. Hidden tail bytes around height_offset (112..130) — validated against PA to guard across builds
             squad_num_raw = game_db[rec_off + 117] if rec_off + 122 <= len(game_db) else 255
-            rca_byte = game_db[rec_off + 118] if rec_off + 122 <= len(game_db) else None
-            pa_copy_byte = game_db[rec_off + 119] if rec_off + 122 <= len(game_db) else None
+            raw_b118 = game_db[rec_off + 118] if rec_off + 122 <= len(game_db) else None
+            raw_b119 = game_db[rec_off + 119] if rec_off + 122 <= len(game_db) else None
             body_type_byte = game_db[rec_off + 123] if rec_off + 124 <= len(game_db) else None
+            expected_pa = p_obj.ability.potential if p_obj.ability else None
+            if expected_pa is not None and raw_b119 == expected_pa:
+                rca_byte: int | None = raw_b118
+                pa_copy_byte: int | None = raw_b119
+            else:
+                rca_byte = None
+                pa_copy_byte = None
+                squad_num_raw = 255
 
             # 2. All PersonBlock relation entries
             w_start = rec_off + pb_lay.window_start_offset
@@ -357,7 +376,10 @@ def decode_players_enriched_relations(
                                         c_obj = club_index.club_by_uid.get(c_uid) if c_uid else None
                                         resolved_target = c_obj.name if c_obj else f"ClubIndex #{ref}"
                                     elif target_type == "person_id":
-                                        resolved_target = person_name_by_id.get(ref, f"Person #{ref + 1}")
+                                        resolved_target = (
+                                            person_name_by_pindex.get(ref)
+                                            or person_name_by_id.get(ref, f"Person #{ref + 1}")
+                                        )
                                     elif target_type == "nation_id":
                                         resolved_target = resolve_nation(ref)
                                     elif target_type == "city_or_region_id":
@@ -377,6 +399,7 @@ def decode_players_enriched_relations(
                         break
                 pos += 1
 
+            hg_clubs = [r["target_name"] for r in relations_decoded if (r["kind"], r["role"]) == (1, 72)]
             fav_clubs = [r["target_name"] for r in relations_decoded if (r["kind"], r["role"]) == (1, 3)]
             dis_clubs = [r["target_name"] for r in relations_decoded if (r["kind"], r["role"]) == (1, 4)]
             fav_people = [r["target_name"] for r in relations_decoded if (r["kind"], r["role"]) == (3, 1)]
@@ -396,9 +419,10 @@ def decode_players_enriched_relations(
                     "pa": p_obj.ability.potential if p_obj.ability else None,
                     "rca_peak_byte_118": rca_byte,
                     "pa_copy_byte_119": pa_copy_byte,
-                    "squad_number": None if squad_num_raw == 255 else squad_num_raw,
+                    "squad_number": None if squad_num_raw in (0, 255) else squad_num_raw,
                     "body_type_code_123": body_type_byte,
                     "height_cm": p_obj.height_cm,
+                    "home_grown_clubs": hg_clubs,
                     "favoured_clubs": fav_clubs,
                     "disliked_clubs": dis_clubs,
                     "favoured_people": fav_people,
