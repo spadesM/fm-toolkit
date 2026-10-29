@@ -32,16 +32,17 @@ flowchart TD
      - Bytes `22..26` (`<I` `u32`): `outer_Entry_count` — number of sections in the trailer directory (`81` core sections plus any embedded `.apm`/`.scm` match telemetry files).
    - **Zstandard-Compressed Trailer Directory (`_parse_directory`):**
      - Decompressing the Zstandard frame at `directory_offset + 4` yields the directory stream (`16`-byte header with `<I` `entry_count` at byte `5`).
-     - Each directory entry contains a length-prefixed section name (`<I` `name_len` + ASCII name + 1 trailing byte; for `.dat` entries, a second `<I` `sub_name_len` + sub-name + `5` trailing bytes) followed by a **40-byte fixed tail (`5 × u64` = `<5Q`)**:
+     - Each directory entry contains a length-prefixed section name (`<I` `name_len` + ASCII name + 1 trailing byte; for `.dat` entries, a second `<I` `sub_name_len` + sub-name + `5` trailing bytes) followed by a **40-byte fixed tail (`5 × u64` = `<5Q`)** ([`_core/_container.py`](../fm26save/_core/_container.py#L94-L103)):
        1. `compressed_size` (`u64`)
-       2. `decompressed_size` (`u64`)
-       3. `frame_offset` (`u64` — absolute byte offset of the section's Zstandard frame `28 B5 2F FD` in the `.fm` file)
-       4. `unknown_u64_3` (`u64`)
+       2. `unknown_u64_1` (`u64`)
+       3. `frame_offset` (`u64` — byte offset relative to the `.fm` header; `frame_offset + 4` points directly to the section's `28 B5 2F FD` Zstandard frame)
+       4. `decompressed_size` (`u64`)
        5. `unknown_u64_4` (`u64`)
    - Note on Inner Table Magic (`tad.`): Once a section or `.dat` database table is decompressed, Sports Interactive binary database tables begin with `03 01 74 61 64 2E` (`\x03\x01tad.`, i.e., little-endian `.dat`).
-2. **`.fmf` Game Installation Archives (`simatch.fmf`, `editor.fmf`, `media.fmf`, `client_db.dat`, `lang_update_db.dat`):**
-   - Game archives also begin with `02 01 66 6D 66 2E` (`\x02\x01fmf.`) and concatenate independent Zstandard frames (`28 B5 2F FD`) back-to-back, followed by a compressed trailer directory frame (`frames[-1]`).
-   - By scanning for all occurrences of `28 B5 2F FD` and streaming each frame through `zstandard.ZstdDecompressor().stream_reader()`, [`extract_fmf_frames()`](../fm26save/formulas.py#L1657-L1673) decompresses every embedded asset and directory index.
+2. **`.fmf` & `.dat` Game Installation Archives (`simatch.fmf`, `editor.fmf`, `media.fmf`, `client_db.dat`, `lang_update_db.dat`, `server_db.dat`):**
+   - Game archives either begin directly with `02 01 66 6D 66 2E` (`base = 0` for `.fmf`) or follow a 12-byte outer database wrapper (`base = 12` for `client_db.dat`, `lang_update_db.dat`, `server_db.dat`).
+   - At `base + 9`, a `<Q` (`u64`) pointer `ptr` gives the trailer directory Zstd frame offset `toff = base + 9 + ptr` (where a 4-byte frame size prefix precedes `28 B5 2F FD`).
+   - [`read_fmf_directory()`](../fm26save/formulas.py#L1680-L1730) decompresses the trailer directory and recursively walks the length-prefixed folder tree (`_fmf_walk_folder`) to recover the exact relative path, `offset`, `compressed_size`, and `uncompressed_size` of every embedded file. [`extract_fmf_frames()`](../fm26save/formulas.py#L1733-L1774) uses this directory table first (avoiding false-positive `28 B5 2F FD` byte matches inside compressed payloads such as `basic_people_db.dat`) and falls back to raw Zstd magic scanning for headerless multi-frame streams.
 
 ---
 
@@ -64,8 +65,8 @@ On top of `_core/`, [`fm26save/enrichment.py`](../fm26save/enrichment.py) and [`
    - In `staff.py`, `s.unknown["r4"]` (`0..88`) is cross-tabulated against `s.list_indexes` (which index into `staff_lists` per club: `0` = Medical, `1` = Coaching, `2` = Recruitment/Scouting). Empirically across `4,283` staff records (`constants.STAFF_ROLE_MAP`), codes `12` (Physio), `38` (Youth Physio), `40` (Youth Sports Scientist), `46` (Head Physio / Club Doctor), `48` (Head of Sports Science), and `50` (Sports Scientist) map to `Medical (0)`; codes `14` (Scout), `44` (Chief Scout), `58` (Director of Football), `86` (Recruitment Analyst), and `88` (Chief Recruitment Analyst) map to `Recruitment/Scouting (2)`; and codes `2` (Assistant Manager), `16` (Manager), `20` (Coach), `22` (Fitness Coach), `26` (Goalkeeping Coach), `34` (Youth Coach), `60` (Head of Youth Development), and `64` (Set Piece Coach) map to `Coaching/Management (1)`.
    - At `ability_base + 40`, `_read_ability_block()` ([`staff.py`](../fm26save/_core/readers/staff.py#L455-L499)) reads a `26`-byte array (`block_40`) whose raw bytes are multiples of `5` in `1..100` (`(val + 2) // 5` $\rightarrow$ `1..20`). While the 26-byte block is 100% verified as a `1..100` (`5`-step) staff attribute array, individual slot labels in `STAFF_BLOCK40_FIELDS` are assigned via role-cluster statistical peaks (heuristic slot mapping).
 2. **Contract `money_a`, `money_b`, `money_c` (`i32`) and `e12..e39`:**
-   - Across `96,093` contracts in `Project_Super_Lig.fm`, `money_a` (`signing_or_loyalty_fee`) is non-zero in `61%` of contracts (unconditional median `5.0%` of annual wage across all contracts; conditional median `18.5%` among non-zero contracts), `money_b` (`agent_fee`) is non-zero in `29%` of contracts (conditional median `5.2%` of annual wage), and `money_c` is non-zero in `2.6%` of contracts (`package_bonus`).
-   - Field `e12` (`u16`) holds `1900` (FM's null-date sentinel `(1, 1900)`) in `~39%` of contracts and an active contract reference/option year (`2012..2030`) in the remaining `~61%`. Both [`Contract.option_or_reference_year`](../fm26save/_core/models/contracts.py#L282-L285) and [`decode_contracts_enriched()`](../fm26save/enrichment.py#L181-L199) map `e12 <= 1900` to `None`.
+   - Across `39,842` contracts in `Project_Super_Lig.fm`, `money_a` (`signing_or_loyalty_fee`) is non-zero in `61.4%` (`24,480 / 39,842`) of contracts (unconditional median `5.0%` of annual wage across all contracts; conditional median `18.5%` among non-zero contracts), `money_b` (`agent_fee`) is non-zero in `29.2%` (`11,615 / 39,842`) of contracts (conditional median `5.2%` of annual wage), and `money_c` is non-zero in `2.6%` (`1,053 / 39,842`) of contracts (`package_bonus`).
+   - Field `e12` (`u16`) holds `1900` (FM's null-date sentinel `(1, 1900)`) in `38.6%` (`15,362 / 39,842`) of contracts and an active contract reference/option year (`2012..2030`) in the remaining `61.4%` (`24,480 / 39,842`). Both [`Contract.option_or_reference_year`](../fm26save/_core/models/contracts.py#L282-L285) and [`decode_contracts_enriched()`](../fm26save/enrichment.py#L181-L199) map `e12 <= 1900` to `None`.
 3. **`PersonBlock` `16`-Byte Relationship Entries (`sentinel = 0xFF`):**
    - Inside each `PersonBlock` ([`_core/_layouts/fm26_26_3_2.py`](../fm26save/_core/_layouts/fm26_26_3_2.py#L459-L468) and [`_core/readers/persons.py`](../fm26save/_core/readers/persons.py#L61-L66)), a variable-length array of `16`-byte relation entries (`ref` `u32` at `+0`, `kind` `u8` at `+10`, `role` `u8` at `+11`, `qualifier` `u8` at `+12`, `sentinel = 0xFF` at `+15`) is stored:
      - `(8, 9)` $\rightarrow$ **Second Nationality** (`ref` = `nation_id`; `qualifier == 100` held, `15` eligible),
@@ -107,10 +108,10 @@ Below is the exact specification implemented in [`parse_jsb()`](../fm26save/form
 
 ### 1.5 Phase 5 — Cracking `client_db.dat` (`32` Frames) & `lang_update_db.dat` (`401` Frames)
 To resolve every `city_id`, `club_uid`, `competition_uid`, and `injury_id` in FM26 without external tools:
-1. We unpacked `shared/data/database/db/2620/2620_fm/client_db.dat` (**`32` Zstd frames** = `31` `table_*.dat` data frames + `1` trailer directory frame), `lang_update_db.dat` (**`401` Zstd frames** = **`25` languages × `16` localized tables** + `1` trailer directory frame, where frames `#00..#15` are Language `8` = English `8_*.dat`), and `server_db.dat` (**`78` Zstd frames** = `77` data tables + `1` trailer directory frame).
+1. We unpacked `shared/data/database/db/2620/2620_fm/client_db.dat` (**`32` Zstd frames** = `31` `*.dat` data frames + `1` trailer directory frame), `lang_update_db.dat` (**`401` Zstd frames** = **`25` languages × `16` localized tables** + `1` trailer directory frame, where frames `#00..#15` are Language `8` = English `8_*.dat`), and `server_db.dat` (**`78` Zstd frames** = `77` data tables + `1` trailer directory frame).
 2. Every table frame starts with a **12-byte header**: `03 01 'tad.' 90 0E` (`8` bytes) + `<I` `record_count` (`4` bytes).
-3. In `client_db.dat` `Frame #02` (`table_2.dat`, `58,349` records), `(2,509,019 - 12) / 58,349 = 43.0000` bytes per record!
-4. Using `Trabzonspor` (`club.city_id = 8002` in `.fm` saves) and `Gençlerbirliği` (`club.city_id = 7998`), we inspected record `8002` and record `7998` in `table_2.dat` and verified the exact **43-byte city record layout** ([`_parse_lang_cities_and_coords()`](../fm26save/game_files.py#L573-L621)):
+3. In `client_db.dat` `Frame #03` (`table_2.dat` in the trailer directory, `58,349` records), `(2,509,019 - 12) / 58,349 = 43.0000` bytes per record!
+4. Using `Trabzonspor` (`club.city_id = 8002` in `.fm` saves) and `Gençlerbirliği` (`club.city_id = 7998`), we inspected record `8002` and record `7998` in `table_2.dat` and verified the exact **43-byte city record layout** ([`_parse_lang_cities_and_coords()`](../fm26save/game_files.py#L611-L659)):
    - `offset +0..+3` (`3B`): Record header flags
    - `offset +3..+7` (`<f` `float32`): **Latitude** (`41.00145` for Trabzon `#8002`, `39.92077` for Ankara `#7998`)
    - `offset +7..+11` (`<f` `float32`): **Longitude** (`39.71780` for Trabzon `#8002`, `32.85411` for Ankara `#7998`)
@@ -121,7 +122,7 @@ To resolve every `city_id`, `club_uid`, `competition_uid`, and `injury_id` in FM
    - `offset +22` (`u8`): **`inhabitants_bracket`** (population bracket code)
    - `offset +27..+29` (`<H` `u16`): **`weather_profile_id`**
    - `offset +32..+36` (`<I` `u32`): **`db_city_id`** — Verified **`db_city_id == idx` for `58,349 / 58,349` (`100.0%`)** of cities!
-   - `offset +36..+40` (`<I` `u32`): **`db_uid`** — Verified **`db_uid == lang_uid` for `58,349 / 58,349` (`100.0%`)** of cities against `lang_update_db.dat` `Frame #03` (`8_2.dat`)!
+   - `offset +36..+40` (`<I` `u32`): **`db_uid`** — Verified **`db_uid == lang_uid` for `58,349 / 58,349` (`100.0%`)** of cities against `lang_update_db.dat` `Frame #02` (`8_2.dat`)!
 
 ---
 
@@ -143,52 +144,53 @@ C:\Program Files (x86)\Steam\steamapps\common\Football Manager 26\
 │
 ├── shared\
 │   └── data\
-│       ├── simatch.fmf                         # (1.42 MB -> 6,294,462 B decompressed, 225 Zstd Frames #000..#224) MASTER MATCH ENGINE ARCHIVE
-│       │   ├── [Frame  #000]                   # match_events.xml (139,346 B) — Match event definitions and commentary triggers
-│       │   ├── [Frame  #001]                   # match_sounds.cfg (10,602 B) — Match audio event configuration
+│       ├── simatch.fmf                         # (1.42 MB -> 6,294,462 B decompressed, 224 files + 1 Trailer Directory) MASTER MATCH ENGINE ARCHIVE
+│       │   ├── [Frame  #000]                   # simatch/events/match_events.xml (139,346 B) — Match event definitions and commentary triggers
+│       │   ├── [Frame  #001]                   # simatch/events/match_sounds.cfg (10,602 B) — Match audio event configuration
 │       │   ├── [Frames #002..#089]             # 8 Earlier Versions of the 11 Shot-Type xG Models (.jsb):
-│       │   │                                   #   v23.1.1.9 (#002..#012), v23.2.0.0 (#013..#023), v23.3.0.1 (#024..#034), v24.1.2.3 (#035..#045),
-│       │   │                                   #   v24.2.2.2 (#046..#056), v25.0.0.0 (#057..#067), v26.0.0.2 (#068..#078), v26.1.1.1 (#079..#089)
-│       │   ├── [Frames #090..#100]             # Active v26.1.4.1 Expected Goals (xG) Logistic Regression Models (11 Shot Types, .jsb):
-│       │   │   ├── #090: free_kicks            #   raw_intercept =  -4340446 (-0.434045 at 1e7) | 5 spatial/angle coefficients
-│       │   │   ├── #091: headers               #   raw_intercept = -28524565 (-2.852457 at 1e7) | 7 spatial/height/visibility coefficients
-│       │   │   ├── #092: obscured_headers      #   raw_intercept = -32111593 (-3.211159 at 1e7) | 7 coefficients
-│       │   │   ├── #093: obscured_regular      #   raw_intercept = -14375833 (-1.437583 at 1e7) | 6 coefficients
-│       │   │   ├── #094: obscured_volleys      #   raw_intercept = -11122386 (-1.112239 at 1e7) | 7 coefficients
-│       │   │   ├── #095: open_goal_headers     #   raw_intercept = -15907703 (-1.590770 at 1e7) | 7 coefficients
-│       │   │   ├── #096: open_goal_regular     #   raw_intercept = -10867306 (-1.086731 at 1e7) | 6 coefficients
-│       │   │   ├── #097: open_goal_volleys     #   raw_intercept = -10279187 (-1.027919 at 1e7) | 7 coefficients
-│       │   │   ├── #098: penalties             #   raw_intercept = +11984673 (+1.198467 at 1e7 -> sigma(z) = 76.825% conversion probability)
-│       │   │   ├── #099: regular               #   raw_intercept = -12095895 (-1.209590 at 1e7) | 6 coefficients
-│       │   │   └── #100: volleys               #   raw_intercept = -11265032 (-1.126503 at 1e7) | 7 coefficients
-│       │   ├── [Frame  #101]                   # expected_goals_model_config.xml (261 B) — Active xG model version selector
-│       │   ├── [Frames #102..#112]             # configs/coefficient_output_*.jsb — 11 zeroed template xG coefficient files
-│       │   ├── [Frame  #113]                   # momentum_weightings_data.jsb (5,342 B) — 48 Spatial Event × Pitch Zone Momentum rules
-│       │   ├── [Frame  #114]                   # oop_attributes_scoring.jsb (2,115 B) — 39 Out-Of-Possession RolePosition bitmasks -> ATTRIBUTES ID lists
-│       │   ├── [Frame  #115]                   # oop_pitch_proximity_scores.jsb (95,708 B) — 118 (Position, Role) entries × 24 spatial zones = 2,832 coordinates
-│       │   ├── [Frame  #116]                   # (3,429,396 B) Compiled binary tactical positioning / spatial decision lookup table
-│       │   ├── [Frame  #117]                   # XML configuration (223 B)
-│       │   ├── [Frame  #118]                   # player_ratings_data.jsb (348,584 B) — 6 versions (v24.2.5.1..v26.4.10.1), start_value=6700 (6.70), 30 role profiles × 52 actions
-│       │   ├── [Frame  #119]                   # qme_distribution_data.jsb (585,551 B) — 3,137 Normal/Binned/Zero stat distributions for Quick Match Engine
-│       │   ├── [Frame  #120]                   # qme_stat_relevant_attribute_data.jsb (1,608 B) — 22 stat_type -> relevant_attributes mappings for Quick Match Engine
-│       │   ├── [Frames #121..#191]             # Binary .cat / .rts / .tac Tactical Style & Dual-Formation Presets (In-Possession + Out-Of-Possession)
-│       │   ├── [Frame  #192]                   # tactical_styles.xml (42,190 B) — All 10 Tactical Styles (Gegenpress, Tiki-Taka, Catenaccio, etc.) & key attributes
-│       │   ├── [Frames #193..#222]             # Remaining binary .tac Dual-Formation Presets (101 total binary tactical preset frames)
-│       │   ├── [Frame  #223]                   # weights.jsb (6,547 B) — AI Team Selection WEIGHTS: 4 TPS_* profiles × 40 TSF_* factors (TSF_CA=120, TSF_PA=90, etc.)
-│       │   └── [Frame  #224]                   # Archive Directory Index (10,275 B)
+│       │   │                                   #   23_1_1_9 (#002..#012), 23_7_0_5 (#013..#023), 23_9_9_1 (#024..#034), 24_1_2_3 (#035..#045),
+│       │   │                                   #   24_5_2_2 (#046..#056), 25_0_0_4 (#057..#067), 25_0_5_13 (#068..#078), 26_0_5_1 (#079..#089)
+│       │   ├── [Frames #090..#100]             # Active 26_1_4_1 Expected Goals (xG) Logistic Regression Models (11 Shot Types, .jsb):
+│       │   │   ├── #090: free_kicks            #   raw_intercept =  -43,404,507 ( -4.340451 at 1e7) | 5 spatial/angle coefficients
+│       │   │   ├── #091: headers               #   raw_intercept = -285,245,658 (-28.524566 at 1e7) | 7 spatial/height/visibility coefficients
+│       │   │   ├── #092: obscured_headers      #   raw_intercept = -321,115,868 (-32.111587 at 1e7) | 7 coefficients
+│       │   │   ├── #093: obscured_regular      #   raw_intercept = -143,758,299 (-14.375830 at 1e7) | 6 coefficients
+│       │   │   ├── #094: obscured_volleys      #   raw_intercept = -111,223,868 (-11.122387 at 1e7) | 7 coefficients
+│       │   │   ├── #095: open_goal_headers     #   raw_intercept = -159,077,046 (-15.907705 at 1e7) | 7 coefficients
+│       │   │   ├── #096: open_goal_regular     #   raw_intercept = -108,673,064 (-10.867306 at 1e7) | 6 coefficients
+│       │   │   ├── #097: open_goal_volleys     #   raw_intercept = -102,791,850 (-10.279185 at 1e7) | 7 coefficients
+│       │   │   ├── #098: penalties             #   raw_intercept =  +11,984,673 ( +1.198467 at 1e7 -> sigma(z) = 76.825% conversion probability)
+│       │   │   ├── #099: regular               #   raw_intercept = -120,959,039 (-12.095904 at 1e7) | 6 coefficients
+│       │   │   └── #100: volleys               #   raw_intercept = -112,650,254 (-11.265025 at 1e7) | 7 coefficients
+│       │   ├── [Frame  #101]                   # simatch/expected_goals/expected_goals_model_config.xml (261 B) — Active xG model version selector
+│       │   ├── [Frames #102..#112]             # simatch/expected_goals/configs/coefficient_output_*.jsb — 11 zeroed template xG coefficient files
+│       │   ├── [Frame  #113]                   # simatch/momentum/momentum_weightings_data.jsb (5,222 B) — 48 Spatial Event × Pitch Zone Momentum rules
+│       │   ├── [Frame  #114]                   # simatch/out_of_possession/oop_attributes_scoring.jsb (2,115 B) — 39 Out-Of-Possession RolePosition bitmasks
+│       │   ├── [Frame  #115]                   # simatch/out_of_possession/oop_pitch_proximity_scores.jsb (93,429 B) — 118 (Position, Role) × 24 spatial zones
+│       │   ├── [Frame  #116]                   # simatch/physics/ball/ball_physics_22_0_5_0.bta (3,277,236 B) — Pre-computed binary ball physics / trajectory table
+│       │   ├── [Frame  #117]                   # simatch/physics/ball_physics_config.xml (223 B) — Ball physics version configuration
+│       │   ├── [Frame  #118]                   # simatch/player_ratings/player_ratings_data.jsb (340,752 B) — 6 versions (2120..2400), start_value=6700 (6.70), 30 role profiles × 52 actions
+│       │   ├── [Frame  #119]                   # simatch/qme/qme_distribution_data.jsb (571,829 B) — 3,137 Poisson/Normal/Binned/Zero stat distributions for Quick Match Engine
+│       │   ├── [Frame  #120]                   # simatch/qme/qme_stat_relevant_attribute_data.jsb (1,608 B) — 22 stat_type -> relevant_attributes mappings for Quick Match Engine
+│       │   ├── [Frames #121..#191]             # simatch/tactics/*.tac (\x03\x01cat.) & *.stra (\x03\x01rts.) Tactical & Set-Piece Strategy Presets
+│       │   ├── [Frame  #192]                   # simatch/tactics/tactical_styles.xml (42,190 B) — All 10 Tactical Styles (Gegenpress, Tiki-Taka, Catenaccio, etc.) & key attributes
+│       │   ├── [Frames #193..#222]             # simatch/tactics/*.tac (\x03\x01cat.) Remaining Dual-Formation Presets (90 .tac + 11 .stra = 101 total binary tactical files)
+│       │   ├── [Frame  #223]                   # simatch/team_selection/weights.jsb (6,547 B) — AI Team Selection WEIGHTS: 4 TPS_* profiles × 40 TSF_* factors
+│       │   └── [Frame  #224]                   # Trailer Directory Index (10,275 B)
 │       │
 │       ├── shared\
-│       │   └── tables.fmf                      # (4 Zstd Frames) PHYSICAL HEIGHT & JUMPING/AERIAL REACH TABLES
-│       │       ├── [Frame  #000]               # height_to_aerial_reach.jsb — 9 Height brackets (155..210 cm) -> Aerial Reach min/max caps
-│       │       ├── [Frame  #002]               # height_to_jumping_reach.jsb — 9 Height brackets (155..210 cm) -> Jumping Reach min/max caps
-│       │       └── [Frame  #003]               # Archive Directory Index
+│       │   └── tables.fmf                      # (3 files + 1 Trailer Directory) PHYSICAL HEIGHT & JUMPING/AERIAL REACH TABLES
+│       │       ├── [Frame  #000]               # tables/aerial_reach.jsb (3,721 B) — female_data (23 heights 147..199 cm) & male_data (23 heights 158..210 cm) -> poor..good (1..20)
+│       │       ├── [Frame  #001]               # tables/config.xml (112 B)
+│       │       ├── [Frame  #002]               # tables/jumping_reach.jsb (3,242 B) — female_data (23 heights 147..195 cm) & male_data (17 heights 161..200 cm) -> poor..good (1..20)
+│       │       └── [Frame  #003]               # Trailer Directory Index
 │       │
-│       ├── simatchshared.fmf                   # (76 Zstd Frames) SHARED MATCH & NEWGEN APPEARANCE ARCHIVE
+│       ├── simatchshared.fmf                   # (75 files + 1 Trailer Directory) SHARED MATCH & NEWGEN APPEARANCE ARCHIVE
 │       │   ├── [Frames #000..#073]             # Kit/Hair/Skin RGB colour palettes & 3D crowd/stadium shared configs
 │       │   ├── [Frame  #074]                   # player_hair_length_colour_config_data.jsb — 135 Newgen hair/appearance probability rules by region/ethnicity
-│       │   └── [Frame  #075]                   # Archive Directory Index
+│       │   └── [Frame  #075]                   # Trailer Directory Index
 │       │
-│       ├── editor.fmf                          # (106 Zstd Frames: 105 XMLs + 1 Directory, ~2.1 MB decompressed) INTERNAL FOURCC DATABASE SCHEMAS & ENUMS
+│       ├── editor.fmf                          # (105 XML files + 1 Trailer Directory, ~2.1 MB decompressed) INTERNAL FOURCC DATABASE SCHEMAS & ENUMS
 │       │   ├── [Frame  #032]                   # club.xml (7,495 lines) — 595 FourCC properties for Clubs ('club')
 │       │   ├── [Frame  #033]                   # comp.xml — 297 FourCC properties for Competitions ('comp')
 │       │   ├── [Frame  #035]                   # contract_offer.xml — 66 FourCC properties for Contract Offers ('CntF')
@@ -203,66 +205,69 @@ C:\Program Files (x86)\Steam\steamapps\common\Football Manager 26\
 │       │   ├── [Frame  #054]                   # team.xml — 11 FourCC properties for Teams ('team')
 │       │   ├── [Frame  #056]                   # weather.xml — 94 FourCC properties for Weather Profiles ('weat')
 │       │   ├── [Frame  #082]                   # db enums.xml — 444 Master Enum Groups (posm, role, squad status, tactics, transfer rules)
-│       │   └── [Frame  #105]                   # Archive Directory Index
+│       │   └── [Frame  #105]                   # Trailer Directory Index
 │       │
 │       ├── sicomps\
-│       │   └── comps.dbc                       # (8.20 MB -> 74.46 MB decompressed, 1,443 Zstd Frames) COMPILED COMPETITION RULES ARCHIVE
+│       │   └── comps.dbc                       # (8.20 MB -> 74.46 MB decompressed, 1,442 files + 1 Trailer Directory) COMPILED COMPETITION RULES ARCHIVE
 │       │       ├── [Frames #0000..#1441]       # 1,442 `\x03\x01cbd.` Binary TLV Competition Rule Sets (Leagues, Cups, Playoffs, Continental, TV Money)
-│       │       └── [Frame  #1442]              # Archive Directory Index
+│       │       └── [Frame  #1442]              # Trailer Directory Index
 │       │
 │       └── database\
 │           └── db\
 │               └── 2620\                       # OFFICIAL FM26 DATABASE (BUILD 2620)
 │                   ├── 2620_fm\
-│                   │   ├── client_db.dat       # (15.08 MB -> ~92 MB decompressed, 32 Zstd Frames: 31 tables + 1 directory) MASTER STRUCTURAL DATABASE
-│                   │   │   ├── #00: table_0    #   6 International Agreements (500 B: EU, EEA, OACPS, Mercosur, Andean, Overseas)
-│                   │   │   ├── #01: table_1    #   3,884 Awards (571.6 KB: Continent, Nation, Comp, Reputation, History)
-│                   │   │   ├── #02: table_2    #   58,349 Cities (2,509,019 B = 12B hdr + 58,349 × 43B: Lat, Lon, Attraction, Nation, Region, Altitude_ft, cid@+32, uid@+36)
-│                   │   │   ├── #03: table_3    #   7 Continents (183 B = 8B hdr + 7 × 25B: Regional Strength Factor f64, cid@+9, uid@+13)
-│                   │   │   ├── #04: table_4    #   251 Nations (918.2 KB: Continent, Region, Capital City, FIFA Points, nid, uid)
-│                   │   │   ├── #07: table_7    #   7,973 Competitions (598,022 B = 47B hdr + 7,973 × 75B: Nation, Continent, Rep, Type, Level, RGB, cid@+59, uid@+63)
-│                   │   │   ├── #08: table_8    #   96,343 Clubs (67.07 MB: Nation, City, Stadium, Year Founded, Reputation, Kits, cid, uid)
-│                   │   │   ├── #09: table_9    #   186 Currencies (9.9 KB)
-│                   │   │   ├── #10: table_10   #   1,683 Derbies (244.4 KB)
-│                   │   │   ├── #12: table_12   #   136 Injuries (2,733 B = 13B hdr + 136 × 20B: iid@+8, uid@+12)
-│                   │   │   ├── #13: table_13   #   252 Languages (32.7 KB)
-│                   │   │   ├── #14: table_14   #   2,527 Local Regions (108.7 KB)
-│                   │   │   ├── #15: table_15   #   180 Media Sources (24.0 KB)
-│                   │   │   ├── #17: table_17   #   294,103 First Names Pool (4.73 MB: [name_id:u32][slen:u32][utf8_bytes:slen])
-│                   │   │   ├── #18: table_18   #   599,900 Last / Surnames Pool (9.98 MB: [name_id:u32][slen:u32][utf8_bytes:slen])
-│                   │   │   ├── #19: table_19   #   94,088 Common Names Pool (1.79 MB: [name_id:u32][slen:u32][utf8_bytes:slen])
-│                   │   │   ├── #22: table_22   #   51,118 Stadiums (1,942,531 B = 47B hdr + 51,118 × 38B: City@+5, OwnerClub@+9, Lat@+19, Lon@+23, sid@+27, uid@+31)
-│                   │   │   ├── #23: table_23   #   286 Stage Names (13.2 KB)
-│                   │   │   ├── #24..#30        #   Remaining Lookup Tables (Sponsors, Weather Profiles, Colours, etc.)
-│                   │   │   └── #31: Directory  #   Archive Directory Index
+│                   │   ├── client_db.dat       # (15.08 MB -> ~92 MB decompressed, 31 tables + 1 Trailer Directory) MASTER STRUCTURAL DATABASE
+│                   │   │   ├── #00: simple_vars.dat            #   Database header variables (25 B)
+│                   │   │   ├── #01: table_0.dat                #   6 International Agreements (500 B: EU, EEA, OACPS, Mercosur, Andean, Overseas)
+│                   │   │   ├── #02: table_1.dat                #   3,884 Awards (571.6 KB: Continent, Nation, Comp, Reputation, History)
+│                   │   │   ├── #03: table_2.dat                #   58,349 Cities (2,509,019 B = 12B hdr + 58,349 × 43B: Lat, Lon, Attraction, Nation, Region, Altitude_ft, cid@+32, uid@+36)
+│                   │   │   ├── #04: table_3.dat                #   7 Continents (183 B = 8B hdr + 7 × 25B: Regional Strength Factor f64, cid@+9, uid@+13)
+│                   │   │   ├── #06: table_6.dat                #   251 Nations (918.2 KB: Continent, Region, Capital City, FIFA Points, nid, uid)
+│                   │   │   ├── #09: table_25.dat               #   7,973 Competitions (1,012,584 B = 12B hdr + 7,973 × 127B [rec #0 128B]: Nation, Continent, Rep, Type, Level, RGB, cid, uid)
+│                   │   │   ├── #10: table_for_old_save_25.dat  #   7,973 Competitions Legacy Save Layout (980,692 B = 12B hdr + 7,973 × 123B [rec #0 124B])
+│                   │   │   ├── #11: table_26.dat               #   96,343 Clubs (67.07 MB: Nation, City, Stadium, Year Founded, Reputation, Kits, cid, uid)
+│                   │   │   ├── #12: table_14.dat               #   186 Currencies (9.9 KB)
+│                   │   │   ├── #13: table_15.dat               #   1,683 Derbies (244.4 KB)
+│                   │   │   ├── #15: table_19.dat               #   136 Injuries (2,733 B = 13B hdr + 136 × 20B: iid@+8, uid@+12)
+│                   │   │   ├── #16: table_17.dat               #   252 Languages (32.7 KB)
+│                   │   │   ├── #17: table_28.dat               #   2,527 Local Regions (108.7 KB)
+│                   │   │   ├── #18: table_31.dat               #   180 Media Sources (24.0 KB)
+│                   │   │   ├── #20: table_37.dat               #   294,103 First Names Pool (4.73 MB: [name_id:u32][slen:u32][utf8_bytes:slen])
+│                   │   │   ├── #21: table_38.dat               #   599,900 Last / Surnames Pool (9.98 MB: [name_id:u32][slen:u32][utf8_bytes:slen])
+│                   │   │   ├── #22: table_39.dat               #   94,088 Common Names Pool (1.79 MB: [name_id:u32][slen:u32][utf8_bytes:slen])
+│                   │   │   ├── #25: table_45.dat               #   51,118 Stadiums (1,942,531 B = 47B hdr + 51,118 × 38B: City@+5, OwnerClub@+9, Lat@+19, Lon@+23, sid@+27, uid@+31)
+│                   │   │   ├── #26: table_46.dat               #   286 Stage Names (13.2 KB)
+│                   │   │   ├── #27..#30                        #   Remaining Lookup Tables (table_32, table_33, table_34, table_42)
+│                   │   │   └── #31: Directory                  #   Trailer Directory Index
 │                   │   │
-│                   │   ├── lang_update_db.dat  # (3.55 MB, 401 Zstd Frames: 25 Languages × 16 Tables + 1 Directory) MASTER LOCALIZED NAMES DATABASE
+│                   │   ├── lang_update_db.dat  # (3.55 MB, 25 Languages × 16 Tables = 400 files + 1 Trailer Directory) MASTER LOCALIZED NAMES DATABASE
 │                   │   │   ├── #00: 8_0.dat    #   [Lang 8 = English] 6 International Agreements (uid, name, abbreviation)
 │                   │   │   ├── #01: 8_1.dat    #   [Lang 8 = English] 3,884 Awards (uid, name, short_name)
 │                   │   │   ├── #02: 8_2.dat    #   [Lang 8 = English] 58,349 Cities (0-based city_id 0..58348 -> uid, official city name)
 │                   │   │   ├── #03: 8_3.dat    #   [Lang 8 = English] 7 Continents (uid, name, short_name, 3-letter, continentality, federation)
-│                   │   │   ├── #04: 8_4.dat    #   [Lang 8 = English] 251 Nations (uid, name, short_name, 3-letter code, nationality)
-│                   │   │   ├── #05: 8_7.dat    #   [Lang 8 = English] 7,973 Competitions (uid, name, short_name, 3-letter code)
-│                   │   │   ├── #06: 8_8.dat    #   [Lang 8 = English] 96,343 Clubs (uid, name, short_name, 6-letter, 3-letter, alt_short, nickname)
-│                   │   │   ├── #07: 8_9.dat    #   [Lang 8 = English] 186 Currencies
-│                   │   │   ├── #08: 8_12.dat   #   [Lang 8 = English] 136 Injuries (uid, name, sentence_name)
-│                   │   │   ├── #09: 8_10.dat   #   [Lang 8 = English] 1,683 Derbies (uid, name, short_name)
-│                   │   │   ├── #10: 8_13.dat   #   [Lang 8 = English] 252 Languages
-│                   │   │   ├── #11: 8_14.dat   #   [Lang 8 = English] 2,527 Local Regions (uid, name, demonym)
-│                   │   │   ├── #12: 8_15.dat   #   [Lang 8 = English] 180 Media Sources (uid, name)
-│                   │   │   ├── #13: 8_22.dat   #   [Lang 8 = English] 51,118 Stadiums (uid, name, alt_name)
-│                   │   │   ├── #14: 8_23.dat   #   [Lang 8 = English] 286 Stage Names (uid, name, short_name, plural_name)
+│                   │   │   ├── #04: 8_6.dat    #   [Lang 8 = English] 251 Nations (uid, name, short_name, 3-letter code, nationality)
+│                   │   │   ├── #05: 8_25.dat   #   [Lang 8 = English] 7,973 Competitions (uid, name, short_name, 3-letter code)
+│                   │   │   ├── #06: 8_26.dat   #   [Lang 8 = English] 96,343 Clubs (uid, name, short_name, 6-letter, 3-letter, alt_short, nickname)
+│                   │   │   ├── #07: 8_14.dat   #   [Lang 8 = English] 186 Currencies
+│                   │   │   ├── #08: 8_19.dat   #   [Lang 8 = English] 136 Injuries (uid, name, sentence_name)
+│                   │   │   ├── #09: 8_15.dat   #   [Lang 8 = English] 1,683 Derbies (uid, name, short_name)
+│                   │   │   ├── #10: 8_17.dat   #   [Lang 8 = English] 252 Languages
+│                   │   │   ├── #11: 8_28.dat   #   [Lang 8 = English] 2,527 Local Regions (uid, name, demonym)
+│                   │   │   ├── #12: 8_31.dat   #   [Lang 8 = English] 180 Media Sources (uid, name)
+│                   │   │   ├── #13: 8_45.dat   #   [Lang 8 = English] 51,118 Stadiums (uid, name, alt_name)
+│                   │   │   ├── #14: 8_46.dat   #   [Lang 8 = English] 286 Stage Names (uid, name, short_name, plural_name)
+│                   │   │   ├── #15: 8_32.dat   #   [Lang 8 = English] 1,100 Descriptions / Modifiers
 │                   │   │   ├── #16..#399       #   Remaining 24 Languages × 16 Tables (<lang>_<table>.dat)
-│                   │   │   └── #400: Directory #   Archive Directory Index
+│                   │   │   └── #400: Directory #   Trailer Directory Index
 │                   │   │
-│                   │   ├── server_db.dat       # (68.79 MB -> ~295 MB decompressed, 78 Zstd Frames: 77 tables + 1 directory) SERVER SIMULATION ATTRIBUTES DB
-│                   │   │   ├── #04: Nations    #   251 Nations (Reputation 1..10000, Dev State 1..3, Game Importance 1..4, Economic Factor 1..20, Years to Nat, EU)
-│                   │   │   ├── #08: Injuries   #   136 Injuries (13B hdr + 136 × 48B: Category, BodyPart, MinDays, ExtraDays, SharpnessDrop%, Occurrencef32, Severity)
-│                   │   │   ├── #09: Clubs      #   96,343 Clubs (Training/Youth/Corporate Facilities 1..20, Youth Coaching/Recruitment 1..20, Pro Status)
-│                   │   │   └── #22: Stadiums   #   51,118 Stadiums (47B hdr + 51,118 × 181B: Capacity, Seating, Expansion, Pitch Length/Width dm, Build Year, Min/Max Pitch)
+│                   │   ├── server_db.dat       # (68.79 MB -> ~295 MB decompressed, 77 tables + 1 Trailer Directory) SERVER SIMULATION ATTRIBUTES DB
+│                   │   │   ├── #07: table_6.dat  #   251 Nations (Reputation 1..10000, Dev State 1..3, Game Importance 1..4, Economic Factor 1..20, Years to Nat, EU)
+│                   │   │   ├── #12: table_19.dat #   136 Injuries (13B hdr + 136 × 48B: Category, BodyPart, MinDays, ExtraDays, SharpnessDrop%, Occurrencef32, Severity, Contagious@+31)
+│                   │   │   ├── #13: table_26.dat #   96,343 Clubs (Training/Youth/Corporate Facilities 1..20, Youth Coaching/Recruitment 1..20, Pro Status)
+│                   │   │   └── #26: table_45.dat #   51,118 Stadiums (47B hdr + 51,118 × 181B: Capacity, Seating, Expansion, Pitch Length/Width dm, Build Year, Min/Max Pitch)
 │                   │   │
 │                   │   ├── basic_people_db.dat # (12.79 MB -> 60.15 MB decompressed) ALL 723,010 PRE-GAME PEOPLE SUMMARY DB (100% deterministic walk)
-│                   │   │                       #   532,742 Players + 4,410 Player/Staff (84B: CA, PA including -10/-95 wonderkids, Reps, Nation, Club, Gender)
+│                   │   │                       #   532,742 Players + 4,410 Player/Staff (84B: CA, PA including 6 PA=-10 & 22 PA=-95 wonderkids, Reps, Nation, Club, Gender)
 │                   │   │                       #   174,504 Non-Player/Staff (84B) | 9,872 Officials/Referees (34B) | 1,482 Agents/Journalists (22B)
 │                   │   ├── people_db.dat       # (76.55 MB -> 451.07 MB decompressed) Full Pre-Game People DB (60 attributes, 8 Hidden Personality bytes, Height/Weight, Names)
 │                   │   ├── pl_hist_index.dat   # (8.35 MB decompressed) 1,044,008 pairs: 522,004 (uid -> hist_idx) + 522,004 (person_id -> hist_idx)
@@ -290,19 +295,20 @@ C:\Program Files (x86)\Steam\steamapps\common\Football Manager 26\
 │
 └── data\
     └── game_simulation\
-        ├── media.fmf                           # (2.25 MB -> ~65 MB decompressed, 650 Zstd XML Frames)
+        ├── media.fmf                           # (2.25 MB -> ~65 MB decompressed, 649 XML files + 1 Trailer Directory)
         │   └── [Frames #000..#648]             # 3,934 Press Conference / Player Interaction Questions (QID_*), Answers (pcaa) & Backroom Advice (barl)
-        ├── training.fmf                        # (6 Zstd Frames: 5 .jsb frames + 1 directory) WEEKLY TRAINING SCHEDULE & ITEM EFFECTS ENGINE
-        │   ├── [Frame  #001]                   # training_item_effects.jsb — Training session attribute/injury/fatigue/condition effects
-        │   ├── [Frame  #002]                   # training_schedule_templates.jsb — 164 Full-Time Weekly Schedules (day1..day7 × session1, session2, extra)
-        │   ├── [Frame  #003]                   # training_schedule_templates_fmc.jsb — 136 Youth / Part-Time Weekly Schedules
-        │   └── [Frame  #004]                   # training_sessions_weights.jsb — Session category weighting rules
-        ├── filters.fmf                         # (446 Zstd Frames: 445 XMLs + 1 directory) Scouting, player search & staff filter definitions
-        ├── achievements.fmf                    # (51 Zstd Frames: 50 XMLs + 1 directory) Steam/Epic/Xbox achievement trigger definitions
-        ├── leaderboards.fmf                    # (29 Zstd Frames: 28 XMLs + 1 directory) Leaderboard scoring definitions
-        ├── settings.fmf                        # (11 Zstd Frames: 10 XMLs + 1 directory) User & simulation preference schemas
-        ├── store.fmf                           # (4 Zstd Frames: 3 XMLs + 1 directory) In-game store item definitions
-        ├── profanity_filter.fmf                # (4 Zstd Frames: 3 frames + 1 directory) Moderation wordlists & regex patterns
+        ├── training.fmf                        # (5 files + 1 Trailer Directory) WEEKLY TRAINING SCHEDULE & ITEM EFFECTS ENGINE
+        │   ├── [Frame  #000]                   # training/config.xml (112 B)
+        │   ├── [Frame  #001]                   # training/training_item_effects.jsb — Training session attribute/injury/fatigue/condition effects
+        │   ├── [Frame  #002]                   # training/training_schedule_templates.jsb — 164 Full-Time Weekly Schedules (day1..day7 × session1, session2, extra)
+        │   ├── [Frame  #003]                   # training/training_schedule_templates_fmc.jsb — 136 Youth / Part-Time Weekly Schedules
+        │   └── [Frame  #004]                   # training/training_sessions_weights.jsb — Session category weighting rules
+        ├── filters.fmf                         # (2 XML files + 1 Trailer Directory; 445 <record> items) Scouting, player search & staff filter definitions
+        ├── achievements.fmf                    # (1 XML file  + 1 Trailer Directory; 50 <record> items) Steam/Epic/Xbox achievement trigger definitions
+        ├── leaderboards.fmf                    # (1 XML file  + 1 Trailer Directory; 28 <record> items) Leaderboard scoring definitions
+        ├── settings.fmf                        # (9 XML files + 1 Trailer Directory; 10 <record> items) User & simulation preference schemas
+        ├── store.fmf                           # (2 XML files + 1 Trailer Directory; 3 <record> items) In-game store item definitions
+        ├── profanity_filter.fmf                # (2 text files + 1 Trailer Directory) Moderation wordlists (profane_words.txt, regular_words.txt)
         └── languages.fmf                       # (205.61 MB) Master .ltc UI localization string archive for 22+ languages
 ```
 
@@ -310,7 +316,7 @@ C:\Program Files (x86)\Steam\steamapps\common\Football Manager 26\
 
 ## Part 3: Complete Annotated File Tree — Inside an FM26 `.fm` Save Container
 
-Every Football Manager 26 `.fm` save file is a `\x02\x01fmf.` multi-frame Zstandard archive (with a 26-byte outer header and a Zstandard-compressed trailer directory at `directory_offset`) containing **81 named `.dat` / `.cmt` sections** plus optional embedded match telemetry files:
+Every Football Manager 26 `.fm` save file is a `\x02\x01fmf.` multi-frame Zstandard archive (with a 26-byte outer header and a Zstandard-compressed trailer directory at `directory_offset`) containing **81 core sections (`64` `.dat` + `17` `.cmt`)** plus optional embedded match telemetry files:
 
 ```text
 <SaveName>.fm (\x02\x01fmf. Multi-Frame Zstandard Container + Compressed Trailer Directory)
@@ -322,49 +328,53 @@ Every Football Manager 26 `.fm` save file is a `\x02\x01fmf.` multi-frame Zstand
 │   │   ├── Staff & Human Managers              #   All contracted/free/human staff, r4 job roles, 26 hidden block_40 (1..100) attributes
 │   │   └── Competitions, Stages & Tables       #   Active competitions, stages, league standings, transfer windows, competition rules
 │   ├── pl_hist_dt.dat                          # (~140–210 MB decompressed) Career season-by-season statistical history for all players
+│   ├── pl_hist_id.dat                          # Player history head/tail byte-offset table into pl_hist_dt.dat
+│   ├── pl_hist_index.dat                       # (uid, person_id) -> hist_idx lookup index for pl_hist_id.dat
+│   ├── pl_hist_ls.dat                          # Player history loan/season auxiliary table
 │   ├── non_pl_hist_dt.dat                      # (~20–35 MB decompressed) Career history for all non-players / staff
-│   └── person_history_index.dat                # Fast byte-offset lookup index into pl_hist_dt.dat and non_pl_hist_dt.dat
+│   ├── non_pl_hist_id.dat                      # Staff history head/tail byte-offset table
+│   └── non_pl_hist_index.dat                   # Staff history lookup index
 │
 ├── [2. Tactics, Set Pieces, Training & Mentoring]
 │   ├── tactics_man.dat                         # Active club tactical blocks, Starting XI + Bench selectors (pindex + 1), team instructions
 │   ├── set_piece_manager.dat                   # Corner, free-kick, and throw-in routines and taker pools
-│   ├── training_manager.dat                    # Active weekly training schedules and individual role/attribute focus assignments
+│   ├── training_man.dat                        # Active weekly training schedules and individual role/attribute focus assignments
 │   └── mentoring_manager.dat                   # Player mentoring groups and personality influence chains
 │
 ├── [3. Transfers, Contracts, Agents & Scouting Shortlists]
 │   ├── contract_man.dat                        # Active contract offers, renewal negotiations, and wage/bonus demands
-│   ├── transfer_manager.dat                    # Active transfer bids, loan offers, and future transfer clauses
-│   ├── transfer_centre_manager.dat             # Transfer Centre tracking ledger for managed clubs
+│   ├── transfer_man.dat                        # Active transfer bids, loan offers, and future transfer clauses
+│   ├── transfer_centre_man.dat                 # Transfer Centre tracking ledger for managed clubs
 │   ├── shortlist_man.dat                       # Scouting shortlists, shortlisted player UIDs, and scouting priority flags
 │   ├── agent_manager.dat                       # Player agents, client rosters, and agent fee/patience profiles
 │   └── recruitment_focus_manager.dat           # Active scouting recruitment focuses (CA/PA ranges, age, positional targets)
 │
 ├── [4. Fixtures, Match Schedules, Injuries & Discipline]
 │   ├── fixture_details.dat                     # Detailed match fixture records, scores, attendances, and referee assignments
-│   ├── match_stats.dat                         # Per-player and per-team match statistics for completed fixtures
-│   ├── injury_table.dat                        # Active player injuries, recovery dates, and injury type codes
-│   └── suspension_manager.dat                  # Active yellow/red card accumulations and competition bans
+│   ├── injury_manager.dat                      # Active player injuries, recovery dates, and injury type codes
+│   ├── disciplinary_manager.dat                # Active yellow/red card accumulations and competition bans
+│   └── referees_manager.dat                    # Referee appointments and performance ratings
 │
 ├── [5. Clubs, Board Takeovers, Hall of Fame & Dynamics]
-│   ├── board_takeover_manager.dat              # Ongoing club board takeovers, tycoon/consortium buyers, and target clubs
+│   ├── board_takeover_man.dat                  # Ongoing club board takeovers, tycoon/consortium buyers, and target clubs
 │   ├── hall_of_fame.dat                        # Worldwide, national, and continental Hall of Fame manager rankings and trophy points
-│   ├── job_manager.dat                         # Open manager/staff job vacancies and job security ratings
-│   ├── dynamics_manager.dat                    # Squad hierarchy, social groups, dressing room atmosphere, and manager support
-│   └── club_vision_manager.dat                 # Board 5-year club vision objectives and supporter expectations
+│   ├── job_centre.dat                          # Open manager/staff job vacancies and job security ratings
+│   ├── dynamic_manager.dat                     # Squad hierarchy, social groups, dressing room atmosphere, and manager support
+│   └── club_expectations.dat                   # Board club vision objectives and supporter expectations
 │
 ├── [6. News, Media, Inbox & Press Conferences]
 │   ├── news.dat                                # Generated in-game news articles, headlines, and entity cross-references
 │   ├── mail_man.dat                            # Manager inbox messages and action items
-│   ├── media_manager.dat                       # Scheduled press conferences, tunnel interviews, and journalist relationships
-│   └── social_feed_manager.dat                 # Social media / supporter feed reaction items
+│   ├── media_man.dat                           # Scheduled press conferences, tunnel interviews, and journalist relationships
+│   └── social_network_man.dat                  # Social media / supporter feed reaction items
 │
 ├── [7. International, Awards & Historical Ledgers]
-│   ├── award_manager.dat                       # Ballon d'Or, Player of the Year, Team of the Week/Season voting and winners
+│   ├── award_man.dat                           # Ballon d'Or, Player of the Year, Team of the Week/Season voting and winners
 │   ├── CompetitionHistory.dat                  # Past winners and runners-up for every league and cup competition
-│   └── international_manager.dat               # National team squad call-ups and international tournament pools
+│   └── international_man.dat                   # National team squad call-ups and international tournament pools
 │
-├── [8. Remaining 50+ Specialized Manager & Commentary Sections (.dat / .cmt)]
-│   └── ...                                     # Promises, loans, youth intakes, medical centre, data hub, FFP, commentary (.cmt), etc.
+├── [8. Remaining Specialized Manager & Commentary Sections (`64` `.dat` + `17` `.cmt` = `81` Total)]
+│   └── ...                                     # extra_data_man.dat, financial_fair_play_man.dat, draft_man.dat, 17 language *.cmt files, etc.
 │
 └── [9. Embedded Match Replays & Telemetry (Variable Count per Save)]
     ├── *.apm                                   # Full 3D match animation / physics replay streams for recent matches

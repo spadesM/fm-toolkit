@@ -1,17 +1,17 @@
 """FM26 Game Installation File Reverse-Engineering Extractors (All 12 Systems).
 
 Extracts and decodes official Football Manager 26 installation archives (.fmf, .dat, .jsb, .dbc, .lnc, .edt, .usym):
-1. Quick Match Engine (QME) Statistical Distributions (`simatch.fmf` Frames #119, #120 — 3,137 Normal/Binned distributions & 22 stat-relevant attribute sets) & Player Match Ratings (`Frame #118` — 6 versions, start_value = 6.70)
+1. Quick Match Engine (QME) Statistical Distributions (`simatch.fmf` Frames #119, #120 — 3,137 Poisson/Normal/Binned/Zero distributions & 22 stat-relevant attribute sets) & Player Match Ratings (`Frame #118` — 6 versions, start_value = 6.70)
 2. Match Momentum Spatial Engine (`simatch.fmf` Frame #113 — 48 event × zone momentum rules)
 3. Out-Of-Possession (OP*) Attribute Scoring (`Frame #114` — 39 RolePosition bitmasks) & 2D Pitch Proximity Tactical Grid (`Frame #115` — 118 Role entries × 24 spatial zones)
-4. 11 Shot-Type xG Logistic Regression Models (`simatch.fmf` Frames #002..#100 across 9 versions `23.1.1.9`..`26.1.4.1`), Frame #116 Tactical Pitch Positioning Table (`9,154` blocks), 101 Dual-Formation `.cat`/`.rts` Presets (`Frames #121..#222`), & AI Team Selection Weights (`Frame #223` — 4 profiles × 40 `TSF_*` factors)
+4. 11 Shot-Type xG Logistic Regression Models (`simatch.fmf` Frames #002..#100 across 9 folder versions `23_1_1_9`..`26_1_4_1`), Frame #116 Ball Physics Table (`simatch/physics/ball/ball_physics_22_0_5_0.bta`, 3,277,236 B), 101 Tactical Presets (`Frames #121..#222`: 90 `.tac` `\x03\x01cat.` dual-formation templates + 11 `.stra` `\x03\x01rts.` style vectors), & AI Team Selection Weights (`Frame #223` — 4 profiles × 40 `TSF_*` factors)
 5. 105 Internal Database XML Schemas & Master FourCC Enums (`shared/data/editor.fmf` — 444 enum groups + entity schemas)
-6. Pre-Game Master Databases (`client_db.dat` 32 frames, `lang_update_db.dat` 401 frames = 25 languages × 16 tables + 1 directory, `server_db.dat` 78 frames — 58,349 Cities, 96,343 Clubs, 51,118 Stadiums, 7,973 Competitions, 3,884 Awards, 2,527 Regions, 1,683 Derbies, 251 Nations, 136 Injuries, 7 Continents, 988,091 Person Name Pool records) & `.edt` Permanent Rule Files
+6. Pre-Game Master Databases (`client_db.dat` 31 tables + 1 directory, `lang_update_db.dat` 400 tables = 25 languages × 16 tables + 1 directory, `server_db.dat` 77 tables + 1 directory — 58,349 Cities, 96,343 Clubs, 51,118 Stadiums, 7,973 Competitions, 3,884 Awards, 2,527 Local Regions, 1,683 Derbies, 251 Nations, 180 Media Sources, 136 Injuries, 6 Agreements, 7 Continents, 988,091 Person Name Pool records) & `.edt` Permanent Rule Files
 7. Press Conference, Backroom Advice, Training Schedules, Palettes & Newgen Demographics (`media.fmf` 650 XMLs, `training.fmf` 300 schedules, `simatchshared.fmf` 74 RGB palette/crowd frames + 135 newgen appearance rules)
 8. IL2CPP Metadata & Native Symbol Table (`il2cpp.usym` 1,593,548 symbols & `global-metadata.dat` C# engine symbols)
 9. Pre-Game Master People & Career History Databases (`basic_people_db.dat` 723,010 people walked 100%, `people_db.dat` attributes/personalities, `pl_hist_index/id/dt.dat` 4,344,855 × 44B singly-linked list career rows)
 10. Compiled `.dbc` Competition Rule Archives (`sicomps/comps.dbc` 1,442 `03 01 cbd.` rule sets + `2620/dbc/*.dbc`) & `.lnc` Licensing / Name Overrides (`2620/lnc/all/*.lnc`)
-11. Auxiliary Simulation `.fmf` Archives (`filters.fmf` 445 filters, `achievements.fmf` 50 achievements, `leaderboards.fmf` 28 leaderboards, `settings.fmf`, `store.fmf`, `profanity_filter.fmf`, `languages.fmf`)
+11. Auxiliary Simulation `.fmf` Archives (`filters.fmf` 2 XML files / 445 filter records, `achievements.fmf` 1 XML file / 50 achievement records, `leaderboards.fmf` 1 XML file / 28 leaderboard records, `settings.fmf` 9 XML files, `store.fmf` 2 XML files, `profanity_filter.fmf` 2 files, `languages.fmf`)
 12. Multi-Version Pre-Game Database Evolution (`shared/data/database/db/2300..2620` — all 9 historical & active FM23/FM24/FM26 databases walked 100% across `5,545,819` person records, table counts, wonderkid & star CA/PA trajectories)
 """
 
@@ -26,7 +26,12 @@ from typing import Any
 
 import zstandard
 
-from fm26save.formulas import DEFAULT_FM26_INSTALL_DIR, extract_fmf_frames, parse_jsb
+from fm26save.formulas import (
+    DEFAULT_FM26_INSTALL_DIR,
+    extract_fmf_frames,
+    parse_jsb,
+    read_fmf_directory,
+)
 
 _CACHED_OFFICIAL_CITY_MAP: dict[int, str] | None = None
 _CACHED_MASTER_DB_SUMMARY: dict[str, Any] | None = None
@@ -235,29 +240,42 @@ def extract_oop_pitch_proximity_grid(
 
 
 # ==============================================================================
-# 4. ALL 11 SHOT-TYPE xG MODELS (#002..#100, 9 VERSIONS) & 101 TACTICAL PRESETS (#121..#222)
+# 4. ALL 11 SHOT-TYPE xG MODELS (#002..#100, 9 VERSIONS), BALL PHYSICS (#116) & 101 TACTICAL PRESETS (#121..#222)
 # ==============================================================================
 def extract_xg_shot_models(
     fm_install_dir: str | os.PathLike[str] | None = None,
 ) -> dict[str, Any]:
-    """Extract all 11 Shot-Type xG Logistic Regression models from `simatch.fmf` (Frames #002..#100 across 9 versions; active v26.1.4.1 in Frames #090..#100)."""
+    """Extract all 11 Shot-Type xG Logistic Regression models from `simatch.fmf` (Frames #002..#100 across 9 folder versions `23_1_1_9`..`26_1_4_1`; active v26.1.4.1 in Frames #090..#100)."""
     root = _resolve_fm26_dir(fm_install_dir)
     sim_fmf = root / "shared/data/simatch.fmf"
     if not sim_fmf.exists():
         return {"available": False, "path": str(sim_fmf)}
 
     frames = extract_fmf_frames(sim_fmf)
+    dir_entries = read_fmf_directory(sim_fmf)
+    folder_versions: list[str] = []
     all_versions: list[str] = []
-    for base_fidx in range(2, 101, 11):
-        if base_fidx < len(frames):
-            v_obj, _ = parse_jsb(frames[base_fidx][1], 0)
-            vn = v_obj.get("version_number", "")
-            if isinstance(vn, dict):
-                ver_str = f"{vn.get('version_year', 0)}.{vn.get('version_major', 0)}.{vn.get('version_minor', 0)}.{vn.get('version_release', 0)}"
-            else:
-                ver_str = str(vn)
-            if ver_str and ver_str not in all_versions:
-                all_versions.append(ver_str)
+    for e in dir_entries:
+        nm = str(e.get("name", ""))
+        if nm.startswith("simatch/expected_goals/models/") and nm.endswith(".jsb"):
+            parts = nm.split("/")
+            if len(parts) >= 5:
+                vfolder = parts[3]
+                if vfolder and vfolder[0].isdigit() and vfolder not in folder_versions:
+                    folder_versions.append(vfolder)
+                    all_versions.append(vfolder.replace("_", "."))
+
+    if not all_versions:
+        for base_fidx in range(2, 101, 11):
+            if base_fidx < len(frames):
+                v_obj, _ = parse_jsb(frames[base_fidx][1], 0)
+                vn = v_obj.get("version_number", "")
+                if isinstance(vn, dict):
+                    ver_str = f"{vn.get('version_year', 0)}.{vn.get('version_major', 0)}.{vn.get('version_minor', 0)}.{vn.get('version_release', 0)}"
+                else:
+                    ver_str = str(vn)
+                if ver_str and ver_str not in all_versions:
+                    all_versions.append(ver_str)
 
     models: dict[str, Any] = {}
     for fidx in range(90, 101):
@@ -273,6 +291,7 @@ def extract_xg_shot_models(
         )
         models[shot_type] = {
             "frame_index": fidx,
+            "archive_path": dir_entries[fidx]["name"] if fidx < len(dir_entries) else f"frame_{fidx}",
             "shot_type": shot_type,
             "version": obj.get("version_number", "26.1.4.1"),
             "raw_intercept": raw_int,
@@ -291,6 +310,7 @@ def extract_xg_shot_models(
         "source": "shared/data/simatch.fmf (Frames #002..#100 across 9 versions; active v26.1.4.1 at Frames #090..#100)",
         "versions_available_count": len(all_versions),
         "versions_available": all_versions,
+        "version_folders": folder_versions,
         "models_count": len(models),
         "models": models,
     }
@@ -299,19 +319,22 @@ def extract_xg_shot_models(
 def extract_tactical_styles_and_presets(
     fm_install_dir: str | os.PathLike[str] | None = None,
 ) -> dict[str, Any]:
-    """Decode `simatch.fmf` Frame #192 (Tactical Styles XML) and the 101 Dual-Formation `.cat`/`.rts`/`.tac` presets."""
+    """Decode `simatch.fmf` Frame #116 (`ball_physics_22_0_5_0.bta`), Frame #192 (`tactical_styles.xml`),
+    and the 101 Tactical Presets (`Frames #121..#222`: 90 `.tac` `\x03\x01cat.` dual-formation templates + 11 `.stra` `\x03\x01rts.` style vectors)."""
     root = _resolve_fm26_dir(fm_install_dir)
     sim_fmf = root / "shared/data/simatch.fmf"
     if not sim_fmf.exists():
         return {"available": False, "path": str(sim_fmf)}
 
     frames = extract_fmf_frames(sim_fmf)
-    dir_strings = _extract_fmf_directory_strings(frames[-1][1])
-    preset_filenames = [
-        s for s in dir_strings if s.endswith((".tac", ".cat", ".rts", ".xml", ".jsb"))
-    ]
+    dir_entries = read_fmf_directory(sim_fmf)
+    preset_filenames = (
+        [e["name"] for e in dir_entries]
+        if dir_entries
+        else [s for s in _extract_fmf_directory_strings(frames[-1][1]) if s.endswith((".tac", ".stra", ".bta", ".xml", ".jsb"))]
+    )
 
-    # Frame #192 is Tactical Styles XML
+    # Frame #192 is Tactical Styles XML (simatch/tactics/tactical_styles.xml)
     styles_xml = frames[192][1].decode("utf-8", errors="replace")
     style_blocks: list[dict[str, Any]] = []
     for m in re.finditer(
@@ -334,25 +357,27 @@ def extract_tactical_styles_and_presets(
                 "folder": folder,
                 "tactical_style_id": style_id,
                 "display_name": text_m.group(1).strip() if text_m else style_id,
-                " tactical_hint": hint_m.group(1).strip() if hint_m else "",
+                "tactical_hint": hint_m.group(1).strip() if hint_m else "",
                 "template_attributes": [{"attribute": k, "weight": w} for k, w in attrs],
             }
         )
 
-    # Frame #116 is the 3.28 MB binary tactical pitch positioning lookup table
-    pitch_pos_table_116: dict[str, Any] = {}
+    # Frame #116 is simatch/physics/ball/ball_physics_22_0_5_0.bta (3,277,236 B binary ball physics lookup table)
+    ball_physics_table_116: dict[str, Any] = {}
     if len(frames) > 116:
         r116 = frames[116][1]
-        pitch_pos_table_116 = {
+        ball_physics_table_116 = {
             "frame_index": 116,
+            "archive_path": dir_entries[116]["name"] if len(dir_entries) > 116 else "simatch/physics/ball/ball_physics_22_0_5_0.bta",
+            "description": "Ball Physics 22.0.5.0 trajectory/bounce lookup table (.bta)",
             "size_bytes": len(r116),
             "header_hex": r116[:40].hex(" "),
             "header_u32s": list(struct.unpack_from("<10I", r116, 0)) if len(r116) >= 40 else [],
         }
 
     # Decode binary tactical preset frames (#121..#222 excluding #192):
-    # - 90 '.cat' (\x03\x01cat.) dual-formation IP x OOP combination templates
-    # - 11 '.rts' (\x03\x01rts.) tactical style team-instruction vectors
+    # - 90 '.tac' (inner magic \x03\x01cat.) dual-formation IP x OOP combination templates
+    # - 11 '.stra' (inner magic \x03\x01rts.) tactical style team-instruction vectors
     tactical_frames_summary: list[dict[str, Any]] = []
     cat_presets: list[dict[str, Any]] = []
     rts_style_vectors: list[dict[str, Any]] = []
@@ -365,8 +390,11 @@ def extract_tactical_styles_and_presets(
             s.decode("utf-8", errors="ignore")
             for s in re.findall(rb"[a-zA-Z0-9_\- ]{4,48}", raw[:512])
         ]
+        archive_path = dir_entries[fidx]["name"] if fidx < len(dir_entries) else f"frame_{fidx}"
         entry: dict[str, Any] = {
             "frame_index": fidx,
+            "archive_path": archive_path,
+            "extension": Path(archive_path).suffix,
             "size_bytes": len(raw),
             "header_hex": magic,
             "header_strings": ascii_strings[:5],
@@ -377,6 +405,7 @@ def extract_tactical_styles_and_presets(
                 preset_name = raw[20 : 20 + slen].decode("utf-8", errors="replace").strip()
                 parts = [p.strip() for p in preset_name.split(" - ")]
                 entry["format"] = "cat"
+                entry["inner_magic"] = "\\x03\\x01cat."
                 entry["preset_name"] = preset_name
                 entry["in_possession_label"] = parts[0] if parts else preset_name
                 entry["out_of_possession_formation"] = parts[1] if len(parts) > 1 else ""
@@ -386,6 +415,7 @@ def extract_tactical_styles_and_presets(
             fourcc_rev = tail_str[-4:][::-1] if len(tail_str) >= 4 else ""
             style_label = tail_str[:-4] if len(tail_str) > 4 else tail_str
             entry["format"] = "rts"
+            entry["inner_magic"] = "\\x03\\x01rts."
             entry["style_label"] = style_label
             entry["style_fourcc"] = fourcc_rev
             entry["instruction_vector_bytes"] = list(raw[14:38])
@@ -394,8 +424,9 @@ def extract_tactical_styles_and_presets(
 
     return {
         "available": True,
-        "source": "shared/data/simatch.fmf (Frame #116 + Frames #121..#222)",
-        "pitch_positioning_table_116": pitch_pos_table_116,
+        "source": "shared/data/simatch.fmf (Frame #116 ball_physics_22_0_5_0.bta + Frames #121..#222 .tac/.stra presets)",
+        "ball_physics_table_116": ball_physics_table_116,
+        "pitch_positioning_table_116": ball_physics_table_116,
         "tactical_styles_xml_count": len(style_blocks),
         "tactical_styles": style_blocks,
         "binary_tactical_presets_count": len(tactical_frames_summary),
@@ -651,11 +682,14 @@ def _parse_lang_nations(
 def _parse_lang_competitions(
     raw: bytes,
     client_comps_26_raw: bytes | None = None,
+    *,
+    continent_map: dict[int, str] | None = None,
+    nation_uid_map: dict[int, str] | None = None,
 ) -> list[dict[str, Any]]:
     cnt = struct.unpack_from("<I", raw, 8)[0]
     pos = 12
     out: list[dict[str, Any]] = []
-    has_c26 = client_comps_26_raw is not None and len(client_comps_26_raw) >= 12 + cnt * 123
+    c_pos = 12
     for idx in range(cnt):
         uid, l1 = struct.unpack_from("<II", raw, pos)
         pos += 8
@@ -676,25 +710,33 @@ def _parse_lang_competitions(
             "short_name": short_name,
             "code": code,
         }
-        if has_c26 and client_comps_26_raw is not None:
-            coff = 12 + idx * 123
-            rec = client_comps_26_raw[coff : coff + 123]
-            div_level = rec[17]
-            comp_type = rec[20]
-            cont_id, nat_uid = struct.unpack_from("<ii", rec, 54)
-            nat_id = struct.unpack_from("<h", rec, 66)[0]
-            db_cid, db_uid = struct.unpack_from("<II", rec, 111)
-            entry.update(
-                {
-                    "division_level": div_level,
-                    "comp_type_code": comp_type,
-                    "continent_id": cont_id if cont_id >= 0 else None,
-                    "nation_uid": nat_uid if nat_uid > 0 else None,
-                    "nation_id": nat_id if nat_id >= 0 else None,
-                    "db_comp_id": db_cid,
-                    "db_uid": db_uid,
-                }
-            )
+        if client_comps_26_raw is not None:
+            tail = struct.pack("<III", idx, uid, uid)
+            tpos = client_comps_26_raw.find(tail, c_pos)
+            if tpos >= c_pos and (tpos + 12 - c_pos) >= 120:
+                rec = client_comps_26_raw[c_pos : tpos + 12]
+                c_pos = tpos + 12
+                end = len(rec)
+                # table_25.dat has 4 extra bytes near the tail compared to table_for_old_save_25.dat (127 B vs 123 B; rec #0 is 128 B vs 124 B):
+                delta = 4 if end >= 127 else 0
+                div_level = rec[end - 107 - delta]
+                comp_type = rec[end - 104 - delta]
+                cont_id, nat_uid = struct.unpack_from("<ii", rec, end - 70 - delta)
+                nat_id = struct.unpack_from("<h", rec, end - 58 - delta)[0]
+                db_cid, db_uid = struct.unpack_from("<II", rec, end - 12)
+                entry.update(
+                    {
+                        "division_level": div_level,
+                        "comp_type_code": comp_type,
+                        "continent_id": cont_id if cont_id >= 0 else None,
+                        "continent_name": (continent_map or {}).get(cont_id) if cont_id >= 0 else None,
+                        "nation_uid": nat_uid if nat_uid > 0 else None,
+                        "nation_name": (nation_uid_map or {}).get(nat_uid) if nat_uid > 0 else None,
+                        "nation_id": nat_id if nat_id >= 0 else None,
+                        "db_comp_id": db_cid,
+                        "db_uid": db_uid,
+                    }
+                )
         out.append(entry)
     return out
 
@@ -856,9 +898,10 @@ def _parse_lang_injuries(
             srec = server_inj_raw[soff : soff + 48]
             cat_code, body_part, is_phys = struct.unpack_from("<BBB", srec, 1)
             min_d, extra_d, inact_min, inact_extra, fit_drop = struct.unpack_from("<HHHHH", srec, 4)
-            treat_code, is_rec, is_contag = struct.unpack_from("<BBB", srec, 14)
+            treat_code, is_rec, can_play_with_inj = struct.unpack_from("<BBB", srec, 14)
             occ_ratio, base_occ = struct.unpack_from("<ff", srec, 18)
             sev_tier = srec[30]
+            is_contag = srec[31]
             cause_code = srec[32]
             db_iid, db_uid = struct.unpack_from("<II", srec, 36)
             entry.update(
@@ -874,6 +917,7 @@ def _parse_lang_injuries(
                     "match_fitness_drop_pct": fit_drop,
                     "treatment_code": treat_code,
                     "is_recurring": bool(is_rec),
+                    "can_play_with_protective_or_injections": bool(can_play_with_inj),
                     "is_contagious_or_special": bool(is_contag),
                     "occurrence_ratio": round(occ_ratio, 6),
                     "base_occurrence_weight": round(base_occ, 6),
@@ -1152,34 +1196,40 @@ def extract_master_db_tables(
     l_frames = extract_fmf_frames(lang_path)
     s_frames = extract_fmf_frames(server_path) if server_path.exists() else []
 
-    c_dir = [s for s in _extract_fmf_directory_strings(c_frames[-1][1]) if s.startswith("table_")]
+    c_dir_entries = read_fmf_directory(client_path)
     client_tables_summary: list[dict[str, Any]] = []
     for idx in range(len(c_frames) - 1):
         raw = c_frames[idx][1]
-        cnt = struct.unpack_from("<I", raw, 8)[0] if len(raw) >= 12 else 0
-        body_len = max(0, len(raw) - 12)
+        tname = c_dir_entries[idx]["filename"] if idx < len(c_dir_entries) else f"frame_{idx}"
+        is_tad = len(raw) >= 12 and raw[:6] == b"\x03\x01tad." and tname != "simple_vars.dat"
+        cnt = struct.unpack_from("<I", raw, 8)[0] if is_tad else 1
+        body_len = max(0, len(raw) - 12) if is_tad else len(raw)
         rec_size = round(body_len / cnt, 2) if cnt > 0 else 0
         client_tables_summary.append(
             {
                 "frame_index": idx,
-                "table_name": c_dir[idx] if idx < len(c_dir) else f"frame_{idx}",
+                "table_name": tname,
+                "archive_path": c_dir_entries[idx]["name"] if idx < len(c_dir_entries) else tname,
                 "record_count": cnt,
                 "decompressed_bytes": len(raw),
                 "bytes_per_record": rec_size,
             }
         )
 
-    s_dir = [s for s in _extract_fmf_directory_strings(s_frames[-1][1]) if s.startswith("table_")] if s_frames else []
+    s_dir_entries = read_fmf_directory(server_path) if server_path.exists() else []
     server_tables_summary: list[dict[str, Any]] = []
     for idx in range(max(0, len(s_frames) - 1)):
         raw = s_frames[idx][1]
-        cnt = struct.unpack_from("<I", raw, 8)[0] if len(raw) >= 12 else 0
-        body_len = max(0, len(raw) - 12)
+        tname = s_dir_entries[idx]["filename"] if idx < len(s_dir_entries) else f"frame_{idx}"
+        is_tad = len(raw) >= 12 and raw[:6] == b"\x03\x01tad." and tname != "simple_vars.dat"
+        cnt = struct.unpack_from("<I", raw, 8)[0] if is_tad else 1
+        body_len = max(0, len(raw) - 12) if is_tad else len(raw)
         rec_size = round(body_len / cnt, 2) if cnt > 0 else 0
         server_tables_summary.append(
             {
                 "frame_index": idx,
-                "table_name": s_dir[idx] if idx < len(s_dir) else f"frame_{idx}",
+                "table_name": tname,
+                "archive_path": s_dir_entries[idx]["name"] if idx < len(s_dir_entries) else tname,
                 "record_count": cnt,
                 "decompressed_bytes": len(raw),
                 "bytes_per_record": rec_size,
@@ -1197,7 +1247,13 @@ def extract_master_db_tables(
         city_map=city_map,
     )
     nation_map = {n["index"]: n["name"] for n in nations}
-    competitions = _parse_lang_competitions(l_frames[1][1], c_frames[26][1])
+    nation_uid_map = {n["uid"]: n["name"] for n in nations}
+    competitions = _parse_lang_competitions(
+        l_frames[1][1],
+        c_frames[5][1],
+        continent_map=continent_map,
+        nation_uid_map=nation_uid_map,
+    )
     clubs = _parse_lang_clubs(
         l_frames[2][1],
         c_frames[3][1],
@@ -2096,12 +2152,12 @@ def extract_simulation_aux_fmf_archives(
     fm_install_dir: str | os.PathLike[str] | None = None,
 ) -> dict[str, Any]:
     """Decode the remaining simulation `.fmf` archives under `data/game_simulation/`:
-    - `filters.fmf` (`445` scouting/search filter XML frames),
-    - `achievements.fmf` (`50` Steam/Epic/Xbox achievement rule XML frames),
-    - `leaderboards.fmf` (`28` leaderboard scoring XML frames),
-    - `settings.fmf` (`10` user/game preference schema XML frames),
-    - `store.fmf` (`3` in-game store item XML frames),
-    - `profanity_filter.fmf` (`3` frames),
+    - `filters.fmf` (`2` XML files containing `445` `<record>` filter definitions),
+    - `achievements.fmf` (`1` XML file containing `50` Steam/Epic/Xbox achievement `<record>` rules),
+    - `leaderboards.fmf` (`1` XML file containing `28` leaderboard scoring `<record>` items),
+    - `settings.fmf` (`9` user/game preference schema XML files across platforms),
+    - `store.fmf` (`2` in-game store item XML files),
+    - `profanity_filter.fmf` (`2` files: `config.xml` + `microsoft.txt`),
     - `languages.fmf` (`205.6 MB` multi-language localization archive metadata)."""
     root = _resolve_fm26_dir(fm_install_dir)
     sim_dir = root / "data/game_simulation"
@@ -2122,7 +2178,8 @@ def extract_simulation_aux_fmf_archives(
         if not fpath.exists():
             continue
         frames = extract_fmf_frames(fpath)
-        dir_strings = _extract_fmf_directory_strings(frames[-1][1]) if frames else []
+        dir_entries = read_fmf_directory(fpath)
+        archive_files = [e["name"] for e in dir_entries] if dir_entries else _extract_fmf_directory_strings(frames[-1][1])
         total_decompressed = sum(len(fb) for _, fb in frames[:-1])
         sample_items: list[str] = []
         xml_record_items_count = 0
@@ -2133,10 +2190,12 @@ def extract_simulation_aux_fmf_archives(
                 sample_items = re.findall(r'value="([^"]{3,60})"', txt)[:10]
         result["archives"][name] = {
             "compressed_bytes": fpath.stat().st_size,
+            "archive_files_count": len(dir_entries) if dir_entries else max(0, len(frames) - 1),
+            "archive_files": archive_files,
             "content_frames_count": max(0, len(frames) - 1),
             "xml_record_items_count": xml_record_items_count,
             "total_decompressed_bytes": total_decompressed,
-            "directory_strings_sample": dir_strings[:25],
+            "directory_strings_sample": archive_files[:25],
             "first_frame_sample_values": sample_items,
         }
 
@@ -2252,23 +2311,26 @@ def extract_multi_version_database_evolution(
         is_30_table_fm23 = len(table_counts) == 30
         db_entity_counts = {
             "tables_count": len(table_counts),
-            "agreements": table_counts.get(0, 0),
             "awards": table_counts.get(1, 0),
             "cities": table_counts.get(2, 0),
             "clubs": table_counts.get(3, 0),
+            "competitions": table_counts.get(5, 0),
             "continents": table_counts.get(6, 0),
-            "currencies": table_counts.get(7, 0),
+            "stage_flags_or_rules": table_counts.get(7, 0),
             "injuries": table_counts.get(8, 0),
-            "languages": table_counts.get(9, 0),
-            "local_regions": table_counts.get(10, 0),
+            "media_sources": table_counts.get(9, 0),
             "nations": table_counts.get(11, 0),
-            "first_names_pool": table_counts.get(16 if is_30_table_fm23 else 17, 0),
-            "last_names_pool": table_counts.get(17 if is_30_table_fm23 else 18, 0),
-            "common_names_pool": table_counts.get(18 if is_30_table_fm23 else 19, 0),
+            "languages": table_counts.get(12, 0),
+            "first_names_pool": table_counts.get(14, 0),
+            "last_names_pool": table_counts.get(15, 0),
+            "common_names_pool": table_counts.get(16, 0),
+            "local_regions": table_counts.get(20 if is_30_table_fm23 else 21, 0),
             "stadiums": table_counts.get(21 if is_30_table_fm23 else 22, 0),
-            "stage_names": table_counts.get(22 if is_30_table_fm23 else 23, 0),
-            "competitions": table_counts.get(25 if is_30_table_fm23 else 26, 0),
-            "derbies": table_counts.get(27 if is_30_table_fm23 else 28, 0),
+            "stage_names": table_counts.get(23 if is_30_table_fm23 else 24, 0),
+            "agreements": table_counts.get(24 if is_30_table_fm23 else 25, 0),
+            "weather": table_counts.get(26 if is_30_table_fm23 else 28, 0),
+            "currencies": table_counts.get(27 if is_30_table_fm23 else 29, 0),
+            "derbies": table_counts.get(28 if is_30_table_fm23 else 30, 0),
         }
 
         # 2. Deterministically walk basic_people_db.dat

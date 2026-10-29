@@ -1656,9 +1656,101 @@ def parse_jsb(buf: bytes, pos: int = 0) -> tuple[Any, int]:
     raise ValueError(f"Unsupported JSB tag 0x{b:02x} at offset {pos - 1}")
 
 
-def extract_fmf_frames(fmf_path: str | Path) -> list[tuple[int, bytes]]:
-    """Decompress all Zstandard frames inside an FM26 .fmf archive."""
+def _fmf_lp_str(tp: bytes, cur: int) -> tuple[str, int]:
+    n = struct.unpack_from("<I", tp, cur)[0]
+    return tp[cur + 4 : cur + 4 + n].decode("utf-8", errors="replace"), cur + 4 + n
+
+
+def _fmf_walk_folder(tp: bytes, cur: int, prefix: str, out: list[dict[str, Any]]) -> int:
+    name, cur = _fmf_lp_str(tp, cur)
+    path = f"{prefix}{name}/" if prefix or name else ""
+    nfiles = struct.unpack_from("<I", tp, cur)[0]
+    cur += 4
+    for _ in range(nfiles):
+        fn, cur = _fmf_lp_str(tp, cur)
+        ext, cur = _fmf_lp_str(tp, cur)
+        rel, cs, ds, t1, t2 = struct.unpack_from("<5Q", tp, cur)
+        cur += 40
+        out.append(
+            {
+                "name": path + fn + ext,
+                "filename": fn + ext,
+                "extension": ext,
+                "rel_offset": rel,
+                "offset": 26 + rel,
+                "compressed_size": cs,
+                "decompressed_size": ds,
+                "t1": t1,
+                "t2": t2,
+            }
+        )
+    nsub = struct.unpack_from("<I", tp, cur)[0]
+    cur += 4
+    for _ in range(nsub):
+        cur = _fmf_walk_folder(tp, cur, path, out)
+    return cur
+
+
+def read_fmf_directory(fmf_path: str | Path) -> list[dict[str, Any]]:
+    """Parse the Zstd-compressed recursive folder tree trailer directory of an FM `.fmf` or `.dat` archive.
+
+    Header layout at `base` (`0` for `.fmf`, `12` for `T\\x00...` pre-game `.dat` archives):
+    - `base + 0..9`: `02 01 'fmf.' 08 02 00`
+    - `base + 9..17`: `<Q` `ptr` (`trailer_offset = base + 9 + ptr`)
+    - `base + 17..26`: `05 00 00 00 05 <u32 content_end_rel>` (26-byte header)
+    - `trailer_offset + 0..9`: `02 01 'fmf.' 08 00 00` followed by Zstd-compressed folder tree.
+    Each file entry in the directory resolves to `frame_offset = base + 26 + rel_offset`.
+    """
     raw = Path(fmf_path).read_bytes()
+    base = raw.find(b"\x02\x01fmf.", 0, 64)
+    if base == -1 or base + 26 > len(raw):
+        return []
+    ptr = struct.unpack_from("<Q", raw, base + 9)[0]
+    toff = base + 9 + ptr
+    if toff + 9 > len(raw) or raw[toff : toff + 6] != b"\x02\x01fmf.":
+        return []
+    tp = zstd.ZstdDecompressor().decompressobj().decompress(raw[toff + 9 :])
+    out: list[dict[str, Any]] = []
+    _fmf_walk_folder(tp, 0, "", out)
+    for e in out:
+        e["offset"] += base
+    out.sort(key=lambda e: e["offset"])
+    for idx, e in enumerate(out):
+        e["index"] = idx
+    return out
+
+
+def extract_fmf_frames(fmf_path: str | Path) -> list[tuple[int, bytes]]:
+    """Decompress all Zstandard frames inside an FM26 `.fmf` or `.dat` archive.
+
+    Uses the exact `.fmf` trailer directory (`read_fmf_directory`) when present and appends the
+    decompressed trailer directory as `frames[-1]`, avoiding any false-positive `28 B5 2F FD` magic matches
+    inside compressed payloads. Falls back to Zstd magic scanning for raw concatenated Zstd streams.
+    """
+    raw = Path(fmf_path).read_bytes()
+    base = raw.find(b"\x02\x01fmf.", 0, 64)
+    if base != -1 and base + 26 <= len(raw):
+        ptr = struct.unpack_from("<Q", raw, base + 9)[0]
+        toff = base + 9 + ptr
+        if toff + 9 <= len(raw) and raw[toff : toff + 6] == b"\x02\x01fmf.":
+            try:
+                tp = zstd.ZstdDecompressor().decompressobj().decompress(raw[toff + 9 :])
+                entries: list[dict[str, Any]] = []
+                _fmf_walk_folder(tp, 0, "", entries)
+                for e in entries:
+                    e["offset"] += base
+                entries.sort(key=lambda e: e["offset"])
+                dir_frames: list[tuple[int, bytes]] = []
+                for e in entries:
+                    off = int(e["offset"])
+                    cs = int(e["compressed_size"])
+                    dec = zstd.ZstdDecompressor().decompressobj().decompress(raw[off : off + cs])
+                    dir_frames.append((off, dec))
+                dir_frames.append((toff + 9, tp))
+                return dir_frames
+            except Exception:
+                pass
+
     zstd_magic = b"\x28\xb5\x2f\xfd"
     idx = 0
     frames: list[tuple[int, bytes]] = []
