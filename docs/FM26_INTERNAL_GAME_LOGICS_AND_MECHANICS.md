@@ -1,7 +1,7 @@
 # Football Manager 26 — Internal Game Logics & Simulation Mechanics Reference
 
 > **Repository:** [`fm-toolkit`](../)  
-> **Scope:** Complete reverse-engineered reference of **18 core internal simulation algorithms and game logics** in Football Manager 26 (`v26.2.0` / Build `2620`), extracted directly from `.fmf` / `.jsb` engine archives (`simatch.fmf`, `training.fmf`, `tables.fmf`, `simatchshared.fmf`, `editor.fmf`), pre-game master databases (`client_db.dat`, `server_db.dat`, `.edt`), IL2CPP symbols (`global-metadata.dat`, `il2cpp.usym`), and `.fm` save containers (`game_db.dat`).
+> **Scope:** Complete reverse-engineered reference of **22 core internal simulation algorithms and game logics** in Football Manager 26 (`v26.2.0` / Build `2620`), extracted directly from `.fmf` / `.jsb` engine archives (`simatch.fmf`, `training.fmf`, `tables.fmf`, `simatchshared.fmf`, `editor.fmf`), pre-game master databases (`client_db.dat`, `server_db.dat`, `.edt`), IL2CPP symbols (`global-metadata.dat`, `il2cpp.usym`), and `.fm` save containers (`game_db.dat`).
 
 ---
 
@@ -25,6 +25,10 @@
 16. [Board Confidence, Supporter Confidence & `ClubVision` Composite Scoring Algorithm](#16-board-confidence-supporter-confidence--clubvision-composite-scoring-algorithm)
 17. [Match Environment Physics: 4-Season Weather (`weather.xml`), Altitude (`altitude_ft`), Pitch Dimensions & Referees (`official.xml`)](#17-match-environment-physics-4-season-weather-weatherxml-altitude-altitude_ft-pitch-dimensions--referees-officialxml)
 18. [Automated Set-Piece Priority Matrix, Hat-Trick Penalty Rule & Ballon d'Or / Hall of Fame Scoring Algorithm](#18-automated-set-piece-priority-matrix-hat-trick-penalty-rule--ballon-dor--hall-of-fame-scoring-algorithm)
+19. [Loan Development, Playing-Time Fee Penalties (`TSF_LOAN_TERMS`) & Loan Manager AI Algorithm](#19-loan-development-playing-time-fee-penalties-tsf_loan_terms--loan-manager-ai-algorithm)
+20. [International Call-Up AI, Dual-Nationality Switching & Naturalization (`years_to_gain_nationality`) Algorithm](#20-international-call-up-ai-dual-nationality-switching--naturalization-years_to_gain_nationality-algorithm)
+21. [Opposition Instructions (`OI`), Match Plans & Data Hub Telemetry Algorithm](#21-opposition-instructions-oi-match-plans--data-hub-telemetry-algorithm)
+22. [Board Requests: New Stadium Construction, Capacity Expansion (`expansion_capacity`) & Facility Upgrades Algorithm](#22-board-requests-new-stadium-construction-capacity-expansion-expansion_capacity--facility-upgrades-algorithm)
 
 ---
 
@@ -630,3 +634,50 @@ In `global-metadata.dat` and `set_piece_manager.dat`, FM26 automates set-piece a
    - Because `WorldReputation` and `CompRepFactor` carry substantial weight, a player averaging `7.45` in a top-5 European league + Champions League outscores a player averaging `7.90` in a lower-reputation league.
 2. **Manager Hall of Fame (`hall_of_fame.dat` & `HallOfFameEntryCompetitionReference`):**
    - Tracked across Worldwide, Continental (`HallOfFameContinents`), and National (`HallOfFameNations` / `HallOfFameNationalities`) leaderboards (`extra_sections.py`), awarding points strictly for **First-Team Major Trophies** scaled by the competition's reputation tier (`Continental Club Cup > Top-Flight Domestic League > Major Domestic Cup > Second-Tier / Super Cups`).
+---
+
+## 19. Loan Development, Playing-Time Fee Penalties (`TSF_LOAN_TERMS`) & Loan Manager AI Algorithm
+
+1. **Dual-Fee Loan Structure (`Playing Fee` vs. `Unused Monthly Fee`):**
+   - Loan offers track two separate monthly financial streams (`Wage % + Monthly Fee when Playing` vs. `Wage % + Monthly Fee when Not Playing`).
+   - In `simatch.fmf` (`Frame #223`: `weights.jsb`), the borrowing AI manager applies **`simatchshared::TSF_LOAN_TERMS = +20`** across all 4 picking profiles (`TPS_FIRST_TEAM` through `TPS_TOTAL_RESERVE`) to prioritize meeting agreed loan playing-time targets and avoiding unused-player penalty fees.
+2. **How `CA` Progression Works on Loan vs. Staying at Parent Club:**
+   - For players aged **`18–23`**, loan development rate is governed by:
+     - **Host Club `Training Facilities (1..20)`** + **Host Division `CompetitionReputation`** + **Actual Competitive Minutes & Average Match Rating (`>= 7.00`)**.
+   - If a player is loaned to a club with poor training facilities (`< 10`) or sits on the bench (`LoanHappiness` drops below threshold), the **Loan Manager** (`job_role_id = 25` in `STAFF_ROLE_MAP`) triggers a recall recommendation during active transfer windows.
+
+---
+
+## 20. International Call-Up AI, Dual-Nationality Switching & Naturalization (`years_to_gain_nationality`) Algorithm
+
+1. **Naturalization & Continuous Residency (`client_db.dat` Frame `#11` `offset +24`):**
+   - Every nation defines `years_to_gain_nationality` (e.g., `2` years in Argentina, `4` in Brazil, `5` in England/France/Türkiye/USA, `8` in Germany, `10` in Spain/Italy — with Spain granting a `2`-year Ibero-American fast-track override in `.dbc` rules).
+   - Once cumulative residency days are met, the player gains second nationality (`PersonBlock` `(8, 9)`), freeing a foreign-player registration slot (unless the nation forbids dual citizenship).
+2. **Dual-Nationality Allegiance Switching (`Nation Declared For At Youth Level` — `editor.fmf` ID `445427`):**
+   - Uncapped dual-nationals (or players with only youth caps `Other Nation Youth Caps` ID `493895` / non-competitive senior friendlies) evaluate senior call-ups by comparing:
+     $$	ext{AllegianceScore} = 	ext{NationReputation} - 	ext{PositionalDepthCompetition} + 	ext{ManagerPersuasionBonus}$$
+   - If the higher-reputation nation ignores a player past age `23–25` while the secondary nation offers immediate **`Star / Important Player`** international status, the player accepts the switch.
+3. **AI National Team Squad Selection (`international_manager.dat`):**
+   - Uses `TSF_CA`, `TSF_REPUTATION`, `TSF_FORM`, `TSF_INTERNATIONAL_CAPS (+15)`, and `TSF_OLYMPIC_U23 (+65)` from `weights.jsb`.
+
+---
+
+## 21. Opposition Instructions (`OI`), Match Plans & Data Hub Telemetry Algorithm
+
+1. **Opposition Instructions (`OI`) In-Match Modifiers:**
+   - **Trigger Press (`Always` / `Never`):** Locally overrides the team's global `Trigger Press` instruction whenever the targeted opponent receives the ball, shifting nearby defenders' `OOP` coordinates (`oop_pitch_proximity_scores.jsb`) toward the ball carrier.
+   - **Tackling (`Hard` / `Easy`):** Increases `Aggression / Bravery` commitment on 50-50 duels against that target (raising `Tackles Won` probability against low-`Bravery` targets, at the cost of higher `Fouls Committed` and card risk under high-`Odis` referees).
+   - **Show Onto Foot (`Left` / `Right` / `Weaker Foot`):** Angles the pressing defender's body orientation to funnel the ball carrier onto their weaker foot (triggering the `weaker_foot` negative feature penalty in the `xG` logistic regression models `Frames #090..#100`!).
+   - **Tight Marking (`Always` / `Never`):** Reduces the distance threshold at which the assigned zone defender switches from zonal space coverage (`OP*`) to man-to-man tracking.
+
+---
+
+## 22. Board Requests: New Stadium Construction, Capacity Expansion (`expansion_capacity`) & Facility Upgrades Algorithm
+
+In `editor.fmf` (`Frame #032: club.xml`) and `server_db.dat` (`Frame #22` Stadiums & `Frame #04` Clubs), board infrastructure requests are evaluated against hard binary gates:
+1. **Stadium Expansion vs. New Stadium Build (`server_db.dat` Frame `#22`):**
+   - **Expansion Gate:** Checked against `expansion_capacity` (`offset +10` in the `181`-byte stadium struct). If `current_capacity < expansion_capacity` and `AverageAttendance / Capacity >= 0.92` with a positive `SeasonTicketWaitingList` and sufficient bank balance, the board approves **Seat Expansion**.
+   - **New Stadium Gate (`20–25 Year Rule`):** If `current_capacity == expansion_capacity` (or the club does not own the stadium), the board checks `build_year` (`offset +49` in `server_db.dat` `Frame #22`) and the minimum `20–25` year cooldown since the last stadium build, plus `Current Youth Stadium` / `New Youth Stadium` (`club.xml` IDs `493840`, `493841`) before taking out a long-term infrastructure loan (`RemainingInterestPayable`).
+2. **Training & Youth Facility Upgrades (`Training / Youth Facilities 1..20`, `Cytv`, `Crcb`):**
+   - Approved when `Club Balance > UpgradeCostThreshold`, `DebugBoardConfidenceOverallScore` is healthy, and the manager's `DebugBoardConfidenceModifier` (or `Cyim` `Youth Importance 1..20` / `ClubCultureScore`) supports the request.
+   - Note on **Dynamic Technological Decay:** Training and Youth Facilities (`Cyfb`) slowly decay by `-1` point every few years (`Technological Advance` downgrade) to simulate aging infrastructure requiring periodic reinvestment.
