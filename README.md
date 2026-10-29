@@ -143,3 +143,9 @@ fm-toolkit diff "career_before.fm" "career_after.fm"
 fm-toolkit export "MyCareerSave.fm" --table players --out players.csv
 fm-toolkit export "MyCareerSave.fm" --table sqlite --out full_save.db
 ```
+---
+
+## License & Legal Disclaimer
+
+- **License:** Distributed under the **[MIT License](./LICENSE)**. The 28-table core database reader layer in [`fm26save/_core/`](./fm26save/_core) is adapted and extended from **[`rhiever/fmsave` v0.6.0](https://github.com/rhiever/fmsave)** (MIT License).
+- **Disclaimer:** This repository is an **unofficial open-source research, interoperability, and analytics toolkit** created for educational purposes. It is **not** affiliated with, endorsed by, or sponsored by **Sports Interactive** or **SEGA**. *Football Manager*, *Sports Interactive*, and *SEGA* are registered trademarks of their respective owners. No proprietary game binaries, assets, or save files are distributed in this repository.
