@@ -20,8 +20,15 @@
 4. **Official `.fmf` Engine Formulas & Empirical Save Estimators (`fm26save.formulas`):**
    - **Official Extracted `.fmf` / `.jsb` Models (`simatch.fmf`, `tables.fmf`, `training.fmf`):** 11 Shot-Type `xG` Logistic Regression models across 9 engine versions (`23.1.1.9`..`26.1.4.1`), Player Match Ratings (`start_value = 6.70`, 6 versions, 30 role coefficient profiles), Out-Of-Possession (`OP*`) `RolePosition` attribute bitmasks (`Frame #114`, `39` roles) & 2D Pitch Proximity grids (`Frame #115`, `118` entries), Match Momentum (`Frame #113`, `48` spatial rules), Quick Match Engine (`QME`) statistical distributions (`Frame #119`, `3,137` entries) & relevant attributes (`Frame #120`, `22` stat types), AI Team Selection Weights (`Frame #223`, `4` `TPS_*` profiles × `40` `TSF_*` factors), Height-to-Jumping/Aerial Reach tables (`tables.fmf`), and Training Item Effects (`training.fmf`).
    - **Heuristic & Empirical Save-Fitted Models:** Evaluates player suitability across **50 In-Possession roles (`93` Role × Duty variants)**, **39 Out-Of-Possession (`OP*`) roles**, **Dual-Role (`0.55 × IP + 0.45 × OOP`) combinations**, **10 Position Lines**, **6 Tactical Duties**, and **11 Tactical Archetypes**, plus empirical `CA`/`PA` positional weights and 80/20 train/test-validated log-linear OLS estimators for Transfer Value and Weekly Wage.
-5. **All 8 Game Installation File Reverse-Engineering Systems (`fm26save.game_files`):**
-   - Extracts Quick Match Engine (`QME`) statistical distributions (`3,137` entries) & stat-relevant attributes (`22` stat types), Match Momentum spatial rules (`48` entries), Out-Of-Possession Role Attribute Scoring (`39` bitmasks) & 2D Pitch Proximity grids (`118` Role entries × `24` zones = `2,832` intervals), all `11` Shot-Type `xG` Logistic Regression models (`9` versions up to `v26.4.1.1` / `v26.1.4.1`), `10` Tactical Style XML templates & `101` binary `.tac`/`.cat` presets, `106` internal `editor.fmf` XML schemas (`444` enum groups + entity schemas), Pre-Game Master Databases (`client_db.dat` `32` frames, `lang_update_db.dat` `401` frames = `25` languages × `16` tables + `1` directory, `server_db.dat` `78` frames — `96,343` Clubs, `58,349` Cities with exact Lat/Lon/Altitude(ft)/Attraction and 100% verified `city_id`/`uid` cross-reference at byte offset `+32`, `51,118` Stadiums, `7,973` Competitions, `3,884` Awards, `2,527` Regions, `1,683` Derbies, `251` Nations, `136` Injuries) & `16` `.edt` rule files, `3,934` Press Conference questions (`media.fmf`) & `300` Training Schedules (`training.fmf`), and `1,593,548` IL2CPP native symbols (`il2cpp.usym` & `global-metadata.dat`).
+5. **All 11 Game Installation File Reverse-Engineering Systems (`fm26save.game_files`):**
+   - **Systems 1–4 (`simatch.fmf`):** Quick Match Engine (`QME`) statistical distributions (`3,137` entries) & stat-relevant attributes (`22` stat types), Match Momentum spatial rules (`48` entries), Out-Of-Possession Role Attribute Scoring (`39` bitmasks) & 2D Pitch Proximity grids (`118` Role entries × `24` zones = `2,832` intervals), all `11` Shot-Type `xG` Logistic Regression models (`9` versions up to `v26.1.4.1`), Frame `#116` Tactical Pitch Positioning Table (`9,154` × `358`-byte formation blocks), `10` Tactical Style XML templates, `90` `.cat` dual-formation presets & `11` `.rts` style instruction vectors (`Frames #121..#222`), and AI Team Selection Weights (`Frame #223`).
+   - **System 5 (`editor.fmf`):** All `105` internal XML schema files (`#000..#104`), `444` Master Enum Groups (`#082`), and `2,405` FourCC entity properties.
+   - **System 6 (`client_db.dat`, `lang_update_db.dat`, `server_db.dat`, `.edt`):** `100%` record-aligned joins across `client_db.dat` (`31` tables), `lang_update_db.dat` (`25` languages × `16` tables), and `server_db.dat` (`77` tables) — decoding **`96,343` Clubs** (reputation, facilities `1..20`, kits, year founded), **`58,349` Cities** (exact Lat/Lon, Altitude in feet, Attraction `1..20`, `100%` verified `city_id`/`uid` at `+32`), **`51,118` Stadiums** (capacity, seating, expansion, pitch dimensions in decimeters, build year, Lat/Lon, owner club), **`7,973` Competitions**, **`3,884` Awards**, **`2,527` Local Regions**, **`1,683` Derbies**, **`251` Nations** (reputation, FIFA points, development state, economic factor, EU status), **`136` Injuries** (min/extra days, sharpness drop %, occurrence ratio, severity tier, contagious flag), **`7` Continents**, **`988,091` Person Name Pool records** (`294,103` First + `599,900` Last + `94,088` Common names), and `16` permanent `.edt` rule files.
+   - **System 7 (`media.fmf`, `training.fmf`, `simatchshared.fmf`):** `3,934` Press Conference questions (`media.fmf`), `300` Weekly Training Schedules (`training.fmf`), `74` RGB kit/hair/skin palette & crowd config frames (`simatchshared.fmf` `#000..#073`), and `135` Newgen appearance demographic rules (`#074`).
+   - **System 8 (`il2cpp.usym`, `global-metadata.dat`):** `1,593,548` native symbol mappings and extracted C# engine symbols.
+   - **System 9 (`basic_people_db.dat`, `people_db.dat`, `pl_hist_index/id/dt.dat`):** `100%` deterministic walk of all **`723,010` pre-game people** (`532,742` Players, `174,504` Staff, `9,872` Officials, `4,410` Player/Staff, `1,482` Agents), negative `PA` wonderkid distributions (`6` `PA = -10` and `22` `PA = -95` wonderkids with resolved names, clubs, nations, height/weight, and **8 hidden personality attributes** from `people_db.dat`), and the **3-file singly-linked list career history** (`522,004` indexed players and `4,344,855` × `44`-byte season rows in `pl_hist_dt.dat`).
+   - **System 10 (`sicomps/comps.dbc`, `2620/dbc/*.dbc`, `2620/lnc/all/*.lnc`):** `1,442` `\x03\x01cbd.` binary TLV competition rule sets (`74.46 MB` decompressed), database `.dbc` patches, and `41` `.lnc` licensing/name-override files (`1,500+` directives).
+   - **System 11 (`filters.fmf`, `achievements.fmf`, `leaderboards.fmf`, `settings.fmf`, `store.fmf`, `profanity_filter.fmf`, `languages.fmf`):** `445` scouting/search filters, `50` achievement rules, `28` leaderboards, `10` preference schemas, `3` store configs, `3` profanity filter tables, and `205.61 MB` master localization archive.
 6. **Byte-Level Save Differ (`fm26save.diff`) & Multi-Format Exporters (`fm26save.exporter`):**
    - Diff any two `.fm` saves across all 81 compressed sections (`diff_saves()`) and export any table or full save to **CSV (UTF-8-BOM)**, **JSON**, **JSONL**, or **SQLite (`.db`)**.
 
@@ -95,7 +102,7 @@ with open_save(save_path) as sv:
     # 7. Export Full Save to SQLite (.db), CSV, JSON, or JSONL
     sv.export_sqlite("career_export.db")
 
-# 8. Extract Official Game Installation Files (All 8 Systems)
+# 8. Extract Official Game Installation Files (All 11 Systems)
 summary = extract_all_game_files_summary()
 master_db = extract_master_db_tables(sample_limit=10)
 ```
@@ -116,10 +123,12 @@ fm-toolkit enriched "MyCareerSave.fm" --kind relations --club-uid 1879
 fm-toolkit roles "MyCareerSave.fm" --player "Onuralp" --top 5
 fm-toolkit roles --catalog
 
-# 4. Extract any of the 8 Game Installation File Systems
-#    (all | qme | momentum | oop_grid | xg | styles | schemas | master_db | edt | media | training | il2cpp)
+# 4. Extract any of the 11 Game Installation File Systems
+#    (all | qme | momentum | oop_grid | xg | styles | schemas | master_db | edt | media | training | il2cpp | people_db | dbc_lnc | aux_fmfs)
 fm-toolkit game-files --system all
 fm-toolkit game-files --system master_db
+fm-toolkit game-files --system people_db
+fm-toolkit game-files --system dbc_lnc
 
 # 5. Parse extra .dat/.cmt sections (hall_of_fame | takeovers | shortlists | offers | agents | news)
 fm-toolkit extra "MyCareerSave.fm" --section takeovers

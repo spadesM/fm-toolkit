@@ -63,7 +63,7 @@ def main(argv: list[str] | None = None) -> int:
     p_rol.add_argument("--top", type=int, default=5, help="Top N roles per breakdown group")
 
     # 7. game-files
-    p_gf = sub.add_parser("game-files", help="Reverse-engineer and extract all 8 FM26 Game Installation File Systems")
+    p_gf = sub.add_parser("game-files", help="Reverse-engineer and extract all 11 FM26 Game Installation File Systems")
     p_gf.add_argument(
         "--system",
         choices=[
@@ -79,6 +79,9 @@ def main(argv: list[str] | None = None) -> int:
             "media",
             "training",
             "il2cpp",
+            "people_db",
+            "dbc_lnc",
+            "aux_fmfs",
         ],
         default="all",
         help="Which game-file system to extract",
@@ -191,6 +194,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "game-files":
         from fm26save.game_files import (
             extract_all_game_files_summary,
+            extract_dbc_and_lnc_rules,
             extract_editor_schemas_and_enums,
             extract_il2cpp_symbols_and_metadata,
             extract_master_db_tables,
@@ -198,7 +202,9 @@ def main(argv: list[str] | None = None) -> int:
             extract_momentum_weightings,
             extract_oop_pitch_proximity_grid,
             extract_permanent_edt_rules,
+            extract_pregame_people_and_history_db,
             extract_qme_distributions,
+            extract_simulation_aux_fmf_archives,
             extract_tactical_styles_and_presets,
             extract_training_and_newgen_configs,
             extract_xg_shot_models,
@@ -217,6 +223,9 @@ def main(argv: list[str] | None = None) -> int:
             "media": lambda d: extract_media_interaction_trees(d, max_frames=60),
             "training": extract_training_and_newgen_configs,
             "il2cpp": extract_il2cpp_symbols_and_metadata,
+            "people_db": extract_pregame_people_and_history_db,
+            "dbc_lnc": extract_dbc_and_lnc_rules,
+            "aux_fmfs": extract_simulation_aux_fmf_archives,
         }
         print(json.dumps(dispatch[args.system](args.fm_dir), ensure_ascii=False, indent=2))
         return 0

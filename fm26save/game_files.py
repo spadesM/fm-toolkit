@@ -1,14 +1,17 @@
-"""FM26 Game Installation File Reverse-Engineering Extractors (All 8 Systems).
+"""FM26 Game Installation File Reverse-Engineering Extractors (All 11 Systems).
 
-Extracts and decodes official Football Manager 26 installation archives (.fmf, .dat, .jsb, .edt, .usym):
+Extracts and decodes official Football Manager 26 installation archives (.fmf, .dat, .jsb, .dbc, .lnc, .edt, .usym):
 1. Quick Match Engine (QME) Statistical Distributions (`simatch.fmf` Frames #119, #120 — 3,137 Normal/Binned distributions & 22 stat-relevant attribute sets) & Player Match Ratings (`Frame #118` — 6 versions, start_value = 6.70)
 2. Match Momentum Spatial Engine (`simatch.fmf` Frame #113 — 48 event × zone momentum rules)
 3. Out-Of-Possession (OP*) Attribute Scoring (`Frame #114` — 39 RolePosition bitmasks) & 2D Pitch Proximity Tactical Grid (`Frame #115` — 118 Role entries × 24 spatial zones)
-4. 11 Shot-Type xG Logistic Regression Models (`simatch.fmf` Frames #002..#100 across 9 versions `23.1.1.9`..`26.1.4.1`), 101 Dual-Formation Tactical Presets (`Frames #121..#222`), & AI Team Selection Weights (`Frame #223` — 4 profiles × 40 `TSF_*` factors)
-5. 106 Internal Database XML Schemas & Master FourCC Enums (`shared/data/editor.fmf` — 444 enum groups + entity schemas)
-6. Pre-Game Master Databases (`client_db.dat` 32 frames, `lang_update_db.dat` 401 frames = 25 languages × 16 tables + 1 directory, `server_db.dat` 78 frames — 58,349 Cities with Lat/Lon/Altitude(ft)/Attraction, 96,343 Clubs, 51,118 Stadiums, 7,973 Competitions, 3,884 Awards, 2,527 Regions, 1,683 Derbies, 251 Nations, 136 Injuries) & `.edt` Permanent Rule Files
-7. Press Conference, Backroom Advice, Training Schedules & Newgen Demographics (`media.fmf` 650 XMLs, `training.fmf` 300 schedules, `simatchshared.fmf` 135 newgen appearance rules)
+4. 11 Shot-Type xG Logistic Regression Models (`simatch.fmf` Frames #002..#100 across 9 versions `23.1.1.9`..`26.1.4.1`), Frame #116 Tactical Pitch Positioning Table (`9,154` blocks), 101 Dual-Formation `.cat`/`.rts` Presets (`Frames #121..#222`), & AI Team Selection Weights (`Frame #223` — 4 profiles × 40 `TSF_*` factors)
+5. 105 Internal Database XML Schemas & Master FourCC Enums (`shared/data/editor.fmf` — 444 enum groups + entity schemas)
+6. Pre-Game Master Databases (`client_db.dat` 32 frames, `lang_update_db.dat` 401 frames = 25 languages × 16 tables + 1 directory, `server_db.dat` 78 frames — 58,349 Cities, 96,343 Clubs, 51,118 Stadiums, 7,973 Competitions, 3,884 Awards, 2,527 Regions, 1,683 Derbies, 251 Nations, 136 Injuries, 7 Continents, 988,091 Person Name Pool records) & `.edt` Permanent Rule Files
+7. Press Conference, Backroom Advice, Training Schedules, Palettes & Newgen Demographics (`media.fmf` 650 XMLs, `training.fmf` 300 schedules, `simatchshared.fmf` 74 RGB palette/crowd frames + 135 newgen appearance rules)
 8. IL2CPP Metadata & Native Symbol Table (`il2cpp.usym` 1,593,548 symbols & `global-metadata.dat` C# engine symbols)
+9. Pre-Game Master People & Career History Databases (`basic_people_db.dat` 723,010 people walked 100%, `people_db.dat` attributes/personalities, `pl_hist_index/id/dt.dat` 4,344,855 × 44B singly-linked list career rows)
+10. Compiled `.dbc` Competition Rule Archives (`sicomps/comps.dbc` 1,442 `03 01 cbd.` rule sets + `2620/dbc/*.dbc`) & `.lnc` Licensing / Name Overrides (`2620/lnc/all/*.lnc`)
+11. Auxiliary Simulation `.fmf` Archives (`filters.fmf` 445 filters, `achievements.fmf` 50 achievements, `leaderboards.fmf` 28 leaderboards, `settings.fmf`, `store.fmf`, `profanity_filter.fmf`, `languages.fmf`)
 """
 
 from __future__ import annotations
@@ -19,6 +22,8 @@ import struct
 from collections import Counter
 from pathlib import Path
 from typing import Any
+
+import zstandard
 
 from fm26save.formulas import DEFAULT_FM26_INSTALL_DIR, extract_fmf_frames, parse_jsb
 
@@ -333,8 +338,23 @@ def extract_tactical_styles_and_presets(
             }
         )
 
-    # Summarize binary tactical preset frames (#121..#222 excluding #192)
+    # Frame #116 is the 3.28 MB binary tactical pitch positioning lookup table
+    pitch_pos_table_116: dict[str, Any] = {}
+    if len(frames) > 116:
+        r116 = frames[116][1]
+        pitch_pos_table_116 = {
+            "frame_index": 116,
+            "size_bytes": len(r116),
+            "header_hex": r116[:40].hex(" "),
+            "header_u32s": list(struct.unpack_from("<10I", r116, 0)) if len(r116) >= 40 else [],
+        }
+
+    # Decode binary tactical preset frames (#121..#222 excluding #192):
+    # - 90 '.cat' (\x03\x01cat.) dual-formation IP x OOP combination templates
+    # - 11 '.rts' (\x03\x01rts.) tactical style team-instruction vectors
     tactical_frames_summary: list[dict[str, Any]] = []
+    cat_presets: list[dict[str, Any]] = []
+    rts_style_vectors: list[dict[str, Any]] = []
     for fidx in range(121, min(223, len(frames) - 1)):
         if fidx == 192:
             continue
@@ -342,23 +362,46 @@ def extract_tactical_styles_and_presets(
         magic = raw[:8].hex(" ")
         ascii_strings = [
             s.decode("utf-8", errors="ignore")
-            for s in re.findall(rb"[a-zA-Z0-9_\- ]{4,40}", raw[:512])
+            for s in re.findall(rb"[a-zA-Z0-9_\- ]{4,48}", raw[:512])
         ]
-        tactical_frames_summary.append(
-            {
-                "frame_index": fidx,
-                "size_bytes": len(raw),
-                "header_hex": magic,
-                "header_strings": ascii_strings[:5],
-            }
-        )
+        entry: dict[str, Any] = {
+            "frame_index": fidx,
+            "size_bytes": len(raw),
+            "header_hex": magic,
+            "header_strings": ascii_strings[:5],
+        }
+        if raw[:6] == b"\x03\x01cat." and len(raw) >= 24:
+            slen = struct.unpack_from("<I", raw, 16)[0]
+            if 0 < slen < 120 and 20 + slen <= len(raw):
+                preset_name = raw[20 : 20 + slen].decode("utf-8", errors="replace").strip()
+                parts = [p.strip() for p in preset_name.split(" - ")]
+                entry["format"] = "cat"
+                entry["preset_name"] = preset_name
+                entry["in_possession_label"] = parts[0] if parts else preset_name
+                entry["out_of_possession_formation"] = parts[1] if len(parts) > 1 else ""
+                cat_presets.append(entry)
+        elif raw[:6] == b"\x03\x01rts." and len(raw) >= 40:
+            tail_str = ascii_strings[-1] if ascii_strings else ""
+            fourcc_rev = tail_str[-4:][::-1] if len(tail_str) >= 4 else ""
+            style_label = tail_str[:-4] if len(tail_str) > 4 else tail_str
+            entry["format"] = "rts"
+            entry["style_label"] = style_label
+            entry["style_fourcc"] = fourcc_rev
+            entry["instruction_vector_bytes"] = list(raw[14:38])
+            rts_style_vectors.append(entry)
+        tactical_frames_summary.append(entry)
 
     return {
         "available": True,
-        "source": "shared/data/simatch.fmf (Frames #121..#222)",
+        "source": "shared/data/simatch.fmf (Frame #116 + Frames #121..#222)",
+        "pitch_positioning_table_116": pitch_pos_table_116,
         "tactical_styles_xml_count": len(style_blocks),
         "tactical_styles": style_blocks,
         "binary_tactical_presets_count": len(tactical_frames_summary),
+        "cat_formation_combinations_count": len(cat_presets),
+        "cat_formation_combinations": cat_presets,
+        "rts_style_instruction_vectors_count": len(rts_style_vectors),
+        "rts_style_instruction_vectors": rts_style_vectors,
         "directory_filenames": preset_filenames,
         "binary_tactical_presets_sample": tactical_frames_summary[:25],
     }
@@ -460,11 +503,29 @@ def extract_editor_schemas_and_enums(
             "fields": fields,
         }
 
+    # Also catalog all 105 XML frames (#000..#104) in editor.fmf
+    all_xml_frames_summary: list[dict[str, Any]] = []
+    xml_filenames = [s for s in dir_strings if s.endswith(".xml")]
+    for fidx in range(len(frames) - 1):
+        xml_txt = frames[fidx][1].decode("utf-8", errors="replace")
+        tbl_m = re.search(r'<record id="([a-zA-Z0-9_]{4})">\s*<list id="fields">', xml_txt)
+        f_count = len(set(re.findall(r'<flags id="field"\s+value="([^"]+)"\s*/>', xml_txt)))
+        all_xml_frames_summary.append(
+            {
+                "frame_index": fidx,
+                "filename": xml_filenames[fidx] if fidx < len(xml_filenames) else f"frame_{fidx}.xml",
+                "size_bytes": len(frames[fidx][1]),
+                "table_fourcc": tbl_m.group(1) if tbl_m else None,
+                "unique_fields_count": f_count,
+            }
+        )
+
     return {
         "available": True,
         "source": "shared/data/editor.fmf (106 XML frames)",
         "total_xml_frames": len(frames) - 1,
-        "directory_files": [s for s in dir_strings if s.endswith(".xml")],
+        "directory_files": xml_filenames,
+        "all_xml_frames_summary": all_xml_frames_summary,
         "enum_groups_count": len(enum_groups),
         "enum_groups": enum_groups,
         "entity_schemas": entity_schemas,
@@ -472,9 +533,54 @@ def extract_editor_schemas_and_enums(
 
 
 # ==============================================================================
-# 6. PRE-GAME MASTER DATABASES (client_db.dat, lang_update_db.dat) & .EDT RULES
+# 6. PRE-GAME MASTER DATABASES (client_db.dat, lang_update_db.dat, server_db.dat)
 # ==============================================================================
-def _parse_lang_nations(raw: bytes) -> list[dict[str, Any]]:
+def _parse_lang_continents(raw: bytes, client_continents_raw: bytes | None = None) -> list[dict[str, Any]]:
+    cnt = struct.unpack_from("<I", raw, 8)[0]
+    pos = 12
+    out: list[dict[str, Any]] = []
+    for idx in range(cnt):
+        uid, l1 = struct.unpack_from("<II", raw, pos)
+        pos += 8
+        name = raw[pos : pos + l1].decode("utf-8", errors="replace")
+        pos += l1 + 1
+        l2 = struct.unpack_from("<I", raw, pos)[0]
+        pos += 4
+        code = raw[pos : pos + l2].decode("utf-8", errors="replace")
+        pos += l2
+        l3 = struct.unpack_from("<I", raw, pos)[0]
+        pos += 4
+        demonym = raw[pos : pos + l3].decode("utf-8", errors="replace")
+        pos += l3
+        l4 = struct.unpack_from("<I", raw, pos)[0]
+        pos += 4
+        federation_name = raw[pos : pos + l4].decode("utf-8", errors="replace")
+        pos += l4 + 1
+        l5 = struct.unpack_from("<I", raw, pos)[0]
+        pos += 4
+        federation_short = raw[pos : pos + l5].decode("utf-8", errors="replace")
+        pos += l5 + 2
+        out.append(
+            {
+                "continent_id": idx,
+                "uid": uid,
+                "name": name,
+                "code": code,
+                "demonym": demonym,
+                "federation_name": federation_name,
+                "federation_short_name": federation_short,
+            }
+        )
+    return out
+
+
+def _parse_lang_nations(
+    raw: bytes,
+    client_nations_raw: bytes | None = None,
+    *,
+    continent_map: dict[int, str] | None = None,
+    city_map: dict[int, str] | None = None,
+) -> list[dict[str, Any]]:
     cnt = struct.unpack_from("<I", raw, 8)[0]
     pos = 12
     out: list[dict[str, Any]] = []
@@ -505,13 +611,50 @@ def _parse_lang_nations(raw: bytes) -> list[dict[str, Any]]:
                 "nationality": nationality,
             }
         )
+
+    if client_nations_raw is not None:
+        c_pos = 12
+        dev_labels = {1: "Developed", 2: "Developing", 3: "Third World"}
+        imp_labels = {1: "Very Important", 2: "Important", 3: "Less Important", 4: "Unimportant"}
+        for idx, entry in enumerate(out):
+            tail = struct.pack("<III", idx, entry["uid"], entry["uid"])
+            tpos = client_nations_raw.find(tail, c_pos)
+            if tpos >= c_pos and (tpos + 12 - c_pos) >= 35:
+                rec = client_nations_raw[c_pos : tpos + 12]
+                cont_id, reg_id, cap_city_id, curr_id = struct.unpack_from("<iiii", rec, 2)
+                dev_state, econ_factor = struct.unpack_from("<BB", rec, 18)
+                nat_years, game_imp = struct.unpack_from("<BB", rec, 24)
+                db_idx, db_uid = struct.unpack_from("<II", rec, len(rec) - 12)
+                entry.update(
+                    {
+                        "continent_id": cont_id,
+                        "continent_name": (continent_map or {}).get(cont_id),
+                        "region_id": reg_id,
+                        "capital_city_id": cap_city_id if cap_city_id >= 0 else None,
+                        "capital_city_name": (city_map or {}).get(cap_city_id) if cap_city_id >= 0 else None,
+                        "currency_id": curr_id if curr_id >= 0 else None,
+                        "state_of_development_code": dev_state,
+                        "state_of_development": dev_labels.get(dev_state, f"Code {dev_state}"),
+                        "economic_factor_1_20": econ_factor,
+                        "years_to_gain_nationality": nat_years,
+                        "game_importance_code": game_imp,
+                        "game_importance": imp_labels.get(game_imp, f"Code {game_imp}"),
+                        "db_nation_id": db_idx,
+                        "db_uid": db_uid,
+                    }
+                )
+                c_pos = tpos + 12
     return out
 
 
-def _parse_lang_competitions(raw: bytes) -> list[dict[str, Any]]:
+def _parse_lang_competitions(
+    raw: bytes,
+    client_comps_26_raw: bytes | None = None,
+) -> list[dict[str, Any]]:
     cnt = struct.unpack_from("<I", raw, 8)[0]
     pos = 12
     out: list[dict[str, Any]] = []
+    has_c26 = client_comps_26_raw is not None and len(client_comps_26_raw) >= 12 + cnt * 123
     for idx in range(cnt):
         uid, l1 = struct.unpack_from("<II", raw, pos)
         pos += 8
@@ -525,15 +668,49 @@ def _parse_lang_competitions(raw: bytes) -> list[dict[str, Any]]:
         pos += 4
         code = raw[pos : pos + l3].decode("utf-8", errors="replace")
         pos += l3 + 1
-        out.append({"index": idx, "uid": uid, "name": name, "short_name": short_name, "code": code})
+        entry: dict[str, Any] = {
+            "index": idx,
+            "uid": uid,
+            "name": name,
+            "short_name": short_name,
+            "code": code,
+        }
+        if has_c26 and client_comps_26_raw is not None:
+            coff = 12 + idx * 123
+            rec = client_comps_26_raw[coff : coff + 123]
+            div_level = rec[17]
+            comp_type = rec[20]
+            cont_id, nat_uid = struct.unpack_from("<ii", rec, 54)
+            nat_id = struct.unpack_from("<h", rec, 66)[0]
+            db_cid, db_uid = struct.unpack_from("<II", rec, 111)
+            entry.update(
+                {
+                    "division_level": div_level,
+                    "comp_type_code": comp_type,
+                    "continent_id": cont_id if cont_id >= 0 else None,
+                    "nation_uid": nat_uid if nat_uid > 0 else None,
+                    "nation_id": nat_id if nat_id >= 0 else None,
+                    "db_comp_id": db_cid,
+                    "db_uid": db_uid,
+                }
+            )
+        out.append(entry)
     return out
 
 
-def _parse_lang_clubs(raw: bytes, *, limit: int | None = None) -> list[dict[str, Any]]:
+def _parse_lang_clubs(
+    raw: bytes,
+    client_clubs_raw: bytes | None = None,
+    *,
+    limit: int | None = None,
+    nation_map: dict[int, str] | None = None,
+    city_map: dict[int, str] | None = None,
+) -> list[dict[str, Any]]:
     cnt = struct.unpack_from("<I", raw, 8)[0]
     pos = 12
     out: list[dict[str, Any]] = []
     target = cnt if limit is None else min(cnt, limit)
+    c_pos = 12
     for idx in range(target):
         uid, l1 = struct.unpack_from("<II", raw, pos)
         pos += 8
@@ -559,18 +736,42 @@ def _parse_lang_clubs(raw: bytes, *, limit: int | None = None) -> list[dict[str,
         pos += 4
         nickname = raw[pos : pos + l6].decode("utf-8", errors="replace")
         pos += l6 + 4
-        out.append(
-            {
-                "index": idx,
-                "uid": uid,
-                "name": name,
-                "short_name": short_name,
-                "six_letter_name": six_letter,
-                "three_letter_name": three_letter,
-                "alt_short_name": alt_short,
-                "nickname": nickname,
-            }
-        )
+        entry: dict[str, Any] = {
+            "index": idx,
+            "uid": uid,
+            "name": name,
+            "short_name": short_name,
+            "six_letter_name": six_letter,
+            "three_letter_name": three_letter,
+            "alt_short_name": alt_short,
+            "nickname": nickname,
+        }
+        if client_clubs_raw is not None:
+            tail = struct.pack("<III", idx, uid, uid)
+            tpos = client_clubs_raw.find(tail, c_pos)
+            if tpos >= c_pos and (tpos + 12 - c_pos) >= 32:
+                rec = client_clubs_raw[c_pos : tpos + 12]
+                off = 1 if rec[0] == 0 and len(rec) > 36 and rec[1] == 0 and rec[5] != 0xFF else 1
+                # Handle Club #0 which has an extra leading 0x00 byte at offset 12
+                if idx == 0 and rec[0] == 0 and rec[1] == 0:
+                    off = 2
+                nat_id, based_nat_id, cont_nat_id, reg_nat_id, city_id = struct.unpack_from("<iiiii", rec, off)
+                is_female = bool(rec[-13] == 1)
+                db_cid, db_uid = struct.unpack_from("<II", rec, len(rec) - 12)
+                entry.update(
+                    {
+                        "nation_id": nat_id if nat_id >= 0 else None,
+                        "nation_name": (nation_map or {}).get(nat_id) if nat_id >= 0 else None,
+                        "based_nation_id": based_nat_id if based_nat_id >= 0 else nat_id,
+                        "city_id": city_id if city_id >= 0 else None,
+                        "city_name": (city_map or {}).get(city_id) if city_id >= 0 else None,
+                        "is_womens_club": is_female,
+                        "db_club_id": db_cid,
+                        "db_uid": db_uid,
+                    }
+                )
+                c_pos = tpos + 12
+        out.append(entry)
     return out
 
 
@@ -625,10 +826,15 @@ def _parse_lang_cities_and_coords(
     return out
 
 
-def _parse_lang_injuries(raw: bytes) -> list[dict[str, Any]]:
+def _parse_lang_injuries(
+    raw: bytes,
+    client_inj_raw: bytes | None = None,
+    server_inj_raw: bytes | None = None,
+) -> list[dict[str, Any]]:
     cnt = struct.unpack_from("<I", raw, 8)[0]
     pos = 12
     out: list[dict[str, Any]] = []
+    has_server = server_inj_raw is not None and len(server_inj_raw) >= 13 + cnt * 48
     for idx in range(cnt):
         uid, l1 = struct.unpack_from("<II", raw, pos)
         pos += 8
@@ -638,15 +844,59 @@ def _parse_lang_injuries(raw: bytes) -> list[dict[str, Any]]:
         pos += 4
         sentence = raw[pos : pos + l2].decode("utf-8", errors="replace")
         pos += l2 + 2
-        out.append({"index": idx, "uid": uid, "name": name, "sentence_name": sentence})
+        entry: dict[str, Any] = {
+            "index": idx,
+            "uid": uid,
+            "name": name,
+            "sentence_name": sentence,
+        }
+        if has_server and server_inj_raw is not None:
+            soff = 13 + idx * 48
+            srec = server_inj_raw[soff : soff + 48]
+            cat_code, body_part, is_phys = struct.unpack_from("<BBB", srec, 1)
+            min_d, extra_d, inact_min, inact_extra, fit_drop = struct.unpack_from("<HHHHH", srec, 4)
+            treat_code, is_rec, is_contag = struct.unpack_from("<BBB", srec, 14)
+            occ_ratio, base_occ = struct.unpack_from("<ff", srec, 18)
+            sev_tier = srec[30]
+            cause_code = srec[32]
+            db_iid, db_uid = struct.unpack_from("<II", srec, 36)
+            entry.update(
+                {
+                    "category_code": cat_code,
+                    "body_part_code": body_part,
+                    "is_physical_injury": bool(is_phys),
+                    "min_days": min_d,
+                    "extra_days": extra_d,
+                    "max_days_estimate": min_d + extra_d,
+                    "inactive_min_days": inact_min,
+                    "inactive_extra_days": inact_extra,
+                    "match_fitness_drop_pct": fit_drop,
+                    "treatment_code": treat_code,
+                    "is_recurring": bool(is_rec),
+                    "is_contagious_or_special": bool(is_contag),
+                    "occurrence_ratio": round(occ_ratio, 6),
+                    "base_occurrence_weight": round(base_occ, 6),
+                    "severity_tier": sev_tier,
+                    "cause_code": cause_code,
+                    "db_injury_id": db_iid,
+                    "db_uid": db_uid,
+                }
+            )
+        out.append(entry)
     return out
 
 
-def _parse_lang_awards(raw: bytes, *, limit: int | None = None) -> list[dict[str, Any]]:
+def _parse_lang_awards(
+    raw: bytes,
+    client_awards_raw: bytes | None = None,
+    *,
+    limit: int | None = None,
+) -> list[dict[str, Any]]:
     cnt = struct.unpack_from("<I", raw, 8)[0]
     pos = 12
     out: list[dict[str, Any]] = []
     target = cnt if limit is None else min(cnt, limit)
+    has_client = client_awards_raw is not None and len(client_awards_raw) >= 12 + cnt * 77
     for idx in range(target):
         uid, l1 = struct.unpack_from("<II", raw, pos)
         pos += 8
@@ -656,15 +906,31 @@ def _parse_lang_awards(raw: bytes, *, limit: int | None = None) -> list[dict[str
         pos += 4
         short_name = raw[pos : pos + l2].decode("utf-8", errors="replace")
         pos += l2 + 2
-        out.append({"index": idx, "uid": uid, "name": name, "short_name": short_name})
+        entry: dict[str, Any] = {"index": idx, "uid": uid, "name": name, "short_name": short_name}
+        if has_client and client_awards_raw is not None:
+            coff = 12 + idx * 77
+            crec = client_awards_raw[coff : coff + 77]
+            db_aid, db_uid = struct.unpack_from("<II", crec, 66)
+            entry["db_award_id"] = db_aid
+            entry["db_uid"] = db_uid
+        out.append(entry)
     return out
 
 
-def _parse_lang_stadiums(raw: bytes, *, limit: int | None = None) -> list[dict[str, Any]]:
+def _parse_lang_stadiums(
+    raw: bytes,
+    client_stad_raw: bytes | None = None,
+    server_stad_raw: bytes | None = None,
+    *,
+    limit: int | None = None,
+    city_map: dict[int, str] | None = None,
+) -> list[dict[str, Any]]:
     cnt = struct.unpack_from("<I", raw, 8)[0]
     pos = 12
     out: list[dict[str, Any]] = []
     target = cnt if limit is None else min(cnt, limit)
+    has_client = client_stad_raw is not None and len(client_stad_raw) >= 12 + cnt * 38
+    has_server = server_stad_raw is not None and len(server_stad_raw) >= 12 + cnt * 181
     for idx in range(target):
         uid, l1 = struct.unpack_from("<II", raw, pos)
         pos += 8
@@ -674,8 +940,69 @@ def _parse_lang_stadiums(raw: bytes, *, limit: int | None = None) -> list[dict[s
         pos += 4
         alt_name = raw[pos : pos + l2].decode("utf-8", errors="replace")
         pos += l2 + 3
-        out.append({"index": idx, "uid": uid, "name": name, "alt_name": alt_name})
+        entry: dict[str, Any] = {"index": idx, "uid": uid, "name": name, "alt_name": alt_name}
+        if has_client and client_stad_raw is not None:
+            coff = 12 + idx * 38
+            crec = client_stad_raw[coff : coff + 38]
+            city_id, owner_club_id = struct.unpack_from("<ii", crec, 5)
+            lat, lon = struct.unpack_from("<ff", crec, 19)
+            db_sid, db_uid = struct.unpack_from("<II", crec, 27)
+            entry.update(
+                {
+                    "city_id": city_id if city_id >= 0 else None,
+                    "city_name": (city_map or {}).get(city_id) if city_id >= 0 else None,
+                    "owner_club_id": owner_club_id if owner_club_id >= 0 else None,
+                    "latitude": round(lat, 5),
+                    "longitude": round(lon, 5),
+                    "db_stadium_id": db_sid,
+                    "db_uid": db_uid,
+                }
+            )
+        if has_server and server_stad_raw is not None:
+            soff = 12 + idx * 181
+            srec = server_stad_raw[soff : soff + 181]
+            cap, seat_cap, exp_cap, used_cap = struct.unpack_from("<IIII", srec, 2)
+            all_seat_cap = struct.unpack_from("<I", srec, 23)[0]
+            pitch_l_dm, pitch_w_dm = struct.unpack_from("<HH", srec, 27)
+            build_yr = struct.unpack_from("<H", srec, 49)[0]
+            min_l_dm, min_w_dm, max_l_dm, max_w_dm = struct.unpack_from("<HHHH", srec, 56)
+            entry.update(
+                {
+                    "capacity": cap,
+                    "seating_capacity": seat_cap,
+                    "expansion_capacity": exp_cap,
+                    "used_capacity": used_cap,
+                    "all_seater_capacity": all_seat_cap,
+                    "pitch_length_m": round(pitch_l_dm / 10.0, 1),
+                    "pitch_width_m": round(pitch_w_dm / 10.0, 1),
+                    "build_year": build_yr if 1800 <= build_yr <= 2035 else None,
+                    "min_pitch_length_m": round(min_l_dm / 10.0, 1),
+                    "min_pitch_width_m": round(min_w_dm / 10.0, 1),
+                    "max_pitch_length_m": round(max_l_dm / 10.0, 1),
+                    "max_pitch_width_m": round(max_w_dm / 10.0, 1),
+                }
+            )
+        out.append(entry)
     return out
+
+
+def _parse_person_name_pool_table(raw: bytes, *, limit: int | None = 50) -> dict[str, Any]:
+    """Decode `client_db.dat` person name pool tables (`#17` First Names, `#18` Last Names, `#19` Common Names)."""
+    cnt = struct.unpack_from("<I", raw, 8)[0]
+    pos = 12
+    sample: list[dict[str, Any]] = []
+    target = cnt if limit is None else min(cnt, limit)
+    for idx in range(target):
+        nid, slen = struct.unpack_from("<II", raw, pos)
+        pos += 8
+        name = raw[pos : pos + slen].decode("utf-8", errors="replace")
+        pos += slen
+        sample.append({"name_id": nid, "name": name})
+    return {
+        "total_count": cnt,
+        "decompressed_bytes": len(raw),
+        "sample": sample,
+    }
 
 
 def _parse_lang_stage_names(raw: bytes) -> list[dict[str, Any]]:
@@ -841,25 +1168,82 @@ def extract_master_db_tables(
             }
         )
 
-    nations = _parse_lang_nations(l_frames[0][1])
-    competitions = _parse_lang_competitions(l_frames[1][1])
-    clubs = _parse_lang_clubs(l_frames[2][1], limit=sample_limit)
-    cities = _parse_lang_cities_and_coords(l_frames[3][1], c_frames[2][1], limit=sample_limit)
-    injuries = _parse_lang_injuries(l_frames[5][1])
-    awards = _parse_lang_awards(l_frames[6][1], limit=sample_limit)
-    stadiums = _parse_lang_stadiums(l_frames[7][1], limit=sample_limit)
+    s_dir = [s for s in _extract_fmf_directory_strings(s_frames[-1][1]) if s.startswith("table_")] if s_frames else []
+    server_tables_summary: list[dict[str, Any]] = []
+    for idx in range(max(0, len(s_frames) - 1)):
+        raw = s_frames[idx][1]
+        cnt = struct.unpack_from("<I", raw, 8)[0] if len(raw) >= 12 else 0
+        body_len = max(0, len(raw) - 12)
+        rec_size = round(body_len / cnt, 2) if cnt > 0 else 0
+        server_tables_summary.append(
+            {
+                "frame_index": idx,
+                "table_name": s_dir[idx] if idx < len(s_dir) else f"frame_{idx}",
+                "record_count": cnt,
+                "decompressed_bytes": len(raw),
+                "bytes_per_record": rec_size,
+            }
+        )
+
+    full_cities_all = _parse_lang_cities_and_coords(l_frames[3][1], c_frames[2][1], limit=None)
+    city_map = {c["city_id"]: c["name"] for c in full_cities_all}
+    continents = _parse_lang_continents(l_frames[4][1], c_frames[6][1])
+    continent_map = {c["continent_id"]: c["name"] for c in continents}
+    nations = _parse_lang_nations(
+        l_frames[0][1],
+        c_frames[11][1],
+        continent_map=continent_map,
+        city_map=city_map,
+    )
+    nation_map = {n["index"]: n["name"] for n in nations}
+    competitions = _parse_lang_competitions(l_frames[1][1], c_frames[26][1])
+    clubs = _parse_lang_clubs(
+        l_frames[2][1],
+        c_frames[3][1],
+        limit=sample_limit,
+        nation_map=nation_map,
+        city_map=city_map,
+    )
+    cities = full_cities_all if sample_limit is None else full_cities_all[:sample_limit]
+    injuries = _parse_lang_injuries(
+        l_frames[5][1],
+        c_frames[8][1],
+        s_frames[8][1] if len(s_frames) > 8 else None,
+    )
+    awards = _parse_lang_awards(l_frames[6][1], c_frames[1][1], limit=sample_limit)
+    stadiums_all = _parse_lang_stadiums(
+        l_frames[7][1],
+        c_frames[22][1],
+        s_frames[22][1] if len(s_frames) > 22 else None,
+        limit=None,
+        city_map=city_map,
+    )
+    stadiums = stadiums_all if sample_limit is None else stadiums_all[:sample_limit]
     stage_names = _parse_lang_stage_names(l_frames[8][1])
     media_sources = _parse_lang_media_sources(l_frames[11][1])
     local_regions = _parse_lang_local_regions(l_frames[12][1])
     derbies = _parse_lang_derbies(l_frames[13][1])
     agreements = _parse_lang_agreements(l_frames[14][1])
 
+    first_names_pool = _parse_person_name_pool_table(c_frames[17][1], limit=20)
+    last_names_pool = _parse_person_name_pool_table(c_frames[18][1], limit=20)
+    common_names_pool = _parse_person_name_pool_table(c_frames[19][1], limit=20)
+
     # Specific verified Turkish & major European cities showcase from client_db.dat + lang_update_db.dat
     full_cities_showcase: list[dict[str, Any]] = []
-    full_cities_all = _parse_lang_cities_and_coords(l_frames[3][1], c_frames[2][1], limit=None)
     for target_cid in (7998, 8002, 8008, 1280, 1295, 1955):
         if 0 <= target_cid < len(full_cities_all):
             full_cities_showcase.append(full_cities_all[target_cid])
+
+    stadiums_showcase: list[dict[str, Any]] = []
+    for st in stadiums_all:
+        if st["name"] in ("Old Trafford", "Wembley Stadium", "Camp Nou", "Santiago Bernabéu", "RAMS Park", "Ülker Stadyumu"):
+            stadiums_showcase.append(st)
+
+    nations_showcase: list[dict[str, Any]] = []
+    for nt in nations:
+        if nt["name"] in ("England", "France", "Germany", "Spain", "Türkiye", "Brazil"):
+            nations_showcase.append(nt)
 
     return {
         "available": True,
@@ -873,21 +1257,35 @@ def extract_master_db_tables(
         "lang_update_db_languages_count": (len(l_frames) - 1) // 16 if len(l_frames) >= 17 else 1,
         "lang_update_db_tables_per_language": 16,
         "client_db_tables": client_tables_summary,
+        "server_db_tables": server_tables_summary,
         "counts": {
+            "continents": len(continents),
             "nations": len(nations),
             "competitions": len(competitions),
             "clubs": struct.unpack_from("<I", l_frames[2][1], 8)[0],
             "cities_with_coords": len(full_cities_all),
             "injuries": len(injuries),
             "awards": struct.unpack_from("<I", l_frames[6][1], 8)[0],
-            "stadiums": struct.unpack_from("<I", l_frames[7][1], 8)[0],
+            "stadiums": len(stadiums_all),
             "stage_names": len(stage_names),
             "media_sources": len(media_sources),
             "local_regions": len(local_regions),
             "derbies": len(derbies),
             "international_agreements": len(agreements),
+            "first_names_pool": first_names_pool["total_count"],
+            "last_names_pool": last_names_pool["total_count"],
+            "common_names_pool": common_names_pool["total_count"],
         },
         "cities_coord_showcase": full_cities_showcase,
+        "stadiums_showcase": stadiums_showcase,
+        "nations_showcase": nations_showcase,
+        "injuries_showcase": injuries[:10],
+        "person_name_pools": {
+            "first_names": first_names_pool,
+            "last_names": last_names_pool,
+            "common_names": common_names_pool,
+        },
+        "continents": continents,
         "nations": nations if sample_limit is None else nations[:sample_limit],
         "competitions": competitions if sample_limit is None else competitions[:sample_limit],
         "clubs": clubs,
@@ -996,7 +1394,8 @@ def extract_training_and_newgen_configs(
     fm_install_dir: str | os.PathLike[str] | None = None,
 ) -> dict[str, Any]:
     """Decode `training.fmf` (300 weekly schedule templates in Frames #2 & #3)
-    and `simatchshared.fmf` (Frame #74 — 135 newgen appearance demographic probability rules)."""
+    and `simatchshared.fmf` (all 75 JSB frames: #000..#073 RGB kit/hair/skin palette & crowd configs
+    + Frame #074 135 newgen appearance demographic probability rules)."""
     root = _resolve_fm26_dir(fm_install_dir)
     tr_fmf = root / "data/game_simulation/training.fmf"
     sh_fmf = root / "shared/data/simatchshared.fmf"
@@ -1018,27 +1417,42 @@ def extract_training_and_newgen_configs(
                     continue
 
     newgen_demographics: dict[str, Any] = {}
+    palette_and_crowd_frames: list[dict[str, Any]] = []
     if sh_fmf.exists():
         sh_frames = extract_fmf_frames(sh_fmf)
-        for fidx in (74, 73, 75):
-            if fidx < len(sh_frames) - 1:
-                try:
-                    obj, _ = parse_jsb(sh_frames[fidx][1], 0)
+        dir_strings = _extract_fmf_directory_strings(sh_frames[-1][1]) if sh_frames else []
+        for fidx in range(len(sh_frames) - 1):
+            try:
+                obj, _ = parse_jsb(sh_frames[fidx][1], 0)
+                if fidx == 74:
                     arr = _as_jsb_array(obj)
-                    if arr:
-                        newgen_demographics = {
+                    newgen_demographics = {
+                        "frame_index": fidx,
+                        "rules_count": len(arr),
+                        "rules": arr,
+                    }
+                else:
+                    top_keys = list(obj.keys()) if isinstance(obj, dict) else []
+                    color_count = len(obj.get("Colors", [])) if isinstance(obj, dict) and isinstance(obj.get("Colors"), list) else 0
+                    palette_and_crowd_frames.append(
+                        {
                             "frame_index": fidx,
-                            "rules_count": len(arr),
-                            "rules": arr,
+                            "size_bytes": len(sh_frames[fidx][1]),
+                            "top_keys": top_keys,
+                            "colors_count": color_count,
+                            "sample_colors": (obj.get("Colors", [])[:3] if isinstance(obj, dict) and isinstance(obj.get("Colors"), list) else []),
                         }
-                        break
-                except Exception:
-                    continue
+                    )
+            except Exception:
+                continue
 
     return {
-        "available": bool(training_schedules or newgen_demographics),
+        "available": bool(training_schedules or newgen_demographics or palette_and_crowd_frames),
         "training_schedules": training_schedules,
         "newgen_demographics": newgen_demographics,
+        "simatchshared_palette_and_crowd_frames_count": len(palette_and_crowd_frames),
+        "simatchshared_palette_and_crowd_sample": palette_and_crowd_frames[:15],
+        "simatchshared_directory_strings": dir_strings[:80] if sh_fmf.exists() else [],
     }
 
 
@@ -1098,12 +1512,643 @@ def extract_il2cpp_symbols_and_metadata(
 
 
 # ==============================================================================
-# MASTER AGGREGATOR FOR ALL 8 REVERSE-ENGINEERED GAME-FILE SYSTEMS
+# 9. PRE-GAME PEOPLE & CAREER HISTORY DATABASES
+#    (basic_people_db.dat, people_db.dat, pl_hist_index/id/dt.dat, summary.dat)
+# ==============================================================================
+_PERSON_TYPE_LABELS: dict[int, str] = {
+    1: "Non-Player / Staff",
+    2: "Player",
+    3: "Player / Staff",
+    4: "Official / Referee",
+    5: "Agent / Journalist",
+}
+
+_NEGATIVE_PA_RANGES: dict[int, str] = {
+    -10: "170-200 (Generational Wonderkid)",
+    -95: "160-190 (World-Class Wonderkid)",
+    -9: "150-180 (Elite Wonderkid)",
+    -85: "140-170 (Top Division Star Potential)",
+    -8: "130-160 (First-Team Regular Potential)",
+    -75: "120-150 (Good Top-Flight Potential)",
+    -7: "110-140 (Solid Professional Potential)",
+    -65: "100-130",
+    -6: "90-120",
+    -55: "80-110",
+    -5: "70-100",
+    -45: "60-90",
+    -4: "50-80",
+    -35: "40-70",
+    -3: "30-60",
+    -25: "20-50",
+    -2: "10-40",
+    -15: "5-30",
+    -1: "1-20",
+}
+
+
+def _decompress_concat_zstd_stream(path: Path, zstd_offset: int | None = None) -> bytes:
+    """Decompress a file containing one or more concatenated Zstd frames (auto-detecting first Zstd magic `28 B5 2F FD`)."""
+    raw = path.read_bytes()
+    if zstd_offset is None or raw[zstd_offset : zstd_offset + 4] != b"\x28\xb5\x2f\xfd":
+        detected = raw.find(b"\x28\xb5\x2f\xfd", 0, 128)
+        if detected == -1:
+            return raw
+        zstd_offset = detected
+    dctx = zstandard.ZstdDecompressor()
+    with dctx.stream_reader(memoryview(raw)[zstd_offset:], read_across_frames=True) as reader:
+        return reader.read()
+
+
+def _resolve_person_details_from_people_db(
+    pdb_data: bytes,
+    target_uids: set[int],
+    first_names: list[str],
+    last_names: list[str],
+    common_names: list[str],
+    nation_names: dict[int, str],
+    club_names: dict[int, str],
+) -> dict[int, dict[str, Any]]:
+    """Locate and decode full person blocks (`name`, `DOB`, `8 hidden personality attributes`,
+    `height_cm`, `weight_kg`, `birth_city_uid`) from decompressed `people_db.dat` for `target_uids`."""
+    resolved: dict[int, dict[str, Any]] = {}
+    anchor_pat = b"\x01\x00\x6c\x07\xff\xff\xff\xff\xff\xff\xff\xff\x01\x00\x6c\x07"
+    for uid in target_uids:
+        tail_pat = struct.pack("<II", uid, uid)
+        idx = 0
+        while True:
+            pos = pdb_data.find(tail_pat, idx)
+            if pos == -1:
+                break
+            idx = pos + 4
+            if pos < 40:
+                continue
+            window_start = max(0, pos - 1400)
+            window = pdb_data[window_start:pos]
+            anc_rel = window.rfind(anchor_pat)
+            if anc_rel == -1:
+                continue
+            anc = window_start + anc_rel
+            if anc + 48 > pos:
+                continue
+            person_id = struct.unpack_from("<I", pdb_data, pos - 4)[0]
+            fn_id = struct.unpack_from("<i", pdb_data, anc + 25)[0]
+            ln_id = struct.unpack_from("<i", pdb_data, anc + 30)[0]
+            cn_id = struct.unpack_from("<i", pdb_data, anc + 35)[0]
+            slen = struct.unpack_from("<I", pdb_data, anc + 40)[0]
+            full_name = ""
+            after_str = anc + 44
+            if 0 < slen < 160 and anc + 44 + slen <= pos:
+                full_name = pdb_data[anc + 44 : anc + 44 + slen].decode("utf-8", errors="replace")
+                after_str = anc + 44 + slen
+
+            dob_day_of_year, dob_year = (
+                struct.unpack_from("<HH", pdb_data, after_str) if after_str + 4 <= pos else (0, 0)
+            )
+            personality: dict[str, int] = {}
+            birth_city_id, birth_city_uid = -1, -1
+            if after_str + 37 <= pos:
+                p_bytes = list(pdb_data[after_str + 21 : after_str + 29])
+                p_labels = (
+                    "adaptability",
+                    "ambition",
+                    "controversy",
+                    "loyalty",
+                    "pressure",
+                    "professionalism",
+                    "sportsmanship",
+                    "temperament",
+                )
+                personality = dict(zip(p_labels, p_bytes))
+                birth_city_id, birth_city_uid = struct.unpack_from("<ii", pdb_data, after_str + 29)
+
+            fn = first_names[fn_id] if 0 <= fn_id < len(first_names) else ""
+            ln = last_names[ln_id] if 0 <= ln_id < len(last_names) else ""
+            cn = common_names[cn_id] if 0 <= cn_id < len(common_names) else ""
+            display_name = cn if cn else f"{fn} {ln}".strip()
+            if not display_name:
+                display_name = full_name
+
+            # Look for player header (`person_id` + `\x02` or `\x03`) ~140-320 bytes before `anc`
+            height_cm = 0
+            weight_kg = 0
+            hdr_search_start = max(0, anc - 320)
+            for ptype_b in (b"\x02", b"\x03"):
+                h_rel = pdb_data[hdr_search_start:anc].find(struct.pack("<I", person_id) + ptype_b)
+                if h_rel != -1:
+                    h_pos = hdr_search_start + h_rel
+                    if h_pos + 137 <= anc:
+                        weight_kg = pdb_data[h_pos + 130]
+                        height_cm = struct.unpack_from("<H", pdb_data, h_pos + 135)[0]
+                    break
+
+            resolved[uid] = {
+                "person_id": person_id,
+                "uid": uid,
+                "display_name": display_name,
+                "first_name": fn,
+                "last_name": ln,
+                "common_name": cn,
+                "legal_full_name": full_name,
+                "dob_year": dob_year,
+                "dob_day_of_year": dob_day_of_year,
+                "height_cm": height_cm if 130 <= height_cm <= 220 else None,
+                "weight_kg": weight_kg if 40 <= weight_kg <= 130 else None,
+                "hidden_personality_1_to_20": personality,
+                "birth_city_id": birth_city_id,
+                "birth_city_uid": birth_city_uid,
+            }
+            break
+    return resolved
+
+
+def _decode_player_career_history_chain(
+    uid: int,
+    uid_to_hist_idx: dict[int, int],
+    pl_hist_id_bytes: bytes,
+    pl_hist_dt_bytes: bytes,
+    club_uid_to_name: dict[int, str],
+    comp_uid_to_name: dict[int, str],
+) -> list[dict[str, Any]]:
+    """Follow the 44-byte singly-linked list career history chain in `pl_hist_dt.dat` for a given `uid`."""
+    hist_idx = uid_to_hist_idx.get(uid)
+    if hist_idx is None or hist_idx * 8 + 8 > len(pl_hist_id_bytes):
+        return []
+    head_off, _tail_off = struct.unpack_from("<II", pl_hist_id_bytes, hist_idx * 8)
+    rows: list[dict[str, Any]] = []
+    cur = int(head_off)
+    visited: set[int] = set()
+    while 0 <= cur < len(pl_hist_dt_bytes) - 43 and cur not in visited and len(rows) < 60:
+        visited.add(cur)
+        rec = pl_hist_dt_bytes[cur : cur + 44]
+        year_start, year_end = struct.unpack_from("<HH", rec, 0)
+        flags = rec[4]
+        apps = struct.unpack_from("<b", rec, 5)[0]
+        goals = struct.unpack_from("<b", rec, 6)[0]
+        club_id = struct.unpack_from("<i", rec, 7)[0]
+        club_uid, _club_uid2, comp_uid, _comp_uid2 = struct.unpack_from("<iiii", rec, 11)
+        next_off = struct.unpack_from("<i", rec, 40)[0]
+        rows.append(
+            {
+                "byte_offset": cur,
+                "season_start_year": year_start,
+                "season_end_year": year_end,
+                "is_loan": bool(flags & 0x02),
+                "appearances": apps,
+                "goals": goals,
+                "club_id": club_id,
+                "club_uid": club_uid,
+                "club_name": club_uid_to_name.get(club_uid, ""),
+                "comp_uid": comp_uid,
+                "comp_name": comp_uid_to_name.get(comp_uid, ""),
+                "next_byte_offset": next_off,
+            }
+        )
+        if next_off < 0:
+            break
+        cur = next_off
+    return rows
+
+
+def _build_person_name_pool_list(raw: bytes) -> list[str]:
+    """Decode all 0-based indexed names from a `client_db.dat` person name pool frame (`#17, #18, #19`)."""
+    cnt = struct.unpack_from("<I", raw, 8)[0]
+    pos = 12
+    pool: list[str] = []
+    for _ in range(cnt):
+        if pos + 8 > len(raw):
+            break
+        _nid, slen = struct.unpack_from("<II", raw, pos)
+        pos += 8
+        pool.append(raw[pos : pos + slen].decode("utf-8", errors="replace"))
+        pos += slen
+    return pool
+
+
+def extract_pregame_people_and_history_db(
+    fm_install_dir: str | os.PathLike[str] | None = None,
+    *,
+    include_full_people_lookup: bool = True,
+) -> dict[str, Any]:
+    """Deterministically walk all `723,010` people in `basic_people_db.dat` (`84`/`34`/`22`-byte records),
+    compute wonderkid negative `PA` distributions (`-10`, `-95`, `-9`, etc.), resolve names and
+    8 hidden personality attributes from `people_db.dat`, and decode the 3-file linked-list career
+    history (`pl_hist_index.dat` -> `pl_hist_id.dat` -> `pl_hist_dt.dat`)."""
+    root = _resolve_fm26_dir(fm_install_dir)
+    db_dir = root / "shared/data/database/db/2620/2620_fm"
+    basic_path = db_dir / "basic_people_db.dat"
+    if not basic_path.exists():
+        return {"available": False, "path": str(basic_path)}
+
+    basic_data = _decompress_concat_zstd_stream(basic_path, zstd_offset=12)
+    total_people = struct.unpack_from("<I", basic_data, 0)[0]
+
+    type_length_map = {1: 84, 2: 84, 3: 84, 4: 34, 5: 22}
+    person_type_counts: dict[str, int] = {}
+    negative_pa_counts: dict[str, int] = {}
+    mens_players = 0
+    womens_players = 0
+
+    minus_10_records: list[dict[str, Any]] = []
+    minus_95_records: list[dict[str, Any]] = []
+    top_ca_mens: list[dict[str, Any]] = []
+    top_ca_womens: list[dict[str, Any]] = []
+
+    pos = 5
+    walked = 0
+    while walked < total_people and pos + 22 <= len(basic_data):
+        ptype = basic_data[pos + 1]
+        rlen = type_length_map.get(ptype)
+        if rlen is None or pos + rlen > len(basic_data):
+            break
+        rec = basic_data[pos : pos + rlen]
+        label = _PERSON_TYPE_LABELS.get(ptype, f"type_{ptype}")
+        person_type_counts[label] = person_type_counts.get(label, 0) + 1
+
+        if ptype in (2, 3):
+            nation_id, nation_uid, club_id, club_uid = struct.unpack_from("<iiii", rec, 2)
+            based_nation_id, based_nation_uid = struct.unpack_from("<ii", rec, 26)
+            home_rep, cur_rep, world_rep, ca, pa, birth_year = struct.unpack_from("<HHHHhH", rec, 42)
+            is_female = bool(rec[65] & 0x10)
+            person_id, uid, _uid2 = struct.unpack_from("<III", rec, 72)
+
+            if is_female:
+                womens_players += 1
+            else:
+                mens_players += 1
+
+            entry = {
+                "person_id": person_id,
+                "uid": uid,
+                "person_type": label,
+                "gender": "Women" if is_female else "Men",
+                "birth_year": birth_year,
+                "ca": ca,
+                "pa": pa,
+                "home_reputation": home_rep,
+                "current_reputation": cur_rep,
+                "world_reputation": world_rep,
+                "nation_id": nation_id,
+                "nation_uid": nation_uid,
+                "based_nation_id": based_nation_id,
+                "based_nation_uid": based_nation_uid,
+                "club_id": club_id,
+                "club_uid": club_uid,
+            }
+
+            if pa < 0:
+                pa_key = str(pa)
+                negative_pa_counts[pa_key] = negative_pa_counts.get(pa_key, 0) + 1
+                if pa == -10:
+                    minus_10_records.append(entry)
+                elif pa == -95:
+                    minus_95_records.append(entry)
+
+            if not is_female and ca >= 176:
+                top_ca_mens.append(entry)
+            elif is_female and ca >= 168:
+                top_ca_womens.append(entry)
+
+        pos += rlen
+        walked += 1
+
+    top_ca_mens.sort(key=lambda r: (r["ca"], r["world_reputation"]), reverse=True)
+    top_ca_womens.sort(key=lambda r: (r["ca"], r["world_reputation"]), reverse=True)
+    minus_10_records.sort(key=lambda r: (r["ca"], r["world_reputation"]), reverse=True)
+    minus_95_records.sort(key=lambda r: (r["ca"], r["world_reputation"]), reverse=True)
+
+    # Resolve names from client_db (#17, #18, #19) + lang_update_db (#0 Nations, #1 Comps, #2 Clubs) + people_db.dat
+    client_path = db_dir / "client_db.dat"
+    lang_path = db_dir / "lang_update_db.dat"
+    pdb_path = db_dir / "people_db.dat"
+
+    first_names: list[str] = []
+    last_names: list[str] = []
+    common_names: list[str] = []
+    nation_id_to_name: dict[int, str] = {}
+    club_id_to_name: dict[int, str] = {}
+    club_uid_to_name: dict[int, str] = {}
+    comp_uid_to_name: dict[int, str] = {}
+
+    if client_path.exists():
+        c_frames = extract_fmf_frames(client_path)
+        if len(c_frames) > 19:
+            first_names = _build_person_name_pool_list(c_frames[17][1])
+            last_names = _build_person_name_pool_list(c_frames[18][1])
+            common_names = _build_person_name_pool_list(c_frames[19][1])
+        if len(c_frames) > 26 and lang_path.exists():
+            l_frames = extract_fmf_frames(lang_path)
+            for n in _parse_lang_nations(l_frames[0][1], c_frames[11][1]):
+                nation_id_to_name[n.get("db_nation_id", n["index"])] = n["name"]
+            for c in _parse_lang_clubs(l_frames[2][1], limit=None):
+                club_id_to_name[c["index"]] = c["name"]
+                club_uid_to_name[c["uid"]] = c["name"]
+            for comp in _parse_lang_competitions(l_frames[1][1]):
+                comp_uid_to_name[comp["uid"]] = comp["name"]
+
+    target_uids: set[int] = set()
+    for grp in (minus_10_records, minus_95_records, top_ca_mens[:25], top_ca_womens[:15]):
+        for r in grp:
+            target_uids.add(r["uid"])
+
+    pdb_resolved: dict[int, dict[str, Any]] = {}
+    pdb_decompressed_size = 0
+    if include_full_people_lookup and pdb_path.exists() and target_uids:
+        pdb_bytes = _decompress_concat_zstd_stream(pdb_path, zstd_offset=12)
+        pdb_decompressed_size = len(pdb_bytes)
+        pdb_resolved = _resolve_person_details_from_people_db(
+            pdb_bytes,
+            target_uids,
+            first_names,
+            last_names,
+            common_names,
+            nation_id_to_name,
+            club_id_to_name,
+        )
+
+    def _enrich(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        out: list[dict[str, Any]] = []
+        for r in records:
+            item = dict(r)
+            item["nation_name"] = nation_id_to_name.get(r["nation_id"], "")
+            item["club_name"] = club_uid_to_name.get(r["club_uid"], club_id_to_name.get(r["club_id"], ""))
+            details = pdb_resolved.get(r["uid"])
+            if details:
+                item["name"] = details["display_name"]
+                item["legal_full_name"] = details["legal_full_name"]
+                item["height_cm"] = details["height_cm"]
+                item["weight_kg"] = details["weight_kg"]
+                item["hidden_personality_1_to_20"] = details["hidden_personality_1_to_20"]
+            out.append(item)
+        return out
+
+    # Career history 3-file linked list (`pl_hist_index.dat` -> `pl_hist_id.dat` -> `pl_hist_dt.dat`)
+    hist_index_path = db_dir / "pl_hist_index.dat"
+    hist_id_path = db_dir / "pl_hist_id.dat"
+    hist_dt_path = db_dir / "pl_hist_dt.dat"
+    non_pl_hist_path = db_dir / "non_pl_hist_dt.dat"
+    summary_path = db_dir / "summary.dat"
+
+    career_history_info: dict[str, Any] = {"available": False}
+    if hist_index_path.exists() and hist_id_path.exists() and hist_dt_path.exists():
+        idx_bytes = _decompress_concat_zstd_stream(hist_index_path, zstd_offset=12)
+        id_bytes = _decompress_concat_zstd_stream(hist_id_path, zstd_offset=12)
+        dt_bytes = _decompress_concat_zstd_stream(hist_dt_path, zstd_offset=12)
+
+        idx_entries = struct.unpack_from("<I", idx_bytes, 0)[0]
+        half_entries = idx_entries // 2
+        uid_to_hist_idx: dict[int, int] = {}
+        for i in range(half_entries):
+            u, h_idx = struct.unpack_from("<II", idx_bytes, 4 + i * 8)
+            uid_to_hist_idx[u] = h_idx
+
+        showcase_careers: list[dict[str, Any]] = []
+        for star in (_enrich(top_ca_mens[:5]) + _enrich(minus_10_records[:3])):
+            chain = _decode_player_career_history_chain(
+                star["uid"],
+                uid_to_hist_idx,
+                id_bytes,
+                dt_bytes,
+                club_uid_to_name,
+                comp_uid_to_name,
+            )
+            if chain:
+                showcase_careers.append(
+                    {
+                        "name": star.get("name", f"UID {star['uid']}"),
+                        "uid": star["uid"],
+                        "person_id": star["person_id"],
+                        "ca": star["ca"],
+                        "pa": star["pa"],
+                        "seasons_count": len(chain),
+                        "career_rows": chain,
+                    }
+                )
+
+        non_pl_decompressed_size = 0
+        if non_pl_hist_path.exists():
+            non_pl_decompressed_size = len(_decompress_concat_zstd_stream(non_pl_hist_path, zstd_offset=12))
+
+        summary_bytes = _decompress_concat_zstd_stream(summary_path, zstd_offset=12) if summary_path.exists() else b""
+        career_history_info = {
+            "available": True,
+            "pl_hist_index_decompressed_bytes": len(idx_bytes),
+            "pl_hist_index_total_pairs": idx_entries,
+            "unique_players_with_history": half_entries,
+            "pl_hist_id_decompressed_bytes": len(id_bytes),
+            "pl_hist_dt_decompressed_bytes": len(dt_bytes),
+            "pl_hist_dt_row_stride_bytes": 44,
+            "pl_hist_dt_estimated_season_rows": len(dt_bytes) // 44,
+            "non_pl_hist_dt_decompressed_bytes": non_pl_decompressed_size,
+            "summary_dat_decompressed_bytes": len(summary_bytes),
+            "summary_dat_hex": summary_bytes.hex() if summary_bytes else "",
+            "showcase_player_careers": showcase_careers,
+        }
+
+    return {
+        "available": True,
+        "source_dir": str(db_dir),
+        "basic_people_db_decompressed_bytes": len(basic_data),
+        "people_db_decompressed_bytes": pdb_decompressed_size,
+        "total_people_declared": total_people,
+        "total_people_walked": walked,
+        "walk_coverage_pct": round(100.0 * walked / max(1, total_people), 4),
+        "person_type_counts": person_type_counts,
+        "players_by_gender": {
+            "mens_players": mens_players,
+            "womens_players": womens_players,
+        },
+        "negative_pa_wonderkid_distribution": {
+            k: {
+                "count": negative_pa_counts.get(str(k), 0),
+                "pa_range_description": desc,
+            }
+            for k, desc in _NEGATIVE_PA_RANGES.items()
+            if negative_pa_counts.get(str(k), 0) > 0
+        },
+        "wonderkids_pa_minus_10": _enrich(minus_10_records),
+        "wonderkids_pa_minus_95": _enrich(minus_95_records),
+        "top_mens_players_by_ca": _enrich(top_ca_mens[:25]),
+        "top_womens_players_by_ca": _enrich(top_ca_womens[:15]),
+        "career_history_linked_list": career_history_info,
+    }
+
+
+# ==============================================================================
+# 10. COMPILED .DBC COMPETITION RULES & .LNC LICENSING / NAME OVERRIDES
+# ==============================================================================
+def extract_dbc_and_lnc_rules(
+    fm_install_dir: str | os.PathLike[str] | None = None,
+) -> dict[str, Any]:
+    """Decode `shared/data/sicomps/comps.dbc` (`1,442` Zstd frames of `03 01 cbd.` binary TLV
+    competition rule sets), database `.dbc` patches (`2620/dbc/*.dbc`), and `.lnc` licensing
+    & name-override directives (`2620/lnc/all/*.lnc`)."""
+    root = _resolve_fm26_dir(fm_install_dir)
+    comps_dbc = root / "shared/data/sicomps/comps.dbc"
+    db_dbc_dir = root / "shared/data/database/db/2620/dbc"
+    lnc_dir = root / "shared/data/database/db/2620/lnc/all"
+
+    comps_info: dict[str, Any] = {"available": False}
+    if comps_dbc.exists():
+        frames = extract_fmf_frames(comps_dbc)
+        dir_strings = _extract_fmf_directory_strings(frames[-1][1]) if frames else []
+        cbd_frames = 0
+        total_decompressed_bytes = 0
+        sample_frames: list[dict[str, Any]] = []
+        for idx, (_off, fbytes) in enumerate(frames[:-1]):
+            total_decompressed_bytes += len(fbytes)
+            magic = fbytes[:6].decode("latin1", errors="replace") if len(fbytes) >= 6 else ""
+            if fbytes[:6] == b"\x03\x01cbd.":
+                cbd_frames += 1
+            if idx < 15:
+                ascii_tokens = [
+                    m.decode("utf-8", errors="replace")
+                    for m in re.findall(rb"[A-Za-z0-9_/\- ]{4,60}", fbytes[:2048])[:8]
+                ]
+                sample_frames.append(
+                    {
+                        "frame_index": idx,
+                        "decompressed_bytes": len(fbytes),
+                        "magic_hex": fbytes[:6].hex(),
+                        "magic_ascii": repr(magic),
+                        "sample_tokens": ascii_tokens,
+                    }
+                )
+        comps_info = {
+            "available": True,
+            "path": str(comps_dbc),
+            "compressed_size_bytes": comps_dbc.stat().st_size,
+            "total_zstd_frames": len(frames),
+            "competition_rule_frames_count": len(frames) - 1,
+            "cbd_magic_frames_count": cbd_frames,
+            "total_decompressed_bytes": total_decompressed_bytes,
+            "directory_strings_sample": dir_strings[:50],
+            "sample_frames": sample_frames,
+        }
+
+    db_dbc_files: list[dict[str, Any]] = []
+    if db_dbc_dir.exists():
+        for p in sorted(db_dbc_dir.rglob("*.dbc")):
+            try:
+                decompressed = _decompress_concat_zstd_stream(p, zstd_offset=12)
+                tokens = [
+                    m.decode("utf-8", errors="replace")
+                    for m in re.findall(rb"[A-Za-z0-9_.\- ]{5,80}", decompressed)[:10]
+                ]
+                db_dbc_files.append(
+                    {
+                        "file": str(p.relative_to(db_dbc_dir)).replace("\\", "/"),
+                        "compressed_bytes": p.stat().st_size,
+                        "decompressed_bytes": len(decompressed),
+                        "magic_hex": decompressed[:6].hex(),
+                        "sample_strings": tokens,
+                    }
+                )
+            except Exception:
+                continue
+
+    lnc_files_summary: list[dict[str, Any]] = []
+    lnc_command_counts: dict[str, int] = {}
+    if lnc_dir.exists():
+        cmd_re = re.compile(r'^"([A-Z0-9_]+)"', re.MULTILINE)
+        for p in sorted(lnc_dir.glob("*.lnc")):
+            raw = p.read_bytes()
+            if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
+                txt = raw.decode("utf-16", errors="replace")
+            else:
+                txt = raw.decode("utf-8", errors="replace")
+            cmds = cmd_re.findall(txt)
+            for c in cmds:
+                lnc_command_counts[c] = lnc_command_counts.get(c, 0) + 1
+            lnc_files_summary.append(
+                {
+                    "file": p.name,
+                    "size_bytes": len(raw),
+                    "directives_count": len(cmds),
+                }
+            )
+
+    return {
+        "available": comps_info["available"] or bool(db_dbc_files) or bool(lnc_files_summary),
+        "sicomps_comps_dbc": comps_info,
+        "db_2620_dbc_files_count": len(db_dbc_files),
+        "db_2620_dbc_files": db_dbc_files,
+        "lnc_2620_files_count": len(lnc_files_summary),
+        "lnc_command_counts": dict(sorted(lnc_command_counts.items(), key=lambda kv: kv[1], reverse=True)),
+        "lnc_files_summary": lnc_files_summary,
+    }
+
+
+# ==============================================================================
+# 11. AUXILIARY SIMULATION .FMF ARCHIVES
+#     (filters.fmf, achievements.fmf, leaderboards.fmf, settings.fmf, store.fmf, profanity_filter.fmf)
+# ==============================================================================
+def extract_simulation_aux_fmf_archives(
+    fm_install_dir: str | os.PathLike[str] | None = None,
+) -> dict[str, Any]:
+    """Decode the remaining simulation `.fmf` archives under `data/game_simulation/`:
+    - `filters.fmf` (`445` scouting/search filter XML frames),
+    - `achievements.fmf` (`50` Steam/Epic/Xbox achievement rule XML frames),
+    - `leaderboards.fmf` (`28` leaderboard scoring XML frames),
+    - `settings.fmf` (`10` user/game preference schema XML frames),
+    - `store.fmf` (`3` in-game store item XML frames),
+    - `profanity_filter.fmf` (`3` frames),
+    - `languages.fmf` (`205.6 MB` multi-language localization archive metadata)."""
+    root = _resolve_fm26_dir(fm_install_dir)
+    sim_dir = root / "data/game_simulation"
+    if not sim_dir.exists():
+        return {"available": False, "path": str(sim_dir)}
+
+    result: dict[str, Any] = {"available": True, "archives": {}}
+    archive_names = (
+        "filters.fmf",
+        "achievements.fmf",
+        "leaderboards.fmf",
+        "settings.fmf",
+        "store.fmf",
+        "profanity_filter.fmf",
+    )
+    for name in archive_names:
+        fpath = sim_dir / name
+        if not fpath.exists():
+            continue
+        frames = extract_fmf_frames(fpath)
+        dir_strings = _extract_fmf_directory_strings(frames[-1][1]) if frames else []
+        total_decompressed = sum(len(fb) for _, fb in frames[:-1])
+        sample_items: list[str] = []
+        xml_record_items_count = 0
+        for _off, fb in frames[:-1]:
+            txt = fb.decode("utf-8-sig", errors="replace")
+            xml_record_items_count += len(re.findall(r"<record\b", txt))
+            if not sample_items:
+                sample_items = re.findall(r'value="([^"]{3,60})"', txt)[:10]
+        result["archives"][name] = {
+            "compressed_bytes": fpath.stat().st_size,
+            "content_frames_count": max(0, len(frames) - 1),
+            "xml_record_items_count": xml_record_items_count,
+            "total_decompressed_bytes": total_decompressed,
+            "directory_strings_sample": dir_strings[:25],
+            "first_frame_sample_values": sample_items,
+        }
+
+    lang_fmf = sim_dir / "languages.fmf"
+    if lang_fmf.exists():
+        result["archives"]["languages.fmf"] = {
+            "compressed_bytes": lang_fmf.stat().st_size,
+            "note": "Master localization string archive (.ltc tables for 22+ languages)",
+        }
+
+    return result
+
+
+# ==============================================================================
+# MASTER AGGREGATOR FOR ALL 11 REVERSE-ENGINEERED GAME-FILE SYSTEMS
 # ==============================================================================
 def extract_all_game_files_summary(
     fm_install_dir: str | os.PathLike[str] | None = None,
+    *,
+    include_pregame_people_db: bool = True,
 ) -> dict[str, Any]:
-    """Run all 8 FM26 Game-File Reverse-Engineering Extractors and return a unified summary."""
+    """Run all 11 FM26 Game-File Reverse-Engineering Extractors and return a unified summary."""
     qme = extract_qme_distributions(fm_install_dir, sample_limit=5)
     momentum = extract_momentum_weightings(fm_install_dir)
     oop_grid = extract_oop_pitch_proximity_grid(fm_install_dir)
@@ -1115,6 +2160,13 @@ def extract_all_game_files_summary(
     media = extract_media_interaction_trees(fm_install_dir, max_frames=650)
     training_newgen = extract_training_and_newgen_configs(fm_install_dir)
     il2cpp = extract_il2cpp_symbols_and_metadata(fm_install_dir)
+    people_hist = (
+        extract_pregame_people_and_history_db(fm_install_dir, include_full_people_lookup=True)
+        if include_pregame_people_db
+        else {"available": False}
+    )
+    dbc_lnc = extract_dbc_and_lnc_rules(fm_install_dir)
+    aux_fmfs = extract_simulation_aux_fmf_archives(fm_install_dir)
 
     return {
         "1_qme_statistical_distributions": {
@@ -1146,6 +2198,9 @@ def extract_all_game_files_summary(
             "xg_shot_models": xg_models.get("models", {}),
             "tactical_styles_xml_count": styles.get("tactical_styles_xml_count", 0),
             "binary_tactical_presets_count": styles.get("binary_tactical_presets_count", 0),
+            "cat_formation_combinations_count": styles.get("cat_formation_combinations_count", 0),
+            "rts_style_instruction_vectors_count": styles.get("rts_style_instruction_vectors_count", 0),
+            "tactical_pitch_positioning_table": styles.get("tactical_pitch_positioning_table", {}),
             "tactical_styles": styles.get("tactical_styles", []),
         },
         "5_editor_schemas_and_fourcc_enums": {
@@ -1162,6 +2217,8 @@ def extract_all_game_files_summary(
             "server_db_total_frames": master_db.get("server_db_total_frames", 0),
             "counts": master_db.get("counts", {}),
             "cities_coord_showcase": master_db.get("cities_coord_showcase", []),
+            "stadiums_showcase": master_db.get("stadiums_showcase", []),
+            "injuries_showcase": master_db.get("injuries_showcase", []),
             "edt_files": {
                 k: v.get("active_rules_count", 0) for k, v in edt_rules.get("files", {}).items()
             },
@@ -1174,6 +2231,9 @@ def extract_all_game_files_summary(
                 k: v.get("count", 0) for k, v in training_newgen.get("training_schedules", {}).items()
             },
             "newgen_demographic_rules": training_newgen.get("newgen_demographics", {}).get("rules_count", 0),
+            "simatchshared_palette_and_crowd_frames_count": training_newgen.get(
+                "simatchshared_palette_and_crowd_frames_count", 0
+            ),
         },
         "8_il2cpp_symbols_and_metadata": {
             "usym_symbol_records_count": il2cpp.get("il2cpp_usym", {}).get("symbol_records_count", 0),
@@ -1181,4 +2241,27 @@ def extract_all_game_files_summary(
             "matched_engine_symbols_count": il2cpp.get("global_metadata", {}).get("matched_engine_symbols_count", 0),
             "sample_engine_symbols": il2cpp.get("global_metadata", {}).get("matched_engine_symbols", [])[:25],
         },
+        "9_pregame_people_and_career_history_db": {
+            "total_people_walked": people_hist.get("total_people_walked", 0),
+            "walk_coverage_pct": people_hist.get("walk_coverage_pct", 0.0),
+            "person_type_counts": people_hist.get("person_type_counts", {}),
+            "players_by_gender": people_hist.get("players_by_gender", {}),
+            "negative_pa_wonderkid_distribution": people_hist.get("negative_pa_wonderkid_distribution", {}),
+            "wonderkids_pa_minus_10": people_hist.get("wonderkids_pa_minus_10", []),
+            "wonderkids_pa_minus_95": people_hist.get("wonderkids_pa_minus_95", []),
+            "top_mens_players_by_ca": people_hist.get("top_mens_players_by_ca", [])[:10],
+            "top_womens_players_by_ca": people_hist.get("top_womens_players_by_ca", [])[:10],
+            "career_history_linked_list": people_hist.get("career_history_linked_list", {}),
+        },
+        "10_dbc_competition_rules_and_lnc_licensing": {
+            "sicomps_comps_dbc_frames": dbc_lnc.get("sicomps_comps_dbc", {}).get("competition_rule_frames_count", 0),
+            "sicomps_comps_dbc_decompressed_bytes": dbc_lnc.get("sicomps_comps_dbc", {}).get(
+                "total_decompressed_bytes", 0
+            ),
+            "db_2620_dbc_files_count": dbc_lnc.get("db_2620_dbc_files_count", 0),
+            "lnc_2620_files_count": dbc_lnc.get("lnc_2620_files_count", 0),
+            "lnc_command_counts": dbc_lnc.get("lnc_command_counts", {}),
+        },
+        "11_simulation_auxiliary_fmf_archives": aux_fmfs.get("archives", {}),
     }
+

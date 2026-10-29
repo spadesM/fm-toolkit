@@ -188,7 +188,7 @@ C:\Program Files (x86)\Steam\steamapps\common\Football Manager 26\
 │       │   ├── [Frame  #074]                   # player_hair_length_colour_config_data.jsb — 135 Newgen hair/appearance probability rules by region/ethnicity
 │       │   └── [Frame  #075]                   # Archive Directory Index
 │       │
-│       ├── editor.fmf                          # (107 Zstd Frames: 106 XMLs + 1 Directory, ~2.1 MB decompressed) INTERNAL FOURCC DATABASE SCHEMAS & ENUMS
+│       ├── editor.fmf                          # (106 Zstd Frames: 105 XMLs + 1 Directory, ~2.1 MB decompressed) INTERNAL FOURCC DATABASE SCHEMAS & ENUMS
 │       │   ├── [Frame  #032]                   # club.xml (7,495 lines) — 595 FourCC properties for Clubs ('club')
 │       │   ├── [Frame  #033]                   # comp.xml — 297 FourCC properties for Competitions ('comp')
 │       │   ├── [Frame  #035]                   # contract_offer.xml — 66 FourCC properties for Contract Offers ('CntF')
@@ -203,55 +203,80 @@ C:\Program Files (x86)\Steam\steamapps\common\Football Manager 26\
 │       │   ├── [Frame  #054]                   # team.xml — 11 FourCC properties for Teams ('team')
 │       │   ├── [Frame  #056]                   # weather.xml — 94 FourCC properties for Weather Profiles ('weat')
 │       │   ├── [Frame  #082]                   # db enums.xml — 444 Master Enum Groups (posm, role, squad status, tactics, transfer rules)
-│       │   └── [Frame  #106]                   # Archive Directory Index
+│       │   └── [Frame  #105]                   # Archive Directory Index
+│       │
+│       ├── sicomps\
+│       │   └── comps.dbc                       # (8.20 MB -> 74.46 MB decompressed, 1,443 Zstd Frames) COMPILED COMPETITION RULES ARCHIVE
+│       │       ├── [Frames #0000..#1441]       # 1,442 `\x03\x01cbd.` Binary TLV Competition Rule Sets (Leagues, Cups, Playoffs, Continental, TV Money)
+│       │       └── [Frame  #1442]              # Archive Directory Index
 │       │
 │       └── database\
 │           └── db\
 │               └── 2620\                       # OFFICIAL FM26 DATABASE (BUILD 2620)
 │                   ├── 2620_fm\
 │                   │   ├── client_db.dat       # (15.08 MB -> ~92 MB decompressed, 32 Zstd Frames: 31 tables + 1 directory) MASTER STRUCTURAL DATABASE
-│                   │   │   ├── #00: table_0    #   3,884 Awards (571.6 KB)
-│                   │   │   ├── #01: table_1    #   6,725 Award History / Rules (302.6 KB)
+│                   │   │   ├── #00: table_0    #   6 International Agreements (500 B: EU, EEA, OACPS, Mercosur, Andean, Overseas)
+│                   │   │   ├── #01: table_1    #   3,884 Awards (571.6 KB: Continent, Nation, Comp, Reputation, History)
 │                   │   │   ├── #02: table_2    #   58,349 Cities (2,509,019 B = 12B hdr + 58,349 × 43B: Lat, Lon, Attraction, Nation, Region, Altitude_ft, cid@+32, uid@+36)
-│                   │   │   ├── #03: table_3    #   96,343 Clubs (67.07 MB = ~696.2 B/rec)
-│                   │   │   ├── #04: table_25   #   7,973 Competitions (3.58 MB)
-│                   │   │   ├── #05: table_48   #   186 Currencies (9.9 KB)
-│                   │   │   ├── #06: table_6    #   136 Injuries (9,668 B = 12B hdr + 136 × 71B: Severity, Min/Extra Days, Contagious, Category)
-│                   │   │   ├── #07: table_7    #   180 Media Sources (24.0 KB)
-│                   │   │   ├── #08: table_8    #   252 Languages / Continents (32.7 KB)
-│                   │   │   ├── #09: table_9    #   251 Nations (918.2 KB)
-│                   │   │   ├── #13: table_21   #   51,118 Stadiums (5.77 MB)
-│                   │   │   ├── #14: table_23   #   286 Stage Names (13.2 KB)
-│                   │   │   ├── #17: table_47   #   2,527 Local Regions (108.7 KB)
-│                   │   │   ├── #20: table_18   #   1,683 Derbies (244.4 KB)
-│                   │   │   ├── #21: table_56   #   6 International Agreements (500 B: EU, EEA, OACPS, Mercosur, Andean, Overseas)
-│                   │   │   ├── #22..#30        #   9 Additional Lookup Tables (table_*)
+│                   │   │   ├── #03: table_3    #   7 Continents (183 B = 8B hdr + 7 × 25B: Regional Strength Factor f64, cid@+9, uid@+13)
+│                   │   │   ├── #04: table_4    #   251 Nations (918.2 KB: Continent, Region, Capital City, FIFA Points, nid, uid)
+│                   │   │   ├── #07: table_7    #   7,973 Competitions (598,022 B = 47B hdr + 7,973 × 75B: Nation, Continent, Rep, Type, Level, RGB, cid@+59, uid@+63)
+│                   │   │   ├── #08: table_8    #   96,343 Clubs (67.07 MB: Nation, City, Stadium, Year Founded, Reputation, Kits, cid, uid)
+│                   │   │   ├── #09: table_9    #   186 Currencies (9.9 KB)
+│                   │   │   ├── #10: table_10   #   1,683 Derbies (244.4 KB)
+│                   │   │   ├── #12: table_12   #   136 Injuries (2,733 B = 13B hdr + 136 × 20B: iid@+8, uid@+12)
+│                   │   │   ├── #13: table_13   #   252 Languages (32.7 KB)
+│                   │   │   ├── #14: table_14   #   2,527 Local Regions (108.7 KB)
+│                   │   │   ├── #15: table_15   #   180 Media Sources (24.0 KB)
+│                   │   │   ├── #17: table_17   #   294,103 First Names Pool (4.73 MB: [name_id:u32][slen:u32][utf8_bytes:slen])
+│                   │   │   ├── #18: table_18   #   599,900 Last / Surnames Pool (9.98 MB: [name_id:u32][slen:u32][utf8_bytes:slen])
+│                   │   │   ├── #19: table_19   #   94,088 Common Names Pool (1.79 MB: [name_id:u32][slen:u32][utf8_bytes:slen])
+│                   │   │   ├── #22: table_22   #   51,118 Stadiums (1,942,531 B = 47B hdr + 51,118 × 38B: City@+5, OwnerClub@+9, Lat@+19, Lon@+23, sid@+27, uid@+31)
+│                   │   │   ├── #23: table_23   #   286 Stage Names (13.2 KB)
+│                   │   │   ├── #24..#30        #   Remaining Lookup Tables (Sponsors, Weather Profiles, Colours, etc.)
 │                   │   │   └── #31: Directory  #   Archive Directory Index
 │                   │   │
 │                   │   ├── lang_update_db.dat  # (3.55 MB, 401 Zstd Frames: 25 Languages × 16 Tables + 1 Directory) MASTER LOCALIZED NAMES DATABASE
-│                   │   │   ├── #00: 8_9.dat    #   [Lang 8 = English] 251 Nations (uid, name, short_name, 3-letter code, nationality)
-│                   │   │   ├── #01: 8_25.dat   #   [Lang 8 = English] 7,973 Competitions (uid, name, short_name, 3-letter code)
-│                   │   │   ├── #02: 8_3.dat    #   [Lang 8 = English] 96,343 Clubs (uid, name, short_name, 6-letter, 3-letter, alt_short, nickname)
-│                   │   │   ├── #03: 8_2.dat    #   [Lang 8 = English] 58,349 Cities (0-based city_id 0..58348 -> uid, official city name)
-│                   │   │   ├── #04: 8_48.dat   #   [Lang 8 = English] 186 Currencies
-│                   │   │   ├── #05: 8_6.dat    #   [Lang 8 = English] 136 Injuries (uid, name, sentence_name)
-│                   │   │   ├── #06: 8_0.dat    #   [Lang 8 = English] 3,884 Awards (uid, name, short_name)
-│                   │   │   ├── #07: 8_21.dat   #   [Lang 8 = English] 51,118 Stadiums (uid, name, alt_name)
-│                   │   │   ├── #08: 8_23.dat   #   [Lang 8 = English] 286 Stage Names (uid, name, short_name, plural_name)
-│                   │   │   ├── #11: 8_7.dat    #   [Lang 8 = English] 180 Media Sources (uid, name)
-│                   │   │   ├── #12: 8_47.dat   #   [Lang 8 = English] 2,527 Local Regions (uid, name, demonym)
-│                   │   │   ├── #13: 8_18.dat   #   [Lang 8 = English] 1,683 Derbies (uid, name, short_name)
-│                   │   │   ├── #14: 8_56.dat   #   [Lang 8 = English] 6 International Agreements (uid, name, abbreviation)
+│                   │   │   ├── #00: 8_0.dat    #   [Lang 8 = English] 6 International Agreements (uid, name, abbreviation)
+│                   │   │   ├── #01: 8_1.dat    #   [Lang 8 = English] 3,884 Awards (uid, name, short_name)
+│                   │   │   ├── #02: 8_2.dat    #   [Lang 8 = English] 58,349 Cities (0-based city_id 0..58348 -> uid, official city name)
+│                   │   │   ├── #03: 8_3.dat    #   [Lang 8 = English] 7 Continents (uid, name, short_name, 3-letter, continentality, federation)
+│                   │   │   ├── #04: 8_4.dat    #   [Lang 8 = English] 251 Nations (uid, name, short_name, 3-letter code, nationality)
+│                   │   │   ├── #05: 8_7.dat    #   [Lang 8 = English] 7,973 Competitions (uid, name, short_name, 3-letter code)
+│                   │   │   ├── #06: 8_8.dat    #   [Lang 8 = English] 96,343 Clubs (uid, name, short_name, 6-letter, 3-letter, alt_short, nickname)
+│                   │   │   ├── #07: 8_9.dat    #   [Lang 8 = English] 186 Currencies
+│                   │   │   ├── #08: 8_12.dat   #   [Lang 8 = English] 136 Injuries (uid, name, sentence_name)
+│                   │   │   ├── #09: 8_10.dat   #   [Lang 8 = English] 1,683 Derbies (uid, name, short_name)
+│                   │   │   ├── #10: 8_13.dat   #   [Lang 8 = English] 252 Languages
+│                   │   │   ├── #11: 8_14.dat   #   [Lang 8 = English] 2,527 Local Regions (uid, name, demonym)
+│                   │   │   ├── #12: 8_15.dat   #   [Lang 8 = English] 180 Media Sources (uid, name)
+│                   │   │   ├── #13: 8_22.dat   #   [Lang 8 = English] 51,118 Stadiums (uid, name, alt_name)
+│                   │   │   ├── #14: 8_23.dat   #   [Lang 8 = English] 286 Stage Names (uid, name, short_name, plural_name)
 │                   │   │   ├── #16..#399       #   Remaining 24 Languages × 16 Tables (<lang>_<table>.dat)
 │                   │   │   └── #400: Directory #   Archive Directory Index
 │                   │   │
-│                   │   ├── server_db.dat       # (68.79 MB, 26 Zstd Frames: 25 tables + 1 directory) Server-side master database mirror + competition rules
-│                   │   ├── people_db.dat       # (76.50 MB) Pre-game master database of all real Players, Staff & Officials (Day-1 CA/PA & attributes)
-│                   │   ├── pl_hist_dt.dat      # (102.93 MB) Pre-game master database of all historical player season stats
-│                   │   └── non_pl_hist_dt.dat  # (14.40 MB) Pre-game master database of all historical staff career records
+│                   │   ├── server_db.dat       # (68.79 MB -> ~295 MB decompressed, 78 Zstd Frames: 77 tables + 1 directory) SERVER SIMULATION ATTRIBUTES DB
+│                   │   │   ├── #04: Nations    #   251 Nations (Reputation 1..10000, Dev State 1..3, Game Importance 1..4, Economic Factor 1..20, Years to Nat, EU)
+│                   │   │   ├── #08: Injuries   #   136 Injuries (13B hdr + 136 × 48B: Category, BodyPart, MinDays, ExtraDays, SharpnessDrop%, Occurrencef32, Severity)
+│                   │   │   ├── #09: Clubs      #   96,343 Clubs (Training/Youth/Corporate Facilities 1..20, Youth Coaching/Recruitment 1..20, Pro Status)
+│                   │   │   └── #22: Stadiums   #   51,118 Stadiums (47B hdr + 51,118 × 181B: Capacity, Seating, Expansion, Pitch Length/Width dm, Build Year, Min/Max Pitch)
+│                   │   │
+│                   │   ├── basic_people_db.dat # (12.79 MB -> 60.15 MB decompressed) ALL 723,010 PRE-GAME PEOPLE SUMMARY DB (100% deterministic walk)
+│                   │   │                       #   532,742 Players + 4,410 Player/Staff (84B: CA, PA including -10/-95 wonderkids, Reps, Nation, Club, Gender)
+│                   │   │                       #   174,504 Non-Player/Staff (84B) | 9,872 Officials/Referees (34B) | 1,482 Agents/Journalists (22B)
+│                   │   ├── people_db.dat       # (76.55 MB -> 451.07 MB decompressed) Full Pre-Game People DB (60 attributes, 8 Hidden Personality bytes, Height/Weight, Names)
+│                   │   ├── pl_hist_index.dat   # (8.35 MB decompressed) 1,044,008 pairs: 522,004 (uid -> hist_idx) + 522,004 (person_id -> hist_idx)
+│                   │   ├── pl_hist_id.dat      # (8.35 MB decompressed) Indexed by hist_idx * 8 -> (head_byte_offset, tail_byte_offset) in pl_hist_dt.dat
+│                   │   ├── pl_hist_dt.dat      # (102.93 MB -> 191.17 MB decompressed) 4,344,855 × 44-byte Singly-Linked List Player Career History Season Rows
+│                   │   ├── non_pl_hist_dt.dat  # (14.40 MB -> 31.72 MB decompressed) Historical Staff Career Linked-List Nodes
+│                   │   └── summary.dat         # (21 B decompressed) Master Database Build Metadata Header
 │                   │
-│                   ├── dbc\                    # Compiled Binary Database Rule Overrides (.dbc)
+│                   ├── dbc\                    # Compiled Binary Database Rule Overrides (.dbc: fifa_wc26_squads.dbc, homegrown.dbc, saudi_manager_change.dbc, Licensing2.dbc)
 │                   │   └── permanent\          # Licensing, competition structure & regional rule overrides
+│                   │
+│                   ├── lnc\
+│                   │   └── all\                # 41 Plaintext Licensing & Name-Override Files (.lnc, 178 across all DB versions):
+│                   │                           #   COMP_LONG_NAME_CHANGE, CLUB_LONG_NAME_CHANGE, CHANGE_PLAYER_NAME, FAKE_NATIONAL_TEAM, etc.
 │                   │
 │                   └── edt\
 │                       └── permanent\          # 16 Plaintext Permanent Engine Rule Files (.edt / .ddt):
@@ -272,10 +297,13 @@ C:\Program Files (x86)\Steam\steamapps\common\Football Manager 26\
         │   ├── [Frame  #002]                   # training_schedule_templates.jsb — 164 Full-Time Weekly Schedules (day1..day7 × session1, session2, extra)
         │   ├── [Frame  #003]                   # training_schedule_templates_fmc.jsb — 136 Youth / Part-Time Weekly Schedules
         │   └── [Frame  #004]                   # training_sessions_weights.jsb — Session category weighting rules
-        ├── settings.fmf                        # (41 Zstd Frames) User & simulation preference schemas
-        ├── filters.fmf                         # (34 Zstd Frames) Scouting, player search & staff filter definitions
-        ├── achievements.fmf                    # (2 Zstd Frames) Steam/Epic achievement triggers
-        └── leaderboards.fmf                    # (2 Zstd Frames) Leaderboard scoring definitions
+        ├── filters.fmf                         # (446 Zstd Frames: 445 XMLs + 1 directory) Scouting, player search & staff filter definitions
+        ├── achievements.fmf                    # (51 Zstd Frames: 50 XMLs + 1 directory) Steam/Epic/Xbox achievement trigger definitions
+        ├── leaderboards.fmf                    # (29 Zstd Frames: 28 XMLs + 1 directory) Leaderboard scoring definitions
+        ├── settings.fmf                        # (11 Zstd Frames: 10 XMLs + 1 directory) User & simulation preference schemas
+        ├── store.fmf                           # (4 Zstd Frames: 3 XMLs + 1 directory) In-game store item definitions
+        ├── profanity_filter.fmf                # (4 Zstd Frames: 3 frames + 1 directory) Moderation wordlists & regex patterns
+        └── languages.fmf                       # (205.61 MB) Master .ltc UI localization string archive for 22+ languages
 ```
 
 ---
@@ -355,7 +383,7 @@ fm-toolkit\
 │
 ├── docs\                                       # Complete English Technical & Reverse-Engineering Documentation Suite
 │   ├── FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md   # (This document) Methodology & annotated file trees
-│   ├── FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md         # Unknown binary fields & all 8 game-file systems reference
+│   ├── FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md         # Unknown binary fields & all 11 game-file systems reference
 │   ├── FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md                # Official .fmf Engine Formulas & Empirical Save Estimators
 │   ├── FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md                   # 50 In-Possession roles (93 Role+Duty), 39 OP* roles, Dual-Roles & 11 Archetypes
 │   └── FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md            # Complete schema of all 28 core tables & 81 .fm container sections
@@ -368,7 +396,7 @@ fm-toolkit\
     ├── enrichment.py                           # Decoders for hidden staff attributes, contract bonuses, facilities, PersonBlock relations & lineups
     ├── extra_sections.py                       # Binary scanners/parsers for `hall_of_fame`, `board_takeovers`, `shortlists`, `offers`, `agents`, `news`
     ├── formulas.py                             # Official .fmf/.jsb formula loader (`parse_jsb`), 6D Role Breakdowns, CA/PA cost, & Value/Wage OLS models
-    ├── game_files.py                           # Extractors for all 8 FM26 Installation Game-File Systems (`QME`, `Momentum`, `OOP Grid`, `xG`, `Editor XML`, `Master DB`, `Media`, `IL2CPP`)
+    ├── game_files.py                           # Extractors for all 11 FM26 Installation Game-File Systems (`QME`, `Momentum`, `OOP Grid`, `xG`, `Editor XML`, `Master DB`, `Media`, `IL2CPP`, `People/History DB`, `.dbc/.lnc`, `Aux .fmf`)
     ├── diff.py                                 # `diff_saves()` byte-level differential analyzer across all 81 `.fm` sections
     ├── exporter.py                             # Multi-format exporters for CSV (UTF-8-BOM), JSON, JSONL, and SQLite (`.db`)
     │
