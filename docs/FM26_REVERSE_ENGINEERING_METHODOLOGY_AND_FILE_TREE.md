@@ -25,20 +25,23 @@ flowchart TD
 
 ### 1.1 Phase 1 — Unpacking the `.fm` (`\x02\x01fmf.`) and `.fmf` Zstandard Multi-Frame Containers
 1. **`.fm` Save Container (`\x02\x01fmf.` Header + Zstandard Trailer Directory):**
-   - Both `.fm` save files and `.fmf` game archives share the 6-byte magic signature `02 01 66 6D 66 2E` (`\x02\x01fmf.`), implemented in [`_core/_container.py`](../fm26save/_core/_container.py#L32-L49) and wrapped by [`FM26Container`](../fm26save/container.py).
+   - Both `.fm` save files and `.fmf` game archives share the 6-byte magic signature `02 01 66 6D 66 2E` (`\x02\x01fmf.`), implemented in [`_core/_container.py`](../fm26save/_core/_container.py#L189-L291) and wrapped by [`FM26Container`](../fm26save/container.py).
    - **26-Byte Outer Header (`HEADER_LEN = 26`):**
      - Bytes `0..6`: `02 01 66 6D 66 2E` (`\x02\x01fmf.`)
-     - Bytes `9..17` (`<Q` `u64`): `directory_offset` — byte offset pointing to the **Zstandard-compressed trailer directory at the end of the `.fm` file** (preceded by a 4-byte Zstd frame header before `28 B5 2F FD`).
-     - Bytes `22..26` (`<I` `u32`): `outer_Entry_count` — number of sections in the trailer directory (`81` core sections plus any embedded `.apm`/`.scm` match telemetry files).
+     - Bytes `6..9`: `00 00 00`
+     - Bytes `9..17` (`<Q` `u64`): `directory_offset_rel` — relative offset such that **`trailer_offset = 9 + directory_offset_rel`** points to the trailer header at the end of the `.fm` file.
+     - Bytes `17..22`: `04 00 00 00 00`
+     - Bytes `22..26` (`<I` `u32`): `content_end_rel` — relative end of the compressed content stream (`trailer_offset == 26 + content_end_rel` when there is no gap).
    - **Zstandard-Compressed Trailer Directory (`_parse_directory`):**
-     - Decompressing the Zstandard frame at `directory_offset + 4` yields the directory stream (`16`-byte header with `<I` `entry_count` at byte `5`).
-     - Each directory entry contains a length-prefixed section name (`<I` `name_len` + ASCII name + 1 trailing byte; for `.dat` entries, a second `<I` `sub_name_len` + sub-name + `5` trailing bytes) followed by a **40-byte fixed tail (`5 × u64` = `<5Q`)** ([`_core/_container.py`](../fm26save/_core/_container.py#L94-L103)):
-       1. `compressed_size` (`u64`)
-       2. `unknown_u64_1` (`u64`)
-       3. `frame_offset` (`u64` — byte offset relative to the `.fm` header; `frame_offset + 4` points directly to the section's `28 B5 2F FD` Zstandard frame)
-       4. `decompressed_size` (`u64`)
-       5. `unknown_u64_4` (`u64`)
-   - Note on Inner Table Magic (`tad.`): Once a section or `.dat` database table is decompressed, Sports Interactive binary database tables begin with `03 01 74 61 64 2E` (`\x03\x01tad.`, i.e., little-endian `.dat`).
+     - At `trailer_offset`, a **9-byte trailer header** (`\x02\x01fmf.\x08\x00\x00`) precedes the Zstandard directory stream at **`trailer_offset + 9`**.
+     - Decompressing the Zstandard stream at `trailer_offset + 9` yields the directory buffer: it starts at offset `0` with a length-prefixed `save_name` (`<I` `name_len` + UTF-8 bytes), followed by a `4`-byte `u32` (`directory_version`) and `<I` `entry_count`.
+     - Each directory entry contains a length-prefixed section `name` (`<I` `len` + UTF-8 bytes), a `1`-byte flag (`has_sub_name = 1` for `.dat` entries, followed by `<I` `sub_len` + `sub_name` + `4` metadata bytes), and a **40-byte fixed tail (`5 × u64` = `<5Q`)** ([`_core/_container.py`](../fm26save/_core/_container.py#L257-L291)):
+       1. `relative_offset` (`u64` — byte offset relative to `HEADER_LEN = 26`, so **`frame_offset = 26 + relative_offset`** points directly to the section's `28 B5 2F FD` Zstandard frame)
+       2. `compressed_size` (`u64`)
+       3. `decompressed_size` (`u64`)
+       4. `first_trailing_value` (`u64`)
+       5. `second_trailing_value` (`u64`)
+   - Note on Inner Table Magic (`tad.`): Once a section or `.dat` database table is decompressed, Sports Interactive binary database tables (`44` of the `64` `.dat` sections) begin with `03 01 74 61 64 2E` (`\x03\x01tad.`, i.e., little-endian `.dat`).
 2. **`.fmf` & `.dat` Game Installation Archives (`simatch.fmf`, `editor.fmf`, `media.fmf`, `client_db.dat`, `lang_update_db.dat`, `server_db.dat`):**
    - Game archives either begin directly with `02 01 66 6D 66 2E` (`base = 0` for `.fmf`) or follow a 12-byte outer database wrapper (`base = 12` for `client_db.dat`, `lang_update_db.dat`, `server_db.dat`).
    - At `base + 9`, a `<Q` (`u64`) pointer `ptr` gives the trailer directory Zstd frame offset `toff = base + 9 + ptr` (where a 4-byte frame size prefix precedes `28 B5 2F FD`).
@@ -108,10 +111,10 @@ Below is the exact specification implemented in [`parse_jsb()`](../fm26save/form
 
 ### 1.5 Phase 5 — Cracking `client_db.dat` (`32` Frames) & `lang_update_db.dat` (`401` Frames)
 To resolve every `city_id`, `club_uid`, `competition_uid`, and `injury_id` in FM26 without external tools:
-1. We unpacked `shared/data/database/db/2620/2620_fm/client_db.dat` (**`32` Zstd frames** = `31` `*.dat` data frames + `1` trailer directory frame), `lang_update_db.dat` (**`401` Zstd frames** = **`25` languages × `16` localized tables** + `1` trailer directory frame, where frames `#00..#15` are Language `8` = English `8_*.dat`), and `server_db.dat` (**`78` Zstd frames** = `77` data tables + `1` trailer directory frame).
-2. Every table frame starts with a **12-byte header**: `03 01 'tad.' 90 0E` (`8` bytes) + `<I` `record_count` (`4` bytes).
-3. In `client_db.dat` `Frame #03` (`table_2.dat` in the trailer directory, `58,349` records), `(2,509,019 - 12) / 58,349 = 43.0000` bytes per record!
-4. Using `Trabzonspor` (`club.city_id = 8002` in `.fm` saves) and `Gençlerbirliği` (`club.city_id = 7998`), we inspected record `8002` and record `7998` in `table_2.dat` and verified the exact **43-byte city record layout** ([`_parse_lang_cities_and_coords()`](../fm26save/game_files.py#L611-L659)):
+1. We unpacked `shared/data/database/db/2620/2620_fm/client_db.dat` (**`32` Zstd frames** = `31` `*.dat` data frames `#00..#30` + `1` trailer directory frame `#31`), `lang_update_db.dat` (**`401` Zstd frames** = **`25` languages × `16` localized tables** `#000..#399` + `1` trailer directory frame `#400`, where frames `#00..#15` are Language `8` = English `8_*.dat`), and `server_db.dat` (**`78` Zstd frames** = `77` data tables `#00..#76` + `1` trailer directory frame `#77`).
+2. Every table frame starts with a **12-byte header**: `03 01 'tad.' 90 0E` (`8` bytes) + `<I` `record_count` (`4` bytes), and ends with a `10`-byte table trailer (`22` header/trailer bytes total).
+3. In `client_db.dat` `Frame #02` (`client_db/table_2.dat` in the trailer directory, `58,349` records, `2,509,029` B decompressed), `(2,509,029 - 22) / 58,349 = 43.0000` bytes per record!
+4. Using `Trabzonspor` (`club.city_id = 8002` in `.fm` saves) and `Gençlerbirliği` (`club.city_id = 7998`), we inspected record `8002` and record `7998` in `table_2.dat` and verified the exact **43-byte city record layout** ([`_parse_lang_cities_and_coords()`](../fm26save/game_files.py#L821-L869)):
    - `offset +0..+3` (`3B`): Record header flags
    - `offset +3..+7` (`<f` `float32`): **Latitude** (`41.00145` for Trabzon `#8002`, `39.92077` for Ankara `#7998`)
    - `offset +7..+11` (`<f` `float32`): **Longitude** (`39.71780` for Trabzon `#8002`, `32.85411` for Ankara `#7998`)
@@ -122,7 +125,7 @@ To resolve every `city_id`, `club_uid`, `competition_uid`, and `injury_id` in FM
    - `offset +22` (`u8`): **`inhabitants_bracket`** (population bracket code)
    - `offset +27..+29` (`<H` `u16`): **`weather_profile_id`**
    - `offset +32..+36` (`<I` `u32`): **`db_city_id`** — Verified **`db_city_id == idx` for `58,349 / 58,349` (`100.0%`)** of cities!
-   - `offset +36..+40` (`<I` `u32`): **`db_uid`** — Verified **`db_uid == lang_uid` for `58,349 / 58,349` (`100.0%`)** of cities against `lang_update_db.dat` `Frame #02` (`8_2.dat`)!
+   - `offset +36..+40` (`<I` `u32`): **`db_uid`** — Verified **`db_uid == lang_uid` for `58,349 / 58,349` (`100.0%`)** of cities against `lang_update_db.dat` `Frame #03` (`8_2.dat`)!
 
 ---
 
@@ -216,55 +219,63 @@ C:\Program Files (x86)\Steam\steamapps\common\Football Manager 26\
 │           └── db\
 │               └── 2620\                       # OFFICIAL FM26 DATABASE (BUILD 2620)
 │                   ├── 2620_fm\
-│                   │   ├── client_db.dat       # (15.08 MB -> ~92 MB decompressed, 31 tables + 1 Trailer Directory) MASTER STRUCTURAL DATABASE
-│                   │   │   ├── #00: simple_vars.dat            #   Database header variables (25 B)
-│                   │   │   ├── #01: table_0.dat                #   6 International Agreements (500 B: EU, EEA, OACPS, Mercosur, Andean, Overseas)
-│                   │   │   ├── #02: table_1.dat                #   3,884 Awards (571.6 KB: Continent, Nation, Comp, Reputation, History)
-│                   │   │   ├── #03: table_2.dat                #   58,349 Cities (2,509,019 B = 12B hdr + 58,349 × 43B: Lat, Lon, Attraction, Nation, Region, Altitude_ft, cid@+32, uid@+36)
-│                   │   │   ├── #04: table_3.dat                #   7 Continents (183 B = 8B hdr + 7 × 25B: Regional Strength Factor f64, cid@+9, uid@+13)
-│                   │   │   ├── #06: table_6.dat                #   251 Nations (918.2 KB: Continent, Region, Capital City, FIFA Points, nid, uid)
-│                   │   │   ├── #09: table_25.dat               #   7,973 Competitions (1,012,584 B = 12B hdr + 7,973 × 127B [rec #0 128B]: Nation, Continent, Rep, Type, Level, RGB, cid, uid)
-│                   │   │   ├── #10: table_for_old_save_25.dat  #   7,973 Competitions Legacy Save Layout (980,692 B = 12B hdr + 7,973 × 123B [rec #0 124B])
-│                   │   │   ├── #11: table_26.dat               #   96,343 Clubs (67.07 MB: Nation, City, Stadium, Year Founded, Reputation, Kits, cid, uid)
-│                   │   │   ├── #12: table_14.dat               #   186 Currencies (9.9 KB)
-│                   │   │   ├── #13: table_15.dat               #   1,683 Derbies (244.4 KB)
-│                   │   │   ├── #15: table_19.dat               #   136 Injuries (2,733 B = 13B hdr + 136 × 20B: iid@+8, uid@+12)
-│                   │   │   ├── #16: table_17.dat               #   252 Languages (32.7 KB)
-│                   │   │   ├── #17: table_28.dat               #   2,527 Local Regions (108.7 KB)
-│                   │   │   ├── #18: table_31.dat               #   180 Media Sources (24.0 KB)
-│                   │   │   ├── #20: table_37.dat               #   294,103 First Names Pool (4.73 MB: [name_id:u32][slen:u32][utf8_bytes:slen])
-│                   │   │   ├── #21: table_38.dat               #   599,900 Last / Surnames Pool (9.98 MB: [name_id:u32][slen:u32][utf8_bytes:slen])
-│                   │   │   ├── #22: table_39.dat               #   94,088 Common Names Pool (1.79 MB: [name_id:u32][slen:u32][utf8_bytes:slen])
-│                   │   │   ├── #25: table_45.dat               #   51,118 Stadiums (1,942,531 B = 47B hdr + 51,118 × 38B: City@+5, OwnerClub@+9, Lat@+19, Lon@+23, sid@+27, uid@+31)
-│                   │   │   ├── #26: table_46.dat               #   286 Stage Names (13.2 KB)
-│                   │   │   ├── #27..#30                        #   Remaining Lookup Tables (table_32, table_33, table_34, table_42)
+│                   │   ├── client_db.dat       # (15.08 MB -> ~50.8 MB decompressed, 31 tables #00..#30 + 1 Trailer Directory #31) MASTER STRUCTURAL DATABASE
+│                   │   │   ├── #00: simple_vars.dat            #   Database header variables (36 B)
+│                   │   │   ├── #01: table_0.dat                #   3,884 Awards (299,090 B = 22B hdr/tail + 3,884 × 77B: Continent, Nation, Comp, Reputation, aid@+66, uid@+70)
+│                   │   │   ├── #02: table_2.dat                #   58,349 Cities (2,509,029 B = 22B hdr/tail + 58,349 × 43B: Lat, Lon, Attraction, Nation, Region, Altitude_ft, cid@+32, uid@+36)
+│                   │   │   ├── #03: table_3.dat                #   96,343 Clubs Primary Table (7,926,088 B: Nation, BasedNation, City, Gender, cid, uid)
+│                   │   │   ├── #04: table_extra_3.dat          #   96,343 Clubs Extra Table (16,416,295 B: Extended club visual & kit records)
+│                   │   │   ├── #05: table_25.dat               #   7,973 Competitions (1,012,593 B = 22B hdr/tail + 7,973 × 127B [rec #0 128B]: Nation, Continent, Level, Type, cid, uid)
+│                   │   │   ├── #06: table_5.dat                #   7 Continents (260 B = 15B hdr + 7 × 35B: Regional Strength Factor f64, cid, uid)
+│                   │   │   ├── #07: table_41.dat               #   173 Stage Flags / Rules (76,130 B)
+│                   │   │   ├── #08: table_6.dat                #   136 Injuries (2,198 B = 22B hdr/tail + 136 × 16B: iid, uid)
+│                   │   │   ├── #09: table_7.dat                #   180 Media Sources (18,049 B)
+│                   │   │   ├── #10: table_8.dat                #   126 Records (5,248 B)
+│                   │   │   ├── #11: table_10.dat               #   251 Nations (27,899 B: Continent, Region, Capital City, DevState, EconFactor, GameImp, nid, uid)
+│                   │   │   ├── #12: table_9.dat                #   502 Languages Primary Table (41,922 B)
+│                   │   │   ├── #13: table_extra_9.dat          #   502 Languages Extra Table (179,661 B)
+│                   │   │   ├── #14..#16: name_table_0..2.dat   #   294,103 First / 599,900 Last / 94,088 Common Name ID Index Tables
+│                   │   │   ├── #17: name_table_extra_0.dat     #   294,103 First Names String Pool (4,557,720 B: [name_id:u32][slen:u32][utf8_bytes:slen])
+│                   │   │   ├── #18: name_table_extra_1.dat     #   599,900 Last / Surnames String Pool (9,655,009 B: [name_id:u32][slen:u32][utf8_bytes:slen])
+│                   │   │   ├── #19: name_table_extra_2.dat     #   94,088 Common Names String Pool (1,800,690 B: [name_id:u32][slen:u32][utf8_bytes:slen])
+│                   │   │   ├── #20: table_19.dat               #   28 Records (2,178 B)
+│                   │   │   ├── #21: table_47.dat               #   2,527 Local Regions (111,144 B)
+│                   │   │   ├── #22: table_21.dat               #   51,118 Stadiums (1,942,506 B = 22B hdr/tail + 51,118 × 38B: City@+5, OwnerClub@+9, Lat@+19, Lon@+23, sid@+27, uid@+31)
+│                   │   │   ├── #23: table_22.dat               #   668 Records (8,706 B)
+│                   │   │   ├── #24: table_23.dat               #   286 Stage Names (4,026 B; legacy copy at #27 table_for_old_save_23.dat)
+│                   │   │   ├── #25: table_56.dat               #   6 International Agreements (100 B: EU, EEA, OACPS, Mercosur, Andean, Overseas)
+│                   │   │   ├── #26: table_for_old_save_25.dat  #   7,973 Competitions Legacy Save Layout (980,701 B = 22B hdr/tail + 7,973 × 123B [rec #0 124B])
+│                   │   │   ├── #28: table_27.dat               #   373 Weather Profiles (48,453 B)
+│                   │   │   ├── #29: table_35.dat               #   924 Currencies / Descriptions (13,882 B)
+│                   │   │   ├── #30: table_18.dat               #   1,683 Derbies (112,457 B)
 │                   │   │   └── #31: Directory                  #   Trailer Directory Index
 │                   │   │
 │                   │   ├── lang_update_db.dat  # (3.55 MB, 25 Languages × 16 Tables = 400 files + 1 Trailer Directory) MASTER LOCALIZED NAMES DATABASE
-│                   │   │   ├── #00: 8_0.dat    #   [Lang 8 = English] 6 International Agreements (uid, name, abbreviation)
-│                   │   │   ├── #01: 8_1.dat    #   [Lang 8 = English] 3,884 Awards (uid, name, short_name)
-│                   │   │   ├── #02: 8_2.dat    #   [Lang 8 = English] 58,349 Cities (0-based city_id 0..58348 -> uid, official city name)
-│                   │   │   ├── #03: 8_3.dat    #   [Lang 8 = English] 7 Continents (uid, name, short_name, 3-letter, continentality, federation)
-│                   │   │   ├── #04: 8_6.dat    #   [Lang 8 = English] 251 Nations (uid, name, short_name, 3-letter code, nationality)
-│                   │   │   ├── #05: 8_25.dat   #   [Lang 8 = English] 7,973 Competitions (uid, name, short_name, 3-letter code)
-│                   │   │   ├── #06: 8_26.dat   #   [Lang 8 = English] 96,343 Clubs (uid, name, short_name, 6-letter, 3-letter, alt_short, nickname)
-│                   │   │   ├── #07: 8_14.dat   #   [Lang 8 = English] 186 Currencies
-│                   │   │   ├── #08: 8_19.dat   #   [Lang 8 = English] 136 Injuries (uid, name, sentence_name)
-│                   │   │   ├── #09: 8_15.dat   #   [Lang 8 = English] 1,683 Derbies (uid, name, short_name)
-│                   │   │   ├── #10: 8_17.dat   #   [Lang 8 = English] 252 Languages
-│                   │   │   ├── #11: 8_28.dat   #   [Lang 8 = English] 2,527 Local Regions (uid, name, demonym)
-│                   │   │   ├── #12: 8_31.dat   #   [Lang 8 = English] 180 Media Sources (uid, name)
-│                   │   │   ├── #13: 8_45.dat   #   [Lang 8 = English] 51,118 Stadiums (uid, name, alt_name)
-│                   │   │   ├── #14: 8_46.dat   #   [Lang 8 = English] 286 Stage Names (uid, name, short_name, plural_name)
-│                   │   │   ├── #15: 8_32.dat   #   [Lang 8 = English] 1,100 Descriptions / Modifiers
+│                   │   │   ├── #00: 8_9.dat    #   [Lang 8 = English] 251 Nations (13,532 B: uid, name, short_name, 3-letter code, nationality)
+│                   │   │   ├── #01: 8_25.dat   #   [Lang 8 = English] 7,973 Competitions (553,418 B: uid, name, short_name, 3-letter code)
+│                   │   │   ├── #02: 8_3.dat    #   [Lang 8 = English] 96,343 Clubs (7,234,952 B: uid, name, short_name, 6-letter, 3-letter, alt_short, nickname)
+│                   │   │   ├── #03: 8_2.dat    #   [Lang 8 = English] 58,349 Cities (1,217,204 B: 0-based city_id 0..58348 -> uid, official city name)
+│                   │   │   ├── #04: 8_5.dat    #   [Lang 8 = English] 7 Continents (652 B: uid, name, code, demonym, federation_name, federation_short)
+│                   │   │   ├── #05: 8_6.dat    #   [Lang 8 = English] 136 Injuries (6,946 B: uid, name, sentence_name)
+│                   │   │   ├── #06: 8_0.dat    #   [Lang 8 = English] 3,884 Awards (286,096 B: uid, name, short_name)
+│                   │   │   ├── #07: 8_21.dat   #   [Lang 8 = English] 51,118 Stadiums (1,795,458 B: uid, name, alt_name)
+│                   │   │   ├── #08: 8_23.dat   #   [Lang 8 = English] 286 Stage Names (9,764 B: uid, name, short_name, plural_name)
+│                   │   │   ├── #09: 8_19.dat   #   [Lang 8 = English] Empty / Auxiliary Table (12 B)
+│                   │   │   ├── #10: 8_35.dat   #   [Lang 8 = English] 186 Currencies / Descriptions (6,480 B)
+│                   │   │   ├── #11: 8_7.dat    #   [Lang 8 = English] 180 Media Sources (4,381 B: uid, name)
+│                   │   │   ├── #12: 8_47.dat   #   [Lang 8 = English] 2,527 Local Regions (68,535 B: uid, name, demonym)
+│                   │   │   ├── #13: 8_18.dat   #   [Lang 8 = English] 1,683 Derbies (78,441 B: uid, name, short_name)
+│                   │   │   ├── #14: 8_56.dat   #   [Lang 8 = English] 6 International Agreements (292 B: uid, name, abbreviation)
+│                   │   │   ├── #15: 8person_names.dat # [Lang 8 = English] Person Names Override Header (12 B)
 │                   │   │   ├── #16..#399       #   Remaining 24 Languages × 16 Tables (<lang>_<table>.dat)
 │                   │   │   └── #400: Directory #   Trailer Directory Index
 │                   │   │
-│                   │   ├── server_db.dat       # (68.79 MB -> ~295 MB decompressed, 77 tables + 1 Trailer Directory) SERVER SIMULATION ATTRIBUTES DB
-│                   │   │   ├── #07: table_6.dat  #   251 Nations (Reputation 1..10000, Dev State 1..3, Game Importance 1..4, Economic Factor 1..20, Years to Nat, EU)
-│                   │   │   ├── #12: table_19.dat #   136 Injuries (13B hdr + 136 × 48B: Category, BodyPart, MinDays, ExtraDays, SharpnessDrop%, Occurrencef32, Severity, Contagious@+31)
-│                   │   │   ├── #13: table_26.dat #   96,343 Clubs (Training/Youth/Corporate Facilities 1..20, Youth Coaching/Recruitment 1..20, Pro Status)
-│                   │   │   └── #26: table_45.dat #   51,118 Stadiums (47B hdr + 51,118 × 181B: Capacity, Seating, Expansion, Pitch Length/Width dm, Build Year, Min/Max Pitch)
+│                   │   ├── server_db.dat       # (68.79 MB -> ~295 MB decompressed, 77 tables #00..#76 + 1 Trailer Directory #77) SERVER SIMULATION ATTRIBUTES DB
+│                   │   │   ├── #03: table_3.dat  #   96,343 Clubs (Training/Youth/Corporate Facilities 1..20, Youth Coaching/Recruitment 1..20, Pro Status, Kits)
+│                   │   │   ├── #06: table_5.dat  #   7 Continents (49 B/rec: Regional Strength Factor & Confederation Simulation Parameters)
+│                   │   │   ├── #08: table_6.dat  #   136 Injuries (6,550 B = 22B hdr/tail + 136 × 48B: Category, BodyPart, MinDays, ExtraDays, SharpnessDrop%@+16, Occurrencef32, Severity, Contagious@+31)
+│                   │   │   ├── #11: table_10.dat #   251 Nations (538,107 B: Reputation 1..10000, Dev State 1..3, Game Importance 1..4, Economic Factor 1..20, Youth Rating, Wage Tiers)
+│                   │   │   └── #22: table_21.dat #   51,118 Stadiums (9,252,380 B = 22B hdr/tail + 51,118 × 181B: Capacity, Seating, Expansion, Pitch Length/Width dm, Build Year, Min/Max Pitch)
 │                   │   │
 │                   │   ├── basic_people_db.dat # (12.79 MB -> 60.15 MB decompressed) ALL 723,010 PRE-GAME PEOPLE SUMMARY DB (100% deterministic walk)
 │                   │   │                       #   532,742 Players + 4,410 Player/Staff (84B: CA, PA including 6 PA=-10 & 22 PA=-95 wonderkids, Reps, Nation, Club, Gender)
@@ -356,7 +367,7 @@ Every Football Manager 26 `.fm` save file is a `\x02\x01fmf.` multi-frame Zstand
 │   └── referees_manager.dat                    # Referee appointments and performance ratings
 │
 ├── [5. Clubs, Board Takeovers, Hall of Fame & Dynamics]
-│   ├── board_takeover_man.dat                  # Ongoing club board takeovers, tycoon/consortium buyers, and target clubs
+│   ├── board_takeover_manager.dat              # Ongoing club board takeovers, tycoon/consortium buyers, and target clubs
 │   ├── hall_of_fame.dat                        # Worldwide, national, and continental Hall of Fame manager rankings and trophy points
 │   ├── job_centre.dat                          # Open manager/staff job vacancies and job security ratings
 │   ├── dynamic_manager.dat                     # Squad hierarchy, social groups, dressing room atmosphere, and manager support

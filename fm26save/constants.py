@@ -243,12 +243,12 @@ FM26_NATIONS: dict[int, dict[str, str]] = {
     249: {"tr": "Saint-Barthélemy", "en": "Saint-Barthélemy", "code": "BLM", "conf": "CONCACAF"},
 }
 
-# Known Turkish & Major World City IDs (augmented dynamically at runtime from clubs/stadiums)
+# Offline fallback City IDs (used only when FM26 installation `lang_update_db.dat` `8_2.dat` is unavailable)
 KNOWN_CITIES: dict[int, str] = {
     7991: "İstanbul",
     8002: "Trabzon",
-    7972: "Ankara",
-    7992: "İzmir",
+    7998: "Ankara",
+    8008: "İzmir",
     7977: "Bursa",
     7973: "Antalya",
     7994: "Konya",
@@ -259,10 +259,10 @@ KNOWN_CITIES: dict[int, str] = {
     8001: "Sivas",
     7999: "Rize",
     7980: "Diyarbakır",
-    1040: "London",
-    1042: "Manchester",
-    1039: "Liverpool",
-    1024: "Birmingham",
+    1039: "Bournemouth",
+    1280: "London",
+    1295: "Manchester",
+    1955: "Madrid",
     540: "München",
     517: "Berlin",
     522: "Dortmund",

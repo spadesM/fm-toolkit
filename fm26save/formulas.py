@@ -741,7 +741,7 @@ DUTY_ATTRIBUTE_DELTAS: dict[str, dict[str, tuple[str, ...]]] = {
     },
 }
 
-# All 33 Official FM26 Out-Of-Possession (OP*) Roles from global-metadata.dat & oop_attributes_scoring.jsb
+# All 39 Official FM26 Out-Of-Possession (OP*) Roles from global-metadata.dat & oop_attributes_scoring.jsb
 OUT_OF_POSSESSION_ROLE_CATALOG: dict[str, dict[str, Any]] = {
     "OPGoalkeeper": {
         "tr": "Topsuz: Standart Kaleci (OP Goalkeeper)",

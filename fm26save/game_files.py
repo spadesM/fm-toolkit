@@ -12,7 +12,7 @@ Extracts and decodes official Football Manager 26 installation archives (.fmf, .
 9. Pre-Game Master People & Career History Databases (`basic_people_db.dat` 723,010 people walked 100%, `people_db.dat` attributes/personalities, `pl_hist_index/id/dt.dat` 4,344,855 × 44B singly-linked list career rows)
 10. Compiled `.dbc` Competition Rule Archives (`sicomps/comps.dbc` 1,442 `03 01 cbd.` rule sets + `2620/dbc/*.dbc`) & `.lnc` Licensing / Name Overrides (`2620/lnc/all/*.lnc`)
 11. Auxiliary Simulation `.fmf` Archives (`filters.fmf` 2 XML files / 445 filter records, `achievements.fmf` 1 XML file / 50 achievement records, `leaderboards.fmf` 1 XML file / 28 leaderboard records, `settings.fmf` 9 XML files, `store.fmf` 2 XML files, `profanity_filter.fmf` 2 files, `languages.fmf`)
-12. Multi-Version Pre-Game Database Evolution (`shared/data/database/db/2300..2620` — all 9 historical & active FM23/FM24/FM26 databases walked 100% across `5,545,819` person records, table counts, wonderkid & star CA/PA trajectories)
+12. Multi-Version Pre-Game Database Evolution (`shared/data/database/db/2300..2620` — all 9 historical & active FM23/FM24/FM26 databases walked 100% across `4,945,820` person records, table counts, wonderkid & star CA/PA trajectories)
 """
 
 from __future__ import annotations
@@ -34,6 +34,7 @@ from fm26save.formulas import (
 )
 
 _CACHED_OFFICIAL_CITY_MAP: dict[int, str] | None = None
+_CACHED_OFFICIAL_LOCAL_REGION_MAP: dict[int, str] | None = None
 _CACHED_MASTER_DB_SUMMARY: dict[str, Any] | None = None
 
 
@@ -308,6 +309,8 @@ def extract_xg_shot_models(
     return {
         "available": True,
         "source": "shared/data/simatch.fmf (Frames #002..#100 across 9 versions; active v26.1.4.1 at Frames #090..#100)",
+        "active_version": all_versions[-1] if all_versions else "26.1.4.1",
+        "active_version_folder": folder_versions[-1] if folder_versions else "26_1_4_1",
         "versions_available_count": len(all_versions),
         "versions_available": all_versions,
         "version_folders": folder_versions,
@@ -897,8 +900,8 @@ def _parse_lang_injuries(
             soff = 13 + idx * 48
             srec = server_inj_raw[soff : soff + 48]
             cat_code, body_part, is_phys = struct.unpack_from("<BBB", srec, 1)
-            min_d, extra_d, inact_min, inact_extra, fit_drop = struct.unpack_from("<HHHHH", srec, 4)
-            treat_code, is_rec, can_play_with_inj = struct.unpack_from("<BBB", srec, 14)
+            min_d, extra_d, inact_min, inact_extra = struct.unpack_from("<HHHH", srec, 4)
+            treat_code, is_rec, can_play_with_inj, sharpness_drop, flag_17 = struct.unpack_from("<BBBBB", srec, 13)
             occ_ratio, base_occ = struct.unpack_from("<ff", srec, 18)
             sev_tier = srec[30]
             is_contag = srec[31]
@@ -914,7 +917,9 @@ def _parse_lang_injuries(
                     "max_days_estimate": min_d + extra_d,
                     "inactive_min_days": inact_min,
                     "inactive_extra_days": inact_extra,
-                    "match_fitness_drop_pct": fit_drop,
+                    "match_sharpness_drop_pct": sharpness_drop,
+                    "match_fitness_drop_pct": sharpness_drop,
+                    "flag_17": flag_17,
                     "treatment_code": treat_code,
                     "is_recurring": bool(is_rec),
                     "can_play_with_protective_or_injections": bool(can_play_with_inj),
@@ -1176,6 +1181,30 @@ def load_official_city_map(
     if fm_install_dir is None:
         _CACHED_OFFICIAL_CITY_MAP = city_map
     return city_map
+
+
+def load_official_local_region_map(
+    fm_install_dir: str | os.PathLike[str] | None = None,
+) -> dict[int, str]:
+    """Load all 2,527 official 0-based `local_region_id -> region_name` mappings from `lang_update_db.dat` Frame #12 (`8_47.dat`)."""
+    global _CACHED_OFFICIAL_LOCAL_REGION_MAP
+    if _CACHED_OFFICIAL_LOCAL_REGION_MAP is not None and fm_install_dir is None:
+        return _CACHED_OFFICIAL_LOCAL_REGION_MAP
+
+    root = _resolve_fm26_dir(fm_install_dir)
+    lang_db = root / "shared/data/database/db/2620/2620_fm/lang_update_db.dat"
+    if not lang_db.exists():
+        return {}
+
+    frames = extract_fmf_frames(lang_db)
+    if len(frames) <= 12:
+        return {}
+    regions = _parse_lang_local_regions(frames[12][1])
+    region_map = {r["index"]: r["name"] for r in regions}
+
+    if fm_install_dir is None:
+        _CACHED_OFFICIAL_LOCAL_REGION_MAP = region_map
+    return region_map
 
 
 def extract_master_db_tables(
@@ -2476,6 +2505,7 @@ def extract_all_game_files_summary(
             "sample_entry": (oop_grid.get("entries") or [None])[0],
         },
         "4_xg_shot_models_and_tactical_presets": {
+            "xg_active_version": xg_models.get("active_version", "26.1.4.1"),
             "xg_versions_available_count": xg_models.get("versions_available_count", 0),
             "xg_versions_available": xg_models.get("versions_available", []),
             "xg_shot_models_count": xg_models.get("models_count", 0),

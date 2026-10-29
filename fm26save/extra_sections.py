@@ -35,7 +35,8 @@ def _read_lp_utf8(data: bytes, offset: int, max_len: int = 80) -> tuple[str | No
 
 
 def parse_hall_of_fame(save: _core.Save, *, limit: int = 500) -> list[dict[str, Any]]:
-    """Parse hall_of_fame.dat into structured Hall of Fame manager records."""
+    """Parse hall_of_fame.dat into structured Hall of Fame manager records, walking each manager's
+    variable-length `03 03` trophy-entry array to extract exact major/minor titles and Hall of Fame points."""
     with save._context.section("hall_of_fame") as raw:
         records: list[dict[str, Any]] = []
         pos = 8
@@ -48,16 +49,43 @@ def parse_hall_of_fame(save: _core.Save, *, limit: int = 500) -> list[dict[str, 
                     ln, next2 = _read_lp_utf8(raw, next1, 45)
                     if ln and len(ln) >= 2 and any(c.isalpha() for c in ln):
                         cn, next3 = _read_lp_utf8(raw, next2, 45)
-                        if cn is not None and next3 + 40 <= len(raw):
+                        if cn is not None and next3 + 22 <= len(raw):
                             b_date = decode_date(raw, next3)
                             if b_date is not None and 1900 <= b_date.year <= 2045:
-                                tail = raw[next3 : min(len(raw), next3 + 56)]
-                                major_trophies = tail[18] if len(tail) > 18 else 0
-                                minor_trophies = tail[19] if len(tail) > 19 else 0
-                                points_a = _U16.unpack_from(tail, 22)[0] if len(tail) >= 24 else 0
-                                nat_or_code = _U16.unpack_from(tail, 38)[0] if len(tail) >= 40 else None
-                                points_b = _U16.unpack_from(tail, 40)[0] if len(tail) >= 42 else 0
-                                ref_year = _U16.unpack_from(tail, 44)[0] if len(tail) >= 46 else None
+                                manager_uid = struct.unpack_from("<i", raw, next3 + 8)[0]
+                                nation_uid = struct.unpack_from("<i", raw, next3 + 13)[0]
+                                n_entries = raw[next3 + 17]
+                                epos = next3 + 18
+                                major_trophies = 0
+                                minor_trophies = 0
+                                last_win_year: int | None = None
+                                valid_walk = True
+                                for _ in range(n_entries):
+                                    if epos + 24 > len(raw) or raw[epos : epos + 2] != b"\x03\x03":
+                                        valid_walk = False
+                                        break
+                                    wins = _U16.unpack_from(raw, epos + 7)[0]
+                                    cat = raw[epos + 21]
+                                    ycnt = _U16.unpack_from(raw, epos + 22)[0]
+                                    if ycnt > 200 or epos + 24 + 4 * ycnt > len(raw):
+                                        valid_walk = False
+                                        break
+                                    # Categories: 0=Top League, 2=Main Domestic Cup, 4=Club World Cup, 21=UCL/Primary Continental, 22=UEL/Secondary Continental
+                                    if cat in (0, 2, 4, 21, 22):
+                                        major_trophies += wins
+                                    else:
+                                        minor_trophies += wins
+                                    for y_i in range(ycnt):
+                                        w_dt = decode_date(raw, epos + 24 + 4 * y_i)
+                                        if w_dt and (last_win_year is None or w_dt.year > last_win_year):
+                                            last_win_year = w_dt.year
+                                    epos += 24 + 4 * ycnt
+
+                                hof_points = (
+                                    _U32.unpack_from(raw, epos)[0]
+                                    if (valid_walk and epos + 4 <= len(raw))
+                                    else 0
+                                )
                                 records.append(
                                     {
                                         "offset": pos,
@@ -66,24 +94,31 @@ def parse_hall_of_fame(save: _core.Save, *, limit: int = 500) -> list[dict[str, 
                                         "common_name": cn or None,
                                         "full_name": cn if cn else f"{fn} {ln}",
                                         "birth_date": str(b_date),
+                                        "manager_uid": manager_uid if manager_uid > 0 else None,
+                                        "nation_uid": nation_uid if nation_uid > 0 else None,
+                                        "competition_entries_count": n_entries,
                                         "major_titles_raw": major_trophies,
                                         "minor_titles_raw": minor_trophies,
-                                        "hall_of_fame_points": points_b or points_a,
-                                        "nation_id_candidate": nat_or_code if nat_or_code and nat_or_code < 250 else None,
-                                        "nation_name": resolve_nation(nat_or_code) if nat_or_code and nat_or_code < 250 else "",
-                                        "reference_year": ref_year if ref_year and 1950 <= ref_year <= 2100 else None,
+                                        "total_titles": major_trophies + minor_trophies,
+                                        "hall_of_fame_points": hof_points,
+                                        "reference_year": last_win_year,
                                     }
                                 )
-                                pos = next3 + 40
+                                pos = epos + 4 if (valid_walk and epos > next3) else next3 + 22
                                 continue
             pos += 1
         return records
 
 
 def parse_board_takeovers(save: _core.Save) -> list[dict[str, Any]]:
-    """Parse board_takeover_manager.dat for active/historical club takeover bids & investors."""
+    """Scan board_takeover_manager.dat (or board_takeover_man.dat) for investor name blocks & target clubs."""
     club_index = save._context.club_index()
-    with save._context.section("board_takeover_manager") as raw:
+    sec_name = (
+        "board_takeover_manager"
+        if "board_takeover_manager" in save.info.section_schemas
+        else "board_takeover_man"
+    )
+    with save._context.section(sec_name) as raw:
         records: list[dict[str, Any]] = []
         pos = 8
         end = len(raw) - 20
@@ -99,7 +134,6 @@ def parse_board_takeovers(save: _core.Save) -> list[dict[str, Any]]:
                             # Look back ~52 bytes for club_index and nation_id
                             club_idx = None
                             nat_id = None
-                            start_date = None
                             if pos >= 52:
                                 c_cand = _U32.unpack_from(raw, pos - 51)[0]
                                 n_cand = _U32.unpack_from(raw, pos - 47)[0]

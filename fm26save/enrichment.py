@@ -62,14 +62,13 @@ def resolve_nation_info(nation_id: int | None) -> dict[str, Any]:
 
 def build_city_map(save: _core.Save) -> dict[int, str]:
     """Build a city_id -> city_name map combining official 58,349 `lang_update_db.dat` cities,
-    known cities, and club-name inference fallback."""
+    offline fallback cities (`KNOWN_CITIES`), and club-name inference fallback."""
     from fm26save.game_files import load_official_city_map
 
-    city_map: dict[int, str] = {}
+    city_map: dict[int, str] = dict(KNOWN_CITIES)
     official = load_official_city_map()
     if official:
         city_map.update(official)
-    city_map.update(KNOWN_CITIES)
     by_city: dict[int, list[str]] = defaultdict(list)
     for club in save.clubs():
         if club.city_id is not None:
@@ -246,8 +245,8 @@ def decode_facilities_enriched(save: _core.Save) -> list[dict[str, Any]]:
             post = game_db[chain_end : min(span.record_end, chain_end + 140)]
             corp_raw = post[fac_layout.offset_after_chain]
             metric_33 = _U32.unpack_from(post, 33)[0]
-            att_min_or_season_ticket_41 = _U32.unpack_from(post, 41)[0]
-            att_avg_or_capacity_45 = _U32.unpack_from(post, 45)[0]
+            post_u32_41 = _U32.unpack_from(post, 41)[0]
+            post_u32_45 = _U32.unpack_from(post, 45)[0]
             tag_49 = post[49]
             tail_byte = post[139] if len(post) >= 140 else None
 
@@ -258,12 +257,15 @@ def decode_facilities_enriched(save: _core.Save) -> list[dict[str, Any]]:
                     "nation_id": club.nation_id,
                     "nation_name": resolve_nation(club.nation_id),
                     "city_id": club.city_id,
-                    "city_name": city_map.get(club.city_id, "") if club.city_id else "",
+                    "city_name": city_map.get(club.city_id, "") if club.city_id is not None else "",
                     "reputation": club.reputation,
                     "corporate_facilities_1_20": corp_raw,
                     "facility_block_tag_49": tag_49,
-                    "season_ticket_or_base_attendance_41": att_min_or_season_ticket_41,
-                    "expected_or_avg_attendance_45": att_avg_or_capacity_45,
+                    "raw_post_finance_u32_33": metric_33,
+                    "raw_post_finance_u32_41": post_u32_41,
+                    "raw_post_finance_u32_45": post_u32_45,
+                    "season_ticket_or_base_attendance_41": post_u32_41,
+                    "expected_or_avg_attendance_45": post_u32_45,
                     "commercial_or_fanbase_index_33": metric_33,
                     "post_chain_byte_139": tail_byte,
                     "finance_months_tracked": row_count,
@@ -285,6 +287,9 @@ def decode_players_enriched_relations(
     player_records = save._context.player_records()
     club_index = save._context.club_index()
     city_map = build_city_map(save)
+    from fm26save.game_files import load_official_local_region_map
+
+    local_region_map = load_official_local_region_map()
 
     players_by_uid = {p.uid: p for p in save.players()}
     person_name_by_pindex: dict[int, str] = {}
@@ -324,19 +329,29 @@ def decode_players_enriched_relations(
                 else len(game_db)
             )
 
-            # 1. Hidden tail bytes around height_offset (112..130) — validated against PA to guard across builds
-            squad_num_raw = game_db[rec_off + 117] if rec_off + 122 <= len(game_db) else 255
-            raw_b118 = game_db[rec_off + 118] if rec_off + 122 <= len(game_db) else None
-            raw_b119 = game_db[rec_off + 119] if rec_off + 122 <= len(game_db) else None
-            body_type_byte = game_db[rec_off + 123] if rec_off + 124 <= len(game_db) else None
+            # 1. Hidden tail bytes around pl_layout.height_offset (122 on 26.3.2; 113 on 26.1.x) — gated on layout & PA match
+            h_off = pl_layout.height_offset
             expected_pa = p_obj.ability.potential if p_obj.ability else None
-            if expected_pa is not None and raw_b119 == expected_pa:
-                rca_byte: int | None = raw_b118
-                pa_copy_byte: int | None = raw_b119
+            if h_off >= 122 and rec_off + h_off + 2 <= len(game_db):
+                raw_sq = game_db[rec_off + h_off - 5]
+                raw_rca = game_db[rec_off + h_off - 4]
+                raw_pa_copy = game_db[rec_off + h_off - 3]
+                raw_body = game_db[rec_off + h_off + 1]
+                if expected_pa is not None and raw_pa_copy == expected_pa and 1 <= raw_rca <= 200:
+                    rca_byte: int | None = raw_rca
+                    pa_copy_byte: int | None = raw_pa_copy
+                    squad_num_raw = raw_sq if 1 <= raw_sq <= 99 else 255
+                    body_type_byte: int | None = raw_body
+                else:
+                    rca_byte = None
+                    pa_copy_byte = None
+                    squad_num_raw = 255
+                    body_type_byte = None
             else:
                 rca_byte = None
                 pa_copy_byte = None
                 squad_num_raw = 255
+                body_type_byte = None
 
             # 2. All PersonBlock relation entries
             w_start = rec_off + pb_lay.window_start_offset
@@ -383,7 +398,10 @@ def decode_players_enriched_relations(
                                     elif target_type == "nation_id":
                                         resolved_target = resolve_nation(ref)
                                     elif target_type == "city_or_region_id":
-                                        resolved_target = city_map.get(ref, f"Region/City #{ref}")
+                                        resolved_target = (
+                                            local_region_map.get(ref)
+                                            or city_map.get(ref, f"Region/City #{ref}")
+                                        )
 
                                     relations_decoded.append(
                                         {

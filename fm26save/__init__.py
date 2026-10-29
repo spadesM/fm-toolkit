@@ -84,6 +84,7 @@ from fm26save.game_files import (
     extract_training_and_newgen_configs,
     extract_xg_shot_models,
     load_official_city_map,
+    load_official_local_region_map,
 )
 
 __version__ = "1.0.0"

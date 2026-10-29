@@ -1,10 +1,17 @@
 # Football Manager 26 — Internal Game Logics & Simulation Mechanics Reference
 
 > **Repository:** [`fm-toolkit`](../)  
-> **Scope:** Complete reverse-engineered reference of **22 core internal simulation algorithms and game logics** in Football Manager 26 (`v26.2.0` / Build `2620`).  
-> **Data Provenance Classification:**
-> 1. **Direct Binary & Archive Extractions (`100%` Game / Save Data):** Parameters, tables, opcodes, FourCCs, and C# symbols extracted byte-for-byte from `simatch.fmf`, `training.fmf`, `tables.fmf`, `simatchshared.fmf`, `editor.fmf`, `media.fmf`, `client_db.dat`, `lang_update_db.dat`, `server_db.dat`, `.edt` files, `global-metadata.dat`, `il2cpp.usym`, and `.fm` save containers (`game_db.dat`).
-> 2. **Empirical Save Regressions & Established FM Domain Models:** Where the compiled C++ execution graph inside `GameAssembly.dll` combines extracted parameters with internal runtime logic (e.g., coaching star weights, mentoring group constraints, scouting uncertainty scaling, or OLS transfer value regressions), those formulas are explicitly labeled as **[Domain / Analytical Model]** or **[Empirical Save Regression]**.
+> **Scope:** Complete reverse-engineered reference of **22 core internal simulation algorithms and game logics** in Football Manager 26 (`v26.2.0` / Build `2620`, plus `.fm` saves on builds `26.1.1` and `26.3.2`).  
+
+> [!IMPORTANT]
+> **Data Provenance & Source Classification (How Every Number & Formula Was Obtained):**
+> To ensure complete scientific reproducibility and avoid any ambiguity between raw game data and analytical modeling, every section in this reference derives from one or more of the following **six verifiable sources**:
+> 1. **`.jsb` Binary Engine Weight & Decision Tables (`simatch.fmf`, `training.fmf`, `tables.fmf`, `simatchshared.fmf`):** Parsed directly by [`fm26save/game_files.py`](../fm26save/game_files.py) (`weights.jsb`, `player_ratings_data.jsb`, `rating_event_change.jsb`, `momentum_weightings_data.jsb`, `training_item_effects.jsb`, `oop_attributes_scoring.jsb`, `oop_pitch_proximity_scores.jsb`, `qme_stat_relevant_attribute_data.jsb`, `qme_distribution_data.jsb`, `jumping_reach.jsb`, `aerial_reach.jsb`, and `expected_goals/models/config.xml` + `11` `.jsb` logistic regression models).
+> 2. **Official Schema XMLs (`editor.fmf`, `media.fmf`) & `.edt`/`.dbc` Rule Files:** Exact FourCC codes, enum tables, and permanent club/nation rule files (`person.xml`, `club.xml`, `nation.xml`, `contract_offer.xml`, `weather.xml`, `official.xml`, `sugardaddy.edt`, `valid_takeovers_only.edt`, `transfer_embargo.edt`, `eng_youth_grades.edt`).
+> 3. **Pre-Game Database Binary Tables (`client_db.dat`, `server_db.dat`, `lang_update_db.dat` across `9` DB versions):** Fixed-stride and variable-length binary structs (`server_db/table_6.dat` `136` Injuries, `server_db/table_10.dat` `249` Nations, `server_db/table_21.dat` `51,118` Stadiums, `client_db/table_2.dat` `58,349` Cities, `client_db/table_56.dat` `6` International Agreements, `name_table_extra_0/1/2.dat` & `8person_names.dat`).
+> 4. **Unity IL2CPP Symbol Table (`global-metadata.dat` & `il2cpp.usym`):** `68,465` managed symbols and `355,617` string literals confirming exact internal event/method/struct names (`EventFmx*`, `DebugBoardConfidence*`, `FinanceDebugFFP*`, `FMStarRatingSettings`, etc.). **Note:** Native x64 machine code inside `GameAssembly.dll` was **not** decompiled in Ghidra/IDA; where a continuous mathematical curve is presented alongside symbol/save evidence, it is explicitly labeled **`[Empirical Save Regression]`** or **`[Domain / Analytical Model]`**.
+> 5. **`.fm` Save Container Empirical Measurements (`Project_Super_Lig.fm` `26.3.2` & `afc.fm` `26.1.1`):** Cross-sectional OLS regressions and deterministic binary walkers implemented in [`fm26save/formulas.py`](../fm26save/formulas.py), [`fm26save/enrichment.py`](../fm26save/enrichment.py), and [`fm26save/extra_sections.py`](../fm26save/extra_sections.py).
+> 6. **`[Domain / Analytical Model]`:** Established Football Manager domain mechanics (such as coaching star weights, mentoring group constraints, and scouting uncertainty scaling) where the exact native C++ floating-point constants reside in compiled `GameAssembly.dll` machine code.
 
 ---
 
@@ -37,7 +44,7 @@
 
 ## 1. Youth Intake & Newgen Generation Pipeline
 
-Every season, FM generates new academy cohorts (**Newgens / Regens**) through a deterministic **6-stage hierarchical pipeline** governed by parameters in `editor.fmf` (`Frame #045: nation.xml` and `Frame #032: club.xml`), `server_db.dat`, `client_db.dat`, `shared/tables.fmf`, and `simatchshared.fmf`.
+Every season, FM generates new academy cohorts (**Newgens / Regens**) through a deterministic **6-stage hierarchical pipeline** governed by parameters in `editor.fmf` (`Frame #044: nation.xml` and `Frame #032: club.xml`), `server_db.dat`, `client_db.dat`, `shared/tables.fmf`, and `simatchshared.fmf`.
 
 ```mermaid
 flowchart TD
@@ -45,21 +52,21 @@ flowchart TD
     B --> C["Stage 3: Potential (PA) vs. Starting Current Ability (CA)\nPA Ceiling <- NYRt + Crcb + Club Reputation + EPPP Category\nStarting CA <- Cytv (Youth Coaching 1..20) + Cyfb (Youth Facilities 1..20)"]
     C --> D["Stage 4: Positions, Tactical Archetypes & Personality\nHead of Youth Development (HOYD, r4=60):\nPreferred Formation + Coaching Style + Hidden Personality (block_40)"]
     D --> E["Stage 5: Physical Caps & Attribute Distribution\ntables.fmf (Height 147..210cm -> Jumping/Aerial Reach Tiers 1..20)\n+ Positional CA Weight Distribution"]
-    E --> F["Stage 6: Identity, Birth City & 3D Appearance\nclient_db.dat (294K First + 599K Last Names + 58.3K Cities)\n+ simatchshared.fmf (135 Regional Hair/Skin Rules)"]
+    E --> F["Stage 6: Identity, Birth City & 3D Appearance\nclient_db.dat (279K First + 764K Last Names + 58.3K Cities)\n+ simatchshared.fmf (135 Regional Hair/Skin Rules)"]
 ```
 
 ### 1.1 Stage 1 — National Talent Pool Ceiling (`nation.xml` & `server_db.dat`)
-Before any club receives a player, the nation's overall youth quality curve is bounded by five national parameters (`editor.fmf` `Frame #045` & `server_db.dat` `Frame #07` `table_6.dat`):
+Before any club receives a player, the nation's overall youth quality curve is bounded by five national parameters (`editor.fmf` `Frame #044: nation.xml` & `server_db.dat` `Frame #11: table_10.dat`, `17,843` B = `249 × 71 B + 164 B`, cross-referenced with `lang_update_db.dat` `Frame #06: 8_9.dat`):
 
 | FourCC / Field | Range / Enum | Engine Role |
 | :--- | :---: | :--- |
 | **`NYRt` (`Youth Rating`)** | `0 .. 200` | Base national talent ceiling (referenced in `global-metadata.dat` as `DebugNationYouthRatingTableReference`). |
 | **`Ngim` (`Game Importance`)** | `1 .. 4` | `1 = Very Important`, `2 = Important`, `3 = Fairly Unimportant`, `4 = Unimportant`. Any value worse than `1` severely penalizes the upper tail of the nation's PA distribution even if `NYRt` is high. |
 | **`State of Development`** | `1 .. 3` | `1 = Developed`, `2 = Developing`, `3 = Third World`. Modulates baseline infrastructure efficiency and starting CA readiness. |
-| **`Economic Factor` & `Nfap`** | `1 .. 20` | National economic strength (`offset +19` in `server_db.dat` `Frame #07` `table_6.dat`) and `FA Financial Power` (`Nfap`). |
+| **`Economic Factor` & `Nfap`** | `1 .. 20` | National economic strength (`offset +19` in `server_db.dat` `Frame #11` `table_10.dat`) and `FA Financial Power` (`Nfap`). |
 | **`Nation Reputation`** | `1 .. 10000` | Dynamic national football reputation (evolves over time as clubs/national teams perform in continental competitions). |
 
-**Sample National Parameters from `server_db.dat` (`2620`, `table_6.dat`):**
+**Sample National Parameters from `server_db.dat` (`2620`, `Frame #11: table_10.dat`):**
 
 | Nation | State of Development | Economic Factor (`1..20`) | Game Importance (`Ngim`) | Years to Gain Nationality |
 | :--- | :--- | :---: | :--- | :---: |
@@ -115,8 +122,8 @@ The staff member assigned to **Provides Youth Development Information** (typical
 | **`200 – 210 cm`** | `16 / 17 / 18 / 19 / 20` *(at `200 cm`)* | `13..16 / 15..17 / 16..18 / 18..19 / 19..20` *(up to `210 cm`)* |
 
 2. **Name Pools, Birth City & 3D Appearance (`client_db.dat` & `simatchshared.fmf`):**
-   - Names are drawn from `client_db.dat` `Frame #20` (`table_37.dat`, `294,103` First Names) and `Frame #21` (`table_38.dat`, `599,900` Surnames) matching the player's language/ethnicity.
-   - Birth cities are sampled from `client_db.dat` `Frame #03` (`table_2.dat`, `58,349` Cities) weighted by `local_region_id` proximity to the club and `inhabitants_bracket`.
+   - Names are drawn from `client_db.dat` `Frame #17` (`name_table_extra_0.dat`, `279,348` First Names), `Frame #18` (`name_table_extra_1.dat`, `764,619` Surnames), and `Frame #19` (`name_table_extra_2.dat`, `36,247` Common Names), cross-referenced with `lang_update_db.dat` `Frame #18` (`8person_names.dat`, `17,853,619` B) matching the player's language/ethnicity.
+   - Birth cities are sampled from `client_db.dat` `Frame #02` (`table_2.dat`, `58,349` Cities, cross-referenced with `lang_update_db.dat` `Frame #01` `8_2.dat`) weighted by `local_region_id` (`lang_update_db.dat` `Frame #12` `8_47.dat`, `2,527` Local Regions) proximity to the club and `inhabitants_bracket`.
    - Hair length, hair colour, and skin tone are generated via `simatchshared.fmf` `Frame #074` (`player_hair_length_colour_config_data.jsb`, `135` regional/ethnic probability rules).
 
 ---
@@ -324,9 +331,19 @@ $$z = b_0 + \sum_{i=1}^{k} b_i x_i, \qquad \text{xG} = \sigma(z) = \frac{1}{1 + 
 | **`obscured_headers`** (`#092`) | `-321,115,868` | `-32.111587` | `+35.530408` | `norm_dist_to_goal`, `frac_goal_visible`, `norm_players_between`, `norm_ball_height`, angles |
 
 ### 6.2 Spatial Match Momentum Engine (`simatch.fmf` Frame `#113`: `momentum_weightings_data.jsb`)
-Match momentum is tracked using **`48` Event × Pitch Zone rules** (`5,222` bytes) parameterized by `gain_weighting` (`-10..+30`) and `lose_weighting` (`-30..+10`) across **7 `CBE_*` match events** and a **6 Longitudinal Sixth × 3 Lateral Third** pitch grid (`DEFENSIVE_BOX_SIXTH`, `DEFENSIVE_OUTER_SIXTH`, `MIDFIELD_DEFENSIVE_SIXTH`, `MIDFIELD_ATTACKING_SIXTH`, `ATTACKING_OUTER_SIXTH`, `ATTACKING_BOX_SIXTH` × `LEFT_THIRD`, `CENTRAL_THIRD`, `RIGHT_THIRD`):
-- **Tracked `CBE_*` Momentum Events (`7`):** `CBE_PASS_SUCCESS`, `CBE_PASS_INTERCEPTED`, `CBE_TACKLE_SUCCESS`, `CBE_TACKLE_FAILED`, `CBE_HEADING_SUCCESS`, `CBE_SAVED`, and `CBE_SHOT_OFF_TARGET`.
-- **Spatial Weighting Pattern:** Positive actions in `ATTACKING_BOX_SIXTH` × `CENTRAL_THIRD` carry the highest `gain_weighting` (up to `+30`), whereas turnovers/failures in `DEFENSIVE_BOX_SIXTH` carry the steepest `lose_weighting` (down to `-30`).
+Match momentum is tracked using **`48` Event × Pitch Zone rules** (`5,236` bytes) across **7 `CBE_EVENT_TYPE` match events** and the attacking half's **3 Longitudinal Sixths (`VERTICAL_ZONES`: `FOURTH_SIXTH`, `FIVTH_SIXTH`, `FINAL_SIXTH`) × 3 Lateral Thirds (`HORIZONTAL_THIRDS`: `LEFT_THIRD`, `CENTRAL_THIRD`, `RIGHT_THIRD`)**:
+
+| `CBE_EVENT_TYPE` | `FOURTH_SIXTH` (`L / C / R`) | `FIVTH_SIXTH` (`L / C / R`) | `FINAL_SIXTH` (`L / C / R`) | Rule Count |
+| :--- | :---: | :---: | :---: | :---: |
+| **`CBE_TOUCH`** | `+2` | `+4` | `+5 / +7 / +5` | `5` rules |
+| **`CBE_END_PASS_COMPLETED`** | `+2` | `+4` | `+7 / +10 / +7` | `5` rules |
+| **`CBE_END_SHOT_MISSED_TARGET`** | `+10` | `+12 / +15 / +12` | `+15 / +18 / +15` | `8` rules |
+| **`CBE_END_SHOT_BLOCKED`** | `+12` | `+15 / +17 / +15` | `+17 / +20 / +17` | `8` rules |
+| **`CBE_END_SHOT_SAVED`** | `+15` | `+17 / +20 / +17` | `+20 / +25 / +20` | `8` rules |
+| **`CBE_END_SHOT_HIT_WOODWORK`** | `+22` | `+25 / +30 / +25` | `+30 / +35 / +30` | `8` rules |
+| **`CBE_END_SHOT_GONE_IN` (Goal)** | `+50` | `+50 / +50 / +50` | `+50 / +50 / +50` | `6` rules |
+
+- **Spatial Weighting Pattern:** Positive attacking actions inside `FINAL_SIXTH` × `CENTRAL_THIRD` grant the highest non-goal `MOMENTUM` boosts (`+7` for a touch, `+10` for a completed pass, `+18` for a missed shot, `+20` for a blocked shot, `+25` for a saved shot, `+35` for hitting the woodwork, and `+50` for scoring a goal).
 
 ### 6.3 Quick Match Engine (`QME` — Background Unrendered Matches, `simatch.fmf` Frames `#119–#120`)
 When simulating matches in other leagues or when using **"Instant Result"**, FM26 uses the **Quick Match Engine (`QME`)**:
@@ -356,7 +373,7 @@ FM26 introduced a native **Dual-Formation Engine** separating **In-Possession (`
 
 ## 8. Medical Centre & Injury Simulation Engine (`server_db.dat`)
 
-In `shared/data/database/db/2620/2620_fm/server_db.dat` (`Frame #12`: `table_19.dat`, `6,541` bytes = `13 B hdr + 136 × 48 B`), FM26 defines the exact **48-byte binary simulation struct for all `136` injuries** (cross-referenced with `lang_update_db.dat` `Frame #08` `8_19.dat`):
+In `shared/data/database/db/2620/2620_fm/server_db.dat` (`Frame #08`: `table_6.dat`, `6,550` bytes = `22 B hdr/tail + 136 × 48 B`), FM26 defines the exact **48-byte binary simulation struct for all `136` injuries** (cross-referenced with `lang_update_db.dat` `Frame #05` `8_6.dat`, `6,668` bytes):
 
 | Offset in 48B Struct | Type | Field | Simulation Role |
 | :---: | :---: | :--- | :--- |
@@ -366,10 +383,12 @@ In `shared/data/database/db/2620/2620_fm/server_db.dat` (`Frame #12`: `table_19.
 | `+4..+6` | `u16` | `min_days` | Minimum base recovery duration in days |
 | `+6..+8` | `u16` | `extra_days` | Random additional recovery window (`actual_days = min_days + rand(0, extra_days)`, scaled by Medical Staff & age) |
 | `+8..+12` | `2×u16` | `inactivity_min / extra` | Days completely unable to train before protective/light rehabilitation |
-| `+12..+14` | `u16` | `match_sharpness_drop_pct` | Percentage drop in Match Sharpness (`10..100%`) |
-| `+14` | `u8` | `treatment_type_code` | Allows/forbids painkilling injections vs. specialist vs. club physio |
-| `+15` | `u8` | `is_recurring` | If `1`, permanently increases recurrence risk on that `body_part_code` |
-| `+16` | `u8` | `can_play_with_protective_or_injections` | `1` for `95 / 136` injuries where protective equipment or painkilling injections can be used |
+| `+12` | `u8` | `extra_inactivity_flag` | Reserved inactivity byte (`0`) |
+| `+13` | `u8` | `treatment_type_code` | Allows/forbids specialist vs. club physio vs. self-limiting treatment |
+| `+14` | `u8` | `is_recurring` | If `1`, permanently increases recurrence risk on that `body_part_code` |
+| `+15` | `u8` | `can_play_with_protective_or_injections` | `1` for `95 / 136` injuries where protective equipment or painkilling injections can be used |
+| `+16` | `u8` | `match_sharpness_drop_pct` | `1`-byte `u8` percentage drop in Match Sharpness (`10..100%`, e.g. `60` = `60%`) |
+| `+17` | `u8` | `flag_17` | `1`-byte `u8` boolean flag (`0` or `1`; separate from `srec[16]`) |
 | `+18..+26` | `2×f32` | `occurrence_ratio / base_occurrence` | Relative probability weight when an injury event is rolled in match or training |
 | `+30` | `u8` | `severity_tier` | Severity tier (`1..6`, where `6` can reduce `Natural Fitness`, `Acceleration`, `Pace`, and `CA` ceiling) |
 | `+31` | `u8` | `is_contagious_or_special` | **`1` exclusively for `cold` (`id=8`), `flu` (`id=19`), and `virus` (`id=60`)**, triggering the `"Send Home"` vs. `"Treat at Club"` contagion check |
@@ -380,16 +399,16 @@ In `shared/data/database/db/2620/2620_fm/server_db.dat` (`Frame #12`: `table_19.
 
 ### 9.1 Permanent Club Ownership & Takeover Rules (`.edt` Files)
 In `shared/data/database/db/2620/edt/permanent/`:
-1. **`sugardaddy.edt` (`14` Active + `1` Commented Club Rules):** Defines distinct owner cash-injection behaviors:
-   - **`FRONT_END` (`3` active + `1` commented):** `"Manchester City"`, `"AS Monaco"`, `"Al-Ain"` *(plus commented `# "SUGAR_DADDY" "Al-Wahda (UAE)" "FRONT_END"`)* — Proactively pumps large transfer/wage budgets and boosts commercial revenue.
-   - **`BACK_END` (`8` active):** `"vfl Wolfsburg"`, `"Bayer 04 Leverkusen"`, `"Red Bull Salzburg"`, `"RB Leipzig"`, `"New York Red Bulls"`, `"1899 Hoffenheim"`, `"Buriram United"`, `"Jeonbuk Hyundai Motors"` — Intervenes at the end of the financial year to clear operating deficits and maintain competitive budgets.
-   - **`UNDERWRITER` (`3` active):** `"Paris Saint-Germain"`, `"Chelsea"`, `"FC Red Bull Salzburg"` — Silently clears end-of-season debt so the club never enters administration.
+1. **`sugardaddy.edt` (`13` Active + `1` Commented Club Rules = `14` Lines):** Defines distinct owner cash-injection behaviors:
+   - **`FRONT_END` (`3` active + `1` commented):** `"Manchester City"`, `"Al-Ain Football Club"`, `"AS Monaco"` *(plus commented `# "SUGAR_DADDY" "Al-Wahda Football Club" "FRONT_END"`)* — Proactively pumps large transfer/wage budgets and boosts commercial revenue.
+   - **`UNDERWRITER` (`8` active):** `"Chelsea"`, `"Shanghai Shenhua"` (`Alter=1`), `"Sepahan Isfahan"`, `"Hoffenheim"`, `"Busan I'Park"`, `"Jeonnam Dragons"`, `"Ulsan Hyundai FC"`, `"Suwon Samsung Bluewings FC"` — Silently clears end-of-season debt so the club never enters administration.
+   - **`BACK_END` (`2` active):** `"Buriram United"`, `"Jeonbuk Hyundai Motors FC"` — Intervenes at the end of the financial year to clear operating deficits and maintain competitive budgets.
    - **`UNDERWRITER_NO_INCREASE`**: Supported engine enum (`club.xml`) that covers losses once until ownership status decays.
 2. **`valid_takeovers_only.edt` (`69` Rules):** Restricts board takeovers by nation/club (e.g., `NO_RICH_INDIVIDUAL_TAKEOVER` enforcing Germany's `50+1` fan-ownership rule, or `PARTIAL_MEMBER_ELECTION` for socio-owned clubs like Real Madrid, Barcelona, Benfica, and Athletic Bilbao).
 3. **`transfer_embargo.edt` (`35` Clubs):** Pre-configured FIFA/federation transfer bans with exact start and end dates.
 
-### 9.2 International Treaties & Work Permit Exemptions (`client_db.dat` Frame `#01`: `table_0.dat`)
-`client_db.dat` `Frame #01` (`table_0.dat`) defines the **6 international free-movement / foreign-player exemption agreements**:
+### 9.2 International Treaties & Work Permit Exemptions (`client_db.dat` Frame `#25`: `table_56.dat`)
+`client_db.dat` `Frame #25` (`table_56.dat`, `178` B, cross-referenced with `lang_update_db.dat` `Frame #16`: `8_56.dat`, `210` B) defines the **6 international free-movement / foreign-player exemption agreements**:
 1. **European Union (`EU`)**
 2. **European Economic Area (`EEA`)**
 3. **OACPS (`Cotonou Agreement` — African, Caribbean, and Pacific Group of States):** Grants non-foreign / domestic-quota status to players from `79` ACP countries in leagues that incorporate Cotonou labour rules (such as Spain, France, Italy, and Germany).
@@ -411,7 +430,7 @@ $$\ln(\text{Value}) = \beta_0 + \beta_1 \text{CA} + \beta_2 \max(0, \text{PA} - 
    - **Team Leaders** $\rightarrow$ **Highly Influential** $\rightarrow$ **Influential** $\rightarrow$ **Other Players**.
    - Scored from: **Time at Club (Tenure)** + **Leadership (`1..20`)** + **Age** + **Current Ability (`CA`) & Squad Status (`Star / Important Player`)** + **Captaincy**.
 2. **Social Groups:**
-   - Clustered automatically by **Shared Spoken Languages** (`client_db.dat` `Frame #16` `table_17.dat`: `252` Languages), **Nationality / Region**, **Age Bracket**, and **Hidden Personality Compatibility (`block_40`)**.
+   - Clustered automatically by **Shared Spoken Languages** (`client_db.dat` `Frame #11` `table_12.dat` & `lang_update_db.dat` `Frame #08` `8_12.dat`: `252` Languages), **Nationality / Region**, **Age Bracket**, and **Hidden Personality Compatibility (`block_40`)**.
 
 ### 10.2 Mentoring Groups (`mentoring_manager.dat`) **[Domain / Analytical Model]**
 A valid mentoring group requires **at least `3` players** training in the **same squad unit** (First Team):
@@ -428,7 +447,7 @@ Inside `game_db.dat`, every `PersonBlock` (`16 bytes` per entry: `ref` `u32` at 
 - `(3, 1)` = **Favoured Person (Player / Manager / Mentor / Family)** (`ref` = `pindex`, resolved via `player_records.position_by_pindex`)
 - `(3, 2)` = **Disliked Person / Rivalry** (`ref` = `pindex`)
 - `(7, 18)` = **Spoken Language ID** with proficiency (`1..100` / `1..20`) in `qualifier`
-- `(4, 67)` / `(4, 25)` / `(4, 56)` = **Birth / Residence / Cultural Region or City ID**
+- `(4, 67)` / `(4, 25)` / `(4, 56)` = **Birth / Residence / Cultural Local Region ID** (`ref` = 0-based `local_region_id` resolved via `lang_update_db.dat` `Frame #12` `8_47.dat` (`2,527` official local regions) in `load_official_local_region_map()`, with fallback to `city_map`)
 ---
 
 ## 11. Team Talks, Touchline Shouts, Press Conferences (`media.fmf`) & Morale / Body Language Algorithm
@@ -542,8 +561,9 @@ Every contract offer in FM26 is represented internally by the `CntF` record (`co
 1. **Package Equivalence Score:**
    - The player/agent converts the offer into an **Expected Annual Package Value** combining `Base Wage (PFwa)` + `Expected Appearances * PFap` + `Loyalty Bonus / Contract Years` + `Landmark Bonuses` + `Release Clause Flexibility Penalty` (if locking in a high release clause).
    - Meanwhile, the club's board checks `HasFFPContributionContractNegotiationRemaining` to verify the offer does not breach FFP wage-cap rules.
-2. **Agent Hidden Personality (`agent_manager.dat`):**
-   - Each agent (`person_type = 5`) has three core behavioral parameters:
+2. **Agent Save Linkage (`agent_manager.dat`) & Negotiation Personality (`[Domain / Analytical Model]`):**
+   - In `.fm` saves, `agent_manager.dat` (`parse_agents()` in [`extra_sections.py`](../fm26save/extra_sections.py)) stores each agent's `agent_slot` (`u32`) and `agent_person_selector` (`u32` linking to `person_type = 5` in `game_db.dat`, `1,910` agents in `Project_Super_Lig.fm`).
+   - At runtime during negotiations (`editor.fmf` & `global-metadata.dat`), each agent exhibits three behavioral dimensions:
      - **Fee Demand (`1..20`):** How aggressively the agent demands a large upfront `agent_fee` (`money_b`).
      - **Patience (`1..20`):** How many counter-offer rounds are tolerated before negotiations collapse (`amber -> red`).
      - **Willingness to Tout Clients (`1..20`):** How frequently the agent offers the player to rival clubs (`AgentsOfferingServicesCount`) or demands a new contract after a run of good form.
@@ -561,12 +581,12 @@ In `global-metadata.dat`, the financial compliance engine tracks:
   - Failing domestic checks or entering insolvency (`Administration`) triggers **`TeamPointsDeduction`** (typically `-9` to `-12` league points) and **`FinanceDebugEmbargo`** (transfer embargo).
 
 ### 15.2 Crowd Attendance Algorithm (`CrowdAttendanceScalar`) **[Domain / Analytical Model]**
-For every home fixture, announced attendance (`AnnouncedAttendance`, capped at `UsedCapacity` in `server_db.dat` `Frame #26` `table_45.dat`) is modeled from:
+For every home fixture, announced attendance (`AnnouncedAttendance`, capped at `UsedCapacity` in `server_db.dat` `Frame #22` `table_21.dat` and `client_db.dat` `Frame #22` `table_21.dat`) is modeled from:
 $$\text{Attendance} = \min\!\Big(\text{UsedCapacity},\; \text{SeasonTicketHolders} + \text{WalkUpPool} \times \text{CrowdAttendanceScalar}\Big)$$
 where `CrowdAttendanceScalar` combines:
 1. **Base Demand:** `ExpectedAttendance` (`offset +45` in `finances.py`) and `SeasonTicketWaitingList`.
-2. **Fixture Attractiveness:** `Opposition Reputation`, `Derby / Rivalry Flag` (`1,683` Derbies in `client_db.dat` `Frame #13` `table_15.dat`), `Competition Importance`, and recent `DynamicSupportValueChange`.
-3. **Price & City Elasticity:** `MatchTicketPriceInfo` relative to national `Economic Factor (1..20)`, `City Attraction (1..20)` & `Inhabitants Bracket` (`client_db.dat` `Frame #03` `table_2.dat`), and matchday **Weather (`weather.xml`)**.
+2. **Fixture Attractiveness:** `Opposition Reputation`, `Derby / Rivalry Flag` (`1,683` Derbies in `client_db.dat` `Frame #14` `table_16.dat` & `lang_update_db.dat` `Frame #10` `8_16.dat`), `Competition Importance`, and recent `DynamicSupportValueChange`.
+3. **Price & City Elasticity:** `MatchTicketPriceInfo` relative to national `Economic Factor (1..20)`, `City Attraction (1..20)` & `Inhabitants Bracket` (`client_db.dat` `Frame #02` `table_2.dat`), and matchday **Weather (`weather.xml`)**.
 
 ---
 
@@ -608,16 +628,16 @@ Transfer Approval"]
 ## 17. Match Environment Physics: 4-Season Weather (`weather.xml`), Altitude (`altitude_ft`), Pitch Dimensions & Referees (`official.xml`)
 
 ### 17.1 4-Season Regional Weather Engine (`editor.fmf` Frame `#056: weather.xml`)
-Every city (`58,349` in `client_db.dat` `Frame #03` `table_2.dat`) references a `weather_profile_id` (`offset +27`). Each weather profile splits the calendar year into **4 seasonal windows (`w0..w3`)** with `Start Day` (`w0sd..w3sd`) and probability distributions over:
+Every city (`58,349` in `client_db.dat` `Frame #02` `table_2.dat`) references a `weather_profile_id` (`offset +27`). Each weather profile splits the calendar year into **4 seasonal windows (`w0..w3`)** with `Start Day` (`w0sd..w3sd`) and probability distributions over:
 - **5 Precipitation States (`p0..p4`):** `Dry`, `Wet`, `Drizzle`, `Shower`, `Down Pour` (affects ball skid speed, bounce height, handling errors, and pass drag).
 - **5 Wind States (`w0..w4`):** `Calm`, `Breezy`, `Gusty`, `Strong`, `Gale` (deflects long balls, crosses, and goal kicks).
 - **10 Temperature Brackets (`te, tv, t0..t7`):** `Extremely Freezing (<= -16°C)` through `Extremely Hot (>= 43°C)` plus `Day/Night Variance` (`dn`) — high heat (`t5..t7`, `>= 29°C`) accelerates match `Condition` drain.
 
-### 17.2 City Elevation (`altitude_ft`) & Stadium Pitch Dimensions (`server_db.dat` Frame `#26`: `table_45.dat`)
-1. **Altitude Stamina Drain (`altitude_ft` at `offset +20` in `client_db.dat` `Frame #03` `table_2.dat`):**
+### 17.2 City Elevation (`altitude_ft`) & Stadium Pitch Dimensions (`server_db.dat` Frame `#22`: `table_21.dat` & `client_db.dat` Frame `#22`: `table_21.dat`)
+1. **Altitude Stamina Drain (`altitude_ft` at `offset +20` in `client_db.dat` `Frame #02` `table_2.dat`):**
    - Cities at high elevation (`> 5,000 ft / 1,500 m`, up to `> 11,000 ft / 3,400 m` in South America) impose an additional stamina/condition drain multiplier on visiting teams whose home city is near sea level.
-2. **Pitch Dimensions (`pitch_length_m` × `pitch_width_m` at `offset +27` in `server_db.dat` `Frame #26` `table_45.dat`):**
-   - Stored in decimeters (`e.g., 1050 × 680 dm = 105.0m × 68.0m`, bounded by `min_pitch` and `max_pitch` at `offset +56`). Narrow/short pitches compress the `24` `OOP` zones (`oop_pitch_proximity_scores.jsb`), favoring compact low blocks (`Catenaccio / Route One`), whereas wide/long pitches stretch horizontal recovery distances against `Wing Play` and `Tiki-Taka`.
+2. **Pitch Dimensions (`pitch_length_m` × `pitch_width_m` in `server_db.dat` `Frame #22` `table_21.dat` [`1,942,506` B = `22` B hdr/tail + `51,118 × 38` B] and `client_db.dat` `Frame #22` `table_21.dat` [`11,769,486` B]):**
+   - Stored in decimeters (`e.g., 1050 × 680 dm = 105.0m × 68.0m`, bounded by `min_pitch` and `max_pitch` in `stadium.xml` `editor.fmf` Frame `#051`). Narrow/short pitches compress the `24` `OOP` zones (`oop_pitch_proximity_scores.jsb`), favoring compact low blocks (`Catenaccio / Route One`), whereas wide/long pitches stretch horizontal recovery distances against `Wing Play` and `Tiki-Taka`.
 
 ### 17.3 Referee & Assistant Official Simulation (`editor.fmf` Frame `#047: official.xml`)
 Every match official (`9,872` in `basic_people_db.dat`, `34` bytes) is governed by `16` properties in `official.xml`:
@@ -641,13 +661,15 @@ In `global-metadata.dat` and `set_piece_manager.dat`, FM26 automates set-piece a
    - **`EventFmxSetPieceToggleChangeIfAlreadyTaken`:** Rotates penalty takers if a second penalty is awarded in the same match.
    - **`EventFmxSetPieceToggleTwoGoalsScorers` (The Hat-Trick Rule):** If a teammate is currently on **`2` goals** in the match, the designated penalty taker automatically lets them take the penalty to complete their **hat-trick**!
 
-### 18.2 Ballon d'Or (`award_man.dat`) & Hall of Fame (`hall_of_fame.dat`) Scoring Algorithms **[Domain / Analytical Model]**
-1. **World Player of the Year / Ballon d'Or Voting (`award_man.dat`):**
+### 18.2 Ballon d'Or (`award_man.dat`) & Hall of Fame (`hall_of_fame.dat`) Scoring Algorithms
+1. **World Player of the Year / Ballon d'Or Voting (`award_man.dat`) [Domain / Analytical Model]:**
    - Candidates are scored over the voting window by:
      $$\text{AwardScore} = w_1 \Big(\overline{\text{Rating}} \times \text{CompRepFactor}\Big) + w_2 (\text{Goals} + 0.7 \times \text{Assists} + \text{PoM}) + w_3 \text{WorldReputation} + w_4 \text{TrophyPoints}$$
    - Because `WorldReputation` and `CompRepFactor` carry substantial weight, a player averaging `7.45` in a top-5 European league + Champions League outscores a player averaging `7.90` in a lower-reputation league.
-2. **Manager Hall of Fame (`hall_of_fame.dat` & `HallOfFameEntryCompetitionReference`):**
-   - Tracked across Worldwide, Continental (`HallOfFameContinents`), and National (`HallOfFameNations` / `HallOfFameNationalities`) leaderboards (`extra_sections.py`), awarding points strictly for **First-Team Major Trophies** scaled by the competition's reputation tier (`Continental Club Cup > Top-Flight Domestic League > Major Domestic Cup > Second-Tier / Super Cups`).
+2. **Manager Hall of Fame Binary Structure & Scoring (`hall_of_fame.dat` — `parse_hall_of_fame()` in [`extra_sections.py`](../fm26save/extra_sections.py)):**
+   - Each manager entry in `hall_of_fame.dat` starts with a `0x01` name block (`first_name`, `last_name`, `common_name`), followed at `next3` by `birth_date` (`4B`), `u32` at `+4`, `manager_uid` (`<i` at `+8`), `0x00` at `+12`, `nation_uid` (`<i` at `+13`), and `competition_entries_count` (`u8` at `+17`).
+   - Immediately at `next3 + 18` are `competition_entries_count` variable-length trophy sub-records, each beginning with `03 03` (`2B`), `tier` (`u8` at `+2`), `club_id` (`<i` at `+3`), `wins` (`<H` at `+7`), `comp_uid` (`<i` at `+9`), `comp_nation_uid` (`<i` at `+13`), `rep` (`<H` at `+19`), `cat` (`u8` at `+21`: `0` = Top-Flight League, `1` = Lower Division, `2` = Main Domestic Cup, `3` = League Cup, `4` = Club World Cup, `5` = Super Cup, `21` = Champions League, `22` = Secondary Continental Cup), `ycnt` (`<H` at `+22`), and `ycnt × 4B` winning FM dates (`24 + 4 * ycnt` bytes per competition entry).
+   - Immediately after the trophy array is the exact `<I` `hall_of_fame_points` (`4B` unsigned int, e.g. Pep Guardiola `7,711 pts`, José Mourinho `5,549 pts`, Carlo Ancelotti `4,114 pts`, Fatih Terim `1,500 pts` across `12` major + `5` minor = `17` titles).
 ---
 
 ## 19. Loan Development, Playing-Time Fee Penalties (`TSF_LOAN_TERMS`) & Loan Manager AI Algorithm
@@ -664,7 +686,7 @@ In `global-metadata.dat` and `set_piece_manager.dat`, FM26 automates set-piece a
 
 ## 20. International Call-Up AI, Dual-Nationality Switching & Naturalization (`years_to_gain_nationality`) Algorithm
 
-1. **Naturalization & Continuous Residency (`server_db.dat` Frame `#07` `table_6.dat` `offset +24`):**
+1. **Naturalization & Continuous Residency (`server_db.dat` Frame `#11` `table_10.dat` `offset +24`):**
    - Every nation defines `years_to_gain_nationality` (e.g., `2` years in Argentina, `4` in Brazil, `5` in England/France/Türkiye/USA, `8` in Germany, `10` in Spain/Italy — with Spain granting a `2`-year Ibero-American fast-track override in `.dbc` rules).
    - Once cumulative residency days are met, the player gains second nationality (`PersonBlock` `(8, 9)`), freeing a foreign-player registration slot (unless the nation forbids dual citizenship).
 2. **Dual-Nationality Allegiance Switching (`Nation Declared For At Youth Level` — `editor.fmf` ID `445427`) [Domain / Analytical Model]:**
@@ -688,10 +710,10 @@ In `global-metadata.dat` and `set_piece_manager.dat`, FM26 automates set-piece a
 
 ## 22. Board Requests: New Stadium Construction, Capacity Expansion (`expansion_capacity`) & Facility Upgrades Algorithm
 
-In `editor.fmf` (`Frame #032: club.xml`) and `server_db.dat` (`Frame #26` `table_45.dat` Stadiums & `Frame #13` `table_26.dat` Clubs), board infrastructure requests are evaluated against hard binary gates:
-1. **Stadium Expansion vs. New Stadium Build (`server_db.dat` Frame `#26` `table_45.dat`):**
-   - **Expansion Gate:** Checked against `expansion_capacity` (`offset +10` in the `181`-byte stadium struct). If `current_capacity < expansion_capacity` and `AverageAttendance / Capacity >= 0.92` with a positive `SeasonTicketWaitingList` and sufficient bank balance, the board approves **Seat Expansion**.
-   - **New Stadium Gate (`20–25 Year Rule`):** If `current_capacity == expansion_capacity` (or the club does not own the stadium), the board checks `build_year` (`offset +49` in `server_db.dat` `Frame #26` `table_45.dat`) and the minimum `20–25` year cooldown since the last stadium build, plus `Current Youth Stadium` / `New Youth Stadium` (`club.xml` IDs `493840`, `493841`) before taking out a long-term infrastructure loan (`RemainingInterestPayable`).
+In `editor.fmf` (`Frame #032: club.xml` & `Frame #051: stadium.xml`), `server_db.dat` (`Frame #22` `table_21.dat` Stadiums & `Frame #13` `table_11.dat` Clubs), and `client_db.dat` (`Frame #22` `table_21.dat`), board infrastructure requests are evaluated against hard binary gates:
+1. **Stadium Expansion vs. New Stadium Build (`server_db.dat` Frame `#22` `table_21.dat` & `client_db.dat` Frame `#22` `table_21.dat`):**
+   - **Expansion Gate:** Checked against `expansion_capacity` (`Sexp` in `stadium.xml`). If `current_capacity < expansion_capacity` and `AverageAttendance / Capacity >= 0.92` with a positive `SeasonTicketWaitingList` and sufficient bank balance, the board approves **Seat Expansion**.
+   - **New Stadium Gate (`20–25 Year Rule`):** If `current_capacity == expansion_capacity` (or the club does not own the stadium), the board checks `build_year` (`Sbld` in `stadium.xml`) and the minimum `20–25` year cooldown since the last stadium build, plus `Current Youth Stadium` / `New Youth Stadium` (`club.xml` IDs `493840`, `493841`) before taking out a long-term infrastructure loan (`RemainingInterestPayable`).
 2. **Training & Youth Facility Upgrades (`Training / Youth Facilities 1..20`, `Cytv`, `Crcb`):**
    - Approved when `Club Balance > UpgradeCostThreshold`, `DebugBoardConfidenceOverallScore` is healthy, and the manager's `DebugBoardConfidenceModifier` (or `Cyim` `Youth Importance 1..20` / `ClubCultureScore`) supports the request.
    - Note on **Dynamic Technological Decay:** Training and Youth Facilities (`Cyfb`) slowly decay by `-1` point every few years (`Technological Advance` downgrade) to simulate aging infrastructure requiring periodic reinvestment.
