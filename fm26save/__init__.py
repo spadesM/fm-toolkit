@@ -19,6 +19,12 @@ from fm26save.constants import (
 )
 from fm26save.container import FM26Container, RawSectionSummary, extract_length_prefixed_strings
 from fm26save.diff import diff_saves
+from fm26save.editor import (
+    FM26Editor,
+    encode_kick_off_words,
+    encode_packed_date,
+    write_packed_date_into,
+)
 from fm26save.enrichment import (
     build_city_map,
     decode_contracts_enriched,
@@ -287,6 +293,15 @@ class FM26Save:
         tables_map["contract_offers"] = self.contract_offers()
         return export_tables_to_sqlite(tables_map, sqlite_path)
 
+    # --- 5. Save Manipulation & Editor ---
+    def editor(self) -> FM26Editor:
+        """Open an `FM26Editor` instance bound to `self.path` for in-memory manipulation and repacking."""
+        return FM26Editor(self.path)
+
+    def create_working_copy(self, dst_path: str | os.PathLike[str]) -> FM26Editor:
+        """Copy this save file to `dst_path` and return an `FM26Editor` opened on the copy."""
+        return FM26Editor.create_working_copy(self.path, dst_path)
+
 
 def open_save(
     path: str | os.PathLike[str],
@@ -304,6 +319,7 @@ __all__ = [
     "CONTRACT_UNKNOWN_DESCRIPTIONS",
     "DUTY_ATTRIBUTE_DELTAS",
     "FM26Container",
+    "FM26Editor",
     "FM26Save",
     "FM26_NATIONS",
     "KNOWN_CITIES",
@@ -327,6 +343,8 @@ __all__ = [
     "decode_staff_enriched",
     "decode_tactics_lineup",
     "diff_saves",
+    "encode_kick_off_words",
+    "encode_packed_date",
     "estimate_transfer_value",
     "estimate_wage_and_fees",
     "export_tables_to_sqlite",
@@ -368,4 +386,5 @@ __all__ = [
     "resolve_nation",
     "resolve_nation_info",
     "serialize_record",
+    "write_packed_date_into",
 ]

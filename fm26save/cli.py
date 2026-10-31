@@ -7,7 +7,7 @@ import json
 import sys
 from pathlib import Path
 
-from fm26save import FM26Save, diff_saves
+from fm26save import FM26Editor, FM26Save, diff_saves
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -88,6 +88,66 @@ def main(argv: list[str] | None = None) -> int:
         help="Which game-file system to extract",
     )
     p_gf.add_argument("--fm-dir", default=None, help="Optional custom FM26 installation directory")
+
+    # 8. edit
+    p_edit = sub.add_parser(
+        "edit",
+        help="Manipulate players, contracts, clubs, finances, stadiums, staff, injuries & tables and save to a new .fm file",
+    )
+    p_edit.add_argument("save", help="Source .fm save file (never modified in place)")
+    p_edit.add_argument("--out", required=True, help="Output .fm save file path")
+    p_edit.add_argument("--validate", action="store_true", help="Run full reader validation on the saved .fm file")
+    p_edit.add_argument("--game-date", default=None, help="Set in-game date (YYYY-MM-DD)")
+    p_edit.add_argument("--player", default=None, help="Player UID, pindex, or name")
+    p_edit.add_argument("--max-player", action="store_true", help="Max out player CA/PA (200), attributes (20), fitness & feet")
+    p_edit.add_argument("--ca", type=int, default=None, help="Player Current Ability (1..200)")
+    p_edit.add_argument("--pa", type=int, default=None, help="Player Potential Ability (1..200)")
+    p_edit.add_argument("--reputation", type=int, default=None, help="Player reputation (1..10000)")
+    p_edit.add_argument("--condition", type=int, default=None, help="Player condition (1..10000)")
+    p_edit.add_argument("--sharpness", type=int, default=None, help="Player match sharpness (1..10000)")
+    p_edit.add_argument("--transfer-value", type=int, default=None, help="Player transfer value")
+    p_edit.add_argument("--age", type=int, default=None, help="Player age")
+    p_edit.add_argument("--height", type=int, default=None, help="Player height in cm")
+    p_edit.add_argument("--squad-number", type=int, default=None, help="Player squad shirt number (1..99)")
+    p_edit.add_argument("--attr", action="append", default=[], help="Attribute override KEY=VAL (1..20), repeatable")
+    p_edit.add_argument("--pos", action="append", default=[], help="Position override POS=VAL (1..20), repeatable")
+    p_edit.add_argument("--heal", action="store_true", help="Heal all active injuries for --player")
+    p_edit.add_argument("--clear-suspensions", action="store_true", help="Clear all suspensions for --player")
+    p_edit.add_argument("--wage", type=int, default=None, help="Player weekly contract wage")
+    p_edit.add_argument("--contract-end", default=None, help="Player contract expiry date (YYYY-MM-DD)")
+    p_edit.add_argument("--squad-status", type=int, default=None, help="Player contract squad status code (0..15)")
+    p_edit.add_argument("--club", default=None, help="Club UID, index, or name")
+    p_edit.add_argument("--club-reputation", type=int, default=None, help="Club reputation (1..10000)")
+    p_edit.add_argument("--balance", type=int, default=None, help="Club bank balance")
+    p_edit.add_argument("--transfer-budget", type=int, default=None, help="Club transfer budget (allocated & remaining)")
+    p_edit.add_argument("--wage-budget", type=int, default=None, help="Club weekly wage budget")
+    p_edit.add_argument("--corporate-facilities", type=int, default=None, help="Club corporate facilities (1..20)")
+    p_edit.add_argument("--stadium", default=None, help="Stadium UID, name, or owner club name")
+    p_edit.add_argument("--capacity", type=int, default=None, help="Stadium total capacity")
+    p_edit.add_argument("--all-seater", type=int, default=None, help="Stadium all-seater capacity")
+    p_edit.add_argument("--staff", default=None, help="Staff UID or name")
+    p_edit.add_argument("--max-staff", action="store_true", help="Max out staff CA/PA (200) and all 26 attributes (20)")
+    p_edit.add_argument("--staff-ca", type=int, default=None, help="Staff Current Ability (1..200)")
+    p_edit.add_argument("--staff-pa", type=int, default=None, help="Staff Potential Ability (1..200)")
+    p_edit.add_argument("--table-team", type=int, default=None, help="Team ID in league table")
+    p_edit.add_argument("--table-won", type=int, default=None, help="League table matches won")
+    p_edit.add_argument("--table-drawn", type=int, default=None, help="League table matches drawn")
+    p_edit.add_argument("--table-lost", type=int, default=None, help="League table matches lost")
+    p_edit.add_argument("--table-gf", type=int, default=None, help="League table goals for")
+    p_edit.add_argument("--table-ga", type=int, default=None, help="League table goals against")
+    p_edit.add_argument("--table-points", type=int, default=None, help="League table points")
+
+    # 9. repack
+    p_repack = sub.add_parser("repack", help="Losslessly repack an .fm save container (optionally replacing raw sections)")
+    p_repack.add_argument("save", help="Source .fm save file")
+    p_repack.add_argument("--out", required=True, help="Output .fm save file")
+    p_repack.add_argument(
+        "--replace-section",
+        action="append",
+        default=[],
+        help="Replace section with raw file: SECTION_NAME=PATH_TO_BIN (repeatable)",
+    )
+    p_repack.add_argument("--validate", action="store_true", help="Validate repacked .fm save")
 
     args = parser.parse_args(argv)
 
@@ -231,6 +291,144 @@ def main(argv: list[str] | None = None) -> int:
             "multi_version": extract_multi_version_database_evolution,
         }
         print(json.dumps(dispatch[args.system](args.fm_dir), ensure_ascii=False, indent=2))
+        return 0
+
+    if args.cmd == "edit":
+        with FM26Editor(args.save) as ed:
+            applied: list[dict[str, object]] = []
+            if args.game_date:
+                applied.append(ed.set_game_date(args.game_date))
+
+            if args.player:
+                p_key: int | str = int(args.player) if str(args.player).isdigit() else args.player
+                if args.max_player:
+                    applied.append(ed.max_out_player(p_key))
+                attr_map: dict[str, int] = {}
+                for item in args.attr:
+                    k, v = item.split("=", 1)
+                    attr_map[k.strip()] = int(v.strip())
+                pos_map: dict[str, int] = {}
+                for item in args.pos:
+                    k, v = item.split("=", 1)
+                    pos_map[k.strip()] = int(v.strip())
+                if any(
+                    x is not None
+                    for x in (
+                        args.ca,
+                        args.pa,
+                        args.reputation,
+                        args.condition,
+                        args.sharpness,
+                        args.transfer_value,
+                        args.age,
+                        args.height,
+                        args.squad_number,
+                    )
+                ) or attr_map or pos_map:
+                    applied.append(
+                        ed.edit_player(
+                            p_key,
+                            current_ability=args.ca,
+                            potential_ability=args.pa,
+                            home_reputation=args.reputation,
+                            current_reputation=args.reputation,
+                            world_reputation=args.reputation,
+                            condition=args.condition,
+                            match_sharpness=args.sharpness,
+                            transfer_value=args.transfer_value,
+                            age=args.age,
+                            height_cm=args.height,
+                            squad_number=args.squad_number,
+                            attributes=attr_map or None,
+                            positions=pos_map or None,
+                        )
+                    )
+                if any(x is not None for x in (args.wage, args.contract_end, args.squad_status)):
+                    applied.append(
+                        ed.edit_player_contract(
+                            p_key,
+                            wage=args.wage,
+                            end_date=args.contract_end,
+                            squad_status=args.squad_status,
+                        )
+                    )
+                if args.heal:
+                    applied.append(ed.heal_player_injuries(p_key))
+                if args.clear_suspensions:
+                    applied.append(ed.edit_player_suspensions(p_key, clear_all=True))
+
+            if args.club:
+                c_key: int | str = int(args.club) if str(args.club).isdigit() else args.club
+                if args.club_reputation is not None:
+                    applied.append(ed.edit_club(c_key, reputation=args.club_reputation))
+                if any(x is not None for x in (args.balance, args.transfer_budget, args.wage_budget)):
+                    applied.append(
+                        ed.edit_club_finances(
+                            c_key,
+                            balance=args.balance,
+                            transfer_budget_allocated=args.transfer_budget,
+                            transfer_budget_remaining=args.transfer_budget,
+                            wage_budget_weekly=args.wage_budget,
+                        )
+                    )
+                if args.corporate_facilities is not None:
+                    applied.append(
+                        ed.edit_club_facilities(c_key, corporate_facilities=args.corporate_facilities)
+                    )
+
+            if args.stadium and (args.capacity is not None or args.all_seater is not None):
+                s_key: int | str = int(args.stadium) if str(args.stadium).isdigit() else args.stadium
+                applied.append(
+                    ed.edit_stadium(
+                        s_key,
+                        capacity=args.capacity,
+                        all_seater_capacity=args.all_seater,
+                    )
+                )
+
+            if args.staff:
+                st_key: int | str = int(args.staff) if str(args.staff).isdigit() else args.staff
+                if args.max_staff:
+                    applied.append(ed.max_out_staff(st_key))
+                elif args.staff_ca is not None or args.staff_pa is not None:
+                    applied.append(
+                        ed.edit_staff(
+                            st_key,
+                            current_ability=args.staff_ca,
+                            potential_ability=args.staff_pa,
+                        )
+                    )
+
+            if args.table_team is not None:
+                applied.append(
+                    ed.edit_league_table_row(
+                        args.table_team,
+                        won=args.table_won,
+                        drawn=args.table_drawn,
+                        lost=args.table_lost,
+                        goals_for=args.table_gf,
+                        goals_against=args.table_ga,
+                        points=args.table_points,
+                    )
+                )
+
+            save_summary = ed.save(args.out, validate_output=args.validate)
+            print(
+                json.dumps(
+                    {"save_summary": save_summary, "edits": applied},
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
+        return 0
+
+    if args.cmd == "repack":
+        with FM26Editor(args.save) as ed:
+            for item in args.replace_section:
+                sec_name, bin_path = item.split("=", 1)
+                ed.set_section_bytes(sec_name.strip(), Path(bin_path.strip()).read_bytes())
+            res = ed.save(args.out, validate_output=args.validate)
+            print(json.dumps(res, ensure_ascii=False, indent=2))
         return 0
 
     return 0

@@ -109,6 +109,29 @@ class FM26Container:
             )
         return manifest
 
+    def repack(
+        self,
+        output_path: str | os.PathLike[str],
+        *,
+        section_overrides: dict[str, bytes | bytearray] | None = None,
+        save_name: str | None = None,
+        compression_level: int = 3,
+        validate_output: bool = False,
+    ) -> dict[str, Any]:
+        """Repack the container into a new `.fm` save file, applying any `section_overrides`."""
+        from fm26save.editor import FM26Editor
+
+        with FM26Editor(self.path) as ed:
+            if section_overrides:
+                for sec_name, payload in section_overrides.items():
+                    ed.set_section_bytes(sec_name, payload)
+            return ed.save(
+                output_path,
+                save_name=save_name,
+                compression_level=compression_level,
+                validate_output=validate_output,
+            )
+
 
 def extract_length_prefixed_strings(
     data: bytes,

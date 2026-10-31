@@ -198,6 +198,8 @@ class Staff:
         "preference_slot_18",
         "preference_slot_19",
         "preference_slot_20",
+        *(f"b40_raw_{i}" for i in range(26)),
+        *(f"b40_20_{i}" for i in range(26)),
         "contract_e36",
         "contract_e37",
         "contract_e38",

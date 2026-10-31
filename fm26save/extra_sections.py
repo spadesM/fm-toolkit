@@ -182,7 +182,7 @@ def parse_shortlists(save: _core.Save, *, limit: int = 500) -> list[dict[str, An
                 pindex = candidate_sel - 1
                 pos_idx = player_records.position_by_pindex.get(pindex)
                 if pos_idx is not None:
-                    p_uid = player_records.uids[pos_idx] + 1
+                    p_uid = player_records.uids[pos_idx]
                     resolved_player = players_by_uid.get(p_uid)
                     metric_val = other_val
                     break
@@ -230,7 +230,7 @@ def parse_contract_offers(save: _core.Save) -> list[dict[str, Any]]:
             c_name = None
             wage = None
             if pos_idx is not None:
-                p_uid = player_records.uids[pos_idx] + 1
+                p_uid = player_records.uids[pos_idx]
                 p_obj = players_by_uid.get(p_uid)
                 person_kind = "Player"
                 if p_obj:
@@ -326,7 +326,7 @@ def analyze_any_section(
             pindex = word - 1
             pos_idx = player_records.position_by_pindex.get(pindex)
             if pos_idx is not None:
-                p_uid = player_records.uids[pos_idx] + 1
+                p_uid = player_records.uids[pos_idx]
                 if p_uid not in seen_p_uids:
                     seen_p_uids.add(p_uid)
                     p_obj = players_by_uid.get(p_uid)
