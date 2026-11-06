@@ -149,6 +149,33 @@ def main(argv: list[str] | None = None) -> int:
     )
     p_repack.add_argument("--validate", action="store_true", help="Validate repacked .fm save")
 
+    # 10. dof (Futbol Direktörü / Director of Football Mode)
+    p_dof = sub.add_parser(
+        "dof",
+        help="FM27/FM26 Futbol Direktörü (Director of Football) Modu: Hoca Seçimi, Kadro Uyumu, Transfer Hedefleri & Web Paneli",
+    )
+    p_dof.add_argument(
+        "action",
+        choices=["dashboard", "coaches", "squad-fit", "targets", "hire-coach", "serve"],
+        help="DoF alt komutu: dashboard | coaches | squad-fit | targets | hire-coach | serve",
+    )
+    p_dof.add_argument("save", help="Path to .fm save file")
+    p_dof.add_argument("--club-uid", type=int, default=None, help="Target club UID (defaults to managed club)")
+    p_dof.add_argument("--coach", default=None, help="Coach UID or name substring to simulate or hire")
+    p_dof.add_argument(
+        "--style",
+        default=None,
+        help="Desired playing style filter (gegenpress, tiki_taka, vertical_tiki_taka, control_possession, wing_play, fluid_counter, direct_counter, route_one, catenaccio, park_the_bus)",
+    )
+    p_dof.add_argument("--min-ca", type=int, default=125, help="Minimum coach CA for scanning candidates")
+    p_dof.add_argument("--slot", default=None, help="Specific formation slot code for transfer targets (e.g. DL, DM, STC)")
+    p_dof.add_argument("--max-value", type=int, default=None, help="Maximum transfer value for target scouting")
+    p_dof.add_argument("--top", type=int, default=15, help="Number of rows to return")
+    p_dof.add_argument("--out", default=None, help="Output _DoF.fm save path for hire-coach (never overwrites source)")
+    p_dof.add_argument("--years", type=int, default=3, help="Contract years when hiring a coach")
+    p_dof.add_argument("--port", type=int, default=8765, help="Port for `dof serve` local web dashboard")
+    p_dof.add_argument("--no-browser", action="store_true", help="Do not auto-open browser on `dof serve`")
+
     p_dec = sub.add_parser(
         "decompile-binaries",
         help="Decompile GameAssembly.dll (x86-64), global-metadata.dat (IL2CPP v31), il2cpp.usym & engine .fmf lookup tables",
@@ -444,6 +471,73 @@ def main(argv: list[str] | None = None) -> int:
                 ed.set_section_bytes(sec_name.strip(), Path(bin_path.strip()).read_bytes())
             res = ed.save(args.out, validate_output=args.validate)
             print(json.dumps(res, ensure_ascii=False, indent=2))
+        return 0
+
+    if args.cmd == "dof":
+        from fm26save.dof import (
+            analyze_coach_squad_fit,
+            build_dof_dashboard,
+            hire_head_coach,
+            recommend_transfer_targets,
+            scan_coach_candidates,
+        )
+        from fm26save.dof_web import serve_dof_dashboard
+
+        coach_arg: int | str | None = (
+            int(args.coach) if (args.coach and str(args.coach).isdigit()) else args.coach
+        )
+
+        if args.action == "serve":
+            serve_dof_dashboard(
+                args.save,
+                club_uid=args.club_uid,
+                port=args.port,
+                open_browser=not args.no_browser,
+            )
+            return 0
+
+        if args.action == "hire-coach":
+            if not coach_arg:
+                raise SystemExit("Hata: `dof hire-coach` için `--coach <UID veya İsim>` belirtmelisiniz.")
+            src_p = Path(args.save).resolve()
+            out_p = Path(args.out).resolve() if args.out else src_p.with_name(f"{src_p.stem}_DoF.fm")
+            res = hire_head_coach(
+                src_p,
+                coach_arg,
+                out_p,
+                club_uid=args.club_uid,
+                contract_years=args.years,
+            )
+            print(json.dumps(res, ensure_ascii=False, indent=2))
+            return 0
+
+        with FM26Save(args.save) as sv:
+            if args.action == "dashboard":
+                data = build_dof_dashboard(sv, club_uid=args.club_uid, coach_uid_or_name=coach_arg)
+            elif args.action == "coaches":
+                cands = scan_coach_candidates(
+                    sv,
+                    club_uid=args.club_uid,
+                    desired_style=args.style,
+                    min_ca=args.min_ca,
+                    top_n=args.top,
+                )
+                data = [c.to_dict() for c in cands]
+            elif args.action == "squad-fit":
+                fit = analyze_coach_squad_fit(sv, club_uid=args.club_uid, coach_uid_or_name=coach_arg)
+                data = fit.to_dict()
+            elif args.action == "targets":
+                data = recommend_transfer_targets(
+                    sv,
+                    club_uid=args.club_uid,
+                    coach_uid_or_name=coach_arg,
+                    slot_code=args.slot,
+                    max_transfer_value=args.max_value,
+                    top_n_per_slot=args.top,
+                )
+            else:
+                data = {}
+            print(json.dumps(data, ensure_ascii=False, indent=2))
         return 0
 
     if args.cmd == "decompile-binaries":

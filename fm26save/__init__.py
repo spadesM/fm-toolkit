@@ -312,6 +312,59 @@ class FM26Save:
         """Copy this save file to `dst_path` and return an `FM26Editor` opened on the copy."""
         return FM26Editor.create_working_copy(self.path, dst_path)
 
+    # --- 6. Director of Football (Futbol Direktörü / DoF) Mode ---
+    def dof_dashboard(
+        self,
+        *,
+        club_uid: int | None = None,
+        coach_uid_or_name: int | str | None = None,
+    ) -> dict[str, Any]:
+        """Return full Director of Football Club Hub, Capology, Expiring Contracts, and Coach Squad Fit report."""
+        return build_dof_dashboard(self, club_uid=club_uid, coach_uid_or_name=coach_uid_or_name)
+
+    def dof_coach_candidates(
+        self,
+        *,
+        club_uid: int | None = None,
+        desired_style: str | None = None,
+        min_ca: int = 125,
+        top_n: int = 20,
+    ) -> list[CoachCandidateRow]:
+        """Scan and rank Head Coach candidates by playing style, coaching attributes, and squad compatibility."""
+        return scan_coach_candidates(
+            self,
+            club_uid=club_uid,
+            desired_style=desired_style,
+            min_ca=min_ca,
+            top_n=top_n,
+        )
+
+    def dof_squad_fit(
+        self,
+        *,
+        club_uid: int | None = None,
+        coach_uid_or_name: int | str | None = None,
+    ) -> CoachSquadFitReport:
+        """Simulate how a coach autonomously lines up the squad in their natural formation and playing style."""
+        return analyze_coach_squad_fit(self, club_uid=club_uid, coach_uid_or_name=coach_uid_or_name)
+
+    def dof_transfer_targets(
+        self,
+        *,
+        club_uid: int | None = None,
+        coach_uid_or_name: int | str | None = None,
+        slot_code: str | None = None,
+        max_transfer_value: int | None = None,
+    ) -> dict[str, Any]:
+        """Recommend transfer targets, wonderkids, and expiring bargains tailored to the coach's tactical style."""
+        return recommend_transfer_targets(
+            self,
+            club_uid=club_uid,
+            coach_uid_or_name=coach_uid_or_name,
+            slot_code=slot_code,
+            max_transfer_value=max_transfer_value,
+        )
+
 
 def open_save(
     path: str | os.PathLike[str],
@@ -320,6 +373,25 @@ def open_save(
 ) -> FM26Save:
     """Open an FM26 .fm save file with full enriched & extra-section parsing support."""
     return FM26Save(path, competition_names=competition_names)
+
+
+from fm26save.dof import (  # noqa: E402
+    FM27_FORMATIONS,
+    FM27_TACTICAL_STYLES,
+    CoachCandidateRow,
+    CoachSquadFitReport,
+    CoachTacticalProfile,
+    FormationSlotSpec,
+    SquadSlotAssignment,
+    TacticalStyleSpec,
+    analyze_coach_squad_fit,
+    build_dof_dashboard,
+    derive_coach_tactical_profile,
+    hire_head_coach,
+    recommend_transfer_targets,
+    scan_coach_candidates,
+)
+from fm26save.dof_web import serve_dof_dashboard  # noqa: E402
 
 
 __all__ = [
@@ -405,4 +477,19 @@ __all__ = [
     "resolve_nation_info",
     "serialize_record",
     "write_packed_date_into",
+    "FM27_FORMATIONS",
+    "FM27_TACTICAL_STYLES",
+    "CoachCandidateRow",
+    "CoachSquadFitReport",
+    "CoachTacticalProfile",
+    "FormationSlotSpec",
+    "SquadSlotAssignment",
+    "TacticalStyleSpec",
+    "analyze_coach_squad_fit",
+    "build_dof_dashboard",
+    "derive_coach_tactical_profile",
+    "hire_head_coach",
+    "recommend_transfer_targets",
+    "scan_coach_candidates",
+    "serve_dof_dashboard",
 ]
