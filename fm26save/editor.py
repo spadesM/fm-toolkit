@@ -3167,8 +3167,12 @@ class FM26Editor:
         cursor = span.team_list_end + 1 + 4 * db[span.team_list_end]
 
         for s_idx in range(staff_layout.list_count):
-            cnt = db[cursor]
-            cursor += 1
+            if staff_layout.list_count_bytes == 2:
+                cnt = read_u16(db, cursor)
+                cursor += 2
+            else:
+                cnt = db[cursor]
+                cursor += 1
             if s_idx == slot:
                 if not 0 <= entry_index < cnt:
                     raise IndexError(f"Entry index {entry_index} out of range (0..{cnt - 1})")
@@ -3301,7 +3305,7 @@ class FM26Editor:
         modified: dict[str, Any] = {"tactic_index": tactic_index, "offset": sig_off}
 
         if mentality is not None:
-            m_val = max(1, min(5, int(mentality)))
+            m_val = max(1, min(7, int(mentality)))
             tac_buf[instr_start + tac_layout.mentality_index] = m_val
             modified["mentality"] = m_val
 
@@ -3385,12 +3389,13 @@ class FM26Editor:
             grp_cnt = read_u32(tr_buf, grp_cnt_off)
             pos = grp_cnt_off + 4
             for _ in range(grp_cnt):
-                lbl_off = pos + 6
+                lbl_off = pos + (5 if tr_layout.group_label_marker is None else 6)
                 _, after_lbl = read_length_prefixed_string(
                     tr_buf, lbl_off, tr_layout.longest_name_bytes
                 )
                 m_cnt = read_u32(tr_buf, after_lbl)
                 pos = after_lbl + 4 + 4 * m_cnt
+            pos += tr_layout.groups_trailer_bytes
             cursor = pos + 1
         raise IndexError(f"Training week ({team_block_index}, {week_index}) not found")
 
@@ -3428,7 +3433,7 @@ class FM26Editor:
             grp_cnt = read_u32(tr_buf, grp_cnt_off)
             pos = grp_cnt_off + 4
             for g_idx in range(grp_cnt):
-                lbl_off = pos + 6
+                lbl_off = pos + (5 if tr_layout.group_label_marker is None else 6)
                 cur_lbl, after_lbl = read_length_prefixed_string(
                     tr_buf, lbl_off, tr_layout.longest_name_bytes
                 )
@@ -3491,6 +3496,7 @@ class FM26Editor:
                 }
                 self._edit_log.append(rec)
                 return rec
+            pos += tr_layout.groups_trailer_bytes
             cursor = pos + 1
         raise IndexError(f"Mentoring group ({team_block_index}, {group_index}) not found")
 

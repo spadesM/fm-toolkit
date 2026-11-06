@@ -1544,6 +1544,7 @@ class StaffLayout:
     list_only_block_search_bytes: int
     preference_slot_sentinels: tuple[tuple[int, int], ...] = ()
     non_staff_contract_kinds: tuple[int, ...] = ()
+    list_count_bytes: int = 1
 
 
 @dataclass(frozen=True, slots=True)
@@ -1719,7 +1720,7 @@ class TrainingLayout:
     week_name_offset: int
     week_record_fixed_bytes: int
     group_lead_byte: int
-    group_label_marker: int
+    group_label_marker: int | None
     longest_name_bytes: int
     most_members_per_group: int
     seven_day_step: int
@@ -1732,6 +1733,7 @@ class TrainingLayout:
     library_entry_marker_value: int
     library_day_blocks_offset: int
     library_folder_offset: int
+    groups_trailer_bytes: int = 0
 
     @property
     def week_trailer_bytes(self) -> int:
@@ -2329,9 +2331,9 @@ class _BuildModule(Protocol):
 
 
 def _build_modules() -> tuple[_BuildModule, ...]:
-    from fm26save._core._layouts import fm26_26_1_0, fm26_26_3_2
+    from fm26save._core._layouts import fm26_26_1_0, fm26_26_3_2, fm27_27_0_0
 
-    return (fm26_26_3_2, fm26_26_1_0)
+    return (fm27_27_0_0, fm26_26_3_2, fm26_26_1_0)
 
 
 def registered_layouts() -> tuple[LayoutEntry, ...]:

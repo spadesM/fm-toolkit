@@ -49,6 +49,7 @@ from fm26save._core.readers._common import SAVE_SUMMARY_SECTION
 from fm26save._core.readers.managed import read_summary_strings
 
 SUPPORTED_GAME_MAJOR = 26
+SUPPORTED_GAME_MAJORS = (26, 27)
 SECTION_MAGIC_PREFIX = b"\x03\x01"
 SECTION_HEAD_BYTES = 8
 SCHEMA_OFFSET = 6
@@ -174,7 +175,7 @@ def read_summary_facts(container_index: ContainerIndex) -> SummaryFacts:
     )
     summary_layout = find_layout(SaveSummaryLayout, SAVE_SUMMARY_SECTION, summary_schema, "").layout
     version = find_game_version(summary, summary_layout, file_name)
-    if version.major != SUPPORTED_GAME_MAJOR:
+    if version.major not in SUPPORTED_GAME_MAJORS:
         raise UnsupportedGameError(
             f"{file_name} is an {version.game} save ({version.build}). fmsave {__version__} reads FM26 saves "
             f"only; {version.game} is not supported yet. See {ISSUES_URL}"

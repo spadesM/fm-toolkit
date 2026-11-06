@@ -179,7 +179,7 @@ def _read_group(
         )
     group_number = _read_word(section, cursor + 1, "a mentoring group's number", file_name)
     label_marker_offset = cursor + 1 + _UINT32.size
-    if section[label_marker_offset] != layout.group_label_marker:
+    if layout.group_label_marker is not None and section[label_marker_offset] != layout.group_label_marker:
         raise layout_mismatch(
             file_name,
             "a mentoring group does not carry its label marker",
@@ -187,7 +187,7 @@ def _read_group(
         )
     label, after_label = _read_text(
         section,
-        label_marker_offset + 1,
+        label_marker_offset + (0 if layout.group_label_marker is None else 1),
         layout.longest_name_bytes,
         "a mentoring group's label",
         file_name,
@@ -298,6 +298,7 @@ def walk_training_blocks(
         for _group_index in range(stored_group_count):
             group, position = _read_group(section, position, layout, file_name)
             groups.append(group)
+        position += layout.groups_trailer_bytes
         seen_team_ids.add(team_id)
         blocks.append(RawTrainingBlock(team_id, tuple(weeks), tuple(groups)))
         blocks_end = position

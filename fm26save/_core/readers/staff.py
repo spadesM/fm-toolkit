@@ -344,7 +344,13 @@ def read_staff_lists(
         for _list_number in range(list_count):
             if cursor >= record_end:
                 break
-            value_count = game_db[cursor]
+            if layout.list_count_bytes == 2:
+                if cursor + _UINT16.size > record_end:
+                    break
+                value_count = _UINT16.unpack_from(game_db, cursor)[0]
+                cursor += _UINT16.size - 1
+            else:
+                value_count = game_db[cursor]
             cursor += 1
             values_end = cursor + _UINT32.size * value_count
             if values_end > record_end:
