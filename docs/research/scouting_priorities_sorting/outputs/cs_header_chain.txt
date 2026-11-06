@@ -1,0 +1,1154 @@
+
+======== StreamedTable.MakeColumnHeader @ 0x15eac30 size=973 ========
+  015eac30: mov    rax, rsp
+  015eac33: mov    qword ptr [rax + 0x18], rbx
+  015eac37: push   rsi
+  015eac38: push   r12
+  015eac3a: push   r13
+  015eac3c: push   r14
+  015eac3e: push   r15
+  015eac40: sub    rsp, 0x90
+  015eac47: mov    r14, rcx
+  015eac4a: movaps xmmword ptr [rax - 0x38], xmm6
+  015eac4e: mov    rcx, qword ptr [rip + 0x18598c3]
+  015eac55: xorps  xmm0, xmm0
+  015eac58: movups xmmword ptr [rax - 0x60], xmm0
+  015eac5c: mov    rbx, rdx
+  015eac5f: mov    qword ptr [rax + 0x20], 0
+  015eac67: call   0x1bc6b0
+  015eac6c: mov    rdx, r14
+  015eac6f: mov    r15, rax
+  015eac72: lea    rcx, [rax + 0x10]
+  015eac76: mov    qword ptr [rax + 0x10], r14
+  015eac7a: call   0x1bb740
+  015eac7f: lea    rcx, [r15 + 0x18]
+  015eac83: mov    qword ptr [r15 + 0x18], rbx
+  015eac87: mov    rdx, rbx
+  015eac8a: call   0x1bb740
+  015eac8f: mov    rcx, qword ptr [r14 + 0x838]
+  015eac96: movzx  esi, byte ptr [r14 + 0x9b8]
+  015eac9e: test   rcx, rcx
+  015eaca1: je     0x15eaff7
+  015eaca7: mov    rdx, qword ptr [r15 + 0x18]
+  015eacab: lea    r8, [rsp + 0xd8]
+  015eacb3: xor    r9d, r9d
+  015eacb6: call   0x1621cc0   ; StreamedTableView.TryGetConfig
+  015eacbb: test   al, al
+  015eacbd: je     0x15eace8
+  015eacbf: mov    rax, qword ptr [rsp + 0xd8]
+  015eacc7: test   rax, rax
+  015eacca: je     0x15eaff7
+  015eacd0: mov    rax, qword ptr [rax + 0x18]
+  015eacd4: test   rax, rax
+  015eacd7: je     0x15eaff7
+  015eacdd: movzx  eax, byte ptr [rax + 0x11]
+  015eace1: or     al, sil
+  015eace4: setne  sil
+  015eace8: mov    rax, qword ptr [r14 + 0x988]
+  015eacef: test   rax, rax
+  015eacf2: je     0x15eaff7
+  015eacf8: mov    r8, qword ptr [rax + 0x38]
+  015eacfc: test   r8, r8
+  015eacff: je     0x15eaff7
+  015ead05: mov    r9, qword ptr [r15 + 0x18]
+  015ead09: mov    ecx, 2
+  015ead0e: mov    rdx, qword ptr [rip + 0x185c65b]
+  015ead15: call   0x2420
+  015ead1a: mov    r13, rax
+  015ead1d: test   rax, rax
+  015ead20: je     0x15eaff7
+  015ead26: mov    rcx, qword ptr [rax + 0x98]
+  015ead2d: xor    edx, edx
+  015ead2f: mov    qword ptr [rsp + 0xc0], rbp
+  015ead37: mov    qword ptr [rsp + 0xc8], rdi
+  015ead3f: call   0x9b93e0
+  015ead44: test   al, al
+  015ead46: je     0x15ead51
+  015ead48: mov    rax, qword ptr [r13 + 0x98]
+  015ead4f: jmp    0x15ead58
+  015ead51: mov    rax, qword ptr [r14 + 0x9c0]
+  015ead58: mov    qword ptr [rsp + 0x40], rax
+  015ead5d: xor    ebp, ebp
+  015ead5f: test   sil, sil
+  015ead62: jne    0x15ead88
+  015ead64: mov    rcx, qword ptr [rip + 0x185df6d]
+  015ead6b: call   0x1bc6b0
+  015ead70: mov    r8, qword ptr [rip + 0x180fb81]
+  015ead77: xor    r9d, r9d
+  015ead7a: mov    rdx, r15
+  015ead7d: mov    rcx, rax
+  015ead80: mov    rbp, rax
+  015ead83: call   0xef8b00   ; AsyncCallback..ctor, DeserializationEventHandler..ctor, OnRemoveWriter..ctor
+  015ead88: mov    rcx, qword ptr [rip + 0x1859f59]
+  015ead8f: mov    rdi, qword ptr [r15 + 0x18]
+  015ead93: mov    rbx, qword ptr [r14 + 0xab0]
+  015ead9a: call   0x1bc6b0
+  015ead9f: mov    r8, qword ptr [rsp + 0x40]
+  015eada4: mov    r9, rbx
+  015eada7: mov    qword ptr [rsp + 0x30], 0
+  015eadb0: mov    rdx, rdi
+  015eadb3: mov    qword ptr [rsp + 0x28], rbp
+  015eadb8: mov    rcx, rax
+  015eadbb: mov    byte ptr [rsp + 0x20], sil
+  015eadc0: mov    r12, rax
+  015eadc3: call   0x15dfab0   ; Header..ctor
+  015eadc8: mov    rcx, qword ptr [r14 + 0x840]
+  015eadcf: xor    r8d, r8d
+  015eadd2: xor    edx, edx
+  015eadd4: call   0x1e166a0   ; Object.op_Inequality
+  015eadd9: movzx  ecx, al
+  015eaddc: xor    eax, eax
+  015eadde: cmp    qword ptr [r14 + 0x9a0], rax
+  015eade5: cmova  eax, ecx
+  015eade8: test   al, al
+  015eadea: je     0x15eae9e
+  015eadf0: cmp    byte ptr [r14 + 0x9a8], 0
+  015eadf8: jne    0x15eae9e
+  015eadfe: mov    rcx, qword ptr [rip + 0x18597f3]
+  015eae05: mov    rbp, qword ptr [r12 + 0x58]
+  015eae0a: mov    rbx, qword ptr [r15 + 0x18]
+  015eae0e: call   0x1bc6b0
+  015eae13: mov    rdx, r14
+  015eae16: mov    rdi, rax
+  015eae19: lea    rcx, [rax + 0x10]
+  015eae1d: mov    qword ptr [rax + 0x10], r14
+  015eae21: call   0x1bb740
+  015eae26: lea    rcx, [rdi + 0x18]
+  015eae2a: mov    qword ptr [rdi + 0x18], rbx
+  015eae2e: mov    rdx, rbx
+  015eae31: call   0x1bb740
+  015eae36: mov    rcx, qword ptr [rip + 0x185fd6b]
+  015eae3d: call   0x1bc6b0
+  015eae42: mov    r8, qword ptr [rip + 0x180fb7f]
+  015eae49: xor    r9d, r9d
+  015eae4c: mov    rdx, rdi
+  015eae4f: mov    rcx, rax
+  015eae52: mov    rsi, rax
+  015eae55: call   0xef8b00   ; AsyncCallback..ctor, DeserializationEventHandler..ctor, OnRemoveWriter..ctor
+  015eae5a: movzx  ebx, byte ptr [r14 + 0x7d8]
+  015eae62: mov    rcx, qword ptr [rip + 0x17ee27f]
+  015eae69: call   0x1bc6b0
+  015eae6e: mov    rdi, rax
+  015eae71: mov    r8d, 9
+  015eae77: mov    eax, 3
+  015eae7c: test   bl, bl
+  015eae7e: mov    rdx, rsi
+  015eae81: mov    rcx, rdi
+  015eae84: cmove  r8d, eax
+  015eae88: xor    r9d, r9d
+  015eae8b: call   0x16b0cb0   ; ContextMenuDescriptionManipulator..ctor
+  015eae90: xor    r8d, r8d
+  015eae93: mov    rdx, rdi
+  015eae96: mov    rcx, rbp
+  015eae99: call   0x1f7fe40   ; VisualElementExtensions.AddManipulator
+  015eae9e: mov    rcx, qword ptr [r14 + 0x8f8]
+  015eaea5: mov    rdi, qword ptr [rsp + 0xc8]
+  015eaead: mov    rbp, qword ptr [rsp + 0xc0]
+  015eaeb5: test   rcx, rcx
+  015eaeb8: je     0x15eaff7
+  015eaebe: mov    r9, qword ptr [rip + 0x17e8373]
+  015eaec5: mov    r8, r12
+  015eaec8: mov    rdx, qword ptr [r15 + 0x18]
+  015eaecc: call   0x10dc1f0
+  015eaed1: mov    rax, qword ptr [r13 + 0x48]
+  015eaed5: lea    rcx, [rsp + 0x50]
+  015eaeda: xor    edx, edx
+  015eaedc: mov    qword ptr [rsp + 0x50], rax
+  015eaee1: call   0x14bd350   ; BindingPath.IsValid, HierarchySearchFilter.get_IsValid
+  015eaee6: test   al, al
+  015eaee8: je     0x15eafad
+  015eaeee: mov    rbx, qword ptr [r13 + 0x48]
+  015eaef2: mov    qword ptr [rsp + 0x50], rbx
+  015eaef7: test   rbx, rbx
+  015eaefa: je     0x15eaf21
+  015eaefc: xor    edx, edx
+  015eaefe: mov    rcx, rbx
+  015eaf01: call   0x129faf0   ; String.GetRawStringData
+  015eaf06: mov    ecx, dword ptr [rbx + 0x10]
+  015eaf09: mov    dword ptr [rsp + 0x48], ecx
+  015eaf0d: mov    dword ptr [rsp + 0x4c], 0
+  015eaf15: mov    qword ptr [rsp + 0x40], rax
+  015eaf1a: movaps xmm6, xmmword ptr [rsp + 0x40]
+  015eaf1f: jmp    0x15eaf24
+  015eaf21: xorps  xmm6, xmm6
+  015eaf24: mov    rcx, qword ptr [rip + 0x184da55]
+  015eaf2b: test   rcx, rcx
+  015eaf2e: je     0x15eaff7
+  015eaf34: movdqa xmm0, xmm6
+  015eaf38: psrldq xmm0, 8
+  015eaf3d: movd   eax, xmm0
+  015eaf41: cmp    eax, dword ptr [rcx + 0x10]
+  015eaf44: je     0x15eaf8f
+  015eaf46: mov    rcx, qword ptr [rip + 0x18628f3]
+  015eaf4d: cmp    dword ptr [rcx + 0xe4], 0
+  015eaf54: jne    0x15eaf5b
+  015eaf56: call   0x1bc7a0
+  015eaf5b: xor    r8d, r8d
+  015eaf5e: movdqa xmmword ptr [rsp + 0x40], xmm6
+  015eaf64: lea    rdx, [rsp + 0x40]
+  015eaf69: lea    rcx, [rsp + 0x68]
+  015eaf6e: call   0x14c1a60   ; Bindings.GetProperties
+  015eaf73: mov    rdx, qword ptr [rip + 0x184f96e]
+  015eaf7a: lea    rcx, [rsp + 0x58]
+  015eaf7f: movups xmm0, xmmword ptr [rax]
+  015eaf82: movups xmmword ptr [rsp + 0x58], xmm0
+  015eaf87: call   0xe030e0
+  015eaf8c: mov    rbx, rax
+  015eaf8f: mov    rcx, qword ptr [r14 + 0x900]
+  015eaf96: test   rcx, rcx
+  015eaf99: je     0x15eaff7
+  015eaf9b: mov    r9, qword ptr [rip + 0x17e86be]
+  015eafa2: mov    r8, r12
+  015eafa5: mov    rdx, rbx
+  015eafa8: call   0x10e4ed0
+  015eafad: cmp    dword ptr [r13 + 0x50], 0
+  015eafb2: je     0x15eafd3
+  015eafb4: mov    rcx, qword ptr [r14 + 0x908]
+  015eafbb: test   rcx, rcx
+  015eafbe: je     0x15eaff7
+  015eafc0: mov    r9, qword ptr [rip + 0x17f8021]
+  015eafc7: mov    r8, r12
+  015eafca: mov    edx, dword ptr [r13 + 0x50]
+  015eafce: call   0x10b5f90
+  015eafd3: mov    rbx, qword ptr [rsp + 0xd0]
+  015eafdb: mov    rax, r12
+  015eafde: movaps xmm6, xmmword ptr [rsp + 0x80]
+  015eafe6: add    rsp, 0x90
+  015eafed: pop    r15
+  015eafef: pop    r14
+  015eaff1: pop    r13
+  015eaff3: pop    r12
+  015eaff5: pop    rsi
+  015eaff6: ret    
+  015eaff7: call   0x1bc700
+  015eaffc: int3   
+
+======== MakeColumnHeader b__0 (click lambda) @ 0x160bb80 size=90 ========
+  0160bb80: sub    rsp, 0x28
+  0160bb84: mov    r8, rcx
+  0160bb87: mov    rcx, qword ptr [rcx + 0x10]
+  0160bb8b: test   rdx, rdx
+  0160bb8e: jne    0x160bb96
+  0160bb90: mov    rdx, qword ptr [r8 + 0x18]
+  0160bb94: jmp    0x160bbb0
+  0160bb96: mov    rax, qword ptr [rip + 0x17d97c3]
+  0160bb9d: xor    r9d, r9d
+  0160bba0: cmp    qword ptr [rdx], rax
+  0160bba3: cmove  r9, rdx
+  0160bba7: mov    rdx, qword ptr [r8 + 0x18]
+  0160bbab: test   r9, r9
+  0160bbae: jne    0x160bbc4
+  0160bbb0: test   rcx, rcx
+  0160bbb3: je     0x160bbd4
+  0160bbb5: xor    r8d, r8d
+  0160bbb8: xor    r9d, r9d
+  0160bbbb: add    rsp, 0x28
+  0160bbbf: jmp    0x15ec910   ; StreamedTable.OnHeaderClicked
+  0160bbc4: mov    r8d, dword ptr [r9 + 0xe8]
+  0160bbcb: and    r8d, 1
+  0160bbcf: test   rcx, rcx
+  0160bbd2: jne    0x160bbb8
+  0160bbd4: call   0x1bc700
+  0160bbd9: int3   
+
+======== StreamedTable.CreateHeader @ 0x15e8f00 size=421 ========
+  015e8f00: push   r14
+  015e8f02: push   r15
+  015e8f04: sub    rsp, 0x48
+  015e8f08: mov    r15, rdx
+  015e8f0b: mov    r14, rcx
+  015e8f0e: mov    rcx, qword ptr [rcx + 0x9c0]
+  015e8f15: xor    edx, edx
+  015e8f17: call   0x9b93e0
+  015e8f1c: test   al, al
+  015e8f1e: je     0x15e9096
+  015e8f24: mov    qword ptr [rsp + 0x60], rbx
+  015e8f29: mov    qword ptr [rsp + 0x68], rbp
+  015e8f2e: test   r15, r15
+  015e8f31: je     0x15e909f
+  015e8f37: mov    rdx, qword ptr [rip + 0x17f2942]
+  015e8f3e: xor    r8d, r8d
+  015e8f41: mov    rcx, qword ptr [r15 + 0x20]
+  015e8f45: call   0x129eba0   ; String.Equals, String.op_Equality
+  015e8f4a: test   al, al
+  015e8f4c: je     0x15e9005
+  015e8f52: mov    qword ptr [rsp + 0x70], rsi
+  015e8f57: mov    qword ptr [rsp + 0x40], rdi
+  015e8f5c: mov    rcx, qword ptr [rip + 0x185bd85]
+  015e8f63: mov    rsi, qword ptr [r14 + 0x9c0]
+  015e8f6a: mov    rdi, qword ptr [r14 + 0xab0]
+  015e8f71: movzx  ebx, byte ptr [r14 + 0x9b8]
+  015e8f79: call   0x1bc6b0
+  015e8f7e: mov    rdx, qword ptr [rip + 0x17f28fb]
+  015e8f85: mov    rbp, rax
+  015e8f88: xor    eax, eax
+  015e8f8a: mov    r9, rdi
+  015e8f8d: mov    qword ptr [rsp + 0x30], rax
+  015e8f92: mov    r8, rsi
+  015e8f95: mov    qword ptr [rsp + 0x28], rax
+  015e8f9a: mov    rcx, rbp
+  015e8f9d: mov    byte ptr [rsp + 0x20], bl
+  015e8fa1: call   0x15dfab0   ; Header..ctor
+  015e8fa6: cmp    qword ptr [rbp + 0x40], 0
+  015e8fab: mov    rdi, qword ptr [rsp + 0x40]
+  015e8fb0: mov    rsi, qword ptr [rsp + 0x70]
+  015e8fb5: mov    byte ptr [rbp + 0x60], 1
+  015e8fb9: mov    rdx, qword ptr [rip + 0x1805700]
+  015e8fc0: je     0x15e8fd0
+  015e8fc2: mov    rcx, qword ptr [rbp + 0x40]
+  015e8fc6: xor    r8d, r8d
+  015e8fc9: call   0x15d9310   ; SIText.SetText
+  015e8fce: jmp    0x15e8fdd
+  015e8fd0: lea    rcx, [rbp + 0x28]
+  015e8fd4: mov    qword ptr [rbp + 0x28], rdx
+  015e8fd8: call   0x1bb740
+  015e8fdd: mov    rcx, qword ptr [r14 + 0x8f8]
+  015e8fe4: test   rcx, rcx
+  015e8fe7: je     0x15e909f
+  015e8fed: mov    r9, qword ptr [rip + 0x17ea244]
+  015e8ff4: mov    r8, rbp
+  015e8ff7: mov    rdx, qword ptr [rip + 0x17f2882]
+  015e8ffe: call   0x10dc1f0
+  015e9003: jmp    0x15e9017
+  015e9005: mov    rdx, qword ptr [r15 + 0x20]
+  015e9009: xor    r8d, r8d
+  015e900c: mov    rcx, r14
+  015e900f: call   0x15eac30   ; StreamedTable.MakeColumnHeader
+  015e9014: mov    rbp, rax
+  015e9017: cmp    byte ptr [r14 + 0x9db], 0
+  015e901f: je     0x15e907e
+  015e9021: mov    rcx, qword ptr [rip + 0x185bb10]
+  015e9028: call   0x1bc6b0
+  015e902d: xor    edx, edx
+  015e902f: mov    rcx, rax
+  015e9032: mov    rbx, rax
+  015e9035: mov    dword ptr [rax + 0x88], 0xffffffff
+  015e903f: call   0x16b2dd0   ; DragManipulator..ctor
+  015e9044: lea    rcx, [rbx + 0x78]
+  015e9048: mov    qword ptr [rbx + 0x78], r14
+  015e904c: mov    rdx, r14
+  015e904f: call   0x1bb740
+  015e9054: lea    rcx, [rbx + 0x80]
+  015e905b: mov    qword ptr [rbx + 0x80], r15
+  015e9062: mov    rdx, r15
+  015e9065: call   0x1bb740
+  015e906a: test   rbp, rbp
+  015e906d: je     0x15e909f
+  015e906f: mov    rcx, qword ptr [rbp + 0x40]
+  015e9073: xor    r8d, r8d
+  015e9076: mov    rdx, rbx
+  015e9079: call   0x1f7fe40   ; VisualElementExtensions.AddManipulator
+  015e907e: xor    r8d, r8d
+  015e9081: mov    rdx, rbp
+  015e9084: mov    rcx, r15
+  015e9087: call   0x15df360   ; Column.set_Header
+  015e908c: mov    rbx, qword ptr [rsp + 0x60]
+  015e9091: mov    rbp, qword ptr [rsp + 0x68]
+  015e9096: add    rsp, 0x48
+  015e909a: pop    r15
+  015e909c: pop    r14
+  015e909e: ret    
+  015e909f: call   0x1bc700
+  015e90a4: int3   
+
+======== Header.SetupClickHandler @ 0x15df7e0 size=146 ========
+  015df7e0: mov    qword ptr [rsp + 0x10], rbx
+  015df7e5: push   rsi
+  015df7e6: sub    rsp, 0x20
+  015df7ea: cmp    qword ptr [rcx + 0x18], 0
+  015df7ef: mov    rsi, rdx
+  015df7f2: mov    rbx, rcx
+  015df7f5: je     0x15df861
+  015df7f7: mov    rcx, qword ptr [rcx + 0x18]
+  015df7fb: xor    edx, edx
+  015df7fd: mov    qword ptr [rsp + 0x30], rdi
+  015df802: call   0x636fa0   ; BindingInspector.get_Target, FMMatchMomentumChart.get_AwayTeamColourBindingPath, FMDraggableObject.get_DragData
+  015df807: test   rax, rax
+  015df80a: je     0x15df86c
+  015df80c: xor    r8d, r8d
+  015df80f: mov    rdx, rsi
+  015df812: mov    rcx, rax
+  015df815: call   0x1f16d50   ; Clickable.add_clickedWithEventInfo
+  015df81a: mov    rcx, qword ptr [rip + 0x1831a27]
+  015df821: mov    rbx, qword ptr [rbx + 0x40]
+  015df825: call   0x1bc6b0
+  015df82a: mov    r8, qword ptr [rip + 0x180213f]
+  015df831: xor    r9d, r9d
+  015df834: mov    rdx, rsi
+  015df837: mov    rcx, rax
+  015df83a: mov    rdi, rax
+  015df83d: call   0x11d5690   ; ParameterizedThreadStart..ctor, SendOrPostCallback..ctor, ContextCallback..ctor
+  015df842: test   rbx, rbx
+  015df845: je     0x15df86c
+  015df847: mov    r9, qword ptr [rip + 0x180737a]
+  015df84e: xor    r8d, r8d
+  015df851: mov    rdx, rdi
+  015df854: mov    rcx, rbx
+  015df857: call   0x9dde00
+  015df85c: mov    rdi, qword ptr [rsp + 0x30]
+  015df861: mov    rbx, qword ptr [rsp + 0x38]
+  015df866: add    rsp, 0x20
+  015df86a: pop    rsi
+  015df86b: ret    
+  015df86c: call   0x1bc700
+  015df871: int3   
+
+======== Header ctor b__0 @ 0x15f2ea0 size=1355 ========
+  015f2ea0: mov    qword ptr [rsp + 0x10], rdx
+  015f2ea5: mov    qword ptr [rsp + 8], rcx
+  015f2eaa: push   rbx
+  015f2eab: push   rsi
+  015f2eac: push   rdi
+  015f2ead: push   r14
+  015f2eaf: push   r15
+  015f2eb1: sub    rsp, 0xd0
+  015f2eb8: mov    r15, rdx
+  015f2ebb: mov    rdi, rcx
+  015f2ebe: mov    r14, rcx
+  015f2ec1: mov    qword ptr [rsp + 0x118], rcx
+  015f2ec9: mov    rcx, qword ptr [rip + 0x1846768]
+  015f2ed0: cmp    dword ptr [rcx + 0xe4], 0
+  015f2ed7: jne    0x15f2ede
+  015f2ed9: call   0x1bc7a0
+  015f2ede: mov    rax, qword ptr [rip + 0x18244bb]
+  015f2ee5: mov    qword ptr [rsp + 0x20], rax
+  015f2eea: xor    r9d, r9d
+  015f2eed: xor    r8d, r8d
+  015f2ef0: mov    rdx, r15
+  015f2ef3: lea    rcx, [rsp + 0x70]
+  015f2ef8: call   0xaff0d0
+  015f2efd: movups xmm0, xmmword ptr [rsp + 0x70]
+  015f2f02: movups xmmword ptr [rsp + 0xa0], xmm0
+  015f2f0a: movups xmm1, xmmword ptr [rsp + 0x80]
+  015f2f12: movups xmmword ptr [rsp + 0xb0], xmm1
+  015f2f1a: movups xmm0, xmmword ptr [rsp + 0x90]
+  015f2f22: movups xmmword ptr [rsp + 0xc0], xmm0
+  015f2f2a: xor    r8d, r8d
+  015f2f2d: lea    rdx, [rsp + 0xa0]
+  015f2f35: lea    rcx, [rsp + 0x30]
+  015f2f3a: call   0xee03e0
+  015f2f3f: movaps xmm0, xmmword ptr [rsp + 0x30]
+  015f2f44: movdqa xmmword ptr [rsp + 0x60], xmm0
+  015f2f4a: mov    rcx, qword ptr [rip + 0x18266df]
+  015f2f51: cmp    dword ptr [rcx + 0xe4], 0
+  015f2f58: jne    0x15f2f5f
+  015f2f5a: call   0x1bc7a0
+  015f2f5f: mov    r8, qword ptr [rip + 0x1809f2a]
+  015f2f66: lea    rdx, [rsp + 0x60]
+  015f2f6b: lea    rcx, [rsp + 0x30]
+  015f2f70: call   0xee2420
+  015f2f75: movaps xmm0, xmmword ptr [rsp + 0x30]
+  015f2f7a: movdqa xmmword ptr [rsp + 0x40], xmm0
+  015f2f80: mov    qword ptr [rsp + 0x30], 0
+  015f2f89: lea    rbx, [rsp + 0x40]
+  015f2f8e: mov    qword ptr [rsp + 0x38], rbx
+  015f2f93: xor    edx, edx
+  015f2f95: lea    rcx, [rsp + 0x40]
+  015f2f9a: call   0xbc0600
+  015f2f9f: test   al, al
+  015f2fa1: je     0x15f303c
+  015f2fa7: mov    rdx, qword ptr [rip + 0x1832672]
+  015f2fae: lea    rcx, [rsp + 0x40]
+  015f2fb3: call   0x11839a0
+  015f2fb8: mov    rsi, rax
+  015f2fbb: test   rax, rax
+  015f2fbe: je     0x15f33ca
+  015f2fc4: xor    edx, edx
+  015f2fc6: mov    rcx, rsi
+  015f2fc9: call   0x29d2d0   ; GoOnHolidayEntry.get_ApplyForJobsOptions, TacticalStylesOptionEntry.get_InstructionConsTranslations, TacticMentalitiesOptionEntry.get_ConsTranslations
+  015f2fce: test   rax, rax
+  015f2fd1: je     0x15f33d0
+  015f2fd7: xor    r9d, r9d
+  015f2fda: lea    r8d, [r9 + 3]
+  015f2fde: mov    rdx, qword ptr [rip + 0x182060b]
+  015f2fe5: mov    rcx, rax
+  015f2fe8: call   0x129d400   ; String.Contains
+  015f2fed: test   al, al
+  015f2fef: je     0x15f2f93
+  015f2ff1: mov    rcx, qword ptr [rdi + 0x10]
+  015f2ff5: test   rcx, rcx
+  015f2ff8: je     0x15f33d5
+  015f2ffe: mov    qword ptr [rcx + 0x10], rsi
+  015f3002: add    rcx, 0x10
+  015f3006: mov    rdx, rsi
+  015f3009: call   0x1bb740
+  015f300e: mov    rax, qword ptr [rdi + 0x10]
+  015f3012: test   rax, rax
+  015f3015: je     0x15f33da
+  015f301b: mov    rcx, qword ptr [rax + 0x10]
+  015f301f: test   rcx, rcx
+  015f3022: je     0x15f33df
+  015f3028: xor    r8d, r8d
+  015f302b: mov    rdx, qword ptr [rip + 0x1820246]
+  015f3032: call   0x1f28360   ; VisualElement.AddToClassList
+  015f3037: jmp    0x15f2f93
+  015f303c: xor    edx, edx
+  015f303e: mov    rcx, rbx
+  015f3041: call   0x117f4d0
+  015f3046: jmp    0x15f307a
+  015f3048: xor    edx, edx
+  015f304a: mov    rcx, qword ptr [rsp + 0x38]
+  015f304f: call   0x117f4d0
+  015f3054: mov    rcx, qword ptr [rsp + 0x30]
+  015f3059: test   rcx, rcx
+  015f305c: jne    0x15f33e5
+  015f3062: mov    r15, qword ptr [rsp + 0x108]
+  015f306a: mov    rdi, qword ptr [rsp + 0x100]
+  015f3072: mov    r14, qword ptr [rsp + 0x118]
+  015f307a: mov    rbx, qword ptr [rdi + 0x10]
+  015f307e: mov    r9, qword ptr [rip + 0x1823083]
+  015f3085: xor    r8d, r8d
+  015f3088: xor    edx, edx
+  015f308a: mov    rcx, r15
+  015f308d: call   0xafeb10
+  015f3092: test   rbx, rbx
+  015f3095: je     0x15f33c4
+  015f309b: mov    qword ptr [rbx + 0x40], rax
+  015f309f: lea    rcx, [rbx + 0x40]
+  015f30a3: mov    rdx, rax
+  015f30a6: call   0x1bb740
+  015f30ab: mov    rcx, qword ptr [rdi + 0x10]
+  015f30af: test   rcx, rcx
+  015f30b2: je     0x15f33c4
+  015f30b8: mov    rcx, qword ptr [rcx + 0x40]
+  015f30bc: test   rcx, rcx
+  015f30bf: je     0x15f33c4
+  015f30c5: xor    edx, edx
+  015f30c7: call   0x1f38770   ; VisualElement.get_parent
+  015f30cc: mov    rcx, qword ptr [rdi + 0x10]
+  015f30d0: test   rcx, rcx
+  015f30d3: je     0x15f33c4
+  015f30d9: test   rax, rax
+  015f30dc: je     0x15f33c4
+  015f30e2: xor    r8d, r8d
+  015f30e5: mov    rdx, qword ptr [rcx + 0x48]
+  015f30e9: mov    rcx, rax
+  015f30ec: call   0x1f284c0   ; VisualElement.Add
+  015f30f1: mov    rax, qword ptr [rdi + 0x10]
+  015f30f5: test   rax, rax
+  015f30f8: je     0x15f33c4
+  015f30fe: mov    rcx, qword ptr [rax + 0x40]
+  015f3102: mov    rax, qword ptr [r14 + 0x10]
+  015f3106: test   rcx, rcx
+  015f3109: je     0x15f33c4
+  015f310f: xor    r8d, r8d
+  015f3112: mov    rdx, qword ptr [rax + 0x28]
+  015f3116: call   0x15d9310   ; SIText.SetText
+  015f311b: mov    rbx, qword ptr [rdi + 0x10]
+  015f311f: mov    r9, qword ptr [rip + 0x1821c3a]
+  015f3126: xor    r8d, r8d
+  015f3129: xor    edx, edx
+  015f312b: mov    rcx, r15
+  015f312e: call   0xafeb10
+  015f3133: test   rbx, rbx
+  015f3136: je     0x15f33c4
+  015f313c: mov    qword ptr [rbx + 0x18], rax
+  015f3140: lea    rcx, [rbx + 0x18]
+  015f3144: mov    rdx, rax
+  015f3147: call   0x1bb740
+  015f314c: mov    rcx, qword ptr [rdi + 0x10]
+  015f3150: test   rcx, rcx
+  015f3153: je     0x15f33c4
+  015f3159: mov    rcx, qword ptr [rcx + 0x18]
+  015f315d: test   rcx, rcx
+  015f3160: je     0x15f33c4
+  015f3166: xor    edx, edx
+  015f3168: call   0x636fa0   ; BindingInspector.get_Target, FMMatchMomentumChart.get_AwayTeamColourBindingPath, FMDraggableObject.get_DragData
+  015f316d: test   rax, rax
+  015f3170: je     0x15f33c4
+  015f3176: mov    rcx, qword ptr [rax + 0x18]
+  015f317a: xor    r10d, r10d
+  015f317d: mov    qword ptr [rsp + 0x30], r10
+  015f3182: test   rcx, rcx
+  015f3185: je     0x15f33c4
+  015f318b: mov    r9, qword ptr [rip + 0x17f8536]
+  015f3192: mov    dword ptr [rsp + 0x30], r10d
+  015f3197: mov    dword ptr [rsp + 0x34], 1
+  015f319f: inc    dword ptr [rcx + 0x1c]
+  015f31a2: mov    r8, qword ptr [rcx + 0x10]
+  015f31a6: movsxd rdx, dword ptr [rcx + 0x18]
+  015f31aa: movsd  xmm0, qword ptr [rsp + 0x30]
+  015f31b0: cmp    edx, dword ptr [r8 + 0x18]
+  015f31b4: jb     0x15f31dc
+  015f31b6: mov    rax, qword ptr [r9 + 0x20]
+  015f31ba: mov    rdx, qword ptr [rax + 0xc0]
+  015f31c1: movsd  qword ptr [rsp + 0x30], xmm0
+  015f31c7: mov    dword ptr [rsp + 0x38], r10d
+  015f31cc: mov    r8, qword ptr [rdx + 0x70]
+  015f31d0: lea    rdx, [rsp + 0x30]
+  015f31d5: call   0xc6e040
+  015f31da: jmp    0x15f31f2
+  015f31dc: lea    eax, [rdx + 1]
+  015f31df: mov    dword ptr [rcx + 0x18], eax
+  015f31e2: lea    rcx, [rdx + rdx*2]
+  015f31e6: movsd  qword ptr [r8 + rcx*4 + 0x20], xmm0
+  015f31ed: mov    dword ptr [r8 + rcx*4 + 0x28], r10d
+  015f31f2: mov    rax, qword ptr [rdi + 0x10]
+  015f31f6: test   rax, rax
+  015f31f9: je     0x15f33c4
+  015f31ff: cmp    qword ptr [rax + 0x10], 0
+  015f3204: je     0x15f325a
+  015f3206: cmp    byte ptr [rax + 0x60], 0
+  015f320a: je     0x15f325a
+  015f320c: mov    rbx, rax
+  015f320f: xor    r8d, r8d
+  015f3212: mov    rdx, qword ptr [rip + 0x180c98f]
+  015f3219: mov    rcx, qword ptr [rax + 0x10]
+  015f321d: call   0x1f2d420   ; VisualElement.RemoveFromClassList
+  015f3222: mov    rcx, qword ptr [rbx + 0x10]
+  015f3226: test   rcx, rcx
+  015f3229: je     0x15f33c4
+  015f322f: xor    r8d, r8d
+  015f3232: mov    rdx, qword ptr [rip + 0x180c89f]
+  015f3239: call   0x1f2d420   ; VisualElement.RemoveFromClassList
+  015f323e: mov    rcx, qword ptr [rbx + 0x10]
+  015f3242: test   rcx, rcx
+  015f3245: je     0x15f33c4
+  015f324b: xor    r8d, r8d
+  015f324e: mov    rdx, qword ptr [rip + 0x1820023]
+  015f3255: call   0x1f28360   ; VisualElement.AddToClassList
+  015f325a: cmp    qword ptr [rdi + 0x18], 0
+  015f325f: je     0x15f32e5
+  015f3265: mov    rbx, qword ptr [rdi + 0x10]
+  015f3269: mov    rsi, qword ptr [rdi + 0x18]
+  015f326d: test   rbx, rbx
+  015f3270: je     0x15f33c4
+  015f3276: cmp    qword ptr [rbx + 0x18], 0
+  015f327b: je     0x15f32e5
+  015f327d: xor    edx, edx
+  015f327f: mov    rcx, qword ptr [rbx + 0x18]
+  015f3283: call   0x636fa0   ; BindingInspector.get_Target, FMMatchMomentumChart.get_AwayTeamColourBindingPath, FMDraggableObject.get_DragData
+  015f3288: test   rax, rax
+  015f328b: je     0x15f33c4
+  015f3291: xor    r8d, r8d
+  015f3294: mov    rdx, rsi
+  015f3297: mov    rcx, rax
+  015f329a: call   0x1f16d50   ; Clickable.add_clickedWithEventInfo
+  015f329f: mov    rbx, qword ptr [rbx + 0x40]
+  015f32a3: mov    rcx, qword ptr [rip + 0x181df9e]
+  015f32aa: call   0x1bc6b0
+  015f32af: mov    r14, rax
+  015f32b2: xor    r9d, r9d
+  015f32b5: mov    r8, qword ptr [rip + 0x17ee6b4]
+  015f32bc: mov    rdx, rsi
+  015f32bf: mov    rcx, rax
+  015f32c2: call   0x11d5690   ; ParameterizedThreadStart..ctor, SendOrPostCallback..ctor, ContextCallback..ctor
+  015f32c7: test   rbx, rbx
+  015f32ca: je     0x15f33c4
+  015f32d0: mov    r9, qword ptr [rip + 0x17f38f1]
+  015f32d7: xor    r8d, r8d
+  015f32da: mov    rdx, r14
+  015f32dd: mov    rcx, rbx
+  015f32e0: call   0x9dde00
+  015f32e5: xor    edx, edx
+  015f32e7: mov    rcx, qword ptr [rdi + 0x20]
+  015f32eb: call   0x1644370   ; AssetReferenceExtensions.GetAssetName
+  015f32f0: mov    rbx, rax
+  015f32f3: mov    rcx, qword ptr [rdi + 0x20]
+  015f32f7: test   rcx, rcx
+  015f32fa: je     0x15f33c4
+  015f3300: mov    rdx, qword ptr [rcx]
+  015f3303: mov    r8, qword ptr [rdx + 0x1a8]
+  015f330a: mov    rdx, qword ptr [rdx + 0x1b0]
+  015f3311: call   r8
+  015f3314: xor    r9d, r9d
+  015f3317: mov    r8, rax
+  015f331a: mov    rdx, qword ptr [rip + 0x17e62e7]
+  015f3321: mov    rcx, rbx
+  015f3324: call   0x129c9e0   ; String.Concat
+  015f3329: test   r15, r15
+  015f332c: je     0x15f33c4
+  015f3332: xor    r8d, r8d
+  015f3335: mov    rdx, rax
+  015f3338: mov    rcx, r15
+  015f333b: call   0x1f3a590   ; VisualElement.set_name
+  015f3340: mov    rbx, qword ptr [rdi + 0x10]
+  015f3344: test   rbx, rbx
+  015f3347: je     0x15f33c4
+  015f3349: cmp    byte ptr [rbx + 0x30], 0
+  015f334d: je     0x15f33b5
+  015f334f: mov    rcx, qword ptr [rbx + 0x50]
+  015f3353: test   rcx, rcx
+  015f3356: je     0x15f33c4
+  015f3358: mov    rdx, qword ptr [rcx]
+  015f335b: mov    rax, qword ptr [rdx + 0xe48]
+  015f3362: mov    rdx, qword ptr [rdx + 0xe50]
+  015f3369: call   rax
+  015f336b: xor    edx, edx
+  015f336d: mov    rcx, rax
+  015f3370: call   0x12a0df0   ; String.IsNullOrEmpty
+  015f3375: test   al, al
+  015f3377: jne    0x15f33b5
+  015f3379: mov    rcx, qword ptr [rbx + 0x48]
+  015f337d: test   rcx, rcx
+  015f3380: je     0x15f33c4
+  015f3382: xor    edx, edx
+  015f3384: call   0x1f38770   ; VisualElement.get_parent
+  015f3389: test   rax, rax
+  015f338c: je     0x15f33b5
+  015f338e: mov    rdi, qword ptr [rbx + 0x48]
+  015f3392: mov    rcx, qword ptr [rip + 0x18588cf]
+  015f3399: cmp    dword ptr [rcx + 0xe4], 0
+  015f33a0: jne    0x15f33a7
+  015f33a2: call   0x1bc7a0
+  015f33a7: xor    edx, edx
+  015f33a9: mov    rcx, rdi
+  015f33ac: call   0x15f51a0   ; BindableElementUtils.BindHierarchy
+  015f33b1: mov    byte ptr [rbx + 0x20], 1
+  015f33b5: add    rsp, 0xd0
+  015f33bc: pop    r15
+  015f33be: pop    r14
+  015f33c0: pop    rdi
+  015f33c1: pop    rsi
+  015f33c2: pop    rbx
+  015f33c3: ret    
+  015f33c4: call   0x1bc700
+  015f33c9: nop    
+  015f33ca: call   0x1bc700
+  015f33cf: nop    
+  015f33d0: call   0x1bc700
+  015f33d5: call   0x1bc700
+  015f33da: call   0x1bc700
+  015f33df: call   0x1bc700
+  015f33e4: nop    
+  015f33e5: call   0x1bc790
+  015f33ea: int3   
+
+======== Header..ctor @ 0x15dfab0 size=384 ========
+  015dfab0: mov    qword ptr [rsp + 8], rbx
+  015dfab5: mov    qword ptr [rsp + 0x10], rbp
+  015dfaba: mov    qword ptr [rsp + 0x18], rsi
+  015dfabf: mov    qword ptr [rsp + 0x20], rdi
+  015dfac4: push   r14
+  015dfac6: sub    rsp, 0x20
+  015dfaca: mov    rbp, rcx
+  015dfacd: mov    r14, r9
+  015dfad0: mov    rcx, qword ptr [rip + 0x184ee29]
+  015dfad7: mov    rdi, r8
+  015dfada: mov    rsi, rdx
+  015dfadd: call   0x1bc6b0
+  015dfae2: xor    edx, edx
+  015dfae4: mov    rcx, rax
+  015dfae7: mov    rbx, rax
+  015dfaea: call   0x160a0f0   ; Tooltip..ctor
+  015dfaef: lea    rcx, [rbp + 0x48]
+  015dfaf3: mov    qword ptr [rbp + 0x48], rbx
+  015dfaf7: mov    rdx, rbx
+  015dfafa: call   0x1bb740
+  015dfaff: mov    rcx, qword ptr [rip + 0x1820d2a]
+  015dfb06: call   0x1bc6b0
+  015dfb0b: xor    edx, edx
+  015dfb0d: mov    rcx, rax
+  015dfb10: mov    rbx, rax
+  015dfb13: call   0x15da910   ; SIText..ctor
+  015dfb18: lea    rcx, [rbp + 0x50]
+  015dfb1c: mov    qword ptr [rbp + 0x50], rbx
+  015dfb20: mov    rdx, rbx
+  015dfb23: call   0x1bb740
+  015dfb28: mov    rcx, qword ptr [rip + 0x17fc371]
+  015dfb2f: call   0x1bc6b0
+  015dfb34: mov    rdx, qword ptr [rsp + 0x58]
+  015dfb39: mov    rbx, rax
+  015dfb3c: lea    rcx, [rax + 0x18]
+  015dfb40: mov    qword ptr [rax + 0x18], rdx
+  015dfb44: call   0x1bb740
+  015dfb49: lea    rcx, [rbx + 0x20]
+  015dfb4d: mov    qword ptr [rbx + 0x20], rdi
+  015dfb51: mov    rdx, rdi
+  015dfb54: call   0x1bb740
+  015dfb59: lea    rcx, [rbx + 0x10]
+  015dfb5d: mov    qword ptr [rbx + 0x10], rbp
+  015dfb61: mov    rdx, rbp
+  015dfb64: call   0x1bb740
+  015dfb69: movzx  ecx, byte ptr [rsp + 0x50]
+  015dfb6e: mov    rdx, rsi
+  015dfb71: mov    byte ptr [rbp + 0x60], cl
+  015dfb74: lea    rcx, [rbp + 0x38]
+  015dfb78: mov    qword ptr [rbp + 0x38], rsi
+  015dfb7c: call   0x1bb740
+  015dfb81: mov    rcx, qword ptr [rip + 0x186ca20]
+  015dfb88: mov    rsi, qword ptr [rbx + 0x20]
+  015dfb8c: call   0x1bc6b0
+  015dfb91: mov    r8, qword ptr [rip + 0x184e5a8]
+  015dfb98: xor    r9d, r9d
+  015dfb9b: mov    rdx, rbx
+  015dfb9e: mov    rcx, rax
+  015dfba1: mov    rdi, rax
+  015dfba4: call   0xef8b00   ; AsyncCallback..ctor, DeserializationEventHandler..ctor, OnRemoveWriter..ctor
+  015dfba9: mov    rcx, qword ptr [rip + 0x1864f38]
+  015dfbb0: cmp    dword ptr [rcx + 0xe4], 0
+  015dfbb7: jne    0x15dfbbe
+  015dfbb9: call   0x1bc7a0
+  015dfbbe: mov    r9, qword ptr [rip + 0x18571b3]
+  015dfbc5: mov    r8, rdi
+  015dfbc8: mov    rdx, r14
+  015dfbcb: mov    rcx, rsi
+  015dfbce: call   0xb16e00
+  015dfbd3: lea    rcx, [rbp + 0x58]
+  015dfbd7: mov    qword ptr [rbp + 0x58], rax
+  015dfbdb: mov    rdx, rax
+  015dfbde: call   0x1bb740
+  015dfbe3: mov    rcx, qword ptr [rbp + 0x58]
+  015dfbe7: test   rcx, rcx
+  015dfbea: je     0x15dfc2a
+  015dfbec: mov    rdx, qword ptr [rip + 0x183df1d]
+  015dfbf3: xor    r8d, r8d
+  015dfbf6: call   0x1f28360   ; VisualElement.AddToClassList
+  015dfbfb: mov    rcx, qword ptr [rbp + 0x48]
+  015dfbff: test   rcx, rcx
+  015dfc02: je     0x15dfc2a
+  015dfc04: mov    rdx, qword ptr [rbp + 0x50]
+  015dfc08: xor    r8d, r8d
+  015dfc0b: mov    rbx, qword ptr [rsp + 0x30]
+  015dfc10: mov    rbp, qword ptr [rsp + 0x38]
+  015dfc15: mov    rsi, qword ptr [rsp + 0x40]
+  015dfc1a: mov    rdi, qword ptr [rsp + 0x48]
+  015dfc1f: add    rsp, 0x20
+  015dfc23: pop    r14
+  015dfc25: jmp    0x1f284c0   ; VisualElement.Add
+  015dfc2a: call   0x1bc700
+  015dfc2f: int3   
+
+======== SortComparer.Compare(int,int) @ 0x15a3c60 size=208 ========
+  015a3c60: mov    qword ptr [rsp + 8], rbx
+  015a3c65: mov    qword ptr [rsp + 0x10], rbp
+  015a3c6a: mov    qword ptr [rsp + 0x18], rsi
+  015a3c6f: push   rdi
+  015a3c70: push   r14
+  015a3c72: push   r15
+  015a3c74: sub    rsp, 0x30
+  015a3c78: movsxd r9, dword ptr [rcx + 0x2c]
+  015a3c7c: mov    rbp, rcx
+  015a3c7f: mov    r14, r9
+  015a3c82: test   r9d, r9d
+  015a3c85: jle    0x15a3cfc
+  015a3c87: mov    eax, r9d
+  015a3c8a: xor    ebx, ebx
+  015a3c8c: imul   eax, edx
+  015a3c8f: lea    edi, [rbx + 0x20]
+  015a3c92: cdqe   
+  015a3c94: lea    rsi, [rax*8 + 0x20]
+  015a3c9c: mov    eax, r9d
+  015a3c9f: imul   eax, edx
+  015a3ca2: imul   r9d, r8d
+  015a3ca6: movsxd rcx, eax
+  015a3ca9: movsxd rax, r9d
+  015a3cac: sub    rax, rcx
+  015a3caf: lea    r15, [rax*8]
+  015a3cb7: mov    rax, qword ptr [rbp + 0x10]
+  015a3cbb: test   rax, rax
+  015a3cbe: je     0x15a3d2a
+  015a3cc0: movups xmm0, xmmword ptr [rdi + rax]
+  015a3cc4: mov    r9, qword ptr [rbp + 0x20]
+  015a3cc8: movups xmmword ptr [rsp + 0x20], xmm0
+  015a3ccd: test   r9, r9
+  015a3cd0: je     0x15a3d2a
+  015a3cd2: mov    rcx, qword ptr [rsi + r9]
+  015a3cd6: lea    rax, [r15 + rsi]
+  015a3cda: mov    rdx, qword ptr [rax + r9]
+  015a3cde: xor    r8d, r8d
+  015a3ce1: call   0x15a3d30   ; SortComparer.Compare
+  015a3ce6: mov    ecx, eax
+  015a3ce8: test   eax, eax
+  015a3cea: jne    0x15a3d17
+  015a3cec: inc    rbx
+  015a3cef: add    rsi, 8
+  015a3cf3: add    rdi, 0x10
+  015a3cf7: cmp    rbx, r14
+  015a3cfa: jl     0x15a3cb7
+  015a3cfc: xor    eax, eax
+  015a3cfe: mov    rbx, qword ptr [rsp + 0x50]
+  015a3d03: mov    rbp, qword ptr [rsp + 0x58]
+  015a3d08: mov    rsi, qword ptr [rsp + 0x60]
+  015a3d0d: add    rsp, 0x30
+  015a3d11: pop    r15
+  015a3d13: pop    r14
+  015a3d15: pop    rdi
+  015a3d16: ret    
+  015a3d17: movups xmm0, xmmword ptr [rsp + 0x20]
+  015a3d1c: psrldq xmm0, 0xc
+  015a3d21: movd   eax, xmm0
+  015a3d25: imul   eax, ecx
+  015a3d28: jmp    0x15a3cfe
+  015a3d2a: call   0x1bc700
+  015a3d2f: int3   
+
+======== SortComparer.Compare(Data,Data) @ 0x15a3d30 size=642 ========
+  015a3d30: mov    qword ptr [rsp + 0x18], rbp
+  015a3d35: mov    qword ptr [rsp + 0x20], rdi
+  015a3d3a: push   r14
+  015a3d3c: sub    rsp, 0x60
+  015a3d40: mov    r14, rdx
+  015a3d43: mov    rdi, rcx
+  015a3d46: test   rcx, rcx
+  015a3d49: je     0x15a3f9a
+  015a3d4f: mov    rdx, qword ptr [rcx]
+  015a3d52: mov    rax, qword ptr [rdx + 0x1a8]
+  015a3d59: mov    rdx, qword ptr [rdx + 0x1b0]
+  015a3d60: call   rax
+  015a3d62: mov    rbp, rax
+  015a3d65: test   r14, r14
+  015a3d68: je     0x15a3f9a
+  015a3d6e: mov    rdx, qword ptr [r14]
+  015a3d71: mov    rcx, r14
+  015a3d74: mov    qword ptr [rsp + 0x70], rbx
+  015a3d79: mov    qword ptr [rsp + 0x78], rsi
+  015a3d7e: mov    r8, qword ptr [rdx + 0x1a8]
+  015a3d85: mov    rdx, qword ptr [rdx + 0x1b0]
+  015a3d8c: call   r8
+  015a3d8f: mov    rcx, qword ptr [rip + 0x1a97b2a]
+  015a3d96: mov    rsi, rax
+  015a3d99: mov    rbx, qword ptr [rip + 0x1a97ad0]
+  015a3da0: cmp    dword ptr [rcx + 0xe4], 0
+  015a3da7: jne    0x15a3dae
+  015a3da9: call   0x1bc7a0
+  015a3dae: xor    edx, edx
+  015a3db0: lea    rcx, [rbx + 0x20]
+  015a3db4: call   0x13dda20   ; Type.GetTypeFromHandle
+  015a3db9: xor    r8d, r8d
+  015a3dbc: mov    rdx, rax
+  015a3dbf: mov    rcx, rbp
+  015a3dc2: call   0xb01190   ; TimeSpan.op_Equality, Type.op_Equality, RuntimeType.op_Equality
+  015a3dc7: test   al, al
+  015a3dc9: je     0x15a3f18
+  015a3dcf: mov    rcx, qword ptr [rip + 0x1a97a9a]
+  015a3dd6: xor    edx, edx
+  015a3dd8: add    rcx, 0x20
+  015a3ddc: call   0x13dda20   ; Type.GetTypeFromHandle
+  015a3de1: xor    r8d, r8d
+  015a3de4: mov    rdx, rax
+  015a3de7: mov    rcx, rsi
+  015a3dea: call   0xb01190   ; TimeSpan.op_Equality, Type.op_Equality, RuntimeType.op_Equality
+  015a3def: test   al, al
+  015a3df1: je     0x15a3f18
+  015a3df7: mov    rdx, qword ptr [rdi]
+  015a3dfa: mov    rcx, rdi
+  015a3dfd: mov    rax, qword ptr [rdx + 0x1c8]
+  015a3e04: mov    rdx, qword ptr [rdx + 0x1d0]
+  015a3e0b: call   rax
+  015a3e0d: mov    rdx, qword ptr [r14]
+  015a3e10: mov    rcx, r14
+  015a3e13: mov    rsi, rax
+  015a3e16: mov    r8, qword ptr [rdx + 0x1c8]
+  015a3e1d: mov    rdx, qword ptr [rdx + 0x1d0]
+  015a3e24: call   r8
+  015a3e27: mov    rdx, qword ptr [rip + 0x1a97a42]
+  015a3e2e: xor    ebx, ebx
+  015a3e30: test   rax, rax
+  015a3e33: je     0x15a3e45
+  015a3e35: cmp    qword ptr [rax], rdx
+  015a3e38: cmove  rbx, rax
+  015a3e3c: test   rbx, rbx
+  015a3e3f: je     0x15a3fa9
+  015a3e45: movaps xmmword ptr [rsp + 0x40], xmm7
+  015a3e4a: test   rsi, rsi
+  015a3e4d: je     0x15a3e86
+  015a3e4f: xor    edi, edi
+  015a3e51: cmp    qword ptr [rsi], rdx
+  015a3e54: cmove  rdi, rsi
+  015a3e58: test   rdi, rdi
+  015a3e5b: je     0x15a3fa0
+  015a3e61: xor    edx, edx
+  015a3e63: mov    rcx, rdi
+  015a3e66: call   0x129faf0   ; String.GetRawStringData
+  015a3e6b: mov    ecx, dword ptr [rdi + 0x10]
+  015a3e6e: mov    dword ptr [rsp + 0x28], ecx
+  015a3e72: mov    dword ptr [rsp + 0x2c], 0
+  015a3e7a: mov    qword ptr [rsp + 0x20], rax
+  015a3e7f: movaps xmm7, xmmword ptr [rsp + 0x20]
+  015a3e84: jmp    0x15a3e89
+  015a3e86: xorps  xmm7, xmm7
+  015a3e89: movaps xmmword ptr [rsp + 0x50], xmm6
+  015a3e8e: test   rbx, rbx
+  015a3e91: je     0x15a3eb8
+  015a3e93: xor    edx, edx
+  015a3e95: mov    rcx, rbx
+  015a3e98: call   0x129faf0   ; String.GetRawStringData
+  015a3e9d: mov    ecx, dword ptr [rbx + 0x10]
+  015a3ea0: mov    dword ptr [rsp + 0x28], ecx
+  015a3ea4: mov    dword ptr [rsp + 0x2c], 0
+  015a3eac: mov    qword ptr [rsp + 0x20], rax
+  015a3eb1: movaps xmm6, xmmword ptr [rsp + 0x20]
+  015a3eb6: jmp    0x15a3ebb
+  015a3eb8: xorps  xmm6, xmm6
+  015a3ebb: mov    rcx, qword ptr [rip + 0x1854b76]
+  015a3ec2: cmp    dword ptr [rcx + 0xe4], 0
+  015a3ec9: jne    0x15a3ed0
+  015a3ecb: call   0x1bc7a0
+  015a3ed0: xor    r9d, r9d
+  015a3ed3: movdqa xmmword ptr [rsp + 0x20], xmm6
+  015a3ed9: xor    r8d, r8d
+  015a3edc: movdqa xmmword ptr [rsp + 0x30], xmm7
+  015a3ee2: lea    rdx, [rsp + 0x20]
+  015a3ee7: lea    rcx, [rsp + 0x30]
+  015a3eec: call   0x164a7c0   ; EmbeddedDataUtilities.CompareText
+  015a3ef1: movaps xmm6, xmmword ptr [rsp + 0x50]
+  015a3ef6: movaps xmm7, xmmword ptr [rsp + 0x40]
+  015a3efb: mov    rbx, qword ptr [rsp + 0x70]
+  015a3f00: lea    r11, [rsp + 0x60]
+  015a3f05: mov    rbp, qword ptr [r11 + 0x20]
+  015a3f09: mov    rdi, qword ptr [r11 + 0x28]
+  015a3f0d: mov    rsi, qword ptr [rsp + 0x78]
+  015a3f12: mov    rsp, r11
+  015a3f15: pop    r14
+  015a3f17: ret    
+  015a3f18: mov    rcx, qword ptr [rip + 0x1862f89]
+  015a3f1f: xor    edx, edx
+  015a3f21: call   0x13dda20   ; Type.GetTypeFromHandle
+  015a3f26: xor    r8d, r8d
+  015a3f29: mov    rdx, rax
+  015a3f2c: mov    rcx, rbp
+  015a3f2f: call   0xb01190   ; TimeSpan.op_Equality, Type.op_Equality, RuntimeType.op_Equality
+  015a3f34: mov    rcx, qword ptr [rip + 0x1862f6d]
+  015a3f3b: xor    edx, edx
+  015a3f3d: test   al, al
+  015a3f3f: jne    0x15a3f7a
+  015a3f41: call   0x13dda20   ; Type.GetTypeFromHandle
+  015a3f46: xor    r8d, r8d
+  015a3f49: mov    rdx, rax
+  015a3f4c: mov    rcx, rsi
+  015a3f4f: call   0xb01190   ; TimeSpan.op_Equality, Type.op_Equality, RuntimeType.op_Equality
+  015a3f54: test   al, al
+  015a3f56: je     0x15a3f5f
+  015a3f58: mov    eax, 1
+  015a3f5d: jmp    0x15a3efb
+  015a3f5f: mov    r8, qword ptr [rdi]
+  015a3f62: mov    rdx, r14
+  015a3f65: mov    rcx, rdi
+  015a3f68: mov    rax, qword ptr [r8 + 0x218]
+  015a3f6f: mov    r8, qword ptr [r8 + 0x220]
+  015a3f76: call   rax
+  015a3f78: jmp    0x15a3efb
+  015a3f7a: call   0x13dda20   ; Type.GetTypeFromHandle
+  015a3f7f: xor    r8d, r8d
+  015a3f82: mov    rdx, rax
+  015a3f85: mov    rcx, rsi
+  015a3f88: call   0xb01190   ; TimeSpan.op_Equality, Type.op_Equality, RuntimeType.op_Equality
+  015a3f8d: neg    al
+  015a3f8f: sbb    eax, eax
+  015a3f91: neg    eax
+  015a3f93: dec    eax
+  015a3f95: jmp    0x15a3efb
+  015a3f9a: call   0x1bc700
+  015a3f9f: int3   
+  015a3fa0: mov    rcx, rsi
+  015a3fa3: call   0x1bb780
+  015a3fa8: int3   
+  015a3fa9: mov    rcx, rax
+  015a3fac: call   0x1bb780
+  015a3fb1: int3   
+
+======== StreamedTable.EntryForColumn @ 0x15e9450 size=109 ========
+  015e9450: mov    qword ptr [rsp + 8], rbx
+  015e9455: push   rdi
+  015e9456: sub    rsp, 0x20
+  015e945a: mov    rdi, rdx
+  015e945d: mov    rbx, rcx
+  015e9460: mov    rcx, qword ptr [rcx + 0x988]
+  015e9467: xor    edx, edx
+  015e9469: xor    r8d, r8d
+  015e946c: call   0x1e15220   ; Object.CompareBaseObjects, Object.op_Equality
+  015e9471: test   al, al
+  015e9473: jne    0x15e94aa
+  015e9475: mov    rax, qword ptr [rbx + 0x988]
+  015e947c: test   rax, rax
+  015e947f: je     0x15e94b7
+  015e9481: cmp    qword ptr [rax + 0x38], 0
+  015e9486: je     0x15e94aa
+  015e9488: mov    r8, qword ptr [rax + 0x38]
+  015e948c: mov    ecx, 2
+  015e9491: mov    rdx, qword ptr [rip + 0x185ded8]
+  015e9498: mov    r9, rdi
+  015e949b: mov    rbx, qword ptr [rsp + 0x30]
+  015e94a0: add    rsp, 0x20
+  015e94a4: pop    rdi
+  015e94a5: jmp    0x2420
+  015e94aa: mov    rbx, qword ptr [rsp + 0x30]
+  015e94af: xor    eax, eax
+  015e94b1: add    rsp, 0x20
+  015e94b5: pop    rdi
+  015e94b6: ret    
+  015e94b7: call   0x1bc700
+  015e94bc: int3   
+
+======== StreamedTable.UpdateSortColum @ 0x15f1380 size=322 ========
+  015f1380: mov    qword ptr [rsp + 8], rbx
+  015f1385: mov    qword ptr [rsp + 0x10], rbp
+  015f138a: mov    qword ptr [rsp + 0x18], rsi
+  015f138f: mov    qword ptr [rsp + 0x20], rdi
+  015f1394: push   r14
+  015f1396: sub    rsp, 0x40
+  015f139a: mov    rax, qword ptr [rcx + 0x8e0]
+  015f13a1: movzx  ebp, r9b
+  015f13a5: mov    r14, r8
+  015f13a8: mov    esi, edx
+  015f13aa: mov    rdi, rcx
+  015f13ad: test   rax, rax
+  015f13b0: je     0x15f14b0
+  015f13b6: nop    word ptr [rax + rax]
+  015f13c0: mov    rbx, qword ptr [rdi + 0x8e0]
+  015f13c7: xor    r9d, r9d
+  015f13ca: lea    rcx, [rsp + 0x20]
+  015f13cf: xorps  xmm0, xmm0
+  015f13d2: movups xmmword ptr [rsp + 0x20], xmm0
+  015f13d7: cmp    dword ptr [rax + 0x18], esi
+  015f13da: jg     0x15f1467
+  015f13e0: mov    r8b, 1
+  015f13e3: xor    edx, edx
+  015f13e5: call   0xbf9020   ; ConfiguredTaskAwaiter..ctor, IndexField..ctor, PredicateInfo..ctor
+  015f13ea: test   rbx, rbx
+  015f13ed: je     0x15f14b6
+  015f13f3: mov    rdx, qword ptr [rbx + 0x10]
+  015f13f7: mov    r8, qword ptr [rip + 0x1844df2]
+  015f13fe: movaps xmm0, xmmword ptr [rsp + 0x20]
+  015f1403: inc    dword ptr [rbx + 0x1c]
+  015f1406: movsxd rcx, dword ptr [rbx + 0x18]
+  015f140a: cmp    ecx, dword ptr [rdx + 0x18]
+  015f140d: jb     0x15f1433
+  015f140f: mov    rax, qword ptr [r8 + 0x20]
+  015f1413: lea    rdx, [rsp + 0x30]
+  015f1418: mov    rcx, rbx
+  015f141b: movdqa xmmword ptr [rsp + 0x30], xmm0
+  015f1421: mov    r8, qword ptr [rax + 0xc0]
+  015f1428: mov    r8, qword ptr [r8 + 0x70]
+  015f142c: call   0xc2ba70
+  015f1431: jmp    0x15f1456
+  015f1433: lea    eax, [rcx + 1]
+  015f1436: mov    dword ptr [rbx + 0x18], eax
+  015f1439: lea    rax, [rcx + 2]
+  015f143d: add    rcx, 2
+  015f1441: add    rax, rax
+  015f1444: shl    rcx, 4
+  015f1448: add    rcx, rdx
+  015f144b: movups xmmword ptr [rdx + rax*8], xmm0
+  015f144f: xor    edx, edx
+  015f1451: call   0x1bb740
+  015f1456: mov    rax, qword ptr [rdi + 0x8e0]
+  015f145d: test   rax, rax
+  015f1460: je     0x15f14b0
+  015f1462: jmp    0x15f13c0
+  015f1467: movzx  r8d, bpl
+  015f146b: mov    rdx, r14
+  015f146e: call   0xbf9020   ; ConfiguredTaskAwaiter..ctor, IndexField..ctor, PredicateInfo..ctor
+  015f1473: test   rbx, rbx
+  015f1476: je     0x15f14bc
+  015f1478: movaps xmm0, xmmword ptr [rsp + 0x20]
+  015f147d: lea    r8, [rsp + 0x30]
+  015f1482: xor    r9d, r9d
+  015f1485: movdqa xmmword ptr [rsp + 0x30], xmm0
+  015f148b: mov    edx, esi
+  015f148d: mov    rcx, rbx
+  015f1490: call   0xc327f0
+  015f1495: mov    rbx, qword ptr [rsp + 0x50]
+  015f149a: mov    rbp, qword ptr [rsp + 0x58]
+  015f149f: mov    rsi, qword ptr [rsp + 0x60]
+  015f14a4: mov    rdi, qword ptr [rsp + 0x68]
+  015f14a9: add    rsp, 0x40
+  015f14ad: pop    r14
+  015f14af: ret    
+  015f14b0: call   0x1bc700
+  015f14b5: int3   
+  015f14b6: call   0x1bc700
+  015f14bb: int3   
+  015f14bc: call   0x1bc700
+  015f14c1: int3   

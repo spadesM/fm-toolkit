@@ -1,0 +1,366 @@
+﻿
+================ StreamedListView.BindSortPathNextDepth (RVA=0x015a4850, size=608) ================
+  +0x000: 48 89 5c 24 10 48 89 6c 24 18 56 57 41 56 48 81
+  +0x010: ec 80 00 00 00 48 8b b9 d8 05 00 00 0f 57 c0 41
+  +0x020: 0f b6 e9 45 8b f0 48 8b da 48 8b f1 0f 11 44 24
+  +0x030: 50 48 85 ff 0f 84 16 01 00 00 48 8d 45 02 0f 29
+  +0x040: 74 24 70 48 03 c0 48 8b 3c c7 48 85 ff 74 25 33
+  +0x050: d2 48 8b cf e8 47 b2 cf ff 8b 4f 10 89 4c 24 48
+  +0x060: c7 44 24 4c 00 00 00 00 48 89 44 24 40 0f 28 74
+  +0x070: 24 40 eb 03 0f 57 f6 0f b6 7b 08 40 fe c7 40 88
+  +0x080: 7b 08 48 8b 0d 67 8f 8a 01 83 b9 e4 00 00 00 00
+  +0x090: 75 05 e8 b9 7e c1 fe 44 0f b6 c7 48 8d 54 24 40
+  +0x0a0: 45 33 c9 66 0f 7f 74 24 40 48 8d 4c 24 60 e8 4d
+  +0x0b0: cb f1 ff 48 8b be 50 07 00 00 48 8d 8c 24 a0 00
+  +0x0c0: 00 00 48 8b b6 f8 05 00 00 45 33 c9 44 0f b6 c5
+  +0x0d0: 41 8b d6 0f 10 00 48 c7 84 24 a0 00 00 00 00 00
+  +0x0e0: 00 00 0f 11 44 24 50 e8 c4 3d 65 ff 48 8b 84 24
+  +0x0f0: a0 00 00 00 48 8d 54 24 30 48 8b 0d 48 79 87 01
+  +0x100: 48 89 44 24 30 e8 c6 6d c1 fe 0f 28 74 24 70 48
+  +0x110: 85 ff 74 3c 48 c7 44 24 28 00 00 00 00 4c 8d 44
+  +0x120: 24 50 4c 8b ce 48 89 44 24 20 48 8b d3 48 8b cf
+  +0x130: e8 ab a4 f1 ff 4c 8d 9c 24 80 00 00 00 48 89 03
+  +0x140: 49 8b 5b 28 49 8b 6b 30 49 8b e3 41 5e 5f 5e c3
+  +0x150: e8 5b 7d c1 fe cc cc cc cc cc cc cc cc cc cc cc
+  +0x160: 40 55 56 41 54 48 8d 6c 24 b9 48 81 ec a0 00 00
+  +0x170: 00 8b 91 50 05 00 00 45 33 e4 83 89 60 07 00 00
+  +0x180: 08 ff c2 4c 89 65 67 0f 57 c0 89 91 50 05 00 00
+  +0x190: 48 8b f1 0f 11 45 e7 85 d2 7f 24 48 8b 11 48 8b
+  +0x1a0: 82 18 0e 00 00 48 8b 92 20 0e 00 00 ff d0 83 a6
+  +0x1b0: 60 07 00 00 fe 33 d2 48 8b ce e8 71 61 00 00 48
+  +0x1c0: 8b 8e 40 05 00 00 48 89 9c 24 c8 00 00 00 48 89
+  +0x1d0: bc 24 d8 00 00 00 4c 89 b4 24 98 00 00 00 4c 89
+  +0x1e0: bc 24 90 00 00 00 48 85 c9 0f 84 65 06 00 00 33
+  +0x1f0: d2 e8 4a 7f f1 ff 33 d2 48 8b ce e8 d0 22 05 00
+  +0x200: 48 8b 0d 31 d2 86 01 e8 c4 3e 48 ff 48 8d 8e 50
+  +0x210: 07 00 00 48 89 86 50 07 00 00 48 8b d0 e8 ce 6c
+  +0x220: c1 fe 48 8b 0d 67 8b 8a 01 44 39 a1 e4 00 00 00
+  +0x230: 75 05 e8 19 7d c1 fe 33 d2 48 8b ce e8 9f d3 f6
+  +0x240: ff 4c 8b b6 50 07 00 00 33 d2 48 8b ce 48 8b d8
+  +0x250: e8 2b 88 cf fe 48 8b f8 48 85 c0 74 1e 33 d2 48
+  --- Annotations ---
+  +0x054: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x0ae: CALL 0x014c1450 -> Bindings.GetNthProperty
+  +0x0e7: CALL 0x00bf8700 -> PseudoStateData..ctor
+  +0x130: CALL 0x014bee30 -> Bindings.Bind
+  +0x1ba: CALL 0x015aab80 -> StreamedListView.UpdateEnabledState
+  +0x1f1: CALL 0x014bc990 -> Binder.Bind
+  +0x1fb: CALL 0x015f6d20 -> DiggableVisualElement.BindToData
+  +0x207: CALL 0x00a28920 -> 
+  +0x23c: CALL 0x01511e30 -> BindingUtils.GetViewKey
+  +0x250: CALL 0x0029d2d0 -> GoOnHolidayEntry.get_ApplyForJobsOptions, TacticalStylesOptionEntry.get_InstructionConsTranslations, TacticMentalitiesOptionEntry.get_ConsTranslations, CreditsRecord.get_List
+
+================ Bindings.GetProperties (RVA=0x014c1a60, size=512) ================
+  +0x000: 48 89 5c 24 10 57 48 83 ec 30 0f 10 02 4c 8b 05
+  +0x010: cc f3 95 01 48 8b fa 48 8b d9 ba 2e 00 00 00 48
+  +0x020: 8d 4c 24 20 0f 29 44 24 20 e8 a2 03 17 ff 83 f8
+  +0x030: ff 74 66 44 8b 47 08 41 ff c8 41 3b c0 74 5a 0f
+  +0x040: 10 07 8d 78 01 48 89 74 24 40 0f 11 44 24 20 66
+  +0x050: 0f 73 d8 08 66 0f 7e c0 8b f0 2b f7 3b f8 77 06
+  +0x060: 2b c7 3b f0 76 07 33 c9 e8 d3 8c f1 ff c7 43 0c
+  +0x070: 00 00 00 00 48 8b 44 24 20 48 63 cf 89 73 08 48
+  +0x080: 8b 74 24 40 48 8d 0c 48 48 8b c3 48 89 0b 48 8b
+  +0x090: 5c 24 48 48 83 c4 30 5f c3 33 d2 48 8b cb e8 ad
+  +0x0a0: 41 8a ff 48 8b c3 48 8b 5c 24 48 48 83 c4 30 5f
+  +0x0b0: c3 cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x0c0: 48 89 5c 24 10 57 48 83 ec 20 48 8b 05 0f bd 98
+  +0x0d0: 01 48 8b da 48 8b f9 83 b8 e4 00 00 00 00 75 3f
+  +0x0e0: 48 8b c8 e8 58 ac cf fe 48 8b 05 f1 bc 98 01 83
+  +0x0f0: b8 e4 00 00 00 00 75 27 48 8b c8 e8 40 ac cf fe
+  +0x100: 48 8b 05 d9 bc 98 01 83 b8 e4 00 00 00 00 75 0f
+  +0x110: 48 8b c8 e8 28 ac cf fe 48 8b 05 c1 bc 98 01 48
+  +0x120: 8b 80 b8 00 00 00 45 33 c0 48 8b d3 48 8b 48 28
+  +0x130: 48 89 4c 24 30 48 8d 4c 24 30 e8 a1 04 00 00 48
+  +0x140: 8b 4f 48 48 85 c9 74 29 4c 8b 05 19 20 92 01 48
+  +0x150: 8b d0 e8 19 1a c6 ff 48 85 c0 74 15 33 d2 48 8b
+  +0x160: c8 e8 6a 00 01 00 48 8b 5c 24 38 48 83 c4 20 5f
+  +0x170: c3 e8 2a ab cf fe cc cc cc cc cc cc cc cc cc cc
+  +0x180: 48 83 ec 28 48 8b 49 48 48 85 c9 74 22 4c 8b 05
+  +0x190: d4 1f 92 01 48 8b 12 e8 d4 19 c6 ff 48 85 c0 74
+  +0x1a0: 0e 33 d2 48 8b c8 48 83 c4 28 e9 21 00 01 00 e8
+  +0x1b0: ec aa cf fe cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x1c0: 48 89 5c 24 08 48 89 74 24 10 57 48 83 ec 20 48
+  +0x1d0: 8b f1 49 8b d8 48 8b 0d 04 bc 98 01 48 8b fa 83
+  +0x1e0: b9 e4 00 00 00 00 75 05 e8 53 ab cf fe 45 33 c0
+  +0x1f0: 48 8b d3 48 8b cf e8 e5 03 00 00 48 8b 4e 48 48
+  --- Annotations ---
+  +0x029: CALL 0x00631e30 -> 
+  +0x068: CALL 0x013da7a0 -> ThrowHelper.ThrowArgumentOutOfRangeException
+  +0x09e: CALL 0x00d65cb0 -> AwaitableAsyncMethodBuilder.Create, ITranslatable.get_EmbeddedData, SIDebugLogProcessor.DisposeAsync, DownloadHandler.GetNativeData
+  +0x13a: CALL 0x014c2040 -> Bindings.MakeKey
+  +0x152: CALL 0x011235d0 -> 
+  +0x161: CALL 0x014d1c30 -> Node.get_Value
+  +0x197: CALL 0x011235d0 -> 
+  +0x1aa: JMP 0x014d1c30 -> Node.get_Value
+  +0x1f6: CALL 0x014c2040 -> Bindings.MakeKey
+
+================ Bindings.Bind_sub1 (0x014beef0) (RVA=0x014beef0, size=864) ================
+  +0x000: 48 89 5c 24 08 48 89 74 24 10 48 89 7c 24 20 41
+  +0x010: 56 48 83 ec 60 4d 8b f1 49 8b f8 48 8b f2 48 8b
+  +0x020: d9 48 c7 44 24 30 00 00 00 00 0f 57 c0 0f 11 44
+  +0x030: 24 40 4d 85 c0 0f 84 8a 01 00 00 48 8b 49 48 48
+  +0x040: 85 c9 0f 84 86 02 00 00 4c 8b 0d c9 4b 92 01 4c
+  +0x050: 8d 44 24 30 48 8b 12 e8 e4 26 c6 ff 84 c0 0f 84
+  +0x060: 45 02 00 00 48 8b 4c 24 30 48 85 c9 0f 84 5c 02
+  +0x070: 00 00 45 33 c9 4d 8b c6 48 8b d7 e8 e0 1b 01 00
+  +0x080: 48 8b 44 24 30 48 85 c0 0f 84 40 02 00 00 48 8b
+  +0x090: 40 70 85 c0 0f 88 0b 01 00 00 48 8b 4b 78 48 85
+  +0x0a0: c9 0f 84 27 02 00 00 3b 41 18 0f 8d f5 00 00 00
+  +0x0b0: 48 63 d0 48 8b 49 10 48 8b 54 d1 20 48 85 d2 0f
+  +0x0c0: 84 09 02 00 00 48 39 42 10 0f 85 d6 00 00 00 48
+  +0x0d0: 89 94 24 80 00 00 00 48 8d 8c 24 80 00 00 00 e8
+  +0x0e0: 6c c7 cf fe 48 8b 84 24 80 00 00 00 48 85 c0 0f
+  +0x0f0: 84 d9 01 00 00 80 78 40 00 0f 86 aa 01 00 00 4c
+  +0x100: 8b 8b e8 00 00 00 48 8b 06 4d 85 c9 0f 84 bc 01
+  +0x110: 00 00 33 d2 48 89 44 24 20 4c 8b 05 08 bc 95 01
+  +0x120: 48 8d 4c 24 50 e8 16 7f b4 fe 0f 10 00 0f 11 44
+  +0x130: 24 40 48 c7 44 24 50 00 00 00 00 48 8d 44 24 40
+  +0x140: 48 89 44 24 58 4c 8b 84 24 80 00 00 00 4d 85 c0
+  +0x150: 0f 84 6c 01 00 00 4c 8b 57 18 48 8b 47 28 48 89
+  +0x160: 44 24 20 4d 8b ce 4d 8b 40 30 48 8b 16 48 8b 4f
+  +0x170: 40 41 ff d2 90 33 d2 48 8d 4c 24 40 e8 3f be 1a
+  +0x180: 00 e9 23 01 00 00 33 d2 48 8d 4c 24 40 e8 2e be
+  +0x190: 1a 00 48 8b 4c 24 50 48 85 c9 0f 85 28 01 00 00
+  +0x1a0: e9 04 01 00 00 48 c7 84 24 80 00 00 00 00 00 00
+  +0x1b0: 00 33 d2 48 8d 8c 24 80 00 00 00 e8 90 c6 cf fe
+  +0x1c0: e9 e4 00 00 00 48 8b 05 84 e7 98 01 83 b8 e4 00
+  +0x1d0: 00 00 00 75 27 48 8b c8 e8 d3 d6 cf fe 48 8b 05
+  +0x1e0: 6c e7 98 01 83 b8 e4 00 00 00 00 75 0f 48 8b c8
+  +0x1f0: e8 bb d6 cf fe 48 8b 05 54 e7 98 01 48 8b 80 b8
+  +0x200: 00 00 00 48 8b 78 20 45 33 c0 48 8b d6 48 8b cb
+  +0x210: e8 6b 25 00 00 45 33 c9 4c 8b 05 a1 a8 96 01 48
+  +0x220: 8b d0 48 8b 0d c7 b9 95 01 e8 c2 d8 dd ff 48 8b
+  +0x230: f0 48 8b 1d 38 73 97 01 48 83 7b 38 00 75 08 48
+  +0x240: 8b cb e8 89 18 d0 fe 48 8b 4b 38 48 8b 41 10 f6
+  +0x250: 80 35 01 00 00 01 75 08 48 8b c8 e8 f0 17 d0 fe
+  +0x260: 83 b8 e4 00 00 00 00 75 08 48 8b c8 e8 3f d6 cf
+  +0x270: fe 48 8b 43 38 48 8b 50 10 48 8b 82 b8 00 00 00
+  +0x280: 48 8b 18 48 8b 0d 66 8d 98 01 83 b9 e4 00 00 00
+  +0x290: 00 75 05 e8 18 d6 cf fe 45 33 c9 4c 8b c3 48 8b
+  +0x2a0: d6 48 8b cf e8 97 17 d9 ff 48 8b 5c 24 70 48 8b
+  +0x2b0: 74 24 78 48 8b bc 24 88 00 00 00 48 83 c4 60 41
+  +0x2c0: 5e c3 e8 49 d5 cf fe 90 e8 d3 d5 cf fe cc e8 3d
+  +0x2d0: d5 cf fe cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x2e0: 48 89 74 24 18 57 48 83 ec 30 48 8b 41 40 49 8b
+  +0x2f0: f0 48 8b f9 48 85 c0 74 55 48 8b 40 60 4c 8b c2
+  +0x300: 48 8d 54 24 40 48 89 44 24 40 41 b1 01 48 89 5c
+  +0x310: 24 48 48 c7 44 24 20 00 00 00 00 e8 70 07 00 00
+  +0x320: 45 33 c9 48 89 44 24 40 4c 8b c6 48 8d 54 24 40
+  +0x330: 48 8b cf 48 8b d8 e8 25 00 00 00 48 8b 74 24 50
+  +0x340: 48 8b c3 48 8b 5c 24 48 48 83 c4 30 5f c3 e8 bd
+  +0x350: d4 cf fe cc cc cc cc cc cc cc cc cc cc cc cc cc
+  --- Annotations ---
+  +0x057: CALL 0x01121630 -> 
+  +0x07b: CALL 0x014d0b50 -> Node.AddCallback
+  +0x17c: CALL 0x0166aeb0 -> Scope.Dispose
+  +0x181: JMP 0x014bf199 -> 
+  +0x18d: CALL 0x0166aeb0 -> Scope.Dispose
+  +0x1a0: JMP 0x014bf199 -> 
+  +0x1c0: JMP 0x014bf199 -> 
+  +0x210: CALL 0x014c1670 -> Bindings.GetPathDebug
+  +0x229: CALL 0x0129c9e0 -> String.Concat
+  +0x2a4: CALL 0x01250930 -> LoggerExtensions.LogWarning
+  +0x31b: CALL 0x014bf980 -> Bindings.Create
+  +0x336: CALL 0x014bf250 -> Bindings.Bind
+
+================ Bindings.Bind_sub2 (0x014bf250) (RVA=0x014bf250, size=864) ================
+  +0x000: 48 89 5c 24 08 48 89 74 24 10 57 41 56 41 57 48
+  +0x010: 81 ec 80 00 00 00 49 8b f8 48 8b f2 48 8b d9 45
+  +0x020: 33 ff 4c 89 7c 24 30 0f 57 c0 0f 11 44 24 40 4d
+  +0x030: 85 c0 0f 84 c2 01 00 00 48 8b 49 48 48 85 c9 0f
+  +0x040: 84 bd 02 00 00 4c 8b 0d 6c 48 92 01 4c 8d 44 24
+  +0x050: 30 48 8b 12 e8 87 23 c6 ff 84 c0 0f 84 7c 02 00
+  +0x060: 00 4c 8b 74 24 30 4d 85 f6 0f 84 93 02 00 00 0f
+  +0x070: 57 c0 f3 0f 7f 44 24 58 48 89 7c 24 50 48 8b d7
+  +0x080: 48 8d 4c 24 50 e8 66 c4 cf fe 44 88 7c 24 60 4c
+  +0x090: 89 7c 24 58 33 d2 48 8d 4c 24 58 e8 50 c4 cf fe
+  +0x0a0: 0f 10 44 24 50 0f 11 44 24 68 f2 0f 10 4c 24 60
+  +0x0b0: f2 0f 11 4c 24 78 45 33 c0 48 8d 54 24 68 49 8b
+  +0x0c0: ce e8 0a 17 01 00 48 8b 44 24 30 48 85 c0 0f 84
+  +0x0d0: 2e 02 00 00 48 8b 40 70 85 c0 0f 88 fe 00 00 00
+  +0x0e0: 48 8b 4b 78 48 85 c9 0f 84 15 02 00 00 3b 41 18
+  +0x0f0: 0f 8d e8 00 00 00 48 63 d0 48 8b 49 10 48 8b 54
+  +0x100: d1 20 48 85 d2 0f 84 f7 01 00 00 48 39 42 10 0f
+  +0x110: 85 c9 00 00 00 48 89 94 24 b0 00 00 00 48 8d 8c
+  +0x120: 24 b0 00 00 00 e8 c6 c3 cf fe 48 8b 84 24 b0 00
+  +0x130: 00 00 48 85 c0 0f 84 c7 01 00 00 44 38 78 40 0f
+  +0x140: 86 98 01 00 00 4c 8b 8b e8 00 00 00 48 8b 06 4d
+  +0x150: 85 c9 0f 84 aa 01 00 00 33 d2 48 89 44 24 20 4c
+  +0x160: 8b 05 62 b8 95 01 48 8d 4c 24 50 e8 70 7b b4 fe
+  +0x170: 0f 10 00 0f 11 44 24 40 4c 89 7c 24 50 48 8d 44
+  +0x180: 24 40 48 89 44 24 58 4c 8b 84 24 b0 00 00 00 4d
+  +0x190: 85 c0 0f 84 5e 01 00 00 48 8b 47 18 4c 8b 4f 28
+  +0x1a0: 4d 8b 40 30 48 8b 16 48 8b 4f 40 ff d0 90 33 d2
+  +0x1b0: 48 8d 4c 24 40 e8 a6 ba 1a 00 e9 1e 01 00 00 33
+  +0x1c0: d2 48 8d 4c 24 40 e8 95 ba 1a 00 48 8b 4c 24 50
+  +0x1d0: 48 85 c9 0f 85 23 01 00 00 e9 ff 00 00 00 4c 89
+  +0x1e0: bc 24 b0 00 00 00 33 d2 48 8d 8c 24 b0 00 00 00
+  +0x1f0: e8 fb c2 cf fe e9 e3 00 00 00 48 8b 05 ef e3 98
+  +0x200: 01 44 39 b8 e4 00 00 00 75 27 48 8b c8 e8 3e d3
+  +0x210: cf fe 48 8b 05 d7 e3 98 01 44 39 b8 e4 00 00 00
+  +0x220: 75 0f 48 8b c8 e8 26 d3 cf fe 48 8b 05 bf e3 98
+  +0x230: 01 48 8b 80 b8 00 00 00 48 8b 78 20 45 33 c0 48
+  +0x240: 8b d6 48 8b cb e8 d6 21 00 00 45 33 c9 4c 8b 05
+  +0x250: 0c a5 96 01 48 8b d0 48 8b 0d 32 b6 95 01 e8 2d
+  +0x260: d5 dd ff 48 8b f0 48 8b 1d a3 6f 97 01 4c 39 7b
+  +0x270: 38 75 08 48 8b cb e8 f5 14 d0 fe 48 8b 4b 38 48
+  +0x280: 8b 41 10 f6 80 35 01 00 00 01 75 08 48 8b c8 e8
+  +0x290: 5c 14 d0 fe 44 39 b8 e4 00 00 00 75 08 48 8b c8
+  +0x2a0: e8 ab d2 cf fe 48 8b 43 38 48 8b 50 10 48 8b 82
+  +0x2b0: b8 00 00 00 48 8b 18 48 8b 0d d2 89 98 01 44 39
+  +0x2c0: b9 e4 00 00 00 75 05 e8 84 d2 cf fe 45 33 c9 4c
+  +0x2d0: 8b c3 48 8b d6 48 8b cf e8 03 14 d9 ff 4c 8d 9c
+  +0x2e0: 24 80 00 00 00 49 8b 5b 20 49 8b 73 28 49 8b e3
+  +0x2f0: 41 5f 41 5e 5f c3 e8 b5 d1 cf fe 90 e8 3f d2 cf
+  +0x300: fe cc e8 a9 d1 cf fe cc cc cc cc cc cc cc cc cc
+  +0x310: 48 83 ec 28 4c 8b 49 78 4d 85 c9 74 18 48 63 c2
+  +0x320: 49 8b 51 10 45 33 c9 48 8b 54 c2 20 48 83 c4 28
+  +0x330: e9 0b 00 00 00 e8 76 d1 cf fe cc cc cc cc cc cc
+  +0x340: 48 89 5c 24 08 48 89 6c 24 10 48 89 74 24 18 57
+  +0x350: 41 56 41 57 48 83 ec 20 49 8b e8 48 8b da 4c 8b
+  --- Annotations ---
+  +0x054: CALL 0x01121630 -> 
+  +0x0c1: CALL 0x014d0a20 -> Node.AddCallback
+  +0x1b5: CALL 0x0166aeb0 -> Scope.Dispose
+  +0x1ba: JMP 0x014bf52d -> 
+  +0x1c6: CALL 0x0166aeb0 -> Scope.Dispose
+  +0x1d9: JMP 0x014bf52d -> 
+  +0x1f5: JMP 0x014bf52d -> 
+  +0x245: CALL 0x014c1670 -> Bindings.GetPathDebug
+  +0x25e: CALL 0x0129c9e0 -> String.Concat
+  +0x2d8: CALL 0x01250930 -> LoggerExtensions.LogWarning
+  +0x330: JMP 0x014bf590 -> Bindings.ClearTargetData
+
+================ Bindings.MarkNodeDirty (0x014c2350) (RVA=0x014c2350, size=336) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 20 48 8b d9 48 8b fa
+  +0x010: 48 8b 49 60 48 85 c9 0f 84 84 00 00 00 4c 8b 05
+  +0x020: f4 6a 93 01 e8 d7 0d d6 ff 84 c0 75 0b 48 8b 5c
+  +0x030: 24 30 48 83 c4 20 5f c3 48 8b 4b 58 48 85 c9 74
+  +0x040: 60 4c 8b 05 60 c1 96 01 48 8b d7 e8 f0 7d 8f ff
+  +0x050: 48 8b 05 e1 84 91 01 83 b8 e4 00 00 00 00 75 0f
+  +0x060: 48 8b c8 e8 e8 a3 cf fe 48 8b 05 c9 84 91 01 48
+  +0x070: 8b 80 b8 00 00 00 48 8b 48 28 48 8b 43 58 48 85
+  +0x080: c0 74 1e 48 85 c9 74 19 48 63 50 20 45 33 c0 e8
+  +0x090: 8c 3e e6 fe 48 8b 5c 24 30 b0 01 48 83 c4 20 5f
+  +0x0a0: c3 e8 0a a3 cf fe cc cc cc cc cc cc cc cc cc cc
+  +0x0b0: 48 83 ec 28 48 85 d2 74 10 48 8b 52 60 45 33 c0
+  +0x0c0: 48 83 c4 28 e9 37 ff ff ff e8 e2 a2 cf fe cc cc
+  +0x0d0: 48 89 5c 24 08 48 89 6c 24 10 48 89 74 24 18 48
+  +0x0e0: 89 7c 24 20 41 56 48 83 ec 20 41 0f b6 f0 4c 8b
+  +0x0f0: f2 48 8b e9 48 85 d2 0f 84 a0 00 00 00 48 8b 7a
+  +0x100: 20 48 85 ff 0f 84 93 00 00 00 48 8b 7f 28 48 85
+  +0x110: ff 74 6f 49 3b fe 74 61 48 85 ff 0f 84 7c 00 00
+  +0x120: 00 f6 47 7c 02 77 05 40 84 f6 75 0f 48 8b 57 60
+  +0x130: 45 33 c0 48 8b cd e8 c5 fe ff ff 48 8b 5f 28 48
+  +0x140: 85 db 74 35 f6 43 7c 02 77 05 40 84 f6 75 0f 48
+  --- Annotations ---
+  +0x024: CALL 0x01223150 -> 
+  +0x04b: CALL 0x00dba190 -> 
+  +0x08f: CALL 0x00326270 -> Gauge.Set
+  +0x0c4: JMP 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x136: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+
+================ Bindings.Update (+0xbe0) (RVA=0x014c7650, size=1280) ================
+  +0x000: 56 10 48 8b cf e8 76 af ff ff 48 85 f6 0f 84 5c
+  +0x010: 0c 00 00 48 89 5e 70 49 8b 45 10 48 89 46 70 49
+  +0x020: 8b 4d 18 48 85 c9 0f 84 48 0c 00 00 4c 8b 05 fd
+  +0x030: b4 95 01 48 8b 56 60 e8 84 ba 5e ff 48 8b 5f 68
+  +0x040: 48 85 db 74 5a 48 8b 46 60 48 8b 4e 70 33 d2 89
+  +0x050: 54 24 32 66 89 54 24 36 66 c7 44 24 30 01 00 48
+  +0x060: 89 44 24 38 48 89 4c 24 40 48 89 54 24 48 48 8d
+  +0x070: 4c 24 48 e8 78 40 cf fe 48 8b 43 18 0f 10 44 24
+  +0x080: 30 0f 29 44 24 60 0f 10 4c 24 40 0f 29 4c 24 70
+  +0x090: 4c 8b 43 28 48 8d 54 24 60 48 8b 4b 40 ff d0 48
+  +0x0a0: 8b 0d 02 43 93 01 e8 65 b2 6b ff 4c 8b f0 48 8b
+  +0x0b0: 5e 18 0f 57 c0 48 85 db 74 2d 33 d2 48 8b cb e8
+  +0x0c0: dc 83 dd ff 8b 4b 10 33 d2 89 94 24 5c 01 00 00
+  +0x0d0: 48 89 84 24 50 01 00 00 89 8c 24 58 01 00 00 0f
+  +0x0e0: 28 84 24 50 01 00 00 4d 85 f6 0f 84 89 0b 00 00
+  +0x0f0: 66 0f 7f 44 24 50 4c 8b 05 2b 41 93 01 48 8d 54
+  +0x100: 24 50 49 8b ce e8 36 a6 6b ff 84 c0 74 6d 4c 8b
+  +0x110: 76 20 4d 85 f6 0f 84 63 0b 00 00 4d 8b 76 28 90
+  +0x120: 4d 85 f6 74 56 4c 3b f6 74 4b 41 f6 46 7c 02 76
+  +0x130: 0f 45 33 c0 49 8b 56 60 48 8b cf e8 c0 ab ff ff
+  +0x140: 49 8b 5e 28 48 85 db 74 2c f6 43 7c 02 76 0f 45
+  +0x150: 33 c0 48 8b 53 60 48 8b cf e8 a2 ab ff ff 45 33
+  +0x160: c9 41 b0 01 48 8b d3 48 8b cf e8 21 ab ff ff 48
+  +0x170: 8b 5b 30 eb cf 4d 8b 76 30 eb a5 48 85 f6 0f 84
+  +0x180: ff 0a 00 00 48 8b 5e 28 48 85 db 74 26 45 33 c0
+  +0x190: 48 8b 53 60 48 8b cf e8 64 ab ff ff 45 33 c9 45
+  +0x1a0: 33 c0 48 8b d3 48 8b cf e8 e3 aa ff ff 48 8b 5b
+  +0x1b0: 30 eb d5 41 80 7d 40 00 76 15 4d 39 65 30 74 0f
+  +0x1c0: 45 33 c0 49 8b 55 30 48 8b ce e8 81 94 00 00 48
+  +0x1d0: 8b 4f 50 48 85 c9 0f 84 ac 0a 00 00 4c 8b 0d 1d
+  +0x1e0: ba 91 01 4c 8d 84 24 20 02 00 00 48 8b 56 60 e8
+  +0x1f0: ec 9d c5 ff 84 c0 74 50 33 c0 8b d8 48 8b 84 24
+  +0x200: 20 02 00 00 48 85 c0 0f 84 80 0a 00 00 8b 70 18
+  +0x210: 3b de 7d 2c 48 85 c0 0f 84 75 0a 00 00 48 63 cb
+  +0x220: 48 8b 40 10 45 33 c0 48 8b 54 c8 20 48 8b cf e8
+  +0x230: cc aa ff ff ff c3 48 8b 84 24 20 02 00 00 eb d0
+  +0x240: 4c 8b bc 24 90 00 00 00 48 8b 84 24 a0 00 00 00
+  +0x250: 49 39 45 10 0f 85 84 f4 ff ff 48 8b 8f 88 00 00
+  +0x260: 00 48 85 c9 0f 84 2d 0a 00 00 0f 10 84 24 c0 00
+  +0x270: 00 00 0f 29 44 24 30 0f 10 8c 24 d0 00 00 00 0f
+  +0x280: 29 4c 24 40 4c 8b 05 ad ff 91 01 48 8d 54 24 30
+  +0x290: e8 7b 67 c6 ff 84 c0 0f 84 41 f4 ff ff 49 83 7d
+  +0x2a0: 28 00 76 1a 66 0f 73 df 08 66 48 0f 7e f8 48 39
+  +0x2b0: 84 24 a8 00 00 00 0f 84 22 f4 ff ff eb 08 48 8b
+  +0x2c0: 84 24 98 01 00 00 48 89 84 24 a8 00 00 00 48 8b
+  +0x2d0: 8f 88 00 00 00 48 85 c9 0f 84 be 09 00 00 0f 28
+  +0x2e0: 84 24 a0 00 00 00 66 0f 7f 44 24 50 0f 10 8c 24
+  +0x2f0: c0 00 00 00 0f 29 4c 24 30 0f 10 84 24 d0 00 00
+  +0x300: 00 0f 29 44 24 40 4c 8b 0d ab 01 92 01 4c 8d 44
+  +0x310: 24 50 48 8d 54 24 30 e8 34 28 c7 ff 49 83 7d 28
+  +0x320: 00 76 52 48 8b 0d 0e 2f 91 01 83 b9 e4 00 00 00
+  +0x330: 00 75 05 e8 18 4e cf fe 33 c9 e8 51 75 00 00 41
+  +0x340: 80 7d 40 00 77 07 33 c9 e8 83 75 00 00 4d 8b 45
+  +0x350: 20 4d 85 c0 0f 84 47 09 00 00 b9 06 00 00 00 4d
+  +0x360: 8b 4d 28 48 8b 15 6e 65 95 01 e8 e1 cd b3 fe 33
+  +0x370: c0 49 89 45 28 66 0f 7e f0 84 c0 0f 84 5d f3 ff
+  +0x380: ff 48 8b bf 98 00 00 00 49 8b 5d 10 33 c0 48 89
+  +0x390: 84 24 18 01 00 00 4c 89 bc 24 10 01 00 00 49 8b
+  +0x3a0: d7 48 8d 8c 24 10 01 00 00 e8 42 3d cf fe 48 89
+  +0x3b0: 9c 24 18 01 00 00 48 85 ff 0f 84 e7 08 00 00 0f
+  +0x3c0: 28 84 24 10 01 00 00 66 0f 7f 44 24 50 4c 8b 05
+  +0x3d0: 84 a0 96 01 48 8d 54 24 50 48 8b cf e8 4f 47 f1
+  +0x3e0: fe e9 f8 f2 ff ff 48 83 7e 70 00 76 2e 48 8b 47
+  +0x3f0: 78 48 85 c0 0f 84 b1 08 00 00 48 63 4e 70 48 8b
+  +0x400: 40 10 48 8b 54 c8 20 48 85 d2 0f 84 a0 08 00 00
+  +0x410: 48 83 7a 20 00 0f 84 c3 f2 ff ff 33 d2 48 8b cf
+  +0x420: e8 0b 97 ff ff 4c 8b e8 4c 89 bc 24 20 02 00 00
+  +0x430: 48 85 c0 0f 84 7c 08 00 00 48 8b 46 70 49 39 45
+  +0x440: 10 0f 84 97 f2 ff ff 4d 8b e7 48 85 c0 0f 86 2b
+  +0x450: 01 00 00 48 8b 47 78 48 85 c0 0f 84 5a 08 00 00
+  +0x460: 48 63 4e 70 48 8b 40 10 4c 8b 74 c8 20 4d 85 f6
+  +0x470: 0f 84 49 08 00 00 4d 8b 66 30 49 8b 4e 18 48 85
+  +0x480: c9 0f 84 3d 08 00 00 4c 8b 05 2a b2 95 01 48 8b
+  +0x490: 56 60 e8 89 66 7d ff 48 8b 46 60 49 39 46 28 0f
+  +0x4a0: 85 9b 00 00 00 48 8b 0d 8c 2d 91 01 83 b9 e4 00
+  +0x4b0: 00 00 00 75 05 e8 96 4c cf fe 33 c9 e8 cf 73 00
+  +0x4c0: 00 41 80 7e 40 00 77 07 33 c9 e8 01 74 00 00 4d
+  +0x4d0: 8b 46 20 4d 85 c0 0f 84 ed 07 00 00 b9 06 00 00
+  +0x4e0: 00 4c 8b 4e 60 48 8b 15 ec 63 95 01 e8 5f cc b3
+  +0x4f0: fe 33 c0 49 89 46 28 41 8b df 4d 8b 7e 18 4d 85
+  --- Annotations ---
+  +0x005: CALL 0x014c25d0 -> Bindings.ReleaseData
+  +0x037: CALL 0x00ab3110 -> 
+  +0x0a6: CALL 0x00b82960 -> 
+  +0x0bf: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x105: CALL 0x00b81d90 -> 
+  +0x13b: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x159: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x16a: CALL 0x014c22e0 -> Bindings.MarkChildrenDirtyRecursive
+  +0x197: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x1a8: CALL 0x014c22e0 -> Bindings.MarkChildrenDirtyRecursive
+  +0x1ca: CALL 0x014d0ca0 -> Node.NotifyDataChanged
+  +0x1ef: CALL 0x01121630 -> 
+  +0x22f: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x290: CALL 0x0112e060 -> 
+  +0x317: CALL 0x0113a1a0 -> 
+  +0x33a: CALL 0x014ceee0 -> Metric.DecOpenChannels
+  +0x348: CALL 0x014cef20 -> Metric.DecOpenPendingData
+  +0x3e1: JMP 0x014c6d2e -> 
+  +0x420: CALL 0x014c1180 -> Bindings.GetNewData
+  +0x492: CALL 0x00c9e170 -> 
+  +0x4bc: CALL 0x014ceee0 -> Metric.DecOpenChannels
+  +0x4ca: CALL 0x014cef20 -> Metric.DecOpenPendingData

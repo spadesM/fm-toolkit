@@ -1,0 +1,1045 @@
+
+================ Bindings.Set_impl (0x014c3770) (0x014c3770..0x014c3f11, sz=1953) ================
+  +0x000: 4c 8b dc 49 89 5b 18 49 89 73 20 49 89 4b 08 57
+  +0x010: 41 54 41 55 41 56 41 57 48 81 ec e0 00 00 00 45
+  +0x020: 8b f9 4d 8b e8 33 f6 48 89 74 24 48 0f 57 c0 33
+  +0x030: c0 41 0f 11 43 a8 41 0f 11 43 b8 49 89 43 c8 41
+  +0x040: 88 43 10 48 89 74 24 40 48 8b 49 48 48 85 c9 0f
+  +0x050: 84 0d 07 00 00 4c 8b 0d 3c 03 92 01 4c 8d 44 24
+  +0x060: 48 48 8b 12 e8 57 de c5 ff 84 c0 0f 84 4d 01 00
+  +0x070: 00 48 8b 54 24 48 48 85 d2 0f 84 e3 06 00 00 48
+  +0x080: 39 72 68 0f 86 57 01 00 00 48 8b 84 24 10 01 00
+  +0x090: 00 48 8b 48 48 48 85 c9 0f 84 c4 06 00 00 4c 8b
+  +0x0a0: 05 6b 01 92 01 48 8b 52 68 e8 a2 93 c5 ff 84 c0
+  +0x0b0: 0f 85 25 01 00 00 48 8b 05 13 a0 98 01 39 b0 e4
+  +0x0c0: 00 00 00 75 26 48 8b c8 e8 63 8f cf fe 48 8b 05
+  +0x0d0: fc 9f 98 01 39 b0 e4 00 00 00 75 0f 48 8b c8 e8
+  +0x0e0: 4c 8f cf fe 48 8b 05 e5 9f 98 01 48 8b 80 b8 00
+  +0x0f0: 00 00 48 8b 58 20 0f 57 c0 33 c0 0f 11 44 24 50
+  +0x100: 0f 11 44 24 60 48 89 44 24 70 48 89 74 24 30 48
+  +0x110: 8d 84 24 18 01 00 00 48 89 44 24 28 c7 44 24 20
+  +0x120: 03 00 00 00 4c 8b cb 45 33 c0 41 8d 50 48 48 8d
+  +0x130: 4c 24 50 e8 e8 88 bf 00 0f 10 44 24 50 0f 11 84
+  +0x140: 24 b0 00 00 00 0f 10 4c 24 60 0f 11 8c 24 c0 00
+  +0x150: 00 00 f2 0f 10 44 24 70 f2 0f 11 84 24 d0 00 00
+  +0x160: 00 40 38 b4 24 18 01 00 00 74 17 45 33 c0 48 8b
+  +0x170: 15 83 86 95 01 48 8d 8c 24 b0 00 00 00 e8 0e 81
+  +0x180: bf 00 48 89 74 24 38 c7 44 24 30 59 0a 00 00 48
+  +0x190: 8b 05 4a 03 97 01 48 89 44 24 28 48 8b 05 66 8b
+  +0x1a0: 93 01 48 89 44 24 20 45 33 c9 4c 8d 84 24 b0 00
+  +0x1b0: 00 00 41 8d 51 03 48 8b cb e8 a2 86 bf 00 4c 8d
+  +0x1c0: 9c 24 e0 00 00 00 49 8b 5b 40 49 8b 73 48 49 8b
+  +0x1d0: e3 41 5f 41 5e 41 5d 41 5c 5f c3 48 8b 54 24 48
+  +0x1e0: 48 85 d2 0f 84 79 05 00 00 48 8b 84 24 10 01 00
+  +0x1f0: 00 48 8b 40 78 48 85 c0 0f 84 64 05 00 00 48 63
+  +0x200: 4a 70 48 8b 40 10 48 8b 7c c8 20 c7 84 24 a0 00
+  +0x210: 00 00 02 00 00 00 44 89 bc 24 80 00 00 00 48 8b
+  +0x220: 8c 24 a0 00 00 00 0f ba f1 1f 48 8b 84 24 80 00
+  +0x230: 00 00 48 23 c1 48 3b c1 74 31 48 85 ff 0f 84 1f
+  +0x240: 05 00 00 48 39 77 30 74 2b 48 8b 4f 30 4c 8b 01
+  +0x250: 49 8b 80 f8 01 00 00 4d 8b 80 00 02 00 00 49 8b
+  +0x260: d5 ff d0 84 c0 0f 85 53 ff ff ff 48 85 ff 0f 84
+  +0x270: ee 04 00 00 40 38 77 40 0f 87 e0 00 00 00 48 39
+  +0x280: 77 20 0f 84 d6 00 00 00 48 39 77 28 0f 86 cc 00
+  +0x290: 00 00 48 8b 15 7f 6e 91 01 39 b2 e4 00 00 00 75
+  +0x2a0: 26 48 8b ca e8 87 8d cf fe 48 8b 15 68 6e 91 01
+  +0x2b0: 39 b2 e4 00 00 00 75 0f 48 8b ca e8 70 8d cf fe
+  +0x2c0: 48 8b 15 51 6e 91 01 48 8b 82 b8 00 00 00 8b 48
+  +0x2d0: 08 ff c9 89 48 08 33 c9 e8 93 d8 f6 ff 48 8b d8
+  +0x2e0: 48 8b 0d 31 6e 91 01 48 8b 91 b8 00 00 00 48 8b
+  +0x2f0: 72 70 4c 8b 77 38 48 8b 0d 0b 8c 96 01 83 b9 e4
+  +0x300: 00 00 00 00 75 05 e8 25 8d cf fe 49 2b de 33 d2
+  +0x310: 48 8b cb e8 28 ad de fe 48 8b d8 48 8b 44 24 48
+  +0x320: 48 85 c0 0f 84 39 04 00 00 4c 8b 70 18 48 85 f6
+  +0x330: 0f 84 2c 04 00 00 48 8b 0d cb 8b 96 01 83 b9 e4
+  +0x340: 00 00 00 00 75 05 e8 e5 8c cf fe 45 33 c9 4d 8b
+  +0x350: c6 48 8b d3 48 8b ce e8 44 2a e6 fe 33 f6 0f b6
+  +0x360: 4f 40 b8 11 08 04 02 f7 e1 8b c1 2b c2 d1 e8 03
+  +0x370: c2 c1 e8 07 69 c0 fe 00 00 00 2b c8 fe c1 88 4f
+  +0x380: 40 4c 89 6f 30 48 8d 4f 30 49 8b d5 e8 3f 7c cf
+  +0x390: fe 48 8b 84 24 10 01 00 00 48 8b 58 68 48 85 db
+  +0x3a0: 74 60 48 8b 47 10 89 74 24 52 66 89 74 24 56 66
+  +0x3b0: c7 44 24 50 04 01 48 89 44 24 58 48 89 74 24 60
+  +0x3c0: 4c 89 6c 24 68 49 8b d5 48 8d 4c 24 68 e8 fe 7b
+  +0x3d0: cf fe 48 8b 43 18 0f 10 44 24 50 0f 29 84 24 80
+  +0x3e0: 00 00 00 0f 10 4c 24 60 0f 29 8c 24 90 00 00 00
+  +0x3f0: 4c 8b 43 28 48 8d 94 24 80 00 00 00 48 8b 4b 40
+  +0x400: ff d0 48 8b 0d c7 9c 98 01 83 b9 e4 00 00 00 00
+  +0x410: 75 05 e8 19 8c cf fe c7 84 24 80 00 00 00 01 00
+  +0x420: 00 00 44 89 bc 24 a0 00 00 00 48 8b 8c 24 80 00
+  +0x430: 00 00 0f ba f1 1f 48 8b 84 24 a0 00 00 00 48 23
+  +0x440: c1 48 3b c1 75 34 48 83 7f 28 00 77 06 c6 47 41
+  +0x450: 01 eb 27 4c 8b 47 20 4d 85 c0 0f 84 02 03 00 00
+  +0x460: b9 05 00 00 00 4c 89 6c 24 20 4c 8b 4f 28 48 8b
+  +0x470: 15 43 a3 95 01 e8 76 8f b4 fe 48 8b 47 18 48 85
+  +0x480: c0 0f 84 db 02 00 00 44 8b 60 18 45 85 e4 0f 84
+  +0x490: 2a fd ff ff 48 8b 84 24 10 01 00 00 4c 8b 88 e8
+  +0x4a0: 00 00 00 4d 85 c9 0f 84 b6 02 00 00 33 d2 4c 8b
+  +0x4b0: 05 63 0e 96 01 48 8d 8c 24 80 00 00 00 e8 fe 0b
+  +0x4c0: b4 fe 48 8b 0d cf fa 98 01 83 b9 e4 00 00 00 00
+  +0x4d0: 75 05 e8 59 8b cf fe 48 8b 0d 22 ec 91 01 e8 5d
+  +0x4e0: 53 de fe 48 85 c0 0f 84 76 02 00 00 4c 8b 00 4d
+  +0x4f0: 8b 88 78 01 00 00 4d 8b 80 80 01 00 00 41 8b d4
+  +0x500: 48 8b c8 41 ff d1 48 89 44 24 78 48 8d 44 24 78
+  +0x510: 48 89 84 24 80 00 00 00 48 8d 84 24 10 01 00 00
+  +0x520: 48 89 84 24 88 00 00 00 48 89 74 24 50 0f 10 84
+  +0x530: 24 80 00 00 00 0f 11 44 24 58 48 8b 4f 18 48 85
+  +0x540: c9 0f 84 21 02 00 00 45 33 c0 48 8b 54 24 78 e8
+  +0x550: ec d0 75 ff 44 8b fe 45 3b fc 0f 8d da 01 00 00
+  +0x560: 48 8b 4c 24 78 48 85 c9 0f 84 ff 01 00 00 49 63
+  +0x570: c7 48 8b 5c c1 20 48 8b 84 24 10 01 00 00 48 8b
+  +0x580: 48 48 48 85 c9 0f 84 e7 01 00 00 4c 8b 0d 06 fe
+  +0x590: 91 01 4c 8d 44 24 40 48 8b d3 e8 21 d9 c5 ff 84
+  +0x5a0: c0 0f 84 8b 01 00 00 48 8b 4c 24 40 48 85 c9 0f
+  +0x5b0: 84 c2 01 00 00 45 33 c0 49 8b d5 e8 70 cf 00 00
+  +0x5c0: 48 8b 44 24 40 48 85 c0 0f 84 ae 01 00 00 48 3b
+  +0x5d0: 58 60 0f 85 5a 01 00 00 48 8b 0d a9 7c 93 01 e8
+  +0x5e0: 0c ec 6b ff 48 8b f8 48 8b 5c 24 40 48 85 db 0f
+  +0x5f0: 84 8c 01 00 00 48 8b 5b 18 0f 57 c0 48 85 db 74
+  +0x600: 2b 33 d2 48 8b cb e8 75 bd dd ff 8b 4b 10 89 b4
+  +0x610: 24 8c 00 00 00 48 89 84 24 80 00 00 00 89 8c 24
+  +0x620: 88 00 00 00 0f 28 84 24 80 00 00 00 48 85 ff 0f
+  +0x630: 84 51 01 00 00 66 0f 7f 84 24 a0 00 00 00 4c 8b
+  +0x640: 05 c3 7a 93 01 48 8d 94 24 a0 00 00 00 48 8b cf
+  +0x650: e8 cb df 6b ff 84 c0 0f 84 8d 00 00 00 4c 8b 74
+  +0x660: 24 40 48 8b bc 24 10 01 00 00 4d 85 f6 0f 84 18
+  +0x670: 01 00 00 48 8b 44 24 40 48 8b 70 20 48 85 f6 0f
+  +0x680: 84 0b 01 00 00 48 8b 76 28 0f 1f 80 00 00 00 00
+  +0x690: 48 85 f6 74 55 49 3b f6 74 4a f6 46 7c 02 76 0f
+  +0x6a0: 45 33 c0 48 8b 56 60 48 8b cf e8 31 e5 ff ff 48
+  +0x6b0: 8b 5e 28 48 85 db 74 2c f6 43 7c 02 76 0f 45 33
+  +0x6c0: c0 48 8b 53 60 48 8b cf e8 13 e5 ff ff 45 33 c9
+  +0x6d0: 41 b0 01 48 8b d3 48 8b cf e8 92 e4 ff ff 48 8b
+  +0x6e0: 5b 30 eb cf 48 8b 76 30 eb a6 48 8b bc 24 10 01
+  +0x6f0: 00 00 48 83 7c 24 40 00 0f 84 97 00 00 00 48 8b
+  +0x700: 44 24 40 48 8b 58 28 48 85 db 74 26 45 33 c0 48
+  +0x710: 8b 53 60 48 8b cf e8 c5 e4 ff ff 45 33 c9 45 33
+  +0x720: c0 48 8b d3 48 8b cf e8 44 e4 ff ff 48 8b 5b 30
+  +0x730: eb d5 41 ff c7 e9 1d fe ff ff 48 8d 4c 24 58 e8
+  +0x740: 4c 82 ff ff e9 75 fa ff ff 48 8d 4c 24 58 e8 3d
+  +0x750: 82 ff ff 48 8b 4c 24 50 48 85 c9 75 3e e9 5c fa
+  +0x760: ff ff e8 29 88 cf fe 90 e8 23 88 cf fe e8 1e 88
+  +0x770: cf fe e8 19 88 cf fe e8 14 88 cf fe e8 0f 88 cf
+  +0x780: fe e8 0a 88 cf fe e8 05 88 cf fe e8 00 88 cf fe
+  +0x790: e8 fb 87 cf fe e8 f6 87 cf fe 90 e8 80 88 cf fe
+  +0x7a0: cc
+  --- USYM & Refs ---
+  [+0x000] Bindings.cs:2630
+  [+0x025] Bindings.cs:2630
+  [+0x02f] Bindings.cs:2630
+  [+0x03f] Bindings.cs:2630
+  [+0x043] Bindings.cs:2630
+  [+0x048] Bindings.cs:2641
+  [+0x04c] Bindings.cs:2641
+  [+0x055] Bindings.cs:2641
+  +0x055: RIP [0x02de3b08] -> MetaUsage(tag=6, idx=198058)
+  +0x064: CALL 0x01121630 ()
+  [+0x069] Bindings.cs:2641
+  [+0x071] Bindings.cs:2647
+  [+0x07f] Bindings.cs:2647
+  [+0x089] Bindings.cs:2647, Bindings.cs:2129
+  [+0x095] Bindings.cs:2129
+  [+0x09e] Bindings.cs:2129
+  +0x09e: RIP [0x02de3980] -> MetaUsage(tag=6, idx=198056)
+  +0x0a9: CALL 0x0111cbc0 ()
+  [+0x0ae] Bindings.cs:2647
+  [+0x0b6] Bindings.cs:2649
+  +0x0b6: RIP [0x02e4d840] -> MetaUsage(tag=1, idx=23676)
+  +0x0c8: CALL 0x001bc7a0 ()
+  +0x0cd: RIP [0x02e4d840] -> MetaUsage(tag=1, idx=23676)
+  [+0x0d4] Bindings.cs:2649, Bindings.cs:210
+  +0x0df: CALL 0x001bc7a0 ()
+  +0x0e4: RIP [0x02e4d840] -> MetaUsage(tag=1, idx=23676)
+  [+0x0eb] Bindings.cs:210
+  [+0x0f9] Bindings.cs:2649
+  [+0x10a] Bindings.cs:2649
+  +0x133: CALL 0x020bc190 ()
+  [+0x138] Bindings.cs:2649
+  [+0x161] Bindings.cs:2649
+  [+0x16b] Bindings.cs:2649
+  +0x16e: RIP [0x02e1bf68] -> STR "Trying to set value on an alias node but the aliased node doesn't exist."
+  +0x17d: CALL 0x020bba00 ()
+  [+0x182] Bindings.cs:2649
+  +0x18f: RIP [0x02e33c50] -> STR "C:\TeamCity\work\390f9e5df66ba53d\shared\packages\com.si.bindable\Runtime\Scripts\BindingSubsystem\Bindings.cs"
+  +0x19b: RIP [0x02dfc478] -> STR "SetInternal"
+  +0x1b9: CALL 0x020bbfd0 ()
+  [+0x1be] Bindings.cs:2729
+  [+0x1db] Bindings.cs:2647
+  [+0x1e0] Bindings.cs:2653
+  [+0x1e9] Bindings.cs:2653, Bindings.cs:2933
+  [+0x1f5] Bindings.cs:2933
+  [+0x1fe] Bindings.cs:2933
+  [+0x20b] Bindings.cs:2654
+  [+0x21e] Utilities.cs:104
+  [+0x22a] Utilities.cs:105
+  [+0x235] Bindings.cs:2654
+  [+0x23a] Bindings.cs:2654
+  [+0x243] Bindings.cs:2654
+  [+0x249] Bindings.cs:2654
+  [+0x24d] Bindings.cs:2654
+  [+0x263] Bindings.cs:2654
+  [+0x26b] Bindings.cs:2659
+  [+0x274] Bindings.cs:2659
+  [+0x27e] Bindings.cs:2659
+  [+0x288] Bindings.cs:2659
+  [+0x292] Bindings.cs:2662
+  +0x292: RIP [0x02dda888] -> MetaUsage(tag=1, idx=41877)
+  +0x2a4: CALL 0x001bc7a0 ()
+  +0x2a9: RIP [0x02dda888] -> MetaUsage(tag=1, idx=41877)
+  [+0x2b0] Bindings.cs:2662, Bindings.cs:349
+  +0x2bb: CALL 0x001bc7a0 ()
+  +0x2c0: RIP [0x02dda888] -> MetaUsage(tag=1, idx=41877)
+  [+0x2c7] Bindings.cs:349
+  [+0x2d1] Bindings.cs:349
+  [+0x2d6] Bindings.cs:2663
+  +0x2d8: CALL 0x014312e0 ()
+  [+0x2e0] Bindings.cs:2664
+  +0x2e0: RIP [0x02dda888] -> MetaUsage(tag=1, idx=41877)
+  [+0x2f2] Bindings.cs:2664
+  [+0x2f6] Bindings.cs:2664
+  +0x2f6: RIP [0x02e2c678] -> MetaUsage(tag=1, idx=38207)
+  +0x306: CALL 0x001bc7a0 ()
+  [+0x30b] Bindings.cs:2664
+  +0x313: CALL 0x002ae7b0 (FM.GamePlugin.AutogenBindings.cs:1010, FM.GamePlugin.AutogenBindings.cs:1015)
+  [+0x31b] Bindings.cs:2664
+  [+0x329] Bindings.cs:2664
+  [+0x32d] Bindings.cs:2664
+  [+0x336] Bindings.cs:2664, Metrics.cs:437
+  +0x336: RIP [0x02e2c678] -> MetaUsage(tag=1, idx=38207)
+  +0x346: CALL 0x001bc7a0 ()
+  [+0x34b] Metrics.cs:437
+  +0x357: CALL 0x00326510 (Metrics.cs:383)
+  [+0x35e] Bindings.cs:2667, Bindings.cs:910
+  [+0x381] Bindings.cs:911
+  [+0x385] Bindings.cs:911
+  +0x38c: CALL 0x001bb740 ()
+  [+0x391] Bindings.cs:2668
+  [+0x39d] Bindings.cs:2668
+  [+0x3a2] Bindings.cs:2668
+  [+0x3a6] Bindings.cs:2668, Bindings.cs:91
+  [+0x3af] Bindings.cs:91, Bindings.cs:62
+  [+0x3b6] Bindings.cs:64
+  [+0x3bb] Bindings.cs:65
+  [+0x3c0] Bindings.cs:66
+  [+0x3c5] Bindings.cs:66
+  +0x3cd: CALL 0x001bb740 ()
+  [+0x3d2] Bindings.cs:2668, Bindings.cs:840
+  [+0x402] Bindings.cs:2670
+  +0x402: RIP [0x02e4d840] -> MetaUsage(tag=1, idx=23676)
+  +0x412: CALL 0x001bc7a0 ()
+  [+0x417] Bindings.cs:2670, Bindings.cs:2715
+  [+0x42a] Utilities.cs:104
+  [+0x436] Utilities.cs:105
+  [+0x441] Bindings.cs:2715
+  [+0x446] Bindings.cs:2717
+  [+0x44d] Bindings.cs:2725
+  [+0x451] Bindings.cs:2725
+  [+0x453] Bindings.cs:2721
+  [+0x457] Bindings.cs:2721
+  [+0x460] Bindings.cs:2721
+  +0x46e: RIP [0x02e1df28] -> MetaUsage(tag=1, idx=29092)
+  [+0x47a] Bindings.cs:2671
+  [+0x47e] Bindings.cs:2671
+  [+0x487] Bindings.cs:2671
+  [+0x48b] Bindings.cs:2672
+  [+0x494] Bindings.cs:2678
+  [+0x4a3] Bindings.cs:2678
+  [+0x4ac] Bindings.cs:2678
+  +0x4ae: RIP [0x02e24a88] -> MetaUsage(tag=1, idx=29398)
+  [+0x4c2] Bindings.cs:2679
+  +0x4c2: RIP [0x02e53708] -> MetaUsage(tag=1, idx=50685)
+  +0x4d2: CALL 0x001bc7a0 ()
+  [+0x4d7] Bindings.cs:2679
+  +0x4d7: RIP [0x02de2870] -> MetaUsage(tag=6, idx=5281)
+  +0x4de: CALL 0x002a8fb0 ()
+  [+0x4e3] Bindings.cs:2679
+  [+0x4ec] Bindings.cs:2679
+  [+0x50b] Bindings.cs:2679, Bindings.cs:2706
+  [+0x53a] Bindings.cs:2682
+  [+0x53e] Bindings.cs:2682
+  [+0x547] Bindings.cs:2682
+  +0x54f: CALL 0x00c20db0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x554] Bindings.cs:2683
+  [+0x557] Bindings.cs:2683
+  [+0x560] Bindings.cs:2685
+  [+0x56e] Bindings.cs:2685
+  [+0x576] Bindings.cs:2686
+  [+0x582] Bindings.cs:2686
+  [+0x58b] Bindings.cs:2686
+  +0x58b: RIP [0x02de3b08] -> MetaUsage(tag=6, idx=198058)
+  +0x59a: CALL 0x01121630 ()
+  [+0x59f] Bindings.cs:2686
+  [+0x5a7] Bindings.cs:2688
+  [+0x5b5] Bindings.cs:2688
+  +0x5bb: CALL 0x014d0ca0 (Bindings.cs:632)
+  [+0x5c0] Bindings.cs:2689
+  [+0x5ce] Bindings.cs:2689
+  [+0x5d8] Bindings.cs:2691
+  +0x5d8: RIP [0x02dfb9f8] -> MetaUsage(tag=6, idx=200606)
+  +0x5df: CALL 0x00b82960 (IdentifierJsonConverter.cs:42, IdentifierJsonConverter.cs:42)
+  [+0x5e7] Bindings.cs:2691
+  [+0x5f5] Bindings.cs:2691
+  [+0x5fc] Bindings.cs:2691, Bindings.cs:510
+  [+0x601] Bindings.cs:510
+  +0x606: CALL 0x0129faf0 ()
+  [+0x60b] Bindings.cs:510
+  [+0x60e] Bindings.cs:510
+  [+0x615] Bindings.cs:510, Metrics.cs:383
+  [+0x61d] Metrics.cs:383
+  [+0x624] Bindings.cs:510
+  [+0x62c] Bindings.cs:2691
+  [+0x635] Bindings.cs:2691
+  +0x63e: RIP [0x02dfb878] -> MetaUsage(tag=6, idx=62227)
+  +0x650: CALL 0x00b81d90 (IdentifierJsonConverter.cs:42, IdentifierJsonConverter.cs:42)
+  [+0x655] Bindings.cs:2691
+  [+0x65d] Bindings.cs:2693
+  [+0x662] Bindings.cs:2693
+  [+0x66a] Bindings.cs:2859
+  [+0x673] Bindings.cs:2859
+  [+0x67c] Bindings.cs:2860
+  [+0x685] Bindings.cs:2860
+  [+0x690] Bindings.cs:2860
+  [+0x695] Bindings.cs:2862
+  [+0x69a] Bindings.cs:2864, Bindings.cs:546
+  [+0x69e] Bindings.cs:2864
+  [+0x6a0] Bindings.cs:2866, Bindings.cs:2842
+  +0x6aa: CALL 0x014c2350 (Bindings.cs:2842)
+  [+0x6af] Bindings.cs:2869, Bindings.cs:2876
+  [+0x6b3] Bindings.cs:2876
+  [+0x6b8] Bindings.cs:2878, Bindings.cs:546
+  [+0x6bc] Bindings.cs:2878
+  [+0x6be] Bindings.cs:2880, Bindings.cs:2842
+  +0x6c8: CALL 0x014c2350 (Bindings.cs:2842)
+  [+0x6cd] Bindings.cs:2883
+  +0x6d9: CALL 0x014c22e0 (Bindings.cs:2872)
+  [+0x6de] Bindings.cs:2876
+  [+0x6e2] Bindings.cs:2876
+  [+0x6e4] Bindings.cs:2860
+  [+0x6e8] Bindings.cs:2860
+  [+0x6ea] Bindings.cs:2696
+  [+0x6f2] Bindings.cs:2876
+  [+0x6fe] Bindings.cs:2876
+  [+0x707] Bindings.cs:2876
+  [+0x70c] Bindings.cs:2880, Bindings.cs:2842
+  +0x716: CALL 0x014c2350 (Bindings.cs:2842)
+  [+0x71b] Bindings.cs:2883
+  +0x727: CALL 0x014c22e0 (Bindings.cs:2872)
+  [+0x72c] Bindings.cs:2876
+  [+0x730] Bindings.cs:2876
+  [+0x732] Bindings.cs:2683
+  +0x735: JMP 0x014c3cc7 (Bindings.cs:2683)
+  [+0x73a] Bindings.cs:2700
+  +0x73f: CALL 0x014bc100 (Bindings.cs:2706)
+  [+0x744] Bindings.cs:2700
+  +0x744: JMP 0x014c392e (Bindings.cs:2729)
+  [+0x749] Bindings.cs:2700
+  +0x74e: CALL 0x014bc100 (Bindings.cs:2706)
+  +0x75d: JMP 0x014c392e (Bindings.cs:2729)
+  [+0x762] Bindings.cs:2679
+  +0x762: CALL 0x001bc700 ()
+  [+0x768] Bindings.cs:2682
+  +0x768: CALL 0x001bc700 ()
+  [+0x76d] Bindings.cs:2685
+  +0x76d: CALL 0x001bc700 ()
+  [+0x772] Bindings.cs:2686
+  +0x772: CALL 0x001bc700 ()
+  [+0x777] Bindings.cs:2688
+  +0x777: CALL 0x001bc700 ()
+  [+0x77c] Bindings.cs:2689
+  +0x77c: CALL 0x001bc700 ()
+  [+0x781] Bindings.cs:2691
+  +0x781: CALL 0x001bc700 ()
+  [+0x786] Bindings.cs:2691
+  +0x786: CALL 0x001bc700 ()
+  [+0x78b] Bindings.cs:2693, Bindings.cs:2859
+  +0x78b: CALL 0x001bc700 ()
+  [+0x790] Bindings.cs:2860
+  +0x790: CALL 0x001bc700 ()
+  [+0x795] Bindings.cs:2696, Bindings.cs:2876
+  +0x795: CALL 0x001bc700 ()
+  [+0x79b] Bindings.cs:2700
+  +0x79b: CALL 0x001bc790 ()
+
+================ Bindings_0x014c6590 (0x014c6590..0x014c6a62, sz=1234) ================
+  +0x000: 48 8b c4 48 89 58 08 48 89 70 18 55 57 41 54 41
+  +0x010: 56 41 57 48 8d 68 a1 48 81 ec c0 00 00 00 0f 57
+  +0x020: c0 0f 29 70 c8 45 33 e4 0f 29 78 b8 4c 89 65 6f
+  +0x030: 48 8b fa 48 8b d9 0f 11 45 f7 0f 11 45 07 0f 11
+  +0x040: 45 a7 48 85 d2 0f 84 75 04 00 00 4c 39 62 68 0f
+  +0x050: 87 07 04 00 00 4c 8b c2 45 33 c9 48 8b d1 48 8d
+  +0x060: 4d d7 e8 e9 a1 ff ff 0f 10 30 4c 8b 78 18 0f 10
+  +0x070: 78 10 0f 11 75 b7 4d 85 ff 0f 84 8a 03 00 00 48
+  +0x080: 8b 4f 20 48 85 c9 0f 84 34 04 00 00 33 d2 e8 0d
+  +0x090: b6 00 00 4c 8b 47 18 48 8d 4d f7 66 49 0f 7e f1
+  +0x0a0: 4c 89 64 24 20 48 8b d0 4c 8b f0 e8 d0 67 00 00
+  +0x0b0: 48 8b 8b 88 00 00 00 48 85 c9 0f 84 00 04 00 00
+  +0x0c0: 0f 10 45 f7 4c 8b 0d d5 13 92 01 4c 8d 45 a7 0f
+  +0x0d0: 10 4d 07 48 8d 55 d7 0f 29 45 d7 0f 29 4d e7 e8
+  +0x0e0: 7c 06 c7 ff 84 c0 0f 85 ba 01 00 00 33 d2 48 8b
+  +0x0f0: cb e8 fa aa ff ff 45 33 c9 4c 8b c7 48 8b d0 48
+  +0x100: 8b cb 48 8b f0 e8 b6 ec ff ff 48 85 f6 0f 84 ad
+  +0x110: 03 00 00 48 8d 4e 20 4c 89 7e 20 49 8b d7 e8 8d
+  +0x120: 50 cf fe 48 8b 15 ce 41 91 01 44 39 a2 e4 00 00
+  +0x130: 00 75 27 48 8b ca e8 d5 60 cf fe 48 8b 15 b6 41
+  +0x140: 91 01 44 39 a2 e4 00 00 00 75 0f 48 8b ca e8 bd
+  +0x150: 60 cf fe 48 8b 15 9e 41 91 01 48 8b 82 b8 00 00
+  +0x160: 00 66 0f 73 de 08 66 0f d6 75 bf 8b 48 04 ff c1
+  +0x170: 89 48 04 48 8b 8b 88 00 00 00 48 8b 46 10 48 89
+  +0x180: 45 b7 48 85 c9 0f 84 35 03 00 00 0f 28 45 b7 4c
+  +0x190: 8d 45 b7 0f 10 4d f7 4c 8b 0d 8a 10 92 01 48 8d
+  +0x1a0: 55 d7 66 0f 7f 45 b7 0f 10 45 07 0f 29 4d d7 0f
+  +0x1b0: 29 45 e7 e8 d8 76 c6 ff 48 8b 8b 90 00 00 00 48
+  +0x1c0: 85 c9 0f 84 f8 02 00 00 0f 10 45 f7 4c 8b 0d 6d
+  +0x1d0: 15 92 01 4c 8d 45 d7 0f 10 4d 07 48 8b 56 10 0f
+  +0x1e0: 29 45 d7 0f 29 4d e7 e8 34 77 c6 ff 66 0f 7e f8
+  +0x1f0: 84 c0 74 67 48 8b bb 98 00 00 00 48 8d 4d b7 48
+  +0x200: 8b 5e 10 49 8b d6 4c 89 65 bf 4c 89 75 b7 e8 9d
+  +0x210: 4f cf fe 48 89 5d bf 48 85 ff 0f 84 a6 02 00 00
+  +0x220: 4c 8b 05 f1 b2 96 01 0f 28 45 b7 ff 47 1c 48 8b
+  +0x230: 57 10 48 63 4f 18 3b 4a 18 72 46 49 8b 40 20 48
+  +0x240: 8d 55 d7 48 8b cf 66 0f 7f 45 d7 4c 8b 80 c0 00
+  +0x250: 00 00 4d 8b 40 70 e8 85 52 76 ff 4c 8d 9c 24 c0
+  +0x260: 00 00 00 49 8b 5b 30 49 8b 73 40 41 0f 28 73 f0
+  +0x270: 41 0f 28 7b e0 49 8b e3 41 5f 41 5e 41 5c 5f 5d
+  +0x280: c3 8d 41 01 89 47 18 48 8d 41 02 48 83 c1 02 48
+  +0x290: 03 c0 48 c1 e1 04 48 03 ca 0f 11 04 c2 33 d2 e8
+  +0x2a0: 0c 4f cf fe eb b5 48 8b 43 78 48 85 c0 0f 84 0d
+  +0x2b0: 02 00 00 48 63 4d a7 45 33 c9 48 8b 40 10 4c 8b
+  +0x2c0: c7 48 8b 74 c8 20 48 8b cb 48 8b d6 e8 ef ea ff
+  +0x2d0: ff 48 85 f6 0f 84 e6 01 00 00 48 8b 45 a7 48 39
+  +0x2e0: 46 10 0f 85 73 ff ff ff 48 8b 8b 88 00 00 00 48
+  +0x2f0: 85 c9 0f 84 c8 01 00 00 0f 10 45 f7 4c 8b 05 f5
+  +0x300: 0f 92 01 48 8d 55 d7 0f 10 4d 07 0f 29 45 d7 0f
+  +0x310: 29 4d e7 e8 b8 77 c6 ff 84 c0 0f 84 3b ff ff ff
+  +0x320: 48 8b 45 bf 4c 39 66 28 76 0a 48 39 45 af 0f 84
+  +0x330: 27 ff ff ff 48 8b 8b 88 00 00 00 48 89 45 af 48
+  +0x340: 85 c9 0f 84 78 01 00 00 0f 28 45 a7 4c 8d 45 d7
+  +0x350: 0f 10 4d f7 4c 8b 0d 1d 12 92 01 48 8d 55 b7 66
+  +0x360: 0f 7f 45 d7 0f 10 45 07 0f 29 4d b7 0f 29 45 c7
+  +0x370: e8 9b 38 c7 ff 4c 39 66 28 76 51 48 8b 0d 76 3f
+  +0x380: 91 01 44 39 a1 e4 00 00 00 75 05 e8 80 5e cf fe
+  +0x390: 33 c9 e8 b9 85 00 00 44 38 66 40 77 07 33 c9 e8
+  +0x3a0: ec 85 00 00 4c 8b 46 20 4d 85 c0 0f 84 0f 01 00
+  +0x3b0: 00 4c 8b 4e 28 b9 06 00 00 00 48 8b 15 d7 75 95
+  +0x3c0: 01 e8 4a de b3 fe 33 c0 48 89 46 28 66 0f 7e f8
+  +0x3d0: 84 c0 0f 84 83 fe ff ff 48 8b bb 98 00 00 00 48
+  +0x3e0: 8d 4d b7 48 8b 5e 10 49 8b d6 4c 89 65 bf 4c 89
+  +0x3f0: 75 b7 e8 b9 4d cf fe 48 89 5d bf 48 85 ff 0f 84
+  +0x400: c8 00 00 00 e9 17 fe ff ff 4c 39 67 70 76 2d 48
+  +0x410: 8b 43 78 48 85 c0 0f 84 a4 00 00 00 48 63 4f 70
+  +0x420: 48 8b 40 10 48 8b 54 c8 20 48 85 d2 0f 84 8e 00
+  +0x430: 00 00 4c 39 62 20 0f 84 1f fe ff ff 33 d2 48 8b
+  +0x440: cb e8 aa a7 ff ff 45 33 c9 4c 8b c7 48 8b d0 48
+  +0x450: 8b cb e8 69 e9 ff ff e9 ff fd ff ff 48 8b 49 48
+  +0x460: 48 85 c9 74 5b 4c 8b 0d 0c d1 91 01 4c 8d 45 6f
+  +0x470: 48 8b 52 68 e8 27 ac c5 ff 84 c0 0f 84 da fd ff
+  +0x480: ff 48 8b 45 6f 48 85 c0 74 36 48 8b 40 70 48 39
+  +0x490: 47 70 0f 84 c3 fd ff ff 48 8b 53 78 48 85 d2 74
+  +0x4a0: 1f 48 8b 52 10 45 33 c9 48 63 c8 4c 8b c7 48 8b
+  +0x4b0: 54 ca 20 48 8b cb e8 05 e9 ff ff e9 9b fd ff ff
+  +0x4c0: e8 ab 5c cf fe cc e8 a5 5c cf fe cc e8 9f 5c cf
+  +0x4d0: fe cc
+  --- USYM & Refs ---
+  [+0x000] Bindings.cs:3066
+  [+0x025] Bindings.cs:3066
+  [+0x042] Bindings.cs:3072
+  [+0x04b] Bindings.cs:3072
+  [+0x055] Bindings.cs:3082
+  +0x062: CALL 0x014c07e0 (Bindings.cs:3197)
+  [+0x06a] Bindings.cs:3083
+  [+0x07f] Bindings.cs:3095
+  [+0x083] Bindings.cs:3095
+  [+0x08c] Bindings.cs:3095
+  +0x08e: CALL 0x014d1c30 (Bindings.cs:557)
+  [+0x093] Bindings.cs:3096
+  +0x0ab: CALL 0x014cce10 (Bindings.cs:884)
+  [+0x0b0] Bindings.cs:3097
+  [+0x0b7] Bindings.cs:3097
+  [+0x0c0] Bindings.cs:3097
+  +0x0c4: RIP [0x02de7a30] -> MetaUsage(tag=6, idx=30783)
+  +0x0df: CALL 0x01136cf0 ()
+  [+0x0e4] Bindings.cs:3097
+  [+0x0ec] Bindings.cs:3134
+  +0x0f1: CALL 0x014c1180 (Bindings.cs:2935)
+  [+0x0f6] Bindings.cs:3135
+  +0x105: CALL 0x014c5350 (Bindings.cs:2989)
+  [+0x10a] Bindings.cs:3136
+  [+0x113] Bindings.cs:3136
+  [+0x11b] Bindings.cs:3136
+  +0x11e: CALL 0x001bb740 ()
+  [+0x123] Bindings.cs:3138
+  +0x123: RIP [0x02dda888] -> MetaUsage(tag=1, idx=41877)
+  +0x136: CALL 0x001bc7a0 ()
+  +0x13b: RIP [0x02dda888] -> MetaUsage(tag=1, idx=41877)
+  [+0x142] Bindings.cs:3138, Bindings.cs:345
+  +0x14e: CALL 0x001bc7a0 ()
+  +0x153: RIP [0x02dda888] -> MetaUsage(tag=1, idx=41877)
+  [+0x15a] Bindings.cs:345
+  [+0x161] Bindings.cs:3143
+  [+0x16b] Bindings.cs:3138, Bindings.cs:345
+  [+0x173] Bindings.cs:3143
+  [+0x17a] Bindings.cs:3143
+  [+0x182] Bindings.cs:3143
+  [+0x18b] Bindings.cs:3143
+  +0x197: RIP [0x02de77b8] -> MetaUsage(tag=6, idx=30743)
+  +0x1b3: CALL 0x0112de20 ()
+  [+0x1b8] Bindings.cs:3144
+  [+0x1bf] Bindings.cs:3144
+  [+0x1c8] Bindings.cs:3144
+  +0x1cc: RIP [0x02de7cd0] -> MetaUsage(tag=6, idx=30797)
+  +0x1e7: CALL 0x0112deb0 ()
+  [+0x1ec] Bindings.cs:3146
+  [+0x1f4] Bindings.cs:3148
+  [+0x1fb] Bindings.cs:3148, Bindings.cs:1030
+  [+0x1ff] Bindings.cs:3148
+  [+0x203] Bindings.cs:3148, Bindings.cs:1030
+  [+0x206] Bindings.cs:3148
+  [+0x20a] Bindings.cs:3148, Bindings.cs:1030
+  [+0x20e] Bindings.cs:1030
+  +0x20e: CALL 0x001bb740 ()
+  [+0x213] Bindings.cs:1031
+  [+0x217] Bindings.cs:3148
+  [+0x220] Bindings.cs:3151
+  +0x220: RIP [0x02e31aa8] -> MetaUsage(tag=6, idx=94894)
+  +0x256: CALL 0x00c2ba70 ()
+  +0x29f: CALL 0x001bb740 ()
+  [+0x2a6] Bindings.cs:3099, Bindings.cs:2933
+  [+0x2aa] Bindings.cs:2933
+  [+0x2b3] Bindings.cs:2933
+  [+0x2b7] Bindings.cs:3100
+  [+0x2ba] Bindings.cs:3099, Bindings.cs:2933
+  [+0x2be] Bindings.cs:3100
+  [+0x2c1] Bindings.cs:3099, Bindings.cs:2933
+  [+0x2c6] Bindings.cs:3100
+  +0x2cc: CALL 0x014c5350 (Bindings.cs:2989)
+  [+0x2d1] Bindings.cs:3101
+  [+0x2da] Bindings.cs:3101
+  [+0x2e8] Bindings.cs:3101
+  [+0x2ef] Bindings.cs:3101
+  [+0x2f8] Bindings.cs:3101
+  +0x2fc: RIP [0x02de7888] -> MetaUsage(tag=6, idx=30745)
+  +0x313: CALL 0x0112e060 ()
+  [+0x318] Bindings.cs:3101
+  [+0x320] Bindings.cs:3108
+  [+0x32a] Bindings.cs:3108
+  [+0x334] Bindings.cs:3111
+  [+0x33f] Bindings.cs:3111
+  [+0x348] Bindings.cs:3111
+  +0x354: RIP [0x02de7b08] -> MetaUsage(tag=6, idx=30789)
+  +0x370: CALL 0x0113a1a0 ()
+  [+0x375] Bindings.cs:3114
+  [+0x37b] Bindings.cs:3116
+  +0x37b: RIP [0x02dda888] -> MetaUsage(tag=1, idx=41877)
+  +0x38b: CALL 0x001bc7a0 ()
+  [+0x390] Bindings.cs:3116
+  +0x392: CALL 0x014ceee0 (Bindings.cs:342)
+  [+0x397] Bindings.cs:3117, Bindings.cs:892
+  [+0x39b] Bindings.cs:3117
+  [+0x39d] Bindings.cs:3119
+  +0x39f: CALL 0x014cef20 (Bindings.cs:348)
+  [+0x3a4] Bindings.cs:3122
+  [+0x3a8] Bindings.cs:3122
+  [+0x3b1] Bindings.cs:3122
+  +0x3ba: RIP [0x02e1df28] -> MetaUsage(tag=1, idx=29092)
+  [+0x3c6] Bindings.cs:3123
+  [+0x3cc] Bindings.cs:3126
+  [+0x3d8] Bindings.cs:3128
+  [+0x3df] Bindings.cs:3128, Bindings.cs:1030
+  [+0x3e3] Bindings.cs:3128
+  [+0x3e7] Bindings.cs:3128, Bindings.cs:1030
+  [+0x3ea] Bindings.cs:3128
+  [+0x3ee] Bindings.cs:3128, Bindings.cs:1030
+  [+0x3f2] Bindings.cs:1030
+  +0x3f2: CALL 0x001bb740 ()
+  [+0x3f7] Bindings.cs:1031
+  [+0x3fb] Bindings.cs:3128
+  +0x404: JMP 0x014c67b0 (Bindings.cs:3151)
+  [+0x409] Bindings.cs:3086, Bindings.cs:832
+  [+0x40d] Bindings.cs:3086
+  [+0x40f] Bindings.cs:3086, Bindings.cs:2933
+  [+0x413] Bindings.cs:2933
+  [+0x41c] Bindings.cs:2933
+  [+0x429] Bindings.cs:3086
+  [+0x432] Bindings.cs:3086
+  [+0x43c] Bindings.cs:3089
+  +0x441: CALL 0x014c1180 (Bindings.cs:2935)
+  [+0x446] Bindings.cs:3089
+  +0x452: CALL 0x014c5350 (Bindings.cs:2989)
+  +0x454: JMP 0x013669e8 ()
+  [+0x457] Bindings.cs:3092
+  +0x457: JMP 0x014c67eb ()
+  [+0x45c] Bindings.cs:3074
+  [+0x460] Bindings.cs:3074
+  [+0x465] Bindings.cs:3074
+  +0x465: RIP [0x02de3b08] -> MetaUsage(tag=6, idx=198058)
+  +0x474: CALL 0x01121630 ()
+  [+0x479] Bindings.cs:3074
+  [+0x481] Bindings.cs:3076
+  [+0x48a] Bindings.cs:3076
+  [+0x48e] Bindings.cs:2985, Bindings.cs:839, Bindings.cs:837
+  [+0x492] Bindings.cs:2985
+  [+0x498] Bindings.cs:2987, Bindings.cs:2933
+  [+0x49c] Bindings.cs:2933
+  [+0x4a1] Bindings.cs:2987
+  [+0x4a8] Bindings.cs:2987, Bindings.cs:2933
+  [+0x4ab] Bindings.cs:2987
+  +0x4b6: CALL 0x014c5350 (Bindings.cs:2989)
+  +0x4bb: JMP 0x014c67eb ()
+  [+0x4c0] Bindings.cs:2987, Bindings.cs:2933
+  +0x4c0: CALL 0x001bc700 ()
+  [+0x4c6] Bindings.cs:3148
+  +0x4c6: CALL 0x001bc700 ()
+  [+0x4cc] Bindings.cs:3128
+  +0x4cc: CALL 0x001bc700 ()
+
+================ Bindings_0x014d1c30 (0x014d1c30..0x014d1cae, sz=126) ================
+  +0x000: 48 83 ec 28 48 8b 51 10 48 8b 41 70 48 85 d2 74
+  +0x010: 67 85 c0 78 47 48 8b 4a 78 48 85 c9 74 5a 3b 41
+  +0x020: 18 7d 39 48 8b 49 10 48 63 d0 48 8b 54 d1 20 48
+  +0x030: 85 d2 74 44 48 39 42 10 75 22 48 8d 4c 24 30 48
+  +0x040: 89 54 24 30 e8 c7 9a ce fe 48 8b 44 24 30 48 85
+  +0x050: c0 74 25 48 8b 40 30 48 83 c4 28 c3 33 d2 48 c7
+  +0x060: 44 24 30 00 00 00 00 48 8d 4c 24 30 e8 9f 9a ce
+  +0x070: fe 33 c0 48 83 c4 28 c3 e8 53 aa ce fe cc
+  --- USYM & Refs ---
+  [+0x000] Bindings.cs:557
+  [+0x004] Bindings.cs:559
+  [+0x008] Bindings.cs:559
+  [+0x00c] Bindings.cs:559
+  [+0x011] Bindings.cs:559, Bindings.cs:2917
+  [+0x015] Bindings.cs:2917
+  [+0x019] Bindings.cs:2917
+  [+0x01e] Bindings.cs:2917
+  [+0x023] Bindings.cs:2919
+  [+0x02f] Bindings.cs:2920
+  [+0x034] Bindings.cs:2920, Bindings.cs:837
+  [+0x038] Bindings.cs:2920
+  [+0x03a] Bindings.cs:2923
+  +0x044: CALL 0x001bb740 ()
+  [+0x049] Bindings.cs:559
+  [+0x053] Bindings.cs:559
+  [+0x057] Bindings.cs:559
+  [+0x05c] Bindings.cs:559, Bindings.cs:2928
+  +0x06c: CALL 0x001bb740 ()
+  [+0x071] Bindings.cs:559
+  [+0x073] Bindings.cs:559
+  [+0x078] Bindings.cs:559
+  +0x078: CALL 0x001bc700 ()
+
+================ StreamedListView_0x015aab80 (0x015aab80..0x015ab0ca, sz=1354) ================
+  +0x000: 40 56 48 83 ec 50 33 d2 48 8b f1 e8 90 7a ce fe
+  +0x010: 84 c0 0f 84 26 05 00 00 48 8b 16 48 8b ce 48 89
+  +0x020: 5c 24 60 48 89 7c 24 78 0f 29 74 24 40 48 8b 82
+  +0x030: 78 0d 00 00 48 8b 92 80 0d 00 00 ff d0 84 c0 0f
+  +0x040: 85 18 02 00 00 48 8b 8e 78 07 00 00 48 85 c9 0f
+  +0x050: 84 ef 04 00 00 33 d2 e8 94 db 98 00 48 8b 96 78
+  +0x060: 07 00 00 48 8b d8 48 85 d2 0f 84 d5 04 00 00 45
+  +0x070: 33 c0 48 8d 4c 24 20 e8 44 d5 98 00 45 33 c9 48
+  +0x080: 8b d6 48 8b cb 0f 10 00 0f 28 c8 0f c6 c8 55 0f
+  +0x090: 14 c1 66 49 0f 7e c0 e8 44 52 9d 00 48 8b 8e 48
+  +0x0a0: 05 00 00 48 89 44 24 70 48 85 c9 0f 84 93 04 00
+  +0x0b0: 00 33 d2 e8 78 3b d0 fe 48 8b d8 48 85 c0 0f 84
+  +0x0c0: 80 04 00 00 4c 8b 10 33 ff f3 0f 10 74 24 74 0f
+  +0x0d0: b7 cf 4c 8b 0d 57 26 88 01 0f 29 7c 24 30 0f 57
+  +0x0e0: ff 41 0f b7 92 2e 01 00 00 66 3b fa 73 2a 4d 8b
+  +0x0f0: 82 b0 00 00 00 66 66 66 0f 1f 84 00 00 00 00 00
+  +0x100: 0f b7 c1 48 03 c0 4d 39 0c c0 0f 84 0a 01 00 00
+  +0x110: 66 ff c1 66 3b ca 72 e8 41 b8 01 00 00 00 49 8b
+  +0x120: d1 48 8b cb e8 97 55 c1 fe f3 0f 10 44 24 70 48
+  +0x130: 8d 54 24 20 4c 8b 40 08 48 8b cb 0f 14 c6 f2 0f
+  +0x140: 11 44 24 20 f3 0f 11 7c 24 28 ff 10 48 8b 8e 48
+  +0x150: 05 00 00 0f 28 7c 24 30 48 85 c9 0f 84 e3 03 00
+  +0x160: 00 33 d2 e8 c8 3a d0 fe 48 8b d8 48 85 c0 0f 84
+  +0x170: d0 03 00 00 4c 8b 08 f3 0f 10 35 85 8e b4 00 48
+  +0x180: 8b 15 aa 25 88 01 41 0f b7 89 2e 01 00 00 66 3b
+  +0x190: f9 73 25 4d 8b 81 b0 00 00 00 66 0f 1f 44 00 00
+  +0x1a0: 0f b7 c7 48 03 c0 49 39 14 c0 0f 84 8b 00 00 00
+  +0x1b0: 66 ff c7 66 3b f9 72 e8 41 b8 05 00 00 00 48 8b
+  +0x1c0: cb e8 fa 54 c1 fe 4c 8b 40 08 48 8d 54 24 20 0f
+  +0x1d0: 28 c6 f3 0f 11 74 24 28 0f 14 c6 48 8b cb f2 0f
+  +0x1e0: 11 44 24 20 ff 10 48 8b 8e 48 05 00 00 48 85 c9
+  +0x1f0: 0f 84 4e 03 00 00 33 d2 e8 d3 e1 97 00 48 8b 06
+  +0x200: 33 d2 48 8b ce 4c 8b 80 60 02 00 00 ff 90 58 02
+  +0x210: 00 00 40 32 ff e9 02 03 00 00 0f b7 c9 48 03 c9
+  +0x220: 41 8b 44 c8 08 ff c0 48 98 48 c1 e0 04 48 05 38
+  +0x230: 01 00 00 49 03 c2 e9 ee fe ff ff 0f b7 cf 48 03
+  +0x240: c9 41 8b 44 c8 08 83 c0 05 48 98 48 c1 e0 04 48
+  +0x250: 05 38 01 00 00 49 03 c1 e9 69 ff ff ff 48 8b 8e
+  +0x260: 48 05 00 00 48 85 c9 0f 84 d7 02 00 00 33 d2 e8
+  +0x270: bc 39 d0 fe 48 8b d8 48 85 c0 0f 84 c4 02 00 00
+  +0x280: 4c 8b 10 33 ff 4c 8b 0d a4 24 88 01 0f 57 f6 0f
+  +0x290: b7 cf 41 0f b7 92 2e 01 00 00 66 3b fa 73 29 4d
+  +0x2a0: 8b 82 b0 00 00 00 66 66 0f 1f 84 00 00 00 00 00
+  +0x2b0: 0f b7 c1 48 03 c0 4d 39 0c c0 0f 84 d9 01 00 00
+  +0x2c0: 66 ff c1 66 3b ca 72 e8 41 b8 01 00 00 00 49 8b
+  +0x2d0: d1 48 8b cb e8 e7 53 c1 fe 4c 8b 08 48 8d 54 24
+  +0x2e0: 20 4c 8b 40 08 0f 28 c6 0f 14 c6 48 8b cb f2 0f
+  +0x2f0: 11 44 24 20 f3 0f 11 74 24 28 41 ff d1 48 8b 8e
+  +0x300: 48 05 00 00 48 85 c9 0f 84 37 02 00 00 33 d2 e8
+  +0x310: 1c 39 d0 fe 48 8b d8 48 85 c0 0f 84 24 02 00 00
+  +0x320: 4c 8b 10 0f b7 cf 4c 8b 0d 03 24 88 01 48 89 6c
+  +0x330: 24 68 41 0f b7 92 2e 01 00 00 66 3b fa 73 29 4d
+  +0x340: 8b 82 b0 00 00 00 66 66 0f 1f 84 00 00 00 00 00
+  +0x350: 0f b7 c1 48 03 c0 4d 39 0c c0 0f 84 5a 01 00 00
+  +0x360: 66 ff c1 66 3b ca 72 e8 41 b8 05 00 00 00 49 8b
+  +0x370: d1 48 8b cb e8 47 53 c1 fe 4c 8b 08 48 8d 54 24
+  +0x380: 20 4c 8b 40 08 0f 28 c6 0f 14 c6 48 8b cb f2 0f
+  +0x390: 11 44 24 20 f3 0f 11 74 24 28 41 ff d1 48 8b 0d
+  +0x3a0: 04 90 89 01 39 b9 e4 00 00 00 75 0c e8 6f 18 c1
+  +0x3b0: fe 48 8b 0d f0 8f 89 01 48 8b 81 b8 00 00 00 48
+  +0x3c0: 8b 68 28 48 85 ed 75 53 48 8b 0d 69 e2 84 01 48
+  +0x3d0: 8b 18 e8 59 17 c1 fe 4c 8b 05 52 f2 84 01 45 33
+  +0x3e0: c9 48 8b d3 48 8b c8 48 8b e8 e8 01 17 80 ff 48
+  +0x3f0: 8b 05 b2 8f 89 01 48 8b d5 48 8b 88 b8 00 00 00
+  +0x400: 48 89 69 28 48 8b 05 9d 8f 89 01 48 8b 88 b8 00
+  +0x410: 00 00 48 83 c1 28 e8 a5 07 c1 fe 48 8b 0d 4e 4b
+  +0x420: 82 01 39 b9 e4 00 00 00 75 05 e8 f1 17 c1 fe 45
+  +0x430: 33 c0 48 8b d5 48 8b ce e8 a3 fe 10 00 48 8b 6c
+  +0x440: 24 68 48 8b d8 48 85 c0 0f 85 98 00 00 00 40 38
+  +0x450: be 8d 06 00 00 75 0d 40 38 be 00 05 00 00 0f 84
+  +0x460: 82 00 00 00 48 8b 8e 78 07 00 00 48 85 c9 0f 84
+  +0x470: d0 00 00 00 4c 8b 81 30 05 00 00 4d 85 c0 74 5c
+  +0x480: 48 8b 15 71 17 87 01 b9 01 00 00 00 e8 ef 72 a5
+  +0x490: fe 83 f8 01 0f 9d c2 eb 4f 0f b7 c9 48 03 c9 41
+  +0x4a0: 8b 44 c8 08 ff c0 48 98 48 c1 e0 04 48 05 38 01
+  +0x4b0: 00 00 49 03 c2 e9 1f fe ff ff 0f b7 c9 48 03 c9
+  +0x4c0: 41 8b 44 c8 08 83 c0 05 48 98 48 c1 e0 04 48 05
+  +0x4d0: 38 01 00 00 49 03 c2 e9 9d fe ff ff 8b c7 83 f8
+  +0x4e0: 01 0f 9d c2 eb 02 8b d7 48 8b 06 48 8b ce 4c 8b
+  +0x4f0: 80 60 02 00 00 ff 90 58 02 00 00 48 85 db 75 1c
+  +0x500: 48 8b 16 48 8b ce 48 8b 82 48 02 00 00 48 8b 92
+  +0x510: 50 02 00 00 ff d0 84 c0 40 0f 94 c7 b8 e8 04 00
+  +0x520: 00 48 8b ce 33 d2 40 88 3c 01 e8 c1 ba 04 00 48
+  +0x530: 8b 7c 24 78 48 8b 5c 24 60 0f 28 74 24 40 48 83
+  +0x540: c4 50 5e c3 e8 37 16 c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:705
+  [+0x006] StreamedListView.cs:709
+  +0x00b: CALL 0x00292620 (BacktraceResult.cs:38, BacktraceSelfSSLCertificateHandler.cs:12)
+  [+0x010] StreamedListView.cs:709
+  [+0x018] StreamedListView.cs:711
+  [+0x03d] StreamedListView.cs:711
+  [+0x045] StreamedListView.cs:722
+  [+0x04c] StreamedListView.cs:722
+  [+0x055] StreamedListView.cs:722
+  +0x057: CALL 0x01f38770 ()
+  [+0x05c] StreamedListView.cs:722
+  [+0x066] StreamedListView.cs:722
+  [+0x06f] StreamedListView.cs:722
+  +0x077: CALL 0x01f38140 ()
+  [+0x07c] StreamedListView.cs:722
+  [+0x088] StreamedListView.cs:722, NavigatableVisualElement.cs:34, StreamedListView.cs:302
+  [+0x08f] StreamedListView.cs:722
+  +0x097: CALL 0x01f7fe60 ()
+  [+0x09c] StreamedListView.cs:723
+  [+0x0a8] StreamedListView.cs:723
+  [+0x0b1] StreamedListView.cs:723
+  +0x0b3: CALL 0x002ae7b0 (FM.GamePlugin.AutogenBindings.cs:1010, FM.GamePlugin.AutogenBindings.cs:1015)
+  [+0x0bb] StreamedListView.cs:723
+  [+0x0c4] StreamedListView.cs:723
+  +0x0d2: RIP [0x02e2d2b0] -> MetaUsage(tag=1, idx=29799)
+  [+0x0d9] StreamedListView.cs:723
+  [+0x0e1] StreamedListView.cs:723
+  +0x117: CALL 0x015c64dd ()
+  +0x124: CALL 0x001c0240 ()
+  [+0x14c] StreamedListView.cs:724
+  [+0x158] StreamedListView.cs:724
+  [+0x161] StreamedListView.cs:724
+  +0x163: CALL 0x002ae7b0 (FM.GamePlugin.AutogenBindings.cs:1010, FM.GamePlugin.AutogenBindings.cs:1015)
+  [+0x16b] StreamedListView.cs:724
+  [+0x174] StreamedListView.cs:724
+  +0x17f: RIP [0x02e2d2b0] -> MetaUsage(tag=1, idx=29799)
+  +0x1b7: CALL 0x0160657d ()
+  +0x1c1: CALL 0x001c0240 ()
+  [+0x1e6] StreamedListView.cs:725
+  [+0x1ed] StreamedListView.cs:725
+  [+0x1f6] StreamedListView.cs:725
+  +0x1f8: CALL 0x01f28f50 ()
+  [+0x1fd] StreamedListView.cs:726
+  [+0x212] StreamedListView.cs:727
+  [+0x215] StreamedListView.cs:727
+  +0x215: JMP 0x015ab09c (StreamedListView.cs:730)
+  [+0x21a] StreamedListView.cs:723
+  +0x236: JMP 0x015aaca9 ()
+  [+0x23b] StreamedListView.cs:724
+  +0x258: JMP 0x015aad46 ()
+  [+0x25d] StreamedListView.cs:713
+  [+0x264] StreamedListView.cs:713
+  [+0x26d] StreamedListView.cs:713
+  +0x26f: CALL 0x002ae7b0 (FM.GamePlugin.AutogenBindings.cs:1010, FM.GamePlugin.AutogenBindings.cs:1015)
+  [+0x277] StreamedListView.cs:713
+  [+0x280] StreamedListView.cs:713
+  +0x285: RIP [0x02e2d2b0] -> MetaUsage(tag=1, idx=29799)
+  +0x2c7: CALL 0x015c668d ()
+  +0x2d4: CALL 0x001c0240 ()
+  [+0x2fd] StreamedListView.cs:714
+  [+0x304] StreamedListView.cs:714
+  [+0x30d] StreamedListView.cs:714
+  +0x30f: CALL 0x002ae7b0 (FM.GamePlugin.AutogenBindings.cs:1010, FM.GamePlugin.AutogenBindings.cs:1015)
+  [+0x317] StreamedListView.cs:714
+  [+0x320] StreamedListView.cs:714
+  +0x326: RIP [0x02e2d2b0] -> MetaUsage(tag=1, idx=29799)
+  [+0x32d] StreamedListView.cs:714
+  [+0x332] StreamedListView.cs:714
+  +0x367: CALL 0x0160672d ()
+  +0x374: CALL 0x001c0240 ()
+  [+0x39d] StreamedListView.cs:716
+  +0x39d: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  +0x3ac: CALL 0x001bc7a0 ()
+  +0x3b1: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  [+0x3b8] StreamedListView.cs:716
+  [+0x3c3] StreamedListView.cs:716
+  [+0x3c8] StreamedListView.cs:716
+  +0x3c8: RIP [0x02df91b8] -> MetaUsage(tag=1, idx=15931)
+  [+0x3cf] StreamedListView.cs:716
+  [+0x3d2] StreamedListView.cs:716
+  +0x3d2: CALL 0x001bc6b0 ()
+  [+0x3d7] StreamedListView.cs:716
+  +0x3d7: RIP [0x02dfa1b0] -> MethodDef idx=47357 <UpdateEnabledState>b__237_0
+  [+0x3e7] StreamedListView.cs:716
+  [+0x3ea] StreamedListView.cs:716
+  +0x3ea: CALL 0x00dac670 (ObjectPools.cs:82)
+  [+0x3ef] StreamedListView.cs:716
+  +0x3ef: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  [+0x3f6] StreamedListView.cs:716
+  +0x404: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  +0x416: CALL 0x001bb740 ()
+  [+0x41b] StreamedListView.cs:716
+  +0x41b: RIP [0x02dcfaf0] -> MetaUsage(tag=1, idx=32768)
+  +0x42a: CALL 0x001bc7a0 ()
+  [+0x42f] StreamedListView.cs:716
+  +0x438: CALL 0x016bae60 (NavigationUtils.cs:564)
+  [+0x445] StreamedListView.cs:717
+  [+0x44e] StreamedListView.cs:717
+  [+0x457] StreamedListView.cs:717
+  [+0x464] StreamedListView.cs:717, StreamedListView.cs:315
+  [+0x46b] StreamedListView.cs:315
+  [+0x474] StreamedListView.cs:315
+  [+0x480] StreamedListView.cs:315
+  +0x480: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x491] StreamedListView.cs:717
+  [+0x499] StreamedListView.cs:713
+  +0x4b5: JMP 0x015aae59 ()
+  [+0x4ba] StreamedListView.cs:714
+  +0x4d7: JMP 0x015aaef9 ()
+  [+0x4dc] StreamedListView.cs:717, StreamedListView.cs:315
+  [+0x4de] StreamedListView.cs:717
+  [+0x4e6] StreamedListView.cs:717
+  [+0x4e8] StreamedListView.cs:717
+  [+0x4fb] StreamedListView.cs:718
+  [+0x500] StreamedListView.cs:718
+  [+0x516] StreamedListView.cs:718
+  [+0x51c] StreamedListView.cs:730
+  +0x52a: CALL 0x015f6b70 (DiggableVisualElement.cs:138)
+  [+0x53e] StreamedListView.cs:732
+  [+0x544] StreamedListView.cs:717, StreamedListView.cs:315
+  +0x544: CALL 0x001bc700 ()
+
+================ StreamedTable_0x015a5d00 (0x015a5d00..0x015a5f14, sz=532) ================
+  +0x000: 48 89 5c 24 08 48 89 6c 24 10 48 89 74 24 18 57
+  +0x010: 41 56 41 57 48 83 ec 20 48 8b e9 48 8b 89 78 07
+  +0x020: 00 00 48 85 c9 0f 84 da 01 00 00 33 d2 e8 ae 9d
+  +0x030: 26 ff 48 85 c0 0f 84 ca 01 00 00 48 8b 15 3e 09
+  +0x040: 8a 01 33 c9 4c 8b c0 e8 b4 c5 a5 fe 48 8b 0d 5d
+  +0x050: 8e 83 01 44 8b f0 e8 55 69 c1 fe 4c 8b 05 ae 9e
+  +0x060: 87 01 41 8b d6 48 8b c8 48 8b d8 e8 a0 46 68 ff
+  +0x070: 45 33 ff 41 8b f7 45 85 f6 0f 8e 6a 01 00 00 90
+  +0x080: 48 8b 8d 78 07 00 00 48 85 c9 0f 84 75 01 00 00
+  +0x090: 33 d2 e8 49 9d 26 ff 48 8b f8 48 85 c0 0f 84 62
+  +0x0a0: 01 00 00 4c 8b 10 41 0f b7 cf 4c 8b 0d 1f 26 8a
+  +0x0b0: 01 41 0f b7 92 2e 01 00 00 66 44 3b fa 73 25 4d
+  +0x0c0: 8b 82 b0 00 00 00 66 66 0f 1f 84 00 00 00 00 00
+  +0x0d0: 0f b7 c1 48 03 c0 4d 39 0c c0 74 7a 66 ff c1 66
+  +0x0e0: 3b ca 72 ec 45 33 c0 49 8b d1 48 8b cf e8 4e a4
+  +0x0f0: c1 fe 4c 8b 08 8b d6 4c 8b 40 08 48 8b cf 41 ff
+  +0x100: d1 48 63 c8 48 8b 85 68 05 00 00 48 85 c0 0f 84
+  +0x110: f1 00 00 00 48 8b 40 10 4c 8b 85 58 07 00 00 44
+  +0x120: 8b 4c 88 20 4d 85 c0 0f 84 d8 00 00 00 48 8b 15
+  +0x130: f4 e5 87 01 33 c9 e8 75 c6 a5 fe 4c 8b 15 a6 9e
+  +0x140: 87 01 4c 8b c0 48 8b 15 fc 19 89 01 48 85 c0 75
+  +0x150: 1f 49 8b d7 eb 45 0f b7 d1 48 03 d2 49 63 44 d0
+  +0x160: 08 48 c1 e0 04 48 05 38 01 00 00 49 03 c2 eb 82
+  +0x170: 4c 8b 08 0f b6 82 30 01 00 00 41 38 81 30 01 00
+  +0x180: 00 0f 82 84 00 00 00 0f b6 c8 49 8b 81 c8 00 00
+  +0x190: 00 48 39 54 c8 f8 75 73 49 8b d0 48 8b 4b 10 ff
+  +0x1a0: 43 1c 4c 63 43 18 44 3b 41 18 72 19 49 8b 42 20
+  +0x1b0: 48 8b cb 4c 8b 80 c0 00 00 00 4d 8b 40 70 e8 dd
+  +0x1c0: 01 6d ff eb 19 41 8d 40 01 89 43 18 4a 89 54 c1
+  +0x1d0: 20 4a 8d 0c c1 48 83 c1 20 e8 62 58 c1 fe ff c6
+  +0x1e0: 41 3b f6 0f 8c 97 fe ff ff 48 8b 6c 24 48 48 8b
+  +0x1f0: c3 48 8b 5c 24 40 48 8b 74 24 50 48 83 c4 20 41
+  +0x200: 5f 41 5e 5f c3 e8 f6 67 c1 fe cc 49 8b c8 e8 6d
+  +0x210: 58 c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:2078
+  [+0x01b] StreamedListView.cs:2083
+  [+0x022] StreamedListView.cs:2083
+  [+0x02b] StreamedListView.cs:2083
+  +0x02d: CALL 0x0080fae0 (FMDraggableObject.cs:79, FMDraggableObject.cs:82)
+  [+0x032] StreamedListView.cs:2083
+  [+0x03b] StreamedListView.cs:2083
+  +0x03b: RIP [0x02e46680] -> MetaUsage(tag=1, idx=53626)
+  [+0x04c] StreamedListView.cs:2084
+  +0x04c: RIP [0x02ddebb0] -> MetaUsage(tag=1, idx=14414)
+  [+0x053] StreamedListView.cs:2083
+  [+0x056] StreamedListView.cs:2084
+  +0x056: CALL 0x001bc6b0 ()
+  [+0x05b] StreamedListView.cs:2084
+  +0x05b: RIP [0x02e1fc10] -> MetaUsage(tag=6, idx=203184)
+  [+0x068] StreamedListView.cs:2084
+  [+0x06b] StreamedListView.cs:2084
+  +0x06b: CALL 0x00c2a410 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x070] StreamedListView.cs:2085
+  [+0x076] StreamedListView.cs:2085
+  [+0x080] StreamedListView.cs:2087
+  [+0x087] StreamedListView.cs:2087
+  [+0x090] StreamedListView.cs:2087
+  +0x092: CALL 0x0080fae0 (FMDraggableObject.cs:79, FMDraggableObject.cs:82)
+  [+0x09a] StreamedListView.cs:2087
+  [+0x0a3] StreamedListView.cs:2087
+  +0x0aa: RIP [0x02e483d0] -> MetaUsage(tag=1, idx=12203)
+  +0x0ed: CALL 0x001c0240 ()
+  [+0x104] StreamedListView.cs:2088, StreamedListView.cs:1270
+  [+0x10b] StreamedListView.cs:1270
+  [+0x114] StreamedListView.cs:1270
+  [+0x118] StreamedListView.cs:1270, StreamedListView.cs:1273
+  [+0x11f] StreamedListView.cs:1270
+  [+0x124] StreamedListView.cs:1270, StreamedListView.cs:1273
+  [+0x12d] StreamedListView.cs:1273
+  +0x12d: RIP [0x02e24428] -> MetaUsage(tag=1, idx=29376)
+  [+0x13b] StreamedListView.cs:2088
+  +0x13b: RIP [0x02e1fce8] -> MetaUsage(tag=6, idx=203185)
+  [+0x142] StreamedListView.cs:2088, StreamedListView.cs:1270, StreamedListView.cs:1273
+  [+0x145] StreamedListView.cs:2088
+  +0x145: RIP [0x02e37848] -> MetaUsage(tag=1, idx=38755)
+  [+0x156] StreamedListView.cs:2087
+  [+0x170] StreamedListView.cs:2088
+  [+0x19b] ManualSingleton.cs:42
+  [+0x19f] ManualSingleton.cs:42
+  [+0x1a2] ManualSingleton.cs:42
+  [+0x1a6] ManualSingleton.cs:42
+  [+0x1ac] ManualSingleton.cs:42
+  +0x1be: CALL 0x00c760a0 ()
+  [+0x1c5] ManualSingleton.cs:42
+  [+0x1cc] ManualSingleton.cs:42
+  +0x1d9: CALL 0x001bb740 ()
+  [+0x1de] StreamedListView.cs:2085
+  [+0x1e0] StreamedListView.cs:2085
+  [+0x1e9] StreamedListView.cs:2091
+  [+0x205] StreamedListView.cs:2088, StreamedListView.cs:1270, StreamedListView.cs:1273
+  +0x205: CALL 0x001bc700 ()
+  [+0x20b] StreamedListView.cs:2088
+  +0x20e: CALL 0x001bb780 ()
+
+================ StreamedTable_0x015a5b90 (0x015a5b90..0x015a5cfa, sz=362) ================
+  +0x000: 40 53 48 83 ec 20 48 8b d9 48 8b 89 78 07 00 00
+  +0x010: 48 85 c9 0f 84 42 01 00 00 33 d2 e8 30 9f 26 ff
+  +0x020: 48 85 c0 0f 84 32 01 00 00 48 8b 15 c0 0a 8a 01
+  +0x030: 33 c9 4c 8b c0 e8 36 c7 a5 fe 85 c0 0f 8e e9 00
+  +0x040: 00 00 48 8b 83 78 07 00 00 48 85 c0 0f 84 09 01
+  +0x050: 00 00 4c 8b 80 30 05 00 00 4d 85 c0 0f 84 c9 00
+  +0x060: 00 00 48 8b 15 7f 6b 87 01 b9 01 00 00 00 e8 fd
+  +0x070: c6 a5 fe 85 c0 0f 8e b0 00 00 00 48 8b 8b 78 07
+  +0x080: 00 00 48 85 c9 0f 84 d0 00 00 00 33 d2 e8 be 9e
+  +0x090: 26 ff 48 85 c0 0f 84 c0 00 00 00 48 8b 15 9e 27
+  +0x0a0: 8a 01 33 c9 45 33 c9 4c 8b c0 e8 71 c8 a5 fe 48
+  +0x0b0: 63 c8 48 8b 83 68 05 00 00 48 85 c0 0f 84 99 00
+  +0x0c0: 00 00 48 8b 40 10 4c 8b 83 58 07 00 00 44 8b 4c
+  +0x0d0: 88 20 4d 85 c0 0f 84 80 00 00 00 48 8b 15 b6 e7
+  +0x0e0: 87 01 33 c9 e8 37 c8 a5 fe 48 8b 15 c8 1b 89 01
+  +0x0f0: 4c 8b c0 48 85 c0 75 06 48 83 c4 20 5b c3 4c 8b
+  +0x100: 08 0f b6 82 30 01 00 00 41 38 81 30 01 00 00 72
+  +0x110: 50 0f b6 c8 49 8b 81 c8 00 00 00 48 39 54 c8 f8
+  +0x120: 75 3f 49 8b c0 48 83 c4 20 5b c3 48 8b 0d 0e e5
+  +0x130: 82 01 83 b9 e4 00 00 00 00 75 05 e8 d0 6a c1 fe
+  +0x140: 33 c9 e8 49 33 f4 ff 48 8b 15 8a 22 86 01 48 8b
+  +0x150: c8 48 83 c4 20 5b e9 d5 c3 54 ff e8 10 6a c1 fe
+  +0x160: cc 49 8b c8 e8 87 5a c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:2072
+  [+0x009] StreamedListView.cs:2078
+  [+0x010] StreamedListView.cs:2078
+  [+0x019] StreamedListView.cs:2078
+  +0x01b: CALL 0x0080fae0 (FMDraggableObject.cs:79, FMDraggableObject.cs:82)
+  [+0x020] StreamedListView.cs:2078
+  [+0x029] StreamedListView.cs:2078
+  +0x029: RIP [0x02e46680] -> MetaUsage(tag=1, idx=53626)
+  [+0x03a] StreamedListView.cs:2078
+  [+0x042] StreamedListView.cs:2078
+  [+0x049] StreamedListView.cs:2078
+  [+0x052] StreamedListView.cs:2078
+  [+0x062] StreamedListView.cs:2078
+  +0x062: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x073] StreamedListView.cs:2078
+  [+0x07b] StreamedListView.cs:2078
+  [+0x082] StreamedListView.cs:2078
+  [+0x08b] StreamedListView.cs:2078
+  +0x08d: CALL 0x0080fae0 (FMDraggableObject.cs:79, FMDraggableObject.cs:82)
+  [+0x092] StreamedListView.cs:2078
+  [+0x09b] StreamedListView.cs:2078
+  +0x09b: RIP [0x02e483d0] -> MetaUsage(tag=1, idx=12203)
+  [+0x0b2] StreamedListView.cs:2078, StreamedListView.cs:1270
+  [+0x0b9] StreamedListView.cs:1270
+  [+0x0c2] StreamedListView.cs:1270
+  [+0x0c6] StreamedListView.cs:1270, StreamedListView.cs:1273
+  [+0x0cd] StreamedListView.cs:1270
+  [+0x0d2] StreamedListView.cs:1270, StreamedListView.cs:1273
+  [+0x0db] StreamedListView.cs:1273
+  +0x0db: RIP [0x02e24428] -> MetaUsage(tag=1, idx=29376)
+  [+0x0e9] StreamedListView.cs:2078
+  +0x0e9: RIP [0x02e37848] -> MetaUsage(tag=1, idx=38755)
+  [+0x0f0] StreamedListView.cs:2078, StreamedListView.cs:1270, StreamedListView.cs:1273
+  [+0x0f3] StreamedListView.cs:2078
+  [+0x0f8] StreamedListView.cs:2078
+  [+0x0fe] StreamedListView.cs:2078
+  [+0x125] StreamedListView.cs:2078
+  [+0x12b] StreamedListView.cs:2078
+  +0x12b: RIP [0x02dd41d0] -> MetaUsage(tag=1, idx=32982)
+  +0x13b: CALL 0x001bc7a0 ()
+  [+0x140] StreamedListView.cs:2078
+  +0x142: CALL 0x014e9020 (NullReference.cs:18)
+  [+0x147] StreamedListView.cs:2078
+  +0x147: RIP [0x02e07f68] -> MetaUsage(tag=6, idx=189930)
+  [+0x151] StreamedListView.cs:2078
+  [+0x156] StreamedListView.cs:2078
+  +0x156: JMP 0x00af20c0 (TypedValue.cs:213)
+  [+0x15b] StreamedListView.cs:2078, StreamedListView.cs:1270, StreamedListView.cs:1273
+  +0x15b: CALL 0x001bc700 ()
+  [+0x161] StreamedListView.cs:2078
+  +0x164: CALL 0x001bb780 ()
+
+=== Occurrences of +0x5c1 in 0x01590000..0x01610000 ===
+  RVA 0x0159caac in (22661520, 22662799, ['ExpandingList.CreateFloatingElement'])
+  RVA 0x015a15bb in (22680576, 22681393, ['GridSelector.VirtualisedListCommonSetup'])
+  RVA 0x015ac55a in (22724080, 22727483, ['StreamedListView..ctor'])
+  RVA 0x015ad502 in (22729968, 22730001, ['StreamedListView.set_Reorderable'])
+  RVA 0x015b1009 in (22743888, 22746427, ['UxmlSerializedData.Deserialize'])
+
+=== Occurrences of +0x4c1 in 0x01590000..0x01610000 ===
+  RVA 0x015a7be7 in (22707120, 22707357, ['StreamedListView.OnSelectionChangedInternal'])
+  RVA 0x015a7bfb in (22707120, 22707357, ['StreamedListView.OnSelectionChangedInternal'])
+  RVA 0x015a9ba5 in (22715104, 22715414, ['StreamedListView.SetSortingBinding'])
+  RVA 0x015a9bb9 in (22715104, 22715414, ['StreamedListView.SetSortingBinding'])
+  RVA 0x015ab5e3 in (22721696, 22722552, ['StreamedListView.UpdateSelectedItems'])
+  RVA 0x015ace03 in (22728176, 22728210, ['StreamedListView.get_SelectionMode'])
+  RVA 0x015c02dd in (22805808, 22808540, ['SIGradient.SetColours'])
+
+=== Occurrences of +0x604 in 0x01590000..0x01610000 ===
+  RVA 0x015a4688 in (22692448, 22693656, ['StreamedListView.ApplySorting'])
+  RVA 0x015a50ee in (22696112, 22696200, ['StreamedListView.CanBuild'])
+  RVA 0x015a51dc in (22696320, 22696429, ['StreamedListView.ClearSortingState'])
+  RVA 0x015a99d8 in (22714832, 22715001, ['StreamedListView.SetNoSorting'])
+  RVA 0x015a9c2b in None
+  RVA 0x015bc5c2 in (22791584, 22791933, ['SICheckBox..ctor'])
+  RVA 0x015bc703 in None
+  RVA 0x015c62e1 in (22831792, 22832160, ['UxmlSerializedData.CreateInstance'])
+
+=== Occurrences of +0x605 in 0x01590000..0x01610000 ===
+  RVA 0x015a7e57 in (22707360, 22708195, ['StreamedListView.OnSortBindingChanged'])
+  RVA 0x015a9cd7 in (22715520, 22716119, ['StreamedListView.StateChanged'])
+  RVA 0x015a9e6c in (22715520, 22716119, ['StreamedListView.StateChanged'])
+  RVA 0x015b0f2c in (22743888, 22746427, ['UxmlSerializedData.Deserialize'])
+  RVA 0x015b2860 in (22750960, 22752879, ['BindingVariables.SetVariables'])
+  RVA 0x015bc713 in None
+  RVA 0x015bc7c2 in None
+  RVA 0x015c7a47 in (22836832, 22837871, ['UxmlSerializedData.Deserialize'])

@@ -1,0 +1,1661 @@
+
+=== FM.UI.dll Type 8: FormationOptionEntry (methods=15) ===
+  Method 55 (get_OptionID): RVA=0x0029bfd0 size=64
+  Method 56 (get_Name): RVA=0x0029bfe0 size=64
+  Method 57 (get_Identifier): RVA=0x003d3580 size=64
+  Method 58 (get_ID): RVA=0x003d3580 size=64
+  Method 59 (AcceptsPropertyInternal): RVA=0x003d31e0 size=64
+  Method 60 (GetPropertyTypeInternal): RVA=0x003d34c0 size=181
+  Method 61 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 62 (GetProperties): RVA=0x003d3370 size=323
+  Method 63 (GetPropertiesInternal): RVA=0x003d3230 size=320
+  Method 64 (GetPropertyCountInternal): RVA=0x0035e220 size=64
+  Method 65 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 66 (DerivesFrom): RVA=0x003d3210 size=64
+  Method 67 (DerivesFromInternal): RVA=0x003d3200 size=64
+  Method 68 (GetInstance): RVA=0x003d3220 size=64
+  Method 69 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 22: RibbonButtonEntry (methods=17) ===
+  Method 139 (get_ButtonID): RVA=0x0029bfd0 size=64
+  Method 140 (get_ButtonText): RVA=0x0029bfe0 size=64
+  Method 141 (get_PanelToOpen): RVA=0x00285830 size=64
+  Method 142 (get_Image): RVA=0x00291ab0 size=64
+  Method 143 (get_Identifier): RVA=0x003dece0 size=64
+  Method 144 (get_ID): RVA=0x003dece0 size=64
+  Method 145 (AcceptsPropertyInternal): RVA=0x003de9d0 size=64
+  Method 146 (GetPropertyTypeInternal): RVA=0x003debf0 size=234
+  Method 147 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 148 (GetProperties): RVA=0x003debd0 size=64
+  Method 149 (GetPropertiesInternal): RVA=0x003dea40 size=394
+  Method 150 (GetPropertyCountInternal): RVA=0x003debe0 size=64
+  Method 151 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 152 (DerivesFrom): RVA=0x003dea20 size=64
+  Method 153 (DerivesFromInternal): RVA=0x003dea10 size=64
+  Method 154 (GetInstance): RVA=0x003dea30 size=64
+  Method 155 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 25: TacticalStylesOptionEntry (methods=22) ===
+  Method 167 (get_OptionID): RVA=0x0029bfd0 size=64
+  Method 168 (get_MainDescriptionTranslationID): RVA=0x002a9d90 size=64
+  Method 169 (get_NameOverrideTranslationID): RVA=0x002ee940 size=64
+  Method 170 (get_PitchGIF): RVA=0x002867d0 size=64
+  Method 171 (get_DescriptionTranslationIDList): RVA=0x00285830 size=64
+  Method 172 (get_InstructionProsTranslations): RVA=0x002867e0 size=64
+  Method 173 (get_InstructionConsTranslations): RVA=0x0029d2d0 size=64
+  Method 174 (get_Name): RVA=0x00292460 size=64
+  Method 175 (set_Name): RVA=0x00292470 size=64
+  Method 176 (get_Identifier): RVA=0x003e0e60 size=64
+  Method 177 (get_ID): RVA=0x003e0e60 size=64
+  Method 178 (AcceptsPropertyInternal): RVA=0x003e0670 size=64
+  Method 179 (GetPropertyTypeInternal): RVA=0x003e0a30 size=307
+  Method 180 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 181 (GetProperties): RVA=0x003e0a20 size=64
+  Method 182 (GetPropertiesInternal): RVA=0x003e0760 size=690
+  Method 183 (GetPropertyCountInternal): RVA=0x002fb070 size=64
+  Method 184 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 185 (DerivesFrom): RVA=0x003e0da0 size=64
+  Method 186 (DerivesFromInternal): RVA=0x003e0d90 size=64
+  Method 187 (GetInstance): RVA=0x003e0db0 size=85
+  Method 188 (.ctor): RVA=0x003e0e10 size=69
+
+=== FM.UI.dll Type 27: TacticMentalitiesOptionEntry (methods=20) ===
+  Method 195 (get_OptionID): RVA=0x0029bfd0 size=64
+  Method 196 (get_NameTranslationID): RVA=0x0029bfe0 size=64
+  Method 197 (get_MainDescriptionTranslationID): RVA=0x002a9d90 size=64
+  Method 198 (get_PitchGIF): RVA=0x002867d0 size=64
+  Method 199 (get_DescriptionTranslationIDList): RVA=0x00285830 size=64
+  Method 200 (get_ProsTranslations): RVA=0x002867e0 size=64
+  Method 201 (get_ConsTranslations): RVA=0x0029d2d0 size=64
+  Method 202 (get_Identifier): RVA=0x003e0bc0 size=64
+  Method 203 (get_ID): RVA=0x003e0bc0 size=64
+  Method 204 (AcceptsPropertyInternal): RVA=0x003e0670 size=64
+  Method 205 (GetPropertyTypeInternal): RVA=0x003e0a30 size=307
+  Method 206 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 207 (GetProperties): RVA=0x003e0a20 size=64
+  Method 208 (GetPropertiesInternal): RVA=0x003e0760 size=690
+  Method 209 (GetPropertyCountInternal): RVA=0x002fb070 size=64
+  Method 210 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 211 (DerivesFrom): RVA=0x003e06f0 size=64
+  Method 212 (DerivesFromInternal): RVA=0x003e06e0 size=64
+  Method 213 (GetInstance): RVA=0x003e0700 size=85
+  Method 214 (.ctor): RVA=0x003e0b70 size=69
+
+=== FM.UI.dll Type 132: FMpediaSectionEntry (methods=47) ===
+  Method 968 (get_CategoryID): RVA=0x0028d0f0 size=64
+  Method 969 (get_CategoryIconStyle): RVA=0x00291ab0 size=64
+  Method 970 (get_NameTranslationID): RVA=0x0028d0e0 size=64
+  Method 971 (set_NameTranslationID): RVA=0x0028d100 size=64
+  Method 972 (get_DescriptionTranslationID): RVA=0x002f6ad0 size=64
+  Method 973 (set_DescriptionTranslationID): RVA=0x00310620 size=64
+  Method 974 (get_ShortDescriptionTranslationID): RVA=0x00366b50 size=64
+  Method 975 (set_ShortDescriptionTranslationID): RVA=0x0035f8a0 size=64
+  Method 976 (get_SubCategories): RVA=0x00290320 size=64
+  Method 977 (get_FilteredUxmls): RVA=0x0028a3f0 size=64
+  Method 978 (set_FilteredUxmls): RVA=0x00393aa0 size=64
+  Method 979 (get_SubCategoriesValues): RVA=0x00307830 size=64
+  Method 980 (set_SubCategoriesValues): RVA=0x00393ab0 size=64
+  Method 981 (get_BreadCrumbsHistoryValues): RVA=0x00307840 size=64
+  Method 982 (set_BreadCrumbsHistoryValues): RVA=0x00393a60 size=64
+  Method 983 (get_PanelID): RVA=0x00292460 size=64
+  Method 984 (get_RelatedPanelIDs): RVA=0x00287290 size=64
+  Method 985 (get_ParentCategories): RVA=0x0028a120 size=64
+  Method 986 (SI.Translation.ITranslatable.get_Kind): RVA=0x006df660 size=64
+  Method 987 (SI.Translation.ITranslatable.get_EmbeddedData): RVA=0x006e2640 size=64
+  Method 988 (get_Position): RVA=0x0028a5a0 size=64
+  Method 989 (set_Position): RVA=0x006e2aa0 size=64
+  Method 990 (get_ApplicableJobStates): RVA=0x006e2a50 size=64
+  Method 991 (get_BindableUxmlsValues): RVA=0x006e2a60 size=38
+  Method 992 (get_DescriptionArguments): RVA=0x0029d2d0 size=64
+  Method 993 (Reset): RVA=0x006e24b0 size=400
+  Method 994 (Setup): RVA=0x006e2670 size=771
+  Method 995 (FilterUxmls): RVA=0x006e1c50 size=776
+  Method 996 (CheckBindingsAreValid): RVA=0x006e1960 size=719
+  Method 997 (get_Identifier): RVA=0x006e2a90 size=64
+  Method 998 (get_ID): RVA=0x006e2a90 size=64
+  Method 999 (AcceptsProperty): RVA=0x006e18f0 size=64
+  Method 1000 (AcceptsPropertyInternal): RVA=0x006e1880 size=64
+  Method 1001 (GetPropertyType): RVA=0x006e2490 size=29
+  Method 1002 (GetPropertyTypeInternal): RVA=0x006e2350 size=315
+  Method 1003 (GetPropertyDescription): RVA=0x0035e230 size=64
+  Method 1004 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 1005 (GetProperties): RVA=0x006e2340 size=64
+  Method 1006 (GetPropertiesInternal): RVA=0x006e2040 size=764
+  Method 1007 (GetPropertyCount): RVA=0x004d2c90 size=64
+  Method 1008 (GetPropertyCountInternal): RVA=0x004d2c90 size=64
+  Method 1009 (GetContexts): RVA=0x004c7f00 size=50
+  Method 1010 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 1011 (DerivesFrom): RVA=0x006e1c40 size=64
+  Method 1012 (DerivesFromInternal): RVA=0x006e1c30 size=64
+  Method 1013 (GetInstance): RVA=0x006e1f60 size=219
+  Method 1014 (.ctor): RVA=0x006e2980 size=203
+
+=== FM.UI.dll Type 199: PlayerInstructionGroup (methods=18) ===
+  Method 1437 (get_PlayerInstructionOptionEntries): RVA=0x002841d0 size=64
+  Method 1438 (get_GroupName): RVA=0x0029d4c0 size=64
+  Method 1439 (get_GroupID): RVA=0x00311190 size=64
+  Method 1440 (get_ExtraGroupID): RVA=0x002a9d90 size=64
+  Method 1441 (get_PlayerInstructionOptionIDs): RVA=0x002867d0 size=64
+  Method 1442 (get_Identifier): RVA=0x007bd640 size=64
+  Method 1443 (get_ID): RVA=0x007bd640 size=64
+  Method 1444 (AcceptsPropertyInternal): RVA=0x007bd0c0 size=64
+  Method 1445 (GetPropertyTypeInternal): RVA=0x007bd4d0 size=284
+  Method 1446 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 1447 (GetProperties): RVA=0x007bd4c0 size=64
+  Method 1448 (GetPropertiesInternal): RVA=0x007bd250 size=616
+  Method 1449 (GetPropertyCountInternal): RVA=0x004d3ef0 size=64
+  Method 1450 (GetContextsInternal): RVA=0x007bd140 size=162
+  Method 1451 (DerivesFrom): RVA=0x007bd130 size=64
+  Method 1452 (DerivesFromInternal): RVA=0x007bd120 size=64
+  Method 1453 (GetInstance): RVA=0x007bd1f0 size=92
+  Method 1454 (.ctor): RVA=0x007bd5f0 size=76
+
+=== FM.UI.dll Type 200: PlayerInstructionOptionEntry (methods=23) ===
+  Method 1455 (get_InstructionID): RVA=0x0029bfd0 size=64
+  Method 1456 (get_InstructionTranslation): RVA=0x0029bfe0 size=64
+  Method 1457 (get_FullContextName): RVA=0x0029d4c0 size=64
+  Method 1458 (get_InstructionDescriptionTranslation): RVA=0x00311190 size=64
+  Method 1459 (get_DescriptionTranslationIDList): RVA=0x00291ab0 size=64
+  Method 1460 (get_InstructionProsTranslations): RVA=0x007bdd00 size=83
+  Method 1461 (get_InstructionConsTranslations): RVA=0x007bdca0 size=83
+  Method 1462 (get_ImageUSS): RVA=0x0028ee70 size=64
+  Method 1463 (get_PitchImage): RVA=0x00290440 size=64
+  Method 1464 (get_PitchGIF): RVA=0x0029d2d0 size=64
+  Method 1465 (get_Identifier): RVA=0x007bdc90 size=64
+  Method 1466 (get_ID): RVA=0x007bdc90 size=64
+  Method 1467 (AcceptsPropertyInternal): RVA=0x007bd650 size=64
+  Method 1468 (GetPropertyTypeInternal): RVA=0x007bdaf0 size=335
+  Method 1469 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 1470 (GetProperties): RVA=0x007bdae0 size=64
+  Method 1471 (GetPropertiesInternal): RVA=0x007bd750 size=912
+  Method 1472 (GetPropertyCountInternal): RVA=0x004f5cd0 size=64
+  Method 1473 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 1474 (DerivesFrom): RVA=0x007bd6e0 size=64
+  Method 1475 (DerivesFromInternal): RVA=0x007bd6d0 size=64
+  Method 1476 (GetInstance): RVA=0x007bd6f0 size=85
+  Method 1477 (.ctor): RVA=0x007bdc40 size=69
+
+=== FM.UI.dll Type 206: RoleDataEntry (methods=28) ===
+  Method 1478 (get_InPossessionRoleID): RVA=0x007be3a0 size=51
+  Method 1479 (get_OutOfPossessionRoleID): RVA=0x007be3e0 size=51
+  Method 1480 (get_PitchGIF): RVA=0x00291ab0 size=64
+  Method 1481 (get_RoleDescriptionTranslation): RVA=0x0028d0f0 size=64
+  Method 1482 (get_RoleLabelData): RVA=0x007be1c0 size=358
+  Method 1483 (get_RolePlayerInstructions): RVA=0x00290440 size=64
+  Method 1484 (get_RoleMovementIconStyleClass): RVA=0x0028ee70 size=64
+  Method 1485 (get_RequiresPositionForRoleMovementStyle): RVA=0x002933d0 size=64
+  Method 1486 (get_PlayerRoleMovementTooltip): RVA=0x003cc690 size=64
+  Method 1487 (GetRoleLabelData): RVA=0x007be1c0 size=358
+  Method 1488 (get_Identifier): RVA=0x007be390 size=64
+  Method 1489 (get_ID): RVA=0x007be390 size=64
+  Method 1490 (AcceptsProperty): RVA=0x007bdda0 size=64
+  Method 1491 (AcceptsPropertyInternal): RVA=0x007bdd60 size=64
+  Method 1492 (GetPropertyType): RVA=0x007be1a0 size=29
+  Method 1493 (GetPropertyTypeInternal): RVA=0x007be0a0 size=250
+  Method 1494 (GetPropertyDescription): RVA=0x0035e230 size=64
+  Method 1495 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 1496 (GetProperties): RVA=0x007be090 size=64
+  Method 1497 (GetPropertiesInternal): RVA=0x007bde70 size=542
+  Method 1498 (GetPropertyCount): RVA=0x004e1d30 size=64
+  Method 1499 (GetPropertyCountInternal): RVA=0x004e1d30 size=64
+  Method 1500 (GetContexts): RVA=0x004c7f00 size=50
+  Method 1501 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 1502 (DerivesFrom): RVA=0x007bddf0 size=64
+  Method 1503 (DerivesFromInternal): RVA=0x007bdde0 size=64
+  Method 1504 (GetInstance): RVA=0x007bde00 size=97
+  Method 1505 (.ctor): RVA=0x007be330 size=81
+
+=== FM.UI.dll Type 213: TacticTeamInstructionEntry (methods=23) ===
+  Method 1520 (get_InstructionID): RVA=0x0029d4c0 size=64
+  Method 1521 (get_PhaseID): RVA=0x00311190 size=64
+  Method 1522 (get_NameTranslationID): RVA=0x002a9d90 size=64
+  Method 1523 (get_InstructionOptionEntries): RVA=0x002867d0 size=64
+  Method 1524 (get_ExtraInstructionID): RVA=0x002f6ad0 size=64
+  Method 1525 (get_Identifier): RVA=0x007c7420 size=64
+  Method 1526 (get_ID): RVA=0x007c7420 size=64
+  Method 1527 (AcceptsProperty): RVA=0x007c6f90 size=64
+  Method 1528 (AcceptsPropertyInternal): RVA=0x007c6f30 size=64
+  Method 1529 (GetPropertyType): RVA=0x007c73e0 size=29
+  Method 1530 (GetPropertyTypeInternal): RVA=0x007c72d0 size=267
+  Method 1531 (GetPropertyDescription): RVA=0x0035e230 size=64
+  Method 1532 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 1533 (GetProperties): RVA=0x007c72c0 size=64
+  Method 1534 (GetPropertiesInternal): RVA=0x007c7050 size=616
+  Method 1535 (GetPropertyCount): RVA=0x004d3ef0 size=64
+  Method 1536 (GetPropertyCountInternal): RVA=0x004d3ef0 size=64
+  Method 1537 (GetContexts): RVA=0x004c7f00 size=50
+  Method 1538 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 1539 (DerivesFrom): RVA=0x007c7000 size=64
+  Method 1540 (DerivesFromInternal): RVA=0x007c6ff0 size=64
+  Method 1541 (GetInstance): RVA=0x007c7010 size=55
+  Method 1542 (.ctor): RVA=0x007c7400 size=64
+
+=== FM.UI.dll Type 215: TacticTeamInstructionOptionEntry (methods=23) ===
+  Method 1543 (get_OptionID): RVA=0x0029bfd0 size=64
+  Method 1544 (get_NameTranslationID): RVA=0x0029bfe0 size=64
+  Method 1545 (get_FullContextName): RVA=0x0029d4c0 size=64
+  Method 1546 (get_MainDescriptionTranslationID): RVA=0x0028d0f0 size=64
+  Method 1547 (get_PitchGIF): RVA=0x002867e0 size=64
+  Method 1548 (get_ImageUSS): RVA=0x00290440 size=64
+  Method 1549 (get_PitchImage): RVA=0x0029d2d0 size=64
+  Method 1550 (get_DescriptionTranslationIDList): RVA=0x00291ab0 size=64
+  Method 1551 (get_ProsTranslations): RVA=0x0028ee70 size=64
+  Method 1552 (get_ConsTranslations): RVA=0x00292460 size=64
+  Method 1553 (get_Identifier): RVA=0x007c8320 size=64
+  Method 1554 (get_ID): RVA=0x007c8320 size=64
+  Method 1555 (AcceptsPropertyInternal): RVA=0x007c7d80 size=64
+  Method 1556 (GetPropertyTypeInternal): RVA=0x007c81d0 size=335
+  Method 1557 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 1558 (GetProperties): RVA=0x007c81c0 size=64
+  Method 1559 (GetPropertiesInternal): RVA=0x007c7e30 size=912
+  Method 1560 (GetPropertyCountInternal): RVA=0x004f5cd0 size=64
+  Method 1561 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 1562 (DerivesFrom): RVA=0x007c7e10 size=64
+  Method 1563 (DerivesFromInternal): RVA=0x007c7e00 size=64
+  Method 1564 (GetInstance): RVA=0x007c7e20 size=64
+  Method 1565 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 245: AnalysisVisulisationPinnedData (methods=13) ===
+  Method 1952 (get_Identifier): RVA=0x00884a30 size=64
+  Method 1953 (get_ID): RVA=0x00884a30 size=64
+  Method 1954 (AcceptsPropertyInternal): RVA=0x00884690 size=64
+  Method 1955 (GetPropertyTypeInternal): RVA=0x00884970 size=181
+  Method 1956 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 1957 (GetProperties): RVA=0x00884820 size=323
+  Method 1958 (GetPropertiesInternal): RVA=0x008846e0 size=320
+  Method 1959 (GetPropertyCountInternal): RVA=0x0035e220 size=64
+  Method 1960 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 1961 (DerivesFrom): RVA=0x008846c0 size=64
+  Method 1962 (DerivesFromInternal): RVA=0x008846b0 size=64
+  Method 1963 (GetInstance): RVA=0x008846d0 size=64
+  Method 1964 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 288: ClubAffiliateDetails (methods=13) ===
+  Method 2541 (get_Identifier): RVA=0x00898430 size=64
+  Method 2542 (get_ID): RVA=0x00898430 size=64
+  Method 2543 (AcceptsPropertyInternal): RVA=0x008980b0 size=64
+  Method 2544 (GetPropertyTypeInternal): RVA=0x00898310 size=279
+  Method 2545 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 2546 (GetProperties): RVA=0x00898300 size=64
+  Method 2547 (GetPropertiesInternal): RVA=0x00898120 size=468
+  Method 2548 (GetPropertyCountInternal): RVA=0x004d4fb0 size=64
+  Method 2549 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 2550 (DerivesFrom): RVA=0x00898100 size=64
+  Method 2551 (DerivesFromInternal): RVA=0x008980f0 size=64
+  Method 2552 (GetInstance): RVA=0x00898110 size=64
+  Method 2553 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 306: ClubTrainedAtProgress (methods=13) ===
+  Method 2785 (get_Identifier): RVA=0x008ac0c0 size=64
+  Method 2786 (get_ID): RVA=0x008ac0c0 size=64
+  Method 2787 (AcceptsPropertyInternal): RVA=0x008abcb0 size=64
+  Method 2788 (GetPropertyTypeInternal): RVA=0x008abf60 size=338
+  Method 2789 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 2790 (GetProperties): RVA=0x008abf50 size=64
+  Method 2791 (GetPropertiesInternal): RVA=0x008abd30 size=542
+  Method 2792 (GetPropertyCountInternal): RVA=0x004e1d30 size=64
+  Method 2793 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 2794 (DerivesFrom): RVA=0x008abd10 size=64
+  Method 2795 (DerivesFromInternal): RVA=0x008abd00 size=64
+  Method 2796 (GetInstance): RVA=0x008abd20 size=64
+  Method 2797 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 437: DebugCompTeamStaffNumbers (methods=13) ===
+  Method 4567 (get_Identifier): RVA=0x004f8240 size=64
+  Method 4568 (get_ID): RVA=0x004f8240 size=64
+  Method 4569 (AcceptsPropertyInternal): RVA=0x004f78a0 size=64
+  Method 4570 (GetPropertyTypeInternal): RVA=0x004f7fe0 size=603
+  Method 4571 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 4572 (GetProperties): RVA=0x004f7fc0 size=64
+  Method 4573 (GetPropertiesInternal): RVA=0x004f79e0 size=1504
+  Method 4574 (GetPropertyCountInternal): RVA=0x004f7fd0 size=64
+  Method 4575 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 4576 (DerivesFrom): RVA=0x004f79c0 size=64
+  Method 4577 (DerivesFromInternal): RVA=0x004f79b0 size=64
+  Method 4578 (GetInstance): RVA=0x004f79d0 size=64
+  Method 4579 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 464: DebugTeamAnalysisContractExploringOptions (methods=13) ===
+  Method 4918 (get_Identifier): RVA=0x00500fd0 size=64
+  Method 4919 (get_ID): RVA=0x00500fd0 size=64
+  Method 4920 (AcceptsPropertyInternal): RVA=0x00500ca0 size=64
+  Method 4921 (GetPropertyTypeInternal): RVA=0x00500eb0 size=274
+  Method 4922 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 4923 (GetProperties): RVA=0x00500ea0 size=64
+  Method 4924 (GetPropertiesInternal): RVA=0x00500d10 size=394
+  Method 4925 (GetPropertyCountInternal): RVA=0x003debe0 size=64
+  Method 4926 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 4927 (DerivesFrom): RVA=0x00500cf0 size=64
+  Method 4928 (DerivesFromInternal): RVA=0x00500ce0 size=64
+  Method 4929 (GetInstance): RVA=0x00500d00 size=64
+  Method 4930 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 493: DraftValueEstimate (methods=13) ===
+  Method 5303 (get_Identifier): RVA=0x00509050 size=64
+  Method 5304 (get_ID): RVA=0x00509050 size=64
+  Method 5305 (AcceptsPropertyInternal): RVA=0x00508d50 size=64
+  Method 5306 (GetPropertyTypeInternal): RVA=0x00508f60 size=234
+  Method 5307 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 5308 (GetProperties): RVA=0x00508f50 size=64
+  Method 5309 (GetPropertiesInternal): RVA=0x00508dc0 size=394
+  Method 5310 (GetPropertyCountInternal): RVA=0x003debe0 size=64
+  Method 5311 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 5312 (DerivesFrom): RVA=0x00508da0 size=64
+  Method 5313 (DerivesFromInternal): RVA=0x00508d90 size=64
+  Method 5314 (GetInstance): RVA=0x00508db0 size=64
+  Method 5315 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 688: NationTrainedInProgress (methods=13) ===
+  Method 7940 (get_Identifier): RVA=0x00647050 size=64
+  Method 7941 (get_ID): RVA=0x00647050 size=64
+  Method 7942 (AcceptsPropertyInternal): RVA=0x00646cd0 size=64
+  Method 7943 (GetPropertyTypeInternal): RVA=0x00646f30 size=286
+  Method 7944 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 7945 (GetProperties): RVA=0x00646f20 size=64
+  Method 7946 (GetPropertiesInternal): RVA=0x00646d40 size=468
+  Method 7947 (GetPropertyCountInternal): RVA=0x004d4fb0 size=64
+  Method 7948 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 7949 (DerivesFrom): RVA=0x00646d20 size=64
+  Method 7950 (DerivesFromInternal): RVA=0x00646d10 size=64
+  Method 7951 (GetInstance): RVA=0x00646d30 size=64
+  Method 7952 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 689: NeedsReconcileSaveInfo (methods=13) ===
+  Method 7953 (get_Identifier): RVA=0x006473c0 size=64
+  Method 7954 (get_ID): RVA=0x006473c0 size=64
+  Method 7955 (AcceptsPropertyInternal): RVA=0x00647060 size=64
+  Method 7956 (GetPropertyTypeInternal): RVA=0x006472c0 size=242
+  Method 7957 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 7958 (GetProperties): RVA=0x006472b0 size=64
+  Method 7959 (GetPropertiesInternal): RVA=0x006470d0 size=468
+  Method 7960 (GetPropertyCountInternal): RVA=0x004d4fb0 size=64
+  Method 7961 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 7962 (DerivesFrom): RVA=0x006470b0 size=64
+  Method 7963 (DerivesFromInternal): RVA=0x006470a0 size=64
+  Method 7964 (GetInstance): RVA=0x006470c0 size=64
+  Method 7965 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 705: OfficialStatsreference (methods=13) ===
+  Method 8159 (get_Identifier): RVA=0x0064cfd0 size=64
+  Method 8160 (get_ID): RVA=0x0064cfd0 size=64
+  Method 8161 (AcceptsPropertyInternal): RVA=0x0064cb80 size=64
+  Method 8162 (GetPropertyTypeInternal): RVA=0x0064ce90 size=307
+  Method 8163 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 8164 (GetProperties): RVA=0x0064ce80 size=64
+  Method 8165 (GetPropertiesInternal): RVA=0x0064cc10 size=616
+  Method 8166 (GetPropertyCountInternal): RVA=0x004d3ef0 size=64
+  Method 8167 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 8168 (DerivesFrom): RVA=0x0064cbf0 size=64
+  Method 8169 (DerivesFromInternal): RVA=0x0064cbe0 size=64
+  Method 8170 (GetInstance): RVA=0x0064cc00 size=64
+  Method 8171 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 723: PersonReference (methods=19) ===
+  Method 8399 (.ctor): RVA=0x00631e00 size=64
+  Method 8400 (.ctor): RVA=0x00631e10 size=64
+  Method 8401 (.ctor): RVA=0x004cf990 size=64
+  Method 8402 (Equals): RVA=0x00625290 size=64
+  Method 8403 (GetHashCode): RVA=0x006286d0 size=64
+  Method 8404 (get_Identifier): RVA=0x00631e20 size=64
+  Method 8405 (get_ID): RVA=0x00631e20 size=64
+  Method 8406 (AcceptsProperty): RVA=0x006251c0 size=64
+  Method 8407 (AcceptsPropertyInternal): RVA=0x0060ca30 size=64
+  Method 8408 (GetPropertyTypeInternal): RVA=0x00611c30 size=79244
+  Method 8409 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 8410 (GetProperties): RVA=0x00631de0 size=64
+  Method 8411 (GetPropertiesInternal): RVA=0x00628720 size=38591
+  Method 8412 (GetPropertyCountInternal): RVA=0x00631df0 size=64
+  Method 8413 (GetContexts): RVA=0x006286c0 size=64
+  Method 8414 (GetContextsInternal): RVA=0x006252d0 size=13294
+  Method 8415 (DerivesFrom): RVA=0x00625230 size=64
+  Method 8416 (DerivesFromInternal): RVA=0x006251d0 size=64
+  Method 8417 (GetInstance): RVA=0x006286e0 size=49
+
+=== FM.UI.dll Type 756: PlayerReportGradingInfo (methods=13) ===
+  Method 8845 (get_Identifier): RVA=0x0065e9e0 size=64
+  Method 8846 (get_ID): RVA=0x0065e9e0 size=64
+  Method 8847 (AcceptsPropertyInternal): RVA=0x0065e680 size=64
+  Method 8848 (GetPropertyTypeInternal): RVA=0x0065e8e0 size=242
+  Method 8849 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 8850 (GetProperties): RVA=0x0065e8d0 size=64
+  Method 8851 (GetPropertiesInternal): RVA=0x0065e6f0 size=468
+  Method 8852 (GetPropertyCountInternal): RVA=0x004d4fb0 size=64
+  Method 8853 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 8854 (DerivesFrom): RVA=0x0065e6d0 size=64
+  Method 8855 (DerivesFromInternal): RVA=0x0065e6c0 size=64
+  Method 8856 (GetInstance): RVA=0x0065e6e0 size=64
+  Method 8857 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 761: PlayerRightsData (methods=13) ===
+  Method 8913 (get_Identifier): RVA=0x00660e40 size=64
+  Method 8914 (get_ID): RVA=0x00660e40 size=64
+  Method 8915 (AcceptsPropertyInternal): RVA=0x00660a50 size=64
+  Method 8916 (GetPropertyTypeInternal): RVA=0x00660d30 size=258
+  Method 8917 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 8918 (GetProperties): RVA=0x00660be0 size=323
+  Method 8919 (GetPropertiesInternal): RVA=0x00660aa0 size=320
+  Method 8920 (GetPropertyCountInternal): RVA=0x0035e220 size=64
+  Method 8921 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 8922 (DerivesFrom): RVA=0x00660a80 size=64
+  Method 8923 (DerivesFromInternal): RVA=0x00660a70 size=64
+  Method 8924 (GetInstance): RVA=0x00660a90 size=64
+  Method 8925 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 769: PlayersTimeLeftOnContract (methods=13) ===
+  Method 9020 (get_Identifier): RVA=0x00663ef0 size=64
+  Method 9021 (get_ID): RVA=0x00663ef0 size=64
+  Method 9022 (AcceptsPropertyInternal): RVA=0x00663b40 size=64
+  Method 9023 (GetPropertyTypeInternal): RVA=0x00663df0 size=250
+  Method 9024 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 9025 (GetProperties): RVA=0x00663de0 size=64
+  Method 9026 (GetPropertiesInternal): RVA=0x00663bc0 size=542
+  Method 9027 (GetPropertyCountInternal): RVA=0x004e1d30 size=64
+  Method 9028 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 9029 (DerivesFrom): RVA=0x00663ba0 size=64
+  Method 9030 (DerivesFromInternal): RVA=0x00663b90 size=64
+  Method 9031 (GetInstance): RVA=0x00663bb0 size=64
+  Method 9032 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 783: PositionGamesPlayed (methods=13) ===
+  Method 9205 (get_Identifier): RVA=0x00667ae0 size=64
+  Method 9206 (get_ID): RVA=0x00667ae0 size=64
+  Method 9207 (AcceptsPropertyInternal): RVA=0x00667630 size=64
+  Method 9208 (GetPropertyTypeInternal): RVA=0x006679a0 size=307
+  Method 9209 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 9210 (GetProperties): RVA=0x00667990 size=64
+  Method 9211 (GetPropertiesInternal): RVA=0x006676d0 size=690
+  Method 9212 (GetPropertyCountInternal): RVA=0x002fb070 size=64
+  Method 9213 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 9214 (DerivesFrom): RVA=0x006676b0 size=64
+  Method 9215 (DerivesFromInternal): RVA=0x006676a0 size=64
+  Method 9216 (GetInstance): RVA=0x006676c0 size=64
+  Method 9217 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 795: PreMatchAnalysisNews (methods=13) ===
+  Method 9370 (get_Identifier): RVA=0x0066bcb0 size=64
+  Method 9371 (get_ID): RVA=0x0066bcb0 size=64
+  Method 9372 (AcceptsPropertyInternal): RVA=0x0066b980 size=64
+  Method 9373 (GetPropertyTypeInternal): RVA=0x0066bbd0 size=210
+  Method 9374 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 9375 (GetProperties): RVA=0x0066bad0 size=249
+  Method 9376 (GetPropertiesInternal): RVA=0x0066b9d0 size=246
+  Method 9377 (GetPropertyCountInternal): RVA=0x003dc440 size=64
+  Method 9378 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 9379 (DerivesFrom): RVA=0x0066b9b0 size=64
+  Method 9380 (DerivesFromInternal): RVA=0x0066b9a0 size=64
+  Method 9381 (GetInstance): RVA=0x0066b9c0 size=64
+  Method 9382 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 838: SaveGameSummaryManagers (methods=13) ===
+  Method 9959 (get_Identifier): RVA=0x00679f80 size=64
+  Method 9960 (get_ID): RVA=0x00679f80 size=64
+  Method 9961 (AcceptsPropertyInternal): RVA=0x00679c10 size=64
+  Method 9962 (GetPropertyTypeInternal): RVA=0x00679e60 size=278
+  Method 9963 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 9964 (GetProperties): RVA=0x00679d60 size=249
+  Method 9965 (GetPropertiesInternal): RVA=0x00679c60 size=246
+  Method 9966 (GetPropertyCountInternal): RVA=0x003dc440 size=64
+  Method 9967 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 9968 (DerivesFrom): RVA=0x00679c40 size=64
+  Method 9969 (DerivesFromInternal): RVA=0x00679c30 size=64
+  Method 9970 (GetInstance): RVA=0x00679c50 size=64
+  Method 9971 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 839: SaveGameSummaryNations (methods=13) ===
+  Method 9972 (get_Identifier): RVA=0x0067a300 size=64
+  Method 9973 (get_ID): RVA=0x0067a300 size=64
+  Method 9974 (AcceptsPropertyInternal): RVA=0x00679f90 size=64
+  Method 9975 (GetPropertyTypeInternal): RVA=0x0067a1e0 size=278
+  Method 9976 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 9977 (GetProperties): RVA=0x0067a0e0 size=249
+  Method 9978 (GetPropertiesInternal): RVA=0x00679fe0 size=246
+  Method 9979 (GetPropertyCountInternal): RVA=0x003dc440 size=64
+  Method 9980 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 9981 (DerivesFrom): RVA=0x00679fc0 size=64
+  Method 9982 (DerivesFromInternal): RVA=0x00679fb0 size=64
+  Method 9983 (GetInstance): RVA=0x00679fd0 size=64
+  Method 9984 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 861: ScoutTeamPrioritiesReference (methods=16) ===
+  Method 10276 (.ctor): RVA=0x0067dbc0 size=55
+  Method 10277 (.ctor): RVA=0x004d2220 size=61
+  Method 10278 (get_Identifier): RVA=0x0067dc00 size=64
+  Method 10279 (get_ID): RVA=0x0067dc00 size=64
+  Method 10280 (AcceptsProperty): RVA=0x0067d680 size=64
+  Method 10281 (AcceptsPropertyInternal): RVA=0x0067d660 size=64
+  Method 10282 (GetPropertyTypeInternal): RVA=0x0067db00 size=181
+  Method 10283 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 10284 (GetProperties): RVA=0x0067d9b0 size=323
+  Method 10285 (GetPropertiesInternal): RVA=0x0067d870 size=320
+  Method 10286 (GetPropertyCountInternal): RVA=0x0035e220 size=64
+  Method 10287 (GetContexts): RVA=0x0067d770 size=162
+  Method 10288 (GetContextsInternal): RVA=0x0067d6c0 size=162
+  Method 10289 (DerivesFrom): RVA=0x0067d6b0 size=64
+  Method 10290 (DerivesFromInternal): RVA=0x0067d6a0 size=64
+  Method 10291 (GetInstance): RVA=0x0067d820 size=71
+
+=== FM.UI.dll Type 909: SpecificallyScoutedPersonReference (methods=13) ===
+  Method 10924 (get_Identifier): RVA=0x00697370 size=64
+  Method 10925 (get_ID): RVA=0x00697370 size=64
+  Method 10926 (AcceptsPropertyInternal): RVA=0x00696ef0 size=64
+  Method 10927 (GetPropertyTypeInternal): RVA=0x00697200 size=356
+  Method 10928 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 10929 (GetProperties): RVA=0x006971f0 size=64
+  Method 10930 (GetPropertiesInternal): RVA=0x00696f80 size=616
+  Method 10931 (GetPropertyCountInternal): RVA=0x004d3ef0 size=64
+  Method 10932 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 10933 (DerivesFrom): RVA=0x00696f60 size=64
+  Method 10934 (DerivesFromInternal): RVA=0x00696f50 size=64
+  Method 10935 (GetInstance): RVA=0x00696f70 size=64
+  Method 10936 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 926: SquadRegistrationEditSession (methods=16) ===
+  Method 11154 (.ctor): RVA=0x0069db80 size=55
+  Method 11155 (.ctor): RVA=0x004d2220 size=61
+  Method 11156 (get_Identifier): RVA=0x0069dbc0 size=64
+  Method 11157 (get_ID): RVA=0x0069dbc0 size=64
+  Method 11158 (AcceptsProperty): RVA=0x0069c900 size=64
+  Method 11159 (AcceptsPropertyInternal): RVA=0x0069c6d0 size=64
+  Method 11160 (GetPropertyTypeInternal): RVA=0x0069d740 size=1078
+  Method 11161 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 11162 (GetProperties): RVA=0x0069d730 size=64
+  Method 11163 (GetPropertiesInternal): RVA=0x0069cc60 size=2762
+  Method 11164 (GetPropertyCountInternal): RVA=0x006848a0 size=64
+  Method 11165 (GetContexts): RVA=0x0069caa0 size=363
+  Method 11166 (GetContextsInternal): RVA=0x0069c930 size=363
+  Method 11167 (DerivesFrom): RVA=0x0069c920 size=64
+  Method 11168 (DerivesFromInternal): RVA=0x0069c910 size=64
+  Method 11169 (GetInstance): RVA=0x0069cc10 size=71
+
+=== FM.UI.dll Type 940: StaffMeetingTopicList (methods=13) ===
+  Method 11346 (get_Identifier): RVA=0x006a2100 size=64
+  Method 11347 (get_ID): RVA=0x006a2100 size=64
+  Method 11348 (AcceptsPropertyInternal): RVA=0x006a1e10 size=64
+  Method 11349 (GetPropertyTypeInternal): RVA=0x006a2010 size=234
+  Method 11350 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 11351 (GetProperties): RVA=0x006a2000 size=64
+  Method 11352 (GetPropertiesInternal): RVA=0x006a1e70 size=394
+  Method 11353 (GetPropertyCountInternal): RVA=0x003debe0 size=64
+  Method 11354 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 11355 (DerivesFrom): RVA=0x006a1e50 size=64
+  Method 11356 (DerivesFromInternal): RVA=0x006a1e40 size=64
+  Method 11357 (GetInstance): RVA=0x006a1e60 size=64
+  Method 11358 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 945: StaffSubGroupJobsData (methods=13) ===
+  Method 11411 (get_Identifier): RVA=0x006a3250 size=64
+  Method 11412 (get_ID): RVA=0x006a3250 size=64
+  Method 11413 (AcceptsPropertyInternal): RVA=0x006a2f50 size=64
+  Method 11414 (GetPropertyTypeInternal): RVA=0x006a3160 size=234
+  Method 11415 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 11416 (GetProperties): RVA=0x006a3150 size=64
+  Method 11417 (GetPropertiesInternal): RVA=0x006a2fc0 size=394
+  Method 11418 (GetPropertyCountInternal): RVA=0x003debe0 size=64
+  Method 11419 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 11420 (DerivesFrom): RVA=0x006a2fa0 size=64
+  Method 11421 (DerivesFromInternal): RVA=0x006a2f90 size=64
+  Method 11422 (GetInstance): RVA=0x006a2fb0 size=64
+  Method 11423 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 947: StaffTimeLeftOnContract (methods=13) ===
+  Method 11437 (get_Identifier): RVA=0x006a3bb0 size=64
+  Method 11438 (get_ID): RVA=0x006a3bb0 size=64
+  Method 11439 (AcceptsPropertyInternal): RVA=0x006a3800 size=64
+  Method 11440 (GetPropertyTypeInternal): RVA=0x006a3ab0 size=250
+  Method 11441 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 11442 (GetProperties): RVA=0x006a3aa0 size=64
+  Method 11443 (GetPropertiesInternal): RVA=0x006a3880 size=542
+  Method 11444 (GetPropertyCountInternal): RVA=0x004e1d30 size=64
+  Method 11445 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 11446 (DerivesFrom): RVA=0x006a3860 size=64
+  Method 11447 (DerivesFromInternal): RVA=0x006a3850 size=64
+  Method 11448 (GetInstance): RVA=0x006a3870 size=64
+  Method 11449 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 1034: TrainingWeekExtraInfo (methods=13) ===
+  Method 12642 (get_Identifier): RVA=0x006d6420 size=64
+  Method 12643 (get_ID): RVA=0x006d6420 size=64
+  Method 12644 (AcceptsPropertyInternal): RVA=0x006d6080 size=64
+  Method 12645 (GetPropertyTypeInternal): RVA=0x006d6360 size=181
+  Method 12646 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 12647 (GetProperties): RVA=0x006d6210 size=323
+  Method 12648 (GetPropertiesInternal): RVA=0x006d60d0 size=320
+  Method 12649 (GetPropertyCountInternal): RVA=0x0035e220 size=64
+  Method 12650 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 12651 (DerivesFrom): RVA=0x006d60b0 size=64
+  Method 12652 (DerivesFromInternal): RVA=0x006d60a0 size=64
+  Method 12653 (GetInstance): RVA=0x006d60c0 size=64
+  Method 12654 (.ctor): RVA=0x002911e0 size=64
+
+=== FM.UI.dll Type 2250: MatchSimulationData (methods=13) ===
+  Method 21443 (get_Identifier): RVA=0x0086ce90 size=64
+  Method 21444 (get_ID): RVA=0x0086ce90 size=64
+  Method 21445 (AcceptsPropertyInternal): RVA=0x002fd850 size=64
+  Method 21446 (GetPropertyTypeInternal): RVA=0x004ee5e0 size=102
+  Method 21447 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 21448 (GetProperties): RVA=0x005045b0 size=70
+  Method 21449 (GetPropertiesInternal): RVA=0x004ee530 size=67
+  Method 21450 (GetPropertyCountInternal): RVA=0x00294ea0 size=64
+  Method 21451 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 21452 (DerivesFrom): RVA=0x0086cd90 size=64
+  Method 21453 (DerivesFromInternal): RVA=0x0086cd80 size=64
+  Method 21454 (GetInstance): RVA=0x0086cda0 size=113
+  Method 21455 (.ctor): RVA=0x0086ce20 size=97
+
+=== FM.UI.dll Type 2251: PlayerEntityData (methods=13) ===
+  Method 21456 (get_Identifier): RVA=0x0086d410 size=64
+  Method 21457 (get_ID): RVA=0x0086d410 size=64
+  Method 21458 (AcceptsPropertyInternal): RVA=0x0086cfe0 size=64
+  Method 21459 (GetPropertyTypeInternal): RVA=0x0086d2e0 size=275
+  Method 21460 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 21461 (GetProperties): RVA=0x0086d190 size=323
+  Method 21462 (GetPropertiesInternal): RVA=0x0086d050 size=320
+  Method 21463 (GetPropertyCountInternal): RVA=0x0035e220 size=64
+  Method 21464 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 21465 (DerivesFrom): RVA=0x0086d010 size=64
+  Method 21466 (DerivesFromInternal): RVA=0x0086d000 size=64
+  Method 21467 (GetInstance): RVA=0x0086d020 size=36
+  Method 21468 (.ctor): RVA=0x0086d400 size=64
+
+=== UnityEngine.UIElementsModule.dll Type 4787: InlineStyleAccessPropertyBag (methods=5) ===
+  Method 39406 (.ctor): RVA=0x01f22480 size=3622
+  Method 39407 (AddProperty): RVA=0x00000000 size=0
+  Method 39408 (GetProperties): RVA=0x010220a0 size=46
+  Method 39409 (GetProperties): RVA=0x010220a0 size=46
+  Method 39410 (TryGetProperty): RVA=0x01f22460 size=64
+
+=== UnityEngine.UIElementsModule.dll Type 4903: ResolvedStyleAccessPropertyBag (methods=5) ===
+  Method 40796 (.ctor): RVA=0x01f3fe50 size=2236
+  Method 40797 (AddProperty): RVA=0x00000000 size=0
+  Method 40798 (GetProperties): RVA=0x010220a0 size=46
+  Method 40799 (GetProperties): RVA=0x010220a0 size=46
+  Method 40800 (TryGetProperty): RVA=0x01f3fe30 size=64
+
+=== SI.Bindable.dll Type 5596: BookmarkInfo (methods=37) ===
+  Method 45484 (get_BookmarkText): RVA=0x003075f0 size=64
+  Method 45485 (get_PanelIDRef): RVA=0x002867d0 size=64
+  Method 45486 (get_MainPanelIDRef): RVA=0x002867e0 size=64
+  Method 45487 (get_InputShortcut): RVA=0x0029d2d0 size=64
+  Method 45488 (get_IndicatorType): RVA=0x0029d2b0 size=64
+  Method 45489 (get_PanelUID): RVA=0x002ee940 size=64
+  Method 45490 (set_PanelUID): RVA=0x002a4380 size=64
+  Method 45491 (get_IconStyle): RVA=0x0028ee70 size=64
+  Method 45492 (get_IsSelected): RVA=0x002f69f0 size=64
+  Method 45493 (set_IsSelected): RVA=0x011e9d80 size=64
+  Method 45494 (get_DefaultSelection): RVA=0x00366b80 size=64
+  Method 45495 (get_OpenEvent): RVA=0x00287290 size=64
+  Method 45496 (Init): RVA=0x014c9b30 size=64
+  Method 45497 (BindEntry): RVA=0x014c9370 size=875
+  Method 45498 (UnbindEntry): RVA=0x014c9e60 size=93
+  Method 45499 (OnEnable): RVA=0x014c9b90 size=69
+  Method 45500 (OnDisable): RVA=0x014c9b40 size=69
+  Method 45501 (OnLanguageChangedEvent): RVA=0x014c9be0 size=101
+  Method 45502 (get_Identifier): RVA=0x014c9ec0 size=64
+  Method 45503 (get_ID): RVA=0x014c9ec0 size=64
+  Method 45504 (AcceptsProperty): RVA=0x014c9310 size=64
+  Method 45505 (AcceptsPropertyInternal): RVA=0x014c92b0 size=64
+  Method 45506 (GetPropertyType): RVA=0x014c9b10 size=29
+  Method 45507 (GetPropertyTypeInternal): RVA=0x014c99b0 size=341
+  Method 45508 (GetPropertyDescription): RVA=0x0035e230 size=64
+  Method 45509 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 45510 (GetProperties): RVA=0x014c99a0 size=64
+  Method 45511 (GetPropertiesInternal): RVA=0x014c9730 size=614
+  Method 45512 (GetPropertyCount): RVA=0x004d3ef0 size=64
+  Method 45513 (GetPropertyCountInternal): RVA=0x004d3ef0 size=64
+  Method 45514 (GetContexts): RVA=0x004c7f00 size=50
+  Method 45515 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 45516 (DerivesFrom): RVA=0x014c96f0 size=64
+  Method 45517 (DerivesFromInternal): RVA=0x014c96e0 size=64
+  Method 45518 (GetInstance): RVA=0x014c9700 size=40
+  Method 45519 (.ctor): RVA=0x002eab60 size=64
+  Method 45520 (<BindEntry>b__37_0): RVA=0x014c9c50 size=516
+
+=== SI.Bindable.dll Type 6031: PanelAnchorInfo (methods=15) ===
+  Method 49482 (get_DisplayValue): RVA=0x0029bfd0 size=64
+  Method 49483 (get_AnchorName): RVA=0x00285830 size=64
+  Method 49484 (get_Identifier): RVA=0x015fbd60 size=64
+  Method 49485 (get_ID): RVA=0x015fbd60 size=64
+  Method 49486 (AcceptsPropertyInternal): RVA=0x015fba60 size=64
+  Method 49487 (GetPropertyTypeInternal): RVA=0x015fbcb0 size=170
+  Method 49488 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 49489 (GetProperties): RVA=0x015fbbb0 size=247
+  Method 49490 (GetPropertiesInternal): RVA=0x015fbab0 size=244
+  Method 49491 (GetPropertyCountInternal): RVA=0x003dc440 size=64
+  Method 49492 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 49493 (DerivesFrom): RVA=0x015fba90 size=64
+  Method 49494 (DerivesFromInternal): RVA=0x015fba80 size=64
+  Method 49495 (GetInstance): RVA=0x015fbaa0 size=64
+  Method 49496 (.ctor): RVA=0x002911e0 size=64
+
+=== SI.Bindable.dll Type 6061: PanelSubtabElement (methods=13) ===
+  Method 49727 (get_Identifier): RVA=0x016165a0 size=64
+  Method 49728 (get_ID): RVA=0x016165a0 size=64
+  Method 49729 (AcceptsPropertyInternal): RVA=0x016161e0 size=64
+  Method 49730 (GetPropertyTypeInternal): RVA=0x016164c0 size=218
+  Method 49731 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 49732 (GetProperties): RVA=0x01616370 size=323
+  Method 49733 (GetPropertiesInternal): RVA=0x01616230 size=320
+  Method 49734 (GetPropertyCountInternal): RVA=0x0035e220 size=64
+  Method 49735 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 49736 (DerivesFrom): RVA=0x01616210 size=64
+  Method 49737 (DerivesFromInternal): RVA=0x01616200 size=64
+  Method 49738 (GetInstance): RVA=0x01616220 size=64
+  Method 49739 (.ctor): RVA=0x002911e0 size=64
+
+=== SI.Bindable.dll Type 6063: PanelSubtabInfo (methods=40) ===
+  Method 49740 (get_IsSanitized): RVA=0x002f69f0 size=64
+  Method 49741 (set_IsSanitized): RVA=0x011e9d80 size=64
+  Method 49742 (get_IsBound): RVA=0x0146c910 size=64
+  Method 49743 (set_IsBound): RVA=0x0146ca90 size=64
+  Method 49744 (get_TranslationString): RVA=0x003075f0 size=64
+  Method 49745 (get_PanelIDRef): RVA=0x002867d0 size=64
+  Method 49746 (get_ObjectUniqueID): RVA=0x002f6a20 size=64
+  Method 49747 (get_PanelUID): RVA=0x002ee910 size=64
+  Method 49748 (get_IsOpeningCard): RVA=0x002f6a30 size=64
+  Method 49749 (get_ValidForProductType): RVA=0x002f6a10 size=64
+  Method 49750 (get_ValidForHumanJobState): RVA=0x002f6b00 size=64
+  Method 49751 (get_FMCOrderOverride): RVA=0x002ee940 size=64
+  Method 49752 (get_OpenEvent): RVA=0x00292460 size=64
+  Method 49753 (get_Condition): RVA=0x01617630 size=174
+  Method 49754 (get_ObjectUniqueIDBindingPath): RVA=0x002867e0 size=64
+  Method 49755 (add_OnConditionChanged): RVA=0x01617500 size=154
+  Method 49756 (remove_OnConditionChanged): RVA=0x016176f0 size=154
+  Method 49757 (add_OnTranslationUpdated): RVA=0x016175a0 size=144
+  Method 49758 (remove_OnTranslationUpdated): RVA=0x01617790 size=144
+  Method 49759 (Init): RVA=0x01616ff0 size=250
+  Method 49760 (GetObjectUniqueIDToCheck): RVA=0x01616c30 size=123
+  Method 49761 (GetSubtabHash): RVA=0x01616f90 size=96
+  Method 49762 (BindEntry): RVA=0x016165f0 size=1446
+  Method 49763 (UnbindEntry): RVA=0x016172f0 size=431
+  Method 49764 (get_Identifier): RVA=0x016176e0 size=64
+  Method 49765 (get_ID): RVA=0x016176e0 size=64
+  Method 49766 (AcceptsPropertyInternal): RVA=0x016165b0 size=64
+  Method 49767 (GetPropertyTypeInternal): RVA=0x01616ea0 size=239
+  Method 49768 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 49769 (GetProperties): RVA=0x01616e90 size=64
+  Method 49770 (GetPropertiesInternal): RVA=0x01616cb0 size=466
+  Method 49771 (GetPropertyCountInternal): RVA=0x004d4fb0 size=64
+  Method 49772 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 49773 (DerivesFrom): RVA=0x01616bb0 size=64
+  Method 49774 (DerivesFromInternal): RVA=0x01616ba0 size=64
+  Method 49775 (GetInstance): RVA=0x01616bc0 size=108
+  Method 49776 (.ctor): RVA=0x016174a0 size=92
+  Method 49777 (<BindEntry>g__TranslationCallback|64_0): RVA=0x01617270 size=120
+  Method 49778 (<BindEntry>b__64_3): RVA=0x016170f0 size=384
+  Method 49779 (<BindEntry>g__ObjectUniqueIDCallback|64_1): RVA=0x0071e190 size=87
+
+=== SI.Bindable.dll Type 6131: ShortcutEntry (methods=50) ===
+  Method 50294 (get_ShortcutDescription): RVA=0x0029d4c0 size=64
+  Method 50295 (get_TranslationPath): RVA=0x00291ab0 size=64
+  Method 50296 (get_ExtraIcon): RVA=0x002867d0 size=64
+  Method 50297 (get_ConditionPath): RVA=0x002867e0 size=64
+  Method 50298 (get_ConditionInverted): RVA=0x0034e620 size=64
+  Method 50299 (get_ShortcutType): RVA=0x002f6b00 size=64
+  Method 50300 (get_IconKey): RVA=0x002ee940 size=64
+  Method 50301 (get_IconKeysUsed): RVA=0x0028ee70 size=64
+  Method 50302 (get_HasMultipleIconKeys): RVA=0x01501a90 size=64
+  Method 50303 (get_HasBeenAppended): RVA=0x01232ec0 size=64
+  Method 50304 (set_HasBeenAppended): RVA=0x01232ed0 size=64
+  Method 50305 (get_IsValid): RVA=0x012b5c40 size=64
+  Method 50306 (set_IsValid): RVA=0x01501bb0 size=64
+  Method 50307 (get_IsBound): RVA=0x01501ab0 size=64
+  Method 50308 (set_IsBound): RVA=0x01501ba0 size=64
+  Method 50309 (add_OnConditionChanged): RVA=0x015019c0 size=142
+  Method 50310 (remove_OnConditionChanged): RVA=0x01501b00 size=142
+  Method 50311 (get_RootKey): RVA=0x0028a5a0 size=64
+  Method 50312 (set_RootKey): RVA=0x006e2aa0 size=64
+  Method 50313 (get_ConditionKey): RVA=0x003075f0 size=64
+  Method 50314 (set_ConditionKey): RVA=0x01501b90 size=64
+  Method 50315 (get_TranslationKey): RVA=0x0028a3f0 size=64
+  Method 50316 (set_TranslationKey): RVA=0x01501bc0 size=64
+  Method 50317 (get_Condition): RVA=0x01501a50 size=58
+  Method 50318 (set_Condition): RVA=0x002933e0 size=64
+  Method 50319 (get_TranslationString): RVA=0x01501ac0 size=49
+  Method 50320 (BindEntry): RVA=0x015010e0 size=398
+  Method 50321 (UnbindEntry): RVA=0x01501890 size=283
+  Method 50322 (OnBoundConditionChanged): RVA=0x01501720 size=107
+  Method 50323 (OnTranslationPathValueChangedChanged): RVA=0x01501830 size=96
+  Method 50324 (OnEnable): RVA=0x01501790 size=145
+  Method 50325 (Setup): RVA=0x01501790 size=145
+  Method 50326 (get_Identifier): RVA=0x01501aa0 size=64
+  Method 50327 (get_ID): RVA=0x01501aa0 size=64
+  Method 50328 (AcceptsProperty): RVA=0x015010c0 size=64
+  Method 50329 (AcceptsPropertyInternal): RVA=0x015010a0 size=64
+  Method 50330 (GetPropertyType): RVA=0x01501610 size=258
+  Method 50331 (GetPropertyTypeInternal): RVA=0x01501550 size=181
+  Method 50332 (GetPropertyDescription): RVA=0x0035e230 size=64
+  Method 50333 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 50334 (GetProperties): RVA=0x01501400 size=323
+  Method 50335 (GetPropertiesInternal): RVA=0x015012c0 size=320
+  Method 50336 (GetPropertyCount): RVA=0x0035e220 size=64
+  Method 50337 (GetPropertyCountInternal): RVA=0x0035e220 size=64
+  Method 50338 (GetContexts): RVA=0x004c7f00 size=50
+  Method 50339 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 50340 (DerivesFrom): RVA=0x01501280 size=64
+  Method 50341 (DerivesFromInternal): RVA=0x01501270 size=64
+  Method 50342 (GetInstance): RVA=0x01501290 size=47
+  Method 50343 (.ctor): RVA=0x015019b0 size=64
+
+=== Newtonsoft.Json.dll Type 12472: JsonPropertyCollection (methods=6) ===
+  Method 95652 (.ctor): RVA=0x0146c670 size=282
+  Method 95653 (GetKeyForItem): RVA=0x01244340 size=24
+  Method 95654 (AddProperty): RVA=0x0146c120 size=622
+  Method 95655 (GetClosestMatchProperty): RVA=0x0146c390 size=175
+  Method 95656 (TryGetProperty): RVA=0x0146c5a0 size=208
+  Method 95657 (GetProperty): RVA=0x0146c440 size=349
+
+=== FM.GamePlugin.dll Type 13943: UiRecordID (methods=0) ===
+
+=== UnityEngine.PropertiesModule.dll Type 15409: PropertyContainer (methods=7) ===
+  Method 115382 (Accept): RVA=0x00000000 size=0
+  Method 115383 (TryAccept): RVA=0x00000000 size=0
+  Method 115384 (TryAccept): RVA=0x00000000 size=0
+  Method 115385 (TryGetProperty): RVA=0x00000000 size=0
+  Method 115386 (TryGetProperty): RVA=0x00000000 size=0
+  Method 115387 (TryGetValue): RVA=0x00000000 size=0
+  Method 115388 (TryGetValue): RVA=0x00000000 size=0
+
+=== UnityEngine.PropertiesModule.dll Type 15437: ContainerPropertyBag`1 (methods=6) ===
+  Method 115522 (.cctor): RVA=0x00000000 size=0
+  Method 115523 (AddProperty): RVA=0x00000000 size=0
+  Method 115524 (GetProperties): RVA=0x00000000 size=0
+  Method 115525 (GetProperties): RVA=0x00000000 size=0
+  Method 115526 (TryGetProperty): RVA=0x00000000 size=0
+  Method 115527 (.ctor): RVA=0x00000000 size=0
+
+=== UnityEngine.PropertiesModule.dll Type 15445: IndexedCollectionPropertyBag`2 (methods=13) ===
+  Method 115546 (GetProperties): RVA=0x00000000 size=0
+  Method 115547 (GetProperties): RVA=0x00000000 size=0
+  Method 115548 (TryGetProperty): RVA=0x00000000 size=0
+  Method 115549 (Unity.Properties.ICollectionPropertyBagAccept<TList>.Accept): RVA=0x00000000 size=0
+  Method 115550 (Unity.Properties.IListPropertyBagAccept<TList>.Accept): RVA=0x00000000 size=0
+  Method 115551 (Unity.Properties.IListPropertyAccept<TList>.Accept): RVA=0x00000000 size=0
+  Method 115552 (Unity.Properties.IConstructorWithCount<TList>.InstantiateWithCount): RVA=0x00000000 size=0
+  Method 115553 (InstantiateWithCount): RVA=0x00000000 size=0
+  Method 115554 (Unity.Properties.IIndexedCollectionPropertyBagEnumerator<TList>.GetCount): RVA=0x00000000 size=0
+  Method 115555 (Unity.Properties.IIndexedCollectionPropertyBagEnumerator<TList>.GetSharedProperty): RVA=0x00000000 size=0
+  Method 115556 (Unity.Properties.IIndexedCollectionPropertyBagEnumerator<TList>.GetSharedPropertyState): RVA=0x00000000 size=0
+  Method 115557 (Unity.Properties.IIndexedCollectionPropertyBagEnumerator<TList>.SetSharedPropertyState): RVA=0x00000000 size=0
+  Method 115558 (.ctor): RVA=0x00000000 size=0
+
+=== UnityEngine.PropertiesModule.dll Type 15446: IIndexedProperties`1 (methods=1) ===
+  Method 115565 (TryGetProperty): RVA=0x00000000 size=0
+
+=== UnityEngine.PropertiesModule.dll Type 15447: INamedProperties`1 (methods=1) ===
+  Method 115566 (TryGetProperty): RVA=0x00000000 size=0
+
+=== UnityEngine.PropertiesModule.dll Type 15448: IKeyedProperties`2 (methods=1) ===
+  Method 115567 (TryGetProperty): RVA=0x00000000 size=0
+
+=== UnityEngine.PropertiesModule.dll Type 15461: KeyValuePairPropertyBag`2 (methods=6) ===
+  Method 115596 (GetProperties): RVA=0x00000000 size=0
+  Method 115597 (GetProperties): RVA=0x00000000 size=0
+  Method 115598 (GetPropertiesEnumerable): RVA=0x00000000 size=0
+  Method 115599 (TryGetProperty): RVA=0x00000000 size=0
+  Method 115600 (.ctor): RVA=0x00000000 size=0
+  Method 115601 (.cctor): RVA=0x00000000 size=0
+
+=== UnityEngine.PropertiesModule.dll Type 15470: SetPropertyBagBase`2 (methods=7) ===
+  Method 115656 (GetProperties): RVA=0x00000000 size=0
+  Method 115657 (GetProperties): RVA=0x00000000 size=0
+  Method 115658 (GetPropertiesEnumerable): RVA=0x00000000 size=0
+  Method 115659 (Unity.Properties.ICollectionPropertyBagAccept<TSet>.Accept): RVA=0x00000000 size=0
+  Method 115660 (Unity.Properties.ISetPropertyBagAccept<TSet>.Accept): RVA=0x00000000 size=0
+  Method 115661 (TryGetProperty): RVA=0x00000000 size=0
+  Method 115662 (.ctor): RVA=0x00000000 size=0
+
+=== FM.Input.dll Type 17280: InputRebindingData (methods=16) ===
+  Method 126882 (GetBindingDisplayStringOptions): RVA=0x0029bfd0 size=64
+  Method 126883 (GetBindingId): RVA=0x00285830 size=64
+  Method 126884 (GetBindingAltId): RVA=0x00291ab0 size=64
+  Method 126885 (get_Identifier): RVA=0x0035e300 size=64
+  Method 126886 (get_ID): RVA=0x0035e300 size=64
+  Method 126887 (AcceptsPropertyInternal): RVA=0x0035df00 size=64
+  Method 126888 (GetPropertyTypeInternal): RVA=0x0035e240 size=181
+  Method 126889 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 126890 (GetProperties): RVA=0x0035e0d0 size=323
+  Method 126891 (GetPropertiesInternal): RVA=0x0035df90 size=320
+  Method 126892 (GetPropertyCountInternal): RVA=0x0035e220 size=64
+  Method 126893 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 126894 (DerivesFrom): RVA=0x0035df30 size=64
+  Method 126895 (DerivesFromInternal): RVA=0x0035df20 size=64
+  Method 126896 (GetInstance): RVA=0x0035df80 size=64
+  Method 126897 (.ctor): RVA=0x002911e0 size=64
+
+================ StreamedTable.OnBindItem (0x015eb760..0x015ebafa, sz=922) ================
+  +0x000: 40 55 41 54 41 55 41 56 41 57 48 83 ec 60 48 8d
+  +0x010: 6c 24 30 4c 8b ca 48 89 5d 60 48 8b 15 67 19 86
+  +0x020: 01 4c 8b f1 48 89 75 70 48 89 7d 78 4d 63 e0 4d
+  +0x030: 85 c9 75 06 33 db 8b f3 eb 31 4d 8b 01 0f b6 82
+  +0x040: 30 01 00 00 41 38 80 30 01 00 00 0f 82 31 03 00
+  +0x050: 00 0f b6 c8 49 8b 80 c8 00 00 00 48 39 54 c8 f8
+  +0x060: 0f 85 1c 03 00 00 33 db 49 8b f1 49 8b 86 68 05
+  +0x070: 00 00 48 85 c0 0f 84 19 03 00 00 48 8b 40 10 45
+  +0x080: 33 c0 49 8b ce 42 8b 54 a0 20 e8 01 25 88 ff 48
+  +0x090: 8b 15 52 c0 84 01 4c 8b c0 48 85 c0 75 05 48 8b
+  +0x0a0: fb eb 2f 4c 8b 08 0f b6 82 30 01 00 00 41 38 81
+  +0x0b0: 30 01 00 00 0f 82 d1 02 00 00 0f b6 c8 49 8b 81
+  +0x0c0: c8 00 00 00 48 39 54 c8 f8 0f 85 bc 02 00 00 49
+  +0x0d0: 8b f8 8b 04 24 48 83 ec 10 48 8d 4c 24 30 8b 01
+  +0x0e0: 0f 57 c0 48 c7 45 08 08 00 00 00 0f 11 01 48 89
+  +0x0f0: 4d 00 4c 8d 45 00 0f 28 45 00 48 8d 4d 10 45 33
+  +0x100: c9 66 0f 7f 45 00 41 8b d4 e8 e2 6e 07 00 4d 8b
+  +0x110: be 50 07 00 00 48 8d 55 00 45 33 c0 48 8d 4d 10
+  +0x120: 0f 10 00 0f 29 45 00 e8 64 03 47 ff 0f 28 45 10
+  +0x130: 66 0f 7f 45 20 4d 85 ff 0f 84 56 02 00 00 45 33
+  +0x140: c9 48 89 5c 24 20 4c 8d 45 20 49 8b cf 49 8d 96
+  +0x150: f0 07 00 00 e8 c7 40 ed ff 4c 8b cf 48 89 45 68
+  +0x160: 4c 8b c0 48 89 5c 24 20 41 8b d4 49 8b ce e8 ad
+  +0x170: 4c 00 00 33 d2 49 8b ce e8 13 15 fc ff 84 c0 0f
+  +0x180: 84 75 01 00 00 48 8b 0d 4c dd 84 01 83 b9 e4 00
+  +0x190: 00 00 00 75 05 e8 a6 0e bd fe 4c 8b 0d 6f b3 82
+  +0x1a0: 01 45 33 c0 33 d2 48 8b ce e8 02 32 51 ff 48 8b
+  +0x1b0: f8 48 85 c0 0f 84 40 01 00 00 49 8b 8e 78 07 00
+  +0x1c0: 00 48 85 c9 0f 84 ca 01 00 00 33 d2 e8 af 41 22
+  +0x1d0: ff 4c 8b f8 48 85 c0 0f 84 b7 01 00 00 4c 8b 08
+  +0x1e0: 48 8b 15 61 d5 85 01 41 0f b7 89 2e 01 00 00 66
+  +0x1f0: 3b d9 73 24 4d 8b 81 b0 00 00 00 0f 1f 44 00 00
+  +0x200: 0f b7 c3 48 03 c0 49 39 14 c0 0f 84 55 01 00 00
+  +0x210: 66 ff c3 66 3b d9 72 e8 45 33 c0 49 8b cf e8 bd
+  +0x220: 48 bd fe 4c 8b 08 41 8b d4 4c 8b 40 08 49 8b cf
+  +0x230: 41 ff d1 45 33 c0 0f b6 d0 48 8b cf e8 5f 5d ff
+  +0x240: ff 48 83 bf c0 04 00 00 00 44 89 a7 b8 04 00 00
+  +0x250: 49 8b 9e e8 08 00 00 74 19 4c 8b 0d 30 3d 80 01
+  +0x260: 45 33 c0 48 8b 97 c0 04 00 00 48 8b cf e8 7e 25
+  +0x270: 3f ff 48 8d 8f c0 04 00 00 48 89 9f c0 04 00 00
+  +0x280: 48 8b d3 e8 58 fd bc fe 4c 8b 0d d9 b1 7f 01 45
+  +0x290: 33 c0 48 8b 97 c0 04 00 00 48 8b cf e8 ff 23 3f
+  +0x2a0: ff 48 83 bf c8 04 00 00 00 49 8b 9e f0 08 00 00
+  +0x2b0: 74 19 4c 8b 0d 2f 4e 80 01 45 33 c0 48 8b 97 c8
+  +0x2c0: 04 00 00 48 8b cf e8 25 25 3f ff 48 8d 8f c8 04
+  +0x2d0: 00 00 48 89 9f c8 04 00 00 48 8b d3 e8 ff fc bc
+  +0x2e0: fe 4c 8b 0d 50 c7 7f 01 45 33 c0 48 8b 97 c8 04
+  +0x2f0: 00 00 48 8b cf e8 a6 23 3f ff 48 8b 0d d7 db 84
+  +0x300: 01 83 b9 e4 00 00 00 00 75 05 e8 31 0d bd fe 4c
+  +0x310: 8b 0d e2 a9 82 01 45 33 c0 33 d2 48 8b ce e8 8d
+  +0x320: 30 51 ff 48 85 c0 74 07 44 89 a0 00 05 00 00 48
+  +0x330: 85 f6 74 60 48 8b 06 48 8d 55 68 48 8b ce 4c 8b
+  +0x340: 80 e0 0a 00 00 ff 90 d8 0a 00 00 48 8b 5d 60 48
+  +0x350: 8b 75 70 48 8b 7d 78 48 8d 65 30 41 5f 41 5e 41
+  +0x360: 5d 41 5c 5d c3 0f b7 cb 48 03 c9 49 63 44 c8 08
+  +0x370: 48 c1 e0 04 48 05 38 01 00 00 49 03 c1 e9 a1 fe
+  +0x380: ff ff 49 8b c9 e8 96 fc bc fe cc 49 8b c8 e8 8d
+  +0x390: fc bc fe cc e8 07 0c bd fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:1399
+  [+0x01a] StreamedTable.cs:1410
+  +0x01a: RIP [0x02e4d0e8] -> MetaUsage(tag=1, idx=23640)
+  [+0x06b] StreamedTable.cs:1411, StreamedListView.cs:1270
+  [+0x072] StreamedListView.cs:1270
+  [+0x07b] StreamedListView.cs:1270
+  +0x08a: CALL 0x00e6dcf0 (StructList.cs:118)
+  [+0x08f] StreamedTable.cs:1411
+  +0x08f: RIP [0x02e37848] -> MetaUsage(tag=1, idx=38755)
+  [+0x096] StreamedTable.cs:1411, StreamedListView.cs:1270
+  [+0x099] StreamedTable.cs:1411
+  [+0x0d2] StreamedTable.cs:1413
+  [+0x0e3] StreamedTable.cs:1413, DataDrivenVisualRunnerConfig.cs:43
+  [+0x0eb] StreamedTable.cs:1413
+  [+0x0ee] StreamedTable.cs:1413, DataDrivenVisualRunnerConfig.cs:43
+  [+0x0f2] StreamedTable.cs:1413
+  +0x109: CALL 0x01662750 (IntUtils.cs:26, CoreUtils.cs:61)
+  [+0x10e] StreamedTable.cs:1414
+  [+0x115] StreamedTable.cs:1414
+  +0x127: CALL 0x00a5bbf0 (MarshallingHelpers.cs:95, MarshallingHelpers.cs:104)
+  [+0x135] StreamedTable.cs:1414
+  [+0x13e] StreamedTable.cs:1414
+  +0x154: CALL 0x014bf980 (Bindings.cs:1507)
+  [+0x159] StreamedTable.cs:1415
+  +0x16e: CALL 0x015f0580 (StreamedTable.cs:1058)
+  [+0x173] StreamedTable.cs:1417, StreamedTable.cs:605
+  +0x178: CALL 0x015acdf0 (StreamedListView.cs:404)
+  [+0x17d] StreamedTable.cs:1417
+  [+0x185] StreamedTable.cs:1419
+  +0x185: RIP [0x02e39638] -> MetaUsage(tag=1, idx=38992)
+  +0x195: CALL 0x001bc7a0 ()
+  [+0x19a] StreamedTable.cs:1419
+  +0x19a: RIP [0x02e16c70] -> MetaUsage(tag=6, idx=209067)
+  +0x1a9: CALL 0x00afeb10 (TypedValue.cs:625)
+  [+0x1b1] StreamedTable.cs:1420
+  [+0x1ba] StreamedTable.cs:1422
+  [+0x1c1] StreamedTable.cs:1422
+  [+0x1ca] StreamedTable.cs:1422
+  +0x1cc: CALL 0x0080fae0 (FMDraggableObject.cs:79, FMDraggableObject.cs:82)
+  [+0x1d4] StreamedTable.cs:1422
+  [+0x1dd] StreamedTable.cs:1422
+  +0x1e0: RIP [0x02e48ea8] -> MetaUsage(tag=1, idx=12232)
+  +0x21e: CALL 0x001c0240 ()
+  [+0x233] StreamedTable.cs:1422
+  +0x23c: CALL 0x015e1700 (StreamedTable.cs:389)
+  [+0x241] StreamedTable.cs:1424, StreamedTable.cs:344
+  [+0x249] StreamedTable.cs:1423
+  [+0x250] StreamedTable.cs:1424
+  [+0x257] StreamedTable.cs:1424, StreamedTable.cs:344
+  [+0x259] StreamedTable.cs:346
+  +0x259: RIP [0x02def6f0] -> MetaUsage(tag=6, idx=206372)
+  +0x26d: CALL 0x009ddf50 ()
+  [+0x272] StreamedTable.cs:349
+  +0x283: CALL 0x001bb740 ()
+  [+0x288] StreamedTable.cs:350
+  +0x288: RIP [0x02de6bc8] -> MetaUsage(tag=6, idx=206205)
+  +0x29c: CALL 0x009dde00 ()
+  [+0x2a1] StreamedTable.cs:1425, StreamedTable.cs:358
+  [+0x2a9] StreamedTable.cs:1425
+  [+0x2b0] StreamedTable.cs:1425, StreamedTable.cs:358
+  [+0x2b2] StreamedTable.cs:360
+  +0x2b2: RIP [0x02df0848] -> MetaUsage(tag=6, idx=206392)
+  +0x2c6: CALL 0x009ddf50 ()
+  [+0x2cb] StreamedTable.cs:363
+  +0x2dc: CALL 0x001bb740 ()
+  [+0x2e1] StreamedTable.cs:364
+  +0x2e1: RIP [0x02de8198] -> MetaUsage(tag=6, idx=206231)
+  +0x2f5: CALL 0x009dde00 ()
+  [+0x2fa] StreamedTable.cs:1429
+  +0x2fa: RIP [0x02e39638] -> MetaUsage(tag=1, idx=38992)
+  +0x30a: CALL 0x001bc7a0 ()
+  [+0x30f] StreamedTable.cs:1429
+  +0x30f: RIP [0x02e16458] -> MetaUsage(tag=6, idx=209057)
+  +0x31e: CALL 0x00afeb10 (TypedValue.cs:625)
+  [+0x323] StreamedTable.cs:1430
+  [+0x328] StreamedTable.cs:1432
+  [+0x32f] StreamedTable.cs:1435
+  [+0x334] StreamedTable.cs:1435
+  [+0x34b] StreamedTable.cs:1436
+  [+0x365] StreamedTable.cs:1422
+  +0x37d: JMP 0x015eb983 ()
+  [+0x382] StreamedTable.cs:1410
+  +0x385: CALL 0x001bb780 ()
+  [+0x38b] StreamedTable.cs:1411
+  +0x38e: CALL 0x001bb780 ()
+  [+0x394] StreamedTable.cs:1435
+  +0x394: CALL 0x001bc700 ()
+
+================ StreamedTable.OnRebindItem (0x015ed7d0..0x015edac9, sz=761) ================
+  +0x000: 40 55 57 41 54 41 56 41 57 48 83 ec 70 48 8d 6c
+  +0x010: 24 40 8b 04 24 4c 8b fa 48 89 5d 68 48 8b d9 48
+  +0x020: 89 75 70 49 63 f8 48 83 ec 10 4c 8d 4c 24 40 41
+  +0x030: 8b 01 0f 57 c0 48 c7 45 18 08 00 00 00 41 0f 11
+  +0x040: 01 45 33 e4 4c 89 4d 10 4c 8d 45 10 0f 28 45 10
+  +0x050: 48 8d 4d 20 45 33 c9 66 0f 7f 45 10 8b d7 e8 1d
+  +0x060: 4f 07 00 48 8b b3 50 07 00 00 48 8d 55 10 45 33
+  +0x070: c0 48 8d 4d 20 0f 10 00 0f 29 45 10 e8 9f e3 46
+  +0x080: ff 0f 28 45 20 66 0f 7f 45 00 48 85 f6 0f 84 57
+  +0x090: 02 00 00 48 8d 93 f0 07 00 00 4c 89 64 24 20 45
+  +0x0a0: 33 c9 4c 8d 45 00 48 8b ce e8 02 21 ed ff 48 8b
+  +0x0b0: 35 fb b0 84 01 4c 8b b3 50 07 00 00 48 89 45 60
+  +0x0c0: 48 85 f6 74 1e 33 d2 44 89 65 1c 48 8b ce e8 4d
+  +0x0d0: 22 cb ff 48 89 45 10 8b 46 10 89 45 18 0f 28 45
+  +0x0e0: 10 eb 03 0f 57 c0 66 0f 7f 45 00 4d 85 f6 0f 84
+  +0x0f0: f6 01 00 00 45 33 c9 4c 8d 45 00 48 8d 55 60 49
+  +0x100: 8b ce e8 49 43 ed ff 48 8b 8b 68 05 00 00 48 8b
+  +0x110: f0 48 85 c9 0f 84 d0 01 00 00 48 8b 49 10 45 33
+  +0x120: c0 8b 54 b9 20 48 8b cb e8 f3 03 88 ff 48 8b 15
+  +0x130: 44 9f 84 01 4c 8b c8 48 85 c0 75 05 4d 8b cc eb
+  +0x140: 2c 4c 8b 00 0f b6 82 30 01 00 00 41 38 80 30 01
+  +0x150: 00 00 0f 82 98 01 00 00 0f b6 c8 49 8b 80 c8 00
+  +0x160: 00 00 48 39 54 c8 f8 0f 85 83 01 00 00 48 85 f6
+  +0x170: 0f 84 74 01 00 00 4c 8b 06 49 8b d1 48 8b ce 49
+  +0x180: 8b 80 f8 01 00 00 4d 8b 80 00 02 00 00 ff d0 84
+  +0x190: c0 75 47 48 8b 03 44 8b c7 49 8b d7 48 8b cb 4c
+  +0x1a0: 8b 88 60 0e 00 00 ff 90 58 0e 00 00 48 8b 03 44
+  +0x1b0: 8b c7 49 8b d7 48 8b cb 4c 8b 88 40 0e 00 00 ff
+  +0x1c0: 90 38 0e 00 00 48 8b 5d 68 48 8b 75 70 48 8d 65
+  +0x1d0: 30 41 5f 41 5e 41 5c 5f 5d c3 48 8b 83 78 07 00
+  +0x1e0: 00 48 85 c0 0f 84 00 01 00 00 4c 8b 80 30 05 00
+  +0x1f0: 00 4d 85 c0 0f 84 f0 00 00 00 48 8b 15 a7 ed 82
+  +0x200: 01 b9 01 00 00 00 e8 25 49 a1 fe ff c8 3b f8 41
+  +0x210: 0f 94 c6 74 5d 48 8b 3d 4c ef 82 01 48 8b b3 50
+  +0x220: 07 00 00 48 85 ff 74 1e 33 d2 44 89 65 1c 48 8b
+  +0x230: cf e8 ea 20 cb ff 48 89 45 10 8b 47 10 89 45 18
+  +0x240: 0f 28 45 10 eb 03 0f 57 c0 66 0f 7f 45 00 48 85
+  +0x250: f6 0f 84 93 00 00 00 45 33 c9 4c 8d 45 00 48 8d
+  +0x260: 55 60 48 8b ce e8 26 26 ed ff 84 c0 0f 84 53 ff
+  +0x270: ff ff 48 8b bb 50 07 00 00 48 8b 1d e8 ee 82 01
+  +0x280: 48 85 db 74 1e 33 d2 44 89 65 1c 48 8b cb e8 8d
+  +0x290: 20 cb ff 48 89 45 10 8b 43 10 89 45 18 0f 28 45
+  +0x2a0: 10 eb 03 0f 57 c0 48 8b 15 73 83 81 01 41 0f b6
+  +0x2b0: ce 66 0f 7f 45 00 e8 15 f4 4f ff 48 85 ff 74 2a
+  +0x2c0: 4c 89 64 24 30 4c 8d 45 00 c7 44 24 28 01 00 00
+  +0x2d0: 00 48 8d 55 60 4c 8b c8 44 88 64 24 20 48 8b cf
+  +0x2e0: e8 9b 7b ed ff e9 db fe ff ff e8 41 ec bc fe cc
+  +0x2f0: 49 8b c9 e8 b8 dc bc fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:1436
+  [+0x012] StreamedTable.cs:1468
+  [+0x035] StreamedTable.cs:1468, DataDrivenVisualRunnerConfig.cs:43
+  [+0x03d] StreamedTable.cs:1468
+  [+0x041] StreamedTable.cs:1468
+  [+0x044] StreamedTable.cs:1468, DataDrivenVisualRunnerConfig.cs:43
+  [+0x048] StreamedTable.cs:1468
+  +0x05e: CALL 0x01662750 (IntUtils.cs:26, CoreUtils.cs:61)
+  [+0x063] StreamedTable.cs:1469
+  [+0x06a] StreamedTable.cs:1469
+  +0x07c: CALL 0x00a5bbf0 (MarshallingHelpers.cs:95, MarshallingHelpers.cs:104)
+  [+0x08a] StreamedTable.cs:1469
+  [+0x093] StreamedTable.cs:1469
+  +0x0a9: CALL 0x014bf980 (Bindings.cs:1507)
+  [+0x0ae] StreamedTable.cs:1470
+  +0x0ae: RIP [0x02e38980] -> STR "binding"
+  [+0x0c0] StreamedObjectList.cs:40
+  [+0x0c5] StreamedObjectList.cs:40
+  [+0x0c7] StreamedObjectList.cs:40
+  +0x0ce: CALL 0x0129faf0 ()
+  [+0x0d7] StreamedObjectList.cs:40, StreamedObjectListWithChildren.cs:30
+  [+0x0dd] StreamedObjectList.cs:40
+  [+0x0eb] StreamedTable.cs:1470
+  [+0x0f4] StreamedTable.cs:1470
+  +0x102: CALL 0x014c1c20 (Bindings.cs:2134)
+  [+0x107] StreamedTable.cs:1472, StreamedListView.cs:1270
+  [+0x10e] StreamedTable.cs:1470
+  [+0x111] StreamedTable.cs:1472, StreamedListView.cs:1270
+  [+0x11a] StreamedListView.cs:1270
+  +0x128: CALL 0x00e6dcf0 (StructList.cs:118)
+  [+0x12d] StreamedTable.cs:1472
+  +0x12d: RIP [0x02e37848] -> MetaUsage(tag=1, idx=38755)
+  [+0x134] StreamedTable.cs:1472, StreamedListView.cs:1270
+  [+0x137] StreamedTable.cs:1472
+  [+0x16d] StreamedTable.cs:1473
+  [+0x176] StreamedTable.cs:1473
+  [+0x18f] StreamedTable.cs:1473
+  [+0x193] StreamedTable.cs:1483
+  [+0x1ac] StreamedTable.cs:1484
+  [+0x1c5] StreamedTable.cs:1485
+  [+0x1da] StreamedTable.cs:1475
+  [+0x1e1] StreamedTable.cs:1475
+  [+0x1ea] StreamedTable.cs:1475
+  [+0x1f1] StreamedTable.cs:1475
+  [+0x1fa] StreamedTable.cs:1475
+  +0x1fa: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x20b] StreamedTable.cs:1475
+  [+0x213] StreamedTable.cs:1476
+  [+0x215] StreamedTable.cs:1476
+  +0x215: RIP [0x02e1c938] -> STR "is-last-element"
+  [+0x223] StreamedObjectList.cs:40
+  [+0x228] StreamedObjectList.cs:40
+  [+0x22a] StreamedObjectList.cs:40
+  +0x231: CALL 0x0129faf0 ()
+  [+0x23a] StreamedObjectList.cs:40, StreamedObjectListWithChildren.cs:30
+  [+0x240] StreamedObjectList.cs:40
+  [+0x24e] StreamedTable.cs:1476
+  [+0x257] StreamedTable.cs:1476
+  +0x265: CALL 0x014c0060 (Bindings.cs:2130)
+  [+0x26a] StreamedTable.cs:1476
+  [+0x272] StreamedTable.cs:1478
+  [+0x279] StreamedTable.cs:1478
+  +0x279: RIP [0x02e1c938] -> STR "is-last-element"
+  [+0x280] StreamedObjectList.cs:40
+  [+0x285] StreamedObjectList.cs:40
+  [+0x287] StreamedObjectList.cs:40
+  +0x28e: CALL 0x0129faf0 ()
+  [+0x297] StreamedObjectList.cs:40, StreamedObjectListWithChildren.cs:30
+  [+0x29d] StreamedObjectList.cs:40
+  [+0x2a6] StreamedTable.cs:1478
+  +0x2a6: RIP [0x02e05df0] -> MetaUsage(tag=6, idx=189915)
+  [+0x2b1] StreamedTable.cs:1478
+  [+0x2b6] StreamedTable.cs:1478
+  +0x2b6: CALL 0x00aecea0 (TypedValue.cs:213)
+  [+0x2bb] StreamedTable.cs:1478
+  [+0x2c0] StreamedTable.cs:1478
+  +0x2e0: CALL 0x014c5650 (Bindings.cs:1933)
+  [+0x2e5] StreamedTable.cs:1480
+  +0x2e5: JMP 0x015ed995 (StreamedTable.cs:1485)
+  [+0x2ea] StreamedTable.cs:1478
+  +0x2ea: CALL 0x001bc700 ()
+  [+0x2f0] StreamedTable.cs:1472
+  +0x2f3: CALL 0x001bb780 ()
+
+================ StreamedTable.<OnBindItem>g__SetBindings|221_0 (0x015f0580..0x015f07f6, sz=630) ================
+  +0x000: 48 89 5c 24 08 48 89 74 24 10 4c 89 44 24 18 55
+  +0x010: 57 41 54 41 56 41 57 48 8b ec 48 83 ec 60 48 8b
+  +0x020: 35 db 83 84 01 45 33 e4 4c 8b b1 50 07 00 00 49
+  +0x030: 8b f9 44 8b fa 48 8b d9 48 85 f6 74 1e 33 d2 44
+  +0x040: 89 65 fc 48 8b ce e8 25 f5 ca ff 48 89 45 f0 8b
+  +0x050: 46 10 89 45 f8 0f 28 45 f0 eb 03 0f 57 c0 66 0f
+  +0x060: 7f 45 e0 48 85 ff 75 11 48 8b 15 79 79 81 01 33
+  +0x070: c9 e8 ca 1a 50 ff 48 8b f8 4d 85 f6 0f 84 ee 01
+  +0x080: 00 00 4c 89 64 24 30 4c 8d 45 e0 c7 44 24 28 01
+  +0x090: 00 00 00 48 8d 55 40 4c 8b cf 44 88 64 24 20 49
+  +0x0a0: 8b ce e8 29 50 ed ff 48 8b 83 88 09 00 00 48 85
+  +0x0b0: c0 0f 84 b9 01 00 00 44 38 60 20 74 77 48 8b 3d
+  +0x0c0: 14 54 82 01 48 8b b3 50 07 00 00 48 85 ff 74 1e
+  +0x0d0: 33 d2 44 89 65 fc 48 8b cf e8 92 f4 ca ff 48 89
+  +0x0e0: 45 f0 8b 47 10 89 45 f8 0f 28 45 f0 eb 03 0f 57
+  +0x0f0: c0 48 8b 15 10 70 81 01 41 8d 4f 01 66 0f 7f 45
+  +0x100: e0 e8 aa 01 50 ff 48 85 f6 0f 84 61 01 00 00 4c
+  +0x110: 89 64 24 30 4c 8d 45 e0 c7 44 24 28 01 00 00 00
+  +0x120: 48 8d 55 40 4c 8b c8 44 88 64 24 20 48 8b ce e8
+  +0x130: 9c 4f ed ff 45 85 ff 75 75 48 8b 3d b0 c1 82 01
+  +0x140: 48 8b b3 50 07 00 00 48 85 ff 74 1e 33 d2 44 89
+  +0x150: 65 fc 48 8b cf e8 16 f4 ca ff 48 89 45 f0 8b 47
+  +0x160: 10 89 45 f8 0f 28 45 f0 eb 03 0f 57 c0 48 8b 15
+  +0x170: fc 56 81 01 b1 01 66 0f 7f 45 e0 e8 a0 c7 4f ff
+  +0x180: 48 85 f6 0f 84 e7 00 00 00 4c 89 64 24 30 4c 8d
+  +0x190: 45 e0 c7 44 24 28 01 00 00 00 48 8d 55 40 4c 8b
+  +0x1a0: c8 44 88 64 24 20 48 8b ce e8 22 4f ed ff 48 8b
+  +0x1b0: 83 78 07 00 00 48 85 c0 0f 84 b2 00 00 00 4c 8b
+  +0x1c0: 80 30 05 00 00 4d 85 c0 0f 84 a2 00 00 00 48 8b
+  +0x1d0: 15 23 c0 82 01 b9 01 00 00 00 e8 a1 1b a1 fe ff
+  +0x1e0: c8 44 3b f8 75 71 48 8b bb 50 07 00 00 48 8b 1d
+  +0x1f0: c4 c1 82 01 48 85 db 74 1e 33 d2 44 89 65 fc 48
+  +0x200: 8b cb e8 69 f3 ca ff 48 89 45 f0 8b 43 10 89 45
+  +0x210: f8 0f 28 45 f0 eb 03 0f 57 c0 48 8b 15 4f 56 81
+  +0x220: 01 b1 01 66 0f 7f 45 e0 e8 f3 c6 4f ff 48 85 ff
+  +0x230: 74 3e 4c 89 64 24 30 4c 8d 45 e0 c7 44 24 28 01
+  +0x240: 00 00 00 48 8d 55 40 4c 8b c8 44 88 64 24 20 48
+  +0x250: 8b cf e8 79 4e ed ff 4c 8d 5c 24 60 49 8b 5b 30
+  +0x260: 49 8b 73 38 49 8b e3 41 5f 41 5e 41 5c 5f 5d c3
+  +0x270: e8 0b bf bc fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:1058
+  [+0x01e] StreamedTable.cs:1441
+  +0x01e: RIP [0x02e38980] -> STR "binding"
+  [+0x025] StreamedObjectList.cs:40
+  [+0x028] StreamedTable.cs:1441
+  [+0x038] StreamedTable.cs:1441, StreamedObjectList.cs:40
+  [+0x03d] StreamedObjectList.cs:40
+  [+0x03f] StreamedObjectList.cs:40
+  +0x046: CALL 0x0129faf0 ()
+  [+0x04f] StreamedObjectList.cs:40, StreamedObjectListWithChildren.cs:30
+  [+0x055] StreamedObjectList.cs:40
+  [+0x063] StreamedTable.cs:1441
+  [+0x068] StreamedTable.cs:1441
+  +0x068: RIP [0x02e07f68] -> MetaUsage(tag=6, idx=189930)
+  +0x071: CALL 0x00af20c0 (TypedValue.cs:213)
+  [+0x079] StreamedTable.cs:1441
+  [+0x082] StreamedTable.cs:1441
+  +0x0a2: CALL 0x014c5650 (Bindings.cs:1933)
+  [+0x0a7] StreamedTable.cs:1442
+  [+0x0ae] StreamedTable.cs:1442
+  [+0x0b7] StreamedTable.cs:1442
+  [+0x0bd] StreamedTable.cs:1444
+  +0x0bd: RIP [0x02e15a58] -> STR "index"
+  [+0x0cb] StreamedObjectList.cs:40
+  [+0x0d0] StreamedObjectList.cs:40
+  [+0x0d2] StreamedObjectList.cs:40
+  +0x0d9: CALL 0x0129faf0 ()
+  [+0x0e2] StreamedObjectList.cs:40, StreamedObjectListWithChildren.cs:30
+  [+0x0e8] StreamedObjectList.cs:40
+  [+0x0f1] StreamedTable.cs:1444
+  +0x0f1: RIP [0x02e07688] -> MetaUsage(tag=6, idx=189927)
+  [+0x0fc] StreamedTable.cs:1444
+  [+0x101] StreamedTable.cs:1444
+  +0x101: CALL 0x00af0830 (TypedValue.cs:213)
+  [+0x106] StreamedTable.cs:1444
+  [+0x10f] StreamedTable.cs:1444
+  +0x12f: CALL 0x014c5650 (Bindings.cs:1933)
+  [+0x134] StreamedTable.cs:1447
+  [+0x139] StreamedTable.cs:1449
+  +0x139: RIP [0x02e1c870] -> STR "is-first-element"
+  [+0x147] StreamedObjectList.cs:40
+  [+0x14c] StreamedObjectList.cs:40
+  [+0x14e] StreamedObjectList.cs:40
+  +0x155: CALL 0x0129faf0 ()
+  [+0x15e] StreamedObjectList.cs:40, StreamedObjectListWithChildren.cs:30
+  [+0x164] StreamedObjectList.cs:40
+  [+0x16d] StreamedTable.cs:1449
+  +0x16d: RIP [0x02e05df0] -> MetaUsage(tag=6, idx=189915)
+  [+0x176] StreamedTable.cs:1449
+  [+0x17b] StreamedTable.cs:1449
+  +0x17b: CALL 0x00aecea0 (TypedValue.cs:213)
+  [+0x180] StreamedTable.cs:1449
+  [+0x189] StreamedTable.cs:1449
+  +0x1a9: CALL 0x014c5650 (Bindings.cs:1933)
+  [+0x1ae] StreamedTable.cs:1452
+  [+0x1b5] StreamedTable.cs:1452
+  [+0x1be] StreamedTable.cs:1452
+  [+0x1c5] StreamedTable.cs:1452
+  [+0x1ce] StreamedTable.cs:1452
+  +0x1ce: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x1df] StreamedTable.cs:1452
+  [+0x1e6] StreamedTable.cs:1454
+  [+0x1ed] StreamedTable.cs:1454
+  +0x1ed: RIP [0x02e1c938] -> STR "is-last-element"
+  [+0x1f4] StreamedObjectList.cs:40
+  [+0x1f9] StreamedObjectList.cs:40
+  [+0x1fb] StreamedObjectList.cs:40
+  +0x202: CALL 0x0129faf0 ()
+  [+0x20b] StreamedObjectList.cs:40, StreamedObjectListWithChildren.cs:30
+  [+0x211] StreamedObjectList.cs:40
+  [+0x21a] StreamedTable.cs:1454
+  +0x21a: RIP [0x02e05df0] -> MetaUsage(tag=6, idx=189915)
+  [+0x223] StreamedTable.cs:1454
+  [+0x228] StreamedTable.cs:1454
+  +0x228: CALL 0x00aecea0 (TypedValue.cs:213)
+  [+0x22d] StreamedTable.cs:1454
+  [+0x232] StreamedTable.cs:1454
+  +0x252: CALL 0x014c5650 (Bindings.cs:1933)
+  [+0x257] StreamedTable.cs:1456
+  [+0x270] StreamedTable.cs:1454
+  +0x270: CALL 0x001bc700 ()
+
+================ StreamedTable.OnMakeItem (0x015ecc60..0x015ed33d, sz=1757) ================
+  +0x000: 48 89 5c 24 10 55 56 57 41 54 41 55 41 56 41 57
+  +0x010: 48 83 ec 40 48 8b f9 48 8b 0d 6a 04 86 01 e8 2d
+  +0x020: fa bc fe 33 d2 48 89 84 24 98 00 00 00 48 8b c8
+  +0x030: 4c 8b e8 e8 d8 3f 22 ff 48 8b 97 88 09 00 00 48
+  +0x040: 85 d2 0f 84 89 06 00 00 48 8b 52 18 49 8d 8d b0
+  +0x050: 04 00 00 49 89 95 b0 04 00 00 e8 81 ea bc fe 48
+  +0x060: 8b 15 ca 0f 83 01 45 33 c0 49 8b cd e8 8f b6 93
+  +0x070: 00 33 d2 49 8b cd e8 f5 bd 94 00 33 d2 48 8b f0
+  +0x080: 8d 4a 01 e8 f8 5d 89 ff 48 8b d8 48 85 f6 0f 84
+  +0x090: 3d 06 00 00 4c 8b 16 45 33 ff 4c 8b 0d 77 ef 83
+  +0x0a0: 01 41 0f b7 cf 41 0f b7 92 2e 01 00 00 45 8d 67
+  +0x0b0: 03 66 44 3b fa 73 21 4d 8b 82 b0 00 00 00 66 90
+  +0x0c0: 0f b7 c1 48 03 c0 4d 39 0c c0 0f 84 bc 01 00 00
+  +0x0d0: 66 ff c1 66 3b ca 72 e8 45 8b c4 49 8b d1 48 8b
+  +0x0e0: ce e8 fa 34 bd fe 4c 8b 08 48 8b d3 4c 8b 40 08
+  +0x0f0: 48 8b ce 41 ff d1 48 8b 15 63 f7 80 01 45 33 c0
+  +0x100: 49 8b cd e8 f8 b5 93 00 48 8b 0d d9 4f 83 01 e8
+  +0x110: 3c f9 bc fe 33 d2 48 8b c8 48 8b e8 e8 2f f4 fa
+  +0x120: ff 48 8d 8d f0 04 00 00 48 89 bd f0 04 00 00 48
+  +0x130: 8b d7 e8 a9 e9 bc fe 48 8b 97 78 07 00 00 48 8d
+  +0x140: 8d f8 04 00 00 48 89 95 f8 04 00 00 e8 8f e9 bc
+  +0x150: fe 48 8b 15 50 08 83 01 45 33 c0 48 8b cd e8 9d
+  +0x160: b5 93 00 48 8b 0d 76 f9 7e 01 e8 e1 f8 bc fe 48
+  +0x170: 8b 15 c2 55 82 01 48 8b c8 4c 8b f0 e8 bf d5 63
+  +0x180: ff 44 38 bf 8c 06 00 00 74 1e 45 33 c0 49 8b cd
+  +0x190: 41 8d 50 01 e8 37 d8 94 00 45 33 c0 48 8b cd 41
+  +0x1a0: 8d 50 01 e8 28 d8 94 00 45 33 c0 48 8b d5 49 8b
+  +0x1b0: cd e8 aa b6 93 00 48 8b 8f 78 09 00 00 45 33 c0
+  +0x1c0: 33 d2 e8 79 98 82 00 84 c0 74 70 48 8b 0d b6 7c
+  +0x1d0: 85 01 48 8b 9f 78 09 00 00 44 39 b9 e4 00 00 00
+  +0x1e0: 75 05 e8 59 f9 bc fe 33 d2 48 8b cb e8 7f 5e 08
+  +0x1f0: 00 48 8b d8 41 8b d7 38 97 8c 06 00 00 0f 95 c2
+  +0x200: 48 85 c0 0f 84 c8 04 00 00 45 33 c0 48 8b c8 e8
+  +0x210: bc d7 94 00 45 33 c0 48 8b d3 48 8b cd e8 3e b6
+  +0x220: 93 00 48 8b 13 48 8b cb 48 8b 82 38 0a 00 00 48
+  +0x230: 8b 92 40 0a 00 00 ff d0 48 8b e8 33 d2 48 8b cf
+  +0x240: e8 4b ff fb ff 84 c0 0f 84 f9 00 00 00 48 8b 8f
+  +0x250: 28 08 00 00 48 85 c9 0f 84 74 04 00 00 4c 8b 05
+  +0x260: 9c 5e 7e 01 48 8b 97 50 09 00 00 e8 a0 87 ae ff
+  +0x270: 48 8b cf 84 c0 74 37 4c 8b 05 2a a0 83 01 48 8b
+  +0x280: 97 50 09 00 00 e8 76 20 4d ff eb 29 0f b7 c9 48
+  +0x290: 03 c9 41 8b 44 c8 08 41 03 c4 48 98 48 c1 e0 04
+  +0x2a0: 48 05 38 01 00 00 49 03 c2 e9 38 fe ff ff 33 d2
+  +0x2b0: e8 3b ba ff ff 48 85 ed 0f 84 13 04 00 00 45 33
+  +0x2c0: c0 48 8b d0 48 8b cd e8 94 b5 93 00 48 8b 8f 28
+  +0x2d0: 08 00 00 48 85 c9 0f 84 f5 03 00 00 4c 8b 05 1d
+  +0x2e0: 5e 7e 01 48 8b 97 50 09 00 00 e8 21 87 ae ff 84
+  +0x2f0: c0 74 53 49 8b 4e 10 48 8b 97 50 09 00 00 4c 8b
+  +0x300: 0d f3 56 82 01 41 ff 46 1c 4d 63 46 18 44 3b 41
+  +0x310: 18 72 19 49 8b 41 20 48 8b 88 c0 00 00 00 4c 8b
+  +0x320: 41 70 49 8b ce e8 16 91 68 ff eb 1a 41 8d 40 01
+  +0x330: 41 89 46 18 4a 89 54 c1 20 4a 8d 0c c1 48 83 c1
+  +0x340: 20 e8 9a e7 bc fe 48 8b 8f 58 09 00 00 33 d2 e8
+  +0x350: 3c 3e cb ff 84 c0 75 2d 4c 8b 05 91 9e 83 01 48
+  +0x360: 8b cf 48 8b 97 58 09 00 00 e8 92 1f 4d ff 48 85
+  +0x370: ed 0f 84 5a 03 00 00 45 33 c0 48 8b d0 48 8b cd
+  +0x380: e8 db b4 93 00 48 8b 87 38 08 00 00 48 85 c0 0f
+  +0x390: 84 3c 03 00 00 48 8b 40 28 48 89 84 24 90 00 00
+  +0x3a0: 00 48 85 c0 0f 84 27 03 00 00 48 63 48 18 45 33
+  +0x3b0: c0 48 89 8c 24 80 00 00 00 48 85 c9 0f 8e 68 01
+  +0x3c0: 00 00 45 8d 60 20 eb 0b 0f 1f 84 00 00 00 00 00
+  +0x3d0: 45 33 c0 48 8b 40 10 48 8b b7 88 09 00 00 49 8b
+  +0x3e0: 1c 04 48 85 f6 0f 84 e6 02 00 00 48 8b 76 38 48
+  +0x3f0: 85 db 0f 84 d9 02 00 00 4c 8b 6b 10 48 85 f6 0f
+  +0x400: 84 cc 02 00 00 4c 8b 16 41 0f b7 c0 4c 8b 0d fd
+  +0x410: a2 85 01 41 0f b7 92 2e 01 00 00 66 44 3b c2 73
+  +0x420: 27 4d 8b 82 b0 00 00 00 0f 1f 84 00 00 00 00 00
+  +0x430: 0f b7 c8 48 03 c9 4d 39 0c c8 0f 84 79 01 00 00
+  +0x440: 66 ff c0 66 3b c2 72 e8 45 33 c0 49 8b d1 48 8b
+  +0x450: ce e8 8a 31 bd fe 4c 8b 08 49 8b d5 4c 8b 40 08
+  +0x460: 48 8b ce 41 ff d1 84 c0 0f 84 91 00 00 00 48 8b
+  +0x470: 4b 18 48 85 c9 0f 84 56 02 00 00 45 33 c0 33 d2
+  +0x480: e8 2b 3f 02 00 84 c0 74 76 4c 8b 05 18 59 82 01
+  +0x490: 49 8b ce 48 8b 53 10 e8 c4 ca 67 ff 84 c0 75 5f
+  +0x4a0: 4c 8b 05 49 9d 83 01 48 8b cf 48 8b 53 10 e8 4d
+  +0x4b0: 1e 4d ff 48 8b f0 33 d2 38 97 8c 06 00 00 0f 95
+  +0x4c0: c2 48 85 c0 0f 84 07 02 00 00 45 33 c0 48 8b c8
+  +0x4d0: e8 fb d4 94 00 48 85 ed 0f 84 f3 01 00 00 45 33
+  +0x4e0: c0 48 8b d6 48 8b cd e8 74 b3 93 00 4c 8b 05 05
+  +0x4f0: 55 82 01 49 8b ce 48 8b 53 10 e8 81 82 ca fe 48
+  +0x500: 8b 84 24 90 00 00 00 49 ff c7 49 83 c4 08 4c 3b
+  +0x510: bc 24 80 00 00 00 0f 8c b4 fe ff ff 4c 8b ac 24
+  +0x520: 98 00 00 00 41 bc 03 00 00 00 45 8b 46 18 41 ff
+  +0x530: 46 1c 41 c7 46 18 00 00 00 00 45 85 c0 7e 0e 49
+  +0x540: 8b 4e 10 45 33 c9 33 d2 e8 73 37 de ff 48 8b 8f
+  +0x550: 60 09 00 00 33 d2 e8 35 3c cb ff 84 c0 75 2d 4c
+  +0x560: 8b 05 8a 9c 83 01 48 8b cf 48 8b 97 60 09 00 00
+  +0x570: e8 8b 1d 4d ff 48 85 ed 0f 84 53 01 00 00 45 33
+  +0x580: c0 48 8b d0 48 8b cd e8 d4 b2 93 00 48 8b 9f 30
+  +0x590: 08 00 00 48 8d 4c 24 20 0f 57 c0 45 33 c9 4c 8b
+  +0x5a0: c5 49 8b d5 0f 11 44 24 20 e8 32 f1 04 ff 48 85
+  +0x5b0: db 0f 84 20 01 00 00 eb 1d 0f b7 c8 48 03 c9 49
+  +0x5c0: 63 44 c8 08 48 c1 e0 04 48 05 38 01 00 00 49 03
+  +0x5d0: c2 e9 80 fe ff ff 48 8b 53 10 4c 8b 05 37 5d 84
+  +0x5e0: 01 0f 28 44 24 20 ff 43 1c 48 63 4b 18 3b 4a 18
+  +0x5f0: 72 24 49 8b 40 20 48 8b cb 66 0f 7f 44 24 30 48
+  +0x600: 8b 90 c0 00 00 00 4c 8b 42 70 48 8d 54 24 30 e8
+  +0x610: 3c 0e 65 ff eb 23 8d 41 01 89 43 18 48 8d 41 02
+  +0x620: 48 83 c1 02 48 03 c0 48 c1 e1 04 48 03 ca 0f 11
+  +0x630: 04 c2 33 d2 e8 a7 e4 bc fe 80 bf a8 09 00 00 00
+  +0x640: 75 74 33 c9 e8 37 d6 0c 00 84 c0 74 69 48 8b 05
+  +0x650: fc 24 7e 01 48 8b 88 b8 00 00 00 4c 8b 01 4d 85
+  +0x660: c0 74 6e 48 8b 15 96 95 83 01 b9 19 00 00 00 e8
+  +0x670: 2c 50 a1 fe 83 f8 04 74 3d 0f b6 9f d8 07 00 00
+  +0x680: 48 8b 0d 01 be 7e 01 e8 c4 f3 bc fe 41 b8 09 00
+  +0x690: 00 00 84 db 48 8b c8 48 8b f8 45 0f 44 c4 45 33
+  +0x6a0: c9 33 d2 e8 a8 39 0c 00 45 33 c0 48 8b d7 48 8b
+  +0x6b0: cd e8 2a 2b 99 00 48 8b 9c 24 88 00 00 00 49 8b
+  +0x6c0: c5 48 83 c4 40 41 5f 41 5e 41 5d 41 5c 5f 5e 5d
+  +0x6d0: c3 e8 ca f3 bc fe cc e8 c4 f3 bc fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:1272
+  [+0x017] StreamedTable.cs:1285
+  +0x017: RIP [0x02e4d0e8] -> MetaUsage(tag=1, idx=23640)
+  +0x01e: CALL 0x001bc6b0 ()
+  [+0x023] StreamedTable.cs:1285
+  [+0x025] StreamedTable.cs:1285
+  [+0x02d] StreamedTable.cs:1285
+  [+0x030] StreamedTable.cs:1285
+  [+0x033] StreamedTable.cs:1285
+  +0x033: CALL 0x00810c70 (FMFileBrowser.cs:36)
+  [+0x038] StreamedTable.cs:1285
+  [+0x03f] StreamedTable.cs:1285
+  [+0x048] StreamedTable.cs:1285
+  [+0x04c] StreamedTable.cs:1285, BindingRoot.cs:136
+  +0x05a: CALL 0x001bb740 ()
+  [+0x05f] StreamedTable.cs:1286
+  +0x05f: RIP [0x02e1dc90] -> STR "streamed-table__row"
+  +0x06c: CALL 0x01f28360 ()
+  [+0x071] StreamedTable.cs:1287
+  +0x076: CALL 0x01f38ad0 ()
+  [+0x07b] StreamedTable.cs:1287
+  [+0x07d] StreamedTable.cs:1287
+  [+0x080] StreamedTable.cs:1287
+  +0x083: CALL 0x00e82ae0 (StructList.cs:460, StructList.cs:460)
+  [+0x08b] StreamedTable.cs:1287
+  [+0x094] StreamedTable.cs:1287
+  +0x09a: RIP [0x02e2bc78] -> MetaUsage(tag=1, idx=29751)
+  +0x0e1: CALL 0x001c0240 ()
+  [+0x0f6] StreamedTable.cs:1288
+  +0x0f6: RIP [0x02dfc4c0] -> STR "row-direction-normal"
+  +0x103: CALL 0x01f28360 ()
+  [+0x108] StreamedTable.cs:1294
+  +0x108: RIP [0x02e21d48] -> MetaUsage(tag=1, idx=37575)
+  +0x10f: CALL 0x001bc6b0 ()
+  [+0x114] StreamedTable.cs:1294
+  [+0x119] StreamedTable.cs:1294
+  [+0x11c] StreamedTable.cs:1294
+  +0x11c: CALL 0x0159c1b0 (DropdownRowNavigatable.cs:44, TableRowNavigatable.cs:373)
+  [+0x121] StreamedTable.cs:1294, TableRowNavigatable.cs:20
+  +0x132: CALL 0x001bb740 ()
+  [+0x137] StreamedTable.cs:1294
+  [+0x13e] StreamedTable.cs:1294, TableRowNavigatable.cs:21
+  +0x14c: CALL 0x001bb740 ()
+  [+0x151] StreamedTable.cs:1295
+  +0x151: RIP [0x02e1d608] -> STR "streamed-table-cell-selector"
+  +0x15e: CALL 0x01f28360 ()
+  [+0x163] StreamedTable.cs:1304
+  +0x163: RIP [0x02ddc740] -> MetaUsage(tag=1, idx=14316)
+  +0x16a: CALL 0x001bc6b0 ()
+  [+0x16f] StreamedTable.cs:1304
+  +0x16f: RIP [0x02e12398] -> MetaUsage(tag=6, idx=202991)
+  [+0x179] StreamedTable.cs:1304
+  [+0x17c] StreamedTable.cs:1304
+  +0x17c: CALL 0x00c2a3a0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x181] StreamedTable.cs:1307
+  [+0x18a] StreamedTable.cs:1309
+  +0x194: CALL 0x01f3a630 ()
+  [+0x199] StreamedTable.cs:1310
+  +0x1a3: CALL 0x01f3a630 ()
+  [+0x1a8] StreamedTable.cs:1313
+  +0x1b1: CALL 0x01f284c0 ()
+  [+0x1b6] StreamedTable.cs:1315
+  +0x1c2: CALL 0x01e166a0 ()
+  [+0x1c7] StreamedTable.cs:1315
+  [+0x1cb] StreamedTable.cs:1317
+  +0x1cb: RIP [0x02e44ae8] -> MetaUsage(tag=1, idx=39900)
+  +0x1e2: CALL 0x001bc7a0 ()
+  [+0x1e7] StreamedTable.cs:1317
+  +0x1ec: CALL 0x01672cd0 (VisualTreeAssetExtensions.cs:66)
+  [+0x1f4] StreamedTable.cs:1318
+  [+0x209] StreamedTable.cs:1318
+  +0x20f: CALL 0x01f3a630 ()
+  [+0x214] StreamedTable.cs:1320
+  +0x21d: CALL 0x01f284c0 ()
+  [+0x222] StreamedTable.cs:1321
+  [+0x23b] StreamedTable.cs:1324, StreamedTable.cs:605
+  +0x240: CALL 0x015acdf0 (StreamedListView.cs:404)
+  [+0x245] StreamedTable.cs:1324
+  [+0x24d] StreamedTable.cs:1328
+  [+0x254] StreamedTable.cs:1328
+  [+0x25d] StreamedTable.cs:1328
+  +0x25d: RIP [0x02dd2d60] -> MetaUsage(tag=6, idx=197764)
+  +0x26b: CALL 0x010d5670 ()
+  [+0x270] StreamedTable.cs:1328
+  [+0x277] StreamedTable.cs:1328
+  +0x277: RIP [0x02e26f08] -> MetaUsage(tag=6, idx=208726)
+  +0x285: CALL 0x00abef60 (StreamedListView.cs:820)
+  [+0x28a] StreamedTable.cs:1328
+  [+0x28c] StreamedTable.cs:1287
+  +0x2a9: JMP 0x015ecd46 ()
+  [+0x2ae] StreamedTable.cs:1328
+  +0x2b0: CALL 0x015e8950 (StreamedTable.cs:3099)
+  [+0x2b5] StreamedTable.cs:1329
+  [+0x2be] StreamedTable.cs:1329
+  +0x2c7: CALL 0x01f284c0 ()
+  [+0x2cc] StreamedTable.cs:1331
+  [+0x2d3] StreamedTable.cs:1331
+  [+0x2dc] StreamedTable.cs:1331
+  +0x2dc: RIP [0x02dd2d60] -> MetaUsage(tag=6, idx=197764)
+  +0x2ea: CALL 0x010d5670 ()
+  [+0x2ef] StreamedTable.cs:1331
+  [+0x2f3] StreamedTable.cs:1333, StreamedObjectListWithChildren.cs:30
+  [+0x2f7] StreamedTable.cs:1333
+  [+0x2fe] StreamedTable.cs:1333
+  +0x2fe: RIP [0x02e12658] -> MetaUsage(tag=6, idx=202994)
+  [+0x305] StreamedObjectListWithChildren.cs:30
+  [+0x309] StreamedObjectListWithChildren.cs:30
+  [+0x30d] StreamedObjectListWithChildren.cs:30
+  [+0x313] StreamedObjectListWithChildren.cs:30
+  +0x325: CALL 0x00c760a0 ()
+  [+0x32c] StreamedObjectListWithChildren.cs:30
+  [+0x334] StreamedObjectListWithChildren.cs:30
+  +0x341: CALL 0x001bb740 ()
+  [+0x346] StreamedTable.cs:1337, StreamedTable.cs:614
+  +0x34f: CALL 0x012a0df0 ()
+  [+0x354] StreamedTable.cs:1337
+  [+0x358] StreamedTable.cs:1339
+  +0x358: RIP [0x02e26e50] -> MetaUsage(tag=6, idx=208725)
+  +0x369: CALL 0x00abef60 (StreamedListView.cs:820)
+  [+0x36e] StreamedTable.cs:1340
+  [+0x377] StreamedTable.cs:1340
+  +0x380: CALL 0x01f284c0 ()
+  [+0x385] StreamedTable.cs:1343
+  [+0x38c] StreamedTable.cs:1343
+  [+0x395] StreamedTable.cs:1343
+  [+0x3a1] StreamedTable.cs:1345
+  [+0x3aa] StreamedTable.cs:1345
+  [+0x3b1] StreamedTable.cs:1345
+  [+0x3d3] StreamedTable.cs:1347
+  [+0x3d7] StreamedTable.cs:1349
+  [+0x3e2] StreamedTable.cs:1349
+  [+0x3eb] StreamedTable.cs:1349
+  [+0x3ef] StreamedTable.cs:1349
+  [+0x3f8] StreamedTable.cs:1349
+  [+0x3fc] StreamedTable.cs:1349
+  [+0x405] StreamedTable.cs:1349
+  +0x40c: RIP [0x02e47370] -> MetaUsage(tag=1, idx=12128)
+  +0x451: CALL 0x001c0240 ()
+  [+0x466] StreamedTable.cs:1349
+  [+0x46e] StreamedTable.cs:1354
+  [+0x472] StreamedTable.cs:1354
+  [+0x47b] StreamedTable.cs:1354
+  +0x480: CALL 0x01611010 (StreamedTableView.cs:73)
+  [+0x485] StreamedTable.cs:1354
+  [+0x489] StreamedTable.cs:1360
+  +0x489: RIP [0x02e12a08] -> MetaUsage(tag=6, idx=202998)
+  +0x497: CALL 0x00c69bc0 ()
+  [+0x49c] StreamedTable.cs:1360
+  [+0x4a0] StreamedTable.cs:1365
+  +0x4a0: RIP [0x02e26e50] -> MetaUsage(tag=6, idx=208725)
+  +0x4ae: CALL 0x00abef60 (StreamedListView.cs:820)
+  [+0x4b6] StreamedTable.cs:1366
+  [+0x4ca] StreamedTable.cs:1366
+  +0x4d0: CALL 0x01f3a630 ()
+  [+0x4d5] StreamedTable.cs:1367
+  [+0x4de] StreamedTable.cs:1367
+  +0x4e7: CALL 0x01f284c0 ()
+  [+0x4ec] StreamedTable.cs:1368
+  +0x4ec: RIP [0x02e12658] -> MetaUsage(tag=6, idx=202994)
+  +0x4fa: CALL 0x002953e0 ()
+  [+0x4ff] StreamedTable.cs:1345
+  [+0x52a] StreamedTable.cs:1371, StreamedObjectListWithChildren.cs:30
+  [+0x52e] StreamedObjectListWithChildren.cs:30
+  [+0x532] StreamedObjectListWithChildren.cs:30
+  [+0x53a] StreamedObjectListWithChildren.cs:30
+  [+0x53f] StreamedObjectListWithChildren.cs:30
+  +0x548: CALL 0x013d0920 ()
+  [+0x54d] StreamedTable.cs:1373, StreamedTable.cs:619
+  +0x556: CALL 0x012a0df0 ()
+  [+0x55b] StreamedTable.cs:1373
+  [+0x55f] StreamedTable.cs:1375
+  +0x55f: RIP [0x02e26e50] -> MetaUsage(tag=6, idx=208725)
+  +0x570: CALL 0x00abef60 (StreamedListView.cs:820)
+  [+0x575] StreamedTable.cs:1376
+  [+0x57e] StreamedTable.cs:1376
+  +0x587: CALL 0x01f284c0 ()
+  [+0x58c] StreamedTable.cs:1379
+  [+0x593] StreamedTable.cs:1379
+  [+0x5a4] StreamedTable.cs:1379
+  [+0x5a9] StreamedTable.cs:1379
+  +0x5a9: CALL 0x0063c340 (PluginContextMenuContributor.cs:394)
+  [+0x5ae] StreamedTable.cs:1379
+  [+0x5b9] StreamedTable.cs:1349
+  +0x5d1: JMP 0x015ed0b6 ()
+  [+0x5d6] StreamedTable.cs:1379, StreamedObjectListWithChildren.cs:30
+  +0x5da: RIP [0x02e32f78] -> MetaUsage(tag=6, idx=201413)
+  [+0x5e6] StreamedObjectListWithChildren.cs:30
+  [+0x5e9] StreamedObjectListWithChildren.cs:30
+  [+0x5ed] StreamedObjectListWithChildren.cs:30
+  [+0x5f2] StreamedObjectListWithChildren.cs:30
+  +0x60f: CALL 0x00c3e0b0 ()
+  [+0x616] StreamedObjectListWithChildren.cs:30
+  [+0x61c] StreamedObjectListWithChildren.cs:30
+  +0x634: CALL 0x001bb740 ()
+  [+0x639] StreamedTable.cs:1382
+  [+0x642] StreamedTable.cs:1382
+  +0x644: CALL 0x016ba8e0 (NavigationManager.cs:121, NavigationManager.cs:125)
+  [+0x649] StreamedTable.cs:1382
+  [+0x64d] StreamedTable.cs:1382, NavigationManager.cs:112
+  +0x64d: RIP [0x02dcf7b0] -> MetaUsage(tag=1, idx=32760)
+  [+0x65e] StreamedTable.cs:1382
+  [+0x663] StreamedTable.cs:1382
+  +0x663: RIP [0x02e26860] -> MetaUsage(tag=1, idx=29476)
+  [+0x674] StreamedTable.cs:1382
+  [+0x679] StreamedTable.cs:1384
+  [+0x680] StreamedTable.cs:1384
+  +0x680: RIP [0x02dd90e8] -> MetaUsage(tag=1, idx=25091)
+  +0x687: CALL 0x001bc6b0 ()
+  [+0x694] StreamedTable.cs:1384
+  [+0x697] StreamedTable.cs:1384
+  [+0x69e] StreamedTable.cs:1384
+  +0x6a3: CALL 0x016b0cb0 (ContextMenuDescriptionManipulator.cs:19)
+  [+0x6a8] StreamedTable.cs:1385
+  +0x6b1: CALL 0x01f7fe40 ()
+  [+0x6b6] StreamedTable.cs:1388
+  [+0x6d1] StreamedTable.cs:1382
+  +0x6d1: CALL 0x001bc700 ()
+  [+0x6d7] StreamedTable.cs:1379
+  +0x6d7: CALL 0x001bc700 ()

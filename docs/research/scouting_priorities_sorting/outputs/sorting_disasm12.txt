@@ -1,0 +1,554 @@
+
+================ AutogenBindings_0x002ae590 (0x002ae590..0x002ae990, sz=1024) ================
+  +0x000: 8b c1 c3 cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x010: 48 89 5c 24 08 57 48 83 ec 40 0f 57 c0 48 8b d9
+  +0x020: 0f 11 01 48 8b 0d 8e b5 b3 02 48 8b fa 83 b9 e4
+  +0x030: 00 00 00 00 75 1a e8 d5 e1 f0 ff 48 8b 0d 76 b5
+  +0x040: b3 02 83 b9 e4 00 00 00 00 75 05 e8 c0 e1 f0 ff
+  +0x050: 0f 10 07 45 33 c0 48 8d 54 24 20 48 8d 4c 24 30
+  +0x060: 0f 29 44 24 20 e8 f6 d5 7a 00 0f 10 44 24 30 0f
+  +0x070: 11 03 48 8b c3 48 8b 5c 24 50 48 83 c4 40 5f c3
+  +0x080: 48 89 5c 24 08 57 48 83 ec 40 0f 57 c9 48 8b d9
+  +0x090: 0f 11 09 48 8b 0d 1e b5 b3 02 48 8b fa 0f 57 c0
+  +0x0a0: 0f 11 44 24 20 83 b9 e4 00 00 00 00 75 1a e8 5d
+  +0x0b0: e1 f0 ff 48 8b 0d fe b4 b3 02 83 b9 e4 00 00 00
+  +0x0c0: 00 75 05 e8 48 e1 f0 ff 0f 10 07 45 33 c0 48 8d
+  +0x0d0: 54 24 20 48 8d 4c 24 30 0f 29 44 24 30 e8 8e d6
+  +0x0e0: 7a 00 0f 10 44 24 20 0f 11 03 48 8b c3 48 8b 5c
+  +0x0f0: 24 50 48 83 c4 40 5f c3 cc cc cc cc cc cc cc cc
+  +0x100: 0f b7 c1 c3 cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x110: 0f 10 02 48 8b c1 0f 10 4a 10 0f 11 01 0f 10 42
+  +0x120: 20 0f 11 49 10 0f 10 4a 30 0f 11 41 20 0f 11 49
+  +0x130: 30 c3 cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x140: 0f b6 c1 c3 cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x150: 0f 10 02 48 8b c1 0f 11 01 c3 cc cc cc cc cc cc
+  +0x160: 48 83 ec 38 0f 10 01 33 d2 48 8d 4c 24 20 0f 29
+  +0x170: 44 24 20 e8 e8 81 01 00 48 83 c4 38 c3 cc cc cc
+  +0x180: 40 53 48 83 ec 40 48 8b d9 0f 57 c0 48 8b 0d 25
+  +0x190: b4 b3 02 0f 11 44 24 20 83 b9 e4 00 00 00 00 75
+  +0x1a0: 1a e8 6a e0 f0 ff 48 8b 0d 0b b4 b3 02 83 b9 e4
+  +0x1b0: 00 00 00 00 75 05 e8 55 e0 f0 ff 0f 10 03 45 33
+  +0x1c0: c0 48 8d 54 24 20 48 8d 4c 24 30 0f 29 44 24 30
+  +0x1d0: e8 9b d5 7a 00 48 8b 15 dc 42 b3 02 48 8d 4c 24
+  +0x1e0: 20 e8 aa 20 a4 00 48 83 c4 40 5b c3 cc cc cc cc
+  +0x1f0: 8b 42 10 0f 10 02 0f 11 01 89 41 10 48 8b c1 c3
+  +0x200: 48 83 ec 38 0f 10 01 33 d2 48 8d 4c 24 20 0f 29
+  +0x210: 44 24 20 e8 e8 fb 01 00 48 83 c4 38 c3 cc cc cc
+  +0x220: 48 8b c1 c3 cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x230: 48 8b c1 41 b8 08 00 00 00 0f 1f 80 00 00 00 00
+  +0x240: 48 8d 80 80 00 00 00 0f 10 02 0f 10 4a 10 48 8d
+  +0x250: 92 80 00 00 00 0f 11 40 80 0f 10 42 a0 0f 11 48
+  +0x260: 90 0f 10 4a b0 0f 11 40 a0 0f 10 42 c0 0f 11 48
+  +0x270: b0 0f 10 4a d0 0f 11 40 c0 0f 10 42 e0 0f 11 48
+  +0x280: d0 0f 10 4a f0 0f 11 40 e0 0f 11 48 f0 49 83 e8
+  +0x290: 01 75 ad 0f 10 02 0f 10 4a 10 0f 11 00 0f 11 48
+  +0x2a0: 10 48 8b c1 c3 cc cc cc cc cc cc cc cc cc cc cc
+  +0x2b0: 0f 10 02 48 8b c1 0f 10 4a 10 0f 11 01 0f 10 42
+  +0x2c0: 20 0f 11 49 10 0f 11 41 20 c3 cc cc cc cc cc cc
+  +0x2d0: 8b 42 08 f2 0f 10 02 f2 0f 11 01 89 41 08 48 8b
+  +0x2e0: c1 c3 cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x2f0: 0f 10 02 8b 82 b0 00 00 00 0f 10 4a 10 0f 11 01
+  +0x300: 0f 10 42 20 0f 11 49 10 0f 10 4a 30 0f 11 41 20
+  +0x310: 0f 10 42 40 0f 11 49 30 0f 10 4a 50 0f 11 41 40
+  +0x320: 0f 10 42 60 0f 11 49 50 0f 10 8a 80 00 00 00 0f
+  +0x330: 11 41 60 0f 10 42 70 0f 11 41 70 0f 10 82 90 00
+  +0x340: 00 00 0f 11 89 80 00 00 00 0f 10 8a a0 00 00 00
+  +0x350: 0f 11 81 90 00 00 00 0f 11 89 a0 00 00 00 89 81
+  +0x360: b0 00 00 00 48 8b c1 c3 cc cc cc cc cc cc cc cc
+  +0x370: 8b 42 20 0f 10 02 0f 10 4a 10 0f 11 01 0f 11 49
+  +0x380: 10 89 41 20 48 8b c1 c3 cc cc cc cc cc cc cc cc
+  +0x390: 0f 10 02 48 8b c1 0f 10 4a 10 0f 11 01 0f 11 49
+  +0x3a0: 10 c3 cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x3b0: 0f 10 02 4c 8d 81 80 00 00 00 0f 10 4a 10 0f 11
+  +0x3c0: 01 0f 10 42 20 0f 11 49 10 0f 10 4a 30 0f 11 41
+  +0x3d0: 20 0f 10 42 40 0f 11 49 30 0f 10 4a 50 0f 11 41
+  +0x3e0: 40 0f 10 42 60 0f 11 49 50 0f 11 41 60 0f 10 42
+  +0x3f0: 70 48 83 ea 80 41 0f 11 40 f0 48 8b 42 40 0f 10
+  --- USYM & Refs ---
+  [+0x000] FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899, FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:114, FM.GamePlugin.AutogenBindings.cs:184, FM.GamePlugin.AutogenBindings.cs:5771, FM.GamePlugin.AutogenBindings.cs:6150, FM.GamePlugin.AutogenBindings.cs:6155, FM.GamePlugin.AutogenBindings.cs:75, FM.GamePlugin.AutogenBindings.cs:6150, FM.GamePlugin.AutogenBindings.cs:6027, UiRecordID.cs:181
+  [+0x002] FM.GamePlugin.AutogenBindings.cs:6150, FM.GamePlugin.AutogenBindings.cs:6155, FM.GamePlugin.AutogenBindings.cs:5899, FM.GamePlugin.AutogenBindings.cs:184, FM.GamePlugin.AutogenBindings.cs:75, FM.GamePlugin.AutogenBindings.cs:5894
+  [+0x003] :4294967295
+  [+0x010] FM.GamePlugin.AutogenBindings.cs:5119, FM.GamePlugin.AutogenBindings.cs:5449, FM.GamePlugin.AutogenBindings.cs:5427, FM.GamePlugin.AutogenBindings.cs:5348, FM.GamePlugin.AutogenBindings.cs:5053, FM.GamePlugin.AutogenBindings.cs:5361, FM.GamePlugin.AutogenBindings.cs:5075, FM.GamePlugin.AutogenBindings.cs:5097, FM.GamePlugin.AutogenBindings.cs:5405
+  [+0x020] FM.GamePlugin.AutogenBindings.cs:5119, FM.GamePlugin.AutogenBindings.cs:5075, FM.GamePlugin.AutogenBindings.cs:5097, FM.GamePlugin.AutogenBindings.cs:5361, FM.GamePlugin.AutogenBindings.cs:5427, FM.GamePlugin.AutogenBindings.cs:5449, FM.GamePlugin.AutogenBindings.cs:5348, FM.GamePlugin.AutogenBindings.cs:5053, FM.GamePlugin.AutogenBindings.cs:5405
+  [+0x023] FM.GamePlugin.AutogenBindings.cs:5356, FM.GamePlugin.AutogenBindings.cs:5444, FM.GamePlugin.AutogenBindings.cs:5114, FM.GamePlugin.AutogenBindings.cs:5070, FM.GamePlugin.AutogenBindings.cs:5466, FM.GamePlugin.AutogenBindings.cs:5422, FM.GamePlugin.AutogenBindings.cs:5136, FM.GamePlugin.AutogenBindings.cs:5092, FM.GamePlugin.AutogenBindings.cs:5378
+  +0x023: RIP [0x02de9b48] -> MetaUsage(tag=1, idx=34287)
+  +0x036: CALL 0x001bc7a0 ()
+  +0x03b: RIP [0x02de9b48] -> MetaUsage(tag=1, idx=34287)
+  [+0x042] FM.GamePlugin.AutogenBindings.cs:5137, FM.GamePlugin.AutogenBindings.cs:5071, FM.GamePlugin.AutogenBindings.cs:5445, FM.GamePlugin.AutogenBindings.cs:5467, FM.GamePlugin.AutogenBindings.cs:5357, FM.GamePlugin.AutogenBindings.cs:5093, FM.GamePlugin.AutogenBindings.cs:5115, FM.GamePlugin.AutogenBindings.cs:5379, FM.GamePlugin.AutogenBindings.cs:5423, Profiling.cs:74
+  +0x04b: CALL 0x001bc7a0 ()
+  [+0x050] FM.GamePlugin.AutogenBindings.cs:5359, FM.GamePlugin.AutogenBindings.cs:5447, FM.GamePlugin.AutogenBindings.cs:5139, FM.GamePlugin.AutogenBindings.cs:5381, FM.GamePlugin.AutogenBindings.cs:5117, FM.GamePlugin.AutogenBindings.cs:5095, FM.GamePlugin.AutogenBindings.cs:5469, FM.GamePlugin.AutogenBindings.cs:5073, FM.GamePlugin.AutogenBindings.cs:5425
+  +0x065: CALL 0x00a5bbf0 (MarshallingHelpers.cs:95, MarshallingHelpers.cs:104)
+  [+0x072] FM.GamePlugin.AutogenBindings.cs:5075, FM.GamePlugin.AutogenBindings.cs:5141, FM.GamePlugin.AutogenBindings.cs:5097, FM.GamePlugin.AutogenBindings.cs:5119, FM.GamePlugin.AutogenBindings.cs:5383, FM.GamePlugin.AutogenBindings.cs:5427, FM.GamePlugin.AutogenBindings.cs:5471, FM.GamePlugin.AutogenBindings.cs:5361, FM.GamePlugin.AutogenBindings.cs:5449
+  [+0x075] FM.GamePlugin.AutogenBindings.cs:5383, FM.GamePlugin.AutogenBindings.cs:5141, FM.GamePlugin.AutogenBindings.cs:5361, FM.GamePlugin.AutogenBindings.cs:5075, FM.GamePlugin.AutogenBindings.cs:5449, FM.GamePlugin.AutogenBindings.cs:5471, FM.GamePlugin.AutogenBindings.cs:5427, FM.GamePlugin.AutogenBindings.cs:5097, FM.GamePlugin.AutogenBindings.cs:5119
+  [+0x080] FM.GamePlugin.AutogenBindings.cs:5304, FM.GamePlugin.AutogenBindings.cs:5238, FM.GamePlugin.AutogenBindings.cs:5260, FM.GamePlugin.AutogenBindings.cs:5216, FM.GamePlugin.AutogenBindings.cs:5163, FM.GamePlugin.AutogenBindings.cs:5282, FM.GamePlugin.AutogenBindings.cs:5326
+  [+0x090] FM.GamePlugin.AutogenBindings.cs:5163, FM.GamePlugin.AutogenBindings.cs:5216, FM.GamePlugin.AutogenBindings.cs:5326, FM.GamePlugin.AutogenBindings.cs:5238, FM.GamePlugin.AutogenBindings.cs:5282, FM.GamePlugin.AutogenBindings.cs:5260, FM.GamePlugin.AutogenBindings.cs:5304
+  [+0x093] FM.GamePlugin.AutogenBindings.cs:5232, FM.GamePlugin.AutogenBindings.cs:5276, FM.GamePlugin.AutogenBindings.cs:5254, FM.GamePlugin.AutogenBindings.cs:5320, FM.GamePlugin.AutogenBindings.cs:5210, FM.GamePlugin.AutogenBindings.cs:5342, FM.GamePlugin.AutogenBindings.cs:5298
+  +0x093: RIP [0x02de9b48] -> MetaUsage(tag=1, idx=34287)
+  +0x0ae: CALL 0x001bc7a0 ()
+  +0x0b3: RIP [0x02de9b48] -> MetaUsage(tag=1, idx=34287)
+  [+0x0ba] FM.GamePlugin.AutogenBindings.cs:5321, FM.GamePlugin.AutogenBindings.cs:5211, FM.GamePlugin.AutogenBindings.cs:5277, FM.GamePlugin.AutogenBindings.cs:5343, FM.GamePlugin.AutogenBindings.cs:5233, FM.GamePlugin.AutogenBindings.cs:5299, FM.GamePlugin.AutogenBindings.cs:5255, Profiling.cs:74
+  +0x0c3: CALL 0x001bc7a0 ()
+  [+0x0c8] FM.GamePlugin.AutogenBindings.cs:5257, FM.GamePlugin.AutogenBindings.cs:5235, FM.GamePlugin.AutogenBindings.cs:5345, FM.GamePlugin.AutogenBindings.cs:5323, FM.GamePlugin.AutogenBindings.cs:5301, FM.GamePlugin.AutogenBindings.cs:5213, FM.GamePlugin.AutogenBindings.cs:5279
+  +0x0dd: CALL 0x00a5bd00 (MarshallingHelpers.cs:83, MarshallingHelpers.cs:95)
+  [+0x0e2] FM.GamePlugin.AutogenBindings.cs:5346, FM.GamePlugin.AutogenBindings.cs:5236, FM.GamePlugin.AutogenBindings.cs:5280, FM.GamePlugin.AutogenBindings.cs:5214, FM.GamePlugin.AutogenBindings.cs:5302, FM.GamePlugin.AutogenBindings.cs:5324, FM.GamePlugin.AutogenBindings.cs:5258
+  [+0x0ea] FM.GamePlugin.AutogenBindings.cs:5348, FM.GamePlugin.AutogenBindings.cs:5304, FM.GamePlugin.AutogenBindings.cs:5326, FM.GamePlugin.AutogenBindings.cs:5282, FM.GamePlugin.AutogenBindings.cs:5216, FM.GamePlugin.AutogenBindings.cs:5260, FM.GamePlugin.AutogenBindings.cs:5238
+  [+0x0ed] FM.GamePlugin.AutogenBindings.cs:5348, FM.GamePlugin.AutogenBindings.cs:5304, FM.GamePlugin.AutogenBindings.cs:5238, FM.GamePlugin.AutogenBindings.cs:5260, FM.GamePlugin.AutogenBindings.cs:5216, FM.GamePlugin.AutogenBindings.cs:5282, FM.GamePlugin.AutogenBindings.cs:5326
+  [+0x0f8] :4294967295
+  [+0x100] FM.GamePlugin.AutogenBindings.cs:101, FM.GamePlugin.AutogenBindings.cs:106, FM.GamePlugin.AutogenBindings.cs:75, FM.GamePlugin.AutogenBindings.cs:101
+  [+0x103] FM.GamePlugin.AutogenBindings.cs:106, FM.GamePlugin.AutogenBindings.cs:101
+  [+0x104] :4294967295
+  [+0x110] FM.GamePlugin.AutogenBindings.cs:1368, FM.GamePlugin.AutogenBindings.cs:1431, FM.GamePlugin.AutogenBindings.cs:1015, FM.GamePlugin.AutogenBindings.cs:1068
+  [+0x131] FM.GamePlugin.AutogenBindings.cs:1431, FM.GamePlugin.AutogenBindings.cs:1068
+  [+0x132] :4294967295
+  [+0x140] FM.GamePlugin.AutogenBindings.cs:5766, FM.GamePlugin.AutogenBindings.cs:106, FM.GamePlugin.AutogenBindings.cs:5702, FM.GamePlugin.AutogenBindings.cs:569, FM.GamePlugin.AutogenBindings.cs:574, FM.GamePlugin.AutogenBindings.cs:5510, FM.GamePlugin.AutogenBindings.cs:5707, FM.GamePlugin.AutogenBindings.cs:569, FM.GamePlugin.AutogenBindings.cs:5702, FM.GamePlugin.AutogenBindings.cs:184, FM.GamePlugin.AutogenBindings.cs:114, FM.GamePlugin.AutogenBindings.cs:296, FM.GamePlugin.AutogenBindings.cs:5766, FM.GamePlugin.AutogenBindings.cs:5771, FM.GamePlugin.AutogenBindings.cs:296, FM.GamePlugin.AutogenBindings.cs:5707
+  [+0x143] FM.GamePlugin.AutogenBindings.cs:5771, FM.GamePlugin.AutogenBindings.cs:5766, FM.GamePlugin.AutogenBindings.cs:569, FM.GamePlugin.AutogenBindings.cs:296, FM.GamePlugin.AutogenBindings.cs:5707, FM.GamePlugin.AutogenBindings.cs:574, FM.GamePlugin.AutogenBindings.cs:114, FM.GamePlugin.AutogenBindings.cs:5702
+  [+0x144] :4294967295
+  [+0x150] FM.GamePlugin.AutogenBindings.cs:1305, FM.GamePlugin.AutogenBindings.cs:1368, FM.GamePlugin.AutogenBindings.cs:1068, FM.GamePlugin.AutogenBindings.cs:1136
+  [+0x159] FM.GamePlugin.AutogenBindings.cs:1368, FM.GamePlugin.AutogenBindings.cs:1136
+  [+0x15a] :4294967295
+  [+0x160] FM.GamePlugin.AutogenBindings.cs:6517
+  [+0x164] FM.GamePlugin.AutogenBindings.cs:6578
+  +0x173: CALL 0x002c68f0 (FM.GamePlugin.AutogenBindings.cs:7859)
+  [+0x178] FM.GamePlugin.AutogenBindings.cs:6578
+  [+0x17d] :4294967295
+  [+0x180] FM.GamePlugin.AutogenBindings.cs:5471
+  [+0x18c] FM.GamePlugin.AutogenBindings.cs:5503
+  +0x18c: RIP [0x02de9b48] -> MetaUsage(tag=1, idx=34287)
+  +0x1a1: CALL 0x001bc7a0 ()
+  +0x1a6: RIP [0x02de9b48] -> MetaUsage(tag=1, idx=34287)
+  [+0x1ad] FM.GamePlugin.AutogenBindings.cs:5504, Profiling.cs:74
+  +0x1b6: CALL 0x001bc7a0 ()
+  [+0x1bb] FM.GamePlugin.AutogenBindings.cs:5506
+  +0x1d0: CALL 0x00a5bd00 (MarshallingHelpers.cs:83, MarshallingHelpers.cs:95)
+  [+0x1d5] FM.GamePlugin.AutogenBindings.cs:5508
+  +0x1d5: RIP [0x02de2a48] -> MetaUsage(tag=6, idx=103782)
+  +0x1e1: CALL 0x00cf0820 (MotionProperty.cs:36)
+  [+0x1e6] FM.GamePlugin.AutogenBindings.cs:5510
+  [+0x1ec] :4294967295
+  [+0x1f0] FM.GamePlugin.AutogenBindings.cs:3347, FM.GamePlugin.AutogenBindings.cs:3455, FM.GamePlugin.AutogenBindings.cs:3274, FM.GamePlugin.AutogenBindings.cs:3347, FM.GamePlugin.AutogenBindings.cs:4441, FM.GamePlugin.AutogenBindings.cs:4499, FM.GamePlugin.AutogenBindings.cs:3455, FM.GamePlugin.AutogenBindings.cs:3518
+  [+0x1ff] FM.GamePlugin.AutogenBindings.cs:3455, FM.GamePlugin.AutogenBindings.cs:3347, FM.GamePlugin.AutogenBindings.cs:4499, FM.GamePlugin.AutogenBindings.cs:3518
+  [+0x200] FM.GamePlugin.AutogenBindings.cs:6578
+  [+0x204] FM.GamePlugin.AutogenBindings.cs:6600
+  +0x213: CALL 0x002ce390 (FM.GamePlugin.AutogenBindings.cs:8251)
+  [+0x218] FM.GamePlugin.AutogenBindings.cs:6600
+  [+0x21d] :4294967295
+  [+0x220] FM.GamePlugin.AutogenBindings.cs:1010, FM.GamePlugin.AutogenBindings.cs:1015, FM.GamePlugin.AutogenBindings.cs:1010, FM.GamePlugin.AutogenBindings.cs:1927, FM.GamePlugin.AutogenBindings.cs:1980, FM.GamePlugin.AutogenBindings.cs:879, FM.GamePlugin.AutogenBindings.cs:5899, FM.GamePlugin.AutogenBindings.cs:6027, FM.GamePlugin.AutogenBindings.cs:1927, FM.GamePlugin.AutogenBindings.cs:821, FM.GamePlugin.AutogenBindings.cs:695, FM.GamePlugin.AutogenBindings.cs:1431
+  [+0x223] FM.GamePlugin.AutogenBindings.cs:821, FM.GamePlugin.AutogenBindings.cs:6027, FM.GamePlugin.AutogenBindings.cs:1015, FM.GamePlugin.AutogenBindings.cs:1980, FM.GamePlugin.AutogenBindings.cs:1927, FM.GamePlugin.AutogenBindings.cs:1010
+  [+0x224] :4294967295
+  [+0x230] FM.GamePlugin.AutogenBindings.cs:3518, FM.GamePlugin.AutogenBindings.cs:4006
+  [+0x2a4] FM.GamePlugin.AutogenBindings.cs:4006
+  [+0x2a5] :4294967295
+  [+0x2b0] FM.GamePlugin.AutogenBindings.cs:4499, FM.GamePlugin.AutogenBindings.cs:4572
+  [+0x2c9] FM.GamePlugin.AutogenBindings.cs:4572
+  [+0x2ca] :4294967295
+  [+0x2d0] FM.GamePlugin.AutogenBindings.cs:4006, FM.GamePlugin.AutogenBindings.cs:4069, FM.GamePlugin.AutogenBindings.cs:574, FM.GamePlugin.AutogenBindings.cs:695, FM.GamePlugin.AutogenBindings.cs:821, FM.GamePlugin.AutogenBindings.cs:879
+  [+0x2e1] FM.GamePlugin.AutogenBindings.cs:4069, FM.GamePlugin.AutogenBindings.cs:695, FM.GamePlugin.AutogenBindings.cs:879
+  [+0x2e2] :4294967295
+  [+0x2f0] FM.GamePlugin.AutogenBindings.cs:4069, FM.GamePlugin.AutogenBindings.cs:4441
+  [+0x367] FM.GamePlugin.AutogenBindings.cs:4441
+  [+0x368] :4294967295
+  [+0x370] FM.GamePlugin.AutogenBindings.cs:1980, FM.GamePlugin.AutogenBindings.cs:2038
+  [+0x387] FM.GamePlugin.AutogenBindings.cs:2038
+  [+0x388] :4294967295
+  [+0x390] FM.GamePlugin.AutogenBindings.cs:2038, FM.GamePlugin.AutogenBindings.cs:2141
+  [+0x3a1] FM.GamePlugin.AutogenBindings.cs:2141
+  [+0x3a2] :4294967295
+  [+0x3b0] FM.GamePlugin.AutogenBindings.cs:4572, FM.GamePlugin.AutogenBindings.cs:4670
+
+=== FM.UI.dll Type 861: ScoutTeamPrioritiesReference (parent=-1, methods=16) ===
+  Method 10276 (.ctor): RVA=0x0067dbc0 size=55
+  Method 10277 (.ctor): RVA=0x004d2220 size=61
+  Method 10278 (get_Identifier): RVA=0x0067dc00 size=64
+  Method 10279 (get_ID): RVA=0x0067dc00 size=64
+  Method 10280 (AcceptsProperty): RVA=0x0067d680 size=64
+  Method 10281 (AcceptsPropertyInternal): RVA=0x0067d660 size=64
+  Method 10282 (GetPropertyTypeInternal): RVA=0x0067db00 size=181
+  Method 10283 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 10284 (GetProperties): RVA=0x0067d9b0 size=323
+  Method 10285 (GetPropertiesInternal): RVA=0x0067d870 size=320
+  Method 10286 (GetPropertyCountInternal): RVA=0x0035e220 size=64
+  Method 10287 (GetContexts): RVA=0x0067d770 size=162
+  Method 10288 (GetContextsInternal): RVA=0x0067d6c0 size=162
+  Method 10289 (DerivesFrom): RVA=0x0067d6b0 size=64
+  Method 10290 (DerivesFromInternal): RVA=0x0067d6a0 size=64
+  Method 10291 (GetInstance): RVA=0x0067d820 size=71
+
+=== FM.UI.dll Type 909: SpecificallyScoutedPersonReference (parent=-1, methods=13) ===
+  Method 10924 (get_Identifier): RVA=0x00697370 size=64
+  Method 10925 (get_ID): RVA=0x00697370 size=64
+  Method 10926 (AcceptsPropertyInternal): RVA=0x00696ef0 size=64
+  Method 10927 (GetPropertyTypeInternal): RVA=0x00697200 size=356
+  Method 10928 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 10929 (GetProperties): RVA=0x006971f0 size=64
+  Method 10930 (GetPropertiesInternal): RVA=0x00696f80 size=616
+  Method 10931 (GetPropertyCountInternal): RVA=0x004d3ef0 size=64
+  Method 10932 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 10933 (DerivesFrom): RVA=0x00696f60 size=64
+  Method 10934 (DerivesFromInternal): RVA=0x00696f50 size=64
+  Method 10935 (GetInstance): RVA=0x00696f70 size=64
+  Method 10936 (.ctor): RVA=0x002911e0 size=64
+
+=== SI.Bindable.dll Type 5791: StreamedListView (parent=-1, methods=185) ===
+  Method 47153 (get_SourceData): RVA=0x015ace60 size=64
+  Method 47154 (set_SourceData): RVA=0x015ad680 size=64
+  Method 47155 (get_ReceivedAllSortingData): RVA=0x015acd40 size=58
+  Method 47156 (get_Dirty): RVA=0x015acc30 size=64
+  Method 47157 (set_Dirty): RVA=0x015ad130 size=64
+  Method 47158 (get_SortAscending): RVA=0x015ace40 size=64
+    -> REFS: +0x788(SortBinding)
+  Method 47159 (set_SortAscending): RVA=0x015ad650 size=64
+    -> REFS: +0x788(SortBinding)
+  Method 47160 (get_Panel): RVA=0x015acd30 size=64
+  Method 47161 (set_Panel): RVA=0x015ad4d0 size=64
+    -> REFS: +0x5c1(m_reorderable?)
+  Method 47162 (get_ScrollViewInitialised): RVA=0x015acd90 size=64
+  Method 47163 (set_ScrollViewInitialised): RVA=0x015ad540 size=64
+  Method 47164 (get_ListElement): RVA=0x015accf0 size=64
+  Method 47165 (get_Sortings): RVA=0x00815200 size=64
+    -> REFS: +0x738(m_sortings)
+  Method 47166 (add_OnSelectionChanged): RVA=0x015acbd0 size=34
+  Method 47167 (remove_OnSelectionChanged): RVA=0x015acf60 size=34
+  Method 47168 (add_OnElementInteracted): RVA=0x015acb40 size=129
+  Method 47169 (remove_OnElementInteracted): RVA=0x015aced0 size=129
+  Method 47170 (set_SelectingSameItemDeselects): RVA=0x015ad5c0 size=33
+  Method 47171 (get_ItemCount): RVA=0x015acca0 size=62
+  Method 47172 (get_Indices): RVA=0x0156e280 size=64
+    -> REFS: +0x568(m_indices)
+  Method 47173 (get_ScrollViewToScroll): RVA=0x015acdd0 size=64
+  Method 47174 (set_ScrollViewToScroll): RVA=0x015ad580 size=64
+  Method 47175 (get_SortBinding): RVA=0x015ace50 size=64
+    -> REFS: +0x788(SortBinding)
+  Method 47176 (set_SortBinding): RVA=0x015ad660 size=64
+    -> REFS: +0x788(SortBinding)
+  Method 47177 (set_Binding): RVA=0x015acfc0 size=313
+  Method 47178 (get_Key): RVA=0x015acce0 size=64
+  Method 47179 (set_Key): RVA=0x015ad2d0 size=64
+  Method 47180 (get_BindableFlags): RVA=0x00292620 size=64
+  Method 47181 (get_OnSelectedColumnChangedCallback): RVA=0x015acd00 size=64
+  Method 47182 (set_OnSelectedColumnChangedCallback): RVA=0x015ad340 size=64
+  Method 47183 (get_Identifier): RVA=0x008315f0 size=64
+  Method 47184 (set_Identifier): RVA=0x015ad2b0 size=64
+  Method 47185 (get_DropGroup): RVA=0x00831610 size=64
+  Method 47186 (set_DropGroup): RVA=0x015ad170 size=64
+  Method 47187 (get_SharedPersistenceID): RVA=0x00831600 size=64
+  Method 47188 (set_SharedPersistenceID): RVA=0x00831640 size=64
+  Method 47189 (get_ScrollToElementBinding): RVA=0x015acd80 size=64
+  Method 47190 (set_ScrollToElementBinding): RVA=0x015ad520 size=64
+  Method 47191 (get_SetScrollToAsSelected): RVA=0x015ace30 size=64
+    -> REFS: +0x788(SortBinding)
+  Method 47192 (set_SetScrollToAsSelected): RVA=0x015ad640 size=64
+    -> REFS: +0x788(SortBinding)
+  Method 47193 (get_SetIgnorePickingMode): RVA=0x015ace20 size=64
+    -> REFS: +0x788(SortBinding)
+  Method 47194 (set_SetIgnorePickingMode): RVA=0x015ad620 size=64
+  Method 47195 (get_IsPaginated): RVA=0x015acc70 size=46
+  Method 47196 (get_FocusScrollType): RVA=0x015acc40 size=42
+  Method 47197 (set_FocusScrollType): RVA=0x015ad250 size=42
+  Method 47198 (get_VirtualisationController): RVA=0x015acea0 size=34
+  Method 47199 (get_Direction): RVA=0x015acc00 size=34
+  Method 47200 (set_Direction): RVA=0x015ad100 size=34
+  Method 47201 (get_SelectionMode): RVA=0x015acdf0 size=34
+  Method 47202 (set_SelectionMode): RVA=0x015ad5f0 size=34
+  Method 47203 (get_SelectedItemsBinding): RVA=0x015acde0 size=64
+  Method 47204 (set_SelectedItemsBinding): RVA=0x015ad5a0 size=64
+  Method 47205 (set_Reorderable): RVA=0x015ad4f0 size=33
+    -> REFS: +0x5c1(m_reorderable?)
+  Method 47206 (set_ListName): RVA=0x015ad2e0 size=34
+  Method 47207 (set_AlternateRows): RVA=0x015acf90 size=33
+  Method 47208 (set_DragScrollSpeed): RVA=0x015ad140 size=35
+  Method 47209 (set_MouseWheelScrollSize): RVA=0x015ad310 size=34
+  Method 47210 (get_Truncate): RVA=0x015ace70 size=34
+  Method 47211 (set_Truncate): RVA=0x015ad740 size=33
+  Method 47212 (set_OverprovisionPercent): RVA=0x015ad360 size=35
+  Method 47213 (set_FlexGrow): RVA=0x015ad1f0 size=34
+  Method 47214 (set_FlexShrink): RVA=0x015ad220 size=34
+  Method 47215 (get_TruncateLabelTemplate): RVA=0x00869dd0 size=64
+  Method 47216 (set_TruncateLabelTemplate): RVA=0x015ad6a0 size=153
+  Method 47217 (set_FixedElementSize): RVA=0x015ad1c0 size=34
+  Method 47218 (set_DynamicElements): RVA=0x015ad190 size=34
+  Method 47219 (set_HorizontalScrollerVisibility): RVA=0x015ad280 size=34
+  Method 47220 (set_VerticalScrollerVisibility): RVA=0x015ad770 size=34
+  Method 47221 (get_ScrollViewMode): RVA=0x015acda0 size=33
+  Method 47222 (set_ScrollViewMode): RVA=0x015ad550 size=34
+  Method 47223 (get_PaginationTemplate): RVA=0x015acd20 size=64
+  Method 47224 (set_PaginationTemplate): RVA=0x015ad3b0 size=280
+  Method 47225 (get_PaginationStyle): RVA=0x015acd10 size=64
+  Method 47226 (set_PaginationStyle): RVA=0x015ad390 size=64
+  Method 47227 (.ctor): RVA=0x015abdf0 size=3403
+    -> REFS: +0x568(m_indices), +0x5c1(m_reorderable?), +0x738(m_sortings)
+  Method 47228 (BindToData): RVA=0x015a49b0 size=1786
+    -> REFS: +0x788(SortBinding)
+  Method 47229 (UnbindFromData): RVA=0x015aa970 size=524
+  Method 47230 (Refresh): RVA=0x015a9390 size=69
+  Method 47231 (CanBuild): RVA=0x015a50b0 size=88
+  Method 47232 (ShouldEnableContent): RVA=0x015a9c20 size=64
+  Method 47233 (UpdateEnabledState): RVA=0x015aab80 size=1354
+  Method 47234 (OnSortingDataChanged): RVA=0x015a7ff0 size=281
+    -> REFS: +0x568(m_indices)
+  Method 47235 (ProcessSortingDataChanged): RVA=0x015a8cb0 size=509
+  Method 47236 (PostSortingDataChanged): RVA=0x015a8610 size=175
+    -> REFS: +0x568(m_indices)
+  Method 47237 (SetSorting): RVA=0x00000000 size=0
+  Method 47238 (UpdateSortingBinding): RVA=0x015ab800 size=420
+    -> REFS: +0x738(m_sortings)
+  Method 47239 (SetSortingBinding): RVA=0x015a9a80 size=83
+  Method 47240 (SetSortingBinding): RVA=0x015a9ae0 size=310
+  Method 47241 (HasSorting): RVA=0x015a5f20 size=218
+    -> REFS: +0x738(m_sortings)
+  Method 47242 (ApplySorting): RVA=0x015a4260 size=1208
+    -> REFS: +0x738(m_sortings)
+  Method 47243 (BindSortPathNextDepth): RVA=0x015a4850 size=342
+  Method 47244 (SetNoSorting): RVA=0x015a99d0 size=169
+    -> REFS: +0x738(m_sortings)
+  Method 47245 (ClearSortingState): RVA=0x015a5180 size=109
+  Method 47246 (BindToDataInternal): RVA=0x002911e0 size=64
+  Method 47247 (OnSortBindingChanged): RVA=0x015a7ca0 size=835
+  Method 47248 (OnResetSortingEvent): RVA=0x015a7870 size=77
+  Method 47249 (UnbindFromDataInternal): RVA=0x015aa750 size=541
+    -> REFS: +0x568(m_indices)
+  Method 47250 (OnViewAreaChanged): RVA=0x015a8340 size=392
+  Method 47251 (OnAttachToPanel): RVA=0x015a63e0 size=1007
+  Method 47252 (OnDetachFromPanel): RVA=0x015a6b80 size=608
+  Method 47253 (OnCustomStyleResolved): RVA=0x015a68c0 size=697
+  Method 47254 (BeginStateChange): RVA=0x015a47a0 size=80
+  Method 47255 (BeginStateChange): RVA=0x015a47f0 size=87
+  Method 47256 (SetDirty): RVA=0x015a9780 size=78
+  Method 47257 (ClearDirty): RVA=0x015a5110 size=64
+  Method 47258 (EndStateChange): RVA=0x015a5350 size=80
+  Method 47259 (ResolveStateChanges): RVA=0x015a9620 size=71
+  Method 47260 (StateChanged): RVA=0x015a9c80 size=599
+    -> REFS: +0x738(m_sortings)
+  Method 47261 (GetItemFromView): RVA=0x015a5a10 size=64
+    -> REFS: +0x568(m_indices)
+  Method 47262 (GetItemFromSource): RVA=0x015a59e0 size=43
+  Method 47263 (ViewIndexOf): RVA=0x015abba0 size=145
+    -> REFS: +0x568(m_indices)
+  Method 47264 (SourceIndexOf): RVA=0x015a9c50 size=64
+  Method 47265 (OnMakeItem): RVA=0x00000000 size=0
+  Method 47266 (OnBindItem): RVA=0x00000000 size=0
+  Method 47267 (OnRebindItem): RVA=0x00000000 size=0
+  Method 47268 (OnUnbindItem): RVA=0x00000000 size=0
+  Method 47269 (OnMoveItemInternal): RVA=0x015a7480 size=480
+    -> REFS: +0x568(m_indices)
+  Method 47270 (OnAddItemInternal): RVA=0x015a62e0 size=251
+    -> REFS: +0x568(m_indices)
+  Method 47271 (OnRemoveItemInternal): RVA=0x015a76c0 size=423
+    -> REFS: +0x568(m_indices)
+  Method 47272 (OnDestroyItem): RVA=0x002911e0 size=64
+  Method 47273 (RefreshInternal): RVA=0x015a9060 size=807
+    -> REFS: +0x568(m_indices)
+  Method 47274 (Rebuild): RVA=0x015a8eb0 size=167
+    -> REFS: +0x568(m_indices)
+  Method 47275 (RebuildInternal): RVA=0x002911e0 size=64
+  Method 47276 (OnMakeItemInternal): RVA=0x015a73c0 size=66
+  Method 47277 (OnBindItemInternal): RVA=0x015a67d0 size=152
+  Method 47278 (OnRebindItemInternal): RVA=0x015a7660 size=87
+  Method 47279 (OnUnbindItemInternal): RVA=0x015a8110 size=478
+  Method 47280 (OnSelectedItemsBindingValueChanged): RVA=0x015a7b00 size=166
+  Method 47281 (UpdateSelectedItems): RVA=0x015ab4a0 size=856
+  Method 47282 (ForcePickingMode): RVA=0x015a5680 size=398
+  Method 47283 (ResetIndices): RVA=0x015a9420 size=504
+    -> REFS: +0x568(m_indices)
+  Method 47284 (SetList): RVA=0x015a9880 size=324
+  Method 47285 (ClearListSelectionWithoutNotify): RVA=0x015a5120 size=33
+  Method 47286 (ClearSelection): RVA=0x015a5150 size=33
+  Method 47287 (SetListSelectionWithoutNotify): RVA=0x015a9820 size=34
+  Method 47288 (SetListSelection): RVA=0x015a9850 size=34
+  Method 47289 (GetFirstVisible): RVA=0x015a59b0 size=48
+  Method 47290 (GetLastVisible): RVA=0x015a5a50 size=48
+  Method 47291 (UpdatePaginationOnViewAreaChanged): RVA=0x015ab2e0 size=436
+  Method 47292 (UpdatePaginationBindings): RVA=0x015ab0d0 size=513
+  Method 47293 (JumpToPage): RVA=0x015a6000 size=261
+  Method 47294 (NextPage): RVA=0x015a6110 size=60
+  Method 47295 (PreviousPage): RVA=0x015a86c0 size=62
+  Method 47296 (TryToAddToAnimationQueue): RVA=0x015aa090 size=647
+  Method 47297 (RunAnimationSequence): RVA=0x015a9670 size=265
+  Method 47298 (ProcessAnimationQueue): RVA=0x015a8700 size=671
+  Method 47299 (ExecuteAnimationIn): RVA=0x015a53a0 size=380
+  Method 47300 (ProcessOnStyleResolved): RVA=0x015a89a0 size=772
+  Method 47301 (CompleteAnimation): RVA=0x015a51f0 size=344
+  Method 47302 (ForceDescheduleAnimation): RVA=0x015a5520 size=349
+  Method 47303 (RemoveAnimationClasses): RVA=0x015a93e0 size=58
+  Method 47304 (RefreshAnimationBitArray): RVA=0x015a8f60 size=249
+  Method 47305 (OnScrollToElementBindingValueChanged): RVA=0x015a7a60 size=108
+  Method 47306 (TryScrollToCurrentElementOrCachedScrollOffset): RVA=0x015a9ee0 size=340
+  Method 47307 (TryScrollToTop): RVA=0x015aa040 size=78
+  Method 47308 (PerformScrollTo): RVA=0x015a84d0 size=318
+  Method 47309 (GetScrollToIndex): RVA=0x015a5a80 size=263
+  Method 47310 (OnScrollViewGeometryChanged): RVA=0x015a7ad0 size=35
+  Method 47311 (OnScrollBarGeometryChanged): RVA=0x015a7950 size=64
+  Method 47312 (OnScrollEventHorizontal): RVA=0x015a7960 size=114
+  Method 47313 (OnScrollEventVertical): RVA=0x015a79e0 size=114
+  Method 47314 (UpdateTruncateBinding): RVA=0x015ab9b0 size=484
+  Method 47315 (OnMakeTruncateLabel): RVA=0x015a7410 size=111
+  Method 47316 (OnBindTruncateLabel): RVA=0x015a6870 size=79
+  Method 47317 (OnUnbindTruncateLabel): RVA=0x015a82f0 size=79
+  Method 47318 (OnSelectionChangedInternal): RVA=0x015a7bb0 size=237
+  Method 47319 (GetSelectedItem): RVA=0x015a5b90 size=362
+    -> REFS: +0x568(m_indices)
+  Method 47320 (GetSelectedItems): RVA=0x015a5d00 size=532
+    -> REFS: +0x568(m_indices)
+  Method 47321 (SetElementDefaultStyle): RVA=0x015a97d0 size=71
+  Method 47322 (OnNavigateListPaginationInputAction): RVA=0x015945a0 size=54
+  Method 47323 (OnRightStickPageChangeTriggered): RVA=0x015a78c0 size=141
+  Method 47324 (OnInputActionExecuted): RVA=0x015a7270 size=331
+  Method 47325 (OnDigIn): RVA=0x015a6de0 size=215
+  Method 47326 (OnDigOut): RVA=0x015a6ec0 size=215
+  Method 47327 (OnActiveElementsChanged): RVA=0x015a6150 size=399
+  Method 47328 (GetDigInTarget): RVA=0x015a5810 size=403
+  Method 47329 (FindSelectedColumnElementForRowNavigatable): RVA=0x00294ea0 size=64
+  Method 47330 (OnGeometryChanged): RVA=0x015a70d0 size=407
+  Method 47331 (VisibilityChanged): RVA=0x015abc40 size=64
+  Method 47332 (OnFocusInEvent): RVA=0x015a6fa0 size=234
+  Method 47333 (OnFocusOutEvent): RVA=0x015a7090 size=50
+  Method 47334 (AsStreamedObjectList): RVA=0x015a4720 size=121
+  Method 47335 (.cctor): RVA=0x015abc60 size=391
+  Method 47336 (<ApplySorting>g__SetupRow|246_0): RVA=0x015aa320 size=785
+  Method 47337 (<UpdatePaginationOnViewAreaChanged>g__CreatePaginationWidget|295_0): RVA=0x015aa640 size=264
+
+=== SI.UI.dll Type 13468: VirtualisedList (parent=-1, methods=136) ===
+  Method 102342 (get_OnElementInteracted): RVA=0x007aa480 size=64
+  Method 102343 (set_OnElementInteracted): RVA=0x00808cd0 size=64
+  Method 102344 (get_OnActiveElementsChanged): RVA=0x003d0930 size=64
+  Method 102345 (set_OnActiveElementsChanged): RVA=0x003d0970 size=64
+  Method 102346 (get_VirtualisedElementHandlesSubmitEvents): RVA=0x00810910 size=64
+  Method 102347 (set_VirtualisedElementHandlesSubmitEvents): RVA=0x00826790 size=64
+  Method 102348 (get_DragMultiselectionManager): RVA=0x008437e0 size=64
+  Method 102349 (get_ScrollView): RVA=0x008109e0 size=64
+  Method 102350 (get_DropGroup): RVA=0x0156e280 size=64
+    -> REFS: +0x568(m_indices)
+  Method 102351 (set_DropGroup): RVA=0x0157c580 size=64
+    -> REFS: +0x568(m_indices)
+  Method 102352 (get_MakeItem): RVA=0x008109c0 size=64
+  Method 102353 (set_MakeItem): RVA=0x016abcf0 size=78
+  Method 102354 (get_MoveItem): RVA=0x0082fb00 size=64
+  Method 102355 (set_MoveItem): RVA=0x01581c70 size=64
+  Method 102356 (get_AddItem): RVA=0x0082faf0 size=64
+  Method 102357 (set_AddItem): RVA=0x0085fc80 size=64
+  Method 102358 (get_RemoveItem): RVA=0x0082fae0 size=64
+  Method 102359 (set_RemoveItem): RVA=0x00857430 size=64
+  Method 102360 (get_DestroyItem): RVA=0x0082fb30 size=64
+  Method 102361 (set_DestroyItem): RVA=0x00842900 size=64
+  Method 102362 (get_TrackItemCreation): RVA=0x016ab160 size=64
+  Method 102363 (get_TrackItemDestruction): RVA=0x016ab180 size=64
+  Method 102364 (get_BindItem): RVA=0x008273a0 size=64
+  Method 102365 (set_BindItem): RVA=0x016ab440 size=103
+  Method 102366 (get_RebindItem): RVA=0x0082fb10 size=64
+  Method 102367 (set_RebindItem): RVA=0x0156e310 size=64
+    -> REFS: +0x568(m_indices)
+  Method 102368 (get_UnbindItem): RVA=0x007fc280 size=64
+  Method 102369 (set_UnbindItem): RVA=0x01556c10 size=64
+  Method 102370 (get_MakeTruncateLabel): RVA=0x007fc260 size=64
+  Method 102371 (set_MakeTruncateLabel): RVA=0x014daf70 size=64
+  Method 102372 (get_BindTruncateLabel): RVA=0x00636fa0 size=64
+  Method 102373 (set_BindTruncateLabel): RVA=0x0080fb60 size=64
+  Method 102374 (get_UnbindTruncateLabel): RVA=0x00636f90 size=64
+  Method 102375 (set_UnbindTruncateLabel): RVA=0x0080fca0 size=64
+  Method 102376 (add_ViewChanged): RVA=0x016aafc0 size=144
+  Method 102377 (remove_ViewChanged): RVA=0x016ab390 size=144
+  Method 102378 (get_FixedElementSize): RVA=0x016ab0c0 size=64
+  Method 102379 (set_FixedElementSize): RVA=0x016abb70 size=64
+  Method 102380 (set_DynamicElements): RVA=0x016aba90 size=212
+  Method 102381 (get_Controller): RVA=0x00dc0960 size=64
+  Method 102382 (set_Controller): RVA=0x016ab8a0 size=103
+  Method 102383 (get_Items): RVA=0x00dc0940 size=64
+  Method 102384 (set_Items): RVA=0x016abc90 size=93
+  Method 102385 (get_Direction): RVA=0x016ab0a0 size=64
+  Method 102386 (set_Direction): RVA=0x016ab910 size=356
+  Method 102387 (get_ActiveView): RVA=0x007fc290 size=64
+  Method 102388 (set_ActiveView): RVA=0x016ab420 size=64
+  Method 102389 (get_VisibleView): RVA=0x00dc0950 size=64
+  Method 102390 (set_VisibleView): RVA=0x016ac1b0 size=90
+  Method 102391 (get_SelectionMode): RVA=0x016ab150 size=64
+  Method 102392 (set_SelectionMode): RVA=0x016abea0 size=350
+  Method 102393 (get_SelectingSameItemDeselects): RVA=0x014dad80 size=64
+    -> REFS: +0x5c1(m_reorderable?)
+  Method 102394 (set_SelectingSameItemDeselects): RVA=0x0155b5d0 size=64
+  Method 102395 (set_SelectionLimit): RVA=0x016abe70 size=34
+  Method 102396 (get_Selection): RVA=0x0080fae0 size=64
+  Method 102397 (set_HorizontalScrollBarVisibility): RVA=0x016abc60 size=34
+  Method 102398 (set_VerticalScrollBarVisibility): RVA=0x016ac010 size=34
+  Method 102399 (get_Reorderable): RVA=0x014dad90 size=64
+    -> REFS: +0x5c1(m_reorderable?)
+  Method 102400 (set_Reorderable): RVA=0x014dada0 size=64
+    -> REFS: +0x5c1(m_reorderable?)
+  Method 102401 (get_DragScrollSpeed): RVA=0x0155b550 size=64
+  Method 102402 (set_DragScrollSpeed): RVA=0x0155b710 size=64
+  Method 102403 (get_DragScrollMargin): RVA=0x016ab0b0 size=64
+  Method 102404 (set_DragScrollMargin): RVA=0x016aba80 size=64
+  Method 102405 (get_Truncate): RVA=0x015a19d0 size=64
+  Method 102406 (set_Truncate): RVA=0x015a1a30 size=64
+  Method 102407 (get_TruncateLabelSize): RVA=0x016ab1a0 size=64
+  Method 102408 (set_TruncateLabelSize): RVA=0x016ac000 size=64
+  Method 102409 (get_OverprovisionPercent): RVA=0x0155b540 size=64
+  Method 102410 (set_OverprovisionPercent): RVA=0x0155b700 size=64
+  Method 102411 (set_MouseWheelScrollSize): RVA=0x016abd40 size=42
+  Method 102412 (set_FlexGrow): RVA=0x016abba0 size=90
+  Method 102413 (set_FlexShrink): RVA=0x016abc00 size=90
+  Method 102414 (get_SelectionInternal): RVA=0x0080fae0 size=64
+  Method 102415 (get_ElementPool): RVA=0x0080fac0 size=64
+  Method 102416 (get_ActiveElements): RVA=0x0080fad0 size=64
+  Method 102417 (get_Root): RVA=0x007fc2d0 size=64
+  Method 102418 (get_ContentSize): RVA=0x016ab060 size=51
+  Method 102419 (set_ContentSize): RVA=0x016ab4b0 size=999
+  Method 102420 (get_ScrollOffset): RVA=0x016ab0f0 size=89
+  Method 102421 (set_ScrollOffset): RVA=0x016abd70 size=245
+  Method 102422 (get_VirtualisationOffset): RVA=0x016ab270 size=234
+  Method 102423 (set_VirtualisationOffset): RVA=0x016ac040 size=368
+  Method 102424 (get_ViewportSize): RVA=0x016ab1b0 size=179
+  Method 102425 (get_AlternateRows): RVA=0x016ab050 size=64
+  Method 102426 (set_AlternateRows): RVA=0x016ab430 size=64
+  Method 102427 (add_OnSelectionChanged): RVA=0x016aaf90 size=38
+  Method 102428 (remove_OnSelectionChanged): RVA=0x016ab360 size=38
+  Method 102429 (.ctor): RVA=0x016aaf80 size=64
+  Method 102430 (.ctor): RVA=0x016aa7c0 size=1973
+  Method 102431 (Rebuild): RVA=0x016a9350 size=152
+  Method 102432 (Refresh): RVA=0x016a93f0 size=48
+  Method 102433 (UpdateView): RVA=0x016aa730 size=89
+  Method 102434 (ResetView): RVA=0x016a9420 size=43
+  Method 102435 (ScrollTo): RVA=0x016a9450 size=58
+  Method 102436 (GetActiveCount): RVA=0x016a77a0 size=30
+  Method 102437 (GetVisibleCount): RVA=0x016a7920 size=64
+  Method 102438 (GetActiveItem): RVA=0x016a77c0 size=39
+  Method 102439 (GetVisibleItem): RVA=0x016a7930 size=53
+  Method 102440 (GetFirstVisibleItem): RVA=0x016a77f0 size=87
+  Method 102441 (GetLastVisibleItem): RVA=0x016a7850 size=87
+  Method 102442 (IsItemActive): RVA=0x016a79e0 size=64
+  Method 102443 (SelectRange): RVA=0x016a9810 size=47
+  Method 102444 (SelectRange): RVA=0x016a9840 size=47
+  Method 102445 (SelectRangeWithoutNotify): RVA=0x016a9680 size=393
+  Method 102446 (SelectRangeWithoutNotify): RVA=0x016a9490 size=493
+  Method 102447 (ClearSelection): RVA=0x016a7500 size=33
+  Method 102448 (ClearSelectionWithoutNotify): RVA=0x016a74d0 size=33
+  Method 102449 (SetSelection): RVA=0x016a9af0 size=38
+  Method 102450 (SetSelection): RVA=0x016a9b20 size=52
+  Method 102451 (SetSelectionWithoutNotify): RVA=0x016a9ac0 size=38
+  Method 102452 (ShowTruncateLabel): RVA=0x016a9b60 size=518
+  Method 102453 (HideTruncateLabel): RVA=0x016a7970 size=104
+  Method 102454 (DestroyTruncateLabel): RVA=0x016a7680 size=123
+  Method 102455 (OnTruncateLabelGeometryChanged): RVA=0x016a92f0 size=86
+  Method 102456 (OnStartItemDrag): RVA=0x016a8b90 size=1878
+    -> REFS: +0x5c1(m_reorderable?)
+  Method 102457 (OnItemDrag): RVA=0x016a8870 size=788
+    -> REFS: +0x568(m_indices), +0x5c1(m_reorderable?)
+  Method 102458 (OnEndItemDrag): RVA=0x016a85c0 size=677
+    -> REFS: +0x5c1(m_reorderable?)
+  Method 102459 (MoveItems): RVA=0x016a7e50 size=1305
+  Method 102460 (FindIndex): RVA=0x016a7700 size=158
+  Method 102461 (OnDragScroll): RVA=0x016a8370 size=588
+  Method 102462 (UpdateDropIndicatorPosition): RVA=0x016aa4d0 size=608
+  Method 102463 (MakeItemElement): RVA=0x016a7af0 size=857
+  Method 102464 (DestroyItemElement): RVA=0x016a7580 size=243
+  Method 102465 (MakeDragVisuals): RVA=0x016a7a00 size=237
+  Method 102466 (BindDragVisuals): RVA=0x016a7480 size=66
+  Method 102467 (SetScrollOffset): RVA=0x016a9870 size=587
+  Method 102468 (GetRelevantAxis): RVA=0x016a78b0 size=57
+  Method 102469 (GetRelevantAxis): RVA=0x016a78f0 size=41
+  Method 102470 (ConvertToRelevantAxis): RVA=0x016a7530 size=68
+  Method 102471 (StripIrrelevantAxis): RVA=0x016a9d70 size=79
+  Method 102472 (.cctor): RVA=0x016aa790 size=35
+  Method 102473 (<.ctor>b__241_1): RVA=0x016a9dc0 size=147
+  Method 102474 (<.ctor>b__241_2): RVA=0x016a9e60 size=346
+  Method 102475 (<.ctor>b__241_3): RVA=0x016a9fc0 size=1080
+  Method 102476 (<.ctor>b__241_4): RVA=0x016aa400 size=192
+  Method 102477 (<.ctor>b__241_5): RVA=0x016aa4c0 size=64

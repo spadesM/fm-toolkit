@@ -1,0 +1,460 @@
+
+Type 475: FM.UI.DebugTransferValueReference (methods=13)
+  Method 0: get_Identifier RVAs=['0x503ad0']
+  Method 1: get_ID RVAs=['0x503ad0']
+  Method 2: AcceptsPropertyInternal RVAs=['0x503740']
+  Method 3: GetPropertyTypeInternal RVAs=['0x503940']
+  Method 4: GetPropertyDescriptionInternal RVAs=['0x35e230']
+  Method 5: GetProperties RVAs=['0x503930']
+  Method 6: GetPropertiesInternal RVAs=['0x5037a0']
+  Method 7: GetPropertyCountInternal RVAs=['0x3debe0']
+  Method 8: GetContextsInternal RVAs=['0x35df40']
+  Method 9: DerivesFrom RVAs=['0x503780']
+  Method 10: DerivesFromInternal RVAs=['0x503770']
+  Method 11: GetInstance RVAs=['0x503790']
+  Method 12: .ctor RVAs=['0x2911e0']
+
+Type 476: FM.UI.DebugTransferValueRowReference (methods=13)
+  Method 0: get_Identifier RVAs=['0x503e50']
+  Method 1: get_ID RVAs=['0x503e50']
+  Method 2: AcceptsPropertyInternal RVAs=['0x503ae0']
+  Method 3: GetPropertyTypeInternal RVAs=['0x503d30']
+  Method 4: GetPropertyDescriptionInternal RVAs=['0x35e230']
+  Method 5: GetProperties RVAs=['0x503c30']
+  Method 6: GetPropertiesInternal RVAs=['0x503b30']
+  Method 7: GetPropertyCountInternal RVAs=['0x3dc440']
+  Method 8: GetContextsInternal RVAs=['0x35df40']
+  Method 9: DerivesFrom RVAs=['0x503b10']
+  Method 10: DerivesFromInternal RVAs=['0x503b00']
+  Method 11: GetInstance RVAs=['0x503b20']
+  Method 12: .ctor RVAs=['0x2911e0']
+
+Type 723: FM.UI.PersonReference (methods=19)
+  Method 0: .ctor RVAs=['0x4cf990', '0x631e00', '0x631e10']
+  Method 1: .ctor RVAs=['0x4cf990', '0x631e00', '0x631e10']
+  Method 2: .ctor RVAs=['0x4cf990', '0x631e00', '0x631e10']
+  Method 3: Equals RVAs=['0x625290']
+  Method 4: GetHashCode RVAs=['0x6286d0']
+  Method 5: get_Identifier RVAs=['0x631e20']
+  Method 6: get_ID RVAs=['0x631e20']
+  Method 7: AcceptsProperty RVAs=['0x6251c0']
+  Method 8: AcceptsPropertyInternal RVAs=['0x60ca30']
+  Method 9: GetPropertyTypeInternal RVAs=['0x611c30']
+  Method 10: GetPropertyDescriptionInternal RVAs=['0x35e230']
+  Method 11: GetProperties RVAs=['0x631de0']
+  Method 12: GetPropertiesInternal RVAs=['0x628720']
+  Method 13: GetPropertyCountInternal RVAs=['0x631df0']
+  Method 14: GetContexts RVAs=['0x6286c0']
+  Method 15: GetContextsInternal RVAs=['0x6252d0']
+  Method 16: DerivesFrom RVAs=['0x625230']
+  Method 17: DerivesFromInternal RVAs=['0x6251d0']
+  Method 18: GetInstance RVAs=['0x6286e0']
+
+Type 909: FM.UI.SpecificallyScoutedPersonReference (methods=13)
+  Method 0: get_Identifier RVAs=['0x697370']
+  Method 1: get_ID RVAs=['0x697370']
+  Method 2: AcceptsPropertyInternal RVAs=['0x696ef0']
+  Method 3: GetPropertyTypeInternal RVAs=['0x697200']
+  Method 4: GetPropertyDescriptionInternal RVAs=['0x35e230']
+  Method 5: GetProperties RVAs=['0x6971f0']
+  Method 6: GetPropertiesInternal RVAs=['0x696f80']
+  Method 7: GetPropertyCountInternal RVAs=['0x4d3ef0']
+  Method 8: GetContextsInternal RVAs=['0x35df40']
+  Method 9: DerivesFrom RVAs=['0x696f60']
+  Method 10: DerivesFromInternal RVAs=['0x696f50']
+  Method 11: GetInstance RVAs=['0x696f70']
+  Method 12: .ctor RVAs=['0x2911e0']
+
+Type 981: FM.UI.TeamReference (methods=17)
+  Method 0: .ctor RVAs=['0x4cf990', '0x6bdd80', '0x6bdd90']
+  Method 1: .ctor RVAs=['0x4cf990', '0x6bdd80', '0x6bdd90']
+  Method 2: .ctor RVAs=['0x4cf990', '0x6bdd80', '0x6bdd90']
+  Method 3: get_Identifier RVAs=['0x6bdda0']
+  Method 4: get_ID RVAs=['0x6bdda0']
+  Method 5: AcceptsProperty RVAs=['0x6b0c60']
+  Method 6: AcceptsPropertyInternal RVAs=['0x6af020']
+  Method 7: GetPropertyTypeInternal RVAs=['0x6b6c60']
+  Method 8: GetPropertyDescriptionInternal RVAs=['0x35e230']
+  Method 9: GetProperties RVAs=['0x6b6c40']
+  Method 10: GetPropertiesInternal RVAs=['0x6b23c0']
+  Method 11: GetPropertyCountInternal RVAs=['0x6b6c50']
+  Method 12: GetContexts RVAs=['0x6b2370']
+  Method 13: GetContextsInternal RVAs=['0x6b0c90']
+  Method 14: DerivesFrom RVAs=['0x6b0c80']
+  Method 15: DerivesFromInternal RVAs=['0x6b0c70']
+  Method 16: GetInstance RVAs=['0x6b2380']
+
+Type 1061: FM.UI.TransferValueRangeReference (methods=13)
+  Method 0: get_Identifier RVAs=['0x6fcd00']
+  Method 1: get_ID RVAs=['0x6fcd00']
+  Method 2: AcceptsPropertyInternal RVAs=['0x6fc5a0']
+  Method 3: GetPropertyTypeInternal RVAs=['0x6fcb10']
+  Method 4: GetPropertyDescriptionInternal RVAs=['0x35e230']
+  Method 5: GetProperties RVAs=['0x6fcb00']
+  Method 6: GetPropertiesInternal RVAs=['0x6fc690']
+  Method 7: GetPropertyCountInternal RVAs=['0x4c6590']
+  Method 8: GetContextsInternal RVAs=['0x35df40']
+  Method 9: DerivesFrom RVAs=['0x6fc670']
+  Method 10: DerivesFromInternal RVAs=['0x6fc660']
+  Method 11: GetInstance RVAs=['0x6fc680']
+  Method 12: .ctor RVAs=['0x2911e0']
+
+Type 5542: SI.Bindable.BindingPath (methods=14)
+  Method 0: get_Path RVAs=['0x2841e0']
+  Method 1: set_Path RVAs=['0x35f910']
+  Method 2: .ctor RVAs=['0x35f910']
+  Method 3: IsValid RVAs=['0x14bd350']
+  Method 4: Equals RVAs=['0x1023230', '0x14bd2e0']
+  Method 5: Equals RVAs=['0x1023230', '0x14bd2e0']
+  Method 6: GetHashCode RVAs=['0x1431b70']
+  Method 7: op_Equality RVAs=['0x14bd440']
+  Method 8: op_Implicit RVAs=['0x14bd450', '0x14bd460']
+  Method 9: op_Implicit RVAs=['0x14bd450', '0x14bd460']
+  Method 10: ToString RVAs=['0x14bd420']
+  Method 11: Deserialize RVAs=['0x14bd2a0']
+  Method 12: Serialize RVAs=['0x14bd380']
+  Method 13: Create RVAs=['0xd663b0']
+
+Type 5581: SI.Bindable.Bindings (methods=104)
+  Method 0: get_Logger RVAs=['0x14bc260']
+  Method 1: get_RootKey RVAs=['0x35f830']
+  Method 2: get_RootNode RVAs=['0x290440']
+  Method 3: get_LoggingContext RVAs=['0x31a380']
+  Method 4: add_OnChanged RVAs=['0x14c9190']
+  Method 5: remove_OnChanged RVAs=['0x14c9220']
+  Method 6: get_DataSet RVAs=['0x3075f0']
+  Method 7: .ctor RVAs=['0x14c9130', '0x14c85b0']
+  Method 8: .ctor RVAs=['0x14c9130', '0x14c85b0']
+  Method 9: AddHandler RVAs=[]
+  Method 10: RemoveHandler RVAs=[]
+  Method 11: Create RVAs=['0x14bff40', '0x14bf980']
+  Method 12: Create RVAs=['0x14bff40', '0x14bf980']
+  Method 13: BindNullable RVAs=['0x14be2c0']
+  Method 14: UnbindNullable RVAs=['0x14c6070']
+  Method 15: Bind RVAs=['0x14bf250', '0x14bf1d0', '0x14bee90', '0x14beef0', '0x14bee30']
+  Method 16: Bind RVAs=['0x14bf250', '0x14bf1d0', '0x14bee90', '0x14beef0', '0x14bee30']
+  Method 17: Bind RVAs=['0x14bf250', '0x14bf1d0', '0x14bee90', '0x14beef0', '0x14bee30']
+  Method 18: Bind RVAs=['0x14bf250', '0x14bf1d0', '0x14bee90', '0x14beef0', '0x14bee30']
+  Method 19: Bind RVAs=['0x14bf250', '0x14bf1d0', '0x14bee90', '0x14beef0', '0x14bee30']
+  Method 20: BindOneShot RVAs=['0x14be6c0', '0x14bedb0', '0x14becf0', '0x14be9d0', '0x14bed50']
+  Method 21: BindOneShot RVAs=['0x14be6c0', '0x14bedb0', '0x14becf0', '0x14be9d0', '0x14bed50']
+  Method 22: BindOneShot RVAs=['0x14be6c0', '0x14bedb0', '0x14becf0', '0x14be9d0', '0x14bed50']
+  Method 23: BindOneShot RVAs=['0x14be6c0', '0x14bedb0', '0x14becf0', '0x14be9d0', '0x14bed50']
+  Method 24: BindOneShot RVAs=['0x14be6c0', '0x14bedb0', '0x14becf0', '0x14be9d0', '0x14bed50']
+  Method 25: Unbind RVAs=['0x14c62d0', '0x14c6470', '0x14c6520', '0x14c63d0']
+  Method 26: Unbind RVAs=['0x14c62d0', '0x14c6470', '0x14c6520', '0x14c63d0']
+  Method 27: Unbind RVAs=['0x14c62d0', '0x14c6470', '0x14c6520', '0x14c63d0']
+  Method 28: Unbind RVAs=['0x14c62d0', '0x14c6470', '0x14c6520', '0x14c63d0']
+  Method 29: UnbindOneShot RVAs=['0x14c61e0']
+  Method 30: Set RVAs=['0x14c5740', '0x14c56c0', '0x14c5650']
+  Method 31: Set RVAs=['0x14c5740', '0x14c56c0', '0x14c5650']
+  Method 32: Set RVAs=['0x14c5740', '0x14c56c0', '0x14c5650']
+  Method 33: SetAlias RVAs=['0x14c3050', '0x14c3700', '0x14c3690']
+  Method 34: BeginBatchSet RVAs=['0x14be210']
+  Method 35: EndBatchSet RVAs=['0x14bff80']
+  Method 36: SetAlias RVAs=['0x14c3050', '0x14c3700', '0x14c3690']
+  Method 37: SetAlias RVAs=['0x14c3050', '0x14c3700', '0x14c3690']
+  Method 38: Remove RVAs=['0x14c2bb0', '0x14c2b50']
+  Method 39: Remove RVAs=['0x14c2bb0', '0x14c2b50']
+  Method 40: MakeKey RVAs=['0x14c2040', '0x14c1fd0']
+  Method 41: MakeKey RVAs=['0x14c2040', '0x14c1fd0']
+  Method 42: Exists RVAs=['0x14c00d0', '0x14bffb0', '0x14c0060']
+  Method 43: Exists RVAs=['0x14c00d0', '0x14bffb0', '0x14c0060']
+  Method 44: Exists RVAs=['0x14c00d0', '0x14bffb0', '0x14c0060']
+  Method 45: Get RVAs=['0x14c1be0', '0x14c1b20', '0x14c1c20']
+  Method 46: Get RVAs=['0x14c1be0', '0x14c1b20', '0x14c1c20']
+  Method 47: Get RVAs=['0x14c1be0', '0x14c1b20', '0x14c1c20']
+  Method 48: Get RVAs=['0x14c1be0', '0x14c1b20', '0x14c1c20']
+  Method 49: Get RVAs=['0x14c1be0', '0x14c1b20', '0x14c1c20']
+  Method 50: Get RVAs=['0x14c1be0', '0x14c1b20', '0x14c1c20']
+  Method 51: FindLowestBranch RVAs=['0x14c0480']
+  Method 52: FindContext RVAs=['0x14c02d0']
+  Method 53: FindNodeWithName RVAs=['0x14c05e0']
+  Method 54: GetFullPath RVAs=['0x14c0dd0']
+  Method 55: GetPathToDescendant RVAs=['0x14c18f0']
+  Method 56: GetDescendantCount RVAs=['0x14c0d10']
+  Method 57: GetNode RVAs=['0x14c1420']
+  Method 58: TryGetNode RVAs=['0x14c57b0']
+  Method 59: GetNextProperty RVAs=['0x14c13a0']
+  Method 60: GetNthProperty RVAs=['0x14c1450']
+  Method 61: GetProperties RVAs=['0x14c1a60']
+  Method 62: IsNodeDirty RVAs=['0x14c1fa0']
+  Method 63: IsDataSet RVAs=['0x14c1e40']
+  Method 64: Update RVAs=['0x14c6a70']
+  Method 65: TryOpenChannel RVAs=['0x14c5820']
+  Method 66: CreateGroup RVAs=['0x14bf910', '0x14bf730']
+  Method 67: CreateGroup RVAs=['0x14bf910', '0x14bf730']
+  Method 68: GetGroupInternal RVAs=['0x14c0f80']
+  Method 69: ReleaseGroup RVAs=['0x14c2840', '0x14c2850']
+  Method 70: ReleaseGroup RVAs=['0x14c2840', '0x14c2850']
+  Method 71: IsDescendentOf RVAs=['0x14c1f00']
+  Method 72: SetInternal RVAs=['0x14c3770']
+  Method 73: SetPrefetched RVAs=['0x14c3f20']
+  Method 74: GetHandler RVAs=['0x14c0fb0']
+  Method 75: AddAlias RVAs=['0x14be0d0']
+  Method 76: RemoveAlias RVAs=['0x14c2a40']
+  Method 77: MarkNodeDirty RVAs=['0x14c2400', '0x14c2350']
+  Method 78: MarkNodeDirty RVAs=['0x14c2400', '0x14c2350']
+  Method 79: MarkSiblingsDirtyRecursive RVAs=['0x14c2420']
+  Method 80: MarkChildrenDirtyRecursive RVAs=['0x14c22e0']
+  Method 81: HashPath RVAs=['0x14c1d40']
+  Method 82: MixHash RVAs=['0x14c2500']
+  Method 83: TryGetData RVAs=['0x14c5750']
+  Method 84: GetData RVAs=['0x14c0ce0']
+  Method 85: GetNewData RVAs=['0x14c1180']
+  Method 86: ReleaseData RVAs=['0x14c25d0']
+  Method 87: SetTargetData RVAs=['0x14c5310', '0x14c5350']
+  Method 88: SetTargetData RVAs=['0x14c5310', '0x14c5350']
+  Method 89: ClearTargetData RVAs=['0x14bf560', '0x14bf590']
+  Method 90: ClearTargetData RVAs=['0x14bf560', '0x14bf590']
+  Method 91: UpdateNodeDataTarget RVAs=['0x14c6590']
+  Method 92: FindOpenerFor RVAs=['0x14c0730']
+  Method 93: HasDependencies RVAs=['0x14c1ca0']
+  Method 94: AcquireCallbackPartition RVAs=['0x14bdee0']
+  Method 95: ExpandCalbackPartition RVAs=['0x14c0100']
+  Method 96: ReleaseCallbackPartition RVAs=['0x14c2520']
+  Method 97: GetContextInfo RVAs=['0x14c07e0']
+  Method 98: GetPathDebug RVAs=['0x14c1670']
+  Method 99: .cctor RVAs=['0x14c83c0']
+  Method 100: <.ctor>b__79_0 RVAs=['0x14c6010']
+  Method 101: <Remove>g__RemoveInternal|122_0 RVAs=['0x14c5d60']
+  Method 102: <GetDescendantCount>g__GetDescendantCountInternal|141_0 RVAs=['0x14c5cf0']
+  Method 103: <SetInternal>g__UpdateHandler|160_0 RVAs=['0x14c5fa0']
+
+================ BindingPath..ctor (RVA=0x0035f910, size=256) ================
+  +0x000: 48 89 11 e9 28 be e5 ff cc cc cc cc cc cc cc cc
+  +0x010: 89 51 3c c3 cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x020: 48 89 5c 24 18 55 56 41 54 41 56 41 57 48 8d 6c
+  +0x030: 24 d0 48 81 ec 30 01 00 00 33 c0 44 0f 29 84 24
+  +0x040: 00 01 00 00 48 8b f2 48 89 44 24 40 33 d2 89 44
+  +0x050: 24 48 4c 8b f1 e8 96 94 f4 ff 33 d2 49 8b ce 44
+  +0x060: 8b f8 e8 59 c6 f3 ff 44 0f af f8 33 d2 49 8b ce
+  +0x070: 45 03 ff e8 78 94 f4 ff 45 33 c0 48 8d 4c 24 50
+  +0x080: 49 8b d6 45 8d 24 07 e8 54 fe ff ff 33 d2 49 8b
+  +0x090: ce 48 63 58 08 e8 46 48 f2 ff 48 85 c0 0f 84 42
+  +0x0a0: 03 00 00 44 0f 10 40 50 33 d2 49 8b ce e8 2e 48
+  +0x0b0: f2 ff 48 85 c0 0f 84 2a 03 00 00 4c 89 ac 24 68
+  +0x0c0: 01 00 00 33 d2 0f 29 b4 24 20 01 00 00 49 8b ce
+  +0x0d0: 0f 10 70 40 0f 29 bc 24 10 01 00 00 44 0f 29 8c
+  +0x0e0: 24 f0 00 00 00 44 0f 29 94 24 e0 00 00 00 e8 cd
+  +0x0f0: c5 f3 ff f3 44 0f 10 15 78 41 d9 01 66 4d 0f 7e
+  --- Annotations ---
+  +0x055: CALL 0x002a8e00 -> PitchMarkingEntry.get_InstructionID, TIOptionAndImageStyle.get_InstructionOption, PassData.get_ReceiverIndex, Int32.GetHashCode
+  +0x062: CALL 0x0029bfd0 -> FormationOptionEntry.get_OptionID, RibbonButtonEntry.get_ButtonID, TacticalStylesOptionEntry.get_OptionID, TacticMentalitiesOptionEntry.get_OptionID
+  +0x073: CALL 0x002a8e00 -> PitchMarkingEntry.get_InstructionID, TIOptionAndImageStyle.get_InstructionOption, PassData.get_ReceiverIndex, Int32.GetHashCode
+  +0x087: CALL 0x0035f7f0 -> <GetEnumerator>d__7.System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.get_Current, <ReadReverseRdns>d__21.System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<System.String,System.String>>.get_Current, <get_controls>d__2.System.Collections.Generic.IEnumerator<UnityEngine.InputSystem.InputBindingCompositeContext.PartBinding>.get_Current, DecalChunk.get_currentJobHandle
+  +0x095: CALL 0x002841f0 -> PitchMarkingEntry.get_OptionsAndStyleClasses, TIOptionAndImageStyle.get_ImageStyleClass, ProjectedPositionInfo.get_Element, SerializationEntry.get_Value
+  +0x0ad: CALL 0x002841f0 -> PitchMarkingEntry.get_OptionsAndStyleClasses, TIOptionAndImageStyle.get_ImageStyleClass, ProjectedPositionInfo.get_Element, SerializationEntry.get_Value
+  +0x0ee: CALL 0x0029bfd0 -> FormationOptionEntry.get_OptionID, RibbonButtonEntry.get_ButtonID, TacticalStylesOptionEntry.get_OptionID, TacticMentalitiesOptionEntry.get_OptionID
+
+================ BindingPath.Create (RVA=0x00d663b0, size=32) ================
+  +0x000: 48 83 ec 28 48 89 4c 24 30 48 8b d1 48 8d 4c 24
+  +0x010: 30 e8 7a 53 45 ff 48 8b 44 24 30 48 83 c4 28 c3
+  --- Annotations ---
+
+================ BindingPath.Deserialize (RVA=0x014bd2a0, size=41) ================
+  +0x000: 40 53 48 83 ec 20 48 8b c2 48 8b d9 48 8b c8 33
+  +0x010: d2 e8 7a 7c 18 00 48 8b d0 48 89 03 48 8b cb 48
+  +0x020: 83 c4 20 5b e9 77 e4 cf fe
+  --- Annotations ---
+  +0x011: CALL 0x01644f30 -> BinarySerialisationUtils.ReadNullableString
+
+================ BindingPath.Equals (RVA=0x01023230, size=256) ================
+  +0x000: 48 8b 09 45 33 c0 e9 65 b9 27 00 cc 48 83 c1 10
+  +0x010: 45 33 c0 e9 e8 ff ff ff cc cc cc cc cc cc cc cc
+  +0x020: 48 89 5c 24 18 48 89 7c 24 20 41 56 48 83 ec 20
+  +0x030: 49 8b 40 20 48 8b da 4c 8b f1 f6 80 35 01 00 00
+  +0x040: 01 75 08 48 8b c8 e8 c5 d6 19 ff 48 8b b8 c0 00
+  +0x050: 00 00 48 8b 0f f6 81 35 01 00 00 01 75 08 e8 ad
+  +0x060: d6 19 ff 48 8b c8 48 89 6c 24 30 48 89 74 24 38
+  +0x070: 48 85 db 74 3d 33 c0 48 39 0b 48 0f 44 c3 48 85
+  +0x080: c0 74 2f 48 8b 47 18 48 8b 0b 48 8b e8 48 8b 17
+  +0x090: 48 8b 30 48 8b 42 40 48 39 41 40 48 8b cb 75 2f
+  +0x0a0: e8 4b 86 19 ff 4c 8b c5 49 8b ce 48 8b 10 ff d6
+  +0x0b0: eb 02 32 c0 48 8b 74 24 38 48 8b 6c 24 30 48 8b
+  +0x0c0: 5c 24 40 48 8b 7c 24 48 48 83 c4 20 41 5e c3 e8
+  +0x0d0: 7c 84 19 ff cc cc cc cc 48 83 c1 10 e9 3f ff ff
+  +0x0e0: ff cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x0f0: 48 89 5c 24 08 48 89 74 24 10 57 48 83 ec 20 49
+  --- Annotations ---
+  +0x006: JMP 0x0129eba0 -> String.Equals, String.op_Equality
+  +0x013: JMP 0x01023230 -> BindingPath.Equals, ActivityTraceId.Equals, ActivitySpanId.Equals
+  +0x0dc: JMP 0x01023250 -> 
+
+================ BindingPath.Equals (RVA=0x014bd2e0, size=92) ================
+  +0x000: 40 53 48 83 ec 20 4c 8b c2 48 8b d9 48 85 d2 74
+  +0x010: 3d 48 8b 15 38 f8 98 01 33 c0 49 39 10 49 0f 44
+  +0x020: c0 48 85 c0 74 28 49 8b 08 48 8b 42 40 48 39 41
+  +0x030: 40 49 8b c8 75 20 e8 05 e6 cf fe 48 8b 0b 45 33
+  +0x040: c0 48 8b 10 48 83 c4 20 5b e9 72 18 de ff 32 c0
+  +0x050: 48 83 c4 20 5b c3 e8 45 e4 cf fe cc
+  --- Annotations ---
+  +0x049: JMP 0x0129eba0 -> String.Equals, String.op_Equality
+
+================ BindingPath.GetHashCode (RVA=0x01431b70, size=256) ================
+  +0x000: 48 8b 09 48 85 c9 74 14 48 8b 11 48 8b 82 58 01
+  +0x010: 00 00 48 8b 92 60 01 00 00 48 ff e0 33 c0 c3 cc
+  +0x020: 48 83 c1 10 33 d2 e9 d5 ff ff ff cc cc cc cc cc
+  +0x030: 48 89 5c 24 10 48 89 74 24 18 57 41 56 41 57 48
+  +0x040: 83 ec 50 48 8b da 48 8b f9 33 c9 44 0f b7 4f 08
+  +0x050: 4c 8b c2 48 8b 15 de c8 9f 01 e8 f1 6a bd fe 89
+  +0x060: 44 24 70 85 c0 0f 85 fe 00 00 00 44 0f b7 77 08
+  +0x070: 48 8b 0d f9 1a a2 01 e8 c4 aa d8 fe 48 8b f8 33
+  +0x080: d2 48 8b c8 e8 87 8c a5 ff 66 44 89 77 60 48 89
+  +0x090: 5f 58 48 8d 4f 58 48 8b d3 e8 32 9b d8 fe 48 8b
+  +0x0a0: 05 cb 1a a2 01 83 b8 e4 00 00 00 00 75 0f 48 8b
+  +0x0b0: c8 e8 7a ab d8 fe 48 8b 05 b3 1a a2 01 48 8b 80
+  +0x0c0: b8 00 00 00 4c 8b 38 4c 8b 0d 6a c8 9f 01 4c 8b
+  +0x0d0: 13 33 f6 0f b7 ce 41 0f b7 92 2e 01 00 00 66 3b
+  +0x0e0: f2 73 21 4d 8b 82 b0 00 00 00 66 0f 1f 44 00 00
+  +0x0f0: 0f b7 c1 48 03 c0 4d 39 0c c0 74 4f 66 ff c1 66
+  --- Annotations ---
+  +0x026: JMP 0x01431b70 -> ValueTask.GetHashCode, BindingPath.GetHashCode
+  +0x084: CALL 0x00e8a880 -> 
+
+================ BindingPath.IsValid (RVA=0x014bd350, size=21) ================
+  +0x000: 48 83 ec 28 48 8b 09 33 d2 e8 92 3a de ff 34 01
+  +0x010: 48 83 c4 28 c3
+  --- Annotations ---
+  +0x009: CALL 0x012a0df0 -> String.IsNullOrEmpty
+
+================ BindingPath.Serialize (RVA=0x014bd380, size=138) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 40 48 8b da 48 8b f9
+  +0x010: 48 85 d2 74 69 45 33 c0 41 8d 50 01 48 8b cb e8
+  +0x020: dc e4 1a 00 48 89 44 24 58 48 c7 44 24 28 00 00
+  +0x030: 00 00 48 8d 44 24 58 48 89 44 24 30 45 33 c9 45
+  +0x040: 8d 41 01 48 8b d7 48 8b cb e8 92 de 1a 00 90 33
+  +0x050: d2 48 8d 4c 24 58 e8 a5 1e 1b 00 eb 16 33 d2 48
+  +0x060: 8d 4c 24 58 e8 97 1e 1b 00 48 8b 4c 24 28 48 85
+  +0x070: c9 75 11 48 8b 5c 24 50 48 83 c4 40 5f c3 e8 fd
+  +0x080: f2 cf fe cc e8 87 f3 cf fe cc
+  --- Annotations ---
+  +0x01f: CALL 0x0166b880 -> SerializationStream.PushScope
+  +0x049: CALL 0x0166b260 -> SerializationStream.Add
+  +0x056: CALL 0x0166f280 -> SubVersionScope.Dispose
+  +0x064: CALL 0x0166f280 -> SubVersionScope.Dispose
+
+================ BindingPath.ToString (RVA=0x014bd420, size=256) ================
+  +0x000: 48 8b 11 48 8b 05 96 12 93 01 48 85 d2 48 0f 45
+  +0x010: c2 c3 cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x020: 48 8b 12 45 33 c0 48 8b 09 e9 52 17 de ff cc cc
+  +0x030: 48 8b 05 69 12 93 01 48 85 c9 48 0f 45 c1 c3 cc
+  +0x040: 48 89 5c 24 08 57 48 83 ec 30 48 8b da 48 8b f9
+  +0x050: 48 85 d2 74 34 33 d2 c7 44 24 2c 00 00 00 00 48
+  +0x060: 8b cb e8 69 26 de ff 48 89 44 24 20 8b 43 10 89
+  +0x070: 44 24 28 48 8b c7 0f 10 44 24 20 0f 11 07 48 8b
+  +0x080: 5c 24 40 48 83 c4 30 5f c3 48 8b 5c 24 40 0f 57
+  +0x090: c0 0f 11 01 48 8b c7 48 83 c4 30 5f c3 cc cc cc
+  +0x0a0: 48 8b c4 48 89 58 08 48 89 70 10 57 41 56 41 57
+  +0x0b0: 48 81 ec a0 00 00 00 4c 8b f1 0f 57 c0 0f 11 40
+  +0x0c0: b8 45 33 ff 4c 89 78 20 4c 89 7c 24 30 0f 11 40
+  +0x0d0: c8 33 c9 e8 a8 93 13 00 48 85 c0 0f 84 35 02 00
+  +0x0e0: 00 4c 8b 40 28 4d 85 c0 0f 84 28 02 00 00 33 c9
+  +0x0f0: 48 8b 15 89 9e 97 01 e8 e4 4d b4 fe 48 89 84 24
+  --- Annotations ---
+  +0x029: JMP 0x0129eba0 -> String.Equals, String.op_Equality
+  +0x062: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x0d3: CALL 0x015f68a0 -> BindingSettings.get_Instance
+
+================ BindingPath.get_Path (RVA=0x002841e0, size=256) ================
+  +0x000: 48 8b 01 c3 cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x010: 48 8b 41 08 c3 cc cc cc cc cc cc cc cc cc cc cc
+  +0x020: 48 89 5c 24 08 48 89 6c 24 10 48 89 74 24 18 57
+  +0x030: 48 83 ec 20 48 8b fa 48 8b e9 48 8b cf 33 d2 49
+  +0x040: 8b f0 e8 c9 cb 01 01 84 c0 48 0f 45 3d 5f 46 b6
+  +0x050: 02 48 85 f6 75 35 48 8b 0d e3 96 b5 02 39 b1 e4
+  +0x060: 00 00 00 75 05 e8 56 85 f3 ff 33 c9 e8 1f 4d 0c
+  +0x070: 01 48 8b c8 48 8b 10 4c 8b 82 08 02 00 00 48 8b
+  +0x080: 92 10 02 00 00 41 ff d0 48 8b f0 48 8b 0d a6 5d
+  +0x090: ba 02 ba 04 00 00 00 e8 44 75 f3 ff 45 33 c9 4c
+  +0x0a0: 8b c6 48 8b d7 48 8b cd 48 8b d8 e8 20 35 15 01
+  +0x0b0: 48 8d 4b 20 48 89 43 20 48 8b d0 e8 a0 74 f3 ff
+  +0x0c0: 48 8d 4d 04 45 33 c9 4c 8b c6 48 8b d7 e8 fe 34
+  +0x0d0: 15 01 48 8d 4b 28 48 89 43 28 48 8b d0 e8 7e 74
+  +0x0e0: f3 ff 48 8d 4d 08 45 33 c9 4c 8b c6 48 8b d7 e8
+  +0x0f0: dc 34 15 01 48 8d 4b 30 48 89 43 30 48 8b d0 e8
+  --- Annotations ---
+  +0x042: CALL 0x012a0df0 -> String.IsNullOrEmpty
+  +0x06c: CALL 0x01348f70 -> CultureInfo.get_InvariantCulture
+  +0x0ab: CALL 0x013d77b0 -> Single.ToString
+  +0x0cd: CALL 0x013d77b0 -> Single.ToString
+  +0x0ef: CALL 0x013d77b0 -> Single.ToString
+
+================ BindingPath.op_Equality (RVA=0x014bd440, size=256) ================
+  +0x000: 48 8b 12 45 33 c0 48 8b 09 e9 52 17 de ff cc cc
+  +0x010: 48 8b 05 69 12 93 01 48 85 c9 48 0f 45 c1 c3 cc
+  +0x020: 48 89 5c 24 08 57 48 83 ec 30 48 8b da 48 8b f9
+  +0x030: 48 85 d2 74 34 33 d2 c7 44 24 2c 00 00 00 00 48
+  +0x040: 8b cb e8 69 26 de ff 48 89 44 24 20 8b 43 10 89
+  +0x050: 44 24 28 48 8b c7 0f 10 44 24 20 0f 11 07 48 8b
+  +0x060: 5c 24 40 48 83 c4 30 5f c3 48 8b 5c 24 40 0f 57
+  +0x070: c0 0f 11 01 48 8b c7 48 83 c4 30 5f c3 cc cc cc
+  +0x080: 48 8b c4 48 89 58 08 48 89 70 10 57 41 56 41 57
+  +0x090: 48 81 ec a0 00 00 00 4c 8b f1 0f 57 c0 0f 11 40
+  +0x0a0: b8 45 33 ff 4c 89 78 20 4c 89 7c 24 30 0f 11 40
+  +0x0b0: c8 33 c9 e8 a8 93 13 00 48 85 c0 0f 84 35 02 00
+  +0x0c0: 00 4c 8b 40 28 4d 85 c0 0f 84 28 02 00 00 33 c9
+  +0x0d0: 48 8b 15 89 9e 97 01 e8 e4 4d b4 fe 48 89 84 24
+  +0x0e0: d0 00 00 00 4c 89 7c 24 48 48 8d 9c 24 d0 00 00
+  +0x0f0: 00 48 89 5c 24 50 66 66 0f 1f 84 00 00 00 00 00
+  --- Annotations ---
+  +0x009: JMP 0x0129eba0 -> String.Equals, String.op_Equality
+  +0x042: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x0b3: CALL 0x015f68a0 -> BindingSettings.get_Instance
+
+================ BindingPath.op_Implicit (RVA=0x014bd450, size=256) ================
+  +0x000: 48 8b 05 69 12 93 01 48 85 c9 48 0f 45 c1 c3 cc
+  +0x010: 48 89 5c 24 08 57 48 83 ec 30 48 8b da 48 8b f9
+  +0x020: 48 85 d2 74 34 33 d2 c7 44 24 2c 00 00 00 00 48
+  +0x030: 8b cb e8 69 26 de ff 48 89 44 24 20 8b 43 10 89
+  +0x040: 44 24 28 48 8b c7 0f 10 44 24 20 0f 11 07 48 8b
+  +0x050: 5c 24 40 48 83 c4 30 5f c3 48 8b 5c 24 40 0f 57
+  +0x060: c0 0f 11 01 48 8b c7 48 83 c4 30 5f c3 cc cc cc
+  +0x070: 48 8b c4 48 89 58 08 48 89 70 10 57 41 56 41 57
+  +0x080: 48 81 ec a0 00 00 00 4c 8b f1 0f 57 c0 0f 11 40
+  +0x090: b8 45 33 ff 4c 89 78 20 4c 89 7c 24 30 0f 11 40
+  +0x0a0: c8 33 c9 e8 a8 93 13 00 48 85 c0 0f 84 35 02 00
+  +0x0b0: 00 4c 8b 40 28 4d 85 c0 0f 84 28 02 00 00 33 c9
+  +0x0c0: 48 8b 15 89 9e 97 01 e8 e4 4d b4 fe 48 89 84 24
+  +0x0d0: d0 00 00 00 4c 89 7c 24 48 48 8d 9c 24 d0 00 00
+  +0x0e0: 00 48 89 5c 24 50 66 66 0f 1f 84 00 00 00 00 00
+  +0x0f0: 4c 8b 84 24 d0 00 00 00 4d 85 c0 0f 84 ce 01 00
+  --- Annotations ---
+  +0x032: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x0a3: CALL 0x015f68a0 -> BindingSettings.get_Instance
+
+================ BindingPath.op_Implicit (RVA=0x014bd460, size=93) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 30 48 8b da 48 8b f9
+  +0x010: 48 85 d2 74 34 33 d2 c7 44 24 2c 00 00 00 00 48
+  +0x020: 8b cb e8 69 26 de ff 48 89 44 24 20 8b 43 10 89
+  +0x030: 44 24 28 48 8b c7 0f 10 44 24 20 0f 11 07 48 8b
+  +0x040: 5c 24 40 48 83 c4 30 5f c3 48 8b 5c 24 40 0f 57
+  +0x050: c0 0f 11 01 48 8b c7 48 83 c4 30 5f c3
+  --- Annotations ---
+  +0x022: CALL 0x0129faf0 -> String.GetRawStringData
+
+================ BindingPath.set_Path (RVA=0x0035f910, size=256) ================
+  +0x000: 48 89 11 e9 28 be e5 ff cc cc cc cc cc cc cc cc
+  +0x010: 89 51 3c c3 cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x020: 48 89 5c 24 18 55 56 41 54 41 56 41 57 48 8d 6c
+  +0x030: 24 d0 48 81 ec 30 01 00 00 33 c0 44 0f 29 84 24
+  +0x040: 00 01 00 00 48 8b f2 48 89 44 24 40 33 d2 89 44
+  +0x050: 24 48 4c 8b f1 e8 96 94 f4 ff 33 d2 49 8b ce 44
+  +0x060: 8b f8 e8 59 c6 f3 ff 44 0f af f8 33 d2 49 8b ce
+  +0x070: 45 03 ff e8 78 94 f4 ff 45 33 c0 48 8d 4c 24 50
+  +0x080: 49 8b d6 45 8d 24 07 e8 54 fe ff ff 33 d2 49 8b
+  +0x090: ce 48 63 58 08 e8 46 48 f2 ff 48 85 c0 0f 84 42
+  +0x0a0: 03 00 00 44 0f 10 40 50 33 d2 49 8b ce e8 2e 48
+  +0x0b0: f2 ff 48 85 c0 0f 84 2a 03 00 00 4c 89 ac 24 68
+  +0x0c0: 01 00 00 33 d2 0f 29 b4 24 20 01 00 00 49 8b ce
+  +0x0d0: 0f 10 70 40 0f 29 bc 24 10 01 00 00 44 0f 29 8c
+  +0x0e0: 24 f0 00 00 00 44 0f 29 94 24 e0 00 00 00 e8 cd
+  +0x0f0: c5 f3 ff f3 44 0f 10 15 78 41 d9 01 66 4d 0f 7e
+  --- Annotations ---
+  +0x055: CALL 0x002a8e00 -> PitchMarkingEntry.get_InstructionID, TIOptionAndImageStyle.get_InstructionOption, PassData.get_ReceiverIndex, Int32.GetHashCode
+  +0x062: CALL 0x0029bfd0 -> FormationOptionEntry.get_OptionID, RibbonButtonEntry.get_ButtonID, TacticalStylesOptionEntry.get_OptionID, TacticMentalitiesOptionEntry.get_OptionID
+  +0x073: CALL 0x002a8e00 -> PitchMarkingEntry.get_InstructionID, TIOptionAndImageStyle.get_InstructionOption, PassData.get_ReceiverIndex, Int32.GetHashCode
+  +0x087: CALL 0x0035f7f0 -> <GetEnumerator>d__7.System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.get_Current, <ReadReverseRdns>d__21.System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<System.String,System.String>>.get_Current, <get_controls>d__2.System.Collections.Generic.IEnumerator<UnityEngine.InputSystem.InputBindingCompositeContext.PartBinding>.get_Current, DecalChunk.get_currentJobHandle
+  +0x095: CALL 0x002841f0 -> PitchMarkingEntry.get_OptionsAndStyleClasses, TIOptionAndImageStyle.get_ImageStyleClass, ProjectedPositionInfo.get_Element, SerializationEntry.get_Value
+  +0x0ad: CALL 0x002841f0 -> PitchMarkingEntry.get_OptionsAndStyleClasses, TIOptionAndImageStyle.get_ImageStyleClass, ProjectedPositionInfo.get_Element, SerializationEntry.get_Value
+  +0x0ee: CALL 0x0029bfd0 -> FormationOptionEntry.get_OptionID, RibbonButtonEntry.get_ButtonID, TacticalStylesOptionEntry.get_OptionID, TacticMentalitiesOptionEntry.get_OptionID

@@ -1,0 +1,491 @@
+max_fi = 78075 (min bytes for 12-byte FieldDefinition = 936900)
+Candidate hdr[12,13]: off=4057992, sz=4610592 (384216 entries), StreamedTable.field[0]=''
+Candidate hdr[22,23]: off=9190292, sz=1487520 (123960 entries), StreamedTable.field[0]='parameters'
+Candidate hdr[24,25]: off=10677812, sz=936900 (78075 entries), StreamedTable.field[0]='m_useSimplifiedDropdowns'
+Candidate hdr[40,41]: off=12877996, sz=1556808 (129734 entries), StreamedTable.field[0]=''
+
+=== 1. Real Fields & Offsets of StreamedListView (5791), StreamedListView.UxmlSerializedData (5935), Header (5951), Column (5955), StreamedTable.UxmlSerializedData (5957), StreamedTable (5967), RowData (6137) ===
+
+--- Type 5791: StreamedListView (fields=75, methods=185) ---
+  Field  0 (+0x000): s_animate
+  Field  1 (+0x008): s_animationTimeBetweenItems
+  Field  2 (+0x010): s_animateExisting
+  Field  3 (+0x018): s_onFocusInEvent
+  Field  4 (+0x020): s_onFocusOutEvent
+  Field  5 (+0x538): m_resetSortingCallback
+  Field  6 (+0x540): m_binder
+  Field  7 (+0x548): m_inputBlocker
+  Field  8 (+0x550): m_stateChangeDepth
+  Field  9 (+0x558): m_scrollToElementBindingChanged
+  Field 10 (+0x560): m_scrollToElementBindingKey
+  Field 11 (+0x568): m_indices
+  Field 12 (+0x570): m_currentScrollToElement
+  Field 13 (+0x578): m_scrollOffsetXPersistenceKey
+  Field 14 (+0x598): m_scrollOffsetYPersistenceKey
+  Field 15 (+0x5b8): m_shouldPerformScroll
+  Field 16 (+0x5c0): m_sortBindingKey
+  Field 17 (+0x5c8): m_sortContainerKey
+  Field 18 (+0x5d0): m_sortComparer
+  Field 19 (+0x5d8): m_sortData
+  Field 20 (+0x5f8): m_sortingDataChanged
+  Field 21 (+0x600): m_receivedSortingData
+  Field 22 (+0x604): m_isSorting
+  Field 23 (+0x605): m_isSortingFromBinding
+  Field 24 (+0x608): m_boundIndices
+  Field 25 (+0x610): m_selectedItemsBindingChanged
+  Field 26 (+0x618): m_boundElements
+  Field 27 (+0x620): m_bindingHandler
+  Field 28 (+0x628): m_binding
+  Field 29 (+0x648): m_pendingDependencies
+  Field 30 (+0x650): m_pageChangeScheduler
+  Field 31 (+0x658): m_instantiatedPaginationVisualElement
+  Field 32 (+0x660): m_paginationTemplate
+  Field 33 (+0x668): m_loadedPaginationTemplate
+  Field 34 (+0x670): m_truncateLabelTemplate
+  Field 35 (+0x678): m_loadedTruncateLabelTemplate
+  Field 36 (+0x680): m_cachedSelection
+  Field 37 (+0x688): m_cachedSelectionIndex
+  Field 38 (+0x68c): m_setIgnorePickingMode
+  Field 39 (+0x68d): m_originallyFocusable
+  Field 40 (+0x68e): m_originallyDiggable
+  Field 41 (+0x690): m_paginationTemplateHandle
+  Field 42 (+0x6c0): m_truncateLabelTemplateHandle
+  Field 43 (+0x6f0): m_animate
+  Field 44 (+0x6f4): m_timeBetweenItems
+  Field 45 (+0x6f8): m_animateExistingItems
+  Field 46 (+0x700): m_scheduledElements
+  Field 47 (+0x708): m_animatedElements
+  Field 48 (+0x710): m_animationInScheduler
+  Field 49 (+0x718): m_animationQueueScheduler
+  Field 50 (+0x720): m_styleResolvingScheduler
+  Field 51 (+0x728): m_animationCompleteScheduler
+  Field 52 (+0x730): m_currentlyAnimatedIndex
+  Field 53 (+0x734): m_animatedElementsCount
+  Field 54 (+0x738): m_sortings
+  Field 55 (+0x740): m_selectedItemsKey
+  Field 56 (+0x748): m_scrollView
+  Field 57 (+0x750): m_bindings
+  Field 58 (+0x758): <SourceData>k__BackingField
+  Field 59 (+0x760): <Dirty>k__BackingField
+  Field 60 (+0x764): <SortAscending>k__BackingField
+  Field 61 (+0x768): <Panel>k__BackingField
+  Field 62 (+0x770): <ScrollViewInitialised>k__BackingField
+  Field 63 (+0x778): <ListElement>k__BackingField
+  Field 64 (+0x780): <ScrollViewToScroll>k__BackingField
+  Field 65 (+0x788): <SortBinding>k__BackingField
+  Field 66 (+0x790): <Key>k__BackingField
+  Field 67 (+0x798): <OnSelectedColumnChangedCallback>k__BackingField
+  Field 68 (+0x7a0): <Identifier>k__BackingField
+  Field 69 (+0x7a8): <DropGroup>k__BackingField
+  Field 70 (+0x7b0): <SharedPersistenceID>k__BackingField
+  Field 71 (+0x7b8): <ScrollToElementBinding>k__BackingField
+  Field 72 (+0x7c0): <SetScrollToAsSelected>k__BackingField
+  Field 73 (+0x7c8): <SelectedItemsBinding>k__BackingField
+  Field 74 (+0x7d0): <PaginationStyle>k__BackingField
+
+--- Type 5935: UxmlSerializedData (fields=16, methods=3) ---
+  Field  0 (+0x098): TextCase
+  Field  1 (+0x0a0): DebugDisplay
+  Field  2 (+0x0a8): TextBinding
+  Field  3 (+0x0c8): IgnoreEmbeddedDataStyling
+  Field  4 (+0x0c9): EnableEmbeddedLinks
+  Field  5 (+0x0ca): DisableLinkStyling
+  Field  6 (+0x0cb): DisplayTooltipWhenElided
+  Field  7 (+0x0cc): DisableContextMenu
+  Field  8 (+0x0cd): TextCase_UxmlAttributeFlags
+  Field  9 (+0x0ce): DebugDisplay_UxmlAttributeFlags
+  Field 10 (+0x0cf): TextBinding_UxmlAttributeFlags
+  Field 11 (+0x0d0): IgnoreEmbeddedDataStyling_UxmlAttributeFlags
+  Field 12 (+0x0d1): EnableEmbeddedLinks_UxmlAttributeFlags
+  Field 13 (+0x0d2): DisableLinkStyling_UxmlAttributeFlags
+  Field 14 (+0x0d3): DisplayTooltipWhenElided_UxmlAttributeFlags
+  Field 15 (+0x0d4): DisableContextMenu_UxmlAttributeFlags
+  Method idx=48627 (CreateInstance): RVA=0x015f34e0
+  Method idx=48628 (Deserialize): RVA=0x015f4730
+  Method idx=48629 (.ctor): RVA=0x0072f130
+
+--- Type 5951: Header (fields=15, methods=22) ---
+  Field  0 (+0x000): s_labelChanged
+  Field  1 (+0x010): m_sortIcon
+  Field  2 (+0x018): m_button
+  Field  3 (+0x020): m_isTooltipBound
+  Field  4 (+0x028): m_pendingText
+  Field  5 (+0x030): m_isBound
+  Field  6 (+0x038): <ColumnID>k__BackingField
+  Field  7 (+0x040): <TextLabel>k__BackingField
+  Field  8 (+0x048): <HintTooltip>k__BackingField
+  Field  9 (+0x050): <HintLabel>k__BackingField
+  Field 10 (+0x058): <Root>k__BackingField
+  Field 11 (+0x060): <SortingDisabled>k__BackingField
+  Field 12 (+0x068): <LabelBinding>k__BackingField
+  Field 13 (+0x070): HeaderTranslationArgsBindings
+  Field 14 (+0x080): HintTranslationArgsBindings
+  Method idx=48948 (get_ColumnID): RVA=0x0029d2d0
+  Method idx=48949 (get_TextLabel): RVA=0x00290440
+  Method idx=48950 (set_TextLabel): RVA=0x00290550
+  Method idx=48951 (get_HintTooltip): RVA=0x0028ee70
+  Method idx=48952 (get_HintLabel): RVA=0x00292460
+  Method idx=48953 (get_Root): RVA=0x00287290
+  Method idx=48954 (get_SortingDisabled): RVA=0x01232ec0
+  Method idx=48955 (set_SortingDisabled): RVA=0x01232ed0
+  Method idx=48956 (get_LabelBinding): RVA=0x0028a120
+  Method idx=48957 (set_LabelBinding): RVA=0x00310460
+  Method idx=48958 (.ctor): RVA=0x015dfab0
+  Method idx=48959 (SetupClickHandler): RVA=0x015df7e0
+  Method idx=48960 (SetText): RVA=0x015df7c0
+  Method idx=48961 (SetHint): RVA=0x015df790
+  Method idx=48962 (Bind): RVA=0x015df4f0
+  Method idx=48963 (BindHintTooltip): RVA=0x015df460
+  Method idx=48964 (Unbind): RVA=0x015df880
+  Method idx=48965 (ResetSortingIcons): RVA=0x015df720
+  Method idx=48966 (UpdateSortingIcons): RVA=0x015df970
+  Method idx=48967 (AddManipulator): RVA=0x015df450
+  Method idx=48968 (OnBindingChanged): RVA=0x015df600
+  Method idx=48969 (.cctor): RVA=0x015dfa20
+
+--- Type 5952: Footer (fields=1, methods=2) ---
+  Field  0 (+0x4a8): m_footerVisualElement
+  Method idx=48975 (.ctor): RVA=0x015df410
+  Method idx=48976 (set_Visuals): RVA=0x015de910
+
+--- Type 5953: Cell (fields=1, methods=4) ---
+  Field  0 (+0x4a8): m_visuals
+  Method idx=48977 (get_Visuals): RVA=0x008109d0
+  Method idx=48978 (set_Visuals): RVA=0x015de9b0
+  Method idx=48979 (.ctor): RVA=0x015de970
+  Method idx=48980 (SetVisuals): RVA=0x015de910
+
+--- Type 5954: SelectionCell (fields=11, methods=17) ---
+  Field  0 (+0x4b0): m_toggle
+  Field  1 (+0x4b8): <SelectionIndex>k__BackingField
+  Field  2 (+0x4c0): m_onClick
+  Field  3 (+0x4c8): m_onSubmit
+  Field  4 (+0x4d0): m_pendingSelectedState
+  Field  5 (+0x4d8): <WeakLeftDirectionElement>k__BackingField
+  Field  6 (+0x4e0): <WeakUpDirectionElement>k__BackingField
+  Field  7 (+0x4e8): <WeakRightDirectionElement>k__BackingField
+  Field  8 (+0x4f0): <WeakDownDirectionElement>k__BackingField
+  Field  9 (+0x4f8): <AllowsInsideElementsNavigation>k__BackingField
+  Field 10 (+0x4f9): <HasInitialFocus>k__BackingField
+  Method idx=48981 (get_SelectionIndex): RVA=0x008094e0
+  Method idx=48982 (set_SelectionIndex): RVA=0x00809500
+  Method idx=48983 (set_OnClick): RVA=0x015e1940
+  Method idx=48984 (set_OnSubmit): RVA=0x015e19b0
+  Method idx=48985 (get_WeakLeftDirectionElement): RVA=0x008109f0
+  Method idx=48986 (set_WeakLeftDirectionElement): RVA=0x00810b00
+  Method idx=48987 (get_WeakUpDirectionElement): RVA=0x00810a10
+  Method idx=48988 (set_WeakUpDirectionElement): RVA=0x00810b40
+  Method idx=48989 (get_WeakRightDirectionElement): RVA=0x00810a00
+  Method idx=48990 (set_WeakRightDirectionElement): RVA=0x00810b20
+  Method idx=48991 (get_WeakDownDirectionElement): RVA=0x008109e0
+  Method idx=48992 (set_WeakDownDirectionElement): RVA=0x003658a0
+  Method idx=48993 (get_AllowsInsideElementsNavigation): RVA=0x014da110
+  Method idx=48994 (get_HasInitialFocus): RVA=0x014da120
+  Method idx=48995 (.ctor): RVA=0x015e18e0
+  Method idx=48996 (SetVisuals): RVA=0x015e17f0
+  Method idx=48997 (SetSelectedState): RVA=0x015e1700
+
+--- Type 5955: Column (fields=6, methods=11) ---
+  Field  0 (+0x010): m_header
+  Field  1 (+0x018): m_footerElement
+  Field  2 (+0x020): <ColumnID>k__BackingField
+  Field  3 (+0x028): <HeaderPane>k__BackingField
+  Field  4 (+0x030): <FooterPane>k__BackingField
+  Field  5 (+0x038): <Cells>k__BackingField
+  Method idx=48998 (get_ColumnID): RVA=0x00291ab0
+  Method idx=48999 (get_HeaderPane): RVA=0x002867d0
+  Method idx=49000 (get_FooterPane): RVA=0x002867e0
+  Method idx=49001 (get_Header): RVA=0x002841d0
+  Method idx=49002 (set_Header): RVA=0x015df360
+  Method idx=49003 (get_HeaderElement): RVA=0x015df2c0
+  Method idx=49004 (get_FooterElement): RVA=0x00285830
+  Method idx=49005 (set_FooterElement): RVA=0x015df2d0
+  Method idx=49006 (get_Cells): RVA=0x0029d2d0
+  Method idx=49007 (.ctor): RVA=0x015dee80
+  Method idx=49008 (SetWidths): RVA=0x015deb10
+
+--- Type 5956: ColumnDragger (fields=3, methods=6) ---
+  Field  0 (+0x078): <Table>k__BackingField
+  Field  1 (+0x080): <Target>k__BackingField
+  Field  2 (+0x088): m_newIndex
+  Method idx=49009 (get_Table): RVA=0x003075f0
+  Method idx=49010 (get_Target): RVA=0x0028a3f0
+  Method idx=49011 (.ctor): RVA=0x015deab0
+  Method idx=49012 (OnStartDrag): RVA=0x015dea60
+  Method idx=49013 (OnDrag): RVA=0x015de9d0
+  Method idx=49014 (OnEndDrag): RVA=0x015dea20
+
+--- Type 5957: UxmlSerializedData (fields=56, methods=3) ---
+  Field  0 (+0x150): InitFunction
+  Field  1 (+0x158): DragEvents
+  Field  2 (+0x160): SelectionEvents
+  Field  3 (+0x168): RemoveEvents
+  Field  4 (+0x170): ContextMenuData
+  Field  5 (+0x178): FactoryAsset
+  Field  6 (+0x180): RowElementAsset
+  Field  7 (+0x188): HeaderCellAsset
+  Field  8 (+0x190): AddEvents
+  Field  9 (+0x198): MigrateDragEvent
+  Field 10 (+0x1a0): SelectionLimitBinding
+  Field 11 (+0x1a8): MigrateSelectionEvent
+  Field 12 (+0x1b0): DefaultSelectFirstElement
+  Field 13 (+0x1b8): SelectionCellID
+  Field 14 (+0x1c0): FooterBinding
+  Field 15 (+0x1c8): AllowColumnReordering
+  Field 16 (+0x1c9): AllowColumnResizing
+  Field 17 (+0x1ca): ResizeColumnWidthsToFit
+  Field 18 (+0x1cb): ShowFooter
+  Field 19 (+0x1d0): ViewDropdownName
+  Field 20 (+0x1d8): DefaultSelectedColumn
+  Field 21 (+0x1e0): DragCellID
+  Field 22 (+0x1e8): DisableSorting
+  Field 23 (+0x1f0): SortedColumn
+  Field 24 (+0x1f8): DisableRowContextMenu
+  Field 25 (+0x200): RemoveCellID
+  Field 26 (+0x208): MigrateAddEvent
+  Field 27 (+0x210): MigrateRemoveEvent
+  Field 28 (+0x218): InitFunction_UxmlAttributeFlags
+  Field 29 (+0x219): DragEvents_UxmlAttributeFlags
+  Field 30 (+0x21a): SelectionEvents_UxmlAttributeFlags
+  Field 31 (+0x21b): RemoveEvents_UxmlAttributeFlags
+  Field 32 (+0x21c): ContextMenuData_UxmlAttributeFlags
+  Field 33 (+0x21d): FactoryAsset_UxmlAttributeFlags
+  Field 34 (+0x21e): RowElementAsset_UxmlAttributeFlags
+  Field 35 (+0x21f): HeaderCellAsset_UxmlAttributeFlags
+  Field 36 (+0x220): AddEvents_UxmlAttributeFlags
+  Field 37 (+0x221): MigrateDragEvent_UxmlAttributeFlags
+  Field 38 (+0x222): SelectionLimitBinding_UxmlAttributeFlags
+  Field 39 (+0x223): MigrateSelectionEvent_UxmlAttributeFlags
+  Field 40 (+0x224): DefaultSelectFirstElement_UxmlAttributeFlags
+  Field 41 (+0x225): SelectionCellID_UxmlAttributeFlags
+  Field 42 (+0x226): FooterBinding_UxmlAttributeFlags
+  Field 43 (+0x227): AllowColumnReordering_UxmlAttributeFlags
+  Field 44 (+0x228): AllowColumnResizing_UxmlAttributeFlags
+  Field 45 (+0x229): ResizeColumnWidthsToFit_UxmlAttributeFlags
+  Field 46 (+0x22a): ShowFooter_UxmlAttributeFlags
+  Field 47 (+0x22b): ViewDropdownName_UxmlAttributeFlags
+  Field 48 (+0x22c): DefaultSelectedColumn_UxmlAttributeFlags
+  Field 49 (+0x22d): DragCellID_UxmlAttributeFlags
+  Field 50 (+0x22e): DisableSorting_UxmlAttributeFlags
+  Field 51 (+0x22f): SortedColumn_UxmlAttributeFlags
+  Field 52 (+0x230): DisableRowContextMenu_UxmlAttributeFlags
+  Field 53 (+0x231): RemoveCellID_UxmlAttributeFlags
+  Field 54 (+0x232): MigrateAddEvent_UxmlAttributeFlags
+  Field 55 (+0x233): MigrateRemoveEvent_UxmlAttributeFlags
+  Method idx=49015 (CreateInstance): RVA=0x015f34b0
+  Method idx=49016 (Deserialize): RVA=0x015f36b0
+  Method idx=49017 (.ctor): RVA=0x014ef870
+
+--- Type 5958: <>c (fields=4, methods=5) ---
+  Field  0 (+0x000): <>9
+  Field  1 (+0x008): <>9__226_0
+  Field  2 (+0x010): <>9__226_1
+  Field  3 (+0x018): <>9__292_0
+  Method idx=49018 (.cctor): RVA=0x0160e150
+  Method idx=49019 (.ctor): RVA=0x002911e0
+  Method idx=49020 (<BindToDataInternal>b__226_0): RVA=0x0160a9d0
+  Method idx=49021 (<BindToDataInternal>b__226_1): RVA=0x0160aad0
+  Method idx=49022 (<CreateColumn>b__292_0): RVA=0x0160ab40
+
+--- Type 5959: <>c__DisplayClass234_0 (fields=3, methods=3) ---
+  Field  0 (+0x010): header
+  Field  1 (+0x018): hintID
+  Field  2 (+0x020): hintArgs
+  Method idx=49023 (.ctor): RVA=0x002911e0
+  Method idx=49024 (<BindHeader>b__0): RVA=0x0160b6b0
+  Method idx=49025 (<BindHeader>b__2): RVA=0x0160b850
+
+--- Type 5960: <>c__DisplayClass234_1 (fields=3, methods=2) ---
+  Field  0 (+0x010): headerId
+  Field  1 (+0x018): headerArgs
+  Field  2 (+0x020): CS$<>8__locals1
+  Method idx=49026 (.ctor): RVA=0x002911e0
+  Method idx=49027 (<BindHeader>b__1): RVA=0x0160b9e0
+
+--- Type 5961: <>c__DisplayClass259_0 (fields=2, methods=2) ---
+  Field  0 (+0x010): <>4__this
+  Field  1 (+0x018): columnID
+  Method idx=49028 (.ctor): RVA=0x002911e0
+  Method idx=49029 (<MakeColumnHeader>b__0): RVA=0x0160bb80
+
+--- Type 5962: <>c__DisplayClass262_0 (fields=15, methods=15) ---
+  Field  0 (+0x010): <>4__this
+  Field  1 (+0x018): columnID
+  Field  2 (+0x020): <>9__11
+  Field  3 (+0x028): <>9__12
+  Field  4 (+0x030): <>9__1
+  Field  5 (+0x038): <>9__13
+  Field  6 (+0x040): <>9__2
+  Field  7 (+0x048): <>9__3
+  Field  8 (+0x050): <>9__4
+  Field  9 (+0x058): <>9__5
+  Field 10 (+0x060): <>9__6
+  Field 11 (+0x068): <>9__7
+  Field 12 (+0x070): <>9__8
+  Field 13 (+0x078): <>9__9
+  Field 14 (+0x080): <>9__10
+  Method idx=49030 (.ctor): RVA=0x002911e0
+  Method idx=49031 (<AddContextMenu>b__0): RVA=0x0160bbe0
+  Method idx=49032 (<AddContextMenu>b__1): RVA=0x0160c8b0
+  Method idx=49033 (<AddContextMenu>b__11): RVA=0x0160c860
+  Method idx=49034 (<AddContextMenu>b__12): RVA=0x0160c880
+  Method idx=49035 (<AddContextMenu>b__2): RVA=0x0160cb00
+  Method idx=49036 (<AddContextMenu>b__13): RVA=0x0160c860
+  Method idx=49037 (<AddContextMenu>b__3): RVA=0x0160cce0
+  Method idx=49038 (<AddContextMenu>b__4): RVA=0x0160ce30
+  Method idx=49039 (<AddContextMenu>b__5): RVA=0x0160ce70
+  Method idx=49040 (<AddContextMenu>b__6): RVA=0x0160cec0
+  Method idx=49041 (<AddContextMenu>b__7): RVA=0x0160cf60
+  Method idx=49042 (<AddContextMenu>b__8): RVA=0x0160d430
+  Method idx=49043 (<AddContextMenu>b__9): RVA=0x0160d920
+  Method idx=49044 (<AddContextMenu>b__10): RVA=0x0160c550
+
+--- Type 5963: <>c__DisplayClass281_0 (fields=1, methods=2) ---
+  Field  0 (+0x010): footerAsset
+  Method idx=49045 (.ctor): RVA=0x002911e0
+  Method idx=49046 (<MakeColumnFooter>b__0): RVA=0x0160dda0
+
+--- Type 5964: <>c__DisplayClass283_0`1 (fields=2, methods=2) ---
+  Field  0 (+0x000): <>4__this
+  Field  1 (+0x000): entry
+  Method idx=49047 (.ctor): RVA=0x00000000
+  Method idx=49048 (<CreateCellForColumn>b__0): RVA=0x00000000
+
+--- Type 5965: <>c__DisplayClass294_0 (fields=1, methods=2) ---
+  Field  0 (+0x010): closestColumn
+  Method idx=49049 (.ctor): RVA=0x002911e0
+  Method idx=49050 (<OnReorder>b__0): RVA=0x0160df70
+
+--- Type 5966: <>c__DisplayClass295_0 (fields=1, methods=2) ---
+  Field  0 (+0x010): draggedColumn
+  Method idx=49051 (.ctor): RVA=0x002911e0
+  Method idx=49052 (<OnEndReorder>b__0): RVA=0x0160df70
+
+--- Type 5967: StreamedTable (fields=77, methods=177) ---
+  Field  0 (+0x7d8): m_useSimplifiedDropdowns
+  Field  1 (+0x7d9): m_shouldShowJumpToTop
+  Field  2 (+0x7e0): m_jumpToTopVisualElement
+  Field  3 (+0x000): s_registeredForEvents
+  Field  4 (+0x7e8): m_selectionLimitKey
+  Field  5 (+0x7f0): m_itemsContainerKey
+  Field  6 (+0x7f8): m_selectionLimitBindingChanged
+  Field  7 (+0x800): m_headerScrollView
+  Field  8 (+0x808): m_columnHeaders
+  Field  9 (+0x810): m_columnFooters
+  Field 10 (+0x818): m_columns
+  Field 11 (+0x820): m_columnIDs
+  Field 12 (+0x828): m_columnLookup
+  Field 13 (+0x830): m_rows
+  Field 14 (+0x838): m_streamedTableView
+  Field 15 (+0x840): m_streamedTableViewSettingsCollection
+  Field 16 (+0x848): m_viewDropdown
+  Field 17 (+0x850): m_reorderVisuals
+  Field 18 (+0x858): m_sortShortcutEnabled
+  Field 19 (+0x860): m_sortedColumnPersistenceKey
+  Field 20 (+0x880): m_sortAscendingPersistenceKey
+  Field 21 (+0x8a0): m_secondarySortedColumnPersistenceKey
+  Field 22 (+0x8c0): m_secondarySortAscendingPersistenceKey
+  Field 23 (+0x8e0): m_sortedColumns
+  Field 24 (+0x8e8): m_selectionCellClickEvent
+  Field 25 (+0x8f0): m_selectionCellSubmitEvent
+  Field 26 (+0x8f8): m_headerLookup
+  Field 27 (+0x900): m_headerLookupBySorting
+  Field 28 (+0x908): m_headerLookupByPluginSorting
+  Field 29 (+0x910): m_initialisationHandler
+  Field 30 (+0x918): m_dragKey
+  Field 31 (+0x920): m_removeKey
+  Field 32 (+0x928): m_addKey
+  Field 33 (+0x930): m_totalDefaultColumnWidth
+  Field 34 (+0x934): m_totalAvailableWidth
+  Field 35 (+0x938): m_remainingAvailableWidth
+  Field 36 (+0x93c): m_performingAutoResizeAll
+  Field 37 (+0x93d): m_useFactoryDefaultsWhenResizing
+  Field 38 (+0x93e): m_manuallyResizing
+  Field 39 (+0x940): m_initFunction
+  Field 40 (+0x948): <SelectionLimitBinding>k__BackingField
+  Field 41 (+0x950): <SelectionCellID>k__BackingField
+  Field 42 (+0x958): <DragCellID>k__BackingField
+  Field 43 (+0x960): <RemoveCellID>k__BackingField
+  Field 44 (+0x968): <AddEvents>k__BackingField
+  Field 45 (+0x970): m_migrateAddEvent
+  Field 46 (+0x978): m_loadedRowElementAsset
+  Field 47 (+0x980): <RowElementAsset>k__BackingField
+  Field 48 (+0x988): m_loadedFactoryAsset
+  Field 49 (+0x990): <FactoryAsset>k__BackingField
+  Field 50 (+0x998): m_loadedContextMenuData
+  Field 51 (+0x9a0): <ContextMenuData>k__BackingField
+  Field 52 (+0x9a8): <DisableRowContextMenu>k__BackingField
+  Field 53 (+0x9b0): <SortedColumn>k__BackingField
+  Field 54 (+0x9b8): <DisableSorting>k__BackingField
+  Field 55 (+0x9c0): m_headerCellAsset
+  Field 56 (+0x9c8): <DefaultSelectedColumn>k__BackingField
+  Field 57 (+0x9d0): <ViewDropdownName>k__BackingField
+  Field 58 (+0x9d8): <ShowFooter>k__BackingField
+  Field 59 (+0x9d9): <ResizeColumnWidthsToFit>k__BackingField
+  Field 60 (+0x9da): <AllowColumnResizing>k__BackingField
+  Field 61 (+0x9db): <AllowColumnReordering>k__BackingField
+  Field 62 (+0x9e0): <FooterBinding>k__BackingField
+  Field 63 (+0x9e8): <SelectionEvents>k__BackingField
+  Field 64 (+0x9f0): <DefaultSelectFirstElement>k__BackingField
+  Field 65 (+0x9f8): m_migrateSelectionEvent
+  Field 66 (+0xa00): <DragEvents>k__BackingField
+  Field 67 (+0xa08): m_migrateDragEvent
+  Field 68 (+0xa10): <RemoveEvents>k__BackingField
+  Field 69 (+0xa18): m_migrateRemoveEvent
+  Field 70 (+0xa20): m_factoryAssetHandle
+  Field 71 (+0xa50): m_contextMenuAssetHandle
+  Field 72 (+0xa80): m_rowAssetHandle
+  Field 73 (+0xab0): m_templateResourceHandle
+  Field 74 (+0xab8): m_isFirstInitSelection
+  Field 75 (+0xab9): m_resizeCreatedCustomView
+  Field 76 (+0xabc): m_selectedColumnIndex
+
+--- Type 6137: RowData (fields=25, methods=21) ---
+  Field  0 (+0x010): m_id
+  Field  1 (+0x018): m_headerLabelBinding
+  Field  2 (+0x020): m_hintLabelBinding
+  Field  3 (+0x028): m_translationID
+  Field  4 (+0x030): m_translationArgs
+  Field  5 (+0x038): m_hintID
+  Field  6 (+0x040): m_hintArgs
+  Field  7 (+0x048): m_sortBinding
+  Field  8 (+0x050): m_sortBindingPlugin
+  Field  9 (+0x054): m_sortAscending
+  Field 10 (+0x058): m_defaultWidth
+  Field 11 (+0x05c): m_minimumWidth
+  Field 12 (+0x060): m_allowWidthAutoResizing
+  Field 13 (+0x064): m_autoSizeCellPadding
+  Field 14 (+0x068): m_cellClass
+  Field 15 (+0x070): m_valueBindings
+  Field 16 (+0x078): m_headerValueBindings
+  Field 17 (+0x080): m_enableFooter
+  Field 18 (+0x088): m_footerValueBindings
+  Field 19 (+0x090): m_uxmlRef
+  Field 20 (+0x098): m_headerUxmlRef
+  Field 21 (+0x0a0): m_footerUxmlRef
+  Field 22 (+0x0a8): <Uxml>k__BackingField
+  Field 23 (+0x0b0): <HeaderUxml>k__BackingField
+  Field 24 (+0x0b8): <FooterUxml>k__BackingField
+  Method idx=50405 (get_ID): RVA=0x002841d0
+  Method idx=50406 (get_SortBindingPlugin): RVA=0x00366b80
+  Method idx=50407 (get_SortBinding): RVA=0x0028ee70
+  Method idx=50408 (get_SortAscending): RVA=0x003acab0
+  Method idx=50409 (get_HeaderLabelBinding): RVA=0x00285830
+  Method idx=50410 (get_HeaderTranslationID): RVA=0x0028d0f0
+  Method idx=50411 (get_HeaderTranslationArgs): RVA=0x002867e0
+  Method idx=50412 (get_HeaderHintID): RVA=0x002f6a10
+  Method idx=50413 (get_HeaderHintArgs): RVA=0x00290440
+  Method idx=50414 (get_DefaultWidth): RVA=0x014f0c00
+  Method idx=50415 (get_MinimumWidth): RVA=0x002f6990
+  Method idx=50416 (get_AllowWidthAutoResizing): RVA=0x01232ec0
+  Method idx=50417 (get_AutoSizeCellPadding): RVA=0x014f0bf0
+  Method idx=50418 (get_ValueBindings): RVA=0x0028a5a0
+  Method idx=50419 (get_EnableFooter): RVA=0x002f69f0
+  Method idx=50420 (get_FooterValueBindings): RVA=0x00307830
+  Method idx=50421 (get_CellClass): RVA=0x0028a120
+  Method idx=50422 (get_UxmlRef): RVA=0x00307840
+  Method idx=50423 (get_HeaderUxmlRef): RVA=0x002949c0
+  Method idx=50424 (get_FooterUxmlRef): RVA=0x0028a3e0
+  Method idx=50425 (.ctor): RVA=0x014f0b20
+
+=== 2. Recruitment Assets: Obj 177, Obj 229, Obj 263 in ui-recruitment_assets_all.bundle ===

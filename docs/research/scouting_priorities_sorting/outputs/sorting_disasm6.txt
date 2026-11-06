@@ -1,0 +1,1798 @@
+=== 1. Dump Bindings and nested types in SI.Bindable.dll ===
+
+--- Type 5532: IBindingLogContext (fields=0, methods=1) ---
+
+--- Type 5534: BindingLogContext (fields=2, methods=5) ---
+  Field  0 (+0x20): m_keys
+  Field  1 (+0x28): m_bindings
+
+--- Type 5535: NullBindingLogContext (fields=0, methods=2) ---
+
+--- Type 5536: BindingMethodKind (fields=4, methods=0) ---
+  Field  0 (+0x10): value__
+  Field  1 (+0x00): None
+  Field  2 (+0x00): Direct
+  Field  3 (+0x00): VisualFunction
+
+--- Type 5537: DirectBinding (fields=2, methods=0) ---
+  Field  0 (+0x10): Path
+  Field  1 (+0x18): Nullable
+
+--- Type 5538: BindingMethod`1 (fields=5, methods=6) ---
+  Field  0 (+0x00): DirectAccessAssertMessage
+  Field  1 (+0x00): VisualFunctionAccessAssertMessage
+  Field  2 (+0x00): m_kind
+  Field  3 (+0x00): m_direct
+  Field  4 (+0x00): m_visualFunction
+
+--- Type 5539: BindingMethodUtils (fields=0, methods=1) ---
+
+--- Type 5540: BindingGroupUtils (fields=0, methods=5) ---
+
+--- Type 5541: BindingPathJsonConverter (fields=0, methods=3) ---
+
+--- Type 5542: BindingPath (fields=1, methods=14) ---
+  Field  0 (+0x10): m_path
+
+--- Type 5543: BindingKeyVisualArg (fields=0, methods=3) ---
+
+--- Type 5544: BindingKey (fields=0, methods=1) ---
+
+--- Type 5547: BindingChange (fields=5, methods=8) ---
+  Field  0 (+0x10): changeKind
+  Field  1 (+0x11): keyKind
+  Field  2 (+0x18): key
+  Field  3 (+0x20): parentOrTarget
+  Field  4 (+0x28): value
+
+--- Type 5549: BindingTreeUtils (fields=0, methods=3) ---
+
+--- Type 5550: IReadOnlyNode (fields=0, methods=13) ---
+
+--- Type 5560: NodeFlags (fields=5, methods=0) ---
+  Field  0 (+0x10): value__
+  Field  1 (+0x00): None
+  Field  2 (+0x00): Temporary
+  Field  3 (+0x00): RequiresContext
+  Field  4 (+0x00): Default
+
+--- Type 5562: NodeCallback (fields=3, methods=4) ---
+  Field  0 (+0x10): Event
+  Field  1 (+0x18): Arg
+  Field  2 (+0x20): Flags
+
+--- Type 5563: Node (fields=18, methods=48) ---
+  Field  0 (+0x00): InitialCallbackRemovedCount
+  Field  1 (+0x00): s_propertyIdentifierSet
+  Field  2 (+0x10): m_bindings
+  Field  3 (+0x18): m_name
+  Field  4 (+0x20): m_parent
+  Field  5 (+0x28): m_firstChild
+  Field  6 (+0x30): m_nextSibling
+  Field  7 (+0x38): m_prevSibling
+  Field  8 (+0x40): m_callbacks
+  Field  9 (+0x50): m_removedCallbacks
+  Field 10 (+0x60): m_key
+  Field 11 (+0x68): m_alias
+  Field 12 (+0x70): m_dataKey
+  Field 13 (+0x78): m_propID
+  Field 14 (+0x7c): m_flags
+  Field 15 (+0x7e): m_callbackCount
+  Field 16 (+0x80): m_invokeDepth
+  Field 17 (+0x82): m_removedCallbackCount
+
+--- Type 5581: Bindings (fields=38, methods=104) ---
+  Field  0 (+0x00): MaxGroupSize
+  Field  1 (+0x00): BindingsRootCategory
+  Field  2 (+0x00): CallbackPartitionCategory
+  Field  3 (+0x00): Separator
+  Field  4 (+0x00): ComparisonKind
+  Field  5 (+0x00): ContextBaseHash
+  Field  6 (+0x00): VersionBaseHash
+  Field  7 (+0x00): s_pathComparer
+  Field  8 (+0x08): s_pathCulture
+  Field  9 (+0x10): s_interned
+  Field 10 (+0x18): s_handlerComparer
+  Field 11 (+0x20): <Logger>k__BackingField
+  Field 12 (+0x28): <RootKey>k__BackingField
+  Field 13 (+0x10): m_config
+  Field 14 (+0x30): m_nodePool
+  Field 15 (+0x38): m_callbackPartitions
+  Field 16 (+0x40): m_root
+  Field 17 (+0x48): m_nodes
+  Field 18 (+0x50): m_aliases
+  Field 19 (+0x58): m_dirtyNodes
+  Field 20 (+0x60): m_dirtyNodesSet
+  Field 21 (+0x68): m_changeCallback
+  Field 22 (+0x70): m_nullableCallback
+  Field 23 (+0x78): m_data
+  Field 24 (+0x80): m_freeDataIndices
+  Field 25 (+0x88): m_contextMapping
+  Field 26 (+0x90): m_inverseContextMapping
+  Field 27 (+0x98): m_pendingOpen
+  Field 28 (+0xa0): m_groups
+  Field 29 (+0xa8): m_freeGroupIndices
+  Field 30 (+0xb0): m_handlers
+  Field 31 (+0xb8): m_createProfiling
+  Field 32 (+0xc0): m_setProfiling
+  Field 33 (+0xc8): m_setAliasProfiling
+  Field 34 (+0xd0): m_processDirtyProfiling
+  Field 35 (+0xd8): m_getContextHashProfiling
+  Field 36 (+0xe0): m_findContextProfiling
+  Field 37 (+0xe8): <LoggingContext>k__BackingField
+
+--- Type 5582: BindingSubsystem (fields=0, methods=3) ---
+
+--- Type 5583: DebugBindingInfo (fields=3, methods=4) ---
+  Field  0 (+0x10): name
+  Field  1 (+0x18): binding
+  Field  2 (+0x20): editable
+
+--- Type 5587: Channel (fields=2, methods=1) ---
+  Field  0 (+0x10): source
+  Field  1 (+0x18): property
+
+--- Type 5590: OpenChannel (fields=0, methods=2) ---
+
+--- Type 5592: CloseChannel (fields=0, methods=2) ---
+
+--- Type 5649: Channel (fields=2, methods=4) ---
+  Field  0 (+0x10): source
+  Field  1 (+0x18): property
+
+--- Type 5666: AsyncBindingRoot (fields=4, methods=12) ---
+  Field  0 (+0x4c8): m_contentContainer
+  Field  1 (+0x4d0): m_binder
+  Field  2 (+0x4d8): m_constructed
+  Field  3 (+0x4e0): <UxmlSource>k__BackingField
+
+--- Type 5680: BindableIntEditBox (fields=24, methods=47) ---
+  Field  0 (+0x00): customUssClassName
+  Field  1 (+0x08): editBoxUssClassName
+  Field  2 (+0x4a8): m_binder
+  Field  3 (+0x4b0): m_boundValueChanged
+  Field  4 (+0x4b8): m_bindingKey
+  Field  5 (+0x4c0): m_initialiseRangeHandler
+  Field  6 (+0x4c8): m_initialiseRangeFunc
+  Field  7 (+0x4d0): m_range
+  Field  8 (+0x4d8): <InputChangedEvents>k__BackingField
+  Field  9 (+0x4e0): m_migrateInputChangedEvent
+  Field 10 (+0x4e8): <DataLink>k__BackingField
+  Field 11 (+0x4f0): <ClearTextIfEmpty>k__BackingField
+  Field 12 (+0x4f8): <WeakLeftDirectionElement>k__BackingField
+  Field 13 (+0x500): <WeakUpDirectionElement>k__BackingField
+  Field 14 (+0x508): <WeakRightDirectionElement>k__BackingField
+  Field 15 (+0x510): <WeakDownDirectionElement>k__BackingField
+  Field 16 (+0x518): <AllowsInsideElementsNavigation>k__BackingField
+  Field 17 (+0x519): <HasInitialFocus>k__BackingField
+  Field 18 (+0x51a): m_hasInput
+  Field 19 (+0x520): m_textElement
+  Field 20 (+0x528): m_textField
+  Field 21 (+0x530): <IsScopeValid>k__BackingField
+  Field 22 (+0x531): <RegisteredAsShortcutElement>k__BackingField
+  Field 23 (+0x538): m_inputActionDelegateLookup
+
+--- Type 5681: UxmlSerializedData (fields=0, methods=2) ---
+
+--- Type 5682: BindableSection (fields=0, methods=3) ---
+
+--- Type 5683: UxmlSerializedData (fields=6, methods=3) ---
+  Field  0 (+0x88): BindDirectAsMask
+  Field  1 (+0x89): InvertDirectBinding
+  Field  2 (+0x90): Binding
+  Field  3 (+0xb0): BindDirectAsMask_UxmlAttributeFlags
+  Field  4 (+0xb1): InvertDirectBinding_UxmlAttributeFlags
+  Field  5 (+0xb2): Binding_UxmlAttributeFlags
+
+--- Type 5684: <>c (fields=2, methods=3) ---
+  Field  0 (+0x00): <>9
+  Field  1 (+0x08): <>9__16_0
+
+--- Type 5685: BindableSwitchElement (fields=6, methods=31) ---
+  Field  0 (+0x538): m_binder
+  Field  1 (+0x540): m_binding
+  Field  2 (+0x560): m_bindingHandler
+  Field  3 (+0x568): m_boundMask
+  Field  4 (+0x570): <BindDirectAsMask>k__BackingField
+  Field  5 (+0x571): <InvertDirectBinding>k__BackingField
+
+--- Type 5686: AllowedInput (fields=5, methods=0) ---
+  Field  0 (+0x10): value__
+  Field  1 (+0x00): All
+  Field  2 (+0x00): Numeric
+  Field  3 (+0x00): FileNameSafeTextOnly
+  Field  4 (+0x00): TranslationFriendly
+
+--- Type 5687: UxmlSerializedData (fields=24, methods=3) ---
+  Field  0 (+0x70): OnSubmitEvents
+  Field  1 (+0x78): TextChangedEvents
+  Field  2 (+0x80): BindPlaceholderFunc
+  Field  3 (+0x88): MigrateTextChangedEvent
+  Field  4 (+0x90): DataLink
+  Field  5 (+0x98): MaxLength
+  Field  6 (+0x9c): InputFilter
+  Field  7 (+0xa0): IsPassword
+  Field  8 (+0xa1): HasInitialFocus
+  Field  9 (+0xa2): FocusTextFieldOnInit
+  Field 10 (+0xa3): IsDelayed
+  Field 11 (+0xa4): ClearTextOnFocusChange
+  Field 12 (+0xa5): OnSubmitEvents_UxmlAttributeFlags
+  Field 13 (+0xa6): TextChangedEvents_UxmlAttributeFlags
+  Field 14 (+0xa7): BindPlaceholderFunc_UxmlAttributeFlags
+  Field 15 (+0xa8): MigrateTextChangedEvent_UxmlAttributeFlags
+  Field 16 (+0xa9): DataLink_UxmlAttributeFlags
+  Field 17 (+0xaa): MaxLength_UxmlAttributeFlags
+  Field 18 (+0xab): InputFilter_UxmlAttributeFlags
+  Field 19 (+0xac): IsPassword_UxmlAttributeFlags
+  Field 20 (+0xad): HasInitialFocus_UxmlAttributeFlags
+  Field 21 (+0xae): FocusTextFieldOnInit_UxmlAttributeFlags
+  Field 22 (+0xaf): IsDelayed_UxmlAttributeFlags
+  Field 23 (+0xb0): ClearTextOnFocusChange_UxmlAttributeFlags
+
+--- Type 5688: <>c (fields=3, methods=4) ---
+  Field  0 (+0x00): <>9
+  Field  1 (+0x08): <>9__119_0
+  Field  2 (+0x10): <>9__131_1
+
+--- Type 5689: <>c__DisplayClass131_0 (fields=2, methods=2) ---
+  Field  0 (+0x10): <>4__this
+  Field  1 (+0x18): _
+
+--- Type 5690: BindableTextEditBox (fields=38, methods=67) ---
+  Field  0 (+0x4a8): m_binder
+  Field  1 (+0x4b0): m_bindingKey
+  Field  2 (+0x4b8): m_bindingHandlerForPlaceholder
+  Field  3 (+0x4c0): m_boundValueChanged
+  Field  4 (+0x4c8): m_bindPlaceholderFunc
+  Field  5 (+0x00): s_scratchBuilder
+  Field  6 (+0x08): s_invalidFilenameChars
+  Field  7 (+0x10): s_embeddedDataDisallowedChars
+  Field  8 (+0x4d0): <OnSubmitEvents>k__BackingField
+  Field  9 (+0x4d8): <TextChangedEvents>k__BackingField
+  Field 10 (+0x4e0): m_migrateTextChangedEvent
+  Field 11 (+0x4e8): <DataLink>k__BackingField
+  Field 12 (+0x4f0): <MaxLength>k__BackingField
+  Field 13 (+0x4f4): <InputFilter>k__BackingField
+  Field 14 (+0x4f8): <WeakLeftDirectionElement>k__BackingField
+  Field 15 (+0x500): <WeakUpDirectionElement>k__BackingField
+  Field 16 (+0x508): <WeakRightDirectionElement>k__BackingField
+  Field 17 (+0x510): <WeakDownDirectionElement>k__BackingField
+  Field 18 (+0x518): <IsPassword>k__BackingField
+  Field 19 (+0x519): <HasInitialFocus>k__BackingField
+  Field 20 (+0x51a): <FocusTextFieldOnInit>k__BackingField
+  Field 21 (+0x51b): <ClearTextOnFocusChange>k__BackingField
+  Field 22 (+0x51c): <HasInput>k__BackingField
+  Field 23 (+0x51d): <AllowsInsideElementsNavigation>k__BackingField
+  Field 24 (+0x51e): m_registered
+  Field 25 (+0x51f): m_isInitialFocusOnTextField
+  Field 26 (+0x520): m_textElement
+  Field 27 (+0x528): m_textField
+  Field 28 (+0x530): <IsScopeValid>k__BackingField
+  Field 29 (+0x531): <RegisteredAsShortcutElement>k__BackingField
+  Field 30 (+0x538): m_inputActionDelegateLookup
+  Field 31 (+0x540): m_navigationMoveDelegate
+  Field 32 (+0x548): m_focusInDelegate
+  Field 33 (+0x550): m_focusOutDelegate
+  Field 34 (+0x558): m_submitDelegate
+  Field 35 (+0x560): m_clickDelegate
+  Field 36 (+0x568): m_endExclusiveInputAction
+  Field 37 (+0x570): m_keyboardScheduledItem
+
+--- Type 5691: BindableUxmlEntry (fields=3, methods=3) ---
+  Field  0 (+0x00): BindingKeyword
+  Field  1 (+0x10): m_visualTreeAsset
+  Field  2 (+0x18): m_valueBindings
+
+--- Type 5692: UxmlSerializedData (fields=4, methods=3) ---
+  Field  0 (+0x70): m_rowUssHightClass
+  Field  1 (+0x78): m_listBinding
+  Field  2 (+0x80): m_rowUssHightClass_UxmlAttributeFlags
+  Field  3 (+0x81): m_listBinding_UxmlAttributeFlags
+
+--- Type 5693: BindableUxmlList (fields=6, methods=10) ---
+  Field  0 (+0x4a8): m_listBinding
+  Field  1 (+0x4b0): m_rowUssHightClass
+  Field  2 (+0x4b8): m_bindableUxmlEntries
+  Field  3 (+0x4c0): m_binder
+  Field  4 (+0x4c8): <Key>k__BackingField
+  Field  5 (+0x4d0): m_templateResourceHandle
+
+--- Type 5694: UxmlSerializedData (fields=2, methods=3) ---
+  Field  0 (+0x70): Parameters
+  Field  1 (+0x78): Parameters_UxmlAttributeFlags
+
+--- Type 5695: BindingExpect (fields=1, methods=8) ---
+  Field  0 (+0x4a8): <Parameters>k__BackingField
+
+--- Type 5696: Suggestion (fields=2, methods=0) ---
+  Field  0 (+0x10): identifier
+  Field  1 (+0x18): kind
+
+--- Type 5697: SuggestionComparer (fields=3, methods=8) ---
+  Field  0 (+0x10): <Source>k__BackingField
+  Field  1 (+0x18): <SpanStart>k__BackingField
+  Field  2 (+0x1c): <SpanLength>k__BackingField
+
+--- Type 5698: <>c (fields=2, methods=3) ---
+  Field  0 (+0x00): <>9
+  Field  1 (+0x08): <>9__14_1
+
+--- Type 5699: InfoPopup (fields=8, methods=9) ---
+  Field  0 (+0x00): UssClassName
+  Field  1 (+0x00): KindContainerUssClassName
+  Field  2 (+0x00): KindLabelUssClassName
+  Field  3 (+0x00): KindValueUssClassName
+  Field  4 (+0x10): m_kindValue
+  Field  5 (+0x18): m_listElement
+  Field  6 (+0x20): m_info
+  Field  7 (+0x28): <FloatingElement>k__BackingField
+
+--- Type 5700: Context (fields=2, methods=0) ---
+  Field  0 (+0x10): name
+  Field  1 (+0x18): found
+
+--- Type 5701: BindingInfo (fields=3, methods=2) ---
+  Field  0 (+0x10): suggestions
+  Field  1 (+0x18): contextInfo
+  Field  2 (+0x20): leafKind
+
+--- Type 5702: UxmlSerializedData (fields=0, methods=2) ---
+
+--- Type 5703: <>c (fields=10, methods=11) ---
+  Field  0 (+0x00): <>9
+  Field  1 (+0x08): <>9__42_0
+  Field  2 (+0x10): <>9__42_4
+  Field  3 (+0x18): <>9__42_6
+  Field  4 (+0x20): <>9__42_7
+  Field  5 (+0x28): <>9__42_8
+  Field  6 (+0x30): <>9__42_9
+  Field  7 (+0x38): <>9__42_10
+  Field  8 (+0x40): <>9__42_11
+  Field  9 (+0x48): <>9__42_12
+
+--- Type 5704: BindingPathField (fields=23, methods=25) ---
+  Field  0 (+0x00): StyleSheetAddressableKey
+  Field  1 (+0x00): UssClassName
+  Field  2 (+0x00): InputUssClassName
+  Field  3 (+0x00): InputVisualsUssClassName
+  Field  4 (+0x00): InfoButtonUssClassName
+  Field  5 (+0x00): ContextUssClassName
+  Field  6 (+0x00): MissingContextUssClassName
+  Field  7 (+0x00): s_identifiers
+  Field  8 (+0x08): s_contexts
+  Field  9 (+0x538): m_styleSheetHandle
+  Field 10 (+0x568): <Target>k__BackingField
+  Field 11 (+0x570): m_input
+  Field 12 (+0x578): m_inputVisuals
+  Field 13 (+0x580): m_inputTextElement
+  Field 14 (+0x588): m_helpBox
+  Field 15 (+0x590): m_infoButton
+  Field 16 (+0x598): m_suggestionPopup
+  Field 17 (+0x5a0): m_infoPopup
+  Field 18 (+0x5a8): m_info
+  Field 19 (+0x5b0): m_suggestionComparer
+  Field 20 (+0x5b8): m_preventSelectAllOnFocus
+  Field 21 (+0x5c0): <BasePathKind>k__BackingField
+  Field 22 (+0x5d0): <BasePathLength>k__BackingField
+
+--- Type 5705: UxmlSerializedData (fields=4, methods=3) ---
+  Field  0 (+0x70): Mappings
+  Field  1 (+0x78): MigrateMappings
+  Field  2 (+0x80): Mappings_UxmlAttributeFlags
+  Field  3 (+0x81): MigrateMappings_UxmlAttributeFlags
+
+--- Type 5706: BindingRemapper (fields=3, methods=11) ---
+  Field  0 (+0x4a8): <Key>k__BackingField
+  Field  1 (+0x4b0): <Mappings>k__BackingField
+  Field  2 (+0x4b8): m_migrateMappings
+
+--- Type 5707: UxmlSerializedData (fields=6, methods=3) ---
+  Field  0 (+0x70): Parameters
+  Field  1 (+0x78): Parameters_UxmlAttributeFlags
+  Field  2 (+0x80): ReferenceProperties
+  Field  3 (+0x88): ReferenceProperties_UxmlAttributeFlags
+  Field  4 (+0x90): ValueProperties
+  Field  5 (+0x98): ValueProperties_UxmlAttributeFlags
+
+--- Type 5708: Parameter (fields=4, methods=6) ---
+  Field  0 (+0x10): m_serialisedType
+  Field  1 (+0x18): name
+  Field  2 (+0x20): type
+  Field  3 (+0x24): isOptional
+
+--- Type 5709: <>c__DisplayClass32_0 (fields=2, methods=2) ---
+  Field  0 (+0x10): property
+  Field  1 (+0x18): localKey
+
+--- Type 5710: <>c__DisplayClass32_1 (fields=2, methods=2) ---
+  Field  0 (+0x10): persistable
+  Field  1 (+0x18): persistenceKey
+
+--- Type 5711: BindingRoot (fields=5, methods=22) ---
+  Field  0 (+0x00): NullBindingSystemAssertMessage
+  Field  1 (+0x4a8): <Key>k__BackingField
+  Field  2 (+0x4b0): <Parameters>k__BackingField
+  Field  3 (+0x4b8): <ReferenceProperties>k__BackingField
+  Field  4 (+0x4c0): <ValueProperties>k__BackingField
+
+--- Type 5712: UxmlSerializedData (fields=2, methods=3) ---
+  Field  0 (+0x90): BindFunction
+  Field  1 (+0x98): BindFunction_UxmlAttributeFlags
+
+--- Type 5713: BindingSetter (fields=2, methods=4) ---
+  Field  0 (+0x4c0): m_bindingHandlers
+  Field  1 (+0x4c8): m_bindFunctions
+
+--- Type 5714: ButtonGroupStyle (fields=4, methods=0) ---
+  Field  0 (+0x10): value__
+  Field  1 (+0x00): None
+  Field  2 (+0x00): Default
+  Field  3 (+0x00): SegmentedButtonRow
+
+--- Type 5715: ButtonGroupCycleMode (fields=3, methods=0) ---
+  Field  0 (+0x10): value__
+  Field  1 (+0x00): Clamp
+  Field  2 (+0x00): Loop
+
+--- Type 5716: InputPriorityLevel (fields=4, methods=0) ---
+  Field  0 (+0x10): value__
+  Field  1 (+0x00): None
+  Field  2 (+0x00): Primary
+  Field  3 (+0x00): Secondary
+
+--- Type 5717: UxmlSerializedData (fields=26, methods=3) ---
+  Field  0 (+0x70): SelectionBinding
+  Field  1 (+0x78): CurrentSelectedIdBinding
+  Field  2 (+0x80): DefaultSelection
+  Field  3 (+0x84): GroupStyle
+  Field  4 (+0x88): SelectedStyle
+  Field  5 (+0x90): CycleMode
+  Field  6 (+0x94): InputPriority
+  Field  7 (+0x98): HideIfOnlyOneTab
+  Field  8 (+0x99): NotifyOptionOnBindingChange
+  Field  9 (+0x9a): UsePersistantSelection
+  Field 10 (+0x9c): PersistenceLifetimeKind
+  Field 11 (+0xa0): NotifyDefaultSelection
+  Field 12 (+0xa4): IgnoredIndex
+  Field 13 (+0xa8): SelectionBinding_UxmlAttributeFlags
+  Field 14 (+0xa9): CurrentSelectedIdBinding_UxmlAttributeFlags
+  Field 15 (+0xaa): DefaultSelection_UxmlAttributeFlags
+  Field 16 (+0xab): GroupStyle_UxmlAttributeFlags
+  Field 17 (+0xac): SelectedStyle_UxmlAttributeFlags
+  Field 18 (+0xad): CycleMode_UxmlAttributeFlags
+  Field 19 (+0xae): InputPriority_UxmlAttributeFlags
+  Field 20 (+0xaf): HideIfOnlyOneTab_UxmlAttributeFlags
+  Field 21 (+0xb0): NotifyOptionOnBindingChange_UxmlAttributeFlags
+  Field 22 (+0xb1): UsePersistantSelection_UxmlAttributeFlags
+  Field 23 (+0xb2): PersistenceLifetimeKind_UxmlAttributeFlags
+  Field 24 (+0xb3): NotifyDefaultSelection_UxmlAttributeFlags
+  Field 25 (+0xb4): IgnoredIndex_UxmlAttributeFlags
+
+--- Type 5718: ButtonGroup (fields=45, methods=78) ---
+  Field  0 (+0x4a8): m_binder
+  Field  1 (+0x4b0): m_slots
+  Field  2 (+0x4b8): m_selectionChanged
+  Field  3 (+0x4c0): m_parentSection
+  Field  4 (+0x4c8): m_forceActivationTask
+  Field  5 (+0x4d0): m_dependentTracking
+  Field  6 (+0x4d8): m_waitingOnDependents
+  Field  7 (+0x4dc): m_pendingInitialSelection
+  Field  8 (+0x4e0): m_pendingSelection
+  Field  9 (+0x4e4): m_receivedSelectionFromBinding
+  Field 10 (+0x4e5): m_pendingShouldNotify
+  Field 11 (+0x4e8): m_selected
+  Field 12 (+0x4ec): m_setForRtl
+  Field 13 (+0x4ed): m_unbinding
+  Field 14 (+0x4f0): m_key
+  Field 15 (+0x4f8): m_selectionKey
+  Field 16 (+0x500): m_currentSelectedIdKey
+  Field 17 (+0x508): m_inputPriorityKey
+  Field 18 (+0x510): m_leftControllerIconKey
+  Field 19 (+0x518): m_rightControllerIconKey
+  Field 20 (+0x520): m_leftIconElement
+  Field 21 (+0x528): m_rightIconElement
+  Field 22 (+0x530): m_currentInputPriority
+  Field 23 (+0x538): m_inputActionCallbackLookup
+  Field 24 (+0x540): m_inputActionRef
+  Field 25 (+0x548): m_hasInitialisedScopeValidity
+  Field 26 (+0x549): m_isScopeValid
+  Field 27 (+0x54c): m_activeCount
+  Field 28 (+0x550): m_onResolvedDependencies
+  Field 29 (+0x558): <SelectionBinding>k__BackingField
+  Field 30 (+0x560): <CurrentSelectedIdBinding>k__BackingField
+  Field 31 (+0x568): <DefaultSelection>k__BackingField
+  Field 32 (+0x56c): <GroupStyle>k__BackingField
+  Field 33 (+0x570): <SelectedStyle>k__BackingField
+  Field 34 (+0x578): <CycleMode>k__BackingField
+  Field 35 (+0x57c): <InputPriority>k__BackingField
+  Field 36 (+0x580): <HideIfOnlyOneTab>k__BackingField
+  Field 37 (+0x581): <NotifyOptionOnBindingChange>k__BackingField
+  Field 38 (+0x582): <UsePersistantSelection>k__BackingField
+  Field 39 (+0x584): <PersistenceLifetimeKind>k__BackingField
+  Field 40 (+0x588): <NotifyDefaultSelection>k__BackingField
+  Field 41 (+0x589): <RegisteredAsShortcutElement>k__BackingField
+  Field 42 (+0x58c): <IgnoredIndex>k__BackingField
+  Field 43 (+0x590): m_persistence
+  Field 44 (+0x598): m_selectedIndexPersistenceKey
+
+--- Type 5719: IButtonGroup (fields=0, methods=3) ---
+
+--- Type 5720: Mode (fields=4, methods=0) ---
+  Field  0 (+0x10): value__
+  Field  1 (+0x00): Unselected
+  Field  2 (+0x00): SelectedWithoutNotify
+  Field  3 (+0x00): Selected
+
+--- Type 5721: IButtonGroupOption (fields=0, methods=1) ---
+
+--- Type 5722: PolarChartBuilder (fields=0, methods=1) ---
+
+--- Type 5723: PolarChartLabelsRotation (fields=4, methods=0) ---
+  Field  0 (+0x10): value__
+  Field  1 (+0x00): None
+  Field  2 (+0x00): Tangent
+  Field  3 (+0x00): Cotangent
+
+--- Type 5724: IConfinedTooltip (fields=0, methods=1) ---
+
+--- Type 5725: UxmlSerializedData (fields=14, methods=3) ---
+  Field  0 (+0x70): InitialiseBindingFunc
+  Field  1 (+0x78): RedBinding
+  Field  2 (+0x80): GreenBinding
+  Field  3 (+0x88): BlueBinding
+  Field  4 (+0x90): HexBinding
+  Field  5 (+0x98): RGBColorBinding
+  Field  6 (+0xa0): DataLink
+  Field  7 (+0xa8): InitialiseBindingFunc_UxmlAttributeFlags
+  Field  8 (+0xa9): RedBinding_UxmlAttributeFlags
+  Field  9 (+0xaa): GreenBinding_UxmlAttributeFlags
+  Field 10 (+0xab): BlueBinding_UxmlAttributeFlags
+  Field 11 (+0xac): HexBinding_UxmlAttributeFlags
+  Field 12 (+0xad): RGBColorBinding_UxmlAttributeFlags
+  Field 13 (+0xae): DataLink_UxmlAttributeFlags
+
+--- Type 5726: ColourPicker (fields=29, methods=31) ---
+  Field  0 (+0x4a8): m_binder
+  Field  1 (+0x4b0): m_hue
+  Field  2 (+0x4b4): m_saturation
+  Field  3 (+0x4b8): m_value
+  Field  4 (+0x4bc): m_colour
+  Field  5 (+0x4cc): m_rValue
+  Field  6 (+0x4d0): m_gValue
+  Field  7 (+0x4d4): m_bValue
+  Field  8 (+0x4d8): m_isUpdatingInternally
+  Field  9 (+0x4d9): m_rValueSet
+  Field 10 (+0x4da): m_gValueSet
+  Field 11 (+0x4db): m_bValueSet
+  Field 12 (+0x4dc): m_IsColor32Binding
+  Field 13 (+0x4e0): m_gradientField
+  Field 14 (+0x4e8): m_spectrumSISlider
+  Field 15 (+0x4f0): m_gradientTexture
+  Field 16 (+0x4f8): m_hueSliderTexture
+  Field 17 (+0x500): m_bindings
+  Field 18 (+0x508): m_key
+  Field 19 (+0x510): m_redKey
+  Field 20 (+0x518): m_greenKey
+  Field 21 (+0x520): m_blueKey
+  Field 22 (+0x528): m_hexKey
+  Field 23 (+0x530): m_colourKey
+  Field 24 (+0x538): <RedBinding>k__BackingField
+  Field 25 (+0x540): <GreenBinding>k__BackingField
+  Field 26 (+0x548): <BlueBinding>k__BackingField
+  Field 27 (+0x550): <HexBinding>k__BackingField
+  Field 28 (+0x558): <RGBColorBinding>k__BackingField
+
+--- Type 5727: GradientFieldConfirmedEvent (fields=1, methods=4) ---
+  Field  0 (+0x18): <Value>k__BackingField
+
+--- Type 5728: GradientFieldDragger (fields=1, methods=5) ---
+  Field  0 (+0x78): <Target>k__BackingField
+
+--- Type 5729: <>c (fields=3, methods=4) ---
+  Field  0 (+0x00): <>9
+  Field  1 (+0x08): <>9__46_0
+  Field  2 (+0x10): <>9__46_1
+
+--- Type 5730: GradientField (fields=13, methods=27) ---
+  Field  0 (+0x538): m_navigatablelElement
+  Field  1 (+0x540): m_dragManipulator
+  Field  2 (+0x548): m_pageChangeScheduler
+  Field  3 (+0x550): m_inputActionDelegateLookup
+  Field  4 (+0x558): <WeakLeftDirectionElement>k__BackingField
+  Field  5 (+0x560): <WeakUpDirectionElement>k__BackingField
+  Field  6 (+0x568): <WeakRightDirectionElement>k__BackingField
+  Field  7 (+0x570): <WeakDownDirectionElement>k__BackingField
+  Field  8 (+0x578): <AllowsInsideElementsNavigation>k__BackingField
+  Field  9 (+0x579): <HasInitialFocus>k__BackingField
+  Field 10 (+0x57a): <IsScopeValid>k__BackingField
+  Field 11 (+0x57b): <RegisteredAsShortcutElement>k__BackingField
+  Field 12 (+0x57c): <IncrementOnNavigationInteraction>k__BackingField
+
+--- Type 5731: DataReferenceElement (fields=9, methods=16) ---
+  Field  0 (+0x4a8): m_binder
+  Field  1 (+0x4b0): m_propertyIDs
+  Field  2 (+0x00): s_contextIDs
+  Field  3 (+0x4b8): m_reference
+  Field  4 (+0x4c0): m_foldout
+  Field  5 (+0x4c8): m_propertiesContainer
+  Field  6 (+0x4d0): m_styleSheetHandle
+  Field  7 (+0x500): <Key>k__BackingField
+  Field  8 (+0x508): <Label>k__BackingField
+
+--- Type 5732: Factory (fields=3, methods=1) ---
+  Field  0 (+0x10): create
+  Field  1 (+0x18): bind
+  Field  2 (+0x20): unbind
+
+--- Type 5733: <>c__DisplayClass9_0 (fields=2, methods=2) ---
+  Field  0 (+0x10): mask
+  Field  1 (+0x20): <>4__this
+
+--- Type 5734: ColourPickerField (fields=6, methods=5) ---
+  Field  0 (+0x4a8): m_preview
+  Field  1 (+0x4b0): m_redSlider
+  Field  2 (+0x4b8): m_greenSlider
+  Field  3 (+0x4c0): m_blueSlider
+  Field  4 (+0x4c8): m_alphaSlider
+  Field  5 (+0x4d0): m_value
+
+--- Type 5735: DynamicNumberField (fields=4, methods=11) ---
+  Field  0 (+0x00): s_choices
+  Field  1 (+0x4a8): m_kindField
+  Field  2 (+0x4b0): m_inputField
+  Field  3 (+0x4b8): m_value
+
+--- Type 5736: TypedValueElement (fields=1, methods=3) ---
+  Field  0 (+0x4a8): m_valueElement
+
+--- Type 5737: BindingType (fields=5, methods=0) ---
+  Field  0 (+0x10): value__
+  Field  1 (+0x00): None
+  Field  2 (+0x00): Path
+  Field  3 (+0x00): Key
+  Field  4 (+0x00): Relative
+
+--- Type 5738: UxmlSerializedData (fields=8, methods=3) ---
+  Field  0 (+0x70): Label
+  Field  1 (+0x78): Binding
+  Field  2 (+0x80): IsEditable
+  Field  3 (+0x81): AutoBindPath
+  Field  4 (+0x82): Label_UxmlAttributeFlags
+  Field  5 (+0x83): Binding_UxmlAttributeFlags
+  Field  6 (+0x84): IsEditable_UxmlAttributeFlags
+  Field  7 (+0x85): AutoBindPath_UxmlAttributeFlags
+
+--- Type 5739: <>c (fields=8, methods=35) ---
+  Field  0 (+0x00): <>9
+  Field  1 (+0x08): <>9__45_0
+  Field  2 (+0x10): <>9__45_1
+  Field  3 (+0x18): <>9__55_0
+  Field  4 (+0x20): <>9__55_2
+  Field  5 (+0x28): <>9__55_3
+  Field  6 (+0x30): <>9__55_5
+  Field  7 (+0x38): <>9__55_6
+
+--- Type 5745: DebugBindingElement (fields=25, methods=26) ---
+  Field  0 (+0x00): StyleSheetAddressableKey
+  Field  1 (+0x00): StyleSheetPath
+  Field  2 (+0x00): UssClassName
+  Field  3 (+0x00): BoundUssClassName
+  Field  4 (+0x00): InvalidBindingUssClassName
+  Field  5 (+0x00): PendingUssClassName
+  Field  6 (+0x00): VerticalUssClassName
+  Field  7 (+0x00): LabelUssClassName
+  Field  8 (+0x00): ValueUssClassName
+  Field  9 (+0x00): ToggleBindUssClassName
+  Field 10 (+0x00): s_factoryLookup
+  Field 11 (+0x4a8): m_type
+  Field 12 (+0x4b0): m_binding
+  Field 13 (+0x4b8): m_targetKey
+  Field 14 (+0x4c0): m_key
+  Field 15 (+0x4c8): m_bindingChanged
+  Field 16 (+0x4d0): m_label
+  Field 17 (+0x4d8): m_alwaysDisplayVertically
+  Field 18 (+0x4e0): m_bindingToggle
+  Field 19 (+0x4e8): m_value
+  Field 20 (+0x4f0): m_fieldDataType
+  Field 21 (+0x4f8): m_valueElement
+  Field 22 (+0x500): m_styleSheethandle
+  Field 23 (+0x530): m_isEditable
+  Field 24 (+0x531): m_autoBindPath
+
+--- Type 5819: BindingReferenceVariable (fields=3, methods=6) ---
+  Field  0 (+0x10): m_type
+  Field  1 (+0x14): m_initToNull
+  Field  2 (+0x18): m_name
+
+--- Type 5820: BindingValueVariable (fields=4, methods=9) ---
+  Field  0 (+0x00): s_jsonSerializer
+  Field  1 (+0x10): m_name
+  Field  2 (+0x18): m_value
+  Field  3 (+0x20): m_serializedData
+
+--- Type 5824: BindingVariables (fields=3, methods=14) ---
+  Field  0 (+0x4a8): <ValueVariables>k__BackingField
+  Field  1 (+0x4b0): <ReferenceVariables>k__BackingField
+  Field  2 (+0x4b8): <Key>k__BackingField
+
+--- Type 5825: UnsetScopeValue (fields=0, methods=3) ---
+
+--- Type 5826: NullScopeValue (fields=0, methods=3) ---
+
+--- Type 5827: BoolScopeValue (fields=0, methods=2) ---
+
+--- Type 5828: IntScopeValue (fields=0, methods=2) ---
+
+--- Type 5829: LongScopeValue (fields=0, methods=2) ---
+
+--- Type 5830: FloatScopeValue (fields=0, methods=2) ---
+
+--- Type 5831: DoubleScopeValue (fields=0, methods=2) ---
+
+--- Type 5832: StringScopeValue (fields=0, methods=2) ---
+
+--- Type 5833: ColorScopeValue (fields=0, methods=1) ---
+
+--- Type 5834: Color32ScopeValue (fields=0, methods=1) ---
+
+--- Type 5835: EnumListScopeValue (fields=0, methods=1) ---
+
+--- Type 5836: BoolListScopeValue (fields=0, methods=1) ---
+
+--- Type 5837: AssetReferenceScopeValue (fields=0, methods=1) ---
+
+--- Type 5838: PropertyIDScopeValue (fields=0, methods=3) ---
+
+--- Type 5840: PropertyIDBindingPathPair (fields=2, methods=0) ---
+  Field  0 (+0x10): PropertyID
+  Field  1 (+0x18): BindingPath
+
+--- Type 5842: DynamicReferenceScopeValue (fields=5, methods=9) ---
+  Field  0 (+0x00): s_valueChanged
+  Field  1 (+0x10): m_data
+  Field  2 (+0x18): m_keyPropertyPair
+  Field  3 (+0x20): m_recordChangedCallback
+  Field  4 (+0x28): <Value>k__BackingField
+
+--- Type 5843: IScopeValue (fields=0, methods=2) ---
+
+--- Type 5844: ScopeValueBase`1 (fields=1, methods=5) ---
+  Field  0 (+0x00): m_value
+
+--- Type 5845: IPersistableBindingVariable (fields=0, methods=3) ---
+
+--- Type 5846: PersistableScopeValueBase`1 (fields=1, methods=5) ---
+  Field  0 (+0x00): m_persistenceKey
+
+--- Type 5878: BindingImageKind (fields=5, methods=0) ---
+  Field  0 (+0x10): value__
+  Field  1 (+0x00): None
+  Field  2 (+0x00): Style
+  Field  3 (+0x00): AssetReference
+  Field  4 (+0x00): Bytes
+
+--- Type 5918: PendingBindings (fields=4, methods=0) ---
+  Field  0 (+0x00): value__
+  Field  1 (+0x00): None
+  Field  2 (+0x00): Value
+  Field  3 (+0x00): Config
+
+--- Type 5990: BindingRemapException (fields=0, methods=2) ---
+
+--- Type 5995: BindingSettings (fields=8, methods=7) ---
+  Field  0 (+0x00): DirectoryPath
+  Field  1 (+0x00): SettingsName
+  Field  2 (+0x00): AssetPath
+  Field  3 (+0x00): AddressableKey
+  Field  4 (+0x00): s_instance
+  Field  5 (+0x18): m_globalMappings
+  Field  6 (+0x20): m_highlightColours
+  Field  7 (+0x28): m_lookup
+
+--- Type 5996: GlobalBindingInfo (fields=1, methods=5) ---
+  Field  0 (+0x00): s_instance
+
+--- Type 5997: GridElementBindingData (fields=3, methods=3) ---
+  Field  0 (+0x10): DescriptionAndMapping
+  Field  1 (+0x28): BindingPath
+  Field  2 (+0x30): IsDynamic
+
+--- Type 5998: GridLayoutBindings (fields=9, methods=10) ---
+  Field  0 (+0x10): m_gridCompositionSet
+  Field  1 (+0x18): m_nameBindings
+  Field  2 (+0x20): m_gridElementBindingData
+  Field  3 (+0x28): m_gridElementVisiblityFunctions
+  Field  4 (+0x30): m_displayNameBindingMethods
+  Field  5 (+0x38): <NameBindingsLookup>k__BackingField
+  Field  6 (+0x40): <GridElementSpecificBindingsLookup>k__BackingField
+  Field  7 (+0x48): <GridElementVisibilityFunctionsLookup>k__BackingField
+  Field  8 (+0x50): <DisplayNameBindingMethodLookup>k__BackingField
+
+--- Type 6004: IBindingInfo (fields=0, methods=3) ---
+
+--- Type 6177: BindingUtils (fields=3, methods=21) ---
+  Field  0 (+0x00): s_buffer
+  Field  1 (+0x08): s_properties
+  Field  2 (+0x10): s_contexts
+
+--- Type 6182: IBindingBagOwner (fields=0, methods=1) ---
+
+--- Type 6183: GetBindingPath`1 (fields=0, methods=2) ---
+
+--- Type 6184: RequestBinding (fields=3, methods=6) ---
+  Field  0 (+0x10): <Callback>k__BackingField
+  Field  1 (+0x18): <Key>k__BackingField
+  Field  2 (+0x20): <Value>k__BackingField
+
+--- Type 6191: QueueBindingPathCallback (fields=0, methods=2) ---
+
+--- Type 6197: BindingBag (fields=10, methods=25) ---
+  Field  0 (+0x00): s_pool
+  Field  1 (+0x08): s_poolCapacity
+  Field  2 (+0x0c): s_poolSize
+  Field  3 (+0x10): s_activeRequests
+  Field  4 (+0x18): s_bindingCallback
+  Field  5 (+0x10): m_head
+  Field  6 (+0x18): m_requestIdCounter
+  Field  7 (+0x19): <IsComplete>k__BackingField
+  Field  8 (+0x20): <Complete>k__BackingField
+  Field  9 (+0x28): <Owner>k__BackingField
+
+--- Type 6200: BindingBagUtils (fields=0, methods=0) ---
+
+--- Type 6201: BindingHandlerUtils (fields=0, methods=3) ---
+
+--- Type 6205: BindNode (fields=7, methods=11) ---
+  Field  0 (+0x60): m_inputExecSocket
+  Field  1 (+0x68): m_bindingBagDataInputSocket
+  Field  2 (+0x70): m_elementDataInputSocket
+  Field  3 (+0x78): m_dynamicDataInputSockets
+  Field  4 (+0x80): m_dataInputSockets
+  Field  5 (+0x88): m_outputAsyncExecSocket
+  Field  6 (+0x90): m_outputAsyncExecSockets
+
+--- Type 6206: IBindingHandler (fields=0, methods=2) ---
+
+--- Type 6207: NullBindingHandler (fields=1, methods=4) ---
+  Field  0 (+0x00): s_instance
+
+--- Type 6208: BindingHandlerValueChangedCallback`1 (fields=0, methods=2) ---
+
+--- Type 6213: BindingHandler`1 (fields=4, methods=8) ---
+  Field  0 (+0x00): m_target
+  Field  1 (+0x00): m_binding
+  Field  2 (+0x00): m_isBound
+  Field  3 (+0x00): m_state
+
+--- Type 6216: VisualBindings (fields=0, methods=34) ---
+
+--- Type 6218: BindingPath_Create (fields=7, methods=14) ---
+  Field  0 (+0x60): m_dataInPath
+  Field  1 (+0x68): m_dataOutBindingPath
+  Field  2 (+0x70): m_outputExecutes
+  Field  3 (+0x78): m_asyncExecutes
+  Field  4 (+0x80): m_outputDelegates
+  Field  5 (+0x88): m_dataInputs
+  Field  6 (+0x90): m_dataOutputs
+
+--- Type 6241: SIDropdown_UpdateDropdownSelectionBinding_ (fields=9, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_target
+  Field  3 (+0x78): m_dataInValue
+  Field  4 (+0x80): m_outputExecutes
+  Field  5 (+0x88): m_asyncExecutes
+  Field  6 (+0x90): m_outputDelegates
+  Field  7 (+0x98): m_dataInputs
+  Field  8 (+0xa0): m_dataOutputs
+
+--- Type 6334: BindableWidgetUtils_Convert_BooleanArgs_List_To_BindingPath_List (fields=9, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInArgs
+  Field  3 (+0x78): m_dataOutStructList
+  Field  4 (+0x80): m_outputExecutes
+  Field  5 (+0x88): m_asyncExecutes
+  Field  6 (+0x90): m_outputDelegates
+  Field  7 (+0x98): m_dataInputs
+  Field  8 (+0xa0): m_dataOutputs
+
+--- Type 6340: BindingBag_Yield (fields=8, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_target
+  Field  3 (+0x78): m_outputExecutes
+  Field  4 (+0x80): m_asyncExecutes
+  Field  5 (+0x88): m_outputDelegates
+  Field  6 (+0x90): m_dataInputs
+  Field  7 (+0x98): m_dataOutputs
+
+--- Type 6348: VisualBindings_BindingTargetExists (fields=10, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInElement
+  Field  3 (+0x78): m_dataInPath
+  Field  4 (+0x80): m_dataOutBoolean
+  Field  5 (+0x88): m_outputExecutes
+  Field  6 (+0x90): m_asyncExecutes
+  Field  7 (+0x98): m_outputDelegates
+  Field  8 (+0xa0): m_dataInputs
+  Field  9 (+0xa8): m_dataOutputs
+
+--- Type 6349: VisualBindings_Is_Null_Reference (fields=7, methods=14) ---
+  Field  0 (+0x60): m_dataInReference
+  Field  1 (+0x68): m_dataOutBoolean
+  Field  2 (+0x70): m_outputExecutes
+  Field  3 (+0x78): m_asyncExecutes
+  Field  4 (+0x80): m_outputDelegates
+  Field  5 (+0x88): m_dataInputs
+  Field  6 (+0x90): m_dataOutputs
+
+--- Type 6350: VisualBindings_Is_Empty_Small_Message (fields=7, methods=14) ---
+  Field  0 (+0x60): m_dataInSmallMessage
+  Field  1 (+0x68): m_dataOutBoolean
+  Field  2 (+0x70): m_outputExecutes
+  Field  3 (+0x78): m_asyncExecutes
+  Field  4 (+0x80): m_outputDelegates
+  Field  5 (+0x88): m_dataInputs
+  Field  6 (+0x90): m_dataOutputs
+
+--- Type 6351: VisualBindings_Create_BindingPath_StructList (fields=8, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataOutStructList
+  Field  3 (+0x78): m_outputExecutes
+  Field  4 (+0x80): m_asyncExecutes
+  Field  5 (+0x88): m_outputDelegates
+  Field  6 (+0x90): m_dataInputs
+  Field  7 (+0x98): m_dataOutputs
+
+--- Type 6352: VisualBindings_Insert_BindingPath_At_Index (fields=11, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInList
+  Field  3 (+0x78): m_dataInIndex
+  Field  4 (+0x80): m_dataInNewKey
+  Field  5 (+0x88): m_dataOutStructList
+  Field  6 (+0x90): m_outputExecutes
+  Field  7 (+0x98): m_asyncExecutes
+  Field  8 (+0xa0): m_outputDelegates
+  Field  9 (+0xa8): m_dataInputs
+  Field 10 (+0xb0): m_dataOutputs
+
+--- Type 6353: VisualBindings_QueueBind (fields=11, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInBag
+  Field  3 (+0x78): m_dataInElement
+  Field  4 (+0x80): m_dataInPath
+  Field  5 (+0x88): m_dataOutId
+  Field  6 (+0x90): m_outputExecutes
+  Field  7 (+0x98): m_asyncExecutes
+  Field  8 (+0xa0): m_outputDelegates
+  Field  9 (+0xa8): m_dataInputs
+  Field 10 (+0xb0): m_dataOutputs
+
+--- Type 6354: VisualBindings_QueueDataCollection (fields=10, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInBag
+  Field  3 (+0x78): m_dataInAsset
+  Field  4 (+0x80): m_dataOutId
+  Field  5 (+0x88): m_outputExecutes
+  Field  6 (+0x90): m_asyncExecutes
+  Field  7 (+0x98): m_outputDelegates
+  Field  8 (+0xa0): m_dataInputs
+  Field  9 (+0xa8): m_dataOutputs
+
+--- Type 6355: VisualBindings_QueueItemFactory (fields=10, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInBag
+  Field  3 (+0x78): m_dataInAsset
+  Field  4 (+0x80): m_dataOutId
+  Field  5 (+0x88): m_outputExecutes
+  Field  6 (+0x90): m_asyncExecutes
+  Field  7 (+0x98): m_outputDelegates
+  Field  8 (+0xa0): m_dataInputs
+  Field  9 (+0xa8): m_dataOutputs
+
+--- Type 6356: VisualBindings_QueuePanelID (fields=10, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInBag
+  Field  3 (+0x78): m_dataInAsset
+  Field  4 (+0x80): m_dataOutId
+  Field  5 (+0x88): m_outputExecutes
+  Field  6 (+0x90): m_asyncExecutes
+  Field  7 (+0x98): m_outputDelegates
+  Field  8 (+0xa0): m_dataInputs
+  Field  9 (+0xa8): m_dataOutputs
+
+--- Type 6357: VisualBindings_QueueViewCollection (fields=10, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInBag
+  Field  3 (+0x78): m_dataInAsset
+  Field  4 (+0x80): m_dataOutId
+  Field  5 (+0x88): m_outputExecutes
+  Field  6 (+0x90): m_asyncExecutes
+  Field  7 (+0x98): m_outputDelegates
+  Field  8 (+0xa0): m_dataInputs
+  Field  9 (+0xa8): m_dataOutputs
+
+--- Type 6358: VisualBindings_QueueViewSettings (fields=10, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInBag
+  Field  3 (+0x78): m_dataInAsset
+  Field  4 (+0x80): m_dataOutId
+  Field  5 (+0x88): m_outputExecutes
+  Field  6 (+0x90): m_asyncExecutes
+  Field  7 (+0x98): m_outputDelegates
+  Field  8 (+0xa0): m_dataInputs
+  Field  9 (+0xa8): m_dataOutputs
+
+--- Type 6359: VisualBindings_QueueTranslationArgs (fields=11, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInBag
+  Field  3 (+0x78): m_dataInElement
+  Field  4 (+0x80): m_dataInArgs
+  Field  5 (+0x88): m_dataOutId
+  Field  6 (+0x90): m_outputExecutes
+  Field  7 (+0x98): m_asyncExecutes
+  Field  8 (+0xa0): m_outputDelegates
+  Field  9 (+0xa8): m_dataInputs
+  Field 10 (+0xb0): m_dataOutputs
+
+--- Type 6360: VisualBindings_QueueBindingList (fields=11, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInBag
+  Field  3 (+0x78): m_dataInElement
+  Field  4 (+0x80): m_dataInList
+  Field  5 (+0x88): m_dataOutId
+  Field  6 (+0x90): m_outputExecutes
+  Field  7 (+0x98): m_asyncExecutes
+  Field  8 (+0xa0): m_outputDelegates
+  Field  9 (+0xa8): m_dataInputs
+  Field 10 (+0xb0): m_dataOutputs
+
+--- Type 6361: VisualBindings_QueueScriptableObject (fields=10, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInBag
+  Field  3 (+0x78): m_dataInAsset
+  Field  4 (+0x80): m_dataOutId
+  Field  5 (+0x88): m_outputExecutes
+  Field  6 (+0x90): m_asyncExecutes
+  Field  7 (+0x98): m_outputDelegates
+  Field  8 (+0xa0): m_dataInputs
+  Field  9 (+0xa8): m_dataOutputs
+
+--- Type 6362: VisualBindings_AsDataCollection (fields=7, methods=14) ---
+  Field  0 (+0x60): m_dataInObj
+  Field  1 (+0x68): m_dataOutDataCollection
+  Field  2 (+0x70): m_outputExecutes
+  Field  3 (+0x78): m_asyncExecutes
+  Field  4 (+0x80): m_outputDelegates
+  Field  5 (+0x88): m_dataInputs
+  Field  6 (+0x90): m_dataOutputs
+
+--- Type 6363: VisualBindings_AsItemFactory (fields=7, methods=14) ---
+  Field  0 (+0x60): m_dataInObj
+  Field  1 (+0x68): m_dataOutItemFactory
+  Field  2 (+0x70): m_outputExecutes
+  Field  3 (+0x78): m_asyncExecutes
+  Field  4 (+0x80): m_outputDelegates
+  Field  5 (+0x88): m_dataInputs
+  Field  6 (+0x90): m_dataOutputs
+
+--- Type 6364: VisualBindings_AsScriptableObject (fields=7, methods=14) ---
+  Field  0 (+0x60): m_dataInObj
+  Field  1 (+0x68): m_dataOutScriptableObject
+  Field  2 (+0x70): m_outputExecutes
+  Field  3 (+0x78): m_asyncExecutes
+  Field  4 (+0x80): m_outputDelegates
+  Field  5 (+0x88): m_dataInputs
+  Field  6 (+0x90): m_dataOutputs
+
+--- Type 6365: VisualBindings_AsPanelID (fields=7, methods=14) ---
+  Field  0 (+0x60): m_dataInObj
+  Field  1 (+0x68): m_dataOutPanelID
+  Field  2 (+0x70): m_outputExecutes
+  Field  3 (+0x78): m_asyncExecutes
+  Field  4 (+0x80): m_outputDelegates
+  Field  5 (+0x88): m_dataInputs
+  Field  6 (+0x90): m_dataOutputs
+
+--- Type 6366: VisualBindings_AsViewCollection (fields=7, methods=14) ---
+  Field  0 (+0x60): m_dataInObj
+  Field  1 (+0x68): m_dataOutStreamedTableViewSettingsCollection
+  Field  2 (+0x70): m_outputExecutes
+  Field  3 (+0x78): m_asyncExecutes
+  Field  4 (+0x80): m_outputDelegates
+  Field  5 (+0x88): m_dataInputs
+  Field  6 (+0x90): m_dataOutputs
+
+--- Type 6367: VisualBindings_AsViewSettings (fields=7, methods=14) ---
+  Field  0 (+0x60): m_dataInObj
+  Field  1 (+0x68): m_dataOutStreamedTableViewSettings
+  Field  2 (+0x70): m_outputExecutes
+  Field  3 (+0x78): m_asyncExecutes
+  Field  4 (+0x80): m_outputDelegates
+  Field  5 (+0x88): m_dataInputs
+  Field  6 (+0x90): m_dataOutputs
+
+--- Type 6368: VisualBindings_AsSmallMessage (fields=7, methods=14) ---
+  Field  0 (+0x60): m_dataInObj
+  Field  1 (+0x68): m_dataOutSmallMessage
+  Field  2 (+0x70): m_outputExecutes
+  Field  3 (+0x78): m_asyncExecutes
+  Field  4 (+0x80): m_outputDelegates
+  Field  5 (+0x88): m_dataInputs
+  Field  6 (+0x90): m_dataOutputs
+
+--- Type 6369: VisualBindings_TypedValueStringToAssetReferenceValue (fields=7, methods=14) ---
+  Field  0 (+0x60): m_dataInAssetReferenceString
+  Field  1 (+0x68): m_dataOutTypedValue
+  Field  2 (+0x70): m_outputExecutes
+  Field  3 (+0x78): m_asyncExecutes
+  Field  4 (+0x80): m_outputDelegates
+  Field  5 (+0x88): m_dataInputs
+  Field  6 (+0x90): m_dataOutputs
+
+--- Type 6370: VisualBindings_GetDataCollection (fields=8, methods=14) ---
+  Field  0 (+0x60): m_dataInBag
+  Field  1 (+0x68): m_dataInId
+  Field  2 (+0x70): m_dataOutDataCollection
+  Field  3 (+0x78): m_outputExecutes
+  Field  4 (+0x80): m_asyncExecutes
+  Field  5 (+0x88): m_outputDelegates
+  Field  6 (+0x90): m_dataInputs
+  Field  7 (+0x98): m_dataOutputs
+
+--- Type 6371: VisualBindings_GetItemFactory (fields=8, methods=14) ---
+  Field  0 (+0x60): m_dataInBag
+  Field  1 (+0x68): m_dataInId
+  Field  2 (+0x70): m_dataOutItemFactory
+  Field  3 (+0x78): m_outputExecutes
+  Field  4 (+0x80): m_asyncExecutes
+  Field  5 (+0x88): m_outputDelegates
+  Field  6 (+0x90): m_dataInputs
+  Field  7 (+0x98): m_dataOutputs
+
+--- Type 6372: VisualBindings_GetPanelID (fields=8, methods=14) ---
+  Field  0 (+0x60): m_dataInBag
+  Field  1 (+0x68): m_dataInId
+  Field  2 (+0x70): m_dataOutPanelID
+  Field  3 (+0x78): m_outputExecutes
+  Field  4 (+0x80): m_asyncExecutes
+  Field  5 (+0x88): m_outputDelegates
+  Field  6 (+0x90): m_dataInputs
+  Field  7 (+0x98): m_dataOutputs
+
+--- Type 6373: VisualBindings_GetViewCollection (fields=8, methods=14) ---
+  Field  0 (+0x60): m_dataInBag
+  Field  1 (+0x68): m_dataInId
+  Field  2 (+0x70): m_dataOutStreamedTableViewSettingsCollection
+  Field  3 (+0x78): m_outputExecutes
+  Field  4 (+0x80): m_asyncExecutes
+  Field  5 (+0x88): m_outputDelegates
+  Field  6 (+0x90): m_dataInputs
+  Field  7 (+0x98): m_dataOutputs
+
+--- Type 6374: VisualBindings_GetViewSettings (fields=8, methods=14) ---
+  Field  0 (+0x60): m_dataInBag
+  Field  1 (+0x68): m_dataInId
+  Field  2 (+0x70): m_dataOutStreamedTableViewSettings
+  Field  3 (+0x78): m_outputExecutes
+  Field  4 (+0x80): m_asyncExecutes
+  Field  5 (+0x88): m_outputDelegates
+  Field  6 (+0x90): m_dataInputs
+  Field  7 (+0x98): m_dataOutputs
+
+--- Type 6375: VisualBindings_GetTypedValue (fields=8, methods=14) ---
+  Field  0 (+0x60): m_dataInBag
+  Field  1 (+0x68): m_dataInId
+  Field  2 (+0x70): m_dataOutTypedValue
+  Field  3 (+0x78): m_outputExecutes
+  Field  4 (+0x80): m_asyncExecutes
+  Field  5 (+0x88): m_outputDelegates
+  Field  6 (+0x90): m_dataInputs
+  Field  7 (+0x98): m_dataOutputs
+
+--- Type 6376: VisualBindings_GetStructListTypedValue (fields=8, methods=14) ---
+  Field  0 (+0x60): m_dataInBag
+  Field  1 (+0x68): m_dataInId
+  Field  2 (+0x70): m_dataOutStructList
+  Field  3 (+0x78): m_outputExecutes
+  Field  4 (+0x80): m_asyncExecutes
+  Field  5 (+0x88): m_outputDelegates
+  Field  6 (+0x90): m_dataInputs
+  Field  7 (+0x98): m_dataOutputs
+
+--- Type 6377: VisualBindings_GetScriptableObject (fields=8, methods=14) ---
+  Field  0 (+0x60): m_dataInBag
+  Field  1 (+0x68): m_dataInId
+  Field  2 (+0x70): m_dataOutScriptableObject
+  Field  3 (+0x78): m_outputExecutes
+  Field  4 (+0x80): m_asyncExecutes
+  Field  5 (+0x88): m_outputDelegates
+  Field  6 (+0x90): m_dataInputs
+  Field  7 (+0x98): m_dataOutputs
+
+--- Type 6379: VisualBindings_Wait (fields=12, methods=15) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_asyncOutComplete
+  Field  3 (+0x78): m_deleOutComplete
+  Field  4 (+0x80): m_dataInBag
+  Field  5 (+0x88): m_dataOutComplete0
+  Field  6 (+0x90): m_dataOutComplete1
+  Field  7 (+0x98): m_outputExecutes
+  Field  8 (+0xa0): m_asyncExecutes
+  Field  9 (+0xa8): m_outputDelegates
+  Field 10 (+0xb0): m_dataInputs
+  Field 11 (+0xb8): m_dataOutputs
+
+--- Type 6380: VisualBindings_DebugBinding (fields=10, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInIndex
+  Field  3 (+0x78): m_dataInPath
+  Field  4 (+0x80): m_dataInValue
+  Field  5 (+0x88): m_outputExecutes
+  Field  6 (+0x90): m_asyncExecutes
+  Field  7 (+0x98): m_outputDelegates
+  Field  8 (+0xa0): m_dataInputs
+  Field  9 (+0xa8): m_dataOutputs
+
+--- Type 6401: VisualFunctionLibrary_SetBinding (fields=11, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInTarget
+  Field  3 (+0x78): m_dataInDest
+  Field  4 (+0x80): m_dataInValue
+  Field  5 (+0x88): m_dataInForceUpdate
+  Field  6 (+0x90): m_outputExecutes
+  Field  7 (+0x98): m_asyncExecutes
+  Field  8 (+0xa0): m_outputDelegates
+  Field  9 (+0xa8): m_dataInputs
+  Field 10 (+0xb0): m_dataOutputs
+
+--- Type 6402: VisualFunctionLibrary_SetListBinding (fields=11, methods=14) ---
+  Field  0 (+0x60): m_execInExecInput
+  Field  1 (+0x68): m_execOutExecOutput
+  Field  2 (+0x70): m_dataInTarget
+  Field  3 (+0x78): m_dataInDest
+  Field  4 (+0x80): m_dataInValue
+  Field  5 (+0x88): m_dataInForceUpdate
+  Field  6 (+0x90): m_outputExecutes
+  Field  7 (+0x98): m_asyncExecutes
+  Field  8 (+0xa0): m_outputDelegates
+  Field  9 (+0xa8): m_dataInputs
+  Field 10 (+0xb0): m_dataOutputs
+
+--- Type 6506: BindingData (fields=4, methods=4) ---
+  Field  0 (+0x10): path
+  Field  1 (+0x18): callback
+  Field  2 (+0x20): key
+  Field  3 (+0x28): method
+
+--- Type 6531: ReferenceBinding (fields=3, methods=1) ---
+  Field  0 (+0x10): name
+  Field  1 (+0x18): path
+  Field  2 (+0x20): method
+
+=== 2. Disassemble Bindings helper methods ===
+
+================ Bindings.AddCallback_014d0a20 (Bindings.cs:736) (0x014d0a20..0x014d0add, sz=189) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 40 48 8b fa 48 8b d9
+  +0x010: 48 83 c1 40 33 d2 e8 45 21 35 ff 84 c0 74 30 48
+  +0x020: 8d 4b 40 33 d2 e8 86 de e8 fe 0f b7 53 7e ff c2
+  +0x030: 3b c2 7d 47 48 8b 4b 10 48 85 c9 74 7a 45 33 c9
+  +0x040: 48 8d 53 40 45 8d 41 01 e8 93 f6 fe ff eb 2c 48
+  +0x050: 8b 53 10 48 85 d2 74 5f 45 33 c9 48 8d 4c 24 20
+  +0x060: 45 8d 41 01 e8 57 d4 fe ff 48 8d 4b 40 33 d2 0f
+  +0x070: 10 00 0f 11 43 40 e8 a5 ac ce fe 0f b7 4b 7e 4c
+  +0x080: 8d 44 24 20 8b d1 45 33 c9 8d 41 01 66 89 43 7e
+  +0x090: 48 8d 4b 40 0f 10 07 f2 0f 10 4f 10 0f 29 44 24
+  +0x0a0: 20 f2 0f 11 4c 24 30 e8 74 6a 8b ff 48 8b 5c 24
+  +0x0b0: 50 48 83 c4 40 5f c3 e8 24 bc ce fe cc
+  --- USYM & Refs ---
+  [+0x000] Bindings.cs:736
+  [+0x010] Bindings.cs:742
+  [+0x014] Bindings.cs:742
+  +0x016: CALL 0x00822b80 (FMTacticsPanel.cs:98, FMTacticsPanel.cs:52)
+  [+0x01b] Bindings.cs:742
+  [+0x01f] Bindings.cs:746
+  [+0x023] Bindings.cs:746
+  +0x025: CALL 0x0035e8d0 ()
+  [+0x02a] Bindings.cs:746
+  [+0x034] Bindings.cs:748
+  [+0x038] Bindings.cs:748
+  [+0x03d] Bindings.cs:748
+  [+0x044] Bindings.cs:748
+  +0x048: CALL 0x014c0100 (Bindings.cs:3182)
+  [+0x04d] Bindings.cs:748
+  [+0x04f] Bindings.cs:744
+  [+0x053] Bindings.cs:744
+  [+0x058] Bindings.cs:744
+  +0x064: CALL 0x014bdee0 (Bindings.cs:3173)
+  [+0x069] Bindings.cs:744
+  +0x076: CALL 0x001bb740 ()
+  [+0x07b] Bindings.cs:751
+  [+0x07f] Bindings.cs:751
+  [+0x089] Bindings.cs:751
+  [+0x094] Bindings.cs:751
+  +0x0a7: CALL 0x00d87540 (PartitionedList.cs:93, PartitionedList.cs:62)
+  [+0x0ac] Bindings.cs:754
+  [+0x0b7] Bindings.cs:744
+  +0x0b7: CALL 0x001bc700 ()
+
+================ Bindings.OpenScope_014d0ca0 (Bindings.cs:632) (0x014d0ca0..0x014d12f0, sz=1616) ================
+  +0x000: 4c 8b dc 49 89 5b 10 49 89 4b 08 56 57 41 54 41
+  +0x010: 56 41 57 48 81 ec 50 01 00 00 4c 8b e2 0f 57 c0
+  +0x020: 41 0f 11 43 b0 0f 57 c9 0f 11 8c 24 90 00 00 00
+  +0x030: 33 c0 0f 11 84 24 e8 00 00 00 41 0f 11 43 80 49
+  +0x040: 89 43 90 41 88 43 20 33 f6 41 89 73 a8 48 83 c1
+  +0x050: 40 33 d2 e8 88 1e 35 ff 84 c0 0f 84 bb 03 00 00
+  +0x060: 48 8b 84 24 80 01 00 00 48 8b 48 10 48 85 c9 0f
+  +0x070: 84 d5 05 00 00 4c 8b 89 e8 00 00 00 48 8b 40 60
+  +0x080: 4d 85 c9 0f 84 c1 05 00 00 33 d2 48 89 44 24 20
+  +0x090: 4c 8b 05 e1 9e 94 01 48 8d 4c 24 48 e8 ef 61 b3
+  +0x0a0: fe 0f 10 00 0f 11 84 24 28 01 00 00 48 89 b4 24
+  +0x0b0: 80 00 00 00 48 8d bc 24 28 01 00 00 48 89 bc 24
+  +0x0c0: 88 00 00 00 48 8b 84 24 80 01 00 00 0f b6 88 80
+  +0x0d0: 00 00 00 fe c1 88 88 80 00 00 00 80 f9 01 75 48
+  +0x0e0: 48 8b 84 24 80 01 00 00 48 8b 50 10 48 85 d2 0f
+  +0x0f0: 84 3e 03 00 00 45 33 c9 45 8d 41 20 48 8d 4c 24
+  +0x100: 48 e8 3a d1 fe ff 0f 10 00 48 8b 84 24 80 01 00
+  +0x110: 00 0f 11 40 50 48 8b 8c 24 80 01 00 00 48 83 c1
+  +0x120: 50 33 d2 e8 78 a9 ce fe 48 8b 84 24 80 01 00 00
+  +0x130: 48 8b 50 10 0f b7 48 7e 48 85 d2 0f 84 f8 02 00
+  +0x140: 00 44 8b c1 45 33 c9 48 8d 4c 24 48 e8 ef d0 fe
+  +0x150: ff 0f 10 00 0f 11 84 24 90 00 00 00 44 8b f6 8b
+  +0x160: de 0f 1f 40 00 66 66 66 0f 1f 84 00 00 00 00 00
+  +0x170: 48 8b 94 24 80 01 00 00 0f b7 42 7e 3b d8 7d 55
+  +0x180: 45 8b fe 41 ff c6 48 83 c2 40 45 33 c9 44 8b c3
+  +0x190: 48 8d 8c 24 d0 00 00 00 e8 c3 62 8b ff 0f 10 84
+  +0x1a0: 24 d0 00 00 00 0f 29 44 24 60 f2 0f 10 8c 24 e0
+  +0x1b0: 00 00 00 f2 0f 11 4c 24 70 45 33 c9 4c 8d 44 24
+  +0x1c0: 60 41 8b d7 48 8d 8c 24 90 00 00 00 e8 cf 66 8b
+  +0x1d0: ff ff c3 eb 9b 0f b7 5a 7e ff cb 0f 1f 44 00 00
+  +0x1e0: 85 db 78 43 48 83 c2 40 45 33 c9 44 8b c3 48 8d
+  +0x1f0: 8c 24 a0 00 00 00 e8 65 62 8b ff 0f b6 84 24 b0
+  +0x200: 00 00 00 f6 d0 24 01 a8 7f 75 12 45 33 c0 8b d3
+  +0x210: 48 8b 8c 24 80 01 00 00 e8 33 04 00 00 48 8b 94
+  +0x220: 24 80 01 00 00 eb b2 48 8d 84 24 80 01 00 00 48
+  +0x230: 89 44 24 48 48 8d 84 24 90 00 00 00 48 89 44 24
+  +0x240: 50 48 89 74 24 60 0f 10 44 24 48 0f 11 44 24 68
+  +0x250: 48 8b 9c 24 80 01 00 00 48 8b 5b 60 0f 1f 40 00
+  +0x260: 41 3b f6 0f 8d 14 01 00 00 45 33 c9 44 8b c6 48
+  +0x270: 8d 94 24 90 00 00 00 48 8d 8c 24 d0 00 00 00 e8
+  +0x280: dc 61 8b ff 48 8b 84 24 80 01 00 00 48 8d 48 50
+  +0x290: 48 8b 15 79 b2 94 01 0f 10 84 24 d0 00 00 00 0f
+  +0x2a0: 11 44 24 48 0f 29 84 24 a0 00 00 00 f2 0f 10 84
+  +0x2b0: 24 e0 00 00 00 f2 0f 11 84 24 b0 00 00 00 44 0f
+  +0x2c0: b7 88 82 00 00 00 48 89 54 24 20 45 33 c0 48 8d
+  +0x2d0: 94 24 a0 00 00 00 e8 f5 5d 8b ff 84 c0 0f 85 93
+  +0x2e0: 00 00 00 0f b6 84 24 e0 00 00 00 f6 d0 24 02 a8
+  +0x2f0: 7f 74 24 48 8b 4c 24 48 48 85 c9 0f 84 3e 01 00
+  +0x300: 00 48 8b 41 18 4c 8b 49 28 4d 8b c4 48 8b d3 48
+  +0x310: 8b 49 40 ff d0 eb 37 0f 10 44 24 48 66 48 0f 7e
+  +0x320: c1 48 85 c9 0f 84 1a 01 00 00 4c 8b 51 18 48 8b
+  +0x330: 41 28 48 89 44 24 20 66 0f 73 d8 08 66 49 0f 7e
+  +0x340: c1 4d 8b c4 48 8b d3 48 8b 49 40 41 ff d2 48 8b
+  +0x350: 84 24 80 01 00 00 48 3b 58 60 74 1a 48 8d 4c 24
+  +0x360: 68 e8 da b1 fe ff 90 33 d2 48 8b cf e8 9f 9e 19
+  +0x370: 00 e9 a5 00 00 00 ff c6 e9 e3 fe ff ff 48 8d 4c
+  +0x380: 24 68 e8 b9 b1 fe ff eb 20 48 8d 4c 24 68 e8 ad
+  +0x390: b1 fe ff 48 8b 4c 24 60 48 85 c9 0f 85 98 02 00
+  +0x3a0: 00 48 8b bc 24 88 00 00 00 48 8b 9c 24 80 01 00
+  +0x3b0: 00 f6 43 7c 01 74 38 48 8d 4b 40 33 d2 e8 1e 1b
+  +0x3c0: 35 ff 84 c0 74 07 66 83 7b 7e 00 77 22 48 8b 84
+  +0x3d0: 24 80 01 00 00 48 8b 48 10 48 8b 50 60 48 85 c9
+  +0x3e0: 0f 84 58 02 00 00 45 33 c0 e8 c2 12 ff ff 90 33
+  +0x3f0: d2 48 8b cf e8 17 9e 19 00 eb 20 33 d2 48 8b 8c
+  +0x400: 24 88 00 00 00 e8 06 9e 19 00 48 8b 8c 24 80 00
+  +0x410: 00 00 48 85 c9 0f 85 29 02 00 00 48 8b 9c 24 88
+  +0x420: 01 00 00 48 81 c4 50 01 00 00 41 5f 41 5e 41 5c
+  +0x430: 5f 5e c3 e8 28 b6 ce fe 90 e8 22 b6 ce fe 90 e8
+  +0x440: 1c b6 ce fe e8 17 b6 ce fe 90 48 8d 8c 24 18 01
+  +0x450: 00 00 e8 19 18 b3 fe 48 8b d8 48 8d 0d 3f c7 97
+  +0x460: 01 e8 ca b3 ce fe 48 8b c8 e8 a2 17 b3 fe 33 c9
+  +0x470: e8 4b b1 fe ff 4c 8b f8 0f 57 c0 33 c0 0f 11 84
+  +0x480: 24 a0 00 00 00 0f 11 84 24 b0 00 00 00 48 89 84
+  +0x490: 24 c0 00 00 00 33 f6 48 89 74 24 28 48 8d 84 24
+  +0x4a0: 98 01 00 00 48 89 44 24 20 4d 8b cf 8d 56 2b 44
+  +0x4b0: 8d 46 02 48 8d 8c 24 a0 00 00 00 e8 10 a9 be 00
+  +0x4c0: 0f 10 84 24 a0 00 00 00 0f 11 84 24 e8 00 00 00
+  +0x4d0: 0f 10 8c 24 b0 00 00 00 0f 11 8c 24 f8 00 00 00
+  +0x4e0: f2 0f 10 84 24 c0 00 00 00 f2 0f 11 84 24 08 01
+  +0x4f0: 00 00 40 38 b4 24 98 01 00 00 0f 84 e0 00 00 00
+  +0x500: 48 8d 0d f9 c4 90 01 e8 24 b3 ce fe 45 33 c0 48
+  +0x510: 8b d0 48 8d 8c 24 e8 00 00 00 e8 41 a8 be 00 48
+  +0x520: 8b cb e8 49 0b b3 fe 8d 4e 05 48 8b d3 e8 3e 15
+  +0x530: b3 fe 4c 8b f0 48 8d 0d 54 01 91 01 e8 ef b2 ce
+  +0x540: fe 48 8b f8 48 8d 0d 95 37 91 01 e8 e0 b2 ce fe
+  +0x550: 48 89 7c 24 28 48 89 44 24 20 45 33 c9 45 33 c0
+  +0x560: 49 8b d6 48 8d 8c 24 e8 00 00 00 e8 20 56 00 00
+  +0x570: 48 8d 0d c9 f8 91 01 e8 b4 b2 ce fe 45 33 c0 48
+  +0x580: 8b d0 48 8d 8c 24 e8 00 00 00 e8 d1 a7 be 00 48
+  +0x590: 8b cb e8 d9 0a b3 fe 8d 4e 08 48 8b d3 e8 ce 14
+  +0x5a0: b3 fe 48 8b f8 48 8d 0d e4 00 91 01 e8 7f b2 ce
+  +0x5b0: fe 48 8b d8 48 8d 0d ed 37 91 01 e8 70 b2 ce fe
+  +0x5c0: 48 89 5c 24 28 48 89 44 24 20 45 33 c9 45 33 c0
+  +0x5d0: 48 8b d7 48 8d 8c 24 e8 00 00 00 e8 b0 55 00 00
+  +0x5e0: 48 8d 0d c9 29 96 01 e8 44 b2 ce fe 48 8b d8 48
+  +0x5f0: 8d 0d ea 85 91 01 e8 35 b2 ce fe 48 89 74 24 30
+  +0x600: c7 44 24 28 c4 02 00 00 48 89 5c 24 20 4c 8b c8
+  +0x610: 45 33 c0 48 8d 94 24 e8 00 00 00 49 8b cf e8 4d
+  +0x620: a8 be 00 48 8d 8c 24 18 01 00 00 e8 20 16 b3 fe
+  +0x630: 48 8b c8 e8 b8 b4 ce fe 90 e8 b2 b4 ce fe e8 1d
+  +0x640: b4 ce fe 90 e8 a7 b4 ce fe cc e8 11 b4 ce fe cc
+  --- USYM & Refs ---
+  [+0x000] Bindings.cs:632
+  [+0x020] Bindings.cs:632
+  [+0x028] Bindings.cs:632
+  [+0x030] Bindings.cs:632
+  [+0x043] Bindings.cs:632
+  [+0x047] Bindings.cs:632
+  [+0x04d] Bindings.cs:645
+  [+0x051] Bindings.cs:645
+  +0x053: CALL 0x00822b80 (FMTacticsPanel.cs:98, FMTacticsPanel.cs:52)
+  [+0x058] Bindings.cs:645
+  [+0x060] Bindings.cs:651
+  [+0x06c] Bindings.cs:651
+  [+0x075] Bindings.cs:651
+  [+0x07c] Bindings.cs:651
+  [+0x080] Bindings.cs:651
+  [+0x089] Bindings.cs:651
+  +0x090: RIP [0x02e1ac18] -> MetaUsage(tag=1, idx=28946)
+  [+0x0ac] Bindings.cs:651
+  [+0x0c4] Bindings.cs:652
+  [+0x0d3] Bindings.cs:652
+  [+0x0db] Bindings.cs:655
+  [+0x0e0] Bindings.cs:657
+  [+0x0ec] Bindings.cs:657
+  [+0x0f5] Bindings.cs:657
+  +0x101: CALL 0x014bdee0 (Bindings.cs:3173)
+  [+0x109] Bindings.cs:657
+  [+0x115] Bindings.cs:657
+  +0x123: CALL 0x001bb740 ()
+  [+0x128] Bindings.cs:661
+  [+0x134] Bindings.cs:661
+  [+0x138] Bindings.cs:661
+  [+0x141] Bindings.cs:661
+  +0x14c: CALL 0x014bdee0 (Bindings.cs:3173)
+  [+0x15c] Bindings.cs:662
+  [+0x15f] Bindings.cs:663
+  [+0x170] Bindings.cs:663
+  [+0x178] Bindings.cs:663
+  [+0x180] Bindings.cs:665
+  [+0x183] Bindings.cs:665
+  [+0x186] Bindings.cs:665
+  [+0x18a] Bindings.cs:665
+  +0x198: CALL 0x00d87100 (PartitionedList.cs:74, PartitionedList.cs:57)
+  [+0x19d] Bindings.cs:665
+  +0x1cc: CALL 0x00d87540 (PartitionedList.cs:93, PartitionedList.cs:62)
+  [+0x1d1] Bindings.cs:663
+  [+0x1d5] Bindings.cs:669
+  [+0x1d9] Bindings.cs:669
+  [+0x1e4] Bindings.cs:671
+  [+0x1e8] Bindings.cs:671
+  +0x1f6: CALL 0x00d87100 (PartitionedList.cs:74, PartitionedList.cs:57)
+  [+0x1fb] Bindings.cs:671
+  [+0x203] Bindings.cs:671
+  [+0x20b] Bindings.cs:673
+  +0x218: CALL 0x014d12f0 (Bindings.cs:788)
+  [+0x21d] Bindings.cs:669
+  [+0x227] Bindings.cs:669, Bindings.cs:721
+  [+0x250] Bindings.cs:679
+  [+0x260] Bindings.cs:680
+  [+0x269] Bindings.cs:682
+  +0x27f: CALL 0x00d87100 (PartitionedList.cs:74, PartitionedList.cs:57)
+  [+0x284] Bindings.cs:683
+  [+0x290] Bindings.cs:683
+  +0x290: RIP [0x02e1c1b0] -> MetaUsage(tag=6, idx=116644)
+  +0x2d6: CALL 0x00d86d70 (PartitionedList.cs:141)
+  [+0x2db] Bindings.cs:683
+  [+0x2e3] Bindings.cs:685
+  [+0x2eb] Bindings.cs:685
+  [+0x2f3] Bindings.cs:691
+  [+0x301] Bindings.cs:691, Bindings.cs:906
+  [+0x317] Bindings.cs:687
+  [+0x32a] Bindings.cs:687, Bindings.cs:906
+  [+0x34e] Bindings.cs:694
+  [+0x35c] Bindings.cs:727
+  +0x361: CALL 0x014bc1e0 (Bindings.cs:721)
+  [+0x367] Bindings.cs:651
+  +0x36c: CALL 0x0166aeb0 (LogContext.cs:28)
+  [+0x371] Bindings.cs:697
+  +0x371: JMP 0x014d10bb (Bindings.cs:727)
+  [+0x376] Bindings.cs:680
+  +0x378: JMP 0x014d0f00 (Bindings.cs:680)
+  [+0x37d] Bindings.cs:709
+  +0x382: CALL 0x014bc1e0 (Bindings.cs:721)
+  [+0x387] Bindings.cs:705
+  [+0x389] Bindings.cs:709
+  +0x38e: CALL 0x014bc1e0 (Bindings.cs:721)
+  [+0x3a9] Bindings.cs:723, Bindings.cs:552
+  [+0x3b1] Bindings.cs:552
+  [+0x3b5] Bindings.cs:723
+  [+0x3b7] Bindings.cs:723, Bindings.cs:550
+  [+0x3bb] Bindings.cs:550
+  +0x3bd: CALL 0x00822b80 (FMTacticsPanel.cs:98, FMTacticsPanel.cs:52)
+  [+0x3c2] Bindings.cs:550
+  [+0x3c6] Bindings.cs:723
+  [+0x3cd] Bindings.cs:725
+  [+0x3d9] Bindings.cs:725
+  [+0x3dd] Bindings.cs:725
+  [+0x3e6] Bindings.cs:725
+  +0x3e9: CALL 0x014c2350 (Bindings.cs:2842)
+  [+0x3ef] Bindings.cs:727, Bindings.cs:651
+  +0x3f4: CALL 0x0166aeb0 (LogContext.cs:28)
+  [+0x3f9] Bindings.cs:727
+  [+0x3fb] Bindings.cs:727, Bindings.cs:651
+  +0x405: CALL 0x0166aeb0 (LogContext.cs:28)
+  [+0x41b] Bindings.cs:727
+  [+0x433] Bindings.cs:657
+  +0x433: CALL 0x001bc700 ()
+  [+0x439] Bindings.cs:661
+  +0x439: CALL 0x001bc700 ()
+  [+0x43f] Bindings.cs:691
+  +0x43f: CALL 0x001bc700 ()
+  [+0x444] Bindings.cs:687
+  +0x444: CALL 0x001bc700 ()
+  [+0x44a] Bindings.cs:705
+  [+0x45a] Bindings.cs:708
+  +0x45a: RIP [0x02e4d840] -> MetaUsage(tag=1, idx=23676)
+  +0x461: CALL 0x001bc4d0 ()
+  [+0x46e] Bindings.cs:708
+  +0x470: CALL 0x014bc260 (Bindings.cs:504, Bindings.cs:131)
+  [+0x47b] Bindings.cs:708
+  [+0x495] Bindings.cs:708
+  +0x4bb: CALL 0x020bba70 ()
+  [+0x4c0] Bindings.cs:708
+  [+0x4f2] Bindings.cs:708
+  [+0x500] Bindings.cs:708
+  +0x500: RIP [0x02ddd6a0] -> STR "Exception fired while notifying bindings: "
+  +0x507: CALL 0x001bc4d0 ()
+  +0x51a: CALL 0x020bba00 ()
+  [+0x51f] Bindings.cs:708
+  [+0x527] Bindings.cs:708
+  [+0x535] Bindings.cs:708
+  +0x535: RIP [0x02de1330] -> MetaUsage(tag=6, idx=209301)
+  +0x53c: CALL 0x001bc4d0 ()
+  +0x544: RIP [0x02de4980] -> STR "e.Message"
+  +0x54b: CALL 0x001bc4d0 ()
+  +0x56b: CALL 0x014d6830 ()
+  [+0x570] Bindings.cs:708
+  +0x570: RIP [0x02df0ae0] -> STR "
+"
+  +0x577: CALL 0x001bc4d0 ()
+  +0x58a: CALL 0x020bba00 ()
+  [+0x58f] Bindings.cs:708
+  [+0x597] Bindings.cs:708
+  [+0x5a5] Bindings.cs:708
+  +0x5a5: RIP [0x02de1330] -> MetaUsage(tag=6, idx=209301)
+  +0x5ac: CALL 0x001bc4d0 ()
+  +0x5b4: RIP [0x02de4a48] -> STR "e.StackTrace"
+  +0x5bb: CALL 0x001bc4d0 ()
+  +0x5db: CALL 0x014d6830 ()
+  [+0x5e0] Bindings.cs:708
+  +0x5e0: RIP [0x02e33c50] -> STR "C:\TeamCity\work\390f9e5df66ba53d\shared\packages\com.si.bindable\Runtime\Scripts\BindingSubsystem\Bindings.cs"
+  +0x5e7: CALL 0x001bc4d0 ()
+  +0x5ef: RIP [0x02de9880] -> STR "NotifyDataChanged"
+  +0x5f6: CALL 0x001bc4d0 ()
+  +0x61e: CALL 0x020bbb10 ()
+  [+0x623] Bindings.cs:709
+  +0x633: CALL 0x001bc790 ()
+  [+0x639] Bindings.cs:709
+  +0x639: CALL 0x001bc790 ()
+  [+0x63e] Bindings.cs:725
+  +0x63e: CALL 0x001bc700 ()
+  [+0x644] Bindings.cs:727
+  +0x644: CALL 0x001bc790 ()
+  [+0x64a] Bindings.cs:651
+  +0x64a: CALL 0x001bc700 ()
+
+================ Bindings.GetRecord_014d1c30 (Bindings.cs:557) (0x014d1c30..0x014d1cae, sz=126) ================
+  +0x000: 48 83 ec 28 48 8b 51 10 48 8b 41 70 48 85 d2 74
+  +0x010: 67 85 c0 78 47 48 8b 4a 78 48 85 c9 74 5a 3b 41
+  +0x020: 18 7d 39 48 8b 49 10 48 63 d0 48 8b 54 d1 20 48
+  +0x030: 85 d2 74 44 48 39 42 10 75 22 48 8d 4c 24 30 48
+  +0x040: 89 54 24 30 e8 c7 9a ce fe 48 8b 44 24 30 48 85
+  +0x050: c0 74 25 48 8b 40 30 48 83 c4 28 c3 33 d2 48 c7
+  +0x060: 44 24 30 00 00 00 00 48 8d 4c 24 30 e8 9f 9a ce
+  +0x070: fe 33 c0 48 83 c4 28 c3 e8 53 aa ce fe cc
+  --- USYM & Refs ---
+  [+0x000] Bindings.cs:557
+  [+0x004] Bindings.cs:559
+  [+0x008] Bindings.cs:559
+  [+0x00c] Bindings.cs:559
+  [+0x011] Bindings.cs:559, Bindings.cs:2917
+  [+0x015] Bindings.cs:2917
+  [+0x019] Bindings.cs:2917
+  [+0x01e] Bindings.cs:2917
+  [+0x023] Bindings.cs:2919
+  [+0x02f] Bindings.cs:2920
+  [+0x034] Bindings.cs:2920, Bindings.cs:837
+  [+0x038] Bindings.cs:2920
+  [+0x03a] Bindings.cs:2923
+  +0x044: CALL 0x001bb740 ()
+  [+0x049] Bindings.cs:559
+  [+0x053] Bindings.cs:559
+  [+0x057] Bindings.cs:559
+  [+0x05c] Bindings.cs:559, Bindings.cs:2928
+  +0x06c: CALL 0x001bb740 ()
+  [+0x071] Bindings.cs:559
+  [+0x073] Bindings.cs:559
+  [+0x078] Bindings.cs:559
+  +0x078: CALL 0x001bc700 ()
+
+================ Bindings.Set_1919 (0x014c5740) (0x014c5740..0x014c5940, sz=512) ================
+  +0x000: 48 c7 44 24 28 00 00 00 00 e9 22 e0 ff ff cc cc
+  +0x010: 48 83 ec 28 85 d2 78 3a 48 8b 41 78 48 85 c0 74
+  +0x020: 49 3b 50 18 7d 2c 48 8b 40 10 48 63 ca 4c 8b 4c
+  +0x030: c8 20 4d 85 c9 74 33 49 39 51 10 75 15 49 8b d1
+  +0x040: 4d 89 08 49 8b c8 e8 b5 5f cf fe b0 01 48 83 c4
+  +0x050: 28 c3 33 d2 49 c7 00 00 00 00 00 49 8b c8 e8 9d
+  +0x060: 5f cf fe 32 c0 48 83 c4 28 c3 e8 51 6f cf fe cc
+  +0x070: 40 53 48 83 ec 20 48 8b 49 48 49 8b d8 48 8b 12
+  +0x080: 48 c7 44 24 30 00 00 00 00 48 85 c9 74 43 4c 8b
+  +0x090: 0d 33 e3 91 01 4c 8d 44 24 30 e8 51 be c5 ff 48
+  +0x0a0: 8b cb 84 c0 75 16 33 d2 48 c7 03 00 00 00 00 e8
+  +0x0b0: 4c 5f cf fe 32 c0 48 83 c4 20 5b c3 48 8b 54 24
+  +0x0c0: 30 48 89 13 e8 37 5f cf fe b0 01 48 83 c4 20 5b
+  +0x0d0: c3 e8 ea 6e cf fe cc cc cc cc cc cc cc cc cc cc
+  +0x0e0: 48 89 5c 24 08 55 56 57 41 54 41 55 41 56 41 57
+  +0x0f0: 48 8d 6c 24 d9 48 81 ec c0 00 00 00 33 c0 0f 57
+  +0x100: c0 48 89 45 e7 4c 8b e2 88 45 6f 4c 8b e9 48 8b
+  +0x110: 42 08 0f 11 45 c7 0f 11 45 d7 85 c0 0f 88 52 04
+  +0x120: 00 00 48 8b 49 78 48 85 c9 0f 84 79 04 00 00 3b
+  +0x130: 41 18 0f 8d 3c 04 00 00 48 8b 49 10 48 63 d0 48
+  +0x140: 8b 54 d1 20 48 85 d2 0f 84 5b 04 00 00 48 39 42
+  +0x150: 10 0f 85 1d 04 00 00 48 8d 4d 7f 48 89 55 7f e8
+  +0x160: 9c 5e cf fe 4c 8b 7d 7f 4d 85 ff 0f 84 37 04 00
+  +0x170: 00 49 83 7f 28 00 0f 87 09 04 00 00 33 ff 8b df
+  +0x180: 44 8d 77 20 0f 1f 40 00 0f 1f 84 00 00 00 00 00
+  +0x190: 49 8b 47 18 48 85 c0 0f 84 0b 04 00 00 3b 58 18
+  +0x1a0: 0f 8d e7 02 00 00 48 8b 48 10 49 8b 14 0e 49 8b
+  +0x1b0: 4d 48 48 85 c9 0f 84 ed 03 00 00 4c 8b 05 c6 e2
+  +0x1c0: 91 01 e8 c9 dc c5 ff 48 8b f0 48 85 c0 0f 84 d5
+  +0x1d0: 03 00 00 48 39 78 68 77 15 48 8b 48 20 48 85 c9
+  +0x1e0: 74 0c 33 d2 e8 07 c3 00 00 48 85 c0 75 08 ff c3
+  +0x1f0: 49 83 c6 08 eb 9a 48 8b 4e 20 48 85 c9 0f 84 a5
+  --- USYM & Refs ---
+  [+0x000] Bindings.cs:1919, Bindings.cs:1927
+  +0x009: JMP 0x014c3770 (Bindings.cs:2630)
+  [+0x00e] :4294967295
+  [+0x010] Bindings.cs:2911
+  [+0x014] Bindings.cs:2917
+  [+0x018] Bindings.cs:2917
+  [+0x01c] Bindings.cs:2917
+  [+0x021] Bindings.cs:2917
+  [+0x026] Bindings.cs:2919
+  [+0x032] Bindings.cs:2920
+  [+0x037] Bindings.cs:2920, Bindings.cs:837
+  [+0x03b] Bindings.cs:2920
+  [+0x03d] Bindings.cs:2922
+  +0x046: CALL 0x001bb740 ()
+  [+0x04b] Bindings.cs:2923
+  [+0x04d] Bindings.cs:2928
+  [+0x052] Bindings.cs:2927
+  +0x05e: CALL 0x001bb740 ()
+  [+0x063] Bindings.cs:2928
+  [+0x065] Bindings.cs:2928
+  [+0x06a] Bindings.cs:2920
+  +0x06a: CALL 0x001bc700 ()
+  [+0x070] Bindings.cs:2289
+  [+0x076] Bindings.cs:2293
+  [+0x07d] Bindings.cs:2293
+  [+0x089] Bindings.cs:2293
+  [+0x08e] Bindings.cs:2293
+  +0x08e: RIP [0x02de3b08] -> MetaUsage(tag=6, idx=198058)
+  +0x09a: CALL 0x01121630 ()
+  [+0x09f] Bindings.cs:2293
+  [+0x0a6] Bindings.cs:2299
+  +0x0af: CALL 0x001bb740 ()
+  [+0x0b4] Bindings.cs:2300
+  [+0x0b6] Bindings.cs:2300
+  [+0x0bc] Bindings.cs:2295
+  [+0x0c4] Bindings.cs:2295
+  +0x0c4: CALL 0x001bb740 ()
+  [+0x0c9] Bindings.cs:2296
+  [+0x0cb] Bindings.cs:2300
+  [+0x0d1] Bindings.cs:2293
+  +0x0d1: CALL 0x001bc700 ()
+  [+0x0d7] :4294967295
+  [+0x0e0] Bindings.cs:2449
+  [+0x0fc] Bindings.cs:2449
+  [+0x108] Bindings.cs:2449
+  [+0x10e] Bindings.cs:2454
+  [+0x11a] Bindings.cs:2917
+  [+0x122] Bindings.cs:2917
+  [+0x126] Bindings.cs:2917
+  [+0x12f] Bindings.cs:2917
+  [+0x138] Bindings.cs:2919
+  [+0x144] Bindings.cs:2920
+  [+0x14d] Bindings.cs:2920
+  [+0x157] Bindings.cs:2922
+  +0x15f: CALL 0x001bb740 ()
+  [+0x164] Bindings.cs:2462
+  [+0x171] Bindings.cs:2462
+  [+0x17c] Bindings.cs:2467, Bindings.cs:3158
+  [+0x180] Bindings.cs:2467
+  [+0x190] Bindings.cs:2467, Bindings.cs:3158
+  [+0x194] Bindings.cs:3158
+  [+0x19d] Bindings.cs:3158
+  [+0x1a6] Bindings.cs:3160
+  [+0x1ae] Bindings.cs:3161
+  [+0x1b2] Bindings.cs:3161
+  [+0x1bb] Bindings.cs:3161
+  +0x1bb: RIP [0x02de3bc8] -> MetaUsage(tag=6, idx=198059)
+  +0x1c2: CALL 0x011235d0 ()
+  [+0x1ca] Bindings.cs:3163
+  [+0x1d3] Bindings.cs:3163
+  [+0x1d9] Bindings.cs:3163
+  [+0x1dd] Bindings.cs:3163
+  [+0x1e2] Bindings.cs:3163
+  +0x1e4: CALL 0x014d1c30 (Bindings.cs:557)
+  [+0x1e9] Bindings.cs:3163
+  [+0x1ee] Bindings.cs:3158
+  [+0x1f4] Bindings.cs:3158
+  [+0x1f6] Bindings.cs:2474
+  [+0x1fa] Bindings.cs:2474
+
+=== 3. Find ScoutPriorities in TeamReference / FM.UI.dll ===
+  Type 56: SearchablePlatformAllowed
+  Type 57: SearchableElement
+  Type 58: SearchableItem
+  Type 337: CompDebugNewSigningOffShortlistReference
+  Type 702: NotableShortlistReference
+  Type 724: PersonSearchReference
+  Type 758: PlayerReportScoutedAbilityReference
+  Type 759: PlayerReportScoutedTransferInfoReference
+  Type 801: PrioritiseFutureTransferItemReference
+  Type 802: PrioritiseFutureTransfersReference
+  Type 815: RecruitmentFocusesReference
+  Type 816: RecruitmentFocusItemPositionReference
+  Type 817: RecruitmentFocusItemReference
+  Type 845: ScoutAssignmentsReference
+  Type 846: ScoutedMatchReference
+  Type 847: ScoutedSquadComparisonReference
+  Type 848: ScoutedTransferInfoEntryReference
+  Type 849: ScoutingAreaReference
+  Type 850: ScoutingCentreActionsReference
+  Type 851: ScoutingCentreDeliveryOptionReference
+  Type 852: ScoutingCentreEntriesInfoReference
+  Type 853: ScoutingCentreEntryItemReference
+  Type 854: ScoutingCentreEntryNewsReference
+  Type 855: ScoutingInfoReference
+  Type 856: ScoutingKnowledgeLevelReference
+  Type 857: ScoutingRangeEntryReference
+  Type 858: ScoutNewsRecruitmentFocusSuggestionReference
+  Type 859: ScoutNewsSingleMatchScoutReportReference
+  Type 860: ScoutPlayerPrioritiesReference
+  Type 861: ScoutTeamPrioritiesReference
+  Type 862: SearchReference
+  Type 863: SearchResultReference
+  Type 880: SetPieceRoutineCategoryPriorityReference
+  Type 890: ShortlistSummaryReference
+  Type 909: SpecificallyScoutedPersonReference
+  Type 910: SpecificallyScoutedTeamReference
+  Type 1072: UpcomingCompetitionsToScoutReference
+  Type 1446: SearchResultClickedEvent
+  Type 1447: SearchResultClickedEventContext
+  Type 1448: SearchValueChangesEvent
+  Type 1753: RecruitmentFocusHandlerModule
+  Type 1754: RecruitmentFocusEditConfirmationDialogEvent
+  Type 1755: RecruitmentFocusEditConfirmationDialogEventContext
+  Type 2175: FMPediaSearchLogic
+  Type 2176: SearchLogic
+  Type 2179: TileSearchPanel
+  Type 2181: SearchBox

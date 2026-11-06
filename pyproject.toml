@@ -17,6 +17,11 @@ dependencies = [
     "backports-zstd>=1.0.0; python_version < '3.14'",
 ]
 
+[project.optional-dependencies]
+# UI bundle patches (fm26save.ui_patches / fm26save.unity_bundle) and IL2CPP disassembly research
+ui-patches = ["lz4>=4.0"]
+research = ["lz4>=4.0", "capstone>=5.0"]
+
 [project.scripts]
 fm-toolkit = "fm26save.cli:main"
 fm26save = "fm26save.cli:main"

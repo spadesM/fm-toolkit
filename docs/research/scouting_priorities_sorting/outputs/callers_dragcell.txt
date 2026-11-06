@@ -1,0 +1,6 @@
+
+================ StreamedTable.get_IsDragCellActive (RVA=0x015f2230, size=25) ================
+  +0x000: 48 83 ec 28 48 8b 89 58 09 00 00 33 d2 e8 ae eb
+  +0x010: ca ff 34 01 48 83 c4 28 c3
+  --- Annotations ---
+  +0x00d: CALL 0x012a0df0 -> String.IsNullOrEmpty

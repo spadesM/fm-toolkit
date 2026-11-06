@@ -1,0 +1,1808 @@
+=== 1. Check Type 785 and other Reference / SortComparer / Header / StreamedListView types ===
+
+Type 785: FM.UI.PossiblePlayingTimeReference (fields=0, methods=13)
+  Method 0: get_Identifier RVAs=['0x6688b0']
+  Method 1: get_ID RVAs=['0x6688b0']
+  Method 2: AcceptsPropertyInternal RVAs=['0x668510']
+  Method 3: GetPropertyTypeInternal RVAs=['0x6687f0']
+  Method 4: GetPropertyDescriptionInternal RVAs=['0x35e230']
+  Method 5: GetProperties RVAs=['0x6686a0']
+  Method 6: GetPropertiesInternal RVAs=['0x668560']
+  Method 7: GetPropertyCountInternal RVAs=['0x35e220']
+  Method 8: GetContextsInternal RVAs=['0x35df40']
+  Method 9: DerivesFrom RVAs=['0x668540']
+  Method 10: DerivesFromInternal RVAs=['0x668530']
+  Method 11: GetInstance RVAs=['0x668550']
+  Method 12: .ctor RVAs=['0x2911e0']
+
+Type 3189: System.Runtime.Remoting.Messaging.Header (fields=0, methods=0)
+
+Type 5783: .SortComparer (fields=1, methods=3)
+  Field 0: value
+  Method 0: Compare RVAs=['0x15a3c60', '0x15a3d30']
+  Method 1: Compare RVAs=['0x15a3c60', '0x15a3d30']
+  Method 2: .ctor RVAs=['0x2911e0']
+
+Type 5791: SI.Bindable.StreamedListView (fields=75, methods=185)
+  Field 0: bytesUsed
+  Field 1: charsUsed
+  Field 2: completed
+  Field 3: bytes
+  Field 4: byteCount
+  Field 5: chars
+  Field 6: charCount
+  Field 7: flush
+  Field 8: bytesUsed
+  Field 9: charsUsed
+  Field 10: completed
+  Field 11: encoding
+  Field 12: value
+  Field 13: fallback
+  Field 14: bytesUnknown
+  Field 15: index
+  Field 16: bytes
+  Field 17: pBytes
+  Field 18: bytesCheck
+  Field 19: value
+  Field 20: bytesUnknown
+  Field 21: index
+  Field 22: bytesUnknown
+  Field 23: index
+  Field 24: message
+  Field 25: bytesUnknown
+  Field 26: index
+  Field 27: serializationInfo
+  Field 28: streamingContext
+  Field 29: bytesUnknown
+  Field 30: index
+  Field 31: byteStart
+  Field 32: charEnd
+  Field 33: bytes
+  Field 34: pBytes
+  Field 35: chars
+  Field 36: bytes
+  Field 37: pBytes
+  Field 38: bytesUnknown
+  Field 39: encoding
+  Field 40: bytes
+  Field 41: index
+  Field 42: count
+  Field 43: bytes
+  Field 44: index
+  Field 45: count
+  Field 46: flush
+  Field 47: bytes
+  Field 48: count
+  Field 49: flush
+  Field 50: bytes
+  Field 51: byteIndex
+  Field 52: byteCount
+  Field 53: chars
+  Field 54: charIndex
+  Field 55: bytes
+  Field 56: byteIndex
+  Field 57: byteCount
+  Field 58: chars
+  Field 59: charIndex
+  Field 60: flush
+  Field 61: bytes
+  Field 62: byteCount
+  Field 63: chars
+  Field 64: charCount
+  Field 65: flush
+  Field 66: bytes
+  Field 67: byteIndex
+  Field 68: byteCount
+  Field 69: chars
+  Field 70: charIndex
+  Field 71: charCount
+  Field 72: flush
+  Field 73: bytesUsed
+  Field 74: charsUsed
+  Method 0: get_SourceData RVAs=['0x15ace60']
+  Method 1: set_SourceData RVAs=['0x15ad680']
+  Method 2: get_ReceivedAllSortingData RVAs=['0x15acd40']
+  Method 3: get_Dirty RVAs=['0x15acc30']
+  Method 4: set_Dirty RVAs=['0x15ad130']
+  Method 5: get_SortAscending RVAs=['0x15ace40']
+  Method 6: set_SortAscending RVAs=['0x15ad650']
+  Method 7: get_Panel RVAs=['0x15acd30']
+  Method 8: set_Panel RVAs=['0x15ad4d0']
+  Method 9: get_ScrollViewInitialised RVAs=['0x15acd90']
+  Method 10: set_ScrollViewInitialised RVAs=['0x15ad540']
+  Method 11: get_ListElement RVAs=['0x15accf0']
+  Method 12: get_Sortings RVAs=['0x815200']
+  Method 13: add_OnSelectionChanged RVAs=['0x15acbd0']
+  Method 14: remove_OnSelectionChanged RVAs=['0x15acf60']
+  Method 15: add_OnElementInteracted RVAs=['0x15acb40']
+  Method 16: remove_OnElementInteracted RVAs=['0x15aced0']
+  Method 17: set_SelectingSameItemDeselects RVAs=['0x15ad5c0']
+  Method 18: get_ItemCount RVAs=['0x15acca0']
+  Method 19: get_Indices RVAs=['0x156e280']
+  Method 20: get_ScrollViewToScroll RVAs=['0x15acdd0']
+  Method 21: set_ScrollViewToScroll RVAs=['0x15ad580']
+  Method 22: get_SortBinding RVAs=['0x15ace50']
+  Method 23: set_SortBinding RVAs=['0x15ad660']
+  Method 24: set_Binding RVAs=['0x15acfc0']
+  Method 25: get_Key RVAs=['0x15acce0']
+  Method 26: set_Key RVAs=['0x15ad2d0']
+  Method 27: get_BindableFlags RVAs=['0x292620']
+  Method 28: get_OnSelectedColumnChangedCallback RVAs=['0x15acd00']
+  Method 29: set_OnSelectedColumnChangedCallback RVAs=['0x15ad340']
+  Method 30: get_Identifier RVAs=['0x8315f0']
+  Method 31: set_Identifier RVAs=['0x15ad2b0']
+  Method 32: get_DropGroup RVAs=['0x831610']
+  Method 33: set_DropGroup RVAs=['0x15ad170']
+  Method 34: get_SharedPersistenceID RVAs=['0x831600']
+  Method 35: set_SharedPersistenceID RVAs=['0x831640']
+  Method 36: get_ScrollToElementBinding RVAs=['0x15acd80']
+  Method 37: set_ScrollToElementBinding RVAs=['0x15ad520']
+  Method 38: get_SetScrollToAsSelected RVAs=['0x15ace30']
+  Method 39: set_SetScrollToAsSelected RVAs=['0x15ad640']
+  Method 40: get_SetIgnorePickingMode RVAs=['0x15ace20']
+  Method 41: set_SetIgnorePickingMode RVAs=['0x15ad620']
+  Method 42: get_IsPaginated RVAs=['0x15acc70']
+  Method 43: get_FocusScrollType RVAs=['0x15acc40']
+  Method 44: set_FocusScrollType RVAs=['0x15ad250']
+  Method 45: get_VirtualisationController RVAs=['0x15acea0']
+  Method 46: get_Direction RVAs=['0x15acc00']
+  Method 47: set_Direction RVAs=['0x15ad100']
+  Method 48: get_SelectionMode RVAs=['0x15acdf0']
+  Method 49: set_SelectionMode RVAs=['0x15ad5f0']
+  Method 50: get_SelectedItemsBinding RVAs=['0x15acde0']
+  Method 51: set_SelectedItemsBinding RVAs=['0x15ad5a0']
+  Method 52: set_Reorderable RVAs=['0x15ad4f0']
+  Method 53: set_ListName RVAs=['0x15ad2e0']
+  Method 54: set_AlternateRows RVAs=['0x15acf90']
+  Method 55: set_DragScrollSpeed RVAs=['0x15ad140']
+  Method 56: set_MouseWheelScrollSize RVAs=['0x15ad310']
+  Method 57: get_Truncate RVAs=['0x15ace70']
+  Method 58: set_Truncate RVAs=['0x15ad740']
+  Method 59: set_OverprovisionPercent RVAs=['0x15ad360']
+  Method 60: set_FlexGrow RVAs=['0x15ad1f0']
+  Method 61: set_FlexShrink RVAs=['0x15ad220']
+  Method 62: get_TruncateLabelTemplate RVAs=['0x869dd0']
+  Method 63: set_TruncateLabelTemplate RVAs=['0x15ad6a0']
+  Method 64: set_FixedElementSize RVAs=['0x15ad1c0']
+  Method 65: set_DynamicElements RVAs=['0x15ad190']
+  Method 66: set_HorizontalScrollerVisibility RVAs=['0x15ad280']
+  Method 67: set_VerticalScrollerVisibility RVAs=['0x15ad770']
+  Method 68: get_ScrollViewMode RVAs=['0x15acda0']
+  Method 69: set_ScrollViewMode RVAs=['0x15ad550']
+  Method 70: get_PaginationTemplate RVAs=['0x15acd20']
+  Method 71: set_PaginationTemplate RVAs=['0x15ad3b0']
+  Method 72: get_PaginationStyle RVAs=['0x15acd10']
+  Method 73: set_PaginationStyle RVAs=['0x15ad390']
+  Method 74: .ctor RVAs=['0x15abdf0']
+  Method 75: BindToData RVAs=['0x15a49b0']
+  Method 76: UnbindFromData RVAs=['0x15aa970']
+  Method 77: Refresh RVAs=['0x15a9390']
+  Method 78: CanBuild RVAs=['0x15a50b0']
+  Method 79: ShouldEnableContent RVAs=['0x15a9c20']
+  Method 80: UpdateEnabledState RVAs=['0x15aab80']
+  Method 81: OnSortingDataChanged RVAs=['0x15a7ff0']
+  Method 82: ProcessSortingDataChanged RVAs=['0x15a8cb0']
+  Method 83: PostSortingDataChanged RVAs=['0x15a8610']
+  Method 84: SetSorting RVAs=[]
+  Method 85: UpdateSortingBinding RVAs=['0x15ab800']
+  Method 86: SetSortingBinding RVAs=['0x15a9a80', '0x15a9ae0']
+  Method 87: SetSortingBinding RVAs=['0x15a9a80', '0x15a9ae0']
+  Method 88: HasSorting RVAs=['0x15a5f20']
+  Method 89: ApplySorting RVAs=['0x15a4260']
+  Method 90: BindSortPathNextDepth RVAs=['0x15a4850']
+  Method 91: SetNoSorting RVAs=['0x15a99d0']
+  Method 92: ClearSortingState RVAs=['0x15a5180']
+  Method 93: BindToDataInternal RVAs=['0x2911e0']
+  Method 94: OnSortBindingChanged RVAs=['0x15a7ca0']
+  Method 95: OnResetSortingEvent RVAs=['0x15a7870']
+  Method 96: UnbindFromDataInternal RVAs=['0x15aa750']
+  Method 97: OnViewAreaChanged RVAs=['0x15a8340']
+  Method 98: OnAttachToPanel RVAs=['0x15a63e0']
+  Method 99: OnDetachFromPanel RVAs=['0x15a6b80']
+  Method 100: OnCustomStyleResolved RVAs=['0x15a68c0']
+  Method 101: BeginStateChange RVAs=['0x15a47a0', '0x15a47f0']
+  Method 102: BeginStateChange RVAs=['0x15a47a0', '0x15a47f0']
+  Method 103: SetDirty RVAs=['0x15a9780']
+  Method 104: ClearDirty RVAs=['0x15a5110']
+  Method 105: EndStateChange RVAs=['0x15a5350']
+  Method 106: ResolveStateChanges RVAs=['0x15a9620']
+  Method 107: StateChanged RVAs=['0x15a9c80']
+  Method 108: GetItemFromView RVAs=['0x15a5a10']
+  Method 109: GetItemFromSource RVAs=['0x15a59e0']
+  Method 110: ViewIndexOf RVAs=['0x15abba0']
+  Method 111: SourceIndexOf RVAs=['0x15a9c50']
+  Method 112: OnMakeItem RVAs=[]
+  Method 113: OnBindItem RVAs=[]
+  Method 114: OnRebindItem RVAs=[]
+  Method 115: OnUnbindItem RVAs=[]
+  Method 116: OnMoveItemInternal RVAs=['0x15a7480']
+  Method 117: OnAddItemInternal RVAs=['0x15a62e0']
+  Method 118: OnRemoveItemInternal RVAs=['0x15a76c0']
+  Method 119: OnDestroyItem RVAs=['0x2911e0']
+  Method 120: RefreshInternal RVAs=['0x15a9060']
+  Method 121: Rebuild RVAs=['0x15a8eb0']
+  Method 122: RebuildInternal RVAs=['0x2911e0']
+  Method 123: OnMakeItemInternal RVAs=['0x15a73c0']
+  Method 124: OnBindItemInternal RVAs=['0x15a67d0']
+  Method 125: OnRebindItemInternal RVAs=['0x15a7660']
+  Method 126: OnUnbindItemInternal RVAs=['0x15a8110']
+  Method 127: OnSelectedItemsBindingValueChanged RVAs=['0x15a7b00']
+  Method 128: UpdateSelectedItems RVAs=['0x15ab4a0']
+  Method 129: ForcePickingMode RVAs=['0x15a5680']
+  Method 130: ResetIndices RVAs=['0x15a9420']
+  Method 131: SetList RVAs=['0x15a9880']
+  Method 132: ClearListSelectionWithoutNotify RVAs=['0x15a5120']
+  Method 133: ClearSelection RVAs=['0x15a5150']
+  Method 134: SetListSelectionWithoutNotify RVAs=['0x15a9820']
+  Method 135: SetListSelection RVAs=['0x15a9850']
+  Method 136: GetFirstVisible RVAs=['0x15a59b0']
+  Method 137: GetLastVisible RVAs=['0x15a5a50']
+  Method 138: UpdatePaginationOnViewAreaChanged RVAs=['0x15ab2e0']
+  Method 139: UpdatePaginationBindings RVAs=['0x15ab0d0']
+  Method 140: JumpToPage RVAs=['0x15a6000']
+  Method 141: NextPage RVAs=['0x15a6110']
+  Method 142: PreviousPage RVAs=['0x15a86c0']
+  Method 143: TryToAddToAnimationQueue RVAs=['0x15aa090']
+  Method 144: RunAnimationSequence RVAs=['0x15a9670']
+  Method 145: ProcessAnimationQueue RVAs=['0x15a8700']
+  Method 146: ExecuteAnimationIn RVAs=['0x15a53a0']
+  Method 147: ProcessOnStyleResolved RVAs=['0x15a89a0']
+  Method 148: CompleteAnimation RVAs=['0x15a51f0']
+  Method 149: ForceDescheduleAnimation RVAs=['0x15a5520']
+  Method 150: RemoveAnimationClasses RVAs=['0x15a93e0']
+  Method 151: RefreshAnimationBitArray RVAs=['0x15a8f60']
+  Method 152: OnScrollToElementBindingValueChanged RVAs=['0x15a7a60']
+  Method 153: TryScrollToCurrentElementOrCachedScrollOffset RVAs=['0x15a9ee0']
+  Method 154: TryScrollToTop RVAs=['0x15aa040']
+  Method 155: PerformScrollTo RVAs=['0x15a84d0']
+  Method 156: GetScrollToIndex RVAs=['0x15a5a80']
+  Method 157: OnScrollViewGeometryChanged RVAs=['0x15a7ad0']
+  Method 158: OnScrollBarGeometryChanged RVAs=['0x15a7950']
+  Method 159: OnScrollEventHorizontal RVAs=['0x15a7960']
+  Method 160: OnScrollEventVertical RVAs=['0x15a79e0']
+  Method 161: UpdateTruncateBinding RVAs=['0x15ab9b0']
+  Method 162: OnMakeTruncateLabel RVAs=['0x15a7410']
+  Method 163: OnBindTruncateLabel RVAs=['0x15a6870']
+  Method 164: OnUnbindTruncateLabel RVAs=['0x15a82f0']
+  Method 165: OnSelectionChangedInternal RVAs=['0x15a7bb0']
+  Method 166: GetSelectedItem RVAs=['0x15a5b90']
+  Method 167: GetSelectedItems RVAs=['0x15a5d00']
+  Method 168: SetElementDefaultStyle RVAs=['0x15a97d0']
+  Method 169: OnNavigateListPaginationInputAction RVAs=['0x15945a0']
+  Method 170: OnRightStickPageChangeTriggered RVAs=['0x15a78c0']
+  Method 171: OnInputActionExecuted RVAs=['0x15a7270']
+  Method 172: OnDigIn RVAs=['0x15a6de0']
+  Method 173: OnDigOut RVAs=['0x15a6ec0']
+  Method 174: OnActiveElementsChanged RVAs=['0x15a6150']
+  Method 175: GetDigInTarget RVAs=['0x15a5810']
+  Method 176: FindSelectedColumnElementForRowNavigatable RVAs=['0x294ea0']
+  Method 177: OnGeometryChanged RVAs=['0x15a70d0']
+  Method 178: VisibilityChanged RVAs=['0x15abc40']
+  Method 179: OnFocusInEvent RVAs=['0x15a6fa0']
+  Method 180: OnFocusOutEvent RVAs=['0x15a7090']
+  Method 181: AsStreamedObjectList RVAs=['0x15a4720']
+  Method 182: .cctor RVAs=['0x15abc60']
+  Method 183: <ApplySorting>g__SetupRow|246_0 RVAs=['0x15aa320']
+  Method 184: <UpdatePaginationOnViewAreaChanged>g__CreatePaginationWidget|295_0 RVAs=['0x15aa640']
+
+Type 5951: .Header (fields=15, methods=22)
+  Field 0: expandedBuffer
+  Field 1: state
+  Field 2: block
+  Field 3: x
+  Field 4: n
+  Field 5: x
+  Field 6: y
+  Field 7: z
+  Field 8: x
+  Field 9: y
+  Field 10: z
+  Field 11: x
+  Field 12: x
+  Field 13: x
+  Field 14: x
+  Method 0: get_ColumnID RVAs=['0x29d2d0']
+  Method 1: get_TextLabel RVAs=['0x290440']
+  Method 2: set_TextLabel RVAs=['0x290550']
+  Method 3: get_HintTooltip RVAs=['0x28ee70']
+  Method 4: get_HintLabel RVAs=['0x292460']
+  Method 5: get_Root RVAs=['0x287290']
+  Method 6: get_SortingDisabled RVAs=['0x1232ec0']
+  Method 7: set_SortingDisabled RVAs=['0x1232ed0']
+  Method 8: get_LabelBinding RVAs=['0x28a120']
+  Method 9: set_LabelBinding RVAs=['0x310460']
+  Method 10: .ctor RVAs=['0x15dfab0']
+  Method 11: SetupClickHandler RVAs=['0x15df7e0']
+  Method 12: SetText RVAs=['0x15df7c0']
+  Method 13: SetHint RVAs=['0x15df790']
+  Method 14: Bind RVAs=['0x15df4f0']
+  Method 15: BindHintTooltip RVAs=['0x15df460']
+  Method 16: Unbind RVAs=['0x15df880']
+  Method 17: ResetSortingIcons RVAs=['0x15df720']
+  Method 18: UpdateSortingIcons RVAs=['0x15df970']
+  Method 19: AddManipulator RVAs=['0x15df450']
+  Method 20: OnBindingChanged RVAs=['0x15df600']
+  Method 21: .cctor RVAs=['0x15dfa20']
+
+Type 5967: SI.Bindable.StreamedTable (fields=77, methods=177)
+  Field 0: parameters
+  Field 1: dwKeySize
+  Field 2: dwKeySize
+  Field 3: parameters
+  Field 4: dwKeySize
+  Field 5: parameters
+  Field 6: p
+  Field 7: rgb
+  Field 8: includePrivateParameters
+  Field 9: parameters
+  Field 10: oid
+  Field 11: rgbHash
+  Field 12: str
+  Field 13: rgbSignature
+  Field 14: disposing
+  Field 15: sender
+  Field 16: e
+  Field 17: rgb
+  Field 18: ibStart
+  Field 19: cbSize
+  Field 20: partIn
+  Field 21: ibStart
+  Field 22: cbSize
+  Field 23: expandedBuffer
+  Field 24: state
+  Field 25: block
+  Field 26: x
+  Field 27: rgb
+  Field 28: ibStart
+  Field 29: cbSize
+  Field 30: partIn
+  Field 31: ibStart
+  Field 32: cbSize
+  Field 33: expandedBuffer
+  Field 34: state
+  Field 35: block
+  Field 36: x
+  Field 37: n
+  Field 38: x
+  Field 39: y
+  Field 40: z
+  Field 41: x
+  Field 42: y
+  Field 43: z
+  Field 44: x
+  Field 45: x
+  Field 46: x
+  Field 47: x
+  Field 48: x
+  Field 49: rgb
+  Field 50: ibStart
+  Field 51: cbSize
+  Field 52: partIn
+  Field 53: ibStart
+  Field 54: cbSize
+  Field 55: expandedBuffer
+  Field 56: state
+  Field 57: block
+  Field 58: x
+  Field 59: n
+  Field 60: x
+  Field 61: y
+  Field 62: z
+  Field 63: x
+  Field 64: y
+  Field 65: z
+  Field 66: x
+  Field 67: x
+  Field 68: x
+  Field 69: x
+  Field 70: x
+  Field 71: rgb
+  Field 72: ibStart
+  Field 73: cbSize
+  Field 74: partIn
+  Field 75: ibStart
+  Field 76: cbSize
+  Method 0: get_InputActionSort RVAs=['0x15f21f0']
+  Method 1: get_InputActionJumpToTopOfTable RVAs=['0x15aef40']
+  Method 2: set_InitFunction RVAs=['0x15f2550']
+  Method 3: get_SelectionLimitBinding RVAs=['0x15f2340']
+  Method 4: set_SelectionLimitBinding RVAs=['0x15f2900']
+  Method 5: get_IsSelectionCellActive RVAs=['0x15f2270']
+  Method 6: get_ActiveSelectionCellID RVAs=['0x15f20f0']
+  Method 7: get_SelectionCellID RVAs=['0x15f2320']
+  Method 8: set_SelectionCellID RVAs=['0x15f28c0']
+  Method 9: get_DragCellID RVAs=['0x15f21a0']
+  Method 10: set_DragCellID RVAs=['0x15f2430']
+  Method 11: get_IsDragCellActive RVAs=['0x15f2230']
+  Method 12: get_RemoveCellID RVAs=['0x15f22d0']
+  Method 13: set_RemoveCellID RVAs=['0x15f2840']
+  Method 14: get_IsRemoveCellActive RVAs=['0x15f2250']
+  Method 15: get_AddEvents RVAs=['0x15f2120']
+  Method 16: set_AddEvents RVAs=['0x15f2380']
+  Method 17: set_MigrateAddEvent RVAs=['0x15f25c0']
+  Method 18: get_RowElementAsset RVAs=['0x15f2300']
+  Method 19: set_RowElementAsset RVAs=['0x15f2890']
+  Method 20: get_FactoryAsset RVAs=['0x15f21c0']
+  Method 21: set_FactoryAsset RVAs=['0x15f2470']
+  Method 22: get_ContextMenuData RVAs=['0x15f2150']
+  Method 23: set_ContextMenuData RVAs=['0x15f23c0']
+  Method 24: get_DisableRowContextMenu RVAs=['0x15f2180']
+  Method 25: set_DisableRowContextMenu RVAs=['0x15f2410']
+  Method 26: get_SortedColumn RVAs=['0x15f2360']
+  Method 27: set_SortedColumn RVAs=['0x15f2930']
+  Method 28: get_DisableSorting RVAs=['0x15f2190']
+  Method 29: set_DisableSorting RVAs=['0x15f2420']
+  Method 30: get_HeaderCellAsset RVAs=['0x15f21e0']
+  Method 31: set_HeaderCellAsset RVAs=['0x15f24b0']
+  Method 32: get_DefaultSelectedColumn RVAs=['0x15f2170']
+  Method 33: set_DefaultSelectedColumn RVAs=['0x15f23f0']
+  Method 34: get_ViewDropdownName RVAs=['0x15f2370']
+  Method 35: set_ViewDropdownName RVAs=['0x15f2950']
+  Method 36: get_ShowFooter RVAs=['0x15f2350']
+  Method 37: set_ShowFooter RVAs=['0x15f2920']
+  Method 38: get_ResizeColumnWidthsToFit RVAs=['0x15f22f0']
+  Method 39: set_ResizeColumnWidthsToFit RVAs=['0x15f2880']
+  Method 40: get_AllowColumnResizing RVAs=['0x15f2140']
+  Method 41: set_AllowColumnResizing RVAs=['0x15f23b0']
+  Method 42: get_AllowColumnReordering RVAs=['0x15f2130']
+  Method 43: set_AllowColumnReordering RVAs=['0x15f23a0']
+  Method 44: get_FooterBinding RVAs=['0x15f21d0']
+  Method 45: set_FooterBinding RVAs=['0x15f2490']
+  Method 46: get_SelectionEvents RVAs=['0x15f2330']
+  Method 47: set_SelectionEvents RVAs=['0x15f28e0']
+  Method 48: get_DefaultSelectFirstElement RVAs=['0x15f2160']
+  Method 49: set_DefaultSelectFirstElement RVAs=['0x15f23e0']
+  Method 50: set_MigrateSelectionEvent RVAs=['0x15f27a0']
+  Method 51: get_DragEvents RVAs=['0x15f21b0']
+  Method 52: set_DragEvents RVAs=['0x15f2450']
+  Method 53: set_MigrateDragEvent RVAs=['0x15f2660']
+  Method 54: get_RemoveEvents RVAs=['0x15f22e0']
+  Method 55: set_RemoveEvents RVAs=['0x15f2860']
+  Method 56: set_MigrateRemoveEvent RVAs=['0x15f2700']
+  Method 57: get_SelectedColumnIndex RVAs=['0x15f2310']
+  Method 58: set_SelectedColumnIndex RVAs=['0x15f28b0']
+  Method 59: UpdateSortShortcut RVAs=['0x15f14d0']
+  Method 60: get_NumSelectedItems RVAs=['0x15f2290']
+  Method 61: .ctor RVAs=['0x15f1930']
+  Method 62: RegisterEvents RVAs=['0x15eef50']
+  Method 63: OnAttachToPanel RVAs=['0x15eb750']
+  Method 64: GeneratePersistenceKeys RVAs=['0x15e9600']
+  Method 65: OnTableGeometryChangedEvent RVAs=['0x15ee660']
+  Method 66: AvailableTableWidthChanged RVAs=['0x15e5f00']
+  Method 67: OnScrollViewGeometryChanged RVAs=['0x15ee0c0']
+  Method 68: SetList RVAs=['0x15ef610']
+  Method 69: GetGridBreakpointForTable RVAs=['0x294ea0']
+  Method 70: TrySetColumnsAndSort RVAs=['0x15f0040']
+  Method 71: ApplyPersistedSortingState RVAs=['0x15e58c0']
+  Method 72: CanBuild RVAs=['0x15e7580']
+  Method 73: RebuildInternal RVAs=['0x15ee9c0']
+  Method 74: OnMakeItem RVAs=['0x15ecc60']
+  Method 75: GetSelectedItemsContextValues RVAs=['0x15ea5d0']
+  Method 76: OnBindItem RVAs=['0x15eb760']
+  Method 77: OnRebindItem RVAs=['0x15ed7d0']
+  Method 78: OnUnbindItem RVAs=['0x15ee670']
+  Method 79: RefreshInternal RVAs=['0x15eed80']
+  Method 80: UpdateSortingIcons RVAs=[]
+  Method 81: BindToDataInternal RVAs=['0x15e6d70']
+  Method 82: OnContextMenuAssetLoaded RVAs=['0x15ec0b0']
+  Method 83: OnRowElementAssetLoaded RVAs=['0x15ee050']
+  Method 84: OnFactoryAssetLoaded RVAs=['0x15ec640']
+  Method 85: UnbindFromDataInternal RVAs=['0x15f0c00']
+  Method 86: OnSelectionLimitBindingValueChanged RVAs=['0x15ee1e0']
+  Method 87: RecreateHeaders RVAs=['0x15eecb0']
+  Method 88: CreateHeader RVAs=['0x15e8f00']
+  Method 89: BindHeader RVAs=['0x15e6230']
+  Method 90: BindHeaders RVAs=['0x15e6ca0']
+  Method 91: UnbindHeader RVAs=['0x15f0e40']
+  Method 92: UnbindHeaders RVAs=['0x15f0f50']
+  Method 93: DestroyHeader RVAs=['0x15e9220']
+  Method 94: RecreateFooters RVAs=['0x15eead0']
+  Method 95: RebindFooters RVAs=['0x15ee830']
+  Method 96: CreateFooter RVAs=['0x15e8e40']
+  Method 97: DestroyFooter RVAs=['0x15e91b0']
+  Method 98: SetSorting RVAs=['0x15efc40', '0x15efce0']
+  Method 99: SetSorting RVAs=['0x15efc40', '0x15efce0']
+  Method 100: UpdatePersistedColumnSortingData RVAs=['0x15f1290']
+  Method 101: EntryForColumn RVAs=['0x15e9450']
+  Method 102: UpdateSortColum RVAs=['0x15f1380']
+  Method 103: SetNoSorting RVAs=['0x15ef750']
+  Method 104: MakeDefaultSelectedColumnHeader RVAs=['0x15eb000']
+  Method 105: OnHeaderClicked RVAs=['0x15ec910']
+  Method 106: TryFindSortedColumn RVAs=['0x15eff70']
+  Method 107: OnDigIn RVAs=['0x15ec2d0']
+  Method 108: OnDigOut RVAs=['0x15ec310']
+  Method 109: OnSortColumn RVAs=['0x15ee250']
+  Method 110: OnJumpToTopOfTable RVAs=['0x15ecb70']
+  Method 111: TryShowJumpToTopElement RVAs=['0x15f0230']
+  Method 112: EnableSortShortcut RVAs=['0x15e93a0']
+  Method 113: DisableSortShortcut RVAs=['0x15e9340']
+  Method 114: MakeColumnHeader RVAs=['0x15eac30']
+  Method 115: UpdateTotalDefaultWidth RVAs=['0x15f1760']
+  Method 116: ResetRemainingAvailableWidth RVAs=['0x15ef1e0']
+  Method 117: AddContextMenu RVAs=['0x15e57e0']
+  Method 118: ConfirmDeleteCustomView RVAs=['0x15e78c0']
+  Method 119: ConfirmRenameCustomView RVAs=['0x15e7990']
+  Method 120: CancelCustomViewDialog RVAs=['0x375880']
+  Method 121: OnAddOnLoaded RVAs=['0x15eb2c0']
+  Method 122: OnPanelClosed RVAs=['0x15ed5d0']
+  Method 123: AddColumn RVAs=['0x15e5510']
+  Method 124: RemoveColumn RVAs=['0x15ef090']
+  Method 125: DestroyColumn RVAs=['0x15e90b0']
+  Method 126: ReplaceColumn RVAs=['0x15ef1a0']
+  Method 127: MoveColumn RVAs=['0x15eb0e0']
+  Method 128: AutoSizeColumn RVAs=['0x15e5ae0']
+  Method 129: ResizeColumnsIfUndersized RVAs=['0x15ef450']
+  Method 130: AutoSizeAllColumns RVAs=['0x15e59b0']
+  Method 131: GetAdditionalWidths RVAs=['0x15e9910']
+  Method 132: CreateCustomView RVAs=['0x15e85d0']
+  Method 133: UpdateStreamedTableView RVAs=['0x15f1650']
+  Method 134: GenerateCustomViewName RVAs=['0x15e9570']
+  Method 135: OnCreateContextMenuItem RVAs=['0x15ec120']
+  Method 136: MakeColumnFooter RVAs=['0x15eaa00']
+  Method 137: CreateDefaultSelectionCell RVAs=['0x15e8950']
+  Method 138: CreateCellForColumn RVAs=[]
+  Method 139: OnStartColumnResizing RVAs=['0x15ee290']
+  Method 140: OnEndColumnResizing RVAs=['0x15ec390']
+  Method 141: ColumnsResized RVAs=['0x15e77b0']
+  Method 142: OnColumnSizeChanged RVAs=['0x15ebb00']
+  Method 143: InitialiseColumns RVAs=['0x15ea870']
+  Method 144: GetColumnWidths RVAs=['0x15e9f40']
+  Method 145: ClearColumns RVAs=['0x15e7690']
+  Method 146: CreateColumns RVAs=['0x15e83b0']
+  Method 147: CreateColumn RVAs=['0x15e7dc0']
+  Method 148: OnStartReorder RVAs=['0x15ee350']
+  Method 149: OnReorder RVAs=['0x15edbe0']
+  Method 150: OnEndReorder RVAs=['0x15ec410']
+  Method 151: OnViewAreaChanged RVAs=['0x15ee6e0']
+  Method 152: OnViewSet RVAs=['0x15ee7a0']
+  Method 153: SetSelectionCellStates RVAs=['0x15ef890']
+  Method 154: FindSelectedColumnElementForRowNavigatable RVAs=['0x15e94c0']
+  Method 155: OnSelectionChangedInternal RVAs=['0x15ee100']
+  Method 156: OnMoveItemInternal RVAs=['0x15ed340']
+  Method 157: OnAddItemInternal RVAs=['0x15eb150']
+  Method 158: OnRemoveItemInternal RVAs=['0x15edad0']
+  Method 159: OnNavigationMovement RVAs=['0x15ed4c0']
+  Method 160: CreateColumnsFromStaticList RVAs=['0x15e8170']
+  Method 161: CreateColumnsFromTableView RVAs=['0x15e8350']
+  Method 162: CreateColumnsFromTableViewCollection RVAs=['0x15e82c0']
+  Method 163: CanPopulateTable RVAs=['0x15e7640']
+  Method 164: UpdateCustomViewDropdown RVAs=['0x15f10f0']
+  Method 165: GetIdentifiers RVAs=['0x15ea360']
+  Method 166: GetContexts RVAs=['0x15ea140']
+  Method 167: GetBindingKind RVAs=['0x15e9cf0']
+  Method 168: <.ctor>b__206_0 RVAs=['0x15f0a70']
+  Method 169: <.ctor>b__206_1 RVAs=['0x15f0b30']
+  Method 170: <.ctor>b__206_2 RVAs=['0x15f0bf0']
+  Method 171: <RegisterEvents>b__207_0 RVAs=['0x15f0830']
+  Method 172: <SetList>g__SelectionIsValid|213_0 RVAs=['0x15f0870']
+  Method 173: <OnBindItem>g__SetBindings|221_0 RVAs=['0x15f0580']
+  Method 174: <TryShowJumpToTopElement>g__EnableJumpToTopOfTable|256_0 RVAs=['0x15f09d0']
+  Method 175: <TryShowJumpToTopElement>g__DisableJumpToTopOfTable|256_1 RVAs=['0x15f0980']
+  Method 176: <OnViewSet>b__297_0 RVAs=['0x15f0800']
+
+Type 9782: .Header (fields=4, methods=0)
+  Field 0: value
+  Field 1: value
+  Field 2: value
+  Field 3: value
+
+Type 10370: .SortComparer (fields=0, methods=2)
+  Method 0: .ctor RVAs=['0x2911e0']
+  Method 1: Invoke RVAs=[]
+
+Type 13468: SI.UI.VirtualisedList (fields=67, methods=136)
+  Field 0: width
+  Field 1: height
+  Field 2: format
+  Field 3: width
+  Field 4: height
+  Field 5: width
+  Field 6: height
+  Field 7: depth
+  Field 8: format
+  Field 9: flags
+  Field 10: width
+  Field 11: height
+  Field 12: depth
+  Field 13: format
+  Field 14: flags
+  Field 15: mipCount
+  Field 16: width
+  Field 17: height
+  Field 18: depth
+  Field 19: format
+  Field 20: flags
+  Field 21: mipCount
+  Field 22: mipmapLimitDescriptor
+  Field 23: width
+  Field 24: height
+  Field 25: depth
+  Field 26: format
+  Field 27: flags
+  Field 28: width
+  Field 29: height
+  Field 30: depth
+  Field 31: format
+  Field 32: flags
+  Field 33: mipCount
+  Field 34: width
+  Field 35: height
+  Field 36: depth
+  Field 37: format
+  Field 38: flags
+  Field 39: mipCount
+  Field 40: mipmapLimitDescriptor
+  Field 41: width
+  Field 42: height
+  Field 43: depth
+  Field 44: textureFormat
+  Field 45: mipCount
+  Field 46: linear
+  Field 47: createUninitialized
+  Field 48: mipmapLimitDescriptor
+  Field 49: width
+  Field 50: height
+  Field 51: depth
+  Field 52: textureFormat
+  Field 53: mipCount
+  Field 54: linear
+  Field 55: createUninitialized
+  Field 56: width
+  Field 57: height
+  Field 58: depth
+  Field 59: textureFormat
+  Field 60: mipCount
+  Field 61: linear
+  Field 62: width
+  Field 63: height
+  Field 64: depth
+  Field 65: textureFormat
+  Field 66: mipChain
+  Method 0: get_OnElementInteracted RVAs=['0x7aa480']
+  Method 1: set_OnElementInteracted RVAs=['0x808cd0']
+  Method 2: get_OnActiveElementsChanged RVAs=['0x3d0930']
+  Method 3: set_OnActiveElementsChanged RVAs=['0x3d0970']
+  Method 4: get_VirtualisedElementHandlesSubmitEvents RVAs=['0x810910']
+  Method 5: set_VirtualisedElementHandlesSubmitEvents RVAs=['0x826790']
+  Method 6: get_DragMultiselectionManager RVAs=['0x8437e0']
+  Method 7: get_ScrollView RVAs=['0x8109e0']
+  Method 8: get_DropGroup RVAs=['0x156e280']
+  Method 9: set_DropGroup RVAs=['0x157c580']
+  Method 10: get_MakeItem RVAs=['0x8109c0']
+  Method 11: set_MakeItem RVAs=['0x16abcf0']
+  Method 12: get_MoveItem RVAs=['0x82fb00']
+  Method 13: set_MoveItem RVAs=['0x1581c70']
+  Method 14: get_AddItem RVAs=['0x82faf0']
+  Method 15: set_AddItem RVAs=['0x85fc80']
+  Method 16: get_RemoveItem RVAs=['0x82fae0']
+  Method 17: set_RemoveItem RVAs=['0x857430']
+  Method 18: get_DestroyItem RVAs=['0x82fb30']
+  Method 19: set_DestroyItem RVAs=['0x842900']
+  Method 20: get_TrackItemCreation RVAs=['0x16ab160']
+  Method 21: get_TrackItemDestruction RVAs=['0x16ab180']
+  Method 22: get_BindItem RVAs=['0x8273a0']
+  Method 23: set_BindItem RVAs=['0x16ab440']
+  Method 24: get_RebindItem RVAs=['0x82fb10']
+  Method 25: set_RebindItem RVAs=['0x156e310']
+  Method 26: get_UnbindItem RVAs=['0x7fc280']
+  Method 27: set_UnbindItem RVAs=['0x1556c10']
+  Method 28: get_MakeTruncateLabel RVAs=['0x7fc260']
+  Method 29: set_MakeTruncateLabel RVAs=['0x14daf70']
+  Method 30: get_BindTruncateLabel RVAs=['0x636fa0']
+  Method 31: set_BindTruncateLabel RVAs=['0x80fb60']
+  Method 32: get_UnbindTruncateLabel RVAs=['0x636f90']
+  Method 33: set_UnbindTruncateLabel RVAs=['0x80fca0']
+  Method 34: add_ViewChanged RVAs=['0x16aafc0']
+  Method 35: remove_ViewChanged RVAs=['0x16ab390']
+  Method 36: get_FixedElementSize RVAs=['0x16ab0c0']
+  Method 37: set_FixedElementSize RVAs=['0x16abb70']
+  Method 38: set_DynamicElements RVAs=['0x16aba90']
+  Method 39: get_Controller RVAs=['0xdc0960']
+  Method 40: set_Controller RVAs=['0x16ab8a0']
+  Method 41: get_Items RVAs=['0xdc0940']
+  Method 42: set_Items RVAs=['0x16abc90']
+  Method 43: get_Direction RVAs=['0x16ab0a0']
+  Method 44: set_Direction RVAs=['0x16ab910']
+  Method 45: get_ActiveView RVAs=['0x7fc290']
+  Method 46: set_ActiveView RVAs=['0x16ab420']
+  Method 47: get_VisibleView RVAs=['0xdc0950']
+  Method 48: set_VisibleView RVAs=['0x16ac1b0']
+  Method 49: get_SelectionMode RVAs=['0x16ab150']
+  Method 50: set_SelectionMode RVAs=['0x16abea0']
+  Method 51: get_SelectingSameItemDeselects RVAs=['0x14dad80']
+  Method 52: set_SelectingSameItemDeselects RVAs=['0x155b5d0']
+  Method 53: set_SelectionLimit RVAs=['0x16abe70']
+  Method 54: get_Selection RVAs=['0x80fae0']
+  Method 55: set_HorizontalScrollBarVisibility RVAs=['0x16abc60']
+  Method 56: set_VerticalScrollBarVisibility RVAs=['0x16ac010']
+  Method 57: get_Reorderable RVAs=['0x14dad90']
+  Method 58: set_Reorderable RVAs=['0x14dada0']
+  Method 59: get_DragScrollSpeed RVAs=['0x155b550']
+  Method 60: set_DragScrollSpeed RVAs=['0x155b710']
+  Method 61: get_DragScrollMargin RVAs=['0x16ab0b0']
+  Method 62: set_DragScrollMargin RVAs=['0x16aba80']
+  Method 63: get_Truncate RVAs=['0x15a19d0']
+  Method 64: set_Truncate RVAs=['0x15a1a30']
+  Method 65: get_TruncateLabelSize RVAs=['0x16ab1a0']
+  Method 66: set_TruncateLabelSize RVAs=['0x16ac000']
+  Method 67: get_OverprovisionPercent RVAs=['0x155b540']
+  Method 68: set_OverprovisionPercent RVAs=['0x155b700']
+  Method 69: set_MouseWheelScrollSize RVAs=['0x16abd40']
+  Method 70: set_FlexGrow RVAs=['0x16abba0']
+  Method 71: set_FlexShrink RVAs=['0x16abc00']
+  Method 72: get_SelectionInternal RVAs=['0x80fae0']
+  Method 73: get_ElementPool RVAs=['0x80fac0']
+  Method 74: get_ActiveElements RVAs=['0x80fad0']
+  Method 75: get_Root RVAs=['0x7fc2d0']
+  Method 76: get_ContentSize RVAs=['0x16ab060']
+  Method 77: set_ContentSize RVAs=['0x16ab4b0']
+  Method 78: get_ScrollOffset RVAs=['0x16ab0f0']
+  Method 79: set_ScrollOffset RVAs=['0x16abd70']
+  Method 80: get_VirtualisationOffset RVAs=['0x16ab270']
+  Method 81: set_VirtualisationOffset RVAs=['0x16ac040']
+  Method 82: get_ViewportSize RVAs=['0x16ab1b0']
+  Method 83: get_AlternateRows RVAs=['0x16ab050']
+  Method 84: set_AlternateRows RVAs=['0x16ab430']
+  Method 85: add_OnSelectionChanged RVAs=['0x16aaf90']
+  Method 86: remove_OnSelectionChanged RVAs=['0x16ab360']
+  Method 87: .ctor RVAs=['0x16aaf80', '0x16aa7c0']
+  Method 88: .ctor RVAs=['0x16aaf80', '0x16aa7c0']
+  Method 89: Rebuild RVAs=['0x16a9350']
+  Method 90: Refresh RVAs=['0x16a93f0']
+  Method 91: UpdateView RVAs=['0x16aa730']
+  Method 92: ResetView RVAs=['0x16a9420']
+  Method 93: ScrollTo RVAs=['0x16a9450']
+  Method 94: GetActiveCount RVAs=['0x16a77a0']
+  Method 95: GetVisibleCount RVAs=['0x16a7920']
+  Method 96: GetActiveItem RVAs=['0x16a77c0']
+  Method 97: GetVisibleItem RVAs=['0x16a7930']
+  Method 98: GetFirstVisibleItem RVAs=['0x16a77f0']
+  Method 99: GetLastVisibleItem RVAs=['0x16a7850']
+  Method 100: IsItemActive RVAs=['0x16a79e0']
+  Method 101: SelectRange RVAs=['0x16a9810', '0x16a9840']
+  Method 102: SelectRange RVAs=['0x16a9810', '0x16a9840']
+  Method 103: SelectRangeWithoutNotify RVAs=['0x16a9680', '0x16a9490']
+  Method 104: SelectRangeWithoutNotify RVAs=['0x16a9680', '0x16a9490']
+  Method 105: ClearSelection RVAs=['0x16a7500']
+  Method 106: ClearSelectionWithoutNotify RVAs=['0x16a74d0']
+  Method 107: SetSelection RVAs=['0x16a9af0', '0x16a9b20']
+  Method 108: SetSelection RVAs=['0x16a9af0', '0x16a9b20']
+  Method 109: SetSelectionWithoutNotify RVAs=['0x16a9ac0']
+  Method 110: ShowTruncateLabel RVAs=['0x16a9b60']
+  Method 111: HideTruncateLabel RVAs=['0x16a7970']
+  Method 112: DestroyTruncateLabel RVAs=['0x16a7680']
+  Method 113: OnTruncateLabelGeometryChanged RVAs=['0x16a92f0']
+  Method 114: OnStartItemDrag RVAs=['0x16a8b90']
+  Method 115: OnItemDrag RVAs=['0x16a8870']
+  Method 116: OnEndItemDrag RVAs=['0x16a85c0']
+  Method 117: MoveItems RVAs=['0x16a7e50']
+  Method 118: FindIndex RVAs=['0x16a7700']
+  Method 119: OnDragScroll RVAs=['0x16a8370']
+  Method 120: UpdateDropIndicatorPosition RVAs=['0x16aa4d0']
+  Method 121: MakeItemElement RVAs=['0x16a7af0']
+  Method 122: DestroyItemElement RVAs=['0x16a7580']
+  Method 123: MakeDragVisuals RVAs=['0x16a7a00']
+  Method 124: BindDragVisuals RVAs=['0x16a7480']
+  Method 125: SetScrollOffset RVAs=['0x16a9870']
+  Method 126: GetRelevantAxis RVAs=['0x16a78b0', '0x16a78f0']
+  Method 127: GetRelevantAxis RVAs=['0x16a78b0', '0x16a78f0']
+  Method 128: ConvertToRelevantAxis RVAs=['0x16a7530']
+  Method 129: StripIrrelevantAxis RVAs=['0x16a9d70']
+  Method 130: .cctor RVAs=['0x16aa790']
+  Method 131: <.ctor>b__241_1 RVAs=['0x16a9dc0']
+  Method 132: <.ctor>b__241_2 RVAs=['0x16a9e60']
+  Method 133: <.ctor>b__241_3 RVAs=['0x16a9fc0']
+  Method 134: <.ctor>b__241_4 RVAs=['0x16aa400']
+  Method 135: <.ctor>b__241_5 RVAs=['0x16aa4c0']
+
+Type 15371: .Header (fields=8, methods=0)
+  Field 0: oldItem
+  Field 1: index
+  Field 2: action
+  Field 3: newItems
+  Field 4: oldItems
+  Field 5: startingIndex
+  Field 6: action
+  Field 7: changedItems
+
+=== 2. Find all lambdas / display classes of StreamedTable and Header ===
+
+================ <>c__DisplayClass259_0.<MakeColumnHeader>b__0 (RVA=0x0160bb80, size=90) ================
+  +0x000: 48 83 ec 28 4c 8b c1 48 8b 49 10 48 85 d2 75 06
+  +0x010: 49 8b 50 18 eb 1a 48 8b 05 c3 97 7d 01 45 33 c9
+  +0x020: 48 39 02 4c 0f 44 ca 49 8b 50 18 4d 85 c9 75 14
+  +0x030: 48 85 c9 74 1f 45 33 c0 45 33 c9 48 83 c4 28 e9
+  +0x040: 4c 0d fe ff 45 8b 81 e8 00 00 00 41 83 e0 01 48
+  +0x050: 85 c9 75 e4 e8 27 0b bb fe cc
+  --- Annotations ---
+  +0x03f: JMP 0x015ec910 -> StreamedTable.OnHeaderClicked
+
+================ Header..cctor (RVA=0x015dfa20, size=141) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 20 e8 01 2c a3 fe 48
+  +0x010: 8b 05 9a c3 7f 01 83 b8 e4 00 00 00 00 75 0f 48
+  +0x020: 8b c8 e8 59 cd bd fe 48 8b 05 82 c3 7f 01 48 8b
+  +0x030: 80 b8 00 00 00 48 8b 0d 4c b3 7f 01 48 8b 18 e8
+  +0x040: 4c cc bd fe 4c 8b 05 0d e6 84 01 45 33 c9 48 8b
+  +0x050: d3 48 8b c8 48 8b f8 e8 b4 40 ef ff 48 8b 0d 65
+  +0x060: 52 86 01 48 8b 91 b8 00 00 00 48 89 3a 48 8b d7
+  +0x070: 48 8b 0d 51 52 86 01 48 8b 89 b8 00 00 00 48 8b
+  +0x080: 5c 24 30 48 83 c4 20 5f e9 93 bc bd fe
+  --- Annotations ---
+  +0x057: CALL 0x014d3b30 -> ValueChangedWithArgCallback..ctor
+
+================ Header..ctor (RVA=0x015dfab0, size=384) ================
+  +0x000: 48 89 5c 24 08 48 89 6c 24 10 48 89 74 24 18 48
+  +0x010: 89 7c 24 20 41 56 48 83 ec 20 48 8b e9 4d 8b f1
+  +0x020: 48 8b 0d 29 ee 84 01 49 8b f8 48 8b f2 e8 ce cb
+  +0x030: bd fe 33 d2 48 8b c8 48 8b d8 e8 01 a6 02 00 48
+  +0x040: 8d 4d 48 48 89 5d 48 48 8b d3 e8 41 bc bd fe 48
+  +0x050: 8b 0d 2a 0d 82 01 e8 a5 cb bd fe 33 d2 48 8b c8
+  +0x060: 48 8b d8 e8 f8 ad ff ff 48 8d 4d 50 48 89 5d 50
+  +0x070: 48 8b d3 e8 18 bc bd fe 48 8b 0d 71 c3 7f 01 e8
+  +0x080: 7c cb bd fe 48 8b 54 24 58 48 8b d8 48 8d 48 18
+  +0x090: 48 89 50 18 e8 f7 bb bd fe 48 8d 4b 20 48 89 7b
+  +0x0a0: 20 48 8b d7 e8 e7 bb bd fe 48 8d 4b 10 48 89 6b
+  +0x0b0: 10 48 8b d5 e8 d7 bb bd fe 0f b6 4c 24 50 48 8b
+  +0x0c0: d6 88 4d 60 48 8d 4d 38 48 89 75 38 e8 bf bb bd
+  +0x0d0: fe 48 8b 0d 20 ca 86 01 48 8b 73 20 e8 1f cb bd
+  +0x0e0: fe 4c 8b 05 a8 e5 84 01 45 33 c9 48 8b d3 48 8b
+  +0x0f0: c8 48 8b f8 e8 57 8f 91 ff 48 8b 0d 38 4f 86 01
+  +0x100: 83 b9 e4 00 00 00 00 75 05 e8 e2 cb bd fe 4c 8b
+  +0x110: 0d b3 71 85 01 4c 8b c7 49 8b d6 48 8b ce e8 2d
+  +0x120: 72 53 ff 48 8d 4d 58 48 89 45 58 48 8b d0 e8 5d
+  +0x130: bb bd fe 48 8b 4d 58 48 85 c9 74 3e 48 8b 15 1d
+  +0x140: df 83 01 45 33 c0 e8 65 87 94 00 48 8b 4d 48 48
+  +0x150: 85 c9 74 26 48 8b 55 50 45 33 c0 48 8b 5c 24 30
+  +0x160: 48 8b 6c 24 38 48 8b 74 24 40 48 8b 7c 24 48 48
+  +0x170: 83 c4 20 41 5e e9 96 88 94 00 e8 d1 ca bd fe cc
+  --- Annotations ---
+  +0x03a: CALL 0x0160a0f0 -> Tooltip..ctor
+  +0x063: CALL 0x015da910 -> SIText..ctor
+  +0x0f4: CALL 0x00ef8b00 -> AsyncCallback..ctor, DeserializationEventHandler..ctor, OnRemoveWriter..ctor, CachingEventHandler..ctor
+  +0x11e: CALL 0x00b16e00 -> 
+  +0x146: CALL 0x01f28360 -> VisualElement.AddToClassList
+  +0x175: JMP 0x01f284c0 -> VisualElement.Add
+
+================ Header.AddManipulator (RVA=0x015df450, size=512) ================
+  +0x000: 48 8b 49 40 45 33 c0 e9 e4 09 9a 00 cc cc cc cc
+  +0x010: 40 53 48 83 ec 20 80 79 30 00 48 8b d9 74 70 48
+  +0x020: 8b 49 50 48 85 c9 74 6d 48 8b 11 48 8b 82 48 0e
+  +0x030: 00 00 48 8b 92 50 0e 00 00 ff d0 33 d2 48 8b c8
+  +0x040: e8 5b 19 cc ff 84 c0 75 46 48 8b 4b 48 48 85 c9
+  +0x050: 74 43 33 d2 e8 c7 92 95 00 48 85 c0 74 31 48 89
+  +0x060: 7c 24 30 48 8b 0d ae c7 86 01 48 8b 7b 48 83 b9
+  +0x070: e4 00 00 00 00 75 05 e8 d4 d2 bd fe 33 d2 48 8b
+  +0x080: cf e8 ca 5c 01 00 48 8b 7c 24 30 c6 43 20 01 48
+  +0x090: 83 c4 20 5b c3 e8 16 d2 bd fe cc cc cc cc cc cc
+  +0x0a0: 48 89 5c 24 10 57 48 83 ec 30 48 8b 41 68 48 8b
+  +0x0b0: d9 48 8d 4c 24 40 48 89 44 24 40 33 d2 e8 6e 36
+  +0x0c0: 24 ff 84 c0 74 60 48 8b 0d 43 28 83 01 e8 fe 93
+  +0x0d0: 44 ff 48 8b 4b 68 48 8b f8 48 89 4c 24 40 48 8b
+  +0x0e0: 0d b3 57 86 01 83 b9 e4 00 00 00 00 75 0c e8 5d
+  +0x0f0: d2 bd fe 48 8b 0d 9e 57 86 01 48 8b 89 b8 00 00
+  +0x100: 00 48 85 ff 0f 84 91 00 00 00 4c 8b 01 48 8d 54
+  +0x110: 24 40 48 8b cf 48 c7 44 24 20 00 00 00 00 4c 8b
+  +0x120: cb e8 7a f9 ed ff 48 8b 4b 50 c6 43 30 01 48 85
+  +0x130: c9 74 68 48 8b 11 48 8b 82 48 0e 00 00 48 8b 92
+  +0x140: 50 0e 00 00 ff d0 33 d2 48 8b c8 e8 50 18 cc ff
+  +0x150: 84 c0 75 3c 48 8b 4b 48 48 85 c9 74 3e 33 d2 e8
+  +0x160: bc 91 95 00 48 85 c0 74 27 48 8b 0d a8 c6 86 01
+  +0x170: 48 8b 7b 48 83 b9 e4 00 00 00 00 75 05 e8 ce d1
+  +0x180: bd fe 33 d2 48 8b cf e8 c4 5b 01 00 c6 43 20 01
+  +0x190: 48 8b 5c 24 48 48 83 c4 30 5f c3 e8 10 d1 bd fe
+  +0x1a0: cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x1b0: 48 89 5c 24 08 57 48 83 ec 20 48 c7 44 24 38 00
+  +0x1c0: 00 00 00 48 8b fa 48 8b d9 48 85 d2 0f 84 f3 00
+  +0x1d0: 00 00 48 8b 15 ff 16 83 01 48 8b 07 0f b7 4a 50
+  +0x1e0: 48 83 c1 14 48 03 c9 48 8b 0c c8 e8 f0 ca bd fe
+  +0x1f0: 4c 8b c8 48 8d 54 24 38 45 33 c0 48 8b cf 4c 8b
+  --- Annotations ---
+  +0x007: JMP 0x01f7fe40 -> VisualElementExtensions.AddManipulator
+  +0x040: CALL 0x012a0df0 -> String.IsNullOrEmpty
+  +0x054: CALL 0x01f38770 -> VisualElement.get_parent
+  +0x081: CALL 0x015f51a0 -> BindableElementUtils.BindHierarchy
+  +0x0bd: CALL 0x00822b80 -> ContentInfo.get_IsValid, CancellationToken.get_CanBeCanceled, HandlerAccess.IsValid, Key.IsValid
+  +0x0cd: CALL 0x00a28920 -> 
+  +0x121: CALL 0x014beef0 -> Bindings.Bind
+  +0x14b: CALL 0x012a0df0 -> String.IsNullOrEmpty
+  +0x15f: CALL 0x01f38770 -> VisualElement.get_parent
+  +0x187: CALL 0x015f51a0 -> BindableElementUtils.BindHierarchy
+
+================ Header.Bind (RVA=0x015df4f0, size=257) ================
+  +0x000: 48 89 5c 24 10 57 48 83 ec 30 48 8b 41 68 48 8b
+  +0x010: d9 48 8d 4c 24 40 48 89 44 24 40 33 d2 e8 6e 36
+  +0x020: 24 ff 84 c0 74 60 48 8b 0d 43 28 83 01 e8 fe 93
+  +0x030: 44 ff 48 8b 4b 68 48 8b f8 48 89 4c 24 40 48 8b
+  +0x040: 0d b3 57 86 01 83 b9 e4 00 00 00 00 75 0c e8 5d
+  +0x050: d2 bd fe 48 8b 0d 9e 57 86 01 48 8b 89 b8 00 00
+  +0x060: 00 48 85 ff 0f 84 91 00 00 00 4c 8b 01 48 8d 54
+  +0x070: 24 40 48 8b cf 48 c7 44 24 20 00 00 00 00 4c 8b
+  +0x080: cb e8 7a f9 ed ff 48 8b 4b 50 c6 43 30 01 48 85
+  +0x090: c9 74 68 48 8b 11 48 8b 82 48 0e 00 00 48 8b 92
+  +0x0a0: 50 0e 00 00 ff d0 33 d2 48 8b c8 e8 50 18 cc ff
+  +0x0b0: 84 c0 75 3c 48 8b 4b 48 48 85 c9 74 3e 33 d2 e8
+  +0x0c0: bc 91 95 00 48 85 c0 74 27 48 8b 0d a8 c6 86 01
+  +0x0d0: 48 8b 7b 48 83 b9 e4 00 00 00 00 75 05 e8 ce d1
+  +0x0e0: bd fe 33 d2 48 8b cf e8 c4 5b 01 00 c6 43 20 01
+  +0x0f0: 48 8b 5c 24 48 48 83 c4 30 5f c3 e8 10 d1 bd fe
+  +0x100: cc
+  --- Annotations ---
+  +0x01d: CALL 0x00822b80 -> ContentInfo.get_IsValid, CancellationToken.get_CanBeCanceled, HandlerAccess.IsValid, Key.IsValid
+  +0x02d: CALL 0x00a28920 -> 
+  +0x081: CALL 0x014beef0 -> Bindings.Bind
+  +0x0ab: CALL 0x012a0df0 -> String.IsNullOrEmpty
+  +0x0bf: CALL 0x01f38770 -> VisualElement.get_parent
+  +0x0e7: CALL 0x015f51a0 -> BindableElementUtils.BindHierarchy
+
+================ Header.BindHintTooltip (RVA=0x015df460, size=139) ================
+  +0x000: 40 53 48 83 ec 20 80 79 30 00 48 8b d9 74 70 48
+  +0x010: 8b 49 50 48 85 c9 74 6d 48 8b 11 48 8b 82 48 0e
+  +0x020: 00 00 48 8b 92 50 0e 00 00 ff d0 33 d2 48 8b c8
+  +0x030: e8 5b 19 cc ff 84 c0 75 46 48 8b 4b 48 48 85 c9
+  +0x040: 74 43 33 d2 e8 c7 92 95 00 48 85 c0 74 31 48 89
+  +0x050: 7c 24 30 48 8b 0d ae c7 86 01 48 8b 7b 48 83 b9
+  +0x060: e4 00 00 00 00 75 05 e8 d4 d2 bd fe 33 d2 48 8b
+  +0x070: cf e8 ca 5c 01 00 48 8b 7c 24 30 c6 43 20 01 48
+  +0x080: 83 c4 20 5b c3 e8 16 d2 bd fe cc
+  --- Annotations ---
+  +0x030: CALL 0x012a0df0 -> String.IsNullOrEmpty
+  +0x044: CALL 0x01f38770 -> VisualElement.get_parent
+  +0x071: CALL 0x015f51a0 -> BindableElementUtils.BindHierarchy
+
+================ Header.OnBindingChanged (RVA=0x015df600, size=283) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 20 48 c7 44 24 38 00
+  +0x010: 00 00 00 48 8b fa 48 8b d9 48 85 d2 0f 84 f3 00
+  +0x020: 00 00 48 8b 15 ff 16 83 01 48 8b 07 0f b7 4a 50
+  +0x030: 48 83 c1 14 48 03 c9 48 8b 0c c8 e8 f0 ca bd fe
+  +0x040: 4c 8b c8 48 8d 54 24 38 45 33 c0 48 8b cf 4c 8b
+  +0x050: 50 08 41 ff d2 84 c0 75 48 48 8b 17 48 8b cf 48
+  +0x060: 8b 82 a8 01 00 00 48 8b 92 b0 01 00 00 ff d0 48
+  +0x070: 8b 0d 5a 7a 85 01 45 33 c0 48 8b d0 e8 4f 01 cc
+  +0x080: ff 48 8b 0d 28 7a 80 01 83 b9 e4 00 00 00 00 75
+  +0x090: 05 e8 0a d1 bd fe 48 8b 5c 24 30 48 83 c4 20 5f
+  +0x0a0: c3 48 83 7b 40 00 48 8b 54 24 38 74 0e 48 8b 4b
+  +0x0b0: 40 45 33 c0 e8 57 9c ff ff eb 0d 48 8d 4b 28 48
+  +0x0c0: 89 53 28 e8 78 c0 bd fe 48 83 7b 50 00 74 c7 48
+  +0x0d0: 8b 4b 50 48 8b 11 48 8b 82 48 0e 00 00 48 8b 92
+  +0x0e0: 50 0e 00 00 ff d0 33 d2 48 8b c8 e8 00 17 cc ff
+  +0x0f0: 84 c0 74 a2 48 8b 4b 50 48 85 c9 74 18 48 8b 54
+  +0x100: 24 38 45 33 c0 e8 06 9c ff ff 48 8b 5c 24 30 48
+  +0x110: 83 c4 20 5f c3 e8 e6 cf bd fe cc
+  --- Annotations ---
+  +0x07c: CALL 0x0129f7d0 -> String.Format
+  +0x0b4: CALL 0x015d9310 -> SIText.SetText
+  +0x0eb: CALL 0x012a0df0 -> String.IsNullOrEmpty
+  +0x105: CALL 0x015d9310 -> SIText.SetText
+
+================ Header.ResetSortingIcons (RVA=0x015df720, size=100) ================
+  +0x000: 40 53 48 83 ec 20 48 83 79 10 00 48 8b d9 74 48
+  +0x010: 48 8b 15 71 04 82 01 45 33 c0 48 8b 49 10 e8 dd
+  +0x020: dc 94 00 48 8b 4b 10 48 85 c9 74 32 48 8b 15 85
+  +0x030: 03 82 01 45 33 c0 e8 c5 dc 94 00 48 8b 4b 10 48
+  +0x040: 85 c9 74 1a 48 8b 15 0d 3b 83 01 45 33 c0 48 83
+  +0x050: c4 20 5b e9 e8 8b 94 00 48 83 c4 20 5b c3 e8 7d
+  +0x060: cf bd fe cc
+  --- Annotations ---
+  +0x01e: CALL 0x01f2d420 -> VisualElement.RemoveFromClassList
+  +0x036: CALL 0x01f2d420 -> VisualElement.RemoveFromClassList
+  +0x053: JMP 0x01f28360 -> VisualElement.AddToClassList
+
+================ Header.SetHint (RVA=0x015df790, size=47) ================
+  +0x000: 40 53 48 83 ec 20 48 8b d9 48 8b 49 50 48 85 c9
+  +0x010: 74 17 45 33 c0 e8 66 9b ff ff 33 d2 48 8b cb 48
+  +0x020: 83 c4 20 5b e9 a7 fc ff ff e8 42 cf bd fe cc
+  --- Annotations ---
+  +0x015: CALL 0x015d9310 -> SIText.SetText
+  +0x024: JMP 0x015df460 -> Header.BindHintTooltip
+
+================ Header.SetText (RVA=0x015df7c0, size=512) ================
+  +0x000: 48 83 79 40 00 74 0c 48 8b 49 40 45 33 c0 e9 3d
+  +0x010: 9b ff ff 48 89 51 28 48 83 c1 28 e9 60 bf bd fe
+  +0x020: 48 89 5c 24 10 56 48 83 ec 20 48 83 79 18 00 48
+  +0x030: 8b f2 48 8b d9 74 6a 48 8b 49 18 33 d2 48 89 7c
+  +0x040: 24 30 e8 99 77 05 ff 48 85 c0 74 60 45 33 c0 48
+  +0x050: 8b d6 48 8b c8 e8 36 75 93 00 48 8b 0d 27 1a 83
+  +0x060: 01 48 8b 5b 40 e8 86 ce bd fe 4c 8b 05 3f 21 80
+  +0x070: 01 45 33 c9 48 8b d6 48 8b c8 48 8b f8 e8 4e 5e
+  +0x080: bf ff 48 85 db 74 25 4c 8b 0d 7a 73 80 01 45 33
+  +0x090: c0 48 8b d7 48 8b cb e8 a4 e5 3f ff 48 8b 7c 24
+  +0x0a0: 30 48 8b 5c 24 38 48 83 c4 20 5e c3 e8 8f ce bd
+  +0x0b0: fe cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x0c0: 48 89 5c 24 10 48 89 74 24 20 57 48 83 ec 30 48
+  +0x0d0: 8b 41 68 33 f6 40 88 71 30 48 8b d9 48 8d 4c 24
+  +0x0e0: 40 48 89 74 24 50 33 d2 48 89 44 24 40 e8 ce 32
+  +0x0f0: 24 ff 84 c0 74 6e 48 8b 15 13 46 83 01 48 8d 4c
+  +0x100: 24 50 e8 19 92 44 ff 84 c0 74 50 48 8b 43 68 48
+  +0x110: 8b 7c 24 50 48 89 44 24 40 48 8b 05 08 54 86 01
+  +0x120: 39 b0 e4 00 00 00 75 0f 48 8b c8 e8 b0 ce bd fe
+  +0x130: 48 8b 05 f1 53 86 01 48 8b 80 b8 00 00 00 4c 8b
+  +0x140: 00 48 85 ff 74 5a 4c 8b cb 48 89 74 24 20 48 8d
+  +0x150: 54 24 40 48 8b cf e8 b5 6a ee ff 48 89 74 24 40
+  +0x160: 48 89 73 68 40 38 73 20 74 26 48 8b 0d 37 c3 86
+  +0x170: 01 48 8b 7b 48 39 b1 e4 00 00 00 75 05 e8 5e ce
+  +0x180: bd fe 33 d2 48 8b cf e8 14 63 01 00 40 88 73 20
+  +0x190: 48 8b 5c 24 48 48 8b 74 24 58 48 83 c4 30 5f c3
+  +0x1a0: e8 9b cd bd fe cc cc cc cc cc cc cc cc cc cc cc
+  +0x1b0: 48 89 5c 24 08 57 48 83 ec 20 48 83 79 10 00 0f
+  +0x1c0: b6 fa 48 8b d9 74 43 48 8b 15 1a 02 82 01 45 33
+  +0x1d0: c0 48 8b 49 10 e8 86 da 94 00 48 8b 4b 10 48 85
+  +0x1e0: c9 74 75 48 8b 15 2e 01 82 01 45 33 c0 e8 6e da
+  +0x1f0: 94 00 48 8b 4b 10 48 85 c9 74 5d 48 8b 15 b6 38
+  --- Annotations ---
+  +0x00e: JMP 0x015d9310 -> SIText.SetText
+  +0x042: CALL 0x00636fa0 -> BindingInspector.get_Target, FMMatchMomentumChart.get_AwayTeamColourBindingPath, FMDraggableObject.get_DragData, FMTacticsShirt.get_IsUnavailable
+  +0x055: CALL 0x01f16d50 -> Clickable.add_clickedWithEventInfo
+  +0x07d: CALL 0x011d5690 -> ParameterizedThreadStart..ctor, SendOrPostCallback..ctor, ContextCallback..ctor, WaitCallback..ctor
+  +0x097: CALL 0x009dde00 -> 
+  +0x0ed: CALL 0x00822b80 -> ContentInfo.get_IsValid, CancellationToken.get_CanBeCanceled, HandlerAccess.IsValid, Key.IsValid
+  +0x102: CALL 0x00a28ae0 -> 
+  +0x156: CALL 0x014c63d0 -> Bindings.Unbind
+  +0x187: CALL 0x015f5c60 -> BindableElementUtils.UnbindHierarchy
+  +0x1d5: CALL 0x01f2d420 -> VisualElement.RemoveFromClassList
+  +0x1ed: CALL 0x01f2d420 -> VisualElement.RemoveFromClassList
+
+================ Header.SetupClickHandler (RVA=0x015df7e0, size=146) ================
+  +0x000: 48 89 5c 24 10 56 48 83 ec 20 48 83 79 18 00 48
+  +0x010: 8b f2 48 8b d9 74 6a 48 8b 49 18 33 d2 48 89 7c
+  +0x020: 24 30 e8 99 77 05 ff 48 85 c0 74 60 45 33 c0 48
+  +0x030: 8b d6 48 8b c8 e8 36 75 93 00 48 8b 0d 27 1a 83
+  +0x040: 01 48 8b 5b 40 e8 86 ce bd fe 4c 8b 05 3f 21 80
+  +0x050: 01 45 33 c9 48 8b d6 48 8b c8 48 8b f8 e8 4e 5e
+  +0x060: bf ff 48 85 db 74 25 4c 8b 0d 7a 73 80 01 45 33
+  +0x070: c0 48 8b d7 48 8b cb e8 a4 e5 3f ff 48 8b 7c 24
+  +0x080: 30 48 8b 5c 24 38 48 83 c4 20 5e c3 e8 8f ce bd
+  +0x090: fe cc
+  --- Annotations ---
+  +0x022: CALL 0x00636fa0 -> BindingInspector.get_Target, FMMatchMomentumChart.get_AwayTeamColourBindingPath, FMDraggableObject.get_DragData, FMTacticsShirt.get_IsUnavailable
+  +0x035: CALL 0x01f16d50 -> Clickable.add_clickedWithEventInfo
+  +0x05d: CALL 0x011d5690 -> ParameterizedThreadStart..ctor, SendOrPostCallback..ctor, ContextCallback..ctor, WaitCallback..ctor
+  +0x077: CALL 0x009dde00 -> 
+
+================ Header.Unbind (RVA=0x015df880, size=230) ================
+  +0x000: 48 89 5c 24 10 48 89 74 24 20 57 48 83 ec 30 48
+  +0x010: 8b 41 68 33 f6 40 88 71 30 48 8b d9 48 8d 4c 24
+  +0x020: 40 48 89 74 24 50 33 d2 48 89 44 24 40 e8 ce 32
+  +0x030: 24 ff 84 c0 74 6e 48 8b 15 13 46 83 01 48 8d 4c
+  +0x040: 24 50 e8 19 92 44 ff 84 c0 74 50 48 8b 43 68 48
+  +0x050: 8b 7c 24 50 48 89 44 24 40 48 8b 05 08 54 86 01
+  +0x060: 39 b0 e4 00 00 00 75 0f 48 8b c8 e8 b0 ce bd fe
+  +0x070: 48 8b 05 f1 53 86 01 48 8b 80 b8 00 00 00 4c 8b
+  +0x080: 00 48 85 ff 74 5a 4c 8b cb 48 89 74 24 20 48 8d
+  +0x090: 54 24 40 48 8b cf e8 b5 6a ee ff 48 89 74 24 40
+  +0x0a0: 48 89 73 68 40 38 73 20 74 26 48 8b 0d 37 c3 86
+  +0x0b0: 01 48 8b 7b 48 39 b1 e4 00 00 00 75 05 e8 5e ce
+  +0x0c0: bd fe 33 d2 48 8b cf e8 14 63 01 00 40 88 73 20
+  +0x0d0: 48 8b 5c 24 48 48 8b 74 24 58 48 83 c4 30 5f c3
+  +0x0e0: e8 9b cd bd fe cc
+  --- Annotations ---
+  +0x02d: CALL 0x00822b80 -> ContentInfo.get_IsValid, CancellationToken.get_CanBeCanceled, HandlerAccess.IsValid, Key.IsValid
+  +0x042: CALL 0x00a28ae0 -> 
+  +0x096: CALL 0x014c63d0 -> Bindings.Unbind
+  +0x0c7: CALL 0x015f5c60 -> BindableElementUtils.UnbindHierarchy
+
+================ Header.UpdateSortingIcons (RVA=0x015df970, size=174) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 20 48 83 79 10 00 0f
+  +0x010: b6 fa 48 8b d9 74 43 48 8b 15 1a 02 82 01 45 33
+  +0x020: c0 48 8b 49 10 e8 86 da 94 00 48 8b 4b 10 48 85
+  +0x030: c9 74 75 48 8b 15 2e 01 82 01 45 33 c0 e8 6e da
+  +0x040: 94 00 48 8b 4b 10 48 85 c9 74 5d 48 8b 15 b6 38
+  +0x050: 83 01 45 33 c0 e8 96 89 94 00 80 7b 60 00 75 3d
+  +0x060: 48 83 7b 10 00 74 36 48 8b 15 9a 38 83 01 45 33
+  +0x070: c0 48 8b 4b 10 e8 36 da 94 00 48 8b 15 e7 00 82
+  +0x080: 01 40 84 ff 48 8b 4b 10 48 0f 45 15 a8 01 82 01
+  +0x090: 48 85 c9 74 13 45 33 c0 e8 53 89 94 00 48 8b 5c
+  +0x0a0: 24 30 48 83 c4 20 5f c3 e8 e3 cc bd fe cc
+  --- Annotations ---
+  +0x025: CALL 0x01f2d420 -> VisualElement.RemoveFromClassList
+  +0x03d: CALL 0x01f2d420 -> VisualElement.RemoveFromClassList
+  +0x055: CALL 0x01f28360 -> VisualElement.AddToClassList
+  +0x075: CALL 0x01f2d420 -> VisualElement.RemoveFromClassList
+  +0x098: CALL 0x01f28360 -> VisualElement.AddToClassList
+
+================ SortComparer.Compare (RVA=0x015a3c60, size=208) ================
+  +0x000: 48 89 5c 24 08 48 89 6c 24 10 48 89 74 24 18 57
+  +0x010: 41 56 41 57 48 83 ec 30 4c 63 49 2c 48 8b e9 4d
+  +0x020: 8b f1 45 85 c9 7e 75 41 8b c1 33 db 0f af c2 8d
+  +0x030: 7b 20 48 98 48 8d 34 c5 20 00 00 00 41 8b c1 0f
+  +0x040: af c2 45 0f af c8 48 63 c8 49 63 c1 48 2b c1 4c
+  +0x050: 8d 3c c5 00 00 00 00 48 8b 45 10 48 85 c0 74 6a
+  +0x060: 0f 10 04 07 4c 8b 4d 20 0f 11 44 24 20 4d 85 c9
+  +0x070: 74 58 4a 8b 0c 0e 49 8d 04 37 4a 8b 14 08 45 33
+  +0x080: c0 e8 4a 00 00 00 8b c8 85 c0 75 2b 48 ff c3 48
+  +0x090: 83 c6 08 48 83 c7 10 49 3b de 7c bb 33 c0 48 8b
+  +0x0a0: 5c 24 50 48 8b 6c 24 58 48 8b 74 24 60 48 83 c4
+  +0x0b0: 30 41 5f 41 5e 5f c3 0f 10 44 24 20 66 0f 73 d8
+  +0x0c0: 0c 66 0f 7e c0 0f af c1 eb d4 e8 d1 89 c1 fe cc
+  --- Annotations ---
+  +0x081: CALL 0x015a3d30 -> SortComparer.Compare
+
+================ SortComparer.Compare (RVA=0x015a3d30, size=642) ================
+  +0x000: 48 89 6c 24 18 48 89 7c 24 20 41 56 48 83 ec 60
+  +0x010: 4c 8b f2 48 8b f9 48 85 c9 0f 84 4b 02 00 00 48
+  +0x020: 8b 11 48 8b 82 a8 01 00 00 48 8b 92 b0 01 00 00
+  +0x030: ff d0 48 8b e8 4d 85 f6 0f 84 2c 02 00 00 49 8b
+  +0x040: 16 49 8b ce 48 89 5c 24 70 48 89 74 24 78 4c 8b
+  +0x050: 82 a8 01 00 00 48 8b 92 b0 01 00 00 41 ff d0 48
+  +0x060: 8b 0d 2a 7b a9 01 48 8b f0 48 8b 1d d0 7a a9 01
+  +0x070: 83 b9 e4 00 00 00 00 75 05 e8 f2 89 c1 fe 33 d2
+  +0x080: 48 8d 4b 20 e8 67 9c e3 ff 45 33 c0 48 8b d0 48
+  +0x090: 8b cd e8 c9 d3 55 ff 84 c0 0f 84 49 01 00 00 48
+  +0x0a0: 8b 0d 9a 7a a9 01 33 d2 48 83 c1 20 e8 3f 9c e3
+  +0x0b0: ff 45 33 c0 48 8b d0 48 8b ce e8 a1 d3 55 ff 84
+  +0x0c0: c0 0f 84 21 01 00 00 48 8b 17 48 8b cf 48 8b 82
+  +0x0d0: c8 01 00 00 48 8b 92 d0 01 00 00 ff d0 49 8b 16
+  +0x0e0: 49 8b ce 48 8b f0 4c 8b 82 c8 01 00 00 48 8b 92
+  +0x0f0: d0 01 00 00 41 ff d0 48 8b 15 42 7a a9 01 33 db
+  +0x100: 48 85 c0 74 10 48 39 10 48 0f 44 d8 48 85 db 0f
+  +0x110: 84 64 01 00 00 0f 29 7c 24 40 48 85 f6 74 37 33
+  +0x120: ff 48 39 16 48 0f 44 fe 48 85 ff 0f 84 3f 01 00
+  +0x130: 00 33 d2 48 8b cf e8 85 bc cf ff 8b 4f 10 89 4c
+  +0x140: 24 28 c7 44 24 2c 00 00 00 00 48 89 44 24 20 0f
+  +0x150: 28 7c 24 20 eb 03 0f 57 ff 0f 29 74 24 50 48 85
+  +0x160: db 74 25 33 d2 48 8b cb e8 53 bc cf ff 8b 4b 10
+  +0x170: 89 4c 24 28 c7 44 24 2c 00 00 00 00 48 89 44 24
+  +0x180: 20 0f 28 74 24 20 eb 03 0f 57 f6 48 8b 0d 76 4b
+  +0x190: 85 01 83 b9 e4 00 00 00 00 75 05 e8 d0 88 c1 fe
+  +0x1a0: 45 33 c9 66 0f 7f 74 24 20 45 33 c0 66 0f 7f 7c
+  +0x1b0: 24 30 48 8d 54 24 20 48 8d 4c 24 30 e8 cf 68 0a
+  +0x1c0: 00 0f 28 74 24 50 0f 28 7c 24 40 48 8b 5c 24 70
+  +0x1d0: 4c 8d 5c 24 60 49 8b 6b 20 49 8b 7b 28 48 8b 74
+  +0x1e0: 24 78 49 8b e3 41 5e c3 48 8b 0d 89 2f 86 01 33
+  +0x1f0: d2 e8 fa 9a e3 ff 45 33 c0 48 8b d0 48 8b cd e8
+  +0x200: 5c d2 55 ff 48 8b 0d 6d 2f 86 01 33 d2 84 c0 75
+  +0x210: 39 e8 da 9a e3 ff 45 33 c0 48 8b d0 48 8b ce e8
+  +0x220: 3c d2 55 ff 84 c0 74 07 b8 01 00 00 00 eb 9c 4c
+  +0x230: 8b 07 49 8b d6 48 8b cf 49 8b 80 18 02 00 00 4d
+  +0x240: 8b 80 20 02 00 00 ff d0 eb 81 e8 a1 9a e3 ff 45
+  +0x250: 33 c0 48 8b d0 48 8b ce e8 03 d2 55 ff f6 d8 1b
+  +0x260: c0 f7 d8 ff c8 e9 61 ff ff ff e8 61 87 c1 fe cc
+  +0x270: 48 8b ce e8 d8 77 c1 fe cc 48 8b c8 e8 cf 77 c1
+  +0x280: fe cc
+  --- Annotations ---
+  +0x084: CALL 0x013dda20 -> Type.GetTypeFromHandle
+  +0x092: CALL 0x00b01190 -> TimeSpan.op_Equality, Type.op_Equality, RuntimeType.op_Equality, IntPtr.op_Equality
+  +0x0ac: CALL 0x013dda20 -> Type.GetTypeFromHandle
+  +0x0ba: CALL 0x00b01190 -> TimeSpan.op_Equality, Type.op_Equality, RuntimeType.op_Equality, IntPtr.op_Equality
+  +0x136: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x168: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x1bc: CALL 0x0164a7c0 -> EmbeddedDataUtilities.CompareText
+  +0x1f1: CALL 0x013dda20 -> Type.GetTypeFromHandle
+  +0x1ff: CALL 0x00b01190 -> TimeSpan.op_Equality, Type.op_Equality, RuntimeType.op_Equality, IntPtr.op_Equality
+  +0x211: CALL 0x013dda20 -> Type.GetTypeFromHandle
+  +0x21f: CALL 0x00b01190 -> TimeSpan.op_Equality, Type.op_Equality, RuntimeType.op_Equality, IntPtr.op_Equality
+  +0x24a: CALL 0x013dda20 -> Type.GetTypeFromHandle
+  +0x258: CALL 0x00b01190 -> TimeSpan.op_Equality, Type.op_Equality, RuntimeType.op_Equality, IntPtr.op_Equality
+  +0x265: JMP 0x015a3efb -> 
+
+================ StreamedTable.MakeColumnHeader (RVA=0x015eac30, size=973) ================
+  +0x000: 48 8b c4 48 89 58 18 56 41 54 41 55 41 56 41 57
+  +0x010: 48 81 ec 90 00 00 00 4c 8b f1 0f 29 70 c8 48 8b
+  +0x020: 0d c3 98 85 01 0f 57 c0 0f 11 40 a0 48 8b da 48
+  +0x030: c7 40 20 00 00 00 00 e8 44 1a bd fe 49 8b d6 4c
+  +0x040: 8b f8 48 8d 48 10 4c 89 70 10 e8 c1 0a bd fe 49
+  +0x050: 8d 4f 18 49 89 5f 18 48 8b d3 e8 b1 0a bd fe 49
+  +0x060: 8b 8e 38 08 00 00 41 0f b6 b6 b8 09 00 00 48 85
+  +0x070: c9 0f 84 50 03 00 00 49 8b 57 18 4c 8d 84 24 d8
+  +0x080: 00 00 00 45 33 c9 e8 05 70 03 00 84 c0 74 29 48
+  +0x090: 8b 84 24 d8 00 00 00 48 85 c0 0f 84 27 03 00 00
+  +0x0a0: 48 8b 40 18 48 85 c0 0f 84 1a 03 00 00 0f b6 40
+  +0x0b0: 11 40 0a c6 40 0f 95 c6 49 8b 86 88 09 00 00 48
+  +0x0c0: 85 c0 0f 84 ff 02 00 00 4c 8b 40 38 4d 85 c0 0f
+  +0x0d0: 84 f2 02 00 00 4d 8b 4f 18 b9 02 00 00 00 48 8b
+  +0x0e0: 15 5b c6 85 01 e8 06 77 a1 fe 4c 8b e8 48 85 c0
+  +0x0f0: 0f 84 d1 02 00 00 48 8b 88 98 00 00 00 33 d2 48
+  +0x100: 89 ac 24 c0 00 00 00 48 89 bc 24 c8 00 00 00 e8
+  +0x110: 9c e6 3c ff 84 c0 74 09 49 8b 85 98 00 00 00 eb
+  +0x120: 07 49 8b 86 c0 09 00 00 48 89 44 24 40 33 ed 40
+  +0x130: 84 f6 75 24 48 8b 0d 6d df 85 01 e8 40 19 bd fe
+  +0x140: 4c 8b 05 81 fb 80 01 45 33 c9 49 8b d7 48 8b c8
+  +0x150: 48 8b e8 e8 78 dd 90 ff 48 8b 0d 59 9f 85 01 49
+  +0x160: 8b 7f 18 49 8b 9e b0 0a 00 00 e8 11 19 bd fe 4c
+  +0x170: 8b 44 24 40 4c 8b cb 48 c7 44 24 30 00 00 00 00
+  +0x180: 48 8b d7 48 89 6c 24 28 48 8b c8 40 88 74 24 20
+  +0x190: 4c 8b e0 e8 e8 4c ff ff 49 8b 8e 40 08 00 00 45
+  +0x1a0: 33 c0 33 d2 e8 c7 b8 82 00 0f b6 c8 33 c0 49 39
+  +0x1b0: 86 a0 09 00 00 0f 47 c1 84 c0 0f 84 ae 00 00 00
+  +0x1c0: 41 80 be a8 09 00 00 00 0f 85 a0 00 00 00 48 8b
+  +0x1d0: 0d f3 97 85 01 49 8b 6c 24 58 49 8b 5f 18 e8 9d
+  +0x1e0: 18 bd fe 49 8b d6 48 8b f8 48 8d 48 10 4c 89 70
+  +0x1f0: 10 e8 1a 09 bd fe 48 8d 4f 18 48 89 5f 18 48 8b
+  +0x200: d3 e8 0a 09 bd fe 48 8b 0d 6b fd 85 01 e8 6e 18
+  +0x210: bd fe 4c 8b 05 7f fb 80 01 45 33 c9 48 8b d7 48
+  +0x220: 8b c8 48 8b f0 e8 a6 dc 90 ff 41 0f b6 9e d8 07
+  +0x230: 00 00 48 8b 0d 7f e2 7e 01 e8 42 18 bd fe 48 8b
+  +0x240: f8 41 b8 09 00 00 00 b8 03 00 00 00 84 db 48 8b
+  +0x250: d6 48 8b cf 44 0f 44 c0 45 33 c9 e8 20 5e 0c 00
+  +0x260: 45 33 c0 48 8b d7 48 8b cd e8 a2 4f 99 00 49 8b
+  +0x270: 8e f8 08 00 00 48 8b bc 24 c8 00 00 00 48 8b ac
+  +0x280: 24 c0 00 00 00 48 85 c9 0f 84 39 01 00 00 4c 8b
+  +0x290: 0d 73 83 7e 01 4d 8b c4 49 8b 57 18 e8 1f 13 af
+  +0x2a0: ff 49 8b 45 48 48 8d 4c 24 50 33 d2 48 89 44 24
+  +0x2b0: 50 e8 6a 24 ed ff 84 c0 0f 84 bf 00 00 00 49 8b
+  +0x2c0: 5d 48 48 89 5c 24 50 48 85 db 74 25 33 d2 48 8b
+  +0x2d0: cb e8 ea 4b cb ff 8b 4b 10 89 4c 24 48 c7 44 24
+  +0x2e0: 4c 00 00 00 00 48 89 44 24 40 0f 28 74 24 40 eb
+  +0x2f0: 03 0f 57 f6 48 8b 0d 55 da 84 01 48 85 c9 0f 84
+  +0x300: c3 00 00 00 66 0f 6f c6 66 0f 73 d8 08 66 0f 7e
+  +0x310: c0 3b 41 10 74 49 48 8b 0d f3 28 86 01 83 b9 e4
+  +0x320: 00 00 00 00 75 05 e8 45 18 bd fe 45 33 c0 66 0f
+  +0x330: 7f 74 24 40 48 8d 54 24 40 48 8d 4c 24 68 e8 ed
+  +0x340: 6a ed ff 48 8b 15 6e f9 84 01 48 8d 4c 24 58 0f
+  +0x350: 10 00 0f 11 44 24 58 e8 54 81 81 ff 48 8b d8 49
+  +0x360: 8b 8e 00 09 00 00 48 85 c9 74 5c 4c 8b 0d be 86
+  +0x370: 7e 01 4d 8b c4 48 8b d3 e8 23 9f af ff 41 83 7d
+  +0x380: 50 00 74 1f 49 8b 8e 08 09 00 00 48 85 c9 74 37
+  +0x390: 4c 8b 0d 21 80 7f 01 4d 8b c4 41 8b 55 50 e8 bd
+  +0x3a0: af ac ff 48 8b 9c 24 d0 00 00 00 49 8b c4 0f 28
+  +0x3b0: b4 24 80 00 00 00 48 81 c4 90 00 00 00 41 5f 41
+  +0x3c0: 5e 41 5d 41 5c 5e c3 e8 04 17 bd fe cc
+  --- Annotations ---
+  +0x086: CALL 0x01621cc0 -> StreamedTableView.TryGetConfig
+  +0x10f: CALL 0x009b93e0 -> 
+  +0x153: CALL 0x00ef8b00 -> AsyncCallback..ctor, DeserializationEventHandler..ctor, OnRemoveWriter..ctor, CachingEventHandler..ctor
+  +0x193: CALL 0x015dfab0 -> Header..ctor
+  +0x1a4: CALL 0x01e166a0 -> Object.op_Inequality
+  +0x225: CALL 0x00ef8b00 -> AsyncCallback..ctor, DeserializationEventHandler..ctor, OnRemoveWriter..ctor, CachingEventHandler..ctor
+  +0x25b: CALL 0x016b0cb0 -> ContextMenuDescriptionManipulator..ctor
+  +0x269: CALL 0x01f7fe40 -> VisualElementExtensions.AddManipulator
+  +0x29c: CALL 0x010dc1f0 -> 
+  +0x2b1: CALL 0x014bd350 -> BindingPath.IsValid, HierarchySearchFilter.get_IsValid
+  +0x2d1: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x33e: CALL 0x014c1a60 -> Bindings.GetProperties
+  +0x357: CALL 0x00e030e0 -> 
+  +0x378: CALL 0x010e4ed0 -> 
+  +0x39e: CALL 0x010b5f90 -> 
+
+=== 3. Dump StreamedListView sorting & state change & reorderable methods ===
+
+================ StreamedListView.SetSortingBinding (RVA=0x015a9a80, size=83) ================
+  +0x000: 48 89 5c 24 08 48 89 74 24 10 57 48 83 ec 30 8b
+  +0x010: fa 48 8b f1 48 8b 15 55 fd 85 01 41 8b c8 41 0f
+  +0x020: b6 d9 e8 d9 ef 54 ff 4c 8b 05 f2 ba 87 01 44 0f
+  +0x030: b6 cb 4c 89 44 24 60 8b d7 4c 8b c0 48 8b ce 48
+  +0x040: 8b 5c 24 40 48 8b 74 24 48 48 83 c4 30 5f e9 ed
+  +0x050: 41 51 ff
+  --- Annotations ---
+  +0x022: CALL 0x00af8a80 -> 
+
+================ StreamedListView.SetSortingBinding (RVA=0x015a9ae0, size=310) ================
+  +0x000: 48 89 5c 24 08 48 89 74 24 10 57 48 83 ec 30 8b
+  +0x010: fa 48 8b f1 48 8b 15 9d f3 85 01 49 8b c8 41 0f
+  +0x020: b6 d9 e8 b9 85 54 ff 4c 8b 05 c2 b9 87 01 44 0f
+  +0x030: b6 cb 4c 89 44 24 20 8b d7 4c 8b c0 48 8b ce e8
+  +0x040: 9c 41 51 ff 84 c0 0f 84 c8 00 00 00 48 8b 8e 78
+  +0x050: 07 00 00 48 85 c9 0f 84 d4 00 00 00 33 d2 e8 9d
+  +0x060: 5f 26 ff 48 85 c0 0f 84 c4 00 00 00 48 8b 15 2d
+  +0x070: cb 89 01 33 c9 4c 8b c0 e8 a3 87 a5 fe 85 c0 0f
+  +0x080: 8e 8f 00 00 00 48 8b 86 78 07 00 00 48 85 c0 0f
+  +0x090: 84 9b 00 00 00 4c 8b 80 30 05 00 00 4d 85 c0 74
+  +0x0a0: 73 48 8b 15 f0 2b 87 01 b9 01 00 00 00 e8 6e 87
+  +0x0b0: a5 fe 85 c0 7e 5e 48 8b 86 78 07 00 00 48 85 c0
+  +0x0c0: 74 6e 0f b6 80 c1 04 00 00 fe c8 3c 01 76 55 48
+  +0x0d0: 8b 86 78 07 00 00 0f b6 88 c1 04 00 00 80 e9 03
+  +0x0e0: 80 f9 01 77 2f 33 d2 48 8b ce e8 31 c1 ff ff 48
+  +0x0f0: 8b 15 ca ba 85 01 48 8b c8 e8 e2 84 54 ff 48 8d
+  +0x100: 8e 80 06 00 00 48 89 86 80 06 00 00 48 8b d0 e8
+  +0x110: 4c 1b c1 fe 48 8b 5c 24 40 48 8b 74 24 48 48 83
+  +0x120: c4 30 5f c3 33 d2 48 8b ce e8 82 bf ff ff eb ce
+  +0x130: e8 eb 2a c1 fe cc
+  --- Annotations ---
+  +0x022: CALL 0x00af20c0 -> 
+  +0x03f: CALL 0x00abdcc0 -> 
+  +0x05e: CALL 0x0080fae0 -> FMXGMatchStoryChart.get_HomeTeamColourBindingPath, FMDraggableObject.get_DragPanelDataBindingPath, FMPassMapPanel.get_DataBinding, TreeView.get_bindItem
+  +0x0ea: CALL 0x015a5d00 -> StreamedListView.GetSelectedItems
+  +0x0f9: CALL 0x00af20c0 -> 
+  +0x129: CALL 0x015a5b90 -> StreamedListView.GetSelectedItem
+
+================ StreamedListView.BeginStateChange (RVA=0x015a47a0, size=80) ================
+  +0x000: 40 53 48 83 ec 20 48 8b d9 8b 89 50 05 00 00 ff
+  +0x010: c1 89 8b 50 05 00 00 84 d2 74 2f 83 8b 60 07 00
+  +0x020: 00 01 85 c9 7f 24 48 8b 03 48 8b cb 48 8b 90 20
+  +0x030: 0e 00 00 ff 90 18 0e 00 00 83 a3 60 07 00 00 fe
+  +0x040: 33 d2 48 8b cb e8 96 63 00 00 48 83 c4 20 5b c3
+  --- Annotations ---
+  +0x045: CALL 0x015aab80 -> StreamedListView.UpdateEnabledState
+
+================ StreamedListView.BeginStateChange (RVA=0x015a47f0, size=87) ================
+  +0x000: 40 53 48 83 ec 20 8b 81 50 05 00 00 48 8b d9 0b
+  +0x010: 91 60 07 00 00 ff c0 89 81 50 05 00 00 89 91 60
+  +0x020: 07 00 00 85 c0 7f 2a 85 d2 74 26 48 8b 01 48 8b
+  +0x030: 90 20 0e 00 00 ff 90 18 0e 00 00 83 a3 60 07 00
+  +0x040: 00 fe 33 d2 48 8b cb 48 83 c4 20 5b e9 3f 63 00
+  +0x050: 00 48 83 c4 20 5b c3
+  --- Annotations ---
+  +0x04c: JMP 0x015aab80 -> StreamedListView.UpdateEnabledState
+
+================ StreamedListView.EndStateChange (RVA=0x015a5350, size=80) ================
+  +0x000: 40 53 48 83 ec 20 8b 81 50 05 00 00 48 8b d9 ff
+  +0x010: c8 89 81 50 05 00 00 85 c0 7f 2f 83 b9 60 07 00
+  +0x020: 00 00 74 26 48 8b 01 48 8b 90 20 0e 00 00 ff 90
+  +0x030: 18 0e 00 00 83 a3 60 07 00 00 fe 33 d2 48 8b cb
+  +0x040: 48 83 c4 20 5b e9 e6 57 00 00 48 83 c4 20 5b c3
+  --- Annotations ---
+  +0x045: JMP 0x015aab80 -> StreamedListView.UpdateEnabledState
+
+================ StreamedListView.set_Reorderable (RVA=0x015ad4f0, size=33) ================
+  +0x000: 48 83 ec 28 48 8b 81 78 07 00 00 48 85 c0 74 0b
+  +0x010: 88 90 c1 05 00 00 48 83 c4 28 c3 e8 f0 f1 c0 fe
+  +0x020: cc
+  --- Annotations ---
+
+================ StreamedListView.RebuildInternal (RVA=0x002911e0, size=512) ================
+  +0x000: c2 00 00 cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x010: 0f b6 41 10 c3 cc cc cc cc cc cc cc cc cc cc cc
+  +0x020: 88 51 10 c3 cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x030: 48 89 5c 24 08 48 89 74 24 10 57 48 83 ec 20 48
+  +0x040: 8b f1 48 8b fa 48 8b 0d 84 68 bb 02 e8 7f b4 f2
+  +0x050: ff 45 33 c0 48 8b d7 48 8b c8 48 8b d8 e8 2e 3b
+  +0x060: 00 00 45 33 c0 48 8b d3 48 8b ce 48 8b 5c 24 30
+  +0x070: 48 8b 74 24 38 48 83 c4 20 5f e9 01 00 00 00 cc
+  +0x080: 4c 8b dc 49 89 5b 10 49 89 73 18 57 41 56 41 57
+  +0x090: 48 83 ec 40 48 8b fa 48 8b d9 83 79 20 00 0f 84
+  +0x0a0: d3 00 00 00 48 8b 41 18 49 89 43 20 c6 44 24 60
+  +0x0b0: 00 49 c7 43 d0 00 00 00 00 4d 8d 73 08 4d 89 73
+  +0x0c0: d8 4d 8d 7b 20 4d 89 7b e0 45 33 c0 49 8d 53 08
+  +0x0d0: 49 8b 4b 20 e8 47 68 18 01 48 8b 73 10 48 85 ff
+  +0x0e0: 0f 84 a7 00 00 00 48 8b 17 48 8b 82 68 01 00 00
+  +0x0f0: 48 8b 92 70 01 00 00 48 8b cf ff d0 48 85 f6 0f
+  +0x100: 84 8e 00 00 00 4c 8b 05 a4 c2 b9 02 48 8b d0 48
+  +0x110: 8b ce e8 49 91 b2 00 48 8b 43 10 48 85 c0 74 78
+  +0x120: 8b 4b 20 48 63 40 20 48 3b c1 7e 12 48 8b 4b 10
+  +0x130: 48 85 c9 74 68 33 d2 e8 b4 8b b2 00 eb d9 41 80
+  +0x140: 3e 00 74 0a 33 d2 49 8b 0f e8 22 68 18 01 eb 23
+  +0x150: 48 8b 44 24 30 80 38 00 74 0f 33 d2 48 8b 4c 24
+  +0x160: 38 48 8b 09 e8 07 68 18 01 48 8b 4c 24 28 48 85
+  +0x170: c9 75 30 b0 01 eb 02 32 c0 48 8b 5c 24 68 48 8b
+  +0x180: 74 24 70 48 83 c4 40 41 5f 41 5e 5f c3 e8 8e b3
+  +0x190: f2 ff 90 e8 88 b3 f2 ff e8 83 b3 f2 ff e8 7e b3
+  +0x1a0: f2 ff 90 e8 08 b4 f2 ff cc cc cc cc cc cc cc cc
+  +0x1b0: 48 89 5c 24 10 48 89 74 24 18 41 56 48 83 ec 20
+  +0x1c0: 48 8b d9 48 8b 0d 66 91 b8 02 e8 01 b3 f2 ff 33
+  +0x1d0: d2 48 8b c8 4c 8b f0 e8 64 b6 01 01 48 8b 4b 10
+  +0x1e0: 48 85 c9 74 63 48 8b 15 9c c2 b9 02 e8 4f a0 b2
+  +0x1f0: 00 33 db 48 8b f0 48 85 c0 74 4d 48 89 7c 24 30
+  --- Annotations ---
+  +0x05d: CALL 0x00294d70 -> BacktraceUnityMessage..ctor
+  +0x07a: JMP 0x00291260 -> BacktraceLogManager.Enqueue
+  +0x0d4: CALL 0x01417b00 -> Monitor.Enter
+  +0x112: CALL 0x00dba440 -> 
+  +0x137: CALL 0x00db9ed0 -> 
+  +0x149: CALL 0x01417b50 -> Monitor.Exit
+  +0x164: CALL 0x01417b50 -> Monitor.Exit
+  +0x1d7: CALL 0x012aca20 -> StringBuilder..ctor
+  +0x1ec: CALL 0x00dbb420 -> 
+
+================ StreamedListView.RefreshInternal (RVA=0x015a9060, size=807) ================
+  +0x000: 48 89 5c 24 08 48 89 6c 24 10 48 89 74 24 18 57
+  +0x010: 48 81 ec 90 00 00 00 48 8b f9 48 8b 0d 7f af 89
+  +0x020: 01 e8 2a 36 c1 fe 33 c9 48 8b f0 c7 40 10 ff ff
+  +0x030: ff ff e8 49 18 11 00 33 ed 84 c0 74 7c 48 8b 0d
+  +0x040: 0c 67 82 01 48 8b 91 b8 00 00 00 4c 8b 02 4d 85
+  +0x050: c0 0f 84 ca 02 00 00 48 8b 15 a2 d7 87 01 8d 4d
+  +0x060: 25 e8 3a 92 a5 fe 48 85 c0 74 4e 4c 8b 05 76 8c
+  +0x070: 87 01 4c 8b 08 41 0f b6 88 30 01 00 00 41 38 89
+  +0x080: 30 01 00 00 72 33 0f b6 d1 49 8b 89 c8 00 00 00
+  +0x090: 4c 39 44 d1 f8 75 22 48 8b 97 78 07 00 00 45 33
+  +0x0a0: c0 48 8b c8 48 8b d8 e8 c4 17 0b 00 84 c0 74 09
+  +0x0b0: 8b 83 00 05 00 00 89 46 10 8b 87 60 07 00 00 83
+  +0x0c0: e0 ef 89 87 60 07 00 00 a8 08 0f 85 2e 02 00 00
+  +0x0d0: 48 8b 8f 78 07 00 00 48 39 af 58 07 00 00 0f 84
+  +0x0e0: 0c 02 00 00 48 85 c9 0f 84 34 02 00 00 48 39 a9
+  +0x0f0: 30 05 00 00 74 46 48 8b 9f 68 05 00 00 48 85 db
+  +0x100: 0f 84 1b 02 00 00 4c 8b 87 58 07 00 00 b9 01 00
+  +0x110: 00 00 48 8b 15 ff 35 87 01 8b 5b 18 e8 7f 91 a5
+  +0x120: fe 3b d8 7e 17 48 8b 8f 78 07 00 00 48 85 c9 0f
+  +0x130: 84 ec 01 00 00 33 d2 e8 84 02 10 00 48 8b 8f 78
+  +0x140: 07 00 00 48 85 c9 0f 84 d5 01 00 00 33 d2 e8 3d
+  +0x150: 02 10 00 33 d2 c6 87 b8 05 00 00 01 48 8b cf e8
+  +0x160: 1c 0d 00 00 48 39 af 80 06 00 00 74 12 48 8b 97
+  +0x170: 80 06 00 00 45 33 c0 48 8b cf e8 c1 22 00 00 33
+  +0x180: d2 48 8b cf e8 37 94 ce fe 84 c0 74 49 48 8b 87
+  +0x190: 78 07 00 00 48 85 c0 0f 84 84 01 00 00 4c 8b 80
+  +0x1a0: 30 05 00 00 4d 85 c0 74 1d 48 8b 15 68 35 87 01
+  +0x1b0: b9 01 00 00 00 e8 e6 90 a5 fe 83 f8 01 7c 07 0f
+  +0x1c0: b6 af 8e 06 00 00 85 ed 48 8b cf 0f 95 c2 45 33
+  +0x1d0: c0 e8 7a e4 04 00 33 d2 48 8b cf e8 40 19 00 00
+  +0x1e0: 83 7e 10 00 0f 8c 1e 01 00 00 48 8b 0d e7 03 89
+  +0x1f0: 01 48 8b 9f 78 07 00 00 83 b9 e4 00 00 00 00 75
+  +0x200: 05 e8 3a 35 c1 fe 48 8b 05 e3 de 86 01 48 8d 4c
+  +0x210: 24 60 45 33 c9 48 89 44 24 20 45 33 c0 48 8b d3
+  +0x220: e8 4b 5e 55 ff 0f 10 44 24 60 48 8b 0d df 0f 88
+  +0x230: 01 0f 10 4c 24 70 0f 11 44 24 30 0f 10 84 24 80
+  +0x240: 00 00 00 0f 11 4c 24 40 0f 11 44 24 50 e8 fe 33
+  +0x250: c1 fe 4c 8b 05 a7 10 85 01 45 33 c9 48 8b d6 48
+  +0x260: 8b c8 48 8b d8 e8 06 c6 c4 ff 4c 8b 0d b7 2f 85
+  +0x270: 01 48 8d 54 24 30 4c 8b c3 48 8d 4c 24 60 e8 8d
+  +0x280: 89 93 ff 0f 10 44 24 60 48 8b 15 d1 2e 85 01 48
+  +0x290: 8d 4c 24 30 0f 10 4c 24 70 0f 11 44 24 30 0f 10
+  +0x2a0: 84 24 80 00 00 00 0f 11 4c 24 40 0f 11 44 24 50
+  +0x2b0: e8 8b 7c 93 ff 48 85 c0 74 4e 48 8b 0d 8f 64 82
+  +0x2c0: 01 48 8b 91 b8 00 00 00 4c 8b 02 4d 85 c0 74 51
+  +0x2d0: 48 8b 15 29 d5 87 01 b9 3d 00 00 00 c6 44 24 28
+  +0x2e0: 00 4c 8b c8 c6 44 24 20 01 e8 42 b9 a5 fe eb 18
+  +0x2f0: 48 85 c9 74 2c 33 d2 e8 c4 00 10 00 eb 0a 33 d2
+  +0x300: 48 8b cf e8 48 fb ff ff 4c 8d 9c 24 90 00 00 00
+  +0x310: 49 8b 5b 10 49 8b 6b 18 49 8b 73 20 49 8b e3 5f
+  +0x320: c3 e8 7a 33 c1 fe cc
+  --- Annotations ---
+  +0x032: CALL 0x016ba8e0 -> NavigationManager.Exists
+  +0x0a7: CALL 0x0165a8d0 -> VisualElementExtensions.IsChildOf, CascadingMenu.<OnFocusOutEvent>g__HasFocus|54_0
+  +0x137: CALL 0x016a9420 -> VirtualisedList.ResetView
+  +0x14e: CALL 0x016a93f0 -> VirtualisedList.Refresh
+  +0x15f: CALL 0x015a9ee0 -> StreamedListView.TryScrollToCurrentElementOrCachedScrollOffset
+  +0x17a: CALL 0x015ab4a0 -> StreamedListView.UpdateSelectedItems
+  +0x184: CALL 0x00292620 -> FMpediaDataReference.Equals, PrivacyPolicyReference.Equals, StaticDataReference.Equals, ApplicationReference.Equals
+  +0x1d1: CALL 0x015f76b0 -> DiggableVisualElement.set_Diggable
+  +0x1db: CALL 0x015aab80 -> StreamedListView.UpdateEnabledState
+  +0x220: CALL 0x00aff0d0 -> 
+  +0x265: CALL 0x011f58d0 -> 
+  +0x27e: CALL 0x00ee1c70 -> 
+  +0x2b0: CALL 0x00ee0fa0 -> 
+  +0x2f7: CALL 0x016a9420 -> VirtualisedList.ResetView
+  +0x303: CALL 0x015a8eb0 -> StreamedListView.Rebuild
+
+================ StreamedListView.SetList (RVA=0x015a9880, size=324) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 20 83 89 60 07 00 00
+  +0x010: 02 48 8b fa 8b 91 50 05 00 00 48 8b d9 ff c2 89
+  +0x020: 91 50 05 00 00 85 d2 7f 24 48 8b 11 48 8b 82 18
+  +0x030: 0e 00 00 48 8b 92 20 0e 00 00 ff d0 83 a3 60 07
+  +0x040: 00 00 fe 33 d2 48 8b cb e8 b3 12 00 00 48 85 ff
+  +0x050: 75 52 48 8b 3d 87 cb 88 01 48 83 7f 38 00 75 08
+  +0x060: 48 8b cf e8 d8 70 c1 fe 48 8b 47 38 48 8b 40 10
+  +0x070: f6 80 35 01 00 00 01 75 08 48 8b c8 e8 3f 70 c1
+  +0x080: fe 83 b8 e4 00 00 00 00 75 08 48 8b c8 e8 8e 2e
+  +0x090: c1 fe 48 8b 47 38 48 8b 48 10 48 8b 81 b8 00 00
+  +0x0a0: 00 48 8b 38 48 8d 8b 58 07 00 00 48 89 bb 58 07
+  +0x0b0: 00 00 48 8b d7 e8 06 1e c1 fe 4c 8b 83 78 07 00
+  +0x0c0: 00 80 a3 48 06 00 00 fe 4d 85 c0 74 71 4d 8b 80
+  +0x0d0: 30 05 00 00 4d 85 c0 74 13 48 8b 15 18 2e 87 01
+  +0x0e0: b9 01 00 00 00 e8 96 89 a5 fe eb 02 33 c0 89 83
+  +0x0f0: 34 07 00 00 8b 83 50 05 00 00 ff c8 89 83 50 05
+  +0x100: 00 00 85 c0 7f 2d 83 bb 60 07 00 00 00 74 24 48
+  +0x110: 8b 03 48 8b cb 48 8b 90 20 0e 00 00 ff 90 18 0e
+  +0x120: 00 00 83 a3 60 07 00 00 fe 33 d2 48 8b cb e8 cd
+  +0x130: 11 00 00 48 8b 5c 24 30 48 83 c4 20 5f c3 e8 3d
+  +0x140: 2d c1 fe cc
+  --- Annotations ---
+  +0x048: CALL 0x015aab80 -> StreamedListView.UpdateEnabledState
+  +0x12e: CALL 0x015aab80 -> StreamedListView.UpdateEnabledState
+
+=== 4. Dump SpecificallyScoutedPersonReference & Type 785 & PersonReference property methods ===
+
+================ SpecificallyScoutedPersonReference.AcceptsPropertyInternal (RVA=0x00696ef0, size=512) ================
+  +0x000: 81 f9 73 57 47 6e 76 2e 81 f9 76 4c 75 71 76 13
+  +0x010: 81 f9 20 4e 71 73 74 08 81 f9 33 63 44 75 75 31
+  +0x020: b0 01 c3 81 f9 72 79 6c 70 74 f5 81 f9 76 4c 75
+  +0x030: 71 75 1e b0 01 c3 81 f9 45 45 59 63 74 e2 81 f9
+  +0x040: 61 78 4d 64 74 da 81 f9 73 57 47 6e 75 03 b0 01
+  +0x050: c3 32 c0 c3 cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x060: 66 90 81 f9 4a 31 43 74 0f 94 c0 c3 cc cc cc cc
+  +0x070: 66 90 81 fa 4a 31 43 74 0f 94 c0 c3 cc cc cc cc
+  +0x080: 48 8b 0d 91 a8 77 02 e9 34 57 b2 ff cc cc cc cc
+  +0x090: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 50 02
+  +0x0a0: 00 00 48 89 7c 24 30 33 d2 8b 79 18 83 c7 07 e8
+  +0x0b0: ec 9c 4f 00 3b f8 7e 11 4c 8b 05 99 58 76 02 8b
+  +0x0c0: d7 48 8b cb e8 27 3f 59 00 48 8b 0d d0 3f 75 02
+  +0x0d0: 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75 05 e8 cd
+  +0x0e0: 57 b2 ff 33 d2 b9 72 79 6c 70 e8 b1 75 c1 ff 4c
+  +0x0f0: 8b 43 10 4c 8b 0d de 52 76 02 ff 43 1c 48 63 53
+  +0x100: 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81
+  +0x110: c0 00 00 00 48 8b cb 4d 8b 40 70 e8 50 0b 5c 00
+  +0x120: eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9
+  +0x130: 61 78 4d 64 e8 67 75 c1 ff 4c 8b 43 10 4c 8b 0d
+  +0x140: 94 52 76 02 ff 43 1c 48 63 53 18 41 3b 50 18 72
+  +0x150: 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00 00 00 48 8b
+  +0x160: cb 4d 8b 40 70 e8 06 0b 5c 00 eb 0b 8d 4a 01 89
+  +0x170: 4b 18 41 89 44 90 20 33 d2 b9 45 45 59 63 e8 1d
+  +0x180: 75 c1 ff 4c 8b 43 10 4c 8b 0d 4a 52 76 02 ff 43
+  +0x190: 1c 48 63 53 18 41 3b 50 18 72 1b 49 8b 49 20 8b
+  +0x1a0: d0 4c 8b 81 c0 00 00 00 48 8b cb 4d 8b 40 70 e8
+  +0x1b0: bc 0a 5c 00 eb 0b 8d 4a 01 89 4b 18 41 89 44 90
+  +0x1c0: 20 33 d2 b9 33 63 44 75 e8 d3 74 c1 ff 4c 8b 43
+  +0x1d0: 10 4c 8b 0d 00 52 76 02 ff 43 1c 48 63 53 18 41
+  +0x1e0: 3b 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00
+  +0x1f0: 00 00 48 8b cb 4d 8b 40 70 e8 72 0a 5c 00 eb 0b
+  --- Annotations ---
+  +0x0af: CALL 0x00b90c90 -> AttrListImpl.get_Length, KeyCollection.get_Count, ValueCollection.get_Count, DropdownMenu.get_Count
+  +0x0c4: CALL 0x00c2aee0 -> 
+  +0x0ea: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x11b: CALL 0x00c57b60 -> 
+  +0x134: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x165: CALL 0x00c57b60 -> 
+  +0x17e: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x1af: CALL 0x00c57b60 -> 
+  +0x1c8: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x1f9: CALL 0x00c57b60 -> 
+
+================ SpecificallyScoutedPersonReference.GetPropertyTypeInternal (RVA=0x00697200, size=356) ================
+  +0x000: 48 89 5c 24 08 55 48 8b ec 48 83 ec 30 0f 57 c0
+  +0x010: 48 8b d9 0f 11 01 81 fa 73 57 47 6e 0f 86 82 00
+  +0x020: 00 00 81 fa 76 4c 75 71 76 2b 81 fa 20 4e 71 73
+  +0x030: 74 0c 81 fa 33 63 44 75 0f 85 bb 00 00 00 45 33
+  +0x040: c0 48 8d 4d f0 33 d2 0f 11 45 f0 e8 b0 f8 e3 00
+  +0x050: e9 fa 00 00 00 81 fa 72 79 6c 70 75 28 48 8b 0d
+  +0x060: cc ad 75 02 83 b9 e4 00 00 00 00 75 05 e8 2e 55
+  +0x070: b2 ff 33 d2 b9 72 79 6c 70 e8 12 73 c1 ff 8b d0
+  +0x080: e9 b4 00 00 00 81 fa 76 4c 75 71 75 6c 45 33 c0
+  +0x090: 48 8d 4d f0 33 d2 0f 11 45 f0 e8 61 f8 e3 00 e9
+  +0x0a0: ab 00 00 00 81 fa 45 45 59 63 75 25 48 8b 0d 7d
+  +0x0b0: ad 75 02 83 b9 e4 00 00 00 00 75 05 e8 df 54 b2
+  +0x0c0: ff 33 d2 b9 01 00 42 44 e8 c3 72 c1 ff 8b d0 eb
+  +0x0d0: 68 81 fa 61 78 4d 64 0f 84 61 ff ff ff 81 fa 73
+  +0x0e0: 57 47 6e 75 14 45 33 c0 48 8d 4d f0 33 d2 0f 11
+  +0x0f0: 45 f0 e8 09 f8 e3 00 eb 56 48 8b 15 30 ad 75 02
+  +0x100: 83 ba e4 00 00 00 00 75 27 48 8b ca e8 8f 54 b2
+  +0x110: ff 48 8b 15 18 ad 75 02 83 ba e4 00 00 00 00 75
+  +0x120: 0f 48 8b ca e8 77 54 b2 ff 48 8b 15 00 ad 75 02
+  +0x130: 48 8b 92 b8 00 00 00 8b 12 0f 57 c0 48 8d 4d f0
+  +0x140: 45 33 c9 45 33 c0 0f 11 45 f0 e8 81 f7 e3 00 0f
+  +0x150: 10 45 f0 48 8b c3 0f 11 03 48 8b 5c 24 40 48 83
+  +0x160: c4 30 5d c3
+  --- Annotations ---
+  +0x04b: CALL 0x014d6b00 -> BindingKind..ctor
+  +0x050: JMP 0x0069734f -> 
+  +0x079: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x080: JMP 0x00697339 -> 
+  +0x09a: CALL 0x014d6b00 -> BindingKind..ctor
+  +0x09f: JMP 0x0069734f -> 
+  +0x0c8: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x0f2: CALL 0x014d6b00 -> BindingKind..ctor
+  +0x14a: CALL 0x014d6ad0 -> BindingKind..ctor
+
+================ SpecificallyScoutedPersonReference.GetPropertiesInternal (RVA=0x00696f80, size=616) ================
+  +0x000: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 50 02
+  +0x010: 00 00 48 89 7c 24 30 33 d2 8b 79 18 83 c7 07 e8
+  +0x020: ec 9c 4f 00 3b f8 7e 11 4c 8b 05 99 58 76 02 8b
+  +0x030: d7 48 8b cb e8 27 3f 59 00 48 8b 0d d0 3f 75 02
+  +0x040: 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75 05 e8 cd
+  +0x050: 57 b2 ff 33 d2 b9 72 79 6c 70 e8 b1 75 c1 ff 4c
+  +0x060: 8b 43 10 4c 8b 0d de 52 76 02 ff 43 1c 48 63 53
+  +0x070: 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81
+  +0x080: c0 00 00 00 48 8b cb 4d 8b 40 70 e8 50 0b 5c 00
+  +0x090: eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9
+  +0x0a0: 61 78 4d 64 e8 67 75 c1 ff 4c 8b 43 10 4c 8b 0d
+  +0x0b0: 94 52 76 02 ff 43 1c 48 63 53 18 41 3b 50 18 72
+  +0x0c0: 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00 00 00 48 8b
+  +0x0d0: cb 4d 8b 40 70 e8 06 0b 5c 00 eb 0b 8d 4a 01 89
+  +0x0e0: 4b 18 41 89 44 90 20 33 d2 b9 45 45 59 63 e8 1d
+  +0x0f0: 75 c1 ff 4c 8b 43 10 4c 8b 0d 4a 52 76 02 ff 43
+  +0x100: 1c 48 63 53 18 41 3b 50 18 72 1b 49 8b 49 20 8b
+  +0x110: d0 4c 8b 81 c0 00 00 00 48 8b cb 4d 8b 40 70 e8
+  +0x120: bc 0a 5c 00 eb 0b 8d 4a 01 89 4b 18 41 89 44 90
+  +0x130: 20 33 d2 b9 33 63 44 75 e8 d3 74 c1 ff 4c 8b 43
+  +0x140: 10 4c 8b 0d 00 52 76 02 ff 43 1c 48 63 53 18 41
+  +0x150: 3b 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00
+  +0x160: 00 00 48 8b cb 4d 8b 40 70 e8 72 0a 5c 00 eb 0b
+  +0x170: 8d 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9 76 4c
+  +0x180: 75 71 e8 89 74 c1 ff 4c 8b 43 10 4c 8b 0d b6 51
+  +0x190: 76 02 ff 43 1c 48 63 53 18 41 3b 50 18 72 1b 49
+  +0x1a0: 8b 49 20 8b d0 4c 8b 81 c0 00 00 00 48 8b cb 4d
+  +0x1b0: 8b 40 70 e8 28 0a 5c 00 eb 0b 8d 4a 01 89 4b 18
+  +0x1c0: 41 89 44 90 20 33 d2 b9 20 4e 71 73 e8 3f 74 c1
+  +0x1d0: ff 4c 8b 43 10 4c 8b 0d 6c 51 76 02 ff 43 1c 48
+  +0x1e0: 63 53 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0 4c
+  +0x1f0: 8b 81 c0 00 00 00 48 8b cb 4d 8b 40 70 e8 de 09
+  +0x200: 5c 00 eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20 33
+  +0x210: d2 b9 73 57 47 6e e8 f5 73 c1 ff 4c 8b 43 10 4c
+  +0x220: 8b 0d 22 51 76 02 ff 43 1c 48 63 53 18 41 3b 50
+  +0x230: 18 72 1e 49 8b 49 20 8b d0 4c 8b 81 c0 00 00 00
+  +0x240: 48 8b cb 4d 8b 40 70 48 83 c4 20 5b e9 8f 09 5c
+  +0x250: 00 8d 4a 01 89 4b 18 41 89 44 90 20 48 83 c4 20
+  +0x260: 5b c3 e8 19 55 b2 ff cc
+  --- Annotations ---
+  +0x01f: CALL 0x00b90c90 -> AttrListImpl.get_Length, KeyCollection.get_Count, ValueCollection.get_Count, DropdownMenu.get_Count
+  +0x034: CALL 0x00c2aee0 -> 
+  +0x05a: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x08b: CALL 0x00c57b60 -> 
+  +0x0a4: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x0d5: CALL 0x00c57b60 -> 
+  +0x0ee: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x11f: CALL 0x00c57b60 -> 
+  +0x138: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x169: CALL 0x00c57b60 -> 
+  +0x182: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x1b3: CALL 0x00c57b60 -> 
+  +0x1cc: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x1fd: CALL 0x00c57b60 -> 
+  +0x216: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x24c: JMP 0x00c57b60 -> 
+
+================ PossiblePlayingTimeReference.AcceptsPropertyInternal (RVA=0x00668510, size=512) ================
+  +0x000: 81 f9 6f 70 6d 49 74 08 81 f9 36 4a 76 71 75 03
+  +0x010: b0 01 c3 81 f9 31 7a 79 75 0f 94 c0 c3 cc cc cc
+  +0x020: 66 90 81 f9 48 34 6a 50 0f 94 c0 c3 cc cc cc cc
+  +0x030: 66 90 81 fa 48 34 6a 50 0f 94 c0 c3 cc cc cc cc
+  +0x040: 48 8b 0d 11 e5 77 02 e9 54 41 b5 ff cc cc cc cc
+  +0x050: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 28 01
+  +0x060: 00 00 48 89 7c 24 30 33 d2 8b 79 18 83 c7 03 e8
+  +0x070: 0c 87 52 00 3b f8 7e 11 4c 8b 05 b9 42 79 02 8b
+  +0x080: d7 48 8b cb e8 47 29 5c 00 48 8b 0d f0 29 78 02
+  +0x090: 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75 05 e8 ed
+  +0x0a0: 41 b5 ff 33 d2 b9 36 4a 76 71 e8 d1 5f c4 ff 4c
+  +0x0b0: 8b 43 10 4c 8b 0d fe 3c 79 02 ff 43 1c 48 63 53
+  +0x0c0: 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81
+  +0x0d0: c0 00 00 00 48 8b cb 4d 8b 40 70 e8 70 f5 5e 00
+  +0x0e0: eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9
+  +0x0f0: 6f 70 6d 49 e8 87 5f c4 ff 4c 8b 43 10 4c 8b 0d
+  +0x100: b4 3c 79 02 ff 43 1c 48 63 53 18 41 3b 50 18 72
+  +0x110: 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00 00 00 48 8b
+  +0x120: cb 4d 8b 40 70 e8 26 f5 5e 00 eb 0b 8d 4a 01 89
+  +0x130: 4b 18 41 89 44 90 20 33 d2 b9 31 7a 79 75 e8 3d
+  +0x140: 5f c4 ff 4c 8b 43 10 4c 8b 0d 6a 3c 79 02 ff 43
+  +0x150: 1c 48 63 53 18 41 3b 50 18 72 1e 49 8b 49 20 8b
+  +0x160: d0 4c 8b 81 c0 00 00 00 48 8b cb 4d 8b 40 70 48
+  +0x170: 83 c4 20 5b e9 d7 f4 5e 00 8d 4a 01 89 4b 18 41
+  +0x180: 89 44 90 20 48 83 c4 20 5b c3 e8 61 40 b5 ff cc
+  +0x190: 40 53 48 83 ec 20 48 8b da 48 85 d2 0f 84 2b 01
+  +0x1a0: 00 00 48 89 7c 24 30 48 8b cb 8b 7a 18 33 d2 83
+  +0x1b0: c7 03 e8 c9 85 52 00 3b f8 7e 11 4c 8b 05 76 41
+  +0x1c0: 79 02 8b d7 48 8b cb e8 04 28 5c 00 48 8b 0d ad
+  +0x1d0: 28 78 02 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75
+  +0x1e0: 05 e8 aa 40 b5 ff 33 d2 b9 36 4a 76 71 e8 8e 5e
+  +0x1f0: c4 ff 4c 8b 43 10 4c 8b 0d bb 3b 79 02 ff 43 1c
+  --- Annotations ---
+  +0x06f: CALL 0x00b90c90 -> AttrListImpl.get_Length, KeyCollection.get_Count, ValueCollection.get_Count, DropdownMenu.get_Count
+  +0x084: CALL 0x00c2aee0 -> 
+  +0x0aa: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x0db: CALL 0x00c57b60 -> 
+  +0x0f4: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x125: CALL 0x00c57b60 -> 
+  +0x13e: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x174: JMP 0x00c57b60 -> 
+  +0x1b2: CALL 0x00b90c90 -> AttrListImpl.get_Length, KeyCollection.get_Count, ValueCollection.get_Count, DropdownMenu.get_Count
+  +0x1c7: CALL 0x00c2aee0 -> 
+  +0x1ed: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+
+================ PossiblePlayingTimeReference.GetPropertyTypeInternal (RVA=0x006687f0, size=181) ================
+  +0x000: 40 53 48 83 ec 30 0f 57 c0 48 8b d9 0f 11 01 81
+  +0x010: fa 6f 70 6d 49 75 25 45 33 c0 48 8d 4c 24 20 33
+  +0x020: d2 0f 11 44 24 20 e8 e5 e2 e6 00 0f 10 44 24 20
+  +0x030: 48 8b c3 0f 11 03 48 83 c4 30 5b c3 81 fa 36 4a
+  +0x040: 76 71 74 d3 81 fa 31 7a 79 75 74 cb 48 8b 15 ed
+  +0x050: 97 78 02 83 ba e4 00 00 00 00 75 27 48 8b ca e8
+  +0x060: 4c 3f b5 ff 48 8b 15 d5 97 78 02 83 ba e4 00 00
+  +0x070: 00 00 75 0f 48 8b ca e8 34 3f b5 ff 48 8b 15 bd
+  +0x080: 97 78 02 48 8b 92 b8 00 00 00 48 8d 4c 24 20 0f
+  +0x090: 57 c0 45 33 c9 45 33 c0 8b 12 0f 11 44 24 20 e8
+  +0x0a0: 3c e2 e6 00 0f 10 44 24 20 48 8b c3 0f 11 03 48
+  +0x0b0: 83 c4 30 5b c3
+  --- Annotations ---
+  +0x026: CALL 0x014d6b00 -> BindingKind..ctor
+  +0x09f: CALL 0x014d6ad0 -> BindingKind..ctor
+
+================ PossiblePlayingTimeReference.GetPropertyDescriptionInternal (RVA=0x0035e230, size=512) ================
+  +0x000: 48 8b 05 89 04 a9 02 c3 cc cc cc cc cc cc cc cc
+  +0x010: 40 53 48 83 ec 30 0f 57 c0 48 8b d9 0f 11 01 81
+  +0x020: fa 4b 57 55 5a 74 79 81 fa 72 5a 78 64 74 71 81
+  +0x030: fa 4f 56 6e 6c 74 69 48 8b 15 c2 3d a9 02 83 ba
+  +0x040: e4 00 00 00 00 75 27 48 8b ca e8 21 e5 e5 ff 48
+  +0x050: 8b 15 aa 3d a9 02 83 ba e4 00 00 00 00 75 0f 48
+  +0x060: 8b ca e8 09 e5 e5 ff 48 8b 15 92 3d a9 02 48 8b
+  +0x070: 92 b8 00 00 00 48 8d 4c 24 20 0f 57 c0 45 33 c9
+  +0x080: 45 33 c0 8b 12 0f 11 44 24 20 e8 11 88 17 01 0f
+  +0x090: 10 44 24 20 48 8b c3 0f 11 03 48 83 c4 30 5b c3
+  +0x0a0: 45 33 c0 48 8d 4c 24 20 33 d2 0f 11 44 24 20 e8
+  +0x0b0: 1c 88 17 01 0f 10 44 24 20 48 8b c3 0f 11 03 48
+  +0x0c0: 83 c4 30 5b c3 cc cc cc cc cc cc cc cc cc cc cc
+  +0x0d0: b8 42 48 6e 75 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x0e0: 66 90 81 f9 55 36 55 77 0f 94 c0 c3 cc cc cc cc
+  +0x0f0: 66 90 81 f9 37 20 72 61 0f 94 c0 c3 cc cc cc cc
+  +0x100: 40 53 48 83 ec 20 48 8b 0d e3 64 ad 02 8b da 83
+  +0x110: b9 e4 00 00 00 00 75 05 e8 53 e4 e5 ff 81 fb 37
+  +0x120: 20 72 61 0f 94 c0 48 83 c4 20 5b c3 cc cc cc cc
+  +0x130: 48 85 d2 74 41 4c 8b 0d b4 64 ad 02 4c 8b 12 41
+  +0x140: 0f b6 81 30 01 00 00 41 38 82 30 01 00 00 72 26
+  +0x150: 44 0f b6 c0 49 8b 82 c8 00 00 00 4e 39 4c c0 f8
+  +0x160: 75 14 4c 8b 01 49 8b 80 a8 01 00 00 4d 8b 80 b0
+  +0x170: 01 00 00 48 ff e0 32 c0 c3 cc cc cc cc cc cc cc
+  +0x180: b8 37 20 72 61 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x190: 48 83 ec 28 48 8b 05 55 64 ad 02 83 b8 e4 00 00
+  +0x1a0: 00 00 75 27 48 8b c8 e8 c4 e3 e5 ff 48 8b 05 3d
+  +0x1b0: 64 ad 02 83 b8 e4 00 00 00 00 75 0f 48 8b c8 e8
+  +0x1c0: ac e3 e5 ff 48 8b 05 25 64 ad 02 48 8b 80 b8 00
+  +0x1d0: 00 00 48 8b 00 48 83 c4 28 c3 cc cc cc cc cc cc
+  +0x1e0: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 93 00
+  +0x1f0: 00 00 48 89 7c 24 30 33 d2 8b 79 18 ff c7 e8 5d
+  --- Annotations ---
+  +0x08a: CALL 0x014d6ad0 -> BindingKind..ctor
+  +0x0af: CALL 0x014d6b00 -> BindingKind..ctor
+
+================ PossiblePlayingTimeReference.GetProperties (RVA=0x006686a0, size=323) ================
+  +0x000: 40 53 48 83 ec 20 48 8b da 48 85 d2 0f 84 2b 01
+  +0x010: 00 00 48 89 7c 24 30 48 8b cb 8b 7a 18 33 d2 83
+  +0x020: c7 03 e8 c9 85 52 00 3b f8 7e 11 4c 8b 05 76 41
+  +0x030: 79 02 8b d7 48 8b cb e8 04 28 5c 00 48 8b 0d ad
+  +0x040: 28 78 02 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75
+  +0x050: 05 e8 aa 40 b5 ff 33 d2 b9 36 4a 76 71 e8 8e 5e
+  +0x060: c4 ff 4c 8b 43 10 4c 8b 0d bb 3b 79 02 ff 43 1c
+  +0x070: 48 63 53 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0
+  +0x080: 4c 8b 81 c0 00 00 00 48 8b cb 4d 8b 40 70 e8 2d
+  +0x090: f4 5e 00 eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20
+  +0x0a0: 33 d2 b9 6f 70 6d 49 e8 44 5e c4 ff 4c 8b 43 10
+  +0x0b0: 4c 8b 0d 71 3b 79 02 ff 43 1c 48 63 53 18 41 3b
+  +0x0c0: 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00 00
+  +0x0d0: 00 48 8b cb 4d 8b 40 70 e8 e3 f3 5e 00 eb 0b 8d
+  +0x0e0: 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9 31 7a 79
+  +0x0f0: 75 e8 fa 5d c4 ff 4c 8b 43 10 4c 8b 0d 27 3b 79
+  +0x100: 02 ff 43 1c 48 63 53 18 41 3b 50 18 72 1e 49 8b
+  +0x110: 49 20 8b d0 4c 8b 81 c0 00 00 00 48 8b cb 4d 8b
+  +0x120: 40 70 48 83 c4 20 5b e9 94 f3 5e 00 8d 4a 01 89
+  +0x130: 4b 18 41 89 44 90 20 48 83 c4 20 5b c3 e8 1e 3f
+  +0x140: b5 ff cc
+  --- Annotations ---
+  +0x022: CALL 0x00b90c90 -> AttrListImpl.get_Length, KeyCollection.get_Count, ValueCollection.get_Count, DropdownMenu.get_Count
+  +0x037: CALL 0x00c2aee0 -> 
+  +0x05d: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x08e: CALL 0x00c57b60 -> 
+  +0x0a7: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x0d8: CALL 0x00c57b60 -> 
+  +0x0f1: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x127: JMP 0x00c57b60 -> 
+
+================ PossiblePlayingTimeReference.GetPropertiesInternal (RVA=0x00668560, size=320) ================
+  +0x000: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 28 01
+  +0x010: 00 00 48 89 7c 24 30 33 d2 8b 79 18 83 c7 03 e8
+  +0x020: 0c 87 52 00 3b f8 7e 11 4c 8b 05 b9 42 79 02 8b
+  +0x030: d7 48 8b cb e8 47 29 5c 00 48 8b 0d f0 29 78 02
+  +0x040: 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75 05 e8 ed
+  +0x050: 41 b5 ff 33 d2 b9 36 4a 76 71 e8 d1 5f c4 ff 4c
+  +0x060: 8b 43 10 4c 8b 0d fe 3c 79 02 ff 43 1c 48 63 53
+  +0x070: 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81
+  +0x080: c0 00 00 00 48 8b cb 4d 8b 40 70 e8 70 f5 5e 00
+  +0x090: eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9
+  +0x0a0: 6f 70 6d 49 e8 87 5f c4 ff 4c 8b 43 10 4c 8b 0d
+  +0x0b0: b4 3c 79 02 ff 43 1c 48 63 53 18 41 3b 50 18 72
+  +0x0c0: 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00 00 00 48 8b
+  +0x0d0: cb 4d 8b 40 70 e8 26 f5 5e 00 eb 0b 8d 4a 01 89
+  +0x0e0: 4b 18 41 89 44 90 20 33 d2 b9 31 7a 79 75 e8 3d
+  +0x0f0: 5f c4 ff 4c 8b 43 10 4c 8b 0d 6a 3c 79 02 ff 43
+  +0x100: 1c 48 63 53 18 41 3b 50 18 72 1e 49 8b 49 20 8b
+  +0x110: d0 4c 8b 81 c0 00 00 00 48 8b cb 4d 8b 40 70 48
+  +0x120: 83 c4 20 5b e9 d7 f4 5e 00 8d 4a 01 89 4b 18 41
+  +0x130: 89 44 90 20 48 83 c4 20 5b c3 e8 61 40 b5 ff cc
+  --- Annotations ---
+  +0x01f: CALL 0x00b90c90 -> AttrListImpl.get_Length, KeyCollection.get_Count, ValueCollection.get_Count, DropdownMenu.get_Count
+  +0x034: CALL 0x00c2aee0 -> 
+  +0x05a: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x08b: CALL 0x00c57b60 -> 
+  +0x0a4: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x0d5: CALL 0x00c57b60 -> 
+  +0x0ee: CALL 0x002ae590 -> Convert.ToInt32, Convert.ToInt64, Convert.ToUInt64, Number.Low32
+  +0x124: JMP 0x00c57b60 -> 
+
+================ PossiblePlayingTimeReference.GetPropertyCountInternal (RVA=0x0035e220, size=512) ================
+  +0x000: b8 03 00 00 00 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x010: 48 8b 05 89 04 a9 02 c3 cc cc cc cc cc cc cc cc
+  +0x020: 40 53 48 83 ec 30 0f 57 c0 48 8b d9 0f 11 01 81
+  +0x030: fa 4b 57 55 5a 74 79 81 fa 72 5a 78 64 74 71 81
+  +0x040: fa 4f 56 6e 6c 74 69 48 8b 15 c2 3d a9 02 83 ba
+  +0x050: e4 00 00 00 00 75 27 48 8b ca e8 21 e5 e5 ff 48
+  +0x060: 8b 15 aa 3d a9 02 83 ba e4 00 00 00 00 75 0f 48
+  +0x070: 8b ca e8 09 e5 e5 ff 48 8b 15 92 3d a9 02 48 8b
+  +0x080: 92 b8 00 00 00 48 8d 4c 24 20 0f 57 c0 45 33 c9
+  +0x090: 45 33 c0 8b 12 0f 11 44 24 20 e8 11 88 17 01 0f
+  +0x0a0: 10 44 24 20 48 8b c3 0f 11 03 48 83 c4 30 5b c3
+  +0x0b0: 45 33 c0 48 8d 4c 24 20 33 d2 0f 11 44 24 20 e8
+  +0x0c0: 1c 88 17 01 0f 10 44 24 20 48 8b c3 0f 11 03 48
+  +0x0d0: 83 c4 30 5b c3 cc cc cc cc cc cc cc cc cc cc cc
+  +0x0e0: b8 42 48 6e 75 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x0f0: 66 90 81 f9 55 36 55 77 0f 94 c0 c3 cc cc cc cc
+  +0x100: 66 90 81 f9 37 20 72 61 0f 94 c0 c3 cc cc cc cc
+  +0x110: 40 53 48 83 ec 20 48 8b 0d e3 64 ad 02 8b da 83
+  +0x120: b9 e4 00 00 00 00 75 05 e8 53 e4 e5 ff 81 fb 37
+  +0x130: 20 72 61 0f 94 c0 48 83 c4 20 5b c3 cc cc cc cc
+  +0x140: 48 85 d2 74 41 4c 8b 0d b4 64 ad 02 4c 8b 12 41
+  +0x150: 0f b6 81 30 01 00 00 41 38 82 30 01 00 00 72 26
+  +0x160: 44 0f b6 c0 49 8b 82 c8 00 00 00 4e 39 4c c0 f8
+  +0x170: 75 14 4c 8b 01 49 8b 80 a8 01 00 00 4d 8b 80 b0
+  +0x180: 01 00 00 48 ff e0 32 c0 c3 cc cc cc cc cc cc cc
+  +0x190: b8 37 20 72 61 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x1a0: 48 83 ec 28 48 8b 05 55 64 ad 02 83 b8 e4 00 00
+  +0x1b0: 00 00 75 27 48 8b c8 e8 c4 e3 e5 ff 48 8b 05 3d
+  +0x1c0: 64 ad 02 83 b8 e4 00 00 00 00 75 0f 48 8b c8 e8
+  +0x1d0: ac e3 e5 ff 48 8b 05 25 64 ad 02 48 8b 80 b8 00
+  +0x1e0: 00 00 48 8b 00 48 83 c4 28 c3 cc cc cc cc cc cc
+  +0x1f0: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 93 00
+  --- Annotations ---
+  +0x09a: CALL 0x014d6ad0 -> BindingKind..ctor
+  +0x0bf: CALL 0x014d6b00 -> BindingKind..ctor

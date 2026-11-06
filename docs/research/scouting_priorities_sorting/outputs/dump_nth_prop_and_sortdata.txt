@@ -1,0 +1,531 @@
+
+================ Bindings.GetNthProperty (RVA=0x014c1450, size=542) ================
+  +0x000: 48 89 74 24 18 48 89 7c 24 20 41 56 48 83 ec 40
+  +0x010: 33 ff 48 8b f2 4c 8b f1 39 7a 08 7e 2f 8b 4a 08
+  +0x020: 45 33 c9 45 85 c0 0f 88 d4 01 00 00 48 8b 02 66
+  +0x030: 41 83 3c 01 2e 75 0b 41 8d 40 ff 44 8b c0 85 c0
+  +0x040: 74 0a ff c7 49 83 c1 02 3b f9 7c d7 41 83 f8 01
+  +0x050: 0f 87 aa 01 00 00 48 89 5c 24 50 48 89 6c 24 58
+  +0x060: 83 ff ff 75 03 8b 7a 08 0f 10 02 0f 11 44 24 20
+  +0x070: 3b 7a 08 76 07 33 c9 e8 d4 92 f1 ff 48 8b 44 24
+  +0x080: 20 0f 57 c0 48 8b 2d 25 00 96 01 0f 11 44 24 30
+  +0x090: 48 89 44 24 20 89 7c 24 38 48 8b 44 24 38 48 c1
+  +0x0a0: e8 20 48 83 7d 38 00 89 7c 24 28 89 44 24 2c 75
+  +0x0b0: 08 48 8b cd e8 b7 f4 cf fe 48 8b 0d b0 a3 b7 01
+  +0x0c0: 48 8b 5d 38 83 b9 e4 00 00 00 00 48 8b 1b 75 05
+  +0x0d0: e8 7b b2 cf fe 33 d2 48 8b cb e8 f1 c4 f1 ff 48
+  +0x0e0: 8b 0d c2 a2 b7 01 33 d2 48 83 c1 20 48 8b d8 e8
+  +0x0f0: dc c4 f1 ff 45 33 c0 48 8b d0 48 8b cb e8 3e fc
+  +0x100: 63 ff 33 d2 84 c0 75 79 48 8b 4d 38 48 8b 09 e8
+  +0x110: bc c4 f1 ff 48 8b 0d fd a2 b7 01 33 d2 48 83 c1
+  +0x120: 20 48 8b d8 e8 a7 c4 f1 ff 45 33 c0 48 8b d0 48
+  +0x130: 8b cb e8 09 fc 63 ff 0f 28 44 24 20 48 8d 4c 24
+  +0x140: 30 33 d2 66 0f 7f 44 24 30 84 c0 75 1a e8 3e 2c
+  +0x150: dc fe ba 2e 00 00 00 45 33 c9 44 8b c7 48 8b c8
+  +0x160: e8 3b 10 5f ff eb 3f e8 24 2c dc fe ba 2e 00 00
+  +0x170: 00 45 33 c9 44 8b c7 48 8b c8 e8 21 75 f1 ff eb
+  +0x180: 25 0f 28 44 24 20 48 8d 4c 24 30 66 0f 7f 44 24
+  +0x190: 30 e8 fa 2b dc fe 45 33 c9 44 8b c7 b2 2e 48 8b
+  +0x1a0: c8 e8 aa 75 f1 ff 0f 10 06 48 8b 6c 24 58 8d 58
+  +0x1b0: 01 8b 46 08 2b fb 0f 11 44 24 20 3b d8 77 06 2b
+  +0x1c0: c3 3b f8 76 07 33 c9 e8 84 91 f1 ff 41 c7 46 0c
+  +0x1d0: 00 00 00 00 48 8b 44 24 20 48 63 cb 48 8b 5c 24
+  +0x1e0: 50 41 89 7e 08 48 8d 0c 48 49 8b c6 49 89 0e 48
+  +0x1f0: 8b 74 24 60 48 8b 7c 24 68 48 83 c4 40 41 5e c3
+  +0x200: 33 d2 49 8b ce e8 56 46 8a ff 48 8b 74 24 60 49
+  +0x210: 8b c6 48 8b 7c 24 68 48 83 c4 40 41 5e c3
+  --- Annotations ---
+  +0x077: CALL 0x013da7a0 -> ThrowHelper.ThrowArgumentOutOfRangeException
+  +0x0da: CALL 0x013dda20 -> Type.GetTypeFromHandle
+  +0x0ef: CALL 0x013dda20 -> Type.GetTypeFromHandle
+  +0x0fd: CALL 0x00b01190 -> TimeSpan.op_Equality, Type.op_Equality, RuntimeType.op_Equality, IntPtr.op_Equality
+  +0x10f: CALL 0x013dda20 -> Type.GetTypeFromHandle
+  +0x124: CALL 0x013dda20 -> Type.GetTypeFromHandle
+  +0x132: CALL 0x00b01190 -> TimeSpan.op_Equality, Type.op_Equality, RuntimeType.op_Equality, IntPtr.op_Equality
+  +0x14d: CALL 0x002841e0 -> LogChannelSettings.get_ChannelName, TacticalRoleTranslatable.get_Data1, GoalChartPoint.get_ChartPoint, PositionInfo.get_PitchIndicatorSlot
+  +0x160: CALL 0x00ab25f0 -> 
+  +0x167: CALL 0x002841e0 -> LogChannelSettings.get_ChannelName, TacticalRoleTranslatable.get_Data1, GoalChartPoint.get_ChartPoint, PositionInfo.get_PitchIndicatorSlot
+  +0x17a: CALL 0x013d8af0 -> SpanHelpers.LastIndexOf
+  +0x191: CALL 0x002841e0 -> LogChannelSettings.get_ChannelName, TacticalRoleTranslatable.get_Data1, GoalChartPoint.get_ChartPoint, PositionInfo.get_PitchIndicatorSlot
+  +0x1a1: CALL 0x013d8ba0 -> SpanHelpers.LastIndexOf
+  +0x1c7: CALL 0x013da7a0 -> ThrowHelper.ThrowArgumentOutOfRangeException
+  +0x205: CALL 0x00d65cb0 -> AwaitableAsyncMethodBuilder.Create, ITranslatable.get_EmbeddedData, SIDebugLogProcessor.DisposeAsync, DownloadHandler.GetNativeData
+
+================ Bindings.GetProperties (RVA=0x014c1a60, size=177) ================
+  +0x000: 48 89 5c 24 10 57 48 83 ec 30 0f 10 02 4c 8b 05
+  +0x010: cc f3 95 01 48 8b fa 48 8b d9 ba 2e 00 00 00 48
+  +0x020: 8d 4c 24 20 0f 29 44 24 20 e8 a2 03 17 ff 83 f8
+  +0x030: ff 74 66 44 8b 47 08 41 ff c8 41 3b c0 74 5a 0f
+  +0x040: 10 07 8d 78 01 48 89 74 24 40 0f 11 44 24 20 66
+  +0x050: 0f 73 d8 08 66 0f 7e c0 8b f0 2b f7 3b f8 77 06
+  +0x060: 2b c7 3b f0 76 07 33 c9 e8 d3 8c f1 ff c7 43 0c
+  +0x070: 00 00 00 00 48 8b 44 24 20 48 63 cf 89 73 08 48
+  +0x080: 8b 74 24 40 48 8d 0c 48 48 8b c3 48 89 0b 48 8b
+  +0x090: 5c 24 48 48 83 c4 30 5f c3 33 d2 48 8b cb e8 ad
+  +0x0a0: 41 8a ff 48 8b c3 48 8b 5c 24 48 48 83 c4 30 5f
+  +0x0b0: c3
+  --- Annotations ---
+  +0x029: CALL 0x00631e30 -> 
+  +0x068: CALL 0x013da7a0 -> ThrowHelper.ThrowArgumentOutOfRangeException
+  +0x09e: CALL 0x00d65cb0 -> AwaitableAsyncMethodBuilder.Create, ITranslatable.get_EmbeddedData, SIDebugLogProcessor.DisposeAsync, DownloadHandler.GetNativeData
+
+================ SortData.HasReceived (RVA=0x015a4040, size=310) ================
+  +0x000: 40 57 48 83 ec 30 48 89 5c 24 40 48 8b 1d 76 c7
+  +0x010: 87 01 48 89 6c 24 48 48 8b 69 10 48 89 74 24 50
+  +0x020: 8b 71 1c 8b fe 0f af f2 48 83 7b 38 00 75 08 48
+  +0x030: 8b cb e8 49 c9 c1 fe 48 8b 43 38 48 8b 58 10 48
+  +0x040: 85 ed 0f 84 94 00 00 00 4c 89 74 24 58 33 d2 48
+  +0x050: 8b cd e8 89 e3 e5 ff 4c 8b f0 48 8b 43 20 f6 80
+  +0x060: 35 01 00 00 01 75 08 48 8b c8 e8 91 c8 c1 fe 48
+  +0x070: 8b 0d 0a 78 a9 01 48 8b 98 c0 00 00 00 83 b9 e4
+  +0x080: 00 00 00 00 48 8b 5b 18 75 05 e8 d1 86 c1 fe 33
+  +0x090: d2 48 8b cb e8 47 99 e3 ff 45 33 c0 48 8b d0 49
+  +0x0a0: 8b ce e8 69 78 e3 ff 4c 8b 74 24 58 84 c0 74 07
+  +0x0b0: 33 c9 e8 19 67 e3 ff 3b 75 18 77 09 8b 45 18 2b
+  +0x0c0: c6 3b f8 76 07 33 c9 e8 94 66 e3 ff 48 63 c6 48
+  +0x0d0: 8d 04 c5 20 00 00 00 48 03 c5 eb 25 85 f6 75 04
+  +0x0e0: 85 ff 74 07 33 c9 e8 75 66 e3 ff 0f 57 c0 0f 11
+  +0x0f0: 44 24 20 48 8b 44 24 20 66 0f 73 d8 08 66 0f 7e
+  +0x100: c7 48 8b 74 24 50 33 c9 48 8b 6c 24 48 48 8b 5c
+  +0x110: 24 40 85 ff 7e 10 48 83 38 00 74 12 ff c1 48 83
+  +0x120: c0 08 3b cf 7c f0 b0 01 48 83 c4 30 5f c3 32 c0
+  +0x130: 48 83 c4 30 5f c3
+  --- Annotations ---
+  +0x052: CALL 0x01402420 -> Object.GetType
+  +0x094: CALL 0x013dda20 -> Type.GetTypeFromHandle
+  +0x0a2: CALL 0x013db950 -> TimeSpan.op_Inequality, Type.op_Inequality, RuntimeType.op_Inequality, IntPtr.op_Inequality
+  +0x0b2: CALL 0x013da810 -> ThrowHelper.ThrowArrayTypeMismatchException
+  +0x0c7: CALL 0x013da7a0 -> ThrowHelper.ThrowArgumentOutOfRangeException
+  +0x0e6: CALL 0x013da7a0 -> ThrowHelper.ThrowArgumentOutOfRangeException
+
+================ StreamedTable.TrySetColumnsAndSort (RVA=0x015f0040, size=494) ================
+  +0x000: 40 53 48 83 ec 40 33 c0 48 8b d9 48 89 44 24 60
+  +0x010: 48 89 44 24 50 48 39 81 58 07 00 00 0f 84 7e 01
+  +0x020: 00 00 48 8b 81 38 08 00 00 48 85 c0 0f 84 b6 01
+  +0x030: 00 00 48 8b 48 28 48 85 c9 0f 84 a9 01 00 00 83
+  +0x040: 79 18 00 0f 8e 57 01 00 00 48 8b 8b 88 09 00 00
+  +0x050: 45 33 c0 33 d2 e8 06 66 82 00 84 c0 0f 84 3e 01
+  +0x060: 00 00 33 d2 48 8b cb e8 74 25 ca fe 84 c0 0f 84
+  +0x070: 2c 01 00 00 80 bb b8 09 00 00 00 0f 85 25 01 00
+  +0x080: 00 48 8b 15 d0 48 82 01 48 8d 4c 24 60 e8 0e 8a
+  +0x090: 43 ff 84 c0 0f 84 0c 01 00 00 48 8b 4c 24 60 48
+  +0x0a0: 85 c9 0f 84 40 01 00 00 0f 10 83 60 08 00 00 45
+  +0x0b0: 33 c9 4c 8d 44 24 50 0f 10 8b 70 08 00 00 48 8d
+  +0x0c0: 54 24 20 0f 29 44 24 20 0f 29 4c 24 30 e8 ce 00
+  +0x0d0: 06 00 84 c0 0f 84 cc 00 00 00 48 8b 83 88 09 00
+  +0x0e0: 00 48 85 c0 0f 84 fe 00 00 00 4c 8b 40 38 4d 85
+  +0x0f0: c0 0f 84 f1 00 00 00 4c 8b 4c 24 50 33 c9 48 8b
+  +0x100: 15 2b 72 85 01 e8 d6 22 a1 fe 84 c0 0f 84 94 00
+  +0x110: 00 00 4c 8b 44 24 50 45 33 c9 33 d2 48 8b cb e8
+  +0x120: 5c 57 ff ff 48 8b 4c 24 60 48 85 c9 0f 84 b6 00
+  +0x130: 00 00 0f 10 83 a0 08 00 00 45 33 c9 4c 8d 44 24
+  +0x140: 50 0f 10 8b b0 08 00 00 48 8d 54 24 20 0f 29 44
+  +0x150: 24 20 0f 29 4c 24 30 e8 44 00 06 00 84 c0 74 40
+  +0x160: 48 8b 83 88 09 00 00 48 85 c0 74 7c 4c 8b 40 38
+  +0x170: 4d 85 c0 74 73 4c 8b 4c 24 50 33 c9 48 8b 15 ad
+  +0x180: 71 85 01 e8 58 22 a1 fe 84 c0 74 14 4c 8b 44 24
+  +0x190: 50 45 33 c9 48 8b cb 41 8d 51 01 e8 e0 56 ff ff
+  +0x1a0: 48 83 c4 40 5b c3 48 8b 8b b0 09 00 00 33 d2 e8
+  +0x1b0: fc 0b cb ff 48 8b cb 84 c0 74 16 48 8b 03 48 8b
+  +0x1c0: 90 a0 0d 00 00 ff 90 98 0d 00 00 48 83 c4 40 5b
+  +0x1d0: c3 4c 8b 83 b0 09 00 00 45 33 c9 33 d2 e8 1e fa
+  +0x1e0: ff ff 48 83 c4 40 5b c3 e8 d3 c4 bc fe cc
+  --- Annotations ---
+  +0x055: CALL 0x01e166a0 -> Object.op_Inequality
+  +0x067: CALL 0x00292620 -> FMpediaDataReference.Equals, PrivacyPolicyReference.Equals, StaticDataReference.Equals, ApplicationReference.Equals
+  +0x08d: CALL 0x00a28ae0 -> 
+  +0x0cd: CALL 0x016501e0 -> Persistence.TryGet
+  +0x11f: CALL 0x015e58c0 -> StreamedTable.ApplyPersistedSortingState
+  +0x157: CALL 0x016501e0 -> Persistence.TryGet
+  +0x19b: CALL 0x015e58c0 -> StreamedTable.ApplyPersistedSortingState
+  +0x1af: CALL 0x012a0df0 -> String.IsNullOrEmpty
+  +0x1dd: CALL 0x015efc40 -> StreamedTable.SetSorting
+
+================ StreamedTable.SetSorting(1) (RVA=0x015efc40, size=146) ================
+  +0x000: 48 89 5c 24 08 48 89 74 24 10 57 48 83 ec 30 49
+  +0x010: 8b f8 8b f2 48 8b d9 45 33 c0 48 8b 89 88 09 00
+  +0x020: 00 33 d2 e8 b8 55 82 00 84 c0 75 50 48 8b 83 88
+  +0x030: 09 00 00 48 85 c0 74 54 48 83 78 38 00 74 3d 4c
+  +0x040: 8b 40 38 b9 02 00 00 00 48 8b 15 e1 76 85 01 4c
+  +0x050: 8b cf e8 89 27 a1 fe 48 85 c0 74 20 44 0f b6 48
+  +0x060: 54 4c 8b c7 48 c7 44 24 28 00 00 00 00 8b d6 48
+  +0x070: 8b cb 48 89 44 24 20 e8 24 00 00 00 48 8b 5c 24
+  +0x080: 40 48 8b 74 24 48 48 83 c4 30 5f c3 e8 2f ca bc
+  +0x090: fe cc
+  --- Annotations ---
+  +0x023: CALL 0x01e15220 -> Object.CompareBaseObjects, Object.op_Equality
+  +0x077: CALL 0x015efce0 -> StreamedTable.SetSorting
+
+================ StreamedTable.SetSorting(2) (RVA=0x015efce0, size=653) ================
+  +0x000: 48 89 6c 24 10 48 89 74 24 18 57 41 56 41 57 48
+  +0x010: 81 ec 80 00 00 00 4d 8b f0 8b ea 0f 57 c0 45 33
+  +0x020: c0 33 d2 45 0f b6 f9 0f 11 44 24 50 48 8b f9 e8
+  +0x030: 8c 4a fb ff 33 d2 49 8b ce e8 d2 10 cb ff 84 c0
+  +0x040: 0f 85 05 02 00 00 48 89 9c 24 a0 00 00 00 0f 29
+  +0x050: 74 24 70 48 8b 9c 24 c0 00 00 00 48 85 db 75 16
+  +0x060: 45 33 c0 49 8b d6 48 8b cf e8 02 97 ff ff 48 8b
+  +0x070: d8 48 85 c0 74 62 48 8b 8f 88 07 00 00 33 d2 48
+  +0x080: 89 4c 24 30 48 8d 4c 24 30 e8 e2 d5 ec ff 84 c0
+  +0x090: 74 76 48 85 db 0f 84 ec 01 00 00 83 7b 50 00 74
+  +0x0a0: 67 33 f6 45 0f b6 cf 4d 8b c6 48 89 74 24 20 8b
+  +0x0b0: d5 48 8b cf e8 e7 15 00 00 44 8b 43 50 45 0f b6
+  +0x0c0: cf 8b d5 48 89 74 24 20 48 8b cf e8 d0 9c fb ff
+  +0x0d0: 84 c0 0f 85 29 01 00 00 33 d2 48 8b cf e8 8e 55
+  +0x0e0: fb ff 0f 28 74 24 70 48 8b 9c 24 a0 00 00 00 4c
+  +0x0f0: 8d 9c 24 80 00 00 00 49 8b 6b 28 49 8b 73 30 49
+  +0x100: 8b e3 41 5f 41 5e 5f c3 48 8b 43 48 48 8d 4c 24
+  +0x110: 30 33 d2 48 89 44 24 30 e8 53 d5 ec ff 33 f6 84
+  +0x120: c0 0f 84 f5 00 00 00 48 8b 5b 48 48 89 5c 24 30
+  +0x130: 48 85 db 74 21 33 d2 48 8b cb e8 d1 fc ca ff 8b
+  +0x140: 4b 10 89 4c 24 48 89 74 24 4c 48 89 44 24 40 0f
+  +0x150: 28 74 24 40 eb 03 0f 57 f6 48 8b 1d 40 8b 84 01
+  +0x160: 48 85 db 0f 84 1e 01 00 00 8b 5b 10 45 0f b6 cf
+  +0x170: 4d 8b c6 48 89 74 24 20 8b d5 48 8b cf e8 1e 15
+  +0x180: 00 00 66 0f 6f c6 66 0f 73 d8 08 66 0f 7e c0 3b
+  +0x190: c3 74 47 48 8b 0d c6 d9 85 01 39 b1 e4 00 00 00
+  +0x1a0: 75 05 e8 19 c9 bc fe 45 33 c0 66 0f 7f 74 24 40
+  +0x1b0: 48 8d 54 24 40 48 8d 4c 24 60 e8 c1 1b ed ff 48
+  +0x1c0: 8b 15 42 aa 84 01 48 8d 4c 24 50 0f 10 00 0f 11
+  +0x1d0: 44 24 50 e8 28 32 81 ff eb 11 48 8b 05 af b9 a4
+  +0x1e0: 01 48 8b 88 b8 00 00 00 48 8b 01 45 0f b6 cf 48
+  +0x1f0: 89 74 24 20 4c 8b c0 8b d5 48 8b cf e8 ff 9b fb
+  +0x200: ff 45 0f b6 cf 48 89 74 24 20 4d 8b c6 8b d5 48
+  +0x210: 8b cf e8 99 13 00 00 e9 bc fe ff ff 41 b1 01 48
+  +0x220: 89 74 24 20 45 33 c0 8b d5 48 8b cf e8 6f 14 00
+  +0x230: 00 41 b1 01 48 89 74 24 20 45 33 c0 8b d5 48 8b
+  +0x240: cf e8 ba 9b fb ff e9 8d fe ff ff 33 f6 41 b1 01
+  +0x250: 45 33 c0 48 89 74 24 20 8b d5 48 8b cf e8 3e 14
+  +0x260: 00 00 45 0f b6 cf 48 89 74 24 20 45 33 c0 8b d5
+  +0x270: 48 8b cf e8 88 9b fb ff 33 d2 48 8b cf e8 ee 53
+  +0x280: fb ff e9 68 fe ff ff e8 94 c7 bc fe cc
+  --- Annotations ---
+  +0x02f: CALL 0x015a47a0 -> StreamedListView.BeginStateChange
+  +0x039: CALL 0x012a0df0 -> String.IsNullOrEmpty
+  +0x069: CALL 0x015e9450 -> StreamedTable.EntryForColumn
+  +0x089: CALL 0x014bd350 -> BindingPath.IsValid, HierarchySearchFilter.get_IsValid
+  +0x0b4: CALL 0x015f1380 -> StreamedTable.UpdateSortColum
+  +0x0cb: CALL 0x015a9a80 -> StreamedListView.SetSortingBinding
+  +0x0dd: CALL 0x015a5350 -> StreamedListView.EndStateChange
+  +0x118: CALL 0x014bd350 -> BindingPath.IsValid, HierarchySearchFilter.get_IsValid
+  +0x13a: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x17d: CALL 0x015f1380 -> StreamedTable.UpdateSortColum
+  +0x1ba: CALL 0x014c1a60 -> Bindings.GetProperties
+  +0x1d3: CALL 0x00e030e0 -> 
+  +0x1fc: CALL 0x015a9ae0 -> StreamedListView.SetSortingBinding
+  +0x212: CALL 0x015f1290 -> StreamedTable.UpdatePersistedColumnSortingData
+  +0x217: JMP 0x015efdb8 -> 
+  +0x22c: CALL 0x015f1380 -> StreamedTable.UpdateSortColum
+  +0x241: CALL 0x015a9ae0 -> StreamedListView.SetSortingBinding
+  +0x246: JMP 0x015efdb8 -> 
+  +0x25d: CALL 0x015f1380 -> StreamedTable.UpdateSortColum
+  +0x273: CALL 0x015a9ae0 -> StreamedListView.SetSortingBinding
+  +0x27d: CALL 0x015a5350 -> StreamedListView.EndStateChange
+  +0x282: JMP 0x015efdcf -> 
+
+================ StreamedTable.EntryForColumn (RVA=0x015e9450, size=109) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 20 48 8b fa 48 8b d9
+  +0x010: 48 8b 89 88 09 00 00 33 d2 45 33 c0 e8 af bd 82
+  +0x020: 00 84 c0 75 35 48 8b 83 88 09 00 00 48 85 c0 74
+  +0x030: 36 48 83 78 38 00 74 22 4c 8b 40 38 b9 02 00 00
+  +0x040: 00 48 8b 15 d8 de 85 01 4c 8b cf 48 8b 5c 24 30
+  +0x050: 48 83 c4 20 5f e9 76 8f a1 fe 48 8b 5c 24 30 33
+  +0x060: c0 48 83 c4 20 5f c3 e8 44 32 bd fe cc
+  --- Annotations ---
+  +0x01c: CALL 0x01e15220 -> Object.CompareBaseObjects, Object.op_Equality
+
+================ StreamedTable.InitialiseColumns (RVA=0x015ea870, size=386) ================
+  +0x000: 48 8b c4 55 53 56 57 41 56 48 8d 68 a1 48 81 ec
+  +0x010: c0 00 00 00 45 33 f6 0f 29 70 c8 33 d2 4c 89 75
+  +0x020: a7 4c 89 75 af 48 8b d9 44 89 75 77 44 89 75 67
+  +0x030: 4c 89 75 7f 0f 29 78 b8 e8 b3 6e 00 00 33 d2 48
+  +0x040: 8b cb e8 29 49 00 00 48 8b 93 28 08 00 00 48 85
+  +0x050: d2 0f 84 25 01 00 00 45 33 c0 48 8d 4d ef e8 cd
+  +0x060: 8e a6 ff 0f 10 45 ef 33 d2 48 8d 4d b7 0f 10 4d
+  +0x070: ff 0f 11 45 b7 f2 0f 10 45 0f f2 0f 11 45 d7 0f
+  +0x080: 11 4d c7 e8 68 15 bc ff 84 c0 0f 84 ce 00 00 00
+  +0x090: 0f 10 45 c7 45 33 c9 4c 8d 45 af 48 8d 55 a7 48
+  +0x0a0: 8d 4d df 0f 11 45 df e8 f4 ae 60 ff 48 8b 75 a7
+  +0x0b0: 4c 8d 4d 67 48 8b 7d af 4c 8d 45 77 48 8b d6 4c
+  +0x0c0: 89 74 24 28 48 8b cb 44 88 74 24 20 e8 ff f5 ff
+  +0x0d0: ff 48 85 ff 0f 84 a2 00 00 00 f3 0f 10 75 67 45
+  +0x0e0: 33 c9 f3 0f 10 7d 77 0f 28 d6 0f 28 cf 48 8b cf
+  +0x0f0: e8 ab 41 ff ff 48 8b 83 38 08 00 00 48 85 c0 74
+  +0x100: 7b 44 38 70 58 74 44 45 33 c9 4c 8d 45 7f 48 8b
+  +0x110: d6 48 8b c8 e8 37 73 03 00 84 c0 74 2e 48 8b 45
+  +0x120: 7f 48 85 c0 74 56 48 8b 48 18 48 85 c9 74 4d f3
+  +0x130: 0f 11 79 14 48 8b 45 7f 48 85 c0 74 3f 48 8b 40
+  +0x140: 18 48 85 c0 74 36 f3 0f 11 70 18 33 d2 48 8d 4d
+  +0x150: b7 e8 9a 14 bc ff 84 c0 0f 85 32 ff ff ff 0f 28
+  +0x160: b4 24 b0 00 00 00 0f 28 bc 24 a0 00 00 00 48 81
+  +0x170: c4 c0 00 00 00 41 5e 5f 5e 5b 5d c3 e8 0f 1d bd
+  +0x180: fe cc
+  --- Annotations ---
+  +0x038: CALL 0x015f1760 -> StreamedTable.UpdateTotalDefaultWidth
+  +0x042: CALL 0x015ef1e0 -> StreamedTable.ResetRemainingAvailableWidth
+  +0x05e: CALL 0x010537a0 -> 
+  +0x083: CALL 0x011abe60 -> 
+  +0x0a7: CALL 0x00bf5810 -> JsonDerivedType.Deconstruct
+  +0x0cc: CALL 0x015e9f40 -> StreamedTable.GetColumnWidths
+  +0x0f0: CALL 0x015deb10 -> Column.SetWidths
+  +0x114: CALL 0x01621cc0 -> StreamedTableView.TryGetConfig
+  +0x151: CALL 0x011abe60 -> 
+
+================ StreamedTable.CreateColumns (RVA=0x015e83b0, size=541) ================
+  +0x000: 40 53 48 83 ec 40 48 8b 91 60 09 00 00 45 33 c9
+  +0x010: 48 8b d9 45 8d 41 ff e8 f4 f9 ff ff 33 d2 48 8b
+  +0x020: cb e8 1a 4a fc ff 84 c0 74 2f 48 8b 8b 50 09 00
+  +0x030: 00 33 d2 e8 08 8a cb ff 48 8b 15 91 34 7f 01 84
+  +0x040: c0 75 07 48 8b 93 50 09 00 00 45 33 c9 48 8b cb
+  +0x050: 45 8d 41 ff e8 b7 f9 ff ff 48 8b 93 58 09 00 00
+  +0x060: 45 33 c9 48 89 6c 24 50 48 8b cb 48 89 74 24 58
+  +0x070: 48 89 7c 24 60 4c 89 64 24 38 45 8d 41 ff 4c 89
+  +0x080: 6c 24 30 4c 89 74 24 28 4c 89 7c 24 20 e8 7e f9
+  +0x090: ff ff 33 d2 48 8b cb e8 14 93 00 00 48 8b 83 38
+  +0x0a0: 08 00 00 48 85 c0 0f 84 6b 01 00 00 4c 8b 68 28
+  +0x0b0: 4d 85 ed 0f 84 5e 01 00 00 4d 63 65 18 4d 85 e4
+  +0x0c0: 0f 8e 0b 01 00 00 33 c9 8b e9 44 8d 71 20 66 90
+  +0x0d0: 48 8b 83 88 09 00 00 48 85 c0 0f 84 37 01 00 00
+  +0x0e0: 48 8b 70 38 49 8b 45 10 49 8b 3c 06 48 85 ff 0f
+  +0x0f0: 84 22 01 00 00 4c 8b 7f 10 48 85 f6 0f 84 15 01
+  +0x100: 00 00 4c 8b 16 0f b7 c1 4c 8b 0d b1 ee 85 01 41
+  +0x110: 0f b7 92 2e 01 00 00 66 3b ca 73 2c 4d 8b 82 b0
+  +0x120: 00 00 00 0f 1f 40 00 66 0f 1f 84 00 00 00 00 00
+  +0x130: 0f b7 c8 48 03 c9 4d 39 0c c8 0f 84 ba 00 00 00
+  +0x140: 66 ff c0 66 3b c2 72 e8 45 33 c0 49 8b d1 48 8b
+  +0x150: ce e8 3a 7d bd fe 4c 8b 08 49 8b d7 4c 8b 40 08
+  +0x160: 48 8b ce 41 ff d1 84 c0 74 52 48 8b 4f 18 48 85
+  +0x170: c9 0f 84 a0 00 00 00 45 33 c0 33 d2 e8 df 8a 02
+  +0x180: 00 84 c0 74 37 48 8b 8b 20 08 00 00 48 85 c9 0f
+  +0x190: 84 82 00 00 00 4c 8b 05 bc a4 82 01 48 8b 57 10
+  +0x1a0: e8 6b 16 68 ff 84 c0 75 13 48 8b 57 10 45 33 c9
+  +0x1b0: 48 8b cb 45 8d 41 ff e8 54 f8 ff ff 48 ff c5 49
+  +0x1c0: 83 c6 08 b9 00 00 00 00 49 3b ec 0f 8c ff fe ff
+  +0x1d0: ff 4c 8b 7c 24 20 4c 8b 74 24 28 4c 8b 6c 24 30
+  +0x1e0: 4c 8b 64 24 38 48 8b 7c 24 60 48 8b 74 24 58 48
+  +0x1f0: 8b 6c 24 50 48 83 c4 40 5b c3 0f b7 c8 48 03 c9
+  +0x200: 49 63 44 c8 08 48 c1 e0 04 48 05 38 01 00 00 49
+  +0x210: 03 c2 e9 3f ff ff ff e8 34 41 bd fe cc
+  --- Annotations ---
+  +0x017: CALL 0x015e7dc0 -> StreamedTable.CreateColumn
+  +0x021: CALL 0x015acdf0 -> StreamedListView.get_SelectionMode
+  +0x033: CALL 0x012a0df0 -> String.IsNullOrEmpty
+  +0x054: CALL 0x015e7dc0 -> StreamedTable.CreateColumn
+  +0x08d: CALL 0x015e7dc0 -> StreamedTable.CreateColumn
+  +0x097: CALL 0x015f1760 -> StreamedTable.UpdateTotalDefaultWidth
+  +0x17c: CALL 0x01611010 -> ColumnMetadata.IsColumnValid
+  +0x1a0: CALL 0x00c69bc0 -> 
+  +0x1b7: CALL 0x015e7dc0 -> StreamedTable.CreateColumn
+  +0x212: JMP 0x015e8506 -> 
+
+================ StreamedTable.OnViewSet (RVA=0x015ee7a0, size=132) ================
+  +0x000: 48 89 5c 24 08 48 89 74 24 10 57 48 83 ec 20 48
+  +0x010: 8b 81 38 08 00 00 48 8b d9 48 85 c0 74 60 48 8b
+  +0x020: 0d d3 b4 80 01 48 8b 78 28 e8 e2 de bc fe 4c 8b
+  +0x030: 05 0b 8c 83 01 45 33 c9 48 8b d3 48 8b c8 48 8b
+  +0x040: f0 e8 8a de 7b ff 48 85 ff 74 33 45 33 c0 48 8b
+  +0x050: d6 48 8b cf e8 c7 ba 67 ff 83 f8 ff 74 10 33 d2
+  +0x060: 89 83 bc 0a 00 00 48 8b cb e8 c2 2c 00 00 48 8b
+  +0x070: 5c 24 30 48 8b 74 24 38 48 83 c4 20 5f c3 e8 dd
+  +0x080: de bc fe cc
+  --- Annotations ---
+  +0x041: CALL 0x00dac670 -> 
+  +0x054: CALL 0x00c6a2c0 -> 
+  +0x069: CALL 0x015f14d0 -> StreamedTable.UpdateSortShortcut
+
+================ StreamedTable.<OnViewSet>b__297_0 (RVA=0x015f0800, size=41) ================
+  +0x000: 48 83 ec 28 48 8b c2 48 85 d2 74 17 48 8b 91 c8
+  +0x010: 09 00 00 45 33 c0 48 8b 48 10 48 83 c4 28 e9 7d
+  +0x020: e3 ca ff e8 d8 be bc fe cc
+  --- Annotations ---
+  +0x01e: JMP 0x0129eba0 -> String.Equals, String.op_Equality
+
+================ StreamedTable.BindHeaders (RVA=0x015e6ca0, size=201) ================
+  +0x000: 4c 8b dc 53 48 81 ec 80 00 00 00 48 8b 91 f8 08
+  +0x010: 00 00 33 c0 49 89 43 18 48 8b d9 49 89 43 08 48
+  +0x020: 85 d2 0f 84 9b 00 00 00 45 33 c0 49 8d 4b d0 e8
+  +0x030: cc ca a6 ff 0f 10 44 24 58 33 d2 48 8d 4c 24 30
+  +0x040: 0f 10 4c 24 68 0f 11 44 24 30 f2 0f 10 44 24 78
+  +0x050: f2 0f 11 44 24 50 0f 11 4c 24 40 e8 60 51 bc ff
+  +0x060: 84 c0 74 56 0f 1f 40 00 0f 1f 84 00 00 00 00 00
+  +0x070: 0f 10 44 24 40 45 33 c9 4c 8d 84 24 90 00 00 00
+  +0x080: 48 8d 94 24 a0 00 00 00 48 8d 4c 24 20 0f 11 44
+  +0x090: 24 20 e8 d9 ea 60 ff 48 8b 94 24 90 00 00 00 45
+  +0x0a0: 33 c0 48 8b cb e8 e6 f4 ff ff 33 d2 48 8d 4c 24
+  +0x0b0: 30 e8 0a 51 bc ff 84 c0 75 b6 48 81 c4 80 00 00
+  +0x0c0: 00 5b c3 e8 98 59 bd fe cc
+  --- Annotations ---
+  +0x02f: CALL 0x010537a0 -> 
+  +0x05b: CALL 0x011abe60 -> 
+  +0x092: CALL 0x00bf5810 -> JsonDerivedType.Deconstruct
+  +0x0a5: CALL 0x015e6230 -> StreamedTable.BindHeader
+  +0x0b1: CALL 0x011abe60 -> 
+
+================ StreamedTable.BindToDataInternal (RVA=0x015e6d70, size=2000) ================
+  +0x000: 40 55 53 57 41 56 41 57 48 8d 6c 24 c9 48 81 ec
+  +0x010: 90 00 00 00 48 8b 1d ad af 83 01 45 33 ff 48 8b
+  +0x020: 81 90 07 00 00 4c 8b f1 48 8b b9 50 07 00 00 48
+  +0x030: 89 45 67 48 85 db 74 1e 33 d2 48 8b cb e8 3e 8d
+  +0x040: cb ff 8b 4b 10 44 89 7d f3 48 89 45 e7 89 4d ef
+  +0x050: 0f 28 45 e7 eb 03 0f 57 c0 48 89 b4 24 c8 00 00
+  +0x060: 00 66 0f 7f 45 e7 48 85 ff 0f 84 8e 07 00 00 45
+  +0x070: 33 c9 4c 89 7c 24 20 4c 8d 45 e7 48 8b cf 48 8d
+  +0x080: 55 67 e8 89 8b ed ff 49 8b be 50 07 00 00 49 89
+  +0x090: 86 18 09 00 00 48 8b 1d fc af 83 01 49 8b 86 90
+  +0x0a0: 07 00 00 48 89 45 67 48 85 db 74 1e 33 d2 48 8b
+  +0x0b0: cb e8 ca 8c cb ff 8b 4b 10 44 89 7d f3 48 89 45
+  +0x0c0: e7 89 4d ef 0f 28 45 e7 eb 03 0f 57 c0 66 0f 7f
+  +0x0d0: 45 e7 48 85 ff 0f 84 22 07 00 00 45 33 c9 4c 89
+  +0x0e0: 7c 24 20 4c 8d 45 e7 48 8b cf 48 8d 55 67 e8 1d
+  +0x0f0: 8b ed ff 49 8b be 50 07 00 00 49 89 86 20 09 00
+  +0x100: 00 48 8b 1d e0 ad 83 01 49 8b 86 90 07 00 00 48
+  +0x110: 89 45 67 48 85 db 74 1e 33 d2 48 8b cb e8 5e 8c
+  +0x120: cb ff 8b 4b 10 44 89 7d f3 48 89 45 e7 89 4d ef
+  +0x130: 0f 28 45 e7 eb 03 0f 57 c0 66 0f 7f 45 e7 48 85
+  +0x140: ff 0f 84 b6 06 00 00 45 33 c9 4c 89 7c 24 20 4c
+  +0x150: 8d 45 e7 48 8b cf 48 8d 55 67 e8 b1 8a ed ff 49
+  +0x160: 8b be 50 07 00 00 49 89 86 28 09 00 00 48 8b 1d
+  +0x170: f4 af 83 01 49 8b 86 90 07 00 00 48 89 45 67 48
+  +0x180: 85 db 74 1e 33 d2 48 8b cb e8 f2 8b cb ff 8b 4b
+  +0x190: 10 44 89 7d f3 48 89 45 e7 89 4d ef 0f 28 45 e7
+  +0x1a0: eb 03 0f 57 c0 66 0f 7f 45 e7 48 85 ff 0f 84 4a
+  +0x1b0: 06 00 00 45 33 c9 4c 89 7c 24 20 4c 8d 45 e7 48
+  +0x1c0: 8b cf 48 8d 55 67 e8 45 8a ed ff 49 8b be 50 07
+  +0x1d0: 00 00 49 89 86 f0 07 00 00 48 8b 1d 08 eb 82 01
+  +0x1e0: 48 85 db 74 1e 33 d2 48 8b cb e8 91 8b cb ff 8b
+  +0x1f0: 4b 10 44 89 7d f3 48 89 45 e7 89 4d ef 0f 28 45
+  +0x200: e7 eb 03 0f 57 c0 48 8b 15 0b 07 82 01 b9 ff ff
+  +0x210: ff ff 66 0f 7f 45 e7 e8 a4 98 50 ff 48 85 ff 0f
+  +0x220: 84 d8 05 00 00 4c 89 7c 24 30 4c 8d 45 e7 c7 44
+  +0x230: 24 28 01 00 00 00 49 8d 96 f0 07 00 00 4c 8b c8
+  +0x240: 44 88 7c 24 20 48 8b cf e8 93 e6 ed ff 48 8b 1d
+  +0x250: ac 58 83 01 49 8b be 50 07 00 00 48 85 db 74 1e
+  +0x260: 33 d2 48 8b cb e8 16 8b cb ff 8b 4b 10 44 89 7d
+  +0x270: f3 48 89 45 e7 89 4d ef 0f 28 45 e7 eb 03 0f 57
+  +0x280: c0 48 8b 15 f8 ed 81 01 33 c9 66 0f 7f 45 e7 e8
+  +0x290: 9c 5e 50 ff 48 85 ff 0f 84 60 05 00 00 4c 89 7c
+  +0x2a0: 24 30 4c 8d 45 e7 c7 44 24 28 01 00 00 00 49 8d
+  +0x2b0: 96 f0 07 00 00 4c 8b c8 44 88 7c 24 20 48 8b cf
+  +0x2c0: e8 1b e6 ed ff 48 8b 1d fc 58 83 01 49 8b be 50
+  +0x2d0: 07 00 00 48 85 db 74 1e 33 d2 48 8b cb e8 9e 8a
+  +0x2e0: cb ff 8b 4b 10 44 89 7d f3 48 89 45 e7 89 4d ef
+  +0x2f0: 0f 28 45 e7 eb 03 0f 57 c0 48 8b 15 80 ed 81 01
+  +0x300: 33 c9 66 0f 7f 45 e7 e8 24 5e 50 ff 48 85 ff 0f
+  +0x310: 84 e8 04 00 00 4c 89 7c 24 30 4c 8d 45 e7 c7 44
+  +0x320: 24 28 01 00 00 00 49 8d 96 f0 07 00 00 4c 8b c8
+  +0x330: 44 88 7c 24 20 48 8b cf e8 a3 e5 ed ff 4d 8b 86
+  +0x340: 10 09 00 00 4d 85 c0 74 0e 48 8b 15 a8 39 83 01
+  +0x350: 33 c9 e8 a9 b6 a1 fe 48 8b 0d 1a 61 80 01 49 8b
+  +0x360: b6 90 09 00 00 e8 d6 55 bd fe 4c 8b 05 5f 0a 84
+  +0x370: 01 45 33 c9 49 8b d6 48 8b c8 48 8b d8 e8 6e 2f
+  +0x380: 6f ff 48 8b 0d 07 24 81 01 44 39 b9 e4 00 00 00
+  +0x390: 75 05 e8 99 56 bd fe 48 8b 05 62 40 85 01 49 8d
+  +0x3a0: 96 20 0a 00 00 48 89 44 24 28 48 8d 4d 07 4c 8b
+  +0x3b0: cb 4c 89 7c 24 20 4c 8b c6 e8 82 b1 4b ff 49 8b
+  +0x3c0: 8e a0 09 00 00 33 d2 e8 a4 22 3d ff 84 c0 74 52
+  +0x3d0: 48 8b 0d f9 5e 80 01 49 8b be a0 09 00 00 e8 5d
+  +0x3e0: 55 bd fe 4c 8b 05 36 08 84 01 45 33 c9 49 8b d6
+  +0x3f0: 48 8b c8 48 8b d8 e8 f5 2e 6f ff 48 8b 0d 76 3e
+  +0x400: 85 01 49 8d 96 50 0a 00 00 48 89 4c 24 28 4c 8b
+  +0x410: cb 48 8d 4d 07 4c 89 7c 24 20 4c 8b c7 e8 1e b1
+  +0x420: 4b ff 49 8b 8e 80 09 00 00 33 d2 e8 40 22 3d ff
+  +0x430: 84 c0 74 52 48 8b 0d 15 65 80 01 49 8b be 80 09
+  +0x440: 00 00 e8 f9 54 bd fe 4c 8b 05 c2 0c 84 01 45 33
+  +0x450: c9 49 8b d6 48 8b c8 48 8b d8 e8 91 2e 6f ff 48
+  +0x460: 8b 0d d2 45 85 01 49 8d 96 80 0a 00 00 48 89 4c
+  +0x470: 24 28 4c 8b cb 48 8d 4d 07 4c 89 7c 24 20 4c 8b
+  +0x480: c7 e8 ba b0 4b ff 49 8b 86 48 09 00 00 48 8d 4d
+  +0x490: 77 33 d2 48 89 45 77 e8 44 61 ed ff 84 c0 74 67
+  +0x4a0: 49 8b 86 90 07 00 00 48 8d 4d f7 49 8b 96 48 09
+  +0x4b0: 00 00 45 33 c0 49 8b 9e 50 07 00 00 48 89 45 67
+  +0x4c0: e8 2b 62 ed ff 48 8b 0d a4 63 86 01 49 8b be f8
+  +0x4d0: 07 00 00 0f 10 00 0f 11 45 e7 44 39 b9 e4 00 00
+  +0x4e0: 00 75 05 e8 48 55 bd fe 4c 8b cf 4c 89 7c 24 20
+  +0x4f0: 4c 8d 45 e7 48 8b cb 48 8d 55 67 e8 60 9b f2 ff
+  +0x500: 49 89 86 e8 07 00 00 49 8b 8e e8 09 00 00 48 85
+  +0x510: c9 74 12 4d 8b 86 90 07 00 00 45 33 c9 49 8b d6
+  +0x520: e8 2b 15 01 00 49 8b 8e 00 0a 00 00 48 85 c9 74
+  +0x530: 12 4d 8b 86 90 07 00 00 45 33 c9 49 8b d6 e8 0d
+  +0x540: 15 01 00 49 8b 8e 10 0a 00 00 48 85 c9 74 12 4d
+  +0x550: 8b 86 90 07 00 00 45 33 c9 49 8b d6 e8 ef 14 01
+  +0x560: 00 49 8b 8e 68 09 00 00 48 85 c9 74 12 4d 8b 86
+  +0x570: 90 07 00 00 45 33 c9 49 8b d6 e8 d1 14 01 00 48
+  +0x580: 8b 05 aa 2f 83 01 48 8b 88 b8 00 00 00 44 38 39
+  +0x590: 0f 85 39 01 00 00 48 8b 0d 63 af 82 01 e8 0e 16
+  +0x5a0: 44 ff 48 8b f0 48 8b 05 6c cf 85 01 44 39 b8 e4
+  +0x5b0: 00 00 00 75 0f 48 8b c8 e8 73 54 bd fe 48 8b 05
+  +0x5c0: 54 cf 85 01 48 8b 88 b8 00 00 00 48 8b 79 08 48
+  +0x5d0: 85 ff 75 53 48 8b 19 48 8b 0d 4a 81 82 01 e8 5d
+  +0x5e0: 53 bd fe 4c 8b 05 d6 30 81 01 45 33 c9 48 8b d3
+  +0x5f0: 48 8b c8 48 8b f8 e8 25 e3 be ff 48 8b 05 16 cf
+  +0x600: 85 01 48 8b d7 48 8b 88 b8 00 00 00 48 89 79 08
+  +0x610: 48 8b 05 01 cf 85 01 48 8b 88 b8 00 00 00 48 83
+  +0x620: c1 08 e8 a9 43 bd fe 48 85 f6 0f 84 cd 01 00 00
+  +0x630: 4c 8b 05 41 cb 85 01 48 8b d7 48 8b ce e8 fe 66
+  +0x640: 43 ff 48 8b 0d cf ce 85 01 48 8b 81 b8 00 00 00
+  +0x650: 48 8b 78 10 48 85 ff 75 53 48 8b 0d 98 81 82 01
+  +0x660: 48 8b 18 e8 d8 52 bd fe 4c 8b 05 21 31 81 01 45
+  +0x670: 33 c9 48 8b d3 48 8b c8 48 8b f8 e8 a0 e2 be ff
+  +0x680: 48 8b 05 91 ce 85 01 48 8b d7 48 8b 88 b8 00 00
+  +0x690: 00 48 89 79 10 48 8b 05 7c ce 85 01 48 8b 88 b8
+  +0x6a0: 00 00 00 48 83 c1 10 e8 24 43 bd fe 4c 8b 05 9d
+  +0x6b0: cb 85 01 48 8b d7 48 8b ce e8 82 66 43 ff 48 8b
+  +0x6c0: 05 6b 2e 83 01 48 8b 88 b8 00 00 00 c6 01 01 49
+  +0x6d0: 8b 8e d0 09 00 00 33 d2 e8 b3 99 cb ff 84 c0 75
+  +0x6e0: 6e 33 d2 49 8b ce e8 05 08 95 00 48 85 c0 0f 84
+  +0x6f0: 09 01 00 00 48 8b 15 05 02 84 01 33 c9 4c 8b c0
+  +0x700: e8 8b ae a1 fe 48 8b 0d bc 21 85 01 48 8b d8 49
+  +0x710: 8b be d0 09 00 00 44 39 b9 e4 00 00 00 75 05 e8
+  +0x720: 0c 53 bd fe 4c 8b 0d 55 e7 82 01 45 33 c0 48 8b
+  +0x730: d7 48 8b cb e8 67 76 51 ff 49 8d 8e 48 08 00 00
+  +0x740: 49 89 86 48 08 00 00 48 8b d0 e8 81 42 bd fe 49
+  +0x750: 8b 9e e0 07 00 00 48 85 db 74 51 48 8b 0d 66 21
+  +0x760: 85 01 44 39 b9 e4 00 00 00 75 05 e8 c0 52 bd fe
+  +0x770: 4c 8b 0d 99 d7 82 01 45 33 c0 33 d2 48 8b cb e8
+  +0x780: 1c 76 51 ff 49 8b 8e 90 07 00 00 48 89 4d 67 48
+  +0x790: 85 c0 74 69 4c 8b 08 48 8d 55 67 48 8b c8 4d 8b
+  +0x7a0: 81 e0 0a 00 00 41 ff 91 d8 0a 00 00 45 38 be d8
+  +0x7b0: 09 00 00 74 31 49 8b 8e 88 09 00 00 45 33 c0 33
+  +0x7c0: d2 e8 6a f1 82 00 84 c0 74 1c 49 8b 86 88 09 00
+  --- Annotations ---
+  +0x03d: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x082: CALL 0x014bf980 -> Bindings.Create
+  +0x0b1: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x0ee: CALL 0x014bf980 -> Bindings.Create
+  +0x11d: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x15a: CALL 0x014bf980 -> Bindings.Create
+  +0x189: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x1c6: CALL 0x014bf980 -> Bindings.Create
+  +0x1ea: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x217: CALL 0x00af0830 -> 
+  +0x248: CALL 0x014c5650 -> Bindings.Set
+  +0x265: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x28f: CALL 0x00aecea0 -> 
+  +0x2c0: CALL 0x014c5650 -> Bindings.Set
+  +0x2dd: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x307: CALL 0x00aecea0 -> 
+  +0x338: CALL 0x014c5650 -> Bindings.Set
+  +0x37d: CALL 0x00cda060 -> OnCultureInfoChangedDelegate..ctor, XdrBeginChildFunction..ctor, XdrEndChildFunction..ctor, XsdEndChildFunction..ctor
+  +0x3b9: CALL 0x00aa22b0 -> 
+  +0x3c7: CALL 0x009b93e0 -> 
+  +0x3f6: CALL 0x00cda060 -> OnCultureInfoChangedDelegate..ctor, XdrBeginChildFunction..ctor, XdrEndChildFunction..ctor, XsdEndChildFunction..ctor
+  +0x41d: CALL 0x00aa22b0 -> 
+  +0x42b: CALL 0x009b93e0 -> 
+  +0x45a: CALL 0x00cda060 -> OnCultureInfoChangedDelegate..ctor, XdrBeginChildFunction..ctor, XdrEndChildFunction..ctor, XsdEndChildFunction..ctor
+  +0x481: CALL 0x00aa22b0 -> 
+  +0x497: CALL 0x014bd350 -> BindingPath.IsValid, HierarchySearchFilter.get_IsValid
+  +0x4c0: CALL 0x014bd460 -> BindingPath.op_Implicit
+  +0x4fb: CALL 0x01510dd0 -> BindingUtils.BindWithinScope
+  +0x520: CALL 0x015f87c0 -> EventList.Setup
+  +0x53e: CALL 0x015f87c0 -> EventList.Setup
+  +0x55c: CALL 0x015f87c0 -> EventList.Setup
+  +0x57a: CALL 0x015f87c0 -> EventList.Setup
+  +0x59d: CALL 0x00a28920 -> 
+  +0x5f6: CALL 0x011d5690 -> ParameterizedThreadStart..ctor, SendOrPostCallback..ctor, ContextCallback..ctor, WaitCallback..ctor
+  +0x63d: CALL 0x00a1dab0 -> 
+  +0x67b: CALL 0x011d5690 -> ParameterizedThreadStart..ctor, SendOrPostCallback..ctor, ContextCallback..ctor, WaitCallback..ctor
+  +0x6b9: CALL 0x00a1dab0 -> 
+  +0x6d8: CALL 0x012a0e00 -> String.IsNullOrWhiteSpace
+  +0x6e6: CALL 0x01f37c60 -> VisualElement.get_elementPanel, VisualElement.get_panel
+  +0x734: CALL 0x00afeb10 -> 
+  +0x77f: CALL 0x00afeb10 -> 
+  +0x7c1: CALL 0x01e166a0 -> Object.op_Inequality

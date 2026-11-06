@@ -1,0 +1,2465 @@
+
+================ StreamedTable.BindHeader (0x015e6230..0x015e6c93, sz=2659) ================
+  +0x000: 48 8b c4 48 89 58 08 48 89 70 10 48 89 78 18 55
+  +0x010: 41 54 41 55 41 56 41 57 48 8d 68 a8 48 81 ec 30
+  +0x020: 01 00 00 45 33 ed 0f 29 70 c8 33 c0 4c 89 6d c0
+  +0x030: 0f 57 c0 48 89 45 10 0f 57 c9 48 89 45 e0 48 8b
+  +0x040: f1 48 89 45 f8 48 8b 0d e4 e0 85 01 48 8b da 0f
+  +0x050: 11 44 24 70 4c 89 6d c8 0f 11 45 a0 4c 89 6c 24
+  +0x060: 40 0f 11 4d 00 4c 89 6c 24 48 4c 89 6d b0 0f 11
+  +0x070: 45 d0 0f 11 4d e8 e8 05 64 bd fe 48 8b d3 4c 8b
+  +0x080: f0 48 8d 48 10 48 89 58 10 e8 82 54 bd fe 49 8b
+  +0x090: 4e 10 48 85 c9 0f 84 c2 09 00 00 48 8b 15 ae 55
+  +0x0a0: 7f 01 45 33 c0 48 8b 49 38 e8 c2 88 cb ff 84 c0
+  +0x0b0: 0f 85 71 09 00 00 48 8b 86 88 09 00 00 48 85 c0
+  +0x0c0: 0f 84 97 09 00 00 4c 8b 40 38 49 8b 46 10 48 85
+  +0x0d0: c0 0f 84 86 09 00 00 4d 85 c0 0f 84 7d 09 00 00
+  +0x0e0: 4c 8b 48 38 41 8d 4d 02 48 8b 15 51 10 86 01 e8
+  +0x0f0: fc c0 a1 fe 48 8b d8 48 85 c0 0f 84 5d 09 00 00
+  +0x100: 48 8b 48 18 48 89 4d b8 8b 48 38 89 4d 78 48 8b
+  +0x110: 50 40 41 89 4e 18 49 8d 4e 20 49 89 56 20 e8 ed
+  +0x120: 53 bd fe 33 d2 48 8d 4d b8 e8 f2 6f ed ff 84 c0
+  +0x130: 0f 85 cb 04 00 00 48 8b 0d d3 e0 85 01 e8 3e 63
+  +0x140: bd fe 49 8b d6 48 8b f8 48 8d 48 20 4c 89 70 20
+  +0x150: e8 bb 53 bd fe 8b 4b 28 89 4d 78 48 8b 53 30 89
+  +0x160: 4f 10 48 8d 4f 18 48 89 57 18 e8 a1 53 bd fe 48
+  +0x170: 8b 47 20 48 8b 8e 38 08 00 00 48 85 c0 0f 84 da
+  +0x180: 08 00 00 48 8b 40 10 48 85 c0 0f 84 cd 08 00 00
+  +0x190: 48 85 c9 0f 84 c4 08 00 00 48 8b 50 38 4c 8d 45
+  +0x1a0: b0 45 33 c9 e8 e7 b8 03 00 84 c0 74 4f 48 8b 45
+  +0x1b0: b0 48 85 c0 0f 84 a3 08 00 00 48 8b 40 18 48 85
+  +0x1c0: c0 0f 84 96 08 00 00 8b 40 1c 48 8d 4d 78 33 d2
+  +0x1d0: 89 45 78 e8 48 8d f2 ff 84 c0 74 20 48 8b 45 b0
+  +0x1e0: 48 85 c0 0f 84 74 08 00 00 48 8b 40 18 48 85 c0
+  +0x1f0: 0f 84 67 08 00 00 8b 40 1c 89 47 10 33 c9 e8 5d
+  +0x200: 0a 07 00 84 c0 0f 84 1c 08 00 00 48 8d 4f 10 33
+  +0x210: d2 e8 0a 8d f2 ff 84 c0 0f 84 c7 01 00 00 48 8b
+  +0x220: 15 23 f6 84 01 48 8b 4f 18 e8 82 84 42 ff 84 c0
+  +0x230: 75 4b 8b 4f 10 33 d2 e8 b4 95 f2 ff 48 8b 4f 20
+  +0x240: 48 85 c9 0f 84 14 08 00 00 48 8b 49 10 48 85 c9
+  +0x250: 0f 84 07 08 00 00 48 8b d0 4c 39 69 40 74 11 48
+  +0x260: 8b 49 40 45 33 c0 e8 75 2e ff ff e9 75 01 00 00
+  +0x270: 48 89 41 28 48 83 c1 28 e9 63 01 00 00 48 8b 96
+  +0x280: 50 07 00 00 48 85 d2 0f 84 d0 07 00 00 4c 8b 86
+  +0x290: 90 07 00 00 48 8d 4d 80 45 33 c9 e8 60 92 ed ff
+  +0x2a0: 41 8b dd 4d 8b e5 0f 10 00 0f 11 45 d0 f2 0f 10
+  +0x2b0: 48 10 f2 0f 11 4d e0 66 0f 1f 84 00 00 00 00 00
+  +0x2c0: 48 8b 47 18 48 85 c0 0f 84 90 07 00 00 3b 58 18
+  +0x2d0: 0f 8d ab 00 00 00 48 8b 86 90 07 00 00 4c 8b be
+  +0x2e0: 50 07 00 00 48 89 44 24 40 48 8b 47 18 48 85 c0
+  +0x2f0: 0f 84 67 07 00 00 48 8b 40 10 48 8d 4d 80 45 33
+  +0x300: c0 42 0f 10 44 20 20 42 0f 10 4c 20 30 0f 11 44
+  +0x310: 24 50 48 8b 54 24 50 0f 11 4c 24 60 e8 0f 6f ed
+  +0x320: ff 48 8b 0d 88 70 86 01 0f 10 00 0f 29 45 a0 44
+  +0x330: 39 a9 e4 00 00 00 75 05 e8 33 62 bd fe 45 33 c9
+  +0x340: 4c 89 6c 24 20 4c 8d 45 a0 49 8b cf 48 8d 54 24
+  +0x350: 40 e8 2a ac f2 ff 4c 8d 4c 24 48 48 89 44 24 48
+  +0x360: 44 8b c3 4c 89 6c 24 20 48 8d 55 d0 48 8d 4c 24
+  +0x370: 50 e8 5a 70 ee ff ff c3 49 83 c4 20 e9 3f ff ff
+  +0x380: ff 48 8b 47 20 48 85 c0 0f 84 cf 06 00 00 48 8b
+  +0x390: 0d 4b 3d 7f 01 4c 8b 78 10 e8 e2 60 bd fe 4c 8b
+  +0x3a0: 05 5b 42 81 01 45 33 c9 48 8b d7 48 8b c8 48 8b
+  +0x3b0: d8 e8 fa cc 8f ff 45 33 c9 48 8d 55 d0 4c 8b c3
+  +0x3c0: 48 8d 4d 80 e8 57 70 ee ff 0f 10 00 4d 85 ff 0f
+  +0x3d0: 84 88 06 00 00 41 0f 11 47 70 49 8d 4f 70 33 d2
+  +0x3e0: e8 2b 51 bd fe 48 8b 4f 20 48 85 c9 0f 84 6b 06
+  +0x3f0: 00 00 48 83 c1 18 33 d2 e8 23 8b f2 ff 84 c0 0f
+  +0x400: 84 22 06 00 00 48 8b 4f 20 48 85 c9 0f 84 4b 06
+  +0x410: 00 00 48 8b 15 2f f4 84 01 48 8b 49 20 e8 8e 82
+  +0x420: 42 ff 84 c0 75 58 48 8b 4f 20 48 85 c9 0f 84 2a
+  +0x430: 06 00 00 8b 49 18 33 d2 e8 b3 93 f2 ff 48 8b 5f
+  +0x440: 20 48 85 db 0f 84 13 06 00 00 48 8b 5b 10 48 85
+  +0x450: db 0f 84 06 06 00 00 48 8b 4b 50 48 85 c9 0f 84
+  +0x460: f9 05 00 00 45 33 c0 48 8b d0 e8 71 2c ff ff 33
+  +0x470: d2 48 8b cb e8 b7 8d ff ff e9 a9 05 00 00 48 8b
+  +0x480: 96 50 07 00 00 48 85 d2 0f 84 cf 05 00 00 4c 8b
+  +0x490: 86 90 07 00 00 48 8d 4d 80 45 33 c9 e8 5f 90 ed
+  +0x4a0: ff 41 8b dd 4d 8b e5 0f 10 00 0f 11 45 e8 f2 0f
+  +0x4b0: 10 48 10 f2 0f 11 4d f8 0f 1f 84 00 00 00 00 00
+  +0x4c0: 48 8b 47 20 48 85 c0 0f 84 90 05 00 00 48 8b 48
+  +0x4d0: 20 48 85 c9 0f 84 83 05 00 00 3b 59 18 0f 8d b8
+  +0x4e0: 00 00 00 48 8b 86 90 07 00 00 4c 8b be 50 07 00
+  +0x4f0: 00 48 89 44 24 40 48 8b 47 20 48 85 c0 0f 84 5a
+  +0x500: 05 00 00 48 8b 40 20 48 85 c0 0f 84 4d 05 00 00
+  +0x510: 48 8b 40 10 48 8d 4d 80 45 33 c0 42 0f 10 44 20
+  +0x520: 20 42 0f 10 4c 20 30 0f 11 44 24 50 48 8b 54 24
+  +0x530: 50 0f 11 4c 24 60 e8 f5 6c ed ff 48 8b 0d 6e 6e
+  +0x540: 86 01 0f 10 00 0f 29 45 a0 44 39 a9 e4 00 00 00
+  +0x550: 75 05 e8 19 60 bd fe 45 33 c9 4c 89 6c 24 20 4c
+  +0x560: 8d 45 a0 49 8b cf 48 8d 54 24 40 e8 10 aa f2 ff
+  +0x570: 4c 8d 4c 24 48 48 89 44 24 48 44 8b c3 4c 89 6c
+  +0x580: 24 20 48 8d 55 e8 48 8d 4c 24 50 e8 40 6e ee ff
+  +0x590: ff c3 49 83 c4 20 e9 25 ff ff ff 48 85 c0 0f 84
+  +0x5a0: b9 04 00 00 48 8b 0d 35 3b 7f 01 48 8b d8 48 8b
+  +0x5b0: 70 10 e8 c9 5e bd fe 4c 8b 05 7a 3f 81 01 45 33
+  +0x5c0: c9 48 8b d3 48 8b c8 48 8b f8 e8 e1 ca 8f ff 45
+  +0x5d0: 33 c9 48 8d 55 e8 4c 8b c7 48 8d 4d 80 e8 3e 6e
+  +0x5e0: ee ff 0f 10 00 48 85 f6 0f 84 6f 04 00 00 0f 11
+  +0x5f0: 86 80 00 00 00 48 8d 8e 80 00 00 00 e9 1f 04 00
+  +0x600: 00 48 8b 5d b8 48 85 db 74 22 33 d2 48 8b cb e8
+  +0x610: ac 92 cb ff 8b 4b 10 44 89 6c 24 7c 48 89 44 24
+  +0x620: 70 89 4c 24 78 0f 28 44 24 70 eb 03 0f 57 c0 48
+  +0x630: 8b 0d 22 b4 82 01 66 0f 7f 44 24 70 e8 af 20 44
+  +0x640: ff 48 8b 1d 08 21 85 01 48 8b f8 0f 28 74 24 70
+  +0x650: 48 85 db 74 22 33 d2 48 8b cb e8 61 92 cb ff 8b
+  +0x660: 4b 10 89 4c 24 58 44 89 6c 24 5c 48 89 44 24 50
+  +0x670: 0f 28 44 24 50 eb 03 0f 57 c0 45 33 c9 66 0f 7f
+  +0x680: 44 24 50 48 8d 54 24 50 66 0f 7f 75 80 48 8d 4d
+  +0x690: 80 45 8d 41 05 e8 26 d0 dd ff 84 c0 75 44 48 8b
+  +0x6a0: 0d 0b 6d 86 01 48 8b 86 90 07 00 00 49 8b 5e 10
+  +0x6b0: 48 89 44 24 40 44 39 a9 e4 00 00 00 75 05 e8 ad
+  +0x6c0: 5e bd fe 45 33 c9 4c 89 6c 24 20 4c 8d 44 24 70
+  +0x6d0: 48 8b cf 48 8d 54 24 40 e8 a3 a8 f2 ff e9 a9 01
+  +0x6e0: 00 00 4c 8b 86 58 07 00 00 4d 85 c0 0f 84 6b 03
+  +0x6f0: 00 00 48 8b 15 4f 5e 83 01 b9 01 00 00 00 e8 cd
+  +0x700: b9 a1 fe 85 c0 0f 8e 8d 01 00 00 48 8b 0d fe 6e
+  +0x710: 86 01 0f 28 74 24 70 44 39 a9 e4 00 00 00 75 05
+  +0x720: e8 4b 5e bd fe 45 33 c0 66 0f 7f 75 80 48 8d 55
+  +0x730: 80 48 8d 4c 24 50 e8 f5 b0 ed ff 4c 8b 3d 46 31
+  +0x740: 82 01 48 8b 9e 90 07 00 00 0f 10 00 0f 11 44 24
+  +0x750: 70 4d 85 ff 74 23 33 d2 49 8b cf e8 60 91 cb ff
+  +0x760: 41 8b 4f 10 89 4c 24 58 44 89 6c 24 5c 48 89 44
+  +0x770: 24 50 0f 28 74 24 50 eb 03 0f 57 f6 48 8b 0d 2d
+  +0x780: 6c 86 01 44 39 a9 e4 00 00 00 75 05 e8 df 5d bd
+  +0x790: fe 45 33 c9 66 0f 7f 75 80 4c 8d 45 80 4c 89 6c
+  +0x7a0: 24 20 48 8b d3 48 8b cf e8 c3 a4 f2 ff 45 33 c0
+  +0x7b0: 48 89 45 c0 33 d2 48 8b ce e8 02 73 88 ff 4c 8b
+  +0x7c0: 3d 33 c4 84 01 48 8b d8 4d 85 ff 74 23 33 d2 49
+  +0x7d0: 8b cf e8 e9 90 cb ff 41 8b 4f 10 89 4c 24 58 44
+  +0x7e0: 89 6c 24 5c 48 89 44 24 50 0f 28 44 24 50 eb 03
+  +0x7f0: 0f 57 c0 66 0f 7f 45 a0 48 85 db 74 30 48 8b 15
+  +0x800: 14 0e 85 01 4c 8b 03 0f b6 82 30 01 00 00 41 38
+  +0x810: 80 30 01 00 00 72 16 0f b6 c8 49 8b 80 c8 00 00
+  +0x820: 00 48 39 54 c8 f8 75 05 48 8b c3 eb 0f 48 8b 15
+  +0x830: 04 15 82 01 48 8b cb e8 54 b6 50 ff 48 85 ff 0f
+  +0x840: 84 18 02 00 00 4c 89 6c 24 30 4c 8d 45 a0 c7 44
+  +0x850: 24 28 01 00 00 00 48 8d 55 c0 4c 8b c8 44 88 6c
+  +0x860: 24 20 48 8b cf e8 b6 eb ed ff 48 89 45 c8 4c 8d
+  +0x870: 44 24 70 49 8b 5e 10 48 8d 55 c8 45 33 c9 4c 89
+  +0x880: 6c 24 20 48 8b cf e8 c5 8e ed ff 48 85 db 0f 84
+  +0x890: c9 01 00 00 48 89 43 68 49 8d 4e 18 33 d2 e8 7d
+  +0x8a0: 86 f2 ff 84 c0 0f 84 7c 01 00 00 48 8b 15 96 ef
+  +0x8b0: 84 01 49 8b 4e 20 e8 f5 7d 42 ff 84 c0 75 14 41
+  +0x8c0: 8b 4e 18 33 d2 49 8b 5e 10 e8 22 8f f2 ff e9 7b
+  +0x8d0: fb ff ff 48 8b 96 50 07 00 00 48 85 d2 0f 84 7a
+  +0x8e0: 01 00 00 4c 8b 86 90 07 00 00 48 8d 4d 80 45 33
+  +0x8f0: c9 e8 0a 8c ed ff 41 8b dd 49 8b fd 0f 10 00 0f
+  +0x900: 11 45 00 f2 0f 10 48 10 f2 0f 11 4d 10 0f 1f 00
+  +0x910: 49 8b 46 20 48 85 c0 0f 84 40 01 00 00 3b 58 18
+  +0x920: 0f 8d a9 00 00 00 48 8b 86 90 07 00 00 4c 8b be
+  +0x930: 50 07 00 00 48 89 44 24 40 49 8b 46 20 48 85 c0
+  +0x940: 0f 84 17 01 00 00 48 8b 40 10 48 8d 4d 80 45 33
+  +0x950: c0 0f 10 44 38 20 0f 10 4c 38 30 0f 11 44 24 50
+  +0x960: 48 8b 54 24 50 0f 11 4c 24 60 e8 c1 68 ed ff 48
+  +0x970: 8b 0d 3a 6a 86 01 0f 10 00 0f 11 45 a0 44 39 a9
+  +0x980: e4 00 00 00 75 05 e8 e5 5b bd fe 45 33 c9 4c 89
+  +0x990: 6c 24 20 4c 8d 45 a0 49 8b cf 48 8d 54 24 40 e8
+  +0x9a0: dc a5 f2 ff 4c 8d 4c 24 48 48 89 44 24 48 44 8b
+  +0x9b0: c3 4c 89 6c 24 20 48 8d 55 00 48 8d 4c 24 50 e8
+  +0x9c0: 0c 6a ee ff ff c3 48 83 c7 20 e9 41 ff ff ff 48
+  +0x9d0: 8b 0d 0a 37 7f 01 49 8b 7e 10 e8 a1 5a bd fe 4c
+  +0x9e0: 8b 05 92 3a 81 01 45 33 c9 49 8b d6 48 8b c8 48
+  +0x9f0: 8b d8 e8 b9 c6 8f ff 45 33 c9 48 8d 55 00 4c 8b
+  +0xa00: c3 48 8d 4d 80 e8 16 6a ee ff 0f 10 00 48 85 ff
+  +0xa10: 74 4b 0f 11 87 80 00 00 00 48 8d 8f 80 00 00 00
+  +0xa20: 33 d2 e8 e9 4a bd fe 49 8b 4e 10 48 85 c9 74 2d
+  +0xa30: 33 d2 e8 89 88 ff ff 4c 8d 9c 24 30 01 00 00 49
+  +0xa40: 8b 5b 30 49 8b 73 38 49 8b 7b 40 41 0f 28 73 f0
+  +0xa50: 49 8b e3 41 5f 41 5e 41 5d 41 5c 5d c3 e8 6e 5a
+  +0xa60: bd fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:1740
+  [+0x023] StreamedTable.cs:1740
+  [+0x02a] StreamedTable.cs:1740
+  [+0x03a] StreamedTable.cs:1740
+  [+0x041] StreamedTable.cs:1740
+  [+0x045] StreamedTable.cs:1740
+  +0x045: RIP [0x02e44360] -> MetaUsage(tag=1, idx=47709)
+  [+0x04c] StreamedTable.cs:1740
+  [+0x04f] StreamedTable.cs:1740
+  [+0x054] StreamedTable.cs:1740
+  [+0x058] StreamedTable.cs:1740
+  [+0x05c] StreamedTable.cs:1740
+  [+0x061] StreamedTable.cs:1740
+  [+0x065] StreamedTable.cs:1740
+  [+0x06a] StreamedTable.cs:1740
+  [+0x06e] StreamedTable.cs:1740
+  [+0x072] StreamedTable.cs:1740
+  [+0x076] StreamedTable.cs:1740
+  +0x076: CALL 0x001bc6b0 ()
+  [+0x07b] StreamedTable.cs:1740
+  [+0x07e] StreamedTable.cs:1740
+  [+0x081] StreamedTable.cs:1740
+  +0x089: CALL 0x001bb740 ()
+  [+0x08e] StreamedTable.cs:1744
+  [+0x092] StreamedTable.cs:1744
+  [+0x09b] StreamedTable.cs:1744
+  +0x09b: RIP [0x02ddb880] -> STR "default-selection-column"
+  +0x0a9: CALL 0x0129eba0 ()
+  [+0x0ae] StreamedTable.cs:1744
+  [+0x0b6] StreamedTable.cs:1750
+  [+0x0bd] StreamedTable.cs:1750
+  [+0x0c6] StreamedTable.cs:1750
+  [+0x0ce] StreamedTable.cs:1750
+  [+0x0d7] StreamedTable.cs:1750
+  [+0x0e0] StreamedTable.cs:1750
+  +0x0e8: RIP [0x02e47370] -> MetaUsage(tag=1, idx=12128)
+  [+0x0f7] StreamedTable.cs:1751
+  [+0x100] StreamedTable.cs:1751
+  [+0x108] StreamedTable.cs:1752
+  [+0x10e] StreamedTable.cs:1752
+  [+0x112] StreamedTable.cs:1752
+  [+0x116] StreamedTable.cs:1752
+  +0x11e: CALL 0x001bb740 ()
+  [+0x123] StreamedTable.cs:1753
+  +0x129: CALL 0x014bd350 (BindingPath.cs:95)
+  [+0x12e] StreamedTable.cs:1753
+  [+0x136] StreamedTable.cs:1798
+  +0x136: RIP [0x02e44440] -> MetaUsage(tag=1, idx=47711)
+  +0x13d: CALL 0x001bc6b0 ()
+  [+0x142] StreamedTable.cs:1798
+  [+0x145] StreamedTable.cs:1798
+  [+0x148] StreamedTable.cs:1798
+  +0x150: CALL 0x001bb740 ()
+  [+0x155] StreamedTable.cs:1804
+  [+0x15b] StreamedTable.cs:1804
+  [+0x15f] StreamedTable.cs:1804
+  [+0x162] StreamedTable.cs:1804
+  +0x16a: CALL 0x001bb740 ()
+  [+0x16f] StreamedTable.cs:1805
+  [+0x17a] StreamedTable.cs:1805
+  [+0x183] StreamedTable.cs:1805
+  [+0x187] StreamedTable.cs:1805
+  [+0x190] StreamedTable.cs:1805
+  [+0x199] StreamedTable.cs:1805
+  +0x1a4: CALL 0x01621cc0 (StreamedTableView.cs:355)
+  [+0x1a9] StreamedTable.cs:1806
+  [+0x1ad] StreamedTable.cs:1806
+  [+0x1ba] StreamedTable.cs:1806
+  [+0x1be] StreamedTable.cs:1806
+  [+0x1c7] StreamedTable.cs:1806
+  +0x1d3: CALL 0x0150f150 (BindableWidgetUtils.cs:48, BindableWidgetUtils.cs:52)
+  [+0x1d8] StreamedTable.cs:1806
+  [+0x1dc] StreamedTable.cs:1808
+  [+0x1e9] StreamedTable.cs:1808
+  [+0x1ed] StreamedTable.cs:1808
+  [+0x1f6] StreamedTable.cs:1808
+  [+0x1fc] StreamedTable.cs:1811
+  +0x1fe: CALL 0x01656e90 (TranslationManager.cs:23, TranslationManager.cs:25)
+  [+0x203] StreamedTable.cs:1811
+  [+0x20b] StreamedTable.cs:1813
+  [+0x20f] StreamedTable.cs:1813
+  +0x211: CALL 0x0150f150 (BindableWidgetUtils.cs:48, BindableWidgetUtils.cs:52)
+  [+0x216] StreamedTable.cs:1813
+  [+0x21e] StreamedTable.cs:1816
+  +0x21e: RIP [0x02e35a78] -> MetaUsage(tag=6, idx=183267)
+  +0x229: CALL 0x00a0e8e0 (EnumerableExtensions.cs:29, EnumerableExtensions.cs:40)
+  [+0x22e] StreamedTable.cs:1816
+  [+0x232] StreamedTable.cs:1839
+  +0x237: CALL 0x0150fa20 (BindableWidgetUtils.cs:42)
+  [+0x23c] StreamedTable.cs:1840
+  [+0x240] StreamedTable.cs:1840
+  [+0x249] StreamedTable.cs:1840
+  [+0x24d] StreamedTable.cs:1840
+  [+0x256] StreamedTable.cs:1840, StreamedTable.cs:170
+  [+0x25f] StreamedTable.cs:176
+  +0x266: CALL 0x015d9310 (SIText.cs:307)
+  +0x26b: JMP 0x015e6615 ()
+  [+0x270] StreamedTable.cs:172
+  [+0x274] StreamedTable.cs:172
+  [+0x278] StreamedTable.cs:1840
+  +0x278: JMP 0x015e6610 (StreamedTable.cs:1844)
+  [+0x27d] StreamedTable.cs:1818
+  [+0x284] StreamedTable.cs:1818
+  [+0x28d] StreamedTable.cs:1818
+  +0x29b: CALL 0x014bf730 (Bindings.cs:2565)
+  [+0x2a0] StreamedTable.cs:1820
+  [+0x2c0] StreamedTable.cs:1820
+  [+0x2c4] StreamedTable.cs:1820
+  [+0x2cd] StreamedTable.cs:1820
+  [+0x2d6] StreamedTable.cs:1822
+  [+0x2e9] StreamedTable.cs:1822
+  [+0x2ed] StreamedTable.cs:1822
+  [+0x2f6] StreamedTable.cs:1822
+  +0x31c: CALL 0x014bd460 (BindingPath.cs:111)
+  [+0x321] StreamedTable.cs:1822
+  +0x321: RIP [0x02e4d5e0] -> MetaUsage(tag=1, idx=23672)
+  +0x338: CALL 0x001bc7a0 ()
+  [+0x33d] StreamedTable.cs:1822
+  +0x351: CALL 0x015111b0 (BindingUtils.cs:396)
+  [+0x356] StreamedTable.cs:1822
+  +0x371: CALL 0x014cd600 (Bindings.cs:1265)
+  [+0x376] StreamedTable.cs:1820
+  [+0x37c] StreamedTable.cs:1820
+  +0x37c: JMP 0x015e64f0 (StreamedTable.cs:1820)
+  [+0x381] StreamedTable.cs:1834
+  [+0x385] StreamedTable.cs:1834
+  [+0x38e] StreamedTable.cs:1834
+  +0x38e: RIP [0x02dda310] -> MetaUsage(tag=1, idx=41855)
+  [+0x395] StreamedTable.cs:1834
+  [+0x399] StreamedTable.cs:1834
+  +0x399: CALL 0x001bc6b0 ()
+  [+0x39e] StreamedTable.cs:1834
+  +0x39e: RIP [0x02dfa830] -> MethodDef idx=49027 <BindHeader>b__1
+  [+0x3ae] StreamedTable.cs:1834
+  [+0x3b1] StreamedTable.cs:1834
+  +0x3b1: CALL 0x00ee32e0 (TypedValue.cs:699, TypedValue.cs:699)
+  [+0x3b6] StreamedTable.cs:1834
+  +0x3c4: CALL 0x014cd650 (Bindings.cs:1298)
+  [+0x3cc] StreamedTable.cs:1834
+  [+0x3d5] StreamedTable.cs:1834
+  [+0x3e0] StreamedTable.cs:1844
+  +0x3e0: CALL 0x001bb740 ()
+  [+0x3e9] StreamedTable.cs:1844
+  [+0x3f2] StreamedTable.cs:1844
+  +0x3f8: CALL 0x0150f150 (BindableWidgetUtils.cs:48, BindableWidgetUtils.cs:52)
+  [+0x3fd] StreamedTable.cs:1844
+  [+0x405] StreamedTable.cs:1846
+  [+0x409] StreamedTable.cs:1846
+  [+0x412] StreamedTable.cs:1846
+  +0x412: RIP [0x02e35a78] -> MetaUsage(tag=6, idx=183267)
+  +0x41d: CALL 0x00a0e8e0 (EnumerableExtensions.cs:29, EnumerableExtensions.cs:40)
+  [+0x422] StreamedTable.cs:1846
+  [+0x426] StreamedTable.cs:1869
+  [+0x42a] StreamedTable.cs:1869
+  [+0x433] StreamedTable.cs:1869
+  +0x438: CALL 0x0150fa20 (BindableWidgetUtils.cs:42)
+  [+0x43d] StreamedTable.cs:1870
+  [+0x441] StreamedTable.cs:1870
+  [+0x44a] StreamedTable.cs:1870
+  [+0x44e] StreamedTable.cs:1878
+  +0x46a: CALL 0x015d9310 (SIText.cs:307)
+  +0x474: CALL 0x015df460 (StreamedTable.cs:195)
+  +0x479: JMP 0x015e6c57 (StreamedTable.cs:1879)
+  [+0x47e] StreamedTable.cs:1848
+  [+0x485] StreamedTable.cs:1848
+  [+0x48e] StreamedTable.cs:1848
+  +0x49c: CALL 0x014bf730 (Bindings.cs:2565)
+  [+0x4a1] StreamedTable.cs:1850
+  [+0x4c0] StreamedTable.cs:1850
+  [+0x4c4] StreamedTable.cs:1850
+  [+0x4cd] StreamedTable.cs:1850
+  [+0x4d1] StreamedTable.cs:1850
+  [+0x4da] StreamedTable.cs:1850
+  [+0x4e3] StreamedTable.cs:1852
+  [+0x4f6] StreamedTable.cs:1852
+  [+0x4fa] StreamedTable.cs:1852
+  [+0x503] StreamedTable.cs:1852
+  [+0x507] StreamedTable.cs:1852
+  [+0x510] StreamedTable.cs:1852
+  +0x536: CALL 0x014bd460 (BindingPath.cs:111)
+  [+0x53b] StreamedTable.cs:1852
+  +0x53b: RIP [0x02e4d5e0] -> MetaUsage(tag=1, idx=23672)
+  +0x552: CALL 0x001bc7a0 ()
+  [+0x557] StreamedTable.cs:1852
+  +0x56b: CALL 0x015111b0 (BindingUtils.cs:396)
+  [+0x570] StreamedTable.cs:1852
+  +0x58b: CALL 0x014cd600 (Bindings.cs:1265)
+  [+0x590] StreamedTable.cs:1850
+  [+0x596] StreamedTable.cs:1850
+  +0x596: JMP 0x015e66f0 (StreamedTable.cs:1850)
+  [+0x59b] StreamedTable.cs:1864
+  [+0x5a4] StreamedTable.cs:1864
+  +0x5a4: RIP [0x02dda310] -> MetaUsage(tag=1, idx=41855)
+  [+0x5ab] StreamedTable.cs:1864
+  [+0x5b2] StreamedTable.cs:1864
+  +0x5b2: CALL 0x001bc6b0 ()
+  [+0x5b7] StreamedTable.cs:1864
+  +0x5b7: RIP [0x02dfa768] -> MethodDef idx=49025 <BindHeader>b__2
+  [+0x5c7] StreamedTable.cs:1864
+  [+0x5ca] StreamedTable.cs:1864
+  +0x5ca: CALL 0x00ee32e0 (TypedValue.cs:699, TypedValue.cs:699)
+  [+0x5cf] StreamedTable.cs:1864
+  +0x5dd: CALL 0x014cd650 (Bindings.cs:1298)
+  [+0x5e5] StreamedTable.cs:1864
+  [+0x5ee] StreamedTable.cs:1864
+  [+0x5fc] StreamedTable.cs:1864
+  +0x5fc: JMP 0x015e6c50 (StreamedTable.cs:1878)
+  [+0x601] StreamedTable.cs:1755
+  [+0x605] StreamedTable.cs:1755, TableTemplate.cs:149
+  [+0x60a] TableTemplate.cs:149
+  +0x60f: CALL 0x0129faf0 ()
+  [+0x614] TableTemplate.cs:149
+  [+0x617] TableTemplate.cs:149
+  [+0x61c] TableTemplate.cs:149, StreamedObjectListWithChildren.cs:30
+  [+0x621] StreamedObjectListWithChildren.cs:30
+  [+0x625] TableTemplate.cs:149
+  [+0x62f] StreamedTable.cs:1756
+  +0x62f: RIP [0x02e11c88] -> MetaUsage(tag=6, idx=207724)
+  [+0x636] StreamedTable.cs:1755
+  [+0x63c] StreamedTable.cs:1756
+  +0x63c: CALL 0x00a28920 (GameObjectExtensions.cs:18)
+  [+0x641] StreamedTable.cs:1757
+  +0x641: RIP [0x02e38980] -> STR "binding"
+  [+0x648] StreamedTable.cs:1756
+  [+0x64b] StreamedTable.cs:1757
+  [+0x650] StreamedTable.cs:1757, StreamedObjectList.cs:40
+  [+0x655] StreamedObjectList.cs:40
+  +0x65a: CALL 0x0129faf0 ()
+  [+0x65f] StreamedObjectList.cs:40
+  [+0x662] StreamedObjectList.cs:40, StreamedObjectListWithChildren.cs:30
+  [+0x666] StreamedObjectList.cs:40
+  [+0x66b] StreamedObjectList.cs:40, StreamedObjectListWithChildren.cs:30
+  [+0x670] StreamedObjectList.cs:40
+  [+0x67a] StreamedTable.cs:1757
+  +0x695: CALL 0x013c38f0 ()
+  [+0x69a] StreamedTable.cs:1757
+  [+0x69e] StreamedTable.cs:1771
+  +0x69e: RIP [0x02e4d5e0] -> MetaUsage(tag=1, idx=23672)
+  +0x6be: CALL 0x001bc7a0 ()
+  [+0x6c3] StreamedTable.cs:1771
+  +0x6d8: CALL 0x015111b0 (BindingUtils.cs:396)
+  [+0x6dd] StreamedTable.cs:1771
+  +0x6dd: JMP 0x015e6abb (StreamedTable.cs:1774)
+  [+0x6e2] StreamedTable.cs:1760
+  [+0x6e9] StreamedTable.cs:1760
+  [+0x6f2] StreamedTable.cs:1760
+  +0x6f2: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x703] StreamedTable.cs:1760
+  [+0x70b] StreamedTable.cs:1762
+  +0x70b: RIP [0x02e4d840] -> MetaUsage(tag=1, idx=23676)
+  +0x720: CALL 0x001bc7a0 ()
+  [+0x725] StreamedTable.cs:1762
+  +0x736: CALL 0x014c1a60 (Bindings.cs:2341)
+  [+0x73b] StreamedTable.cs:1763
+  +0x73b: RIP [0x02e09ab8] -> STR "header-binding"
+  [+0x751] StreamedObjectList.cs:40
+  [+0x756] StreamedObjectList.cs:40
+  +0x75b: CALL 0x0129faf0 ()
+  [+0x760] StreamedObjectList.cs:40
+  [+0x764] StreamedObjectList.cs:40, StreamedObjectListWithChildren.cs:30
+  [+0x768] StreamedObjectList.cs:40
+  [+0x76d] StreamedObjectList.cs:40, StreamedObjectListWithChildren.cs:30
+  [+0x772] StreamedObjectList.cs:40
+  [+0x77c] StreamedTable.cs:1763
+  +0x77c: RIP [0x02e4d5e0] -> MetaUsage(tag=1, idx=23672)
+  +0x78c: CALL 0x001bc7a0 ()
+  [+0x791] StreamedTable.cs:1763
+  +0x7a8: CALL 0x01510ea0 (BindingUtils.cs:27)
+  [+0x7ad] StreamedTable.cs:1764
+  +0x7b9: CALL 0x00e6dcf0 (StructList.cs:118)
+  [+0x7be] StreamedTable.cs:1765
+  +0x7be: RIP [0x02e32e28] -> STR "0"
+  [+0x7c8] StreamedObjectList.cs:40
+  [+0x7cd] StreamedObjectList.cs:40
+  +0x7d2: CALL 0x0129faf0 ()
+  [+0x7d7] StreamedObjectList.cs:40
+  [+0x7db] StreamedObjectList.cs:40, StreamedObjectListWithChildren.cs:30
+  [+0x7df] StreamedObjectList.cs:40
+  [+0x7e4] StreamedObjectList.cs:40, StreamedObjectListWithChildren.cs:30
+  [+0x7e9] StreamedObjectList.cs:40
+  [+0x7f8] StreamedTable.cs:1765
+  +0x7fd: RIP [0x02e37848] -> MetaUsage(tag=1, idx=38755)
+  [+0x82b] StreamedTable.cs:1765
+  [+0x82d] StreamedTable.cs:1765
+  +0x82d: RIP [0x02e07f68] -> MetaUsage(tag=6, idx=189930)
+  +0x837: CALL 0x00af20c0 (TypedValue.cs:213)
+  [+0x83c] StreamedTable.cs:1765
+  [+0x845] StreamedTable.cs:1765
+  +0x865: CALL 0x014c5650 (Bindings.cs:1933)
+  [+0x86e] StreamedTable.cs:1766
+  +0x886: CALL 0x014bf980 (Bindings.cs:1507)
+  [+0x88b] StreamedTable.cs:1774
+  [+0x89c] StreamedTable.cs:1774
+  +0x89e: CALL 0x0150f150 (BindableWidgetUtils.cs:48, BindableWidgetUtils.cs:52)
+  [+0x8a3] StreamedTable.cs:1774
+  [+0x8ab] StreamedTable.cs:1776
+  +0x8ab: RIP [0x02e35a78] -> MetaUsage(tag=6, idx=183267)
+  +0x8b6: CALL 0x00a0e8e0 (EnumerableExtensions.cs:29, EnumerableExtensions.cs:40)
+  [+0x8bb] StreamedTable.cs:1776
+  [+0x8bf] StreamedTable.cs:1798
+  +0x8c9: CALL 0x0150fa20 (BindableWidgetUtils.cs:42)
+  [+0x8ce] StreamedTable.cs:1870
+  +0x8ce: JMP 0x015e667e (StreamedTable.cs:1878)
+  [+0x8d3] StreamedTable.cs:1778
+  [+0x8da] StreamedTable.cs:1778
+  [+0x8e3] StreamedTable.cs:1778
+  +0x8f1: CALL 0x014bf730 (Bindings.cs:2565)
+  [+0x8f6] StreamedTable.cs:1780
+  [+0x910] StreamedTable.cs:1780
+  [+0x914] StreamedTable.cs:1780
+  [+0x91d] StreamedTable.cs:1780
+  [+0x926] StreamedTable.cs:1782
+  [+0x939] StreamedTable.cs:1782
+  [+0x93d] StreamedTable.cs:1782
+  [+0x946] StreamedTable.cs:1782
+  +0x96a: CALL 0x014bd460 (BindingPath.cs:111)
+  [+0x96f] StreamedTable.cs:1782
+  +0x96f: RIP [0x02e4d5e0] -> MetaUsage(tag=1, idx=23672)
+  +0x986: CALL 0x001bc7a0 ()
+  [+0x98b] StreamedTable.cs:1782
+  +0x99f: CALL 0x015111b0 (BindingUtils.cs:396)
+  [+0x9a4] StreamedTable.cs:1782
+  +0x9bf: CALL 0x014cd600 (Bindings.cs:1265)
+  [+0x9c4] StreamedTable.cs:1780
+  [+0x9ca] StreamedTable.cs:1780
+  +0x9ca: JMP 0x015e6b40 (StreamedTable.cs:1780)
+  [+0x9cf] StreamedTable.cs:1793
+  +0x9cf: RIP [0x02dda310] -> MetaUsage(tag=1, idx=41855)
+  [+0x9d6] StreamedTable.cs:1793
+  [+0x9da] StreamedTable.cs:1793
+  +0x9da: CALL 0x001bc6b0 ()
+  [+0x9df] StreamedTable.cs:1793
+  +0x9df: RIP [0x02dfa6a8] -> MethodDef idx=49024 <BindHeader>b__0
+  [+0x9ef] StreamedTable.cs:1793
+  [+0x9f2] StreamedTable.cs:1793
+  +0x9f2: CALL 0x00ee32e0 (TypedValue.cs:699, TypedValue.cs:699)
+  [+0x9f7] StreamedTable.cs:1793
+  +0xa05: CALL 0x014cd650 (Bindings.cs:1298)
+  [+0xa0d] StreamedTable.cs:1793
+  [+0xa12] StreamedTable.cs:1793
+  [+0xa20] StreamedTable.cs:1878
+  +0xa22: CALL 0x001bb740 ()
+  [+0xa27] StreamedTable.cs:1879
+  +0xa32: CALL 0x015df4f0 (StreamedTable.cs:183)
+  [+0xa5d] StreamedTable.cs:1746
+  +0xa5d: CALL 0x001bc700 ()
+
+================ StreamedTable.BindHeaders (0x015e6ca0..0x015e6d69, sz=201) ================
+  +0x000: 4c 8b dc 53 48 81 ec 80 00 00 00 48 8b 91 f8 08
+  +0x010: 00 00 33 c0 49 89 43 18 48 8b d9 49 89 43 08 48
+  +0x020: 85 d2 0f 84 9b 00 00 00 45 33 c0 49 8d 4b d0 e8
+  +0x030: cc ca a6 ff 0f 10 44 24 58 33 d2 48 8d 4c 24 30
+  +0x040: 0f 10 4c 24 68 0f 11 44 24 30 f2 0f 10 44 24 78
+  +0x050: f2 0f 11 44 24 50 0f 11 4c 24 40 e8 60 51 bc ff
+  +0x060: 84 c0 74 56 0f 1f 40 00 0f 1f 84 00 00 00 00 00
+  +0x070: 0f 10 44 24 40 45 33 c9 4c 8d 84 24 90 00 00 00
+  +0x080: 48 8d 94 24 a0 00 00 00 48 8d 4c 24 20 0f 11 44
+  +0x090: 24 20 e8 d9 ea 60 ff 48 8b 94 24 90 00 00 00 45
+  +0x0a0: 33 c0 48 8b cb e8 e6 f4 ff ff 33 d2 48 8d 4c 24
+  +0x0b0: 30 e8 0a 51 bc ff 84 c0 75 b6 48 81 c4 80 00 00
+  +0x0c0: 00 5b c3 e8 98 59 bd fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:1879
+  [+0x00b] StreamedTable.cs:1883
+  [+0x01f] StreamedTable.cs:1883
+  [+0x028] StreamedTable.cs:1883
+  +0x02f: CALL 0x010537a0 ()
+  [+0x039] StreamedTable.cs:1883
+  [+0x040] StreamedTable.cs:1883
+  [+0x05b] StreamedTable.cs:1883
+  +0x05b: CALL 0x011abe60 ()
+  [+0x060] StreamedTable.cs:1883
+  [+0x070] StreamedTable.cs:1883
+  [+0x075] StreamedTable.cs:1883
+  [+0x08d] StreamedTable.cs:1883
+  [+0x092] StreamedTable.cs:1883
+  +0x092: CALL 0x00bf5810 ()
+  [+0x097] StreamedTable.cs:1885
+  +0x0a5: CALL 0x015e6230 (StreamedTable.cs:1740)
+  [+0x0aa] StreamedTable.cs:1883
+  +0x0b1: CALL 0x011abe60 ()
+  [+0x0b6] StreamedTable.cs:1883
+  [+0x0ba] StreamedTable.cs:1887
+  [+0x0c3] StreamedTable.cs:1883
+  +0x0c3: CALL 0x001bc700 ()
+
+================ StreamedTable.CreateHeader (0x015e8f00..0x015e90a5, sz=421) ================
+  +0x000: 41 56 41 57 48 83 ec 48 4c 8b fa 4c 8b f1 48 8b
+  +0x010: 89 c0 09 00 00 33 d2 e8 c4 04 3d ff 84 c0 0f 84
+  +0x020: 72 01 00 00 48 89 5c 24 60 48 89 6c 24 68 4d 85
+  +0x030: ff 0f 84 68 01 00 00 48 8b 15 42 29 7f 01 45 33
+  +0x040: c0 49 8b 4f 20 e8 56 5c cb ff 84 c0 0f 84 b3 00
+  +0x050: 00 00 48 89 74 24 70 48 89 7c 24 40 48 8b 0d 85
+  +0x060: bd 85 01 49 8b b6 c0 09 00 00 49 8b be b0 0a 00
+  +0x070: 00 41 0f b6 9e b8 09 00 00 e8 32 37 bd fe 48 8b
+  +0x080: 15 fb 28 7f 01 48 8b e8 33 c0 4c 8b cf 48 89 44
+  +0x090: 24 30 4c 8b c6 48 89 44 24 28 48 8b cd 88 5c 24
+  +0x0a0: 20 e8 0a 6b ff ff 48 83 7d 40 00 48 8b 7c 24 40
+  +0x0b0: 48 8b 74 24 70 c6 45 60 01 48 8b 15 00 57 80 01
+  +0x0c0: 74 0e 48 8b 4d 40 45 33 c0 e8 42 03 ff ff eb 0d
+  +0x0d0: 48 8d 4d 28 48 89 55 28 e8 63 27 bd fe 49 8b 8e
+  +0x0e0: f8 08 00 00 48 85 c9 0f 84 b2 00 00 00 4c 8b 0d
+  +0x0f0: 44 a2 7e 01 4c 8b c5 48 8b 15 82 28 7f 01 e8 ed
+  +0x100: 31 af ff eb 12 49 8b 57 20 45 33 c0 49 8b ce e8
+  +0x110: 1c 1c 00 00 48 8b e8 41 80 be db 09 00 00 00 74
+  +0x120: 5d 48 8b 0d 10 bb 85 01 e8 83 36 bd fe 33 d2 48
+  +0x130: 8b c8 48 8b d8 c7 80 88 00 00 00 ff ff ff ff e8
+  +0x140: 8c 9d 0c 00 48 8d 4b 78 4c 89 73 78 49 8b d6 e8
+  +0x150: ec 26 bd fe 48 8d 8b 80 00 00 00 4c 89 bb 80 00
+  +0x160: 00 00 49 8b d7 e8 d6 26 bd fe 48 85 ed 74 30 48
+  +0x170: 8b 4d 40 45 33 c0 48 8b d3 e8 c2 6d 99 00 45 33
+  +0x180: c0 48 8b d5 49 8b cf e8 d4 62 ff ff 48 8b 5c 24
+  +0x190: 60 48 8b 6c 24 68 48 83 c4 48 41 5f 41 5e c3 e8
+  +0x1a0: 5c 36 bd fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:1725
+  [+0x00e] StreamedTable.cs:1730
+  +0x017: CALL 0x009b93e0 (AssetReference.cs:558, AssetReferenceExtensions.cs:15)
+  [+0x01c] StreamedTable.cs:1730
+  [+0x02e] StreamedTable.cs:1732
+  [+0x037] StreamedTable.cs:1732
+  +0x037: RIP [0x02ddb880] -> STR "default-selection-column"
+  +0x045: CALL 0x0129eba0 ()
+  [+0x04a] StreamedTable.cs:1732
+  [+0x05c] StreamedTable.cs:1732, StreamedTable.cs:2110
+  +0x05c: RIP [0x02e44ce8] -> MetaUsage(tag=1, idx=47725)
+  [+0x063] StreamedTable.cs:2110
+  [+0x06a] StreamedTable.cs:2110
+  [+0x071] StreamedTable.cs:2110
+  [+0x079] StreamedTable.cs:2110
+  +0x079: CALL 0x001bc6b0 ()
+  [+0x07e] StreamedTable.cs:2110
+  +0x07e: RIP [0x02ddb880] -> STR "default-selection-column"
+  [+0x085] StreamedTable.cs:2110
+  [+0x088] StreamedTable.cs:2110
+  +0x0a1: CALL 0x015dfab0 (StreamedTable.cs:107)
+  [+0x0a6] StreamedTable.cs:2112, StreamedTable.cs:170
+  +0x0b9: RIP [0x02dee6c0] -> STR ""
+  [+0x0c0] StreamedTable.cs:170
+  [+0x0c2] StreamedTable.cs:176
+  +0x0c9: CALL 0x015d9310 (SIText.cs:307)
+  [+0x0d0] StreamedTable.cs:172
+  +0x0d8: CALL 0x001bb740 ()
+  [+0x0dd] StreamedTable.cs:2113
+  [+0x0e4] StreamedTable.cs:2113
+  [+0x0ed] StreamedTable.cs:2113
+  +0x0ed: RIP [0x02dd3238] -> MetaUsage(tag=6, idx=197770)
+  +0x0f7: RIP [0x02ddb880] -> STR "default-selection-column"
+  +0x0fe: CALL 0x010dc1f0 ()
+  [+0x103] StreamedTable.cs:1732
+  [+0x105] StreamedTable.cs:1732
+  +0x10f: CALL 0x015eac30 (StreamedTable.cs:2269)
+  [+0x117] StreamedTable.cs:1733
+  [+0x121] StreamedTable.cs:1735
+  +0x121: RIP [0x02e44b38] -> MetaUsage(tag=1, idx=47723)
+  +0x128: CALL 0x001bc6b0 ()
+  [+0x12d] StreamedTable.cs:1735, StreamedTable.cs:508
+  [+0x132] StreamedTable.cs:1735
+  [+0x135] StreamedTable.cs:1735, StreamedTable.cs:506
+  [+0x13f] StreamedTable.cs:508
+  +0x13f: CALL 0x016b2dd0 (DragManipulator.cs:232, DragManipulator.cs:25)
+  [+0x144] StreamedTable.cs:510
+  +0x14f: CALL 0x001bb740 ()
+  [+0x154] StreamedTable.cs:511
+  +0x165: CALL 0x001bb740 ()
+  [+0x16a] StreamedTable.cs:1735
+  [+0x16f] StreamedTable.cs:1735, StreamedTable.cs:251
+  +0x179: CALL 0x01f7fe40 ()
+  [+0x17e] StreamedTable.cs:1738
+  +0x187: CALL 0x015df360 (StreamedTable.cs:427)
+  [+0x196] StreamedTable.cs:1740
+  [+0x19f] StreamedTable.cs:1735
+  +0x19f: CALL 0x001bc700 ()
+
+================ StreamedTable.RecreateHeaders (0x015eecb0..0x015eed7c, sz=204) ================
+  +0x000: 48 89 5c 24 10 48 89 6c 24 18 56 57 41 56 48 83
+  +0x010: ec 20 48 8b 81 18 08 00 00 33 ff 48 89 7c 24 40
+  +0x020: 48 8b d9 48 85 c0 0f 84 9a 00 00 00 48 63 68 18
+  +0x030: 48 85 ed 0f 8e 7a 00 00 00 44 8d 77 20 0f 1f 00
+  +0x040: 48 8b 83 18 08 00 00 48 85 c0 74 7a 48 8b 40 10
+  +0x050: 45 33 c0 48 8b cb 49 8b 34 06 48 8b d6 e8 0e a5
+  +0x060: ff ff 45 33 c0 48 8b d6 48 8b cb e8 e0 a1 ff ff
+  +0x070: 48 85 f6 74 51 48 83 7e 10 00 74 2b 48 8b 83 90
+  +0x080: 07 00 00 48 8d 4c 24 40 33 d2 48 89 44 24 40 e8
+  +0x090: 3c 3e 23 ff 84 c0 74 0f 48 8b 56 10 45 33 c0 48
+  +0x0a0: 8b cb e8 d9 74 ff ff 48 ff c7 49 83 c6 08 48 3b
+  +0x0b0: fd 7c 8d 48 8b 5c 24 48 48 8b 6c 24 50 48 83 c4
+  +0x0c0: 20 41 5e 5f 5e c3 e8 85 d9 bc fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:1711
+  [+0x012] StreamedTable.cs:1715
+  [+0x023] StreamedTable.cs:1715
+  [+0x02c] StreamedTable.cs:1715
+  [+0x040] StreamedTable.cs:1717
+  [+0x047] StreamedTable.cs:1717
+  [+0x04c] StreamedTable.cs:1718
+  +0x05d: CALL 0x015e9220 (StreamedTable.cs:1930)
+  [+0x062] StreamedTable.cs:1719
+  +0x06b: CALL 0x015e8f00 (StreamedTable.cs:1725)
+  [+0x070] StreamedTable.cs:1720
+  [+0x075] StreamedTable.cs:1720
+  [+0x07c] StreamedTable.cs:1720
+  [+0x083] StreamedTable.cs:1720
+  +0x08f: CALL 0x00822b80 (FMTacticsPanel.cs:98, FMTacticsPanel.cs:52)
+  [+0x094] StreamedTable.cs:1720
+  [+0x098] StreamedTable.cs:1722
+  +0x0a2: CALL 0x015e6230 (StreamedTable.cs:1740)
+  [+0x0a7] StreamedTable.cs:1715
+  [+0x0ae] StreamedTable.cs:1715
+  [+0x0b3] StreamedTable.cs:1725
+  [+0x0c6] StreamedTable.cs:1720
+  +0x0c6: CALL 0x001bc700 ()
+
+================ StreamedTable.CreateColumn (0x015e7dc0..0x015e816e, sz=942) ================
+  +0x000: 48 89 6c 24 18 48 89 74 24 20 41 56 48 83 ec 50
+  +0x010: 48 8b ea 48 8b f1 48 8b cd 33 d2 45 8b f0 e8 1d
+  +0x020: 90 cb ff 84 c0 0f 85 64 03 00 00 48 89 5c 24 60
+  +0x030: 48 89 7c 24 68 48 8b 0d 54 cc 85 01 0f b6 9e da
+  +0x040: 09 00 00 e8 a8 48 bd fe 45 33 c9 44 0f b6 c3 48
+  +0x050: 8b d5 48 8b c8 48 8b f8 e8 63 70 ff ff 4c 8b 96
+  +0x060: 18 08 00 00 45 85 f6 0f 89 f0 00 00 00 4d 85 d2
+  +0x070: 0f 84 32 03 00 00 49 8b 4a 10 4c 8b 05 d7 9c 86
+  +0x080: 01 41 ff 42 1c 49 63 52 18 3b 51 18 72 1c 49 8b
+  +0x090: 40 20 48 8b d7 48 8b 88 c0 00 00 00 4c 8b 41 70
+  +0x0a0: 49 8b ca e8 38 e2 68 ff eb 1c 8d 42 01 41 89 42
+  +0x0b0: 18 48 89 7c d1 20 48 8d 0c d1 48 83 c1 20 48 8b
+  +0x0c0: d7 e8 ba 38 bd fe 48 8b 8e 20 08 00 00 48 85 c9
+  +0x0d0: 0f 84 d2 02 00 00 48 8b 51 10 4c 8b 0d b7 a7 82
+  +0x0e0: 01 ff 41 1c 4c 63 41 18 44 3b 42 18 72 19 49 8b
+  +0x0f0: 41 20 48 8b 90 c0 00 00 00 4c 8b 42 70 48 8b d5
+  +0x100: e8 db e1 68 ff eb 1c 41 8d 40 01 89 41 18 4a 89
+  +0x110: 6c c2 20 48 83 c2 20 4a 8d 0c c2 48 8b d5 e8 5d
+  +0x120: 38 bd fe 48 8b 8e 08 08 00 00 48 85 c9 0f 84 75
+  +0x130: 02 00 00 48 8b 57 28 45 33 c0 e8 c1 05 94 00 48
+  +0x140: 8b 8e 10 08 00 00 48 85 c9 0f 84 88 00 00 00 48
+  +0x150: 8b 57 30 45 33 c0 e8 a5 05 94 00 eb 7a 4d 85 d2
+  +0x160: 0f 84 42 02 00 00 4c 8b 0d 8b 9d 86 01 4c 8b c7
+  +0x170: 41 8b d6 49 8b ca e8 15 28 69 ff 48 8b 8e 20 08
+  +0x180: 00 00 48 85 c9 0f 84 1d 02 00 00 4c 8b 0d 4e ae
+  +0x190: 82 01 4c 8b c5 41 8b d6 e8 f3 27 69 ff 48 8b 8e
+  +0x1a0: 08 08 00 00 48 85 c9 0f 84 fb 01 00 00 4c 8b 47
+  +0x1b0: 28 45 33 c9 41 8b d6 e8 e4 3c 94 00 48 8b 8e 10
+  +0x1c0: 08 00 00 48 85 c9 74 0f 4c 8b 47 30 45 33 c9 41
+  +0x1d0: 8b d6 e8 c9 3c 94 00 48 8b 8e 28 08 00 00 48 85
+  +0x1e0: c9 0f 84 c1 01 00 00 4c 8b 0d 1a ac 7e 01 4c 8b
+  +0x1f0: c7 48 8b d5 e8 37 42 af ff 80 be da 09 00 00 00
+  +0x200: 0f 84 9e 00 00 00 48 8b 47 28 48 85 c0 0f 84 95
+  +0x210: 01 00 00 48 8b 0d 6e c4 84 01 48 8b 98 c0 04 00
+  +0x220: 00 e8 ca 46 bd fe 4c 8b 05 e3 00 84 01 45 33 c9
+  +0x230: 48 8b d6 48 8b c8 48 8b e8 e8 82 2d d5 fe 48 85
+  +0x240: db 0f 84 61 01 00 00 45 33 c0 48 8b d5 48 8b cb
+  +0x250: e8 8b 5d 0d 00 48 8b 47 28 48 85 c0 0f 84 46 01
+  +0x260: 00 00 48 8b 0d ff c4 84 01 48 8b 98 c0 04 00 00
+  +0x270: e8 7b 46 bd fe 4c 8b 05 24 fa 83 01 45 33 c9 48
+  +0x280: 8b d6 48 8b c8 48 8b e8 e8 33 2d d5 fe 48 85 db
+  +0x290: 0f 84 12 01 00 00 45 33 c0 48 8b d5 48 8b cb e8
+  +0x2a0: ac 5c 0d 00 48 8b 0d 1d c2 85 01 4c 8b 77 28 83
+  +0x2b0: b9 e4 00 00 00 00 75 0c e8 23 47 bd fe 48 8b 0d
+  +0x2c0: 04 c2 85 01 48 8b 81 b8 00 00 00 48 8b 68 18 48
+  +0x2d0: 85 ed 75 53 48 8b 0d 55 ea 82 01 48 8b 18 e8 0d
+  +0x2e0: 46 bd fe 4c 8b 05 2e 25 81 01 45 33 c9 48 8b d3
+  +0x2f0: 48 8b c8 48 8b e8 e8 65 20 6f ff 48 8b 05 c6 c1
+  +0x300: 85 01 48 8b d5 48 8b 88 b8 00 00 00 48 89 69 18
+  +0x310: 48 8b 05 b1 c1 85 01 48 8b 88 b8 00 00 00 48 83
+  +0x320: c1 18 e8 59 36 bd fe 0f 57 c0 48 8d 4c 24 30 45
+  +0x330: 33 c9 4c 8b c6 48 8b d7 0f 11 44 24 30 e8 3e 42
+  +0x340: 05 ff 4d 85 f6 74 5b 0f 28 44 24 30 4c 8d 44 24
+  +0x350: 40 48 8b 05 e0 43 80 01 45 33 c9 48 8b d5 66 0f
+  +0x360: 7f 44 24 40 49 8b ce 48 89 44 24 20 e8 1f 5b 3f
+  +0x370: ff 48 8b 5c 24 60 48 8b c7 48 8b 7c 24 68 48 8b
+  +0x380: 6c 24 70 48 8b 74 24 78 48 83 c4 50 41 5e c3 48
+  +0x390: 8b 6c 24 70 33 c0 48 8b 74 24 78 48 83 c4 50 41
+  +0x3a0: 5e c3 e8 99 45 bd fe cc e8 93 45 bd fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:3427
+  [+0x016] StreamedTable.cs:3431
+  +0x01e: CALL 0x012a0e00 ()
+  [+0x023] StreamedTable.cs:3431
+  [+0x035] StreamedTable.cs:3436
+  +0x035: RIP [0x02e44a50] -> MetaUsage(tag=1, idx=47720)
+  [+0x03c] StreamedTable.cs:3436
+  [+0x043] StreamedTable.cs:3436
+  +0x043: CALL 0x001bc6b0 ()
+  [+0x048] StreamedTable.cs:3436
+  [+0x055] StreamedTable.cs:3436
+  [+0x058] StreamedTable.cs:3436
+  +0x058: CALL 0x015dee80 (StreamedTable.cs:465)
+  [+0x064] StreamedTable.cs:3437
+  [+0x06d] StreamedTable.cs:3446
+  [+0x076] StreamedTable.cs:3446, StreamedObjectListWithChildren.cs:30
+  +0x07a: RIP [0x02e51b18] -> MetaUsage(tag=6, idx=203701)
+  [+0x081] StreamedObjectListWithChildren.cs:30
+  [+0x085] StreamedObjectListWithChildren.cs:30
+  [+0x089] StreamedObjectListWithChildren.cs:30
+  [+0x08e] StreamedObjectListWithChildren.cs:30
+  +0x0a3: CALL 0x00c760a0 ()
+  [+0x0aa] StreamedObjectListWithChildren.cs:30
+  [+0x0b1] StreamedObjectListWithChildren.cs:30
+  +0x0c1: CALL 0x001bb740 ()
+  [+0x0c6] StreamedTable.cs:3447
+  [+0x0cd] StreamedTable.cs:3447
+  [+0x0d6] StreamedTable.cs:3447, StreamedObjectListWithChildren.cs:30
+  +0x0da: RIP [0x02e12658] -> MetaUsage(tag=6, idx=202994)
+  [+0x0e1] StreamedObjectListWithChildren.cs:30
+  [+0x0e4] StreamedObjectListWithChildren.cs:30
+  [+0x0e8] StreamedObjectListWithChildren.cs:30
+  [+0x0ee] StreamedObjectListWithChildren.cs:30
+  +0x100: CALL 0x00c760a0 ()
+  [+0x107] StreamedObjectListWithChildren.cs:30
+  [+0x10e] StreamedObjectListWithChildren.cs:30
+  +0x11e: CALL 0x001bb740 ()
+  [+0x123] StreamedTable.cs:3448
+  [+0x12a] StreamedTable.cs:3448
+  [+0x133] StreamedTable.cs:3448
+  +0x13a: CALL 0x01f284c0 ()
+  [+0x13f] StreamedTable.cs:3449
+  [+0x146] StreamedTable.cs:3449
+  [+0x14f] StreamedTable.cs:3449
+  +0x156: CALL 0x01f284c0 ()
+  [+0x15b] StreamedTable.cs:3449
+  [+0x15d] StreamedTable.cs:3439
+  [+0x166] StreamedTable.cs:3439
+  +0x166: RIP [0x02e51cb8] -> MetaUsage(tag=6, idx=203703)
+  +0x176: CALL 0x00c7a750 ()
+  [+0x17b] StreamedTable.cs:3440
+  [+0x182] StreamedTable.cs:3440
+  [+0x18b] StreamedTable.cs:3440
+  +0x18b: RIP [0x02e12da0] -> MetaUsage(tag=6, idx=203002)
+  +0x198: CALL 0x00c7a750 ()
+  [+0x19d] StreamedTable.cs:3441
+  [+0x1a4] StreamedTable.cs:3441
+  [+0x1ad] StreamedTable.cs:3441
+  +0x1b7: CALL 0x01f2bc60 ()
+  [+0x1bc] StreamedTable.cs:3442
+  [+0x1c3] StreamedTable.cs:3442
+  [+0x1c8] StreamedTable.cs:3442
+  +0x1d2: CALL 0x01f2bc60 ()
+  [+0x1d7] StreamedTable.cs:3452
+  [+0x1de] StreamedTable.cs:3452
+  [+0x1e7] StreamedTable.cs:3452
+  +0x1e7: RIP [0x02dd2bc8] -> MetaUsage(tag=6, idx=197762)
+  +0x1f4: CALL 0x010dc1f0 ()
+  [+0x1f9] StreamedTable.cs:3454
+  [+0x206] StreamedTable.cs:3456
+  [+0x20a] StreamedTable.cs:3456
+  [+0x213] StreamedTable.cs:3456
+  +0x213: RIP [0x02e34448] -> MetaUsage(tag=1, idx=46883)
+  [+0x21a] StreamedTable.cs:3456
+  [+0x221] StreamedTable.cs:3456
+  +0x221: CALL 0x001bc6b0 ()
+  [+0x226] StreamedTable.cs:3456
+  +0x226: RIP [0x02e280d0] -> MethodDef idx=48910 OnStartColumnResizing
+  [+0x236] StreamedTable.cs:3456
+  [+0x239] StreamedTable.cs:3456
+  +0x239: CALL 0x0033ad80 (AppearanceController.cs:2425)
+  [+0x23e] StreamedTable.cs:3456
+  [+0x247] StreamedTable.cs:3456
+  +0x250: CALL 0x016bdda0 (ResizeManipulator.cs:69)
+  [+0x255] StreamedTable.cs:3457
+  [+0x259] StreamedTable.cs:3457
+  [+0x262] StreamedTable.cs:3457
+  +0x262: RIP [0x02e34528] -> MetaUsage(tag=1, idx=46885)
+  [+0x269] StreamedTable.cs:3457
+  [+0x270] StreamedTable.cs:3457
+  +0x270: CALL 0x001bc6b0 ()
+  [+0x275] StreamedTable.cs:3457
+  +0x275: RIP [0x02e27a60] -> MethodDef idx=48911 OnEndColumnResizing
+  [+0x285] StreamedTable.cs:3457
+  [+0x288] StreamedTable.cs:3457
+  +0x288: CALL 0x0033ad80 (AppearanceController.cs:2425)
+  [+0x28d] StreamedTable.cs:3457
+  [+0x296] StreamedTable.cs:3457
+  +0x29f: CALL 0x016bdd10 (ResizeManipulator.cs:80)
+  [+0x2a4] StreamedTable.cs:3461
+  +0x2a4: RIP [0x02e44288] -> MetaUsage(tag=1, idx=47707)
+  +0x2b8: CALL 0x001bc7a0 ()
+  +0x2bd: RIP [0x02e44288] -> MetaUsage(tag=1, idx=47707)
+  [+0x2c4] StreamedTable.cs:3461
+  [+0x2cf] StreamedTable.cs:3461
+  [+0x2d4] StreamedTable.cs:3461
+  +0x2d4: RIP [0x02e16af0] -> MetaUsage(tag=1, idx=52458)
+  [+0x2db] StreamedTable.cs:3461
+  [+0x2de] StreamedTable.cs:3461
+  +0x2de: CALL 0x001bc6b0 ()
+  [+0x2e3] StreamedTable.cs:3461
+  +0x2e3: RIP [0x02dfa5d8] -> MethodDef idx=49022 <CreateColumn>b__292_0
+  [+0x2f3] StreamedTable.cs:3461
+  [+0x2f6] StreamedTable.cs:3461
+  +0x2f6: CALL 0x00cda120 ()
+  [+0x2fb] StreamedTable.cs:3461
+  +0x2fb: RIP [0x02e44288] -> MetaUsage(tag=1, idx=47707)
+  [+0x302] StreamedTable.cs:3461
+  +0x310: RIP [0x02e44288] -> MetaUsage(tag=1, idx=47707)
+  +0x322: CALL 0x001bb740 ()
+  [+0x32a] StreamedTable.cs:3461
+  [+0x338] StreamedTable.cs:3461
+  [+0x33d] StreamedTable.cs:3461
+  +0x33d: CALL 0x0063c340 (PluginContextMenuContributor.cs:394)
+  [+0x342] StreamedTable.cs:3461
+  [+0x347] StreamedTable.cs:3461
+  +0x351: RIP [0x02dec4f8] -> MetaUsage(tag=6, idx=206312)
+  +0x36c: CALL 0x009ddc50 ()
+  [+0x376] StreamedTable.cs:3463
+  [+0x37e] StreamedTable.cs:3463
+  [+0x3a2] StreamedTable.cs:3461
+  +0x3a2: CALL 0x001bc700 ()
+  [+0x3a8] StreamedTable.cs:3457
+  +0x3a8: CALL 0x001bc700 ()
+
+================ StreamedTable.CreateColumns (0x015e83b0..0x015e85cd, sz=541) ================
+  +0x000: 40 53 48 83 ec 40 48 8b 91 60 09 00 00 45 33 c9
+  +0x010: 48 8b d9 45 8d 41 ff e8 f4 f9 ff ff 33 d2 48 8b
+  +0x020: cb e8 1a 4a fc ff 84 c0 74 2f 48 8b 8b 50 09 00
+  +0x030: 00 33 d2 e8 08 8a cb ff 48 8b 15 91 34 7f 01 84
+  +0x040: c0 75 07 48 8b 93 50 09 00 00 45 33 c9 48 8b cb
+  +0x050: 45 8d 41 ff e8 b7 f9 ff ff 48 8b 93 58 09 00 00
+  +0x060: 45 33 c9 48 89 6c 24 50 48 8b cb 48 89 74 24 58
+  +0x070: 48 89 7c 24 60 4c 89 64 24 38 45 8d 41 ff 4c 89
+  +0x080: 6c 24 30 4c 89 74 24 28 4c 89 7c 24 20 e8 7e f9
+  +0x090: ff ff 33 d2 48 8b cb e8 14 93 00 00 48 8b 83 38
+  +0x0a0: 08 00 00 48 85 c0 0f 84 6b 01 00 00 4c 8b 68 28
+  +0x0b0: 4d 85 ed 0f 84 5e 01 00 00 4d 63 65 18 4d 85 e4
+  +0x0c0: 0f 8e 0b 01 00 00 33 c9 8b e9 44 8d 71 20 66 90
+  +0x0d0: 48 8b 83 88 09 00 00 48 85 c0 0f 84 37 01 00 00
+  +0x0e0: 48 8b 70 38 49 8b 45 10 49 8b 3c 06 48 85 ff 0f
+  +0x0f0: 84 22 01 00 00 4c 8b 7f 10 48 85 f6 0f 84 15 01
+  +0x100: 00 00 4c 8b 16 0f b7 c1 4c 8b 0d b1 ee 85 01 41
+  +0x110: 0f b7 92 2e 01 00 00 66 3b ca 73 2c 4d 8b 82 b0
+  +0x120: 00 00 00 0f 1f 40 00 66 0f 1f 84 00 00 00 00 00
+  +0x130: 0f b7 c8 48 03 c9 4d 39 0c c8 0f 84 ba 00 00 00
+  +0x140: 66 ff c0 66 3b c2 72 e8 45 33 c0 49 8b d1 48 8b
+  +0x150: ce e8 3a 7d bd fe 4c 8b 08 49 8b d7 4c 8b 40 08
+  +0x160: 48 8b ce 41 ff d1 84 c0 74 52 48 8b 4f 18 48 85
+  +0x170: c9 0f 84 a0 00 00 00 45 33 c0 33 d2 e8 df 8a 02
+  +0x180: 00 84 c0 74 37 48 8b 8b 20 08 00 00 48 85 c9 0f
+  +0x190: 84 82 00 00 00 4c 8b 05 bc a4 82 01 48 8b 57 10
+  +0x1a0: e8 6b 16 68 ff 84 c0 75 13 48 8b 57 10 45 33 c9
+  +0x1b0: 48 8b cb 45 8d 41 ff e8 54 f8 ff ff 48 ff c5 49
+  +0x1c0: 83 c6 08 b9 00 00 00 00 49 3b ec 0f 8c ff fe ff
+  +0x1d0: ff 4c 8b 7c 24 20 4c 8b 74 24 28 4c 8b 6c 24 30
+  +0x1e0: 4c 8b 64 24 38 48 8b 7c 24 60 48 8b 74 24 58 48
+  +0x1f0: 8b 6c 24 50 48 83 c4 40 5b c3 0f b7 c8 48 03 c9
+  +0x200: 49 63 44 c8 08 48 c1 e0 04 48 05 38 01 00 00 49
+  +0x210: 03 c2 e9 3f ff ff ff e8 34 41 bd fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:3389
+  [+0x006] StreamedTable.cs:3393
+  +0x017: CALL 0x015e7dc0 (StreamedTable.cs:3427)
+  [+0x01c] StreamedTable.cs:3395, StreamedTable.cs:605
+  +0x021: CALL 0x015acdf0 (StreamedListView.cs:404)
+  [+0x026] StreamedTable.cs:605
+  [+0x028] StreamedTable.cs:3395
+  [+0x02a] StreamedTable.cs:3397, StreamedTable.cs:606
+  +0x033: CALL 0x012a0df0 ()
+  [+0x038] StreamedTable.cs:606
+  +0x038: RIP [0x02ddb880] -> STR "default-selection-column"
+  [+0x043] StreamedTable.cs:606
+  [+0x04a] StreamedTable.cs:3397
+  +0x054: CALL 0x015e7dc0 (StreamedTable.cs:3427)
+  [+0x059] StreamedTable.cs:3400
+  +0x08d: CALL 0x015e7dc0 (StreamedTable.cs:3427)
+  [+0x092] StreamedTable.cs:3402
+  +0x097: CALL 0x015f1760 (StreamedTable.cs:2333)
+  [+0x09c] StreamedTable.cs:3404
+  [+0x0a3] StreamedTable.cs:3404
+  [+0x0ac] StreamedTable.cs:3404
+  [+0x0b0] StreamedTable.cs:3406
+  [+0x0b9] StreamedTable.cs:3406
+  [+0x0d0] StreamedTable.cs:3409
+  [+0x0d7] StreamedTable.cs:3409
+  [+0x0e0] StreamedTable.cs:3408
+  [+0x0ec] StreamedTable.cs:3409
+  [+0x0f5] StreamedTable.cs:3409
+  [+0x0f9] StreamedTable.cs:3409
+  [+0x102] StreamedTable.cs:3409
+  +0x108: RIP [0x02e47370] -> MetaUsage(tag=1, idx=12128)
+  +0x151: CALL 0x001c0240 ()
+  [+0x166] StreamedTable.cs:3409
+  [+0x16a] StreamedTable.cs:3414
+  [+0x16e] StreamedTable.cs:3414
+  [+0x177] StreamedTable.cs:3414
+  +0x17c: CALL 0x01611010 (StreamedTableView.cs:73)
+  [+0x181] StreamedTable.cs:3415
+  [+0x185] StreamedTable.cs:3420
+  [+0x18c] StreamedTable.cs:3420
+  [+0x195] StreamedTable.cs:3420
+  +0x195: RIP [0x02e12a08] -> MetaUsage(tag=6, idx=202998)
+  +0x1a0: CALL 0x00c69bc0 ()
+  [+0x1a5] StreamedTable.cs:3420
+  [+0x1a9] StreamedTable.cs:3425
+  +0x1b7: CALL 0x015e7dc0 (StreamedTable.cs:3427)
+  [+0x1bc] StreamedTable.cs:3406
+  [+0x1c3] StreamedTable.cs:3406
+  [+0x1d6] StreamedTable.cs:3427
+  [+0x1fa] StreamedTable.cs:3409
+  +0x212: JMP 0x015e8506 ()
+  [+0x217] StreamedTable.cs:3420
+  +0x217: CALL 0x001bc700 ()
+
+================ StreamedTable.InitialiseColumns (0x015ea870..0x015ea9f2, sz=386) ================
+  +0x000: 48 8b c4 55 53 56 57 41 56 48 8d 68 a1 48 81 ec
+  +0x010: c0 00 00 00 45 33 f6 0f 29 70 c8 33 d2 4c 89 75
+  +0x020: a7 4c 89 75 af 48 8b d9 44 89 75 77 44 89 75 67
+  +0x030: 4c 89 75 7f 0f 29 78 b8 e8 b3 6e 00 00 33 d2 48
+  +0x040: 8b cb e8 29 49 00 00 48 8b 93 28 08 00 00 48 85
+  +0x050: d2 0f 84 25 01 00 00 45 33 c0 48 8d 4d ef e8 cd
+  +0x060: 8e a6 ff 0f 10 45 ef 33 d2 48 8d 4d b7 0f 10 4d
+  +0x070: ff 0f 11 45 b7 f2 0f 10 45 0f f2 0f 11 45 d7 0f
+  +0x080: 11 4d c7 e8 68 15 bc ff 84 c0 0f 84 ce 00 00 00
+  +0x090: 0f 10 45 c7 45 33 c9 4c 8d 45 af 48 8d 55 a7 48
+  +0x0a0: 8d 4d df 0f 11 45 df e8 f4 ae 60 ff 48 8b 75 a7
+  +0x0b0: 4c 8d 4d 67 48 8b 7d af 4c 8d 45 77 48 8b d6 4c
+  +0x0c0: 89 74 24 28 48 8b cb 44 88 74 24 20 e8 ff f5 ff
+  +0x0d0: ff 48 85 ff 0f 84 a2 00 00 00 f3 0f 10 75 67 45
+  +0x0e0: 33 c9 f3 0f 10 7d 77 0f 28 d6 0f 28 cf 48 8b cf
+  +0x0f0: e8 ab 41 ff ff 48 8b 83 38 08 00 00 48 85 c0 74
+  +0x100: 7b 44 38 70 58 74 44 45 33 c9 4c 8d 45 7f 48 8b
+  +0x110: d6 48 8b c8 e8 37 73 03 00 84 c0 74 2e 48 8b 45
+  +0x120: 7f 48 85 c0 74 56 48 8b 48 18 48 85 c9 74 4d f3
+  +0x130: 0f 11 79 14 48 8b 45 7f 48 85 c0 74 3f 48 8b 40
+  +0x140: 18 48 85 c0 74 36 f3 0f 11 70 18 33 d2 48 8d 4d
+  +0x150: b7 e8 9a 14 bc ff 84 c0 0f 85 32 ff ff ff 0f 28
+  +0x160: b4 24 b0 00 00 00 0f 28 bc 24 a0 00 00 00 48 81
+  +0x170: c4 c0 00 00 00 41 5e 5f 5e 5b 5d c3 e8 0f 1d bd
+  +0x180: fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:3305
+  [+0x014] StreamedTable.cs:3305
+  [+0x01b] StreamedTable.cs:3309
+  +0x038: CALL 0x015f1760 (StreamedTable.cs:2333)
+  [+0x03d] StreamedTable.cs:3310
+  +0x042: CALL 0x015ef1e0 (StreamedTable.cs:2377)
+  [+0x047] StreamedTable.cs:3312
+  [+0x04e] StreamedTable.cs:3312
+  [+0x057] StreamedTable.cs:3312
+  +0x05e: CALL 0x010537a0 ()
+  [+0x067] StreamedTable.cs:3312
+  [+0x06d] StreamedTable.cs:3312
+  [+0x083] StreamedTable.cs:3312
+  +0x083: CALL 0x011abe60 ()
+  [+0x088] StreamedTable.cs:3312
+  [+0x090] StreamedTable.cs:3312
+  [+0x094] StreamedTable.cs:3312
+  [+0x0a3] StreamedTable.cs:3312
+  [+0x0a7] StreamedTable.cs:3312
+  +0x0a7: CALL 0x00bf5810 ()
+  [+0x0ac] StreamedTable.cs:3312
+  [+0x0b0] StreamedTable.cs:3314
+  +0x0cc: CALL 0x015e9f40 (StreamedTable.cs:3324)
+  [+0x0d1] StreamedTable.cs:3315
+  [+0x0da] StreamedTable.cs:3315
+  +0x0f0: CALL 0x015deb10 (StreamedTable.cs:489)
+  [+0x0f5] StreamedTable.cs:3318
+  [+0x0fc] StreamedTable.cs:3318
+  [+0x101] StreamedTable.cs:3318
+  [+0x107] StreamedTable.cs:3318
+  +0x114: CALL 0x01621cc0 (StreamedTableView.cs:355)
+  [+0x119] StreamedTable.cs:3318
+  [+0x11d] StreamedTable.cs:3320
+  [+0x126] StreamedTable.cs:3320
+  [+0x12a] StreamedTable.cs:3320
+  [+0x12f] StreamedTable.cs:3320
+  [+0x134] StreamedTable.cs:3321
+  [+0x13d] StreamedTable.cs:3321
+  [+0x141] StreamedTable.cs:3321
+  [+0x146] StreamedTable.cs:3321
+  [+0x14b] StreamedTable.cs:3312
+  +0x151: CALL 0x011abe60 ()
+  [+0x156] StreamedTable.cs:3312
+  [+0x15e] StreamedTable.cs:3324
+  [+0x17c] StreamedTable.cs:3321
+  +0x17c: CALL 0x001bc700 ()
+
+================ StreamedTable.TrySetColumnsAndSort (0x015f0040..0x015f022e, sz=494) ================
+  +0x000: 40 53 48 83 ec 40 33 c0 48 8b d9 48 89 44 24 60
+  +0x010: 48 89 44 24 50 48 39 81 58 07 00 00 0f 84 7e 01
+  +0x020: 00 00 48 8b 81 38 08 00 00 48 85 c0 0f 84 b6 01
+  +0x030: 00 00 48 8b 48 28 48 85 c9 0f 84 a9 01 00 00 83
+  +0x040: 79 18 00 0f 8e 57 01 00 00 48 8b 8b 88 09 00 00
+  +0x050: 45 33 c0 33 d2 e8 06 66 82 00 84 c0 0f 84 3e 01
+  +0x060: 00 00 33 d2 48 8b cb e8 74 25 ca fe 84 c0 0f 84
+  +0x070: 2c 01 00 00 80 bb b8 09 00 00 00 0f 85 25 01 00
+  +0x080: 00 48 8b 15 d0 48 82 01 48 8d 4c 24 60 e8 0e 8a
+  +0x090: 43 ff 84 c0 0f 84 0c 01 00 00 48 8b 4c 24 60 48
+  +0x0a0: 85 c9 0f 84 40 01 00 00 0f 10 83 60 08 00 00 45
+  +0x0b0: 33 c9 4c 8d 44 24 50 0f 10 8b 70 08 00 00 48 8d
+  +0x0c0: 54 24 20 0f 29 44 24 20 0f 29 4c 24 30 e8 ce 00
+  +0x0d0: 06 00 84 c0 0f 84 cc 00 00 00 48 8b 83 88 09 00
+  +0x0e0: 00 48 85 c0 0f 84 fe 00 00 00 4c 8b 40 38 4d 85
+  +0x0f0: c0 0f 84 f1 00 00 00 4c 8b 4c 24 50 33 c9 48 8b
+  +0x100: 15 2b 72 85 01 e8 d6 22 a1 fe 84 c0 0f 84 94 00
+  +0x110: 00 00 4c 8b 44 24 50 45 33 c9 33 d2 48 8b cb e8
+  +0x120: 5c 57 ff ff 48 8b 4c 24 60 48 85 c9 0f 84 b6 00
+  +0x130: 00 00 0f 10 83 a0 08 00 00 45 33 c9 4c 8d 44 24
+  +0x140: 50 0f 10 8b b0 08 00 00 48 8d 54 24 20 0f 29 44
+  +0x150: 24 20 0f 29 4c 24 30 e8 44 00 06 00 84 c0 74 40
+  +0x160: 48 8b 83 88 09 00 00 48 85 c0 74 7c 4c 8b 40 38
+  +0x170: 4d 85 c0 74 73 4c 8b 4c 24 50 33 c9 48 8b 15 ad
+  +0x180: 71 85 01 e8 58 22 a1 fe 84 c0 74 14 4c 8b 44 24
+  +0x190: 50 45 33 c9 48 8b cb 41 8d 51 01 e8 e0 56 ff ff
+  +0x1a0: 48 83 c4 40 5b c3 48 8b 8b b0 09 00 00 33 d2 e8
+  +0x1b0: fc 0b cb ff 48 8b cb 84 c0 74 16 48 8b 03 48 8b
+  +0x1c0: 90 a0 0d 00 00 ff 90 98 0d 00 00 48 83 c4 40 5b
+  +0x1d0: c3 4c 8b 83 b0 09 00 00 45 33 c9 33 d2 e8 1e fa
+  +0x1e0: ff ff 48 83 c4 40 5b c3 e8 d3 c4 bc fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:1188
+  [+0x006] StreamedTable.cs:1188
+  [+0x010] StreamedTable.cs:1188
+  [+0x015] StreamedTable.cs:1195, StreamedTable.cs:3761
+  [+0x022] StreamedTable.cs:3761
+  [+0x029] StreamedTable.cs:3761
+  [+0x032] StreamedTable.cs:3761
+  [+0x036] StreamedTable.cs:3761
+  [+0x03f] StreamedTable.cs:3761
+  [+0x049] StreamedTable.cs:3761
+  +0x055: CALL 0x01e166a0 ()
+  [+0x05a] StreamedTable.cs:1195
+  [+0x062] StreamedTable.cs:1200
+  +0x067: CALL 0x00292620 (BacktraceResult.cs:38, BacktraceSelfSSLCertificateHandler.cs:12)
+  [+0x06c] StreamedTable.cs:1200
+  [+0x074] StreamedTable.cs:1212
+  [+0x081] StreamedTable.cs:1212
+  +0x081: RIP [0x02e14998] -> MetaUsage(tag=6, idx=207776)
+  +0x08d: CALL 0x00a28ae0 (GameSubsystems.cs:39)
+  [+0x092] StreamedTable.cs:1212
+  [+0x09a] StreamedTable.cs:1212
+  [+0x0a8] StreamedTable.cs:1212
+  +0x0cd: CALL 0x016501e0 (Persistence.cs:692)
+  [+0x0d2] StreamedTable.cs:1212
+  [+0x0da] StreamedTable.cs:1212
+  [+0x0e1] StreamedTable.cs:1212
+  [+0x0ea] StreamedTable.cs:1212
+  [+0x0ee] StreamedTable.cs:1212
+  [+0x0f7] StreamedTable.cs:1212
+  +0x0fe: RIP [0x02e47370] -> MetaUsage(tag=1, idx=12128)
+  [+0x10a] StreamedTable.cs:1212
+  [+0x112] StreamedTable.cs:1214
+  +0x11f: CALL 0x015e58c0 (StreamedTable.cs:1230)
+  [+0x124] StreamedTable.cs:1217
+  [+0x132] StreamedTable.cs:1217
+  +0x157: CALL 0x016501e0 (Persistence.cs:692)
+  [+0x15c] StreamedTable.cs:1217
+  [+0x160] StreamedTable.cs:1217
+  [+0x167] StreamedTable.cs:1217
+  [+0x16c] StreamedTable.cs:1217
+  [+0x170] StreamedTable.cs:1217
+  [+0x175] StreamedTable.cs:1217
+  +0x17c: RIP [0x02e47370] -> MetaUsage(tag=1, idx=12128)
+  [+0x188] StreamedTable.cs:1217
+  [+0x18c] StreamedTable.cs:1219
+  +0x19b: CALL 0x015e58c0 (StreamedTable.cs:1230)
+  [+0x1a0] StreamedTable.cs:1230
+  [+0x1a6] StreamedTable.cs:1222
+  +0x1af: CALL 0x012a0df0 ()
+  [+0x1b4] StreamedTable.cs:1222
+  [+0x1bb] StreamedTable.cs:1228
+  [+0x1cb] StreamedTable.cs:1230
+  [+0x1d1] StreamedTable.cs:1224
+  +0x1dd: CALL 0x015efc40 (StreamedTable.cs:2006)
+  [+0x1e2] StreamedTable.cs:1230
+  [+0x1e8] StreamedTable.cs:1217
+  +0x1e8: CALL 0x001bc700 ()
+
+================ StreamedTable.ApplyPersistedSortingState (0x015e58c0..0x015e59a5, sz=229) ================
+  +0x000: 48 89 5c 24 08 48 89 74 24 10 57 48 83 ec 60 8b
+  +0x010: fa 48 c7 44 24 38 00 00 00 00 48 8b 15 b7 f0 82
+  +0x020: 01 48 8b d9 48 8d 4c 24 38 c6 44 24 30 00 49 8b
+  +0x030: f0 e8 ea 31 44 ff 84 c0 0f 84 81 00 00 00 85 ff
+  +0x040: 75 10 0f 10 83 80 08 00 00 0f 10 8b 90 08 00 00
+  +0x050: eb 0e 0f 10 83 a0 08 00 00 0f 10 8b b0 08 00 00
+  +0x060: 48 8b 4c 24 38 48 85 c9 74 75 45 33 c9 0f 29 44
+  +0x070: 24 40 4c 8d 44 24 30 0f 29 4c 24 50 48 8d 54 24
+  +0x080: 40 e8 3a a8 06 00 84 c0 74 35 44 0f b6 4c 24 30
+  +0x090: 4c 8b c6 48 c7 44 24 28 00 00 00 00 8b d7 48 8b
+  +0x0a0: cb 48 c7 44 24 20 00 00 00 00 e8 71 a3 00 00 48
+  +0x0b0: 8b 5c 24 70 48 8b 74 24 78 48 83 c4 60 5f c3 45
+  +0x0c0: 33 c9 4c 8b c6 8b d7 48 8b cb e8 b1 a2 00 00 48
+  +0x0d0: 8b 5c 24 70 48 8b 74 24 78 48 83 c4 60 5f c3 e8
+  +0x0e0: 5c 6d bd fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:1230
+  [+0x011] StreamedTable.cs:1230
+  [+0x01a] StreamedTable.cs:1235
+  +0x01a: RIP [0x02e14998] -> MetaUsage(tag=6, idx=207776)
+  [+0x021] StreamedTable.cs:1230
+  [+0x024] StreamedTable.cs:1235
+  [+0x029] StreamedTable.cs:1230
+  [+0x031] StreamedTable.cs:1235
+  +0x031: CALL 0x00a28ae0 (GameSubsystems.cs:39)
+  [+0x036] StreamedTable.cs:1235
+  [+0x03e] StreamedTable.cs:1235
+  [+0x042] StreamedTable.cs:1235
+  [+0x050] StreamedTable.cs:1235
+  [+0x052] StreamedTable.cs:1235
+  [+0x060] StreamedTable.cs:1235
+  [+0x06a] StreamedTable.cs:1235
+  +0x081: CALL 0x01650180 (Persistence.cs:656)
+  [+0x086] StreamedTable.cs:1235
+  [+0x08a] StreamedTable.cs:1237
+  +0x0aa: CALL 0x015efce0 (StreamedTable.cs:2015)
+  [+0x0af] StreamedTable.cs:1243
+  [+0x0bf] StreamedTable.cs:1241
+  +0x0ca: CALL 0x015efc40 (StreamedTable.cs:2006)
+  [+0x0cf] StreamedTable.cs:1243
+  [+0x0df] StreamedTable.cs:1235
+  +0x0df: CALL 0x001bc700 ()
+
+================ StreamedTable.SetSorting_overload1 (0x015efc40..0x015efcd2, sz=146) ================
+  +0x000: 48 89 5c 24 08 48 89 74 24 10 57 48 83 ec 30 49
+  +0x010: 8b f8 8b f2 48 8b d9 45 33 c0 48 8b 89 88 09 00
+  +0x020: 00 33 d2 e8 b8 55 82 00 84 c0 75 50 48 8b 83 88
+  +0x030: 09 00 00 48 85 c0 74 54 48 83 78 38 00 74 3d 4c
+  +0x040: 8b 40 38 b9 02 00 00 00 48 8b 15 e1 76 85 01 4c
+  +0x050: 8b cf e8 89 27 a1 fe 48 85 c0 74 20 44 0f b6 48
+  +0x060: 54 4c 8b c7 48 c7 44 24 28 00 00 00 00 8b d6 48
+  +0x070: 8b cb 48 89 44 24 20 e8 24 00 00 00 48 8b 5c 24
+  +0x080: 40 48 8b 74 24 48 48 83 c4 30 5f c3 e8 2f ca bc
+  +0x090: fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:2006
+  [+0x017] StreamedTable.cs:2010, StreamedTable.cs:2079
+  +0x023: CALL 0x01e15220 ()
+  [+0x028] StreamedTable.cs:2079
+  [+0x02c] StreamedTable.cs:2079
+  [+0x033] StreamedTable.cs:2079
+  [+0x038] StreamedTable.cs:2079
+  [+0x03f] StreamedTable.cs:2085
+  +0x048: RIP [0x02e47370] -> MetaUsage(tag=1, idx=12128)
+  [+0x057] StreamedTable.cs:2011
+  [+0x05c] StreamedTable.cs:2013
+  +0x077: CALL 0x015efce0 (StreamedTable.cs:2015)
+  [+0x07c] StreamedTable.cs:2015
+  [+0x08c] StreamedTable.cs:2010, StreamedTable.cs:2085
+  +0x08c: CALL 0x001bc700 ()
+
+================ StreamedTable.SetNoSorting (0x015ef750..0x015ef883, sz=307) ================
+  +0x000: 4c 8b dc 49 89 5b 10 57 48 81 ec 80 00 00 00 48
+  +0x010: 8b 91 f8 08 00 00 33 c0 49 89 43 18 0f 57 c0 49
+  +0x020: 89 43 08 48 8b f9 0f 11 44 24 20 48 85 d2 0f 84
+  +0x030: f9 00 00 00 45 33 c0 49 8d 4b d0 e8 10 40 a6 ff
+  +0x040: 0f 10 44 24 58 33 d2 48 8d 4c 24 30 0f 10 4c 24
+  +0x050: 68 0f 11 44 24 30 f2 0f 10 44 24 78 f2 0f 11 44
+  +0x060: 24 50 0f 11 4c 24 40 e8 a4 c6 bb ff 84 c0 0f 84
+  +0x070: 9e 00 00 00 0f 1f 40 00 0f 1f 84 00 00 00 00 00
+  +0x080: 0f 10 44 24 40 45 33 c9 4c 8d 84 24 90 00 00 00
+  +0x090: 48 8d 94 24 a0 00 00 00 48 8d 4c 24 20 0f 11 44
+  +0x0a0: 24 20 e8 19 60 60 ff 48 8b 9c 24 90 00 00 00 48
+  +0x0b0: 85 db 74 79 48 83 7b 10 00 74 43 48 8b 15 96 03
+  +0x0c0: 81 01 45 33 c0 48 8b 4b 10 e8 02 dc 93 00 48 8b
+  +0x0d0: 4b 10 48 85 c9 74 56 48 8b 15 aa 02 81 01 45 33
+  +0x0e0: c0 e8 ea db 93 00 48 8b 4b 10 48 85 c9 74 3e 48
+  +0x0f0: 8b 15 32 3a 82 01 45 33 c0 e8 12 8b 93 00 33 d2
+  +0x100: 48 8d 4c 24 30 e8 06 c6 bb ff 84 c0 0f 85 6e ff
+  +0x110: ff ff 33 d2 48 8b cf e8 64 a1 fb ff 48 8b 9c 24
+  +0x120: 98 00 00 00 48 81 c4 80 00 00 00 5f c3 e8 7e ce
+  +0x130: bc fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:2096
+  [+0x00f] StreamedTable.cs:2100
+  [+0x02b] StreamedTable.cs:2100
+  [+0x034] StreamedTable.cs:2100
+  +0x03b: CALL 0x010537a0 ()
+  [+0x045] StreamedTable.cs:2100
+  [+0x04c] StreamedTable.cs:2100
+  [+0x067] StreamedTable.cs:2100
+  +0x067: CALL 0x011abe60 ()
+  [+0x06c] StreamedTable.cs:2100
+  [+0x080] StreamedTable.cs:2100
+  [+0x085] StreamedTable.cs:2100
+  [+0x09d] StreamedTable.cs:2100
+  [+0x0a2] StreamedTable.cs:2100
+  +0x0a2: CALL 0x00bf5810 ()
+  [+0x0a7] StreamedTable.cs:2100
+  [+0x0af] StreamedTable.cs:2102
+  [+0x0b4] StreamedTable.cs:2102, StreamedTable.cs:230
+  [+0x0bb] StreamedTable.cs:232
+  +0x0bb: RIP [0x02dffba8] -> STR "game-concepts-sort-arrow-up_small"
+  +0x0c9: CALL 0x01f2d420 ()
+  [+0x0ce] StreamedTable.cs:233
+  [+0x0d2] StreamedTable.cs:233
+  [+0x0d7] StreamedTable.cs:233
+  +0x0d7: RIP [0x02dffad8] -> STR "game-concepts-sort-arrow-down_small"
+  +0x0e1: CALL 0x01f2d420 ()
+  [+0x0e6] StreamedTable.cs:234
+  [+0x0ea] StreamedTable.cs:234
+  [+0x0ef] StreamedTable.cs:234
+  +0x0ef: RIP [0x02e13278] -> STR "sort-icon--hidden"
+  +0x0f9: CALL 0x01f28360 ()
+  [+0x0fe] StreamedTable.cs:2100
+  +0x105: CALL 0x011abe60 ()
+  [+0x10a] StreamedTable.cs:2100
+  [+0x112] StreamedTable.cs:2105
+  +0x117: CALL 0x015a99d0 (StreamedListView.cs:971)
+  [+0x11c] StreamedTable.cs:2106
+  [+0x12d] StreamedTable.cs:2102, StreamedTable.cs:234
+  +0x12d: CALL 0x001bc700 ()
+
+================ StreamedTable.SetList (0x015ef610..0x015ef747, sz=311) ================
+  +0x000: 48 89 5c 24 08 48 89 6c 24 10 48 89 74 24 18 57
+  +0x010: 48 83 ec 20 48 8b da 45 33 c0 33 d2 48 8b f9 e8
+  +0x020: 6c 51 fb ff 45 33 c0 48 8b d3 48 8b cf e8 3e a2
+  +0x030: fb ff 48 8b 07 48 8b cf 48 8b 90 b0 0d 00 00 ff
+  +0x040: 90 a8 0d 00 00 48 8b 8f 78 07 00 00 48 85 c9 0f
+  +0x050: 84 dc 00 00 00 33 d2 e8 74 04 22 ff 4c 8b 87 58
+  +0x060: 07 00 00 48 8b f0 4d 85 c0 74 7a 48 8b 15 f6 d0
+  +0x070: 82 01 b9 01 00 00 00 e8 74 2c a1 fe 8b e8 85 c0
+  +0x080: 74 63 33 db 48 85 f6 0f 84 a4 00 00 00 0f 1f 00
+  +0x090: 48 8b 15 d9 6f 85 01 33 c9 4c 8b c6 e8 4f 2c a1
+  +0x0a0: fe 3b d8 7d 64 48 8b 15 14 8d 85 01 33 c9 44 8b
+  +0x0b0: cb 4c 8b c6 e8 e7 2d a1 fe 48 63 c8 85 c0 78 3f
+  +0x0c0: 48 8b 87 68 05 00 00 48 85 c0 74 65 3b 48 18 7d
+  +0x0d0: 2e 48 8b 40 10 8b 54 88 20 85 d2 78 22 3b d5 7d
+  +0x0e0: 1e ff c3 eb ab 48 85 f6 74 47 48 8b 15 7f 6f 85
+  +0x0f0: 01 33 c9 4c 8b c6 e8 f5 2b a1 fe 85 c0 74 0a 33
+  +0x100: d2 48 8b cf e8 07 5a fb ff 33 d2 48 8b cf e8 1d
+  +0x110: 09 00 00 33 d2 48 8b cf 48 8b 5c 24 30 48 8b 6c
+  +0x120: 24 38 48 8b 74 24 40 48 83 c4 20 5f e9 0f 5c fb
+  +0x130: ff e8 ba cf bc fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:1015
+  [+0x017] StreamedTable.cs:1019
+  +0x01f: CALL 0x015a47a0 (StreamedListView.cs:1192)
+  [+0x024] StreamedTable.cs:1020
+  +0x02d: CALL 0x015a9880 (StreamedListView.cs:1605)
+  [+0x032] StreamedTable.cs:1021
+  [+0x045] StreamedTable.cs:1024, StreamedTable.cs:1035
+  [+0x04c] StreamedTable.cs:1035
+  [+0x055] StreamedTable.cs:1035
+  +0x057: CALL 0x0080fae0 (FMDraggableObject.cs:79, FMDraggableObject.cs:82)
+  [+0x05c] StreamedTable.cs:1036
+  [+0x066] StreamedTable.cs:1036
+  [+0x06b] StreamedTable.cs:1036
+  +0x06b: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x07e] StreamedTable.cs:1037
+  [+0x082] StreamedTable.cs:1043
+  [+0x084] StreamedTable.cs:1043
+  [+0x090] StreamedTable.cs:1043
+  +0x090: RIP [0x02e46680] -> MetaUsage(tag=1, idx=53626)
+  [+0x0a1] StreamedTable.cs:1043
+  [+0x0a5] StreamedTable.cs:1045
+  +0x0a5: RIP [0x02e483d0] -> MetaUsage(tag=1, idx=12203)
+  [+0x0bc] StreamedTable.cs:1046
+  [+0x0c0] StreamedTable.cs:1046
+  [+0x0c7] StreamedTable.cs:1046
+  [+0x0cc] StreamedTable.cs:1046
+  [+0x0d1] StreamedTable.cs:1051
+  [+0x0d9] StreamedTable.cs:1052
+  [+0x0dd] StreamedTable.cs:1052
+  [+0x0e1] StreamedTable.cs:1043
+  [+0x0e3] StreamedTable.cs:1043
+  [+0x0e5] StreamedTable.cs:1039
+  [+0x0ea] StreamedTable.cs:1039
+  +0x0ea: RIP [0x02e46680] -> MetaUsage(tag=1, idx=53626)
+  [+0x0fb] StreamedTable.cs:1024
+  [+0x0ff] StreamedTable.cs:1026
+  +0x104: CALL 0x015a5120 (StreamedListView.cs:1617)
+  [+0x109] StreamedTable.cs:1029
+  +0x10e: CALL 0x015f0040 (StreamedTable.cs:1188)
+  [+0x113] StreamedTable.cs:1030
+  [+0x118] StreamedTable.cs:1031
+  [+0x12c] StreamedTable.cs:1030
+  +0x12c: JMP 0x015a5350 (StreamedListView.cs:1215)
+  [+0x131] StreamedTable.cs:1024, StreamedTable.cs:1039
+  +0x131: CALL 0x001bc700 ()
+
+================ StreamedTable.RebuildInternal (0x015ee9c0..0x015eeac3, sz=259) ================
+  +0x000: 48 89 5c 24 10 48 89 6c 24 18 56 57 41 56 48 83
+  +0x010: ec 20 33 d2 48 8b d9 e8 44 67 fb ff 33 d2 48 8b
+  +0x020: cb e8 aa 8c ff ff 33 d2 48 8b cb e8 c0 99 ff ff
+  +0x030: 48 8b 83 18 08 00 00 33 ff 48 89 7c 24 40 48 85
+  +0x040: c0 0f 84 b6 00 00 00 48 63 68 18 48 85 ed 0f 8e
+  +0x050: 83 00 00 00 44 8d 77 20 0f 1f 84 00 00 00 00 00
+  +0x060: 48 8b 83 18 08 00 00 48 85 c0 0f 84 8d 00 00 00
+  +0x070: 48 8b 40 10 45 33 c0 48 8b cb 49 8b 34 06 48 8b
+  +0x080: d6 e8 da a7 ff ff 45 33 c0 48 8b d6 48 8b cb e8
+  +0x090: ac a4 ff ff 48 85 f6 74 64 48 83 7e 10 00 74 2b
+  +0x0a0: 48 8b 83 90 07 00 00 48 8d 4c 24 40 33 d2 48 89
+  +0x0b0: 44 24 40 e8 08 41 23 ff 84 c0 74 0f 48 8b 56 10
+  +0x0c0: 45 33 c0 48 8b cb e8 a5 77 ff ff 48 ff c7 49 83
+  +0x0d0: c6 08 48 3b fd 7c 89 33 d2 48 8b cb e8 2f 00 00
+  +0x0e0: 00 33 d2 48 8b cb 48 8b 5c 24 48 48 8b 6c 24 50
+  +0x0f0: 48 83 c4 20 41 5e 5f 5e e9 b3 bd ff ff e8 3e dc
+  +0x100: bc fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:1258
+  [+0x012] StreamedTable.cs:1263
+  +0x017: CALL 0x015a5120 (StreamedListView.cs:1617)
+  [+0x01c] StreamedTable.cs:1264
+  +0x021: CALL 0x015e7690 (StreamedTable.cs:3375)
+  [+0x026] StreamedTable.cs:1266
+  +0x02b: CALL 0x015e83b0 (StreamedTable.cs:3389)
+  [+0x030] StreamedTable.cs:1267, StreamedTable.cs:1715
+  [+0x03e] StreamedTable.cs:1715
+  [+0x047] StreamedTable.cs:1715
+  [+0x060] StreamedTable.cs:1717
+  [+0x067] StreamedTable.cs:1717
+  [+0x070] StreamedTable.cs:1718
+  +0x081: CALL 0x015e9220 (StreamedTable.cs:1930)
+  [+0x086] StreamedTable.cs:1719
+  +0x08f: CALL 0x015e8f00 (StreamedTable.cs:1725)
+  [+0x094] StreamedTable.cs:1720
+  [+0x099] StreamedTable.cs:1720
+  [+0x0a0] StreamedTable.cs:1720
+  [+0x0a7] StreamedTable.cs:1720
+  +0x0b3: CALL 0x00822b80 (FMTacticsPanel.cs:98, FMTacticsPanel.cs:52)
+  [+0x0b8] StreamedTable.cs:1720
+  [+0x0bc] StreamedTable.cs:1722
+  +0x0c6: CALL 0x015e6230 (StreamedTable.cs:1740)
+  [+0x0cb] StreamedTable.cs:1715
+  [+0x0d2] StreamedTable.cs:1715
+  [+0x0d7] StreamedTable.cs:1268
+  +0x0dc: CALL 0x015eead0 (StreamedTable.cs:1952)
+  [+0x0e1] StreamedTable.cs:1269
+  [+0x0e6] StreamedTable.cs:1272
+  [+0x0f8] StreamedTable.cs:1269
+  +0x0f8: JMP 0x015ea870 (StreamedTable.cs:3305)
+  [+0x0fd] StreamedTable.cs:1267, StreamedTable.cs:1720
+  +0x0fd: CALL 0x001bc700 ()
+
+================ StreamedTable.RefreshInternal (0x015eed80..0x015eef42, sz=450) ================
+  +0x000: 40 55 56 41 56 48 8d 6c 24 b9 48 81 ec c0 00 00
+  +0x010: 00 48 8b f1 48 c7 45 77 00 00 00 00 48 8b 89 f8
+  +0x020: 08 00 00 48 85 c9 0f 84 8a 01 00 00 33 d2 e8 3d
+  +0x030: 6b a5 ff 33 d2 48 8b ce 44 8b f0 e8 90 63 fb ff
+  +0x040: 33 d2 48 8b ce e8 96 a2 fb ff 48 8b 96 38 07 00
+  +0x050: 00 48 85 d2 0f 84 5c 01 00 00 45 33 c0 48 8d 4d
+  +0x060: c7 e8 1a 3f 63 ff 0f 10 45 c7 33 d2 48 8d 4d a7
+  +0x070: 0f 10 4d d7 0f 11 45 a7 0f 11 4d b7 e8 9f 42 b8
+  +0x080: ff 84 c0 74 6b 48 89 9c 24 b8 00 00 00 48 89 bc
+  +0x090: 24 b0 00 00 00 48 8b 7d b7 0f b6 5d bf 48 8b d7
+  +0x0a0: 4c 8b 0d b9 81 83 01 44 0f b6 c3 48 8b 8e 00 09
+  +0x0b0: 00 00 e8 69 07 4d ff 4c 8b 0d 62 82 83 01 44 0f
+  +0x0c0: b6 c3 48 8b 8e 08 09 00 00 48 8b d7 e8 0f 08 4d
+  +0x0d0: ff 33 d2 48 8d 4d a7 e8 44 42 b8 ff 84 c0 75 b5
+  +0x0e0: 48 8b bc 24 b0 00 00 00 48 8b 9c 24 b8 00 00 00
+  +0x0f0: 45 85 f6 0f 8e b1 00 00 00 48 8b 15 78 4f 82 01
+  +0x100: 48 8d 4d 77 e8 57 9c 43 ff 84 c0 0f 84 99 00 00
+  +0x110: 00 33 d2 48 8b ce e8 b5 20 00 00 48 8b 96 f8 08
+  +0x120: 00 00 48 c7 45 7f 00 00 00 00 48 c7 45 67 00 00
+  +0x130: 00 00 48 85 d2 0f 84 81 00 00 00 45 33 c0 48 8d
+  +0x140: 4d 0f e8 d9 48 a6 ff 0f 10 45 0f 33 d2 48 8d 4d
+  +0x150: e7 0f 10 4d 1f 0f 11 45 e7 f2 0f 10 45 2f f2 0f
+  +0x160: 11 45 07 0f 11 4d f7 e8 74 cf bb ff 84 c0 74 3a
+  +0x170: 0f 10 45 f7 45 33 c9 4c 8d 45 67 48 8d 55 7f 48
+  +0x180: 8d 4d c7 0f 11 45 c7 e8 04 69 60 ff 48 8b 55 67
+  +0x190: 45 33 c0 48 8b ce e8 15 73 ff ff 33 d2 48 8d 4d
+  +0x1a0: e7 e8 3a cf bb ff 84 c0 75 c6 48 81 c4 c0 00 00
+  +0x1b0: 00 41 5e 5e 5d c3 e8 c5 d7 bc fe cc e8 bf d7 bc
+  +0x1c0: fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:1494
+  [+0x014] StreamedTable.cs:1494
+  [+0x01c] StreamedTable.cs:1498
+  [+0x023] StreamedTable.cs:1498
+  [+0x02c] StreamedTable.cs:1498
+  +0x02e: CALL 0x010458f0 ()
+  [+0x033] StreamedTable.cs:1499
+  [+0x038] StreamedTable.cs:1498
+  [+0x03b] StreamedTable.cs:1499
+  +0x03b: CALL 0x015a5150 (StreamedListView.cs:1619)
+  [+0x040] StreamedTable.cs:1501
+  +0x045: CALL 0x015a9060 (StreamedListView.cs:1364)
+  [+0x04a] StreamedTable.cs:1503
+  [+0x051] StreamedTable.cs:1503
+  [+0x05a] StreamedTable.cs:1503
+  +0x061: CALL 0x00c22d00 (ListWithEvents.cs:8)
+  [+0x06a] StreamedTable.cs:1503
+  [+0x070] StreamedTable.cs:1503
+  [+0x07c] StreamedTable.cs:1503
+  +0x07c: CALL 0x011730a0 ()
+  [+0x081] StreamedTable.cs:1503
+  [+0x095] StreamedTable.cs:1503
+  [+0x099] StreamedTable.cs:1503
+  [+0x09d] StreamedTable.cs:1505
+  +0x0a0: RIP [0x02e26fe0] -> MetaUsage(tag=6, idx=208727)
+  +0x0b2: CALL 0x00abf5a0 (StreamedTable.cs:3201)
+  [+0x0b7] StreamedTable.cs:1506
+  +0x0b7: RIP [0x02e270a0] -> MetaUsage(tag=6, idx=188304)
+  +0x0cc: CALL 0x00abf660 (StreamedTable.cs:1538)
+  [+0x0d1] StreamedTable.cs:1503
+  +0x0d7: CALL 0x011730a0 ()
+  [+0x0dc] StreamedTable.cs:1503
+  [+0x0f0] StreamedTable.cs:1513
+  [+0x0f9] StreamedTable.cs:1513
+  +0x0f9: RIP [0x02e13df8] -> MetaUsage(tag=6, idx=207762)
+  +0x104: CALL 0x00a28ae0 (GameSubsystems.cs:39)
+  [+0x109] StreamedTable.cs:1513
+  [+0x111] StreamedTable.cs:1515
+  +0x116: CALL 0x015f0f50 (StreamedTable.cs:1922)
+  [+0x11b] StreamedTable.cs:1516, StreamedTable.cs:1883
+  [+0x132] StreamedTable.cs:1883
+  [+0x13b] StreamedTable.cs:1883
+  +0x142: CALL 0x010537a0 ()
+  [+0x14b] StreamedTable.cs:1883
+  [+0x151] StreamedTable.cs:1883
+  [+0x167] StreamedTable.cs:1883
+  +0x167: CALL 0x011abe60 ()
+  [+0x16c] StreamedTable.cs:1883
+  [+0x170] StreamedTable.cs:1883
+  [+0x174] StreamedTable.cs:1883
+  [+0x183] StreamedTable.cs:1883
+  [+0x187] StreamedTable.cs:1883
+  +0x187: CALL 0x00bf5810 ()
+  [+0x18c] StreamedTable.cs:1885
+  +0x196: CALL 0x015e6230 (StreamedTable.cs:1740)
+  [+0x19b] StreamedTable.cs:1883
+  +0x1a1: CALL 0x011abe60 ()
+  [+0x1a6] StreamedTable.cs:1883
+  [+0x1aa] StreamedTable.cs:1518
+  [+0x1b6] StreamedTable.cs:1503
+  +0x1b6: CALL 0x001bc700 ()
+  [+0x1bc] StreamedTable.cs:1516, StreamedTable.cs:1883
+  +0x1bc: CALL 0x001bc700 ()
+
+================ StreamedTable.OnSortColumn (0x015ee250..0x015ee285, sz=53) ================
+  +0x000: 48 83 ec 28 48 8b 91 20 08 00 00 48 85 d2 74 1f
+  +0x010: 48 63 81 bc 0a 00 00 45 33 c9 48 8b 52 10 45 33
+  +0x020: c0 48 8b 54 c2 20 48 83 c4 28 e9 91 e6 ff ff e8
+  +0x030: 7c e4 bc fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedTable.cs:2178
+  [+0x004] StreamedTable.cs:2182
+  [+0x00b] StreamedTable.cs:2182
+  [+0x010] StreamedTable.cs:2183
+  [+0x026] StreamedTable.cs:2184
+  [+0x02a] StreamedTable.cs:2183
+  +0x02a: JMP 0x015ec910 (StreamedTable.cs:2114)
+  [+0x02f] StreamedTable.cs:2182
+  +0x02f: CALL 0x001bc700 ()
+
+================ StreamedListView.set_Reorderable (0x015ad4f0..0x015ad511, sz=33) ================
+  +0x000: 48 83 ec 28 48 8b 81 78 07 00 00 48 85 c0 74 0b
+  +0x010: 88 90 c1 05 00 00 48 83 c4 28 c3 e8 f0 f1 c0 fe
+  +0x020: cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:410
+  [+0x004] StreamedListView.cs:413
+  [+0x00b] StreamedListView.cs:413
+  [+0x010] StreamedListView.cs:413
+  [+0x016] StreamedListView.cs:413
+  [+0x01b] StreamedListView.cs:413
+  +0x01b: CALL 0x001bc700 ()
+
+================ StreamedListView.BindToData (0x015a49b0..0x015a50aa, sz=1786) ================
+  +0x000: 40 55 56 41 54 48 8d 6c 24 b9 48 81 ec a0 00 00
+  +0x010: 00 8b 91 50 05 00 00 45 33 e4 83 89 60 07 00 00
+  +0x020: 08 ff c2 4c 89 65 67 0f 57 c0 89 91 50 05 00 00
+  +0x030: 48 8b f1 0f 11 45 e7 85 d2 7f 24 48 8b 11 48 8b
+  +0x040: 82 18 0e 00 00 48 8b 92 20 0e 00 00 ff d0 83 a6
+  +0x050: 60 07 00 00 fe 33 d2 48 8b ce e8 71 61 00 00 48
+  +0x060: 8b 8e 40 05 00 00 48 89 9c 24 c8 00 00 00 48 89
+  +0x070: bc 24 d8 00 00 00 4c 89 b4 24 98 00 00 00 4c 89
+  +0x080: bc 24 90 00 00 00 48 85 c9 0f 84 65 06 00 00 33
+  +0x090: d2 e8 4a 7f f1 ff 33 d2 48 8b ce e8 d0 22 05 00
+  +0x0a0: 48 8b 0d 31 d2 86 01 e8 c4 3e 48 ff 48 8d 8e 50
+  +0x0b0: 07 00 00 48 89 86 50 07 00 00 48 8b d0 e8 ce 6c
+  +0x0c0: c1 fe 48 8b 0d 67 8b 8a 01 44 39 a1 e4 00 00 00
+  +0x0d0: 75 05 e8 19 7d c1 fe 33 d2 48 8b ce e8 9f d3 f6
+  +0x0e0: ff 4c 8b b6 50 07 00 00 33 d2 48 8b ce 48 8b d8
+  +0x0f0: e8 2b 88 cf fe 48 8b f8 48 85 c0 74 1e 33 d2 48
+  +0x100: 8b c8 e8 39 b0 cf ff 8b 4f 10 89 4d ff 44 89 65
+  +0x110: 03 48 89 45 f7 0f 28 45 f7 eb 03 0f 57 c0 45 33
+  +0x120: c9 66 0f 7f 45 f7 4c 8d 45 f7 4c 89 64 24 20 48
+  +0x130: 8b d3 49 8b ce e8 b6 c3 f6 ff 48 89 86 90 07 00
+  +0x140: 00 48 8d 4d 77 48 8b 86 c8 07 00 00 33 d2 48 89
+  +0x150: 45 77 e8 49 88 f1 ff 84 c0 74 4f 48 8b 86 90 07
+  +0x160: 00 00 48 8d 4d f7 48 8b 96 c8 07 00 00 45 33 c0
+  +0x170: 48 8b 9e 50 07 00 00 48 89 45 67 e8 30 89 f1 ff
+  +0x180: 4c 8b 8e 10 06 00 00 4c 8d 45 e7 48 8d 55 67 4c
+  +0x190: 89 64 24 20 48 8b cb 0f 10 00 0f 11 45 e7 e8 7d
+  +0x1a0: c2 f6 ff 48 89 86 40 07 00 00 48 8b 86 b8 07 00
+  +0x1b0: 00 48 8d 4d 77 33 d2 48 89 45 77 e8 e0 87 f1 ff
+  +0x1c0: 84 c0 74 56 48 8b 86 90 07 00 00 48 8d 4d f7 48
+  +0x1d0: 8b 96 b8 07 00 00 45 33 c0 80 8e 48 06 00 00 02
+  +0x1e0: 48 8b 9e 50 07 00 00 48 89 45 67 e8 c0 88 f1 ff
+  +0x1f0: 4c 8b 8e 58 05 00 00 4c 8d 45 e7 48 8d 55 67 4c
+  +0x200: 89 64 24 20 48 8b cb 0f 10 00 0f 11 45 e7 e8 0d
+  +0x210: c2 f6 ff 48 89 86 60 05 00 00 48 8b 86 88 07 00
+  +0x220: 00 48 8d 4d 77 33 d2 48 89 45 77 e8 70 87 f1 ff
+  +0x230: 84 c0 74 76 48 8b 86 90 07 00 00 48 8d 4d f7 48
+  +0x240: 8b 96 88 07 00 00 45 33 c0 80 8e 48 06 00 00 04
+  +0x250: 48 8b be 50 07 00 00 48 89 45 67 e8 50 88 f1 ff
+  +0x260: 48 8b 0d b9 60 83 01 0f 10 00 0f 11 45 e7 e8 8d
+  +0x270: 7a c1 fe 4c 8b 05 4e 17 88 01 45 33 c9 48 8b d6
+  +0x280: 48 8b c8 48 8b d8 e8 95 6f af ff 4c 8b cb 4c 89
+  +0x290: 64 24 20 4c 8d 45 e7 48 8b cf 48 8d 55 67 e8 7d
+  +0x2a0: c1 f6 ff 48 89 86 c0 05 00 00 48 8b 05 b7 53 87
+  +0x2b0: 01 44 39 a0 e4 00 00 00 75 0f 48 8b c8 e8 2e 7b
+  +0x2c0: c1 fe 48 8b 05 9f 53 87 01 48 8b 80 b8 00 00 00
+  +0x2d0: 45 33 c9 4c 8b c6 48 8b ce 48 8b 50 18 48 8b 05
+  +0x2e0: 3c 74 84 01 48 89 44 24 20 e8 d2 8e 43 ff 48 8b
+  +0x2f0: 05 73 53 87 01 45 33 c9 4c 8b c6 48 8b 88 b8 00
+  +0x300: 00 00 48 8b 05 8f 76 84 01 48 89 44 24 20 48 8b
+  +0x310: 51 20 48 8b ce e8 a6 8e 43 ff 48 8b 0d 9f d5 86
+  +0x320: 01 e8 4a 3c 48 ff 48 85 c0 0f 84 c5 03 00 00 4c
+  +0x330: 8b 05 8a ef 89 01 48 8b c8 48 8b 96 38 05 00 00
+  +0x340: e8 bb 8d 47 ff 48 8b 86 78 07 00 00 48 85 c0 0f
+  +0x350: 84 9f 03 00 00 48 8b 80 28 05 00 00 48 85 c0 0f
+  +0x360: 84 8f 03 00 00 83 78 18 01 0f 85 02 02 00 00 48
+  +0x370: 8b 0d ca 84 8a 01 48 8b 9e 50 06 00 00 e8 7e 79
+  +0x380: c1 fe 4c 8b 05 2f 13 88 01 45 33 c9 48 8b d6 48
+  +0x390: 8b c8 48 8b f8 e8 c6 e8 93 ff 48 85 db 0f 84 51
+  +0x3a0: 03 00 00 45 33 c0 48 8b d7 48 8b cb e8 ff 7a 10
+  +0x3b0: 00 33 c9 e8 78 5b 11 00 84 c0 74 6b 48 8b 05 3d
+  +0x3c0: aa 82 01 48 8b 88 b8 00 00 00 4c 8b 01 4d 85 c0
+  +0x3d0: 0f 84 1e 03 00 00 48 8b 15 d3 1a 88 01 b9 03 00
+  +0x3e0: 00 00 e8 69 d5 a5 fe 48 8b 0d ea 8f 8a 01 48 8b
+  +0x3f0: f8 e8 0a 79 c1 fe 4c 8b 05 7b 10 88 01 45 33 c9
+  +0x400: 48 8b d6 48 8b c8 48 8b d8 e8 22 e5 93 ff 41 b9
+  +0x410: 01 00 00 00 4c 89 64 24 20 4c 8b c3 48 8b d7 48
+  +0x420: 8b ce e8 a9 b9 f5 ff 48 8b 0d 5a 4a 83 01 e8 5d
+  +0x430: e1 73 ff 84 c0 74 56 48 8b 05 1a 4c 83 01 48 8b
+  +0x440: 40 20 f6 80 35 01 00 00 01 75 08 48 8b c8 e8 3d
+  +0x450: bb c1 fe 48 8b 80 c0 00 00 00 48 8b 40 10 f6 80
+  +0x460: 35 01 00 00 01 75 08 48 8b c8 e8 21 bb c1 fe 48
+  +0x470: 8b 80 b8 00 00 00 48 8b 08 48 85 c9 0f 84 72 02
+  +0x480: 00 00 45 33 c0 48 8b d6 e8 13 59 f5 ff 48 8b 8e
+  +0x490: 60 06 00 00 33 d2 e8 95 45 41 ff 84 c0 0f 84 ce
+  +0x4a0: 00 00 00 80 8e 48 06 00 00 08 48 8b 0d c7 f0 89
+  +0x4b0: 01 4c 8b be 60 06 00 00 44 39 a1 e4 00 00 00 75
+  +0x4c0: 0c e8 2a 79 c1 fe 48 8b 0d ab f0 89 01 48 8b 81
+  +0x4d0: b8 00 00 00 48 8b 78 18 48 85 ff 75 53 48 8b 0d
+  +0x4e0: d4 a8 84 01 48 8b 18 e8 14 78 c1 fe 4c 8b 05 8d
+  +0x4f0: 50 85 01 45 33 c9 48 8b d3 48 8b c8 48 8b f8 e8
+  +0x500: 6c 6a 73 ff 48 8b 05 6d f0 89 01 48 8b d7 48 8b
+  +0x510: 88 b8 00 00 00 48 89 79 18 48 8b 05 58 f0 89 01
+  +0x520: 48 8b 88 b8 00 00 00 48 83 c1 18 e8 60 68 c1 fe
+  +0x530: 48 8b 0d 19 46 85 01 44 39 a1 e4 00 00 00 75 05
+  +0x540: e8 ab 78 c1 fe 48 8b 05 f4 7f 89 01 48 8d 96 90
+  +0x550: 06 00 00 48 89 44 24 30 48 8d 4d 07 4c 89 64 24
+  +0x560: 28 4c 8b cf 4d 8b c7 48 89 74 24 20 e8 8f bf 4f
+  +0x570: ff 48 8b 8e 70 06 00 00 33 d2 e8 b1 44 41 ff 84
+  +0x580: c0 0f 84 ce 00 00 00 80 8e 48 06 00 00 10 48 8b
+  +0x590: 0d e3 ef 89 01 4c 8b be 70 06 00 00 44 39 a1 e4
+  +0x5a0: 00 00 00 75 0c e8 46 78 c1 fe 48 8b 0d c7 ef 89
+  +0x5b0: 01 48 8b 81 b8 00 00 00 48 8b 78 20 48 85 ff 75
+  +0x5c0: 53 48 8b 0d f0 a7 84 01 48 8b 18 e8 30 77 c1 fe
+  +0x5d0: 4c 8b 05 81 50 85 01 45 33 c9 48 8b d3 48 8b c8
+  +0x5e0: 48 8b f8 e8 88 69 73 ff 48 8b 05 89 ef 89 01 48
+  +0x5f0: 8b d7 48 8b 88 b8 00 00 00 48 89 79 20 48 8b 05
+  +0x600: 74 ef 89 01 48 8b 88 b8 00 00 00 48 83 c1 20 e8
+  +0x610: 7c 67 c1 fe 48 8b 0d 35 45 85 01 44 39 a1 e4 00
+  +0x620: 00 00 75 05 e8 c7 77 c1 fe 48 8b 05 10 7f 89 01
+  +0x630: 48 8d 96 c0 06 00 00 48 89 44 24 30 48 8d 4d 07
+  +0x640: 4c 89 64 24 28 4c 8b cf 4d 8b c7 48 89 74 24 20
+  +0x650: e8 ab be 4f ff 80 8e 48 06 00 00 01 4c 8b 86 20
+  +0x660: 06 00 00 4d 85 c0 74 0e 48 8b 15 49 5a 87 01 33
+  +0x670: c9 e8 4a d7 a5 fe 48 8b 06 48 8b ce 48 8b 90 c0
+  +0x680: 0d 00 00 ff 90 b8 0d 00 00 8b 86 50 05 00 00 ff
+  +0x690: c8 89 86 50 05 00 00 85 c0 7f 2d 44 39 a6 60 07
+  +0x6a0: 00 00 74 24 48 8b 06 48 8b ce 48 8b 90 20 0e 00
+  +0x6b0: 00 ff 90 18 0e 00 00 83 a6 60 07 00 00 fe 33 d2
+  +0x6c0: 48 8b ce e8 08 5b 00 00 4c 8b bc 24 90 00 00 00
+  +0x6d0: 4c 8b b4 24 98 00 00 00 48 8b bc 24 d8 00 00 00
+  +0x6e0: 48 8b 9c 24 c8 00 00 00 48 81 c4 a0 00 00 00 41
+  +0x6f0: 5c 5e 5d c3 e8 57 76 c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:581
+  [+0x011] StreamedListView.cs:585, StreamedListView.cs:1205
+  [+0x017] StreamedListView.cs:581
+  [+0x01a] StreamedListView.cs:585, StreamedListView.cs:1206, StreamedListView.cs:1211
+  [+0x021] StreamedListView.cs:1205
+  [+0x023] StreamedListView.cs:581
+  [+0x02a] StreamedListView.cs:585, StreamedListView.cs:1205
+  [+0x030] StreamedListView.cs:581
+  [+0x033] StreamedListView.cs:581
+  [+0x037] StreamedListView.cs:585, StreamedListView.cs:1206, StreamedListView.cs:1212, StreamedListView.cs:1226
+  [+0x03b] StreamedListView.cs:1229
+  [+0x04e] StreamedListView.cs:1230
+  [+0x055] StreamedListView.cs:1231
+  +0x05a: CALL 0x015aab80 (StreamedListView.cs:705)
+  [+0x05f] StreamedListView.cs:586
+  [+0x086] StreamedListView.cs:586
+  [+0x08f] StreamedListView.cs:586
+  +0x091: CALL 0x014bc990 (Binder.cs:63)
+  [+0x096] StreamedListView.cs:588
+  +0x09b: CALL 0x015f6d20 (DiggableVisualElement.cs:228)
+  [+0x0a0] StreamedListView.cs:590
+  +0x0a0: RIP [0x02e11c88] -> MetaUsage(tag=6, idx=207724)
+  +0x0a7: CALL 0x00a28920 (GameObjectExtensions.cs:18)
+  [+0x0ac] StreamedListView.cs:590
+  +0x0bd: CALL 0x001bb740 ()
+  [+0x0c2] StreamedListView.cs:591
+  +0x0c2: RIP [0x02e4d5e0] -> MetaUsage(tag=1, idx=23672)
+  +0x0d2: CALL 0x001bc7a0 ()
+  [+0x0d7] StreamedListView.cs:591
+  +0x0dc: CALL 0x01511e30 (BindableWidgetUtils.cs:285)
+  [+0x0e1] StreamedListView.cs:592
+  [+0x0e8] StreamedListView.cs:592
+  +0x0f0: CALL 0x0029d2d0 (BacktraceDatabaseRecord.cs:31, BacktraceDatabaseRecord.cs:36)
+  [+0x0f8] StreamedListView.cs:592, NavigationManager.cs:112
+  [+0x0fd] NavigationManager.cs:112
+  +0x102: CALL 0x0129faf0 ()
+  [+0x107] NavigationManager.cs:112
+  [+0x10a] NavigationManager.cs:112, Utilities.cs:117
+  [+0x10d] NavigationManager.cs:112
+  [+0x111] NavigationManager.cs:112, Utilities.cs:117
+  [+0x115] NavigationManager.cs:112
+  [+0x11e] StreamedListView.cs:592
+  +0x135: CALL 0x01510ea0 (BindingUtils.cs:27)
+  [+0x13a] StreamedListView.cs:592
+  [+0x141] StreamedListView.cs:594
+  +0x152: CALL 0x014bd350 (BindingPath.cs:95)
+  [+0x157] StreamedListView.cs:594
+  [+0x15b] StreamedListView.cs:597
+  [+0x162] StreamedListView.cs:597
+  +0x17b: CALL 0x014bd460 (BindingPath.cs:111)
+  [+0x180] StreamedListView.cs:597
+  +0x19e: CALL 0x01510dd0 (BindingUtils.cs:282)
+  [+0x1a3] StreamedListView.cs:597
+  [+0x1aa] StreamedListView.cs:600
+  [+0x1b1] StreamedListView.cs:600
+  +0x1bb: CALL 0x014bd350 (BindingPath.cs:95)
+  [+0x1c0] StreamedListView.cs:600
+  [+0x1c4] StreamedListView.cs:604
+  [+0x1cb] StreamedListView.cs:604
+  +0x1eb: CALL 0x014bd460 (BindingPath.cs:111)
+  [+0x1f0] StreamedListView.cs:604
+  +0x20e: CALL 0x01510dd0 (BindingUtils.cs:282)
+  [+0x213] StreamedListView.cs:604
+  [+0x21a] StreamedListView.cs:607
+  [+0x221] StreamedListView.cs:607
+  +0x22b: CALL 0x014bd350 (BindingPath.cs:95)
+  [+0x230] StreamedListView.cs:607
+  [+0x234] StreamedListView.cs:610
+  [+0x23b] StreamedListView.cs:610
+  +0x25b: CALL 0x014bd460 (BindingPath.cs:111)
+  [+0x260] StreamedListView.cs:610
+  +0x260: RIP [0x02ddacd0] -> MetaUsage(tag=1, idx=41894)
+  [+0x267] StreamedListView.cs:610
+  [+0x26e] StreamedListView.cs:610
+  +0x26e: CALL 0x001bc6b0 ()
+  [+0x273] StreamedListView.cs:610
+  +0x273: RIP [0x02e26378] -> MethodDef idx=47247 OnSortBindingChanged
+  [+0x283] StreamedListView.cs:610
+  [+0x286] StreamedListView.cs:610
+  +0x286: CALL 0x0109bbd0 ()
+  [+0x28b] StreamedListView.cs:610
+  +0x29e: CALL 0x01510dd0 (BindingUtils.cs:282)
+  [+0x2a3] StreamedListView.cs:610
+  [+0x2aa] StreamedListView.cs:613
+  +0x2aa: RIP [0x02e1a018] -> MetaUsage(tag=1, idx=37110)
+  +0x2bd: CALL 0x001bc7a0 ()
+  +0x2c2: RIP [0x02e1a018] -> MetaUsage(tag=1, idx=37110)
+  [+0x2c9] StreamedListView.cs:613
+  [+0x2d0] StreamedListView.cs:613
+  [+0x2d9] StreamedListView.cs:613
+  [+0x2dd] StreamedListView.cs:613
+  +0x2dd: RIP [0x02dec0d0] -> MetaUsage(tag=6, idx=206307)
+  +0x2e9: CALL 0x009ddb70 ()
+  [+0x2ee] StreamedListView.cs:614
+  +0x2ee: RIP [0x02e1a018] -> MetaUsage(tag=1, idx=37110)
+  [+0x2f5] StreamedListView.cs:614
+  [+0x2fb] StreamedListView.cs:614
+  [+0x302] StreamedListView.cs:614
+  +0x302: RIP [0x02dec348] -> MetaUsage(tag=6, idx=206310)
+  +0x315: CALL 0x009ddb70 ()
+  [+0x31a] StreamedListView.cs:616
+  +0x31a: RIP [0x02e12270] -> MetaUsage(tag=6, idx=207731)
+  +0x321: CALL 0x00a28920 (GameObjectExtensions.cs:18)
+  [+0x326] StreamedListView.cs:617
+  [+0x32f] StreamedListView.cs:617
+  +0x32f: RIP [0x02e43c70] -> MetaUsage(tag=6, idx=207282)
+  +0x340: CALL 0x00a1dab0 (EventList.cs:64)
+  [+0x345] StreamedListView.cs:619, StreamedListView.cs:397, StreamedListView.cs:399, StreamedListView.cs:401
+  [+0x34c] StreamedListView.cs:401
+  [+0x355] StreamedListView.cs:401
+  [+0x35c] StreamedListView.cs:399
+  [+0x365] StreamedListView.cs:619
+  [+0x36f] StreamedListView.cs:621
+  +0x36f: RIP [0x02e4d1f0] -> MetaUsage(tag=1, idx=5194)
+  [+0x376] StreamedListView.cs:621
+  [+0x37d] StreamedListView.cs:621
+  +0x37d: CALL 0x001bc6b0 ()
+  [+0x382] StreamedListView.cs:621
+  +0x382: RIP [0x02e26068] -> MethodDef idx=47323 OnRightStickPageChangeTriggered
+  [+0x392] StreamedListView.cs:621
+  [+0x395] StreamedListView.cs:621
+  +0x395: CALL 0x00ee3610 (TypedValue.cs:699)
+  [+0x39a] StreamedListView.cs:621
+  [+0x3a3] StreamedListView.cs:621
+  +0x3ac: CALL 0x016ac860 (INavigatable.cs:99)
+  [+0x3b1] StreamedListView.cs:623
+  +0x3b3: CALL 0x016ba8e0 (NavigationManager.cs:121, NavigationManager.cs:125)
+  [+0x3b8] StreamedListView.cs:623
+  [+0x3bc] StreamedListView.cs:625, NavigationManager.cs:112
+  +0x3bc: RIP [0x02dcf7b0] -> MetaUsage(tag=1, idx=32760)
+  [+0x3cd] StreamedListView.cs:625
+  [+0x3d6] StreamedListView.cs:625
+  +0x3d6: RIP [0x02e26860] -> MetaUsage(tag=1, idx=29476)
+  [+0x3e7] StreamedListView.cs:625
+  +0x3e7: RIP [0x02e4dd88] -> MetaUsage(tag=1, idx=5218)
+  [+0x3ee] StreamedListView.cs:625
+  [+0x3f1] StreamedListView.cs:625
+  +0x3f1: CALL 0x001bc6b0 ()
+  [+0x3f6] StreamedListView.cs:625
+  +0x3f6: RIP [0x02e25e28] -> MethodDef idx=47322 OnNavigateListPaginationInputAction
+  [+0x406] StreamedListView.cs:625
+  [+0x409] StreamedListView.cs:625
+  +0x409: CALL 0x00ee32e0 (TypedValue.cs:699, TypedValue.cs:699)
+  [+0x40e] StreamedListView.cs:625
+  +0x422: CALL 0x01500780 (IShortcutElement.cs:117)
+  [+0x427] StreamedListView.cs:628
+  +0x427: RIP [0x02dd9838] -> MetaUsage(tag=6, idx=203924)
+  +0x42e: CALL 0x00ce2f40 (ManualSingleton.cs:44)
+  [+0x433] StreamedListView.cs:628
+  [+0x437] StreamedListView.cs:630, ManualSingleton.cs:42
+  +0x437: RIP [0x02dd9a08] -> MetaUsage(tag=6, idx=203926)
+  +0x44e: CALL 0x001c0940 ()
+  +0x46a: CALL 0x001c0940 ()
+  [+0x479] StreamedListView.cs:630
+  [+0x482] StreamedListView.cs:630
+  +0x488: CALL 0x014fa750 (ShortcutData.cs:1389)
+  [+0x48d] StreamedListView.cs:634
+  +0x496: CALL 0x009b93e0 (AssetReference.cs:558, AssetReferenceExtensions.cs:15)
+  [+0x49b] StreamedListView.cs:634
+  [+0x4a3] StreamedListView.cs:636
+  [+0x4aa] StreamedListView.cs:643
+  +0x4aa: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  +0x4c1: CALL 0x001bc7a0 ()
+  +0x4c6: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  [+0x4cd] StreamedListView.cs:643
+  [+0x4d8] StreamedListView.cs:643
+  [+0x4dd] StreamedListView.cs:643
+  +0x4dd: RIP [0x02def768] -> MetaUsage(tag=1, idx=54763)
+  [+0x4e4] StreamedListView.cs:643
+  [+0x4e7] StreamedListView.cs:643
+  +0x4e7: CALL 0x001bc6b0 ()
+  [+0x4ec] StreamedListView.cs:643
+  +0x4ec: RIP [0x02df9f30] -> MethodDef idx=47355 <BindToData>b__232_0
+  [+0x4fc] StreamedListView.cs:643
+  [+0x4ff] StreamedListView.cs:643
+  +0x4ff: CALL 0x00cdb920 ()
+  [+0x504] StreamedListView.cs:643
+  +0x504: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  [+0x50b] StreamedListView.cs:643
+  +0x519: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  +0x52b: CALL 0x001bb740 ()
+  [+0x530] StreamedListView.cs:643
+  +0x530: RIP [0x02df9500] -> MetaUsage(tag=1, idx=35279)
+  +0x540: CALL 0x001bc7a0 ()
+  [+0x545] StreamedListView.cs:643
+  +0x545: RIP [0x02e3cef0] -> MetaUsage(tag=6, idx=208607)
+  +0x56c: CALL 0x00aa0eb0 (ResourcesSubsystem.cs:295)
+  [+0x571] StreamedListView.cs:647
+  +0x57a: CALL 0x009b93e0 (AssetReference.cs:558, AssetReferenceExtensions.cs:15)
+  [+0x57f] StreamedListView.cs:647
+  [+0x587] StreamedListView.cs:649
+  [+0x58e] StreamedListView.cs:656
+  +0x58e: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  +0x5a5: CALL 0x001bc7a0 ()
+  +0x5aa: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  [+0x5b1] StreamedListView.cs:656
+  [+0x5bc] StreamedListView.cs:656
+  [+0x5c1] StreamedListView.cs:656
+  +0x5c1: RIP [0x02def768] -> MetaUsage(tag=1, idx=54763)
+  [+0x5c8] StreamedListView.cs:656
+  [+0x5cb] StreamedListView.cs:656
+  +0x5cb: CALL 0x001bc6b0 ()
+  [+0x5d0] StreamedListView.cs:656
+  +0x5d0: RIP [0x02dfa008] -> MethodDef idx=47356 <BindToData>b__232_1
+  [+0x5e0] StreamedListView.cs:656
+  [+0x5e3] StreamedListView.cs:656
+  +0x5e3: CALL 0x00cdb920 ()
+  [+0x5e8] StreamedListView.cs:656
+  +0x5e8: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  [+0x5ef] StreamedListView.cs:656
+  +0x5fd: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  +0x60f: CALL 0x001bb740 ()
+  [+0x614] StreamedListView.cs:656
+  +0x614: RIP [0x02df9500] -> MetaUsage(tag=1, idx=35279)
+  +0x624: CALL 0x001bc7a0 ()
+  [+0x629] StreamedListView.cs:656
+  +0x629: RIP [0x02e3cef0] -> MetaUsage(tag=6, idx=208607)
+  +0x650: CALL 0x00aa0eb0 (ResourcesSubsystem.cs:295)
+  [+0x655] StreamedListView.cs:659
+  [+0x65c] StreamedListView.cs:660
+  [+0x663] StreamedListView.cs:660
+  [+0x668] StreamedListView.cs:660
+  +0x668: RIP [0x02e1aa68] -> MetaUsage(tag=1, idx=28942)
+  [+0x676] StreamedListView.cs:662
+  [+0x689] StreamedListView.cs:663, StreamedListView.cs:1220
+  [+0x697] StreamedListView.cs:1221, StreamedListView.cs:1226
+  [+0x69b] StreamedListView.cs:1226
+  [+0x6a4] StreamedListView.cs:1229
+  [+0x6b7] StreamedListView.cs:1230
+  [+0x6be] StreamedListView.cs:1231
+  +0x6c3: CALL 0x015aab80 (StreamedListView.cs:705)
+  [+0x6d0] StreamedListView.cs:664
+  [+0x6f4] StreamedListView.cs:630
+  +0x6f4: CALL 0x001bc700 ()
+
+================ StreamedListView.UpdateSortingBinding (0x015ab800..0x015ab9a4, sz=420) ================
+  +0x000: 40 55 48 83 ec 70 48 8b e9 33 d2 48 81 c1 c0 05
+  +0x010: 00 00 e8 69 73 27 ff 84 c0 0f 84 79 01 00 00 4c
+  +0x020: 89 b4 24 98 00 00 00 48 89 9c 24 80 00 00 00 48
+  +0x030: 8b 0d 7a 33 83 01 e8 75 0e c1 fe 48 8b 15 ee 42
+  +0x040: 87 01 48 8b c8 4c 8b f0 e8 53 eb 67 ff 48 8b 95
+  +0x050: 38 07 00 00 48 85 d2 0f 84 41 01 00 00 45 33 c0
+  +0x060: 48 8d 4c 24 50 e8 96 74 67 ff 0f 10 44 24 50 33
+  +0x070: d2 48 8d 4c 24 30 0f 10 4c 24 60 0f 11 44 24 30
+  +0x080: 0f 11 4c 24 40 e8 16 78 bc ff 84 c0 0f 84 ba 00
+  +0x090: 00 00 48 89 b4 24 88 00 00 00 48 89 bc 24 90 00
+  +0x0a0: 00 00 0f 1f 40 00 66 66 0f 1f 84 00 00 00 00 00
+  +0x0b0: 48 8b 7c 24 40 0f b6 74 24 48 48 85 ff 74 69 48
+  +0x0c0: 8b 0d 4a 4d 84 01 e8 e5 0d c1 fe 33 d2 48 8b c8
+  +0x0d0: 48 8b d8 e8 78 6e 0a 00 4c 8b 0d 61 4e 87 01 4c
+  +0x0e0: 8b c7 ba 76 47 62 62 48 8b cb e8 d1 a9 4e ff 4c
+  +0x0f0: 8b 0d 2a 4a 87 01 44 0f b6 c6 ba 4d 6e 37 37 48
+  +0x100: 8b cb e8 29 a7 4e ff 48 8b 15 0a cd 85 01 48 8b
+  +0x110: cb e8 aa 67 54 ff 4c 8b 05 cb 43 87 01 48 8b d0
+  +0x120: 49 8b ce e8 b8 9a ce fe 33 d2 48 8d 4c 24 30 e8
+  +0x130: 6c 77 bc ff 84 c0 0f 85 74 ff ff ff 48 8b bc 24
+  +0x140: 90 00 00 00 48 8b b4 24 88 00 00 00 48 8b 15 4d
+  +0x150: 9d 85 01 49 8b ce 48 8b 9d 50 07 00 00 e8 5e 67
+  +0x160: 54 ff 48 85 db 74 37 48 8d 95 c0 05 00 00 48 c7
+  +0x170: 44 24 20 00 00 00 00 41 b9 01 00 00 00 4c 8b c0
+  +0x180: 48 8b cb e8 b8 9d f1 ff 48 8b 9c 24 80 00 00 00
+  +0x190: 4c 8b b4 24 98 00 00 00 48 83 c4 70 5d c3 e8 5d
+  +0x1a0: 0d c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:781
+  [+0x009] StreamedListView.cs:825
+  +0x012: CALL 0x00822b80 (FMTacticsPanel.cs:98, FMTacticsPanel.cs:52)
+  [+0x017] StreamedListView.cs:825
+  [+0x02f] StreamedListView.cs:830
+  +0x02f: RIP [0x02ddebb0] -> MetaUsage(tag=1, idx=14414)
+  +0x036: CALL 0x001bc6b0 ()
+  [+0x03b] StreamedListView.cs:830
+  +0x03b: RIP [0x02e1fb30] -> MetaUsage(tag=6, idx=203183)
+  [+0x045] StreamedListView.cs:830
+  [+0x048] StreamedListView.cs:830
+  +0x048: CALL 0x00c2a3a0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x04d] StreamedListView.cs:831
+  [+0x054] StreamedListView.cs:831
+  [+0x05d] StreamedListView.cs:831
+  +0x065: CALL 0x00c22d00 (ListWithEvents.cs:8)
+  [+0x06f] StreamedListView.cs:831
+  [+0x076] StreamedListView.cs:831
+  [+0x085] StreamedListView.cs:831
+  +0x085: CALL 0x011730a0 ()
+  [+0x08a] StreamedListView.cs:831
+  [+0x0b0] StreamedListView.cs:831
+  [+0x0b5] StreamedListView.cs:831
+  [+0x0ba] StreamedListView.cs:833
+  [+0x0bf] StreamedListView.cs:838
+  +0x0bf: RIP [0x02df0610] -> MetaUsage(tag=1, idx=34695)
+  +0x0c6: CALL 0x001bc6b0 ()
+  [+0x0cb] StreamedListView.cs:838
+  [+0x0d0] StreamedListView.cs:838
+  [+0x0d3] StreamedListView.cs:838
+  +0x0d3: CALL 0x01652750 (ProjectConfigurationSystem.cs:83, RecordStreamSupport.cs:155)
+  [+0x0d8] StreamedListView.cs:839
+  +0x0d8: RIP [0x02e20740] -> MetaUsage(tag=6, idx=208365)
+  +0x0ea: CALL 0x00a962c0 (RecordStreamSupport.cs:173)
+  [+0x0ef] StreamedListView.cs:840
+  +0x0ef: RIP [0x02e20320] -> MetaUsage(tag=6, idx=187036)
+  +0x102: CALL 0x00a96030 (ReadOnlyArray.cs:256)
+  [+0x107] StreamedListView.cs:841
+  +0x107: RIP [0x02e08618] -> MetaUsage(tag=6, idx=208861)
+  +0x111: CALL 0x00af20c0 (TypedValue.cs:213)
+  [+0x116] StreamedListView.cs:841
+  +0x116: RIP [0x02e1fce8] -> MetaUsage(tag=6, idx=203185)
+  +0x123: CALL 0x002953e0 ()
+  [+0x128] StreamedListView.cs:831
+  +0x12f: CALL 0x011730a0 ()
+  [+0x134] StreamedListView.cs:831
+  [+0x14c] StreamedListView.cs:844
+  +0x14c: RIP [0x02e056a0] -> MetaUsage(tag=6, idx=208814)
+  [+0x156] StreamedListView.cs:844
+  [+0x15d] StreamedListView.cs:844
+  +0x15d: CALL 0x00af20c0 (TypedValue.cs:213)
+  [+0x162] StreamedListView.cs:844
+  [+0x167] StreamedListView.cs:844
+  +0x183: CALL 0x014c5740 (Bindings.cs:1919, Bindings.cs:1927)
+  [+0x198] StreamedListView.cs:845
+  [+0x19e] StreamedListView.cs:844
+  +0x19e: CALL 0x001bc700 ()
+
+================ StreamedListView.RefreshInternal (0x015a9060..0x015a9387, sz=807) ================
+  +0x000: 48 89 5c 24 08 48 89 6c 24 10 48 89 74 24 18 57
+  +0x010: 48 81 ec 90 00 00 00 48 8b f9 48 8b 0d 7f af 89
+  +0x020: 01 e8 2a 36 c1 fe 33 c9 48 8b f0 c7 40 10 ff ff
+  +0x030: ff ff e8 49 18 11 00 33 ed 84 c0 74 7c 48 8b 0d
+  +0x040: 0c 67 82 01 48 8b 91 b8 00 00 00 4c 8b 02 4d 85
+  +0x050: c0 0f 84 ca 02 00 00 48 8b 15 a2 d7 87 01 8d 4d
+  +0x060: 25 e8 3a 92 a5 fe 48 85 c0 74 4e 4c 8b 05 76 8c
+  +0x070: 87 01 4c 8b 08 41 0f b6 88 30 01 00 00 41 38 89
+  +0x080: 30 01 00 00 72 33 0f b6 d1 49 8b 89 c8 00 00 00
+  +0x090: 4c 39 44 d1 f8 75 22 48 8b 97 78 07 00 00 45 33
+  +0x0a0: c0 48 8b c8 48 8b d8 e8 c4 17 0b 00 84 c0 74 09
+  +0x0b0: 8b 83 00 05 00 00 89 46 10 8b 87 60 07 00 00 83
+  +0x0c0: e0 ef 89 87 60 07 00 00 a8 08 0f 85 2e 02 00 00
+  +0x0d0: 48 8b 8f 78 07 00 00 48 39 af 58 07 00 00 0f 84
+  +0x0e0: 0c 02 00 00 48 85 c9 0f 84 34 02 00 00 48 39 a9
+  +0x0f0: 30 05 00 00 74 46 48 8b 9f 68 05 00 00 48 85 db
+  +0x100: 0f 84 1b 02 00 00 4c 8b 87 58 07 00 00 b9 01 00
+  +0x110: 00 00 48 8b 15 ff 35 87 01 8b 5b 18 e8 7f 91 a5
+  +0x120: fe 3b d8 7e 17 48 8b 8f 78 07 00 00 48 85 c9 0f
+  +0x130: 84 ec 01 00 00 33 d2 e8 84 02 10 00 48 8b 8f 78
+  +0x140: 07 00 00 48 85 c9 0f 84 d5 01 00 00 33 d2 e8 3d
+  +0x150: 02 10 00 33 d2 c6 87 b8 05 00 00 01 48 8b cf e8
+  +0x160: 1c 0d 00 00 48 39 af 80 06 00 00 74 12 48 8b 97
+  +0x170: 80 06 00 00 45 33 c0 48 8b cf e8 c1 22 00 00 33
+  +0x180: d2 48 8b cf e8 37 94 ce fe 84 c0 74 49 48 8b 87
+  +0x190: 78 07 00 00 48 85 c0 0f 84 84 01 00 00 4c 8b 80
+  +0x1a0: 30 05 00 00 4d 85 c0 74 1d 48 8b 15 68 35 87 01
+  +0x1b0: b9 01 00 00 00 e8 e6 90 a5 fe 83 f8 01 7c 07 0f
+  +0x1c0: b6 af 8e 06 00 00 85 ed 48 8b cf 0f 95 c2 45 33
+  +0x1d0: c0 e8 7a e4 04 00 33 d2 48 8b cf e8 40 19 00 00
+  +0x1e0: 83 7e 10 00 0f 8c 1e 01 00 00 48 8b 0d e7 03 89
+  +0x1f0: 01 48 8b 9f 78 07 00 00 83 b9 e4 00 00 00 00 75
+  +0x200: 05 e8 3a 35 c1 fe 48 8b 05 e3 de 86 01 48 8d 4c
+  +0x210: 24 60 45 33 c9 48 89 44 24 20 45 33 c0 48 8b d3
+  +0x220: e8 4b 5e 55 ff 0f 10 44 24 60 48 8b 0d df 0f 88
+  +0x230: 01 0f 10 4c 24 70 0f 11 44 24 30 0f 10 84 24 80
+  +0x240: 00 00 00 0f 11 4c 24 40 0f 11 44 24 50 e8 fe 33
+  +0x250: c1 fe 4c 8b 05 a7 10 85 01 45 33 c9 48 8b d6 48
+  +0x260: 8b c8 48 8b d8 e8 06 c6 c4 ff 4c 8b 0d b7 2f 85
+  +0x270: 01 48 8d 54 24 30 4c 8b c3 48 8d 4c 24 60 e8 8d
+  +0x280: 89 93 ff 0f 10 44 24 60 48 8b 15 d1 2e 85 01 48
+  +0x290: 8d 4c 24 30 0f 10 4c 24 70 0f 11 44 24 30 0f 10
+  +0x2a0: 84 24 80 00 00 00 0f 11 4c 24 40 0f 11 44 24 50
+  +0x2b0: e8 8b 7c 93 ff 48 85 c0 74 4e 48 8b 0d 8f 64 82
+  +0x2c0: 01 48 8b 91 b8 00 00 00 4c 8b 02 4d 85 c0 74 51
+  +0x2d0: 48 8b 15 29 d5 87 01 b9 3d 00 00 00 c6 44 24 28
+  +0x2e0: 00 4c 8b c8 c6 44 24 20 01 e8 42 b9 a5 fe eb 18
+  +0x2f0: 48 85 c9 74 2c 33 d2 e8 c4 00 10 00 eb 0a 33 d2
+  +0x300: 48 8b cf e8 48 fb ff ff 4c 8d 9c 24 90 00 00 00
+  +0x310: 49 8b 5b 10 49 8b 6b 18 49 8b 73 20 49 8b e3 5f
+  +0x320: c3 e8 7a 33 c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1364
+  [+0x01a] StreamedListView.cs:1364
+  +0x01a: RIP [0x02e44000] -> MetaUsage(tag=1, idx=47690)
+  +0x021: CALL 0x001bc6b0 ()
+  [+0x026] StreamedListView.cs:1371
+  [+0x028] StreamedListView.cs:1364
+  [+0x02b] StreamedListView.cs:1368
+  [+0x032] StreamedListView.cs:1371
+  +0x032: CALL 0x016ba8e0 (NavigationManager.cs:121, NavigationManager.cs:125)
+  [+0x037] StreamedListView.cs:1371
+  [+0x03d] StreamedListView.cs:1371, NavigationManager.cs:112
+  +0x03d: RIP [0x02dcf7b0] -> MetaUsage(tag=1, idx=32760)
+  [+0x04e] StreamedListView.cs:1371
+  [+0x057] StreamedListView.cs:1371
+  +0x057: RIP [0x02e26860] -> MetaUsage(tag=1, idx=29476)
+  [+0x066] StreamedListView.cs:1371
+  +0x06b: RIP [0x02e21d48] -> MetaUsage(tag=1, idx=37575)
+  [+0x097] StreamedListView.cs:1371
+  [+0x0a4] StreamedListView.cs:1371
+  [+0x0a7] StreamedListView.cs:1371
+  +0x0a7: CALL 0x0165a8d0 (VisualElementExtensions.cs:138)
+  [+0x0ac] StreamedListView.cs:1371
+  [+0x0b0] StreamedListView.cs:1373
+  [+0x0b6] StreamedListView.cs:1373
+  [+0x0b9] StreamedListView.cs:1376, StreamedListView.cs:1215
+  [+0x0bf] StreamedListView.cs:1215
+  [+0x0c8] StreamedListView.cs:1377
+  [+0x0d0] StreamedListView.cs:1383
+  [+0x0d7] StreamedListView.cs:1383
+  [+0x0e4] StreamedListView.cs:1390
+  [+0x0ed] StreamedListView.cs:1390
+  [+0x0f6] StreamedListView.cs:1390
+  [+0x0fd] StreamedListView.cs:1390
+  [+0x106] StreamedListView.cs:1390
+  +0x112: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x119] StreamedListView.cs:1390
+  [+0x11c] StreamedListView.cs:1390
+  [+0x121] StreamedListView.cs:1390
+  [+0x125] StreamedListView.cs:1393
+  [+0x12c] StreamedListView.cs:1393
+  [+0x135] StreamedListView.cs:1393
+  +0x137: CALL 0x016a9420 (VirtualisedList.cs:845)
+  [+0x13c] StreamedListView.cs:1396
+  [+0x143] StreamedListView.cs:1396
+  [+0x14c] StreamedListView.cs:1396
+  +0x14e: CALL 0x016a93f0 (VirtualisedList.cs:832)
+  [+0x153] StreamedListView.cs:1398
+  +0x15f: CALL 0x015a9ee0 (StreamedListView.cs:1911)
+  [+0x164] StreamedListView.cs:1400
+  [+0x16d] StreamedListView.cs:1402
+  +0x17a: CALL 0x015ab4a0 (StreamedListView.cs:1518)
+  [+0x17f] StreamedListView.cs:1405
+  +0x184: CALL 0x00292620 (BacktraceResult.cs:38, BacktraceSelfSSLCertificateHandler.cs:12)
+  [+0x189] StreamedListView.cs:1405
+  [+0x18d] StreamedListView.cs:1407, StreamedListView.cs:315
+  [+0x194] StreamedListView.cs:315
+  [+0x19d] StreamedListView.cs:315
+  [+0x1a9] StreamedListView.cs:315
+  +0x1a9: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x1ba] StreamedListView.cs:1407
+  [+0x1bf] StreamedListView.cs:1407
+  [+0x1c6] StreamedListView.cs:1407
+  +0x1d1: CALL 0x015f76b0 (DiggableVisualElement.cs:35)
+  [+0x1d6] StreamedListView.cs:1410
+  +0x1db: CALL 0x015aab80 (StreamedListView.cs:705)
+  [+0x1e0] StreamedListView.cs:1412
+  [+0x1ea] StreamedListView.cs:1414
+  +0x1ea: RIP [0x02e39638] -> MetaUsage(tag=1, idx=38992)
+  +0x201: CALL 0x001bc7a0 ()
+  [+0x206] StreamedListView.cs:1414
+  +0x206: RIP [0x02e17150] -> MetaUsage(tag=6, idx=209073)
+  +0x220: CALL 0x00aff0d0 (TypedValue.cs:625)
+  [+0x22a] StreamedListView.cs:1414
+  +0x22a: RIP [0x02e2a270] -> MetaUsage(tag=1, idx=52964)
+  [+0x231] StreamedListView.cs:1414
+  [+0x24d] StreamedListView.cs:1414
+  +0x24d: CALL 0x001bc6b0 ()
+  [+0x252] StreamedListView.cs:1414
+  +0x252: RIP [0x02dfa360] -> MethodDef idx=47362 <RefreshInternal>b__0
+  [+0x262] StreamedListView.cs:1414
+  [+0x265] StreamedListView.cs:1414
+  +0x265: CALL 0x011f58d0 (IFormatter.cs:31, IFormatter.cs:31)
+  [+0x26a] StreamedListView.cs:1414
+  +0x26a: RIP [0x02dfc288] -> MetaUsage(tag=6, idx=205391)
+  +0x27e: CALL 0x00ee1c70 (TypedValue.cs:699)
+  [+0x288] StreamedListView.cs:1414
+  +0x288: RIP [0x02dfc1c0] -> MetaUsage(tag=6, idx=205390)
+  [+0x294] StreamedListView.cs:1414
+  [+0x2b0] StreamedListView.cs:1414
+  +0x2b0: CALL 0x00ee0fa0 (TypedValue.cs:699)
+  [+0x2b5] StreamedListView.cs:1415
+  [+0x2ba] StreamedListView.cs:1417, NavigationManager.cs:112
+  +0x2ba: RIP [0x02dcf7b0] -> MetaUsage(tag=1, idx=32760)
+  [+0x2cb] StreamedListView.cs:1417
+  [+0x2d0] StreamedListView.cs:1417
+  +0x2d0: RIP [0x02e26860] -> MetaUsage(tag=1, idx=29476)
+  [+0x2ee] StreamedListView.cs:1417
+  [+0x2f0] StreamedListView.cs:1386
+  [+0x2f5] StreamedListView.cs:1386
+  +0x2f7: CALL 0x016a9420 (VirtualisedList.cs:845)
+  [+0x2fc] StreamedListView.cs:1387
+  [+0x2fe] StreamedListView.cs:1379
+  +0x303: CALL 0x015a8eb0 (StreamedListView.cs:1420)
+  [+0x308] StreamedListView.cs:1420
+  [+0x321] StreamedListView.cs:1386
+  +0x321: CALL 0x001bc700 ()
+
+================ StreamedListView.Rebuild (0x015a8eb0..0x015a8f57, sz=167) ================
+  +0x000: 40 53 48 83 ec 20 48 8b 11 48 8b d9 48 8b 82 68
+  +0x010: 0d 00 00 48 8b 92 70 0d 00 00 ff d0 84 c0 74 7b
+  +0x020: 83 a3 60 07 00 00 e7 48 8b 8b 78 07 00 00 48 85
+  +0x030: c9 74 6e 48 8b 93 68 05 00 00 45 33 c0 e8 9e 2d
+  +0x040: 10 00 48 8b 03 48 8b cb 48 8b 90 c0 0e 00 00 ff
+  +0x050: 90 b8 0e 00 00 48 8b 8b 78 07 00 00 c6 83 b8 05
+  +0x060: 00 00 01 48 85 c9 74 39 33 d2 e8 31 04 10 00 33
+  +0x070: d2 48 8b cb e8 b7 0f 00 00 33 d2 48 8b cb e8 4d
+  +0x080: 1c 00 00 48 8b 8b 40 05 00 00 48 85 c9 74 12 33
+  +0x090: d2 48 83 c4 20 5b e9 35 3b f1 ff 48 83 c4 20 5b
+  +0x0a0: c3 e8 aa 37 c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1420
+  [+0x006] StreamedListView.cs:1435
+  [+0x009] StreamedListView.cs:1420
+  [+0x00c] StreamedListView.cs:1435
+  [+0x01c] StreamedListView.cs:1435
+  [+0x020] StreamedListView.cs:1440, StreamedListView.cs:1215
+  [+0x027] StreamedListView.cs:1441
+  [+0x02e] StreamedListView.cs:1441
+  [+0x033] StreamedListView.cs:1441
+  +0x03d: CALL 0x016abc90 (VirtualisedList.cs:359)
+  [+0x042] StreamedListView.cs:1442
+  [+0x055] StreamedListView.cs:1445
+  [+0x063] StreamedListView.cs:1445
+  [+0x068] StreamedListView.cs:1445
+  +0x06a: CALL 0x016a9350 (VirtualisedList.cs:825)
+  [+0x06f] StreamedListView.cs:1446
+  +0x074: CALL 0x015a9ee0 (StreamedListView.cs:1911)
+  [+0x079] StreamedListView.cs:1447
+  +0x07e: CALL 0x015aab80 (StreamedListView.cs:705)
+  [+0x083] StreamedListView.cs:1448
+  [+0x08a] StreamedListView.cs:1448
+  [+0x08f] StreamedListView.cs:1448
+  [+0x091] StreamedListView.cs:1449
+  [+0x096] StreamedListView.cs:1448
+  +0x096: JMP 0x014bca80 (Binder.cs:114)
+  [+0x09b] StreamedListView.cs:1449
+  [+0x0a1] StreamedListView.cs:1448
+  +0x0a1: CALL 0x001bc700 ()
+
+================ StreamedListView.ResetIndices (0x015a9420..0x015a9618, sz=504) ================
+  +0x000: 48 89 5c 24 08 48 89 6c 24 10 48 89 74 24 18 48
+  +0x010: 89 7c 24 20 41 56 48 83 ec 20 48 8b f1 48 8b 89
+  +0x020: 68 05 00 00 48 85 c9 0f 84 c5 01 00 00 ff 41 1c
+  +0x030: 45 33 f6 44 89 71 18 4c 39 b6 58 07 00 00 0f 84
+  +0x040: 93 01 00 00 4c 8b 86 58 07 00 00 41 8d 4e 01 48
+  +0x050: 8b 15 02 33 87 01 e8 85 8e a5 fe 85 c0 0f 84 74
+  +0x060: 01 00 00 48 8b 8e 68 05 00 00 48 85 c9 0f 84 7f
+  +0x070: 01 00 00 33 d2 e8 f6 77 5e ff 4c 8b 86 58 07 00
+  +0x080: 00 8b d8 4d 85 c0 0f 84 66 01 00 00 48 8b 15 c5
+  +0x090: 32 87 01 41 8d 4e 01 e8 44 8e a5 fe 3b d8 7e 41
+  +0x0a0: 4c 8b 86 58 07 00 00 48 8b 9e 68 05 00 00 4d 85
+  +0x0b0: c0 0f 84 3b 01 00 00 48 8b 15 9a 32 87 01 41 8d
+  +0x0c0: 4e 01 e8 19 8e a5 fe 48 85 db 0f 84 22 01 00 00
+  +0x0d0: 4c 8b 05 a1 d3 83 01 8b d0 48 8b cb e8 df 19 68
+  +0x0e0: ff 48 8b be 58 07 00 00 41 8b de 41 8b ee 48 85
+  +0x0f0: ff 0f 84 fb 00 00 00 66 0f 1f 84 00 00 00 00 00
+  +0x100: 4c 8b 17 41 0f b7 c6 4c 8b 0d 4a 32 87 01 41 0f
+  +0x110: b7 92 2e 01 00 00 66 44 3b f2 73 1b 4d 8b 82 b0
+  +0x120: 00 00 00 0f b7 c8 48 03 c9 4d 39 0c c8 74 6a 66
+  +0x130: ff c0 66 3b c2 72 ec 41 b8 01 00 00 00 49 8b d1
+  +0x140: 48 8b cf e8 d8 6c c1 fe 4c 8b 00 48 8b cf 48 8b
+  +0x150: 50 08 41 ff d0 3b e8 7d 7e 48 8b 8e 68 05 00 00
+  +0x160: 48 85 c9 0f 84 89 00 00 00 4c 8b 41 10 4c 8b 0d
+  +0x170: 7c c3 83 01 ff 41 1c 48 63 51 18 41 3b 50 18 72
+  +0x180: 36 49 8b 41 20 8b d3 4c 8b 80 c0 00 00 00 4d 8b
+  +0x190: 40 70 e8 29 fd 6b ff eb 29 0f b7 c8 48 03 c9 41
+  +0x1a0: 8b 44 c8 08 ff c0 48 98 48 c1 e0 04 48 05 38 01
+  +0x1b0: 00 00 49 03 c2 eb 91 8d 42 01 89 41 18 41 89 5c
+  +0x1c0: 90 20 48 8b be 58 07 00 00 ff c3 8b eb 48 85 ff
+  +0x1d0: 74 20 e9 29 ff ff ff 48 8b 5c 24 30 48 8b 6c 24
+  +0x1e0: 38 48 8b 74 24 40 48 8b 7c 24 48 48 83 c4 20 41
+  +0x1f0: 5e c3 e8 e9 30 c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1583
+  [+0x01d] StreamedListView.cs:1590
+  [+0x024] StreamedListView.cs:1590
+  [+0x02d] StreamedListView.cs:1590, Utilities.cs:105
+  [+0x030] Utilities.cs:105
+  [+0x037] StreamedListView.cs:1591
+  [+0x044] StreamedListView.cs:1591
+  +0x04f: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x05b] StreamedListView.cs:1591
+  [+0x063] StreamedListView.cs:1596
+  [+0x06a] StreamedListView.cs:1596
+  [+0x073] StreamedListView.cs:1596
+  +0x075: CALL 0x00b90c90 (IndexedSet.cs:124, IndexedSet.cs:125)
+  [+0x07a] StreamedListView.cs:1596
+  [+0x081] StreamedListView.cs:1596
+  [+0x083] StreamedListView.cs:1596
+  [+0x08c] StreamedListView.cs:1596
+  +0x08c: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x09c] StreamedListView.cs:1596
+  [+0x0a0] StreamedListView.cs:1598
+  [+0x0ae] StreamedListView.cs:1598
+  [+0x0b7] StreamedListView.cs:1598
+  +0x0b7: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x0c7] StreamedListView.cs:1598
+  [+0x0d0] StreamedListView.cs:1598
+  +0x0d0: RIP [0x02de6898] -> MetaUsage(tag=6, idx=88102)
+  +0x0dc: CALL 0x00c2aee0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x0e1] StreamedListView.cs:1601
+  [+0x0ee] StreamedListView.cs:1601
+  [+0x100] StreamedListView.cs:1601
+  +0x107: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  +0x143: CALL 0x001c0240 ()
+  [+0x155] StreamedListView.cs:1601
+  [+0x159] StreamedListView.cs:1603
+  [+0x160] StreamedListView.cs:1603
+  [+0x169] StreamedListView.cs:1603, Utilities.cs:117
+  +0x16d: RIP [0x02de5910] -> MetaUsage(tag=6, idx=88044)
+  [+0x174] Utilities.cs:117
+  [+0x177] Utilities.cs:117
+  [+0x17b] Utilities.cs:117
+  [+0x181] Utilities.cs:117
+  +0x192: CALL 0x00c692e0 ()
+  [+0x199] StreamedListView.cs:1601
+  [+0x1b7] StreamedListView.cs:1603, Utilities.cs:117
+  [+0x1bd] Utilities.cs:117
+  [+0x1c2] StreamedListView.cs:1601
+  [+0x1cd] StreamedListView.cs:1601
+  +0x1d2: JMP 0x015a9520 (StreamedListView.cs:1601)
+  [+0x1d7] StreamedListView.cs:1605
+  [+0x1f2] StreamedListView.cs:1603
+  +0x1f2: CALL 0x001bc700 ()
+
+================ StreamedListView.SetList (0x015a9880..0x015a99c4, sz=324) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 20 83 89 60 07 00 00
+  +0x010: 02 48 8b fa 8b 91 50 05 00 00 48 8b d9 ff c2 89
+  +0x020: 91 50 05 00 00 85 d2 7f 24 48 8b 11 48 8b 82 18
+  +0x030: 0e 00 00 48 8b 92 20 0e 00 00 ff d0 83 a3 60 07
+  +0x040: 00 00 fe 33 d2 48 8b cb e8 b3 12 00 00 48 85 ff
+  +0x050: 75 52 48 8b 3d 87 cb 88 01 48 83 7f 38 00 75 08
+  +0x060: 48 8b cf e8 d8 70 c1 fe 48 8b 47 38 48 8b 40 10
+  +0x070: f6 80 35 01 00 00 01 75 08 48 8b c8 e8 3f 70 c1
+  +0x080: fe 83 b8 e4 00 00 00 00 75 08 48 8b c8 e8 8e 2e
+  +0x090: c1 fe 48 8b 47 38 48 8b 48 10 48 8b 81 b8 00 00
+  +0x0a0: 00 48 8b 38 48 8d 8b 58 07 00 00 48 89 bb 58 07
+  +0x0b0: 00 00 48 8b d7 e8 06 1e c1 fe 4c 8b 83 78 07 00
+  +0x0c0: 00 80 a3 48 06 00 00 fe 4d 85 c0 74 71 4d 8b 80
+  +0x0d0: 30 05 00 00 4d 85 c0 74 13 48 8b 15 18 2e 87 01
+  +0x0e0: b9 01 00 00 00 e8 96 89 a5 fe eb 02 33 c0 89 83
+  +0x0f0: 34 07 00 00 8b 83 50 05 00 00 ff c8 89 83 50 05
+  +0x100: 00 00 85 c0 7f 2d 83 bb 60 07 00 00 00 74 24 48
+  +0x110: 8b 03 48 8b cb 48 8b 90 20 0e 00 00 ff 90 18 0e
+  +0x120: 00 00 83 a3 60 07 00 00 fe 33 d2 48 8b cb e8 cd
+  +0x130: 11 00 00 48 8b 5c 24 30 48 83 c4 20 5f c3 e8 3d
+  +0x140: 2d c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1605
+  [+0x00a] StreamedListView.cs:1610, StreamedListView.cs:1206, StreamedListView.cs:1211
+  [+0x011] StreamedListView.cs:1605
+  [+0x014] StreamedListView.cs:1610, StreamedListView.cs:1205
+  [+0x01a] StreamedListView.cs:1605
+  [+0x01d] StreamedListView.cs:1610, StreamedListView.cs:1205
+  [+0x025] StreamedListView.cs:1206, StreamedListView.cs:1212, StreamedListView.cs:1226
+  [+0x029] StreamedListView.cs:1229
+  [+0x03c] StreamedListView.cs:1230
+  [+0x043] StreamedListView.cs:1231
+  +0x048: CALL 0x015aab80 (StreamedListView.cs:705)
+  [+0x04d] StreamedListView.cs:1612
+  [+0x052] StreamedListView.cs:1612
+  +0x052: RIP [0x02e36460] -> MetaUsage(tag=6, idx=165980)
+  [+0x059] Utilities.cs:117
+  +0x063: CALL 0x001c09c0 ()
+  [+0x068] Utilities.cs:117
+  +0x07c: CALL 0x001c0940 ()
+  +0x08d: CALL 0x001bc7a0 ()
+  [+0x092] Utilities.cs:117
+  [+0x0a1] StreamedListView.cs:1612
+  [+0x0a4] StreamedListView.cs:1612, StreamedListView.cs:293
+  +0x0b5: CALL 0x001bb740 ()
+  [+0x0ba] StreamedListView.cs:1614, StreamedListView.cs:315
+  [+0x0c1] StreamedListView.cs:1613
+  [+0x0c8] StreamedListView.cs:1614, StreamedListView.cs:315
+  [+0x0cd] StreamedListView.cs:315
+  [+0x0d9] StreamedListView.cs:315
+  +0x0d9: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x0ec] StreamedListView.cs:315
+  [+0x0f4] StreamedListView.cs:1616, StreamedListView.cs:1220
+  [+0x102] StreamedListView.cs:1221, StreamedListView.cs:1226
+  [+0x106] StreamedListView.cs:1226
+  [+0x10f] StreamedListView.cs:1229
+  [+0x122] StreamedListView.cs:1230
+  [+0x129] StreamedListView.cs:1231
+  +0x12e: CALL 0x015aab80 (StreamedListView.cs:705)
+  [+0x133] StreamedListView.cs:1617
+  [+0x13e] StreamedListView.cs:1614, StreamedListView.cs:315
+  +0x13e: CALL 0x001bc700 ()
+
+================ StreamedListView.StateChanged (0x015a9c80..0x015a9ed7, sz=599) ================
+  +0x000: 40 53 57 41 56 48 83 ec 70 8b 81 60 07 00 00 48
+  +0x010: 8b d9 ff 81 50 05 00 00 89 84 24 a0 00 00 00 c7
+  +0x020: 84 24 90 00 00 00 06 00 00 00 48 8b 84 24 90 00
+  +0x030: 00 00 0f ba f0 1f 48 85 84 24 a0 00 00 00 0f 86
+  +0x040: ad 01 00 00 33 d2 e8 55 f7 ff ff 33 d2 48 8b cb
+  +0x050: e8 8b a5 ff ff 80 bb 05 06 00 00 00 0f 85 7a 01
+  +0x060: 00 00 f6 83 60 07 00 00 04 0f 84 6d 01 00 00 48
+  +0x070: 8d 8b c0 05 00 00 33 d2 e8 83 8e 27 ff 84 c0 0f
+  +0x080: 84 57 01 00 00 48 8b 0d a4 4e 83 01 e8 9f 29 c1
+  +0x090: fe 48 8b 15 18 5e 87 01 48 8b c8 4c 8b f0 e8 7d
+  +0x0a0: 06 68 ff 48 8b 93 38 07 00 00 48 85 d2 0f 84 9e
+  +0x0b0: 01 00 00 45 33 c0 48 8d 4c 24 50 e8 c0 8f 67 ff
+  +0x0c0: 0f 10 44 24 50 33 d2 48 8d 4c 24 30 0f 10 4c 24
+  +0x0d0: 60 0f 11 44 24 30 0f 11 4c 24 40 e8 40 93 bc ff
+  +0x0e0: 84 c0 0f 84 b4 00 00 00 48 89 ac 24 98 00 00 00
+  +0x0f0: 48 89 b4 24 a8 00 00 00 0f 1f 84 00 00 00 00 00
+  +0x100: 48 8b 74 24 40 0f b6 6c 24 48 48 85 f6 74 69 48
+  +0x110: 8b 0d 7a 68 84 01 e8 15 29 c1 fe 33 d2 48 8b c8
+  +0x120: 48 8b f8 e8 a8 89 0a 00 4c 8b 0d 91 69 87 01 4c
+  +0x130: 8b c6 ba 76 47 62 62 48 8b cf e8 01 c5 4e ff 4c
+  +0x140: 8b 0d 5a 65 87 01 44 0f b6 c5 ba 4d 6e 37 37 48
+  +0x150: 8b cf e8 59 c2 4e ff 48 8b 15 3a e8 85 01 48 8b
+  +0x160: cf e8 da 82 54 ff 4c 8b 05 fb 5e 87 01 48 8b d0
+  +0x170: 49 8b ce e8 e8 b5 ce fe 33 d2 48 8d 4c 24 30 e8
+  +0x180: 9c 92 bc ff 84 c0 0f 85 74 ff ff ff 48 8b b4 24
+  +0x190: a8 00 00 00 48 8b ac 24 98 00 00 00 48 8b 15 7d
+  +0x1a0: b8 85 01 49 8b ce 48 8b bb 50 07 00 00 e8 8e 82
+  +0x1b0: 54 ff 48 85 ff 0f 84 96 00 00 00 48 8d 93 c0 05
+  +0x1c0: 00 00 48 c7 44 24 20 00 00 00 00 41 b9 01 00 00
+  +0x1d0: 00 4c 8b c0 48 8b cf e8 e4 b8 f1 ff 83 a3 60 07
+  +0x1e0: 00 00 f9 80 a3 48 06 00 00 fb c6 83 05 06 00 00
+  +0x1f0: 00 f6 83 60 07 00 00 08 48 8b cb 75 3e f6 83 60
+  +0x200: 07 00 00 10 75 16 33 d2 e8 53 00 00 00 ff 8b 50
+  +0x210: 05 00 00 48 83 c4 70 41 5e 5f 5b c3 48 8b 03 48
+  +0x220: 8b 90 b0 0e 00 00 ff 90 a8 0e 00 00 ff 8b 50 05
+  +0x230: 00 00 48 83 c4 70 41 5e 5f 5b c3 33 d2 e8 ee ef
+  +0x240: ff ff ff 8b 50 05 00 00 48 83 c4 70 41 5e 5f 5b
+  +0x250: c3 e8 2a 28 c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1232
+  [+0x009] StreamedListView.cs:1238
+  [+0x012] StreamedListView.cs:1237
+  [+0x018] StreamedListView.cs:1238
+  [+0x02a] Utilities.cs:116
+  [+0x036] Utilities.cs:117
+  [+0x03e] StreamedListView.cs:1238
+  [+0x044] StreamedListView.cs:1240
+  +0x046: CALL 0x015a9420 (StreamedListView.cs:1583)
+  [+0x04b] StreamedListView.cs:1241
+  +0x050: CALL 0x015a4260 (StreamedListView.cs:882)
+  [+0x055] StreamedListView.cs:1242
+  [+0x062] StreamedListView.cs:1242
+  [+0x06f] StreamedListView.cs:1244, StreamedListView.cs:825
+  [+0x076] StreamedListView.cs:825
+  +0x078: CALL 0x00822b80 (FMTacticsPanel.cs:98, FMTacticsPanel.cs:52)
+  [+0x07d] StreamedListView.cs:825
+  [+0x085] StreamedListView.cs:830
+  +0x085: RIP [0x02ddebb0] -> MetaUsage(tag=1, idx=14414)
+  +0x08c: CALL 0x001bc6b0 ()
+  [+0x091] StreamedListView.cs:830
+  +0x091: RIP [0x02e1fb30] -> MetaUsage(tag=6, idx=203183)
+  [+0x09b] StreamedListView.cs:830
+  [+0x09e] StreamedListView.cs:830
+  +0x09e: CALL 0x00c2a3a0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x0a3] StreamedListView.cs:831
+  [+0x0aa] StreamedListView.cs:831
+  [+0x0b3] StreamedListView.cs:831
+  +0x0bb: CALL 0x00c22d00 (ListWithEvents.cs:8)
+  [+0x0c5] StreamedListView.cs:831
+  [+0x0cc] StreamedListView.cs:831
+  [+0x0db] StreamedListView.cs:831
+  +0x0db: CALL 0x011730a0 ()
+  [+0x0e0] StreamedListView.cs:831
+  [+0x100] StreamedListView.cs:831
+  [+0x105] StreamedListView.cs:831
+  [+0x10a] StreamedListView.cs:833
+  [+0x10f] StreamedListView.cs:838
+  +0x10f: RIP [0x02df0610] -> MetaUsage(tag=1, idx=34695)
+  +0x116: CALL 0x001bc6b0 ()
+  [+0x11b] StreamedListView.cs:838
+  [+0x120] StreamedListView.cs:838
+  [+0x123] StreamedListView.cs:838
+  +0x123: CALL 0x01652750 (ProjectConfigurationSystem.cs:83, RecordStreamSupport.cs:155)
+  [+0x128] StreamedListView.cs:839
+  +0x128: RIP [0x02e20740] -> MetaUsage(tag=6, idx=208365)
+  +0x13a: CALL 0x00a962c0 (RecordStreamSupport.cs:173)
+  [+0x13f] StreamedListView.cs:840
+  +0x13f: RIP [0x02e20320] -> MetaUsage(tag=6, idx=187036)
+  +0x152: CALL 0x00a96030 (ReadOnlyArray.cs:256)
+  [+0x157] StreamedListView.cs:841
+  +0x157: RIP [0x02e08618] -> MetaUsage(tag=6, idx=208861)
+  +0x161: CALL 0x00af20c0 (TypedValue.cs:213)
+  [+0x166] StreamedListView.cs:841
+  +0x166: RIP [0x02e1fce8] -> MetaUsage(tag=6, idx=203185)
+  +0x173: CALL 0x002953e0 ()
+  [+0x178] StreamedListView.cs:831
+  +0x17f: CALL 0x011730a0 ()
+  [+0x184] StreamedListView.cs:831
+  [+0x19c] StreamedListView.cs:844
+  +0x19c: RIP [0x02e056a0] -> MetaUsage(tag=6, idx=208814)
+  [+0x1a6] StreamedListView.cs:844
+  [+0x1ad] StreamedListView.cs:844
+  +0x1ad: CALL 0x00af20c0 (TypedValue.cs:213)
+  [+0x1b2] StreamedListView.cs:844
+  [+0x1bb] StreamedListView.cs:844
+  +0x1d7: CALL 0x014c5740 (Bindings.cs:1919, Bindings.cs:1927)
+  [+0x1dc] StreamedListView.cs:1248
+  [+0x1e3] StreamedListView.cs:1249
+  [+0x1f1] StreamedListView.cs:1252
+  [+0x1fd] StreamedListView.cs:1256
+  [+0x206] StreamedListView.cs:1262
+  +0x208: CALL 0x015a9ee0 (StreamedListView.cs:1911)
+  [+0x20d] StreamedListView.cs:1266
+  [+0x213] StreamedListView.cs:1267
+  [+0x21c] StreamedListView.cs:1258
+  [+0x22c] StreamedListView.cs:1266
+  [+0x232] StreamedListView.cs:1267
+  [+0x23b] StreamedListView.cs:1254
+  +0x23d: CALL 0x015a8eb0 (StreamedListView.cs:1420)
+  [+0x242] StreamedListView.cs:1266
+  [+0x248] StreamedListView.cs:1267
+  [+0x251] StreamedListView.cs:1244, StreamedListView.cs:844
+  +0x251: CALL 0x001bc700 ()
+
+================ StreamedListView.ResolveStateChanges (0x015a9620..0x015a9667, sz=71) ================
+  +0x000: 40 53 48 83 ec 20 83 b9 50 05 00 00 00 48 8b d9
+  +0x010: 7f 2f 83 b9 60 07 00 00 00 74 26 48 8b 01 48 8b
+  +0x020: 90 20 0e 00 00 ff 90 18 0e 00 00 83 a3 60 07 00
+  +0x030: 00 fe 33 d2 48 8b cb 48 83 c4 20 5b e9 1f 15 00
+  +0x040: 00 48 83 c4 20 5b c3
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1222
+  [+0x006] StreamedListView.cs:1226
+  [+0x012] StreamedListView.cs:1226
+  [+0x01b] StreamedListView.cs:1229
+  [+0x02b] StreamedListView.cs:1230
+  [+0x032] StreamedListView.cs:1231
+  [+0x037] StreamedListView.cs:1232
+  [+0x03c] StreamedListView.cs:1231
+  +0x03c: JMP 0x015aab80 (StreamedListView.cs:705)
+  [+0x041] StreamedListView.cs:1232
+
+================ StreamedListView.EndStateChange (0x015a5350..0x015a53a0, sz=80) ================
+  +0x000: 40 53 48 83 ec 20 8b 81 50 05 00 00 48 8b d9 ff
+  +0x010: c8 89 81 50 05 00 00 85 c0 7f 2f 83 b9 60 07 00
+  +0x020: 00 00 74 26 48 8b 01 48 8b 90 20 0e 00 00 ff 90
+  +0x030: 18 0e 00 00 83 a3 60 07 00 00 fe 33 d2 48 8b cb
+  +0x040: 48 83 c4 20 5b e9 e6 57 00 00 48 83 c4 20 5b c3
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1215
+  [+0x006] StreamedListView.cs:1220
+  [+0x00c] StreamedListView.cs:1215
+  [+0x00f] StreamedListView.cs:1220
+  [+0x017] StreamedListView.cs:1221, StreamedListView.cs:1226
+  [+0x01b] StreamedListView.cs:1226
+  [+0x024] StreamedListView.cs:1229
+  [+0x034] StreamedListView.cs:1230
+  [+0x03b] StreamedListView.cs:1231
+  [+0x040] StreamedListView.cs:1222
+  [+0x045] StreamedListView.cs:1221, StreamedListView.cs:1231
+  +0x045: JMP 0x015aab80 (StreamedListView.cs:705)
+  [+0x04a] StreamedListView.cs:1222

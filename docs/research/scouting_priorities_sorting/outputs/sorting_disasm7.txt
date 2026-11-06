@@ -1,0 +1,2236 @@
+=== 1. Inspect ScoutPlayerPrioritiesReference (Type 860) and PersonSearchReference (Type 724) ===
+
+--- Type 860: ScoutPlayerPrioritiesReference (fields=0, methods=16) ---
+  Method idx=10260 (.ctor): RVA=0x0067d610
+
+================ ScoutPlayerPrioritiesReference..ctor (0x0067d610..0x0067d647, sz=55) ================
+  +0x000: 40 53 48 83 ec 20 48 8b d9 48 8b 0d 10 a5 7b 02
+  +0x010: 83 b9 e4 00 00 00 00 75 05 e8 72 f1 b3 ff 45 33
+  +0x020: c9 ba 20 30 31 31 48 8b cb 45 8d 41 5b 48 83 c4
+  +0x030: 20 5b e9 29 53 01 01
+  --- USYM & Refs ---
+  [+0x000] ScoutingInfoReference.cs:43
+  [+0x009] ScoutPlayerPrioritiesReference.cs:27
+  +0x009: RIP [0x02e37b30] -> MetaUsage(tag=1, idx=30501)
+  +0x019: CALL 0x001bc7a0 ()
+  [+0x01e] ScoutPlayerPrioritiesReference.cs:29
+  [+0x02d] ScoutPlayerPrioritiesReference.cs:30
+  [+0x032] ScoutPlayerPrioritiesReference.cs:29
+  +0x032: JMP 0x01692970 (InteropReference.cs:164)
+  Method idx=10261 (.ctor): RVA=0x004d2220
+
+================ ScoutPlayerPrioritiesReference..ctor (0x004d2220..0x004d225d, sz=61) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 20 48 8b f9 48 8b da
+  +0x010: 48 8b 0d f9 58 96 02 83 b9 e4 00 00 00 00 75 05
+  +0x020: e8 5b a5 ce ff 45 33 c0 48 8b d3 48 8b cf 48 8b
+  +0x030: 5c 24 30 48 83 c4 20 5f e9 b3 09 1c 01
+  --- USYM & Refs ---
+  [+0x000] CompetitionStageReference.cs:48
+  [+0x010] CompetitionStageReference.cs:50
+  +0x010: RIP [0x02e37b30] -> MetaUsage(tag=1, idx=30501)
+  +0x020: CALL 0x001bc7a0 ()
+  [+0x025] CompetitionStageReference.cs:50
+  [+0x02e] CompetitionStageReference.cs:53
+  [+0x038] CompetitionStageReference.cs:50
+  +0x038: JMP 0x01692c10 (InteropReference.cs:64)
+  Method idx=10262 (get_Identifier): RVA=0x0067d650
+
+================ ScoutPlayerPrioritiesReference.get_Identifier (0x0067d650..0x0067d7a0, sz=336) ================
+  +0x000: b8 77 79 34 41 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x010: 81 f9 59 49 6d 31 75 03 b0 01 c3 81 f9 70 39 79
+  +0x020: 62 74 f5 81 f9 63 61 39 68 0f 94 c0 c3 cc cc cc
+  +0x030: 81 fa 59 49 6d 31 75 03 b0 01 c3 81 fa 70 39 79
+  +0x040: 62 74 f5 81 fa 63 61 39 68 0f 94 c0 c3 cc cc cc
+  +0x050: 66 90 81 f9 44 62 77 69 0f 94 c0 c3 cc cc cc cc
+  +0x060: 66 90 81 fa 44 62 77 69 0f 94 c0 c3 cc cc cc cc
+  +0x070: 48 89 5c 24 10 57 48 83 ec 20 8b f9 c7 44 24 30
+  +0x080: 00 00 00 00 48 8b 0d 45 b8 75 02 48 8b da 83 b9
+  +0x090: e4 00 00 00 00 75 05 e8 b4 f0 b3 ff 33 d2 48 8d
+  +0x0a0: 4c 24 30 e8 d8 95 e5 00 81 ff 70 39 79 62 75 51
+  +0x0b0: 48 85 db 74 57 48 8b 53 10 4c 8b 05 e0 fe 7c 02
+  +0x0c0: ff 43 1c 48 63 4b 18 3b 4a 18 72 27 49 8b 40 20
+  +0x0d0: ba 45 35 65 78 48 8b cb 4c 8b 80 c0 00 00 00 4d
+  +0x0e0: 8b 40 70 e8 b8 a4 5d 00 48 8b 5c 24 38 48 83 c4
+  +0x0f0: 20 5f c3 8d 41 01 89 43 18 c7 44 8a 20 45 35 65
+  +0x100: 78 48 8b 5c 24 38 48 83 c4 20 5f c3 e8 9f ef b3
+  +0x110: ff cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x120: 48 89 5c 24 08 57 48 83 ec 20 48 8b 0d 9f b7 75
+  +0x130: 02 49 8b d8 c7 44 24 38 00 00 00 00 8b fa 83 b9
+  +0x140: e4 00 00 00 00 75 05 e8 04 f0 b3 ff 33 d2 48 8d
+  --- USYM & Refs ---
+  [+0x000] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:35
+  [+0x005] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:35
+  [+0x006] :4294967295
+  [+0x010] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x018] ScoutTeamPrioritiesReference.cs:34
+  [+0x01b] ScoutTeamPrioritiesReference.cs:34
+  [+0x023] ScoutTeamPrioritiesReference.cs:34
+  [+0x02c] ScoutTeamPrioritiesReference.cs:34
+  [+0x02d] :4294967295
+  [+0x030] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x038] ScoutTeamPrioritiesReference.cs:34
+  [+0x03b] ScoutTeamPrioritiesReference.cs:34
+  [+0x04c] ScoutTeamPrioritiesReference.cs:34
+  [+0x04d] :4294967295
+  [+0x050] ScoutTeamPrioritiesReference.cs:34
+  [+0x052] ScoutTeamPrioritiesReference.cs:34
+  [+0x05b] ScoutTeamPrioritiesReference.cs:34
+  [+0x05c] :4294967295
+  [+0x060] ScoutTeamPrioritiesReference.cs:34
+  [+0x062] ScoutTeamPrioritiesReference.cs:34
+  [+0x06b] ScoutTeamPrioritiesReference.cs:34
+  [+0x06c] :4294967295
+  [+0x070] ScoutTeamPrioritiesReference.cs:34
+  [+0x07c] ScoutTeamPrioritiesReference.cs:34
+  [+0x084] ScoutTeamPrioritiesReference.cs:34
+  +0x084: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  +0x097: CALL 0x001bc7a0 ()
+  [+0x09c] ScoutTeamPrioritiesReference.cs:34
+  +0x0a3: CALL 0x014d6cd0 ()
+  [+0x0a8] ScoutTeamPrioritiesReference.cs:34
+  [+0x0b0] ScoutTeamPrioritiesReference.cs:34
+  [+0x0b5] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x0b9: RIP [0x02e4d5f0] -> MetaUsage(tag=6, idx=86700)
+  [+0x0c0] SearchResultReference.cs:36
+  [+0x0c3] SearchResultReference.cs:36
+  [+0x0c7] SearchResultReference.cs:36
+  [+0x0cc] SearchResultReference.cs:36
+  +0x0e3: CALL 0x00c57bf0 ()
+  [+0x0e8] ScoutTeamPrioritiesReference.cs:34
+  [+0x0f3] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  [+0x0f9] SearchResultReference.cs:36
+  [+0x101] ScoutTeamPrioritiesReference.cs:34
+  [+0x10c] ScoutTeamPrioritiesReference.cs:34
+  +0x10c: CALL 0x001bc700 ()
+  [+0x112] :4294967295
+  [+0x120] ScoutTeamPrioritiesReference.cs:34
+  [+0x12a] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x12a: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  [+0x131] ScoutTeamPrioritiesReference.cs:34
+  [+0x134] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x13c] ScoutTeamPrioritiesReference.cs:34
+  [+0x13e] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x147: CALL 0x001bc7a0 ()
+  [+0x14c] ScoutTeamPrioritiesReference.cs:34
+  Method idx=10263 (get_ID): RVA=0x0067d650
+
+================ ScoutPlayerPrioritiesReference.get_ID (0x0067d650..0x0067d7a0, sz=336) ================
+  +0x000: b8 77 79 34 41 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x010: 81 f9 59 49 6d 31 75 03 b0 01 c3 81 f9 70 39 79
+  +0x020: 62 74 f5 81 f9 63 61 39 68 0f 94 c0 c3 cc cc cc
+  +0x030: 81 fa 59 49 6d 31 75 03 b0 01 c3 81 fa 70 39 79
+  +0x040: 62 74 f5 81 fa 63 61 39 68 0f 94 c0 c3 cc cc cc
+  +0x050: 66 90 81 f9 44 62 77 69 0f 94 c0 c3 cc cc cc cc
+  +0x060: 66 90 81 fa 44 62 77 69 0f 94 c0 c3 cc cc cc cc
+  +0x070: 48 89 5c 24 10 57 48 83 ec 20 8b f9 c7 44 24 30
+  +0x080: 00 00 00 00 48 8b 0d 45 b8 75 02 48 8b da 83 b9
+  +0x090: e4 00 00 00 00 75 05 e8 b4 f0 b3 ff 33 d2 48 8d
+  +0x0a0: 4c 24 30 e8 d8 95 e5 00 81 ff 70 39 79 62 75 51
+  +0x0b0: 48 85 db 74 57 48 8b 53 10 4c 8b 05 e0 fe 7c 02
+  +0x0c0: ff 43 1c 48 63 4b 18 3b 4a 18 72 27 49 8b 40 20
+  +0x0d0: ba 45 35 65 78 48 8b cb 4c 8b 80 c0 00 00 00 4d
+  +0x0e0: 8b 40 70 e8 b8 a4 5d 00 48 8b 5c 24 38 48 83 c4
+  +0x0f0: 20 5f c3 8d 41 01 89 43 18 c7 44 8a 20 45 35 65
+  +0x100: 78 48 8b 5c 24 38 48 83 c4 20 5f c3 e8 9f ef b3
+  +0x110: ff cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x120: 48 89 5c 24 08 57 48 83 ec 20 48 8b 0d 9f b7 75
+  +0x130: 02 49 8b d8 c7 44 24 38 00 00 00 00 8b fa 83 b9
+  +0x140: e4 00 00 00 00 75 05 e8 04 f0 b3 ff 33 d2 48 8d
+  --- USYM & Refs ---
+  [+0x000] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:35
+  [+0x005] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:35
+  [+0x006] :4294967295
+  [+0x010] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x018] ScoutTeamPrioritiesReference.cs:34
+  [+0x01b] ScoutTeamPrioritiesReference.cs:34
+  [+0x023] ScoutTeamPrioritiesReference.cs:34
+  [+0x02c] ScoutTeamPrioritiesReference.cs:34
+  [+0x02d] :4294967295
+  [+0x030] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x038] ScoutTeamPrioritiesReference.cs:34
+  [+0x03b] ScoutTeamPrioritiesReference.cs:34
+  [+0x04c] ScoutTeamPrioritiesReference.cs:34
+  [+0x04d] :4294967295
+  [+0x050] ScoutTeamPrioritiesReference.cs:34
+  [+0x052] ScoutTeamPrioritiesReference.cs:34
+  [+0x05b] ScoutTeamPrioritiesReference.cs:34
+  [+0x05c] :4294967295
+  [+0x060] ScoutTeamPrioritiesReference.cs:34
+  [+0x062] ScoutTeamPrioritiesReference.cs:34
+  [+0x06b] ScoutTeamPrioritiesReference.cs:34
+  [+0x06c] :4294967295
+  [+0x070] ScoutTeamPrioritiesReference.cs:34
+  [+0x07c] ScoutTeamPrioritiesReference.cs:34
+  [+0x084] ScoutTeamPrioritiesReference.cs:34
+  +0x084: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  +0x097: CALL 0x001bc7a0 ()
+  [+0x09c] ScoutTeamPrioritiesReference.cs:34
+  +0x0a3: CALL 0x014d6cd0 ()
+  [+0x0a8] ScoutTeamPrioritiesReference.cs:34
+  [+0x0b0] ScoutTeamPrioritiesReference.cs:34
+  [+0x0b5] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x0b9: RIP [0x02e4d5f0] -> MetaUsage(tag=6, idx=86700)
+  [+0x0c0] SearchResultReference.cs:36
+  [+0x0c3] SearchResultReference.cs:36
+  [+0x0c7] SearchResultReference.cs:36
+  [+0x0cc] SearchResultReference.cs:36
+  +0x0e3: CALL 0x00c57bf0 ()
+  [+0x0e8] ScoutTeamPrioritiesReference.cs:34
+  [+0x0f3] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  [+0x0f9] SearchResultReference.cs:36
+  [+0x101] ScoutTeamPrioritiesReference.cs:34
+  [+0x10c] ScoutTeamPrioritiesReference.cs:34
+  +0x10c: CALL 0x001bc700 ()
+  [+0x112] :4294967295
+  [+0x120] ScoutTeamPrioritiesReference.cs:34
+  [+0x12a] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x12a: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  [+0x131] ScoutTeamPrioritiesReference.cs:34
+  [+0x134] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x13c] ScoutTeamPrioritiesReference.cs:34
+  [+0x13e] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x147: CALL 0x001bc7a0 ()
+  [+0x14c] ScoutTeamPrioritiesReference.cs:34
+  Method idx=10264 (AcceptsProperty): RVA=0x0067d2b0
+
+================ ScoutPlayerPrioritiesReference.AcceptsProperty (0x0067d2b0..0x0067d400, sz=336) ================
+  +0x000: 81 fa 47 20 69 72 76 13 81 fa 32 32 6a 73 74 1b
+  +0x010: 81 fa 43 50 73 73 75 16 b0 01 c3 81 fa 49 36 39
+  +0x020: 67 74 08 81 fa 47 20 69 72 75 03 b0 01 c3 32 c0
+  +0x030: c3 cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x040: 66 90 81 f9 77 79 34 41 0f 94 c0 c3 cc cc cc cc
+  +0x050: 66 90 81 fa 77 79 34 41 0f 94 c0 c3 cc cc cc cc
+  +0x060: 40 53 48 83 ec 20 48 8b 0d db 75 78 02 e8 8e f3
+  +0x070: b3 ff 48 8b 0d 07 a8 7b 02 48 8b d8 83 b9 e4 00
+  +0x080: 00 00 00 75 05 e8 66 f4 b3 ff 45 33 c9 ba 20 30
+  +0x090: 31 31 48 8b cb 45 8d 41 5b e8 22 56 01 01 48 8b
+  +0x0a0: c3 48 83 c4 20 5b c3 cc cc cc cc cc cc cc cc cc
+  +0x0b0: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 72 01
+  +0x0c0: 00 00 48 89 7c 24 30 33 d2 8b 79 18 83 c7 04 e8
+  +0x0d0: 0c 39 51 00 3b f8 7e 11 4c 8b 05 b9 f4 77 02 8b
+  +0x0e0: d7 48 8b cb e8 47 db 5a 00 48 8b 0d f0 db 76 02
+  +0x0f0: 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75 05 e8 ed
+  +0x100: f3 b3 ff 33 d2 b9 47 20 69 72 e8 d1 11 c3 ff 4c
+  +0x110: 8b 43 10 4c 8b 0d fe ee 77 02 ff 43 1c 48 63 53
+  +0x120: 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81
+  +0x130: c0 00 00 00 48 8b cb 4d 8b 40 70 e8 70 a7 5d 00
+  +0x140: eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9
+  --- USYM & Refs ---
+  [+0x000] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:35
+  [+0x008] ScoutPlayerPrioritiesReference.cs:35
+  [+0x010] ScoutPlayerPrioritiesReference.cs:35
+  [+0x01a] ScoutPlayerPrioritiesReference.cs:35
+  [+0x01b] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:35
+  [+0x023] ScoutPlayerPrioritiesReference.cs:35
+  [+0x02b] ScoutPlayerPrioritiesReference.cs:35
+  [+0x02e] ScoutPlayerPrioritiesReference.cs:35
+  [+0x030] ScoutPlayerPrioritiesReference.cs:35
+  [+0x031] :4294967295
+  [+0x040] ScoutPlayerPrioritiesReference.cs:35
+  [+0x042] ScoutPlayerPrioritiesReference.cs:35
+  [+0x04b] ScoutPlayerPrioritiesReference.cs:35
+  [+0x04c] :4294967295
+  [+0x050] ScoutPlayerPrioritiesReference.cs:35
+  [+0x052] ScoutPlayerPrioritiesReference.cs:35
+  [+0x05b] ScoutPlayerPrioritiesReference.cs:35
+  [+0x05c] :4294967295
+  [+0x060] ScoutPlayerPrioritiesReference.cs:35
+  [+0x066] ScoutPlayerPrioritiesReference.cs:35
+  +0x066: RIP [0x02e048f8] -> MetaUsage(tag=1, idx=35886)
+  +0x06d: CALL 0x001bc6b0 ()
+  [+0x072] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:27
+  +0x072: RIP [0x02e37b30] -> MetaUsage(tag=1, idx=30501)
+  [+0x079] ScoutPlayerPrioritiesReference.cs:35
+  [+0x07c] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:27
+  +0x085: CALL 0x001bc7a0 ()
+  [+0x08a] ScoutPlayerPrioritiesReference.cs:29
+  +0x099: CALL 0x01692970 (InteropReference.cs:164)
+  [+0x09e] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0a1] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0a7] :4294967295
+  [+0x0b0] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0b9] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0c7] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0c9] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0cc] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0cf] ScoutPlayerPrioritiesReference.cs:35
+  +0x0cf: CALL 0x00b90c90 (IndexedSet.cs:124, IndexedSet.cs:125)
+  [+0x0d4] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0d8] ScoutPlayerPrioritiesReference.cs:35
+  +0x0d8: RIP [0x02dfc848] -> MetaUsage(tag=6, idx=90535)
+  +0x0e4: CALL 0x00c2aee0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x0e9] ScoutPlayerPrioritiesReference.cs:35
+  +0x0e9: RIP [0x02deaf90] -> MetaUsage(tag=1, idx=34369)
+  +0x0fe: CALL 0x001bc7a0 ()
+  [+0x103] ScoutPlayerPrioritiesReference.cs:35
+  +0x10a: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x10f] ScoutPlayerPrioritiesReference.cs:35, SearchResultReference.cs:36
+  +0x113: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x11a] SearchResultReference.cs:36
+  [+0x11d] SearchResultReference.cs:36
+  [+0x121] SearchResultReference.cs:36
+  [+0x127] SearchResultReference.cs:36
+  +0x13b: CALL 0x00c57b60 ()
+  [+0x142] SearchResultReference.cs:36
+  [+0x148] SearchResultReference.cs:36
+  [+0x14d] ScoutPlayerPrioritiesReference.cs:35
+  Method idx=10265 (AcceptsPropertyInternal): RVA=0x0067d270
+
+================ ScoutPlayerPrioritiesReference.AcceptsPropertyInternal (0x0067d270..0x0067d3c0, sz=336) ================
+  +0x000: 81 f9 47 20 69 72 76 13 81 f9 32 32 6a 73 74 1b
+  +0x010: 81 f9 43 50 73 73 75 16 b0 01 c3 81 f9 49 36 39
+  +0x020: 67 74 08 81 f9 47 20 69 72 75 03 b0 01 c3 32 c0
+  +0x030: c3 cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x040: 81 fa 47 20 69 72 76 13 81 fa 32 32 6a 73 74 1b
+  +0x050: 81 fa 43 50 73 73 75 16 b0 01 c3 81 fa 49 36 39
+  +0x060: 67 74 08 81 fa 47 20 69 72 75 03 b0 01 c3 32 c0
+  +0x070: c3 cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x080: 66 90 81 f9 77 79 34 41 0f 94 c0 c3 cc cc cc cc
+  +0x090: 66 90 81 fa 77 79 34 41 0f 94 c0 c3 cc cc cc cc
+  +0x0a0: 40 53 48 83 ec 20 48 8b 0d db 75 78 02 e8 8e f3
+  +0x0b0: b3 ff 48 8b 0d 07 a8 7b 02 48 8b d8 83 b9 e4 00
+  +0x0c0: 00 00 00 75 05 e8 66 f4 b3 ff 45 33 c9 ba 20 30
+  +0x0d0: 31 31 48 8b cb 45 8d 41 5b e8 22 56 01 01 48 8b
+  +0x0e0: c3 48 83 c4 20 5b c3 cc cc cc cc cc cc cc cc cc
+  +0x0f0: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 72 01
+  +0x100: 00 00 48 89 7c 24 30 33 d2 8b 79 18 83 c7 04 e8
+  +0x110: 0c 39 51 00 3b f8 7e 11 4c 8b 05 b9 f4 77 02 8b
+  +0x120: d7 48 8b cb e8 47 db 5a 00 48 8b 0d f0 db 76 02
+  +0x130: 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75 05 e8 ed
+  +0x140: f3 b3 ff 33 d2 b9 47 20 69 72 e8 d1 11 c3 ff 4c
+  --- USYM & Refs ---
+  [+0x000] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:35
+  [+0x008] ScoutPlayerPrioritiesReference.cs:35
+  [+0x010] ScoutPlayerPrioritiesReference.cs:35
+  [+0x018] ScoutPlayerPrioritiesReference.cs:35
+  [+0x01a] ScoutPlayerPrioritiesReference.cs:35
+  [+0x01b] ScoutPlayerPrioritiesReference.cs:35
+  [+0x023] ScoutPlayerPrioritiesReference.cs:35
+  [+0x02b] ScoutPlayerPrioritiesReference.cs:35
+  [+0x02e] ScoutPlayerPrioritiesReference.cs:35
+  [+0x030] ScoutPlayerPrioritiesReference.cs:35
+  [+0x031] :4294967295
+  [+0x040] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:35
+  [+0x048] ScoutPlayerPrioritiesReference.cs:35
+  [+0x050] ScoutPlayerPrioritiesReference.cs:35
+  [+0x05a] ScoutPlayerPrioritiesReference.cs:35
+  [+0x05b] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:35
+  [+0x063] ScoutPlayerPrioritiesReference.cs:35
+  [+0x06b] ScoutPlayerPrioritiesReference.cs:35
+  [+0x06e] ScoutPlayerPrioritiesReference.cs:35
+  [+0x070] ScoutPlayerPrioritiesReference.cs:35
+  [+0x071] :4294967295
+  [+0x080] ScoutPlayerPrioritiesReference.cs:35
+  [+0x082] ScoutPlayerPrioritiesReference.cs:35
+  [+0x08b] ScoutPlayerPrioritiesReference.cs:35
+  [+0x08c] :4294967295
+  [+0x090] ScoutPlayerPrioritiesReference.cs:35
+  [+0x092] ScoutPlayerPrioritiesReference.cs:35
+  [+0x09b] ScoutPlayerPrioritiesReference.cs:35
+  [+0x09c] :4294967295
+  [+0x0a0] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0a6] ScoutPlayerPrioritiesReference.cs:35
+  +0x0a6: RIP [0x02e048f8] -> MetaUsage(tag=1, idx=35886)
+  +0x0ad: CALL 0x001bc6b0 ()
+  [+0x0b2] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:27
+  +0x0b2: RIP [0x02e37b30] -> MetaUsage(tag=1, idx=30501)
+  [+0x0b9] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0bc] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:27
+  +0x0c5: CALL 0x001bc7a0 ()
+  [+0x0ca] ScoutPlayerPrioritiesReference.cs:29
+  +0x0d9: CALL 0x01692970 (InteropReference.cs:164)
+  [+0x0de] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0e1] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0e7] :4294967295
+  [+0x0f0] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0f9] ScoutPlayerPrioritiesReference.cs:35
+  [+0x107] ScoutPlayerPrioritiesReference.cs:35
+  [+0x109] ScoutPlayerPrioritiesReference.cs:35
+  [+0x10c] ScoutPlayerPrioritiesReference.cs:35
+  [+0x10f] ScoutPlayerPrioritiesReference.cs:35
+  +0x10f: CALL 0x00b90c90 (IndexedSet.cs:124, IndexedSet.cs:125)
+  [+0x114] ScoutPlayerPrioritiesReference.cs:35
+  [+0x118] ScoutPlayerPrioritiesReference.cs:35
+  +0x118: RIP [0x02dfc848] -> MetaUsage(tag=6, idx=90535)
+  +0x124: CALL 0x00c2aee0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x129] ScoutPlayerPrioritiesReference.cs:35
+  +0x129: RIP [0x02deaf90] -> MetaUsage(tag=1, idx=34369)
+  +0x13e: CALL 0x001bc7a0 ()
+  [+0x143] ScoutPlayerPrioritiesReference.cs:35
+  +0x14a: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x14f] ScoutPlayerPrioritiesReference.cs:35, SearchResultReference.cs:36
+  Method idx=10266 (GetPropertyTypeInternal): RVA=0x0067d500
+
+================ ScoutPlayerPrioritiesReference.GetPropertyTypeInternal (0x0067d500..0x0067d60f, sz=271) ================
+  +0x000: 40 53 48 83 ec 30 0f 57 c0 48 8b d9 0f 11 01 81
+  +0x010: fa 47 20 69 72 76 35 81 fa 32 32 6a 73 74 08 81
+  +0x020: fa 43 50 73 73 75 7f 45 33 c0 48 8d 4c 24 20 33
+  +0x030: d2 0f 11 44 24 20 e8 c5 95 e5 00 0f 10 44 24 20
+  +0x040: 48 8b c3 0f 11 03 48 83 c4 30 5b c3 81 fa 49 36
+  +0x050: 39 67 75 25 48 8b 0d d5 4a 77 02 83 b9 e4 00 00
+  +0x060: 00 00 75 05 e8 37 f2 b3 ff 33 d2 b9 4b 63 46 66
+  +0x070: e8 1b 10 c3 ff 8b d0 eb 6d 81 fa 47 20 69 72 75
+  +0x080: 25 45 33 c0 48 8d 4c 24 20 33 d2 0f 11 44 24 20
+  +0x090: e8 6b 95 e5 00 0f 10 44 24 20 48 8b c3 0f 11 03
+  +0x0a0: 48 83 c4 30 5b c3 48 8b 15 83 4a 77 02 83 ba e4
+  +0x0b0: 00 00 00 00 75 27 48 8b ca e8 e2 f1 b3 ff 48 8b
+  +0x0c0: 15 6b 4a 77 02 83 ba e4 00 00 00 00 75 0f 48 8b
+  +0x0d0: ca e8 ca f1 b3 ff 48 8b 15 53 4a 77 02 48 8b 92
+  +0x0e0: b8 00 00 00 8b 12 0f 57 c0 48 8d 4c 24 20 45 33
+  +0x0f0: c9 45 33 c0 0f 11 44 24 20 e8 d2 94 e5 00 0f 10
+  +0x100: 44 24 20 48 8b c3 0f 11 03 48 83 c4 30 5b c3
+  --- USYM & Refs ---
+  [+0x000] ScoutPlayerPrioritiesReference.cs:35
+  [+0x00c] ScoutPlayerPrioritiesReference.cs:35
+  [+0x00f] ScoutPlayerPrioritiesReference.cs:35
+  [+0x017] ScoutPlayerPrioritiesReference.cs:35
+  [+0x01f] ScoutPlayerPrioritiesReference.cs:35
+  [+0x027] ScoutPlayerPrioritiesReference.cs:35
+  +0x036: CALL 0x014d6b00 ()
+  [+0x04c] ScoutPlayerPrioritiesReference.cs:35
+  [+0x054] ScoutPlayerPrioritiesReference.cs:35
+  +0x054: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  +0x064: CALL 0x001bc7a0 ()
+  [+0x069] ScoutPlayerPrioritiesReference.cs:35
+  +0x070: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x075] ScoutPlayerPrioritiesReference.cs:35
+  [+0x077] ScoutPlayerPrioritiesReference.cs:35
+  [+0x079] ScoutPlayerPrioritiesReference.cs:35
+  [+0x081] ScoutPlayerPrioritiesReference.cs:35
+  +0x090: CALL 0x014d6b00 ()
+  [+0x095] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0a6] ScoutPlayerPrioritiesReference.cs:35
+  +0x0a6: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  +0x0b9: CALL 0x001bc7a0 ()
+  +0x0be: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x0c5] ScoutPlayerPrioritiesReference.cs:35, SearchResultReference.cs:36
+  +0x0d1: CALL 0x001bc7a0 ()
+  +0x0d6: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x0dd] SearchResultReference.cs:36
+  [+0x0e6] ScoutPlayerPrioritiesReference.cs:35
+  +0x0f9: CALL 0x014d6ad0 ()
+  Method idx=10267 (GetPropertyDescriptionInternal): RVA=0x0035e230
+
+================ ScoutPlayerPrioritiesReference.GetPropertyDescriptionInternal (0x0035e230..0x0035e380, sz=336) ================
+  +0x000: 48 8b 05 89 04 a9 02 c3 cc cc cc cc cc cc cc cc
+  +0x010: 40 53 48 83 ec 30 0f 57 c0 48 8b d9 0f 11 01 81
+  +0x020: fa 4b 57 55 5a 74 79 81 fa 72 5a 78 64 74 71 81
+  +0x030: fa 4f 56 6e 6c 74 69 48 8b 15 c2 3d a9 02 83 ba
+  +0x040: e4 00 00 00 00 75 27 48 8b ca e8 21 e5 e5 ff 48
+  +0x050: 8b 15 aa 3d a9 02 83 ba e4 00 00 00 00 75 0f 48
+  +0x060: 8b ca e8 09 e5 e5 ff 48 8b 15 92 3d a9 02 48 8b
+  +0x070: 92 b8 00 00 00 48 8d 4c 24 20 0f 57 c0 45 33 c9
+  +0x080: 45 33 c0 8b 12 0f 11 44 24 20 e8 11 88 17 01 0f
+  +0x090: 10 44 24 20 48 8b c3 0f 11 03 48 83 c4 30 5b c3
+  +0x0a0: 45 33 c0 48 8d 4c 24 20 33 d2 0f 11 44 24 20 e8
+  +0x0b0: 1c 88 17 01 0f 10 44 24 20 48 8b c3 0f 11 03 48
+  +0x0c0: 83 c4 30 5b c3 cc cc cc cc cc cc cc cc cc cc cc
+  +0x0d0: b8 42 48 6e 75 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x0e0: 66 90 81 f9 55 36 55 77 0f 94 c0 c3 cc cc cc cc
+  +0x0f0: 66 90 81 f9 37 20 72 61 0f 94 c0 c3 cc cc cc cc
+  +0x100: 40 53 48 83 ec 20 48 8b 0d e3 64 ad 02 8b da 83
+  +0x110: b9 e4 00 00 00 00 75 05 e8 53 e4 e5 ff 81 fb 37
+  +0x120: 20 72 61 0f 94 c0 48 83 c4 20 5b c3 cc cc cc cc
+  +0x130: 48 85 d2 74 41 4c 8b 0d b4 64 ad 02 4c 8b 12 41
+  +0x140: 0f b6 81 30 01 00 00 41 38 82 30 01 00 00 72 26
+  --- USYM & Refs ---
+  [+0x000] InputRebindingData.cs:29, InputRebindingData.cs:29, InputReference.cs:27, InputReference.cs:27
+  +0x000: RIP [0x02dee6c0] -> STR ""
+  [+0x007] InputRebindingData.cs:29, InputReference.cs:27
+  [+0x008] :4294967295
+  [+0x010] InputRebindingData.cs:29
+  [+0x01c] InputRebindingData.cs:29
+  [+0x01f] InputRebindingData.cs:29
+  [+0x027] InputRebindingData.cs:29
+  [+0x02f] InputRebindingData.cs:29
+  [+0x037] InputRebindingData.cs:29
+  +0x037: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  +0x04a: CALL 0x001bc7a0 ()
+  +0x04f: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x056] InputRebindingData.cs:29, InputDataHandler.cs:15
+  +0x062: CALL 0x001bc7a0 ()
+  +0x067: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x06e] InputDataHandler.cs:15
+  [+0x075] InputRebindingData.cs:29
+  +0x08a: CALL 0x014d6ad0 ()
+  [+0x08f] InputRebindingData.cs:29
+  +0x0af: CALL 0x014d6b00 ()
+  [+0x0c5] :4294967295
+  [+0x0d0] InputRebindingData.cs:29, InputRebindingData.cs:29, InputRebindingData.cs:29, InputRebindingData.cs:29
+  [+0x0d5] InputRebindingData.cs:29, InputRebindingData.cs:29
+  [+0x0d6] :4294967295
+  [+0x0e0] InputReference.cs:27
+  [+0x0e2] InputReference.cs:27
+  [+0x0eb] InputReference.cs:27
+  [+0x0ec] :4294967295
+  [+0x0f0] InputReference.cs:27
+  [+0x0f2] InputReference.cs:27
+  [+0x0fb] InputReference.cs:27
+  [+0x0fc] :4294967295
+  [+0x100] InputReference.cs:27
+  [+0x106] InputReference.cs:27
+  +0x106: RIP [0x02e34820] -> MetaUsage(tag=1, idx=30202)
+  +0x118: CALL 0x001bc7a0 ()
+  [+0x11d] InputReference.cs:27
+  [+0x126] InputReference.cs:27
+  [+0x12c] :4294967295
+  [+0x130] InputReference.cs:25, InputReference.cs:26
+  +0x135: RIP [0x02e34820] -> MetaUsage(tag=1, idx=30202)
+  Method idx=10268 (GetProperties): RVA=0x0067d4f0
+
+================ ScoutPlayerPrioritiesReference.GetProperties (0x0067d4f0..0x0067d640, sz=336) ================
+  +0x000: 48 8b ca 33 d2 e9 66 fe ff ff cc cc cc cc cc cc
+  +0x010: 40 53 48 83 ec 30 0f 57 c0 48 8b d9 0f 11 01 81
+  +0x020: fa 47 20 69 72 76 35 81 fa 32 32 6a 73 74 08 81
+  +0x030: fa 43 50 73 73 75 7f 45 33 c0 48 8d 4c 24 20 33
+  +0x040: d2 0f 11 44 24 20 e8 c5 95 e5 00 0f 10 44 24 20
+  +0x050: 48 8b c3 0f 11 03 48 83 c4 30 5b c3 81 fa 49 36
+  +0x060: 39 67 75 25 48 8b 0d d5 4a 77 02 83 b9 e4 00 00
+  +0x070: 00 00 75 05 e8 37 f2 b3 ff 33 d2 b9 4b 63 46 66
+  +0x080: e8 1b 10 c3 ff 8b d0 eb 6d 81 fa 47 20 69 72 75
+  +0x090: 25 45 33 c0 48 8d 4c 24 20 33 d2 0f 11 44 24 20
+  +0x0a0: e8 6b 95 e5 00 0f 10 44 24 20 48 8b c3 0f 11 03
+  +0x0b0: 48 83 c4 30 5b c3 48 8b 15 83 4a 77 02 83 ba e4
+  +0x0c0: 00 00 00 00 75 27 48 8b ca e8 e2 f1 b3 ff 48 8b
+  +0x0d0: 15 6b 4a 77 02 83 ba e4 00 00 00 00 75 0f 48 8b
+  +0x0e0: ca e8 ca f1 b3 ff 48 8b 15 53 4a 77 02 48 8b 92
+  +0x0f0: b8 00 00 00 8b 12 0f 57 c0 48 8d 4c 24 20 45 33
+  +0x100: c9 45 33 c0 0f 11 44 24 20 e8 d2 94 e5 00 0f 10
+  +0x110: 44 24 20 48 8b c3 0f 11 03 48 83 c4 30 5b c3 cc
+  +0x120: 40 53 48 83 ec 20 48 8b d9 48 8b 0d 10 a5 7b 02
+  +0x130: 83 b9 e4 00 00 00 00 75 05 e8 72 f1 b3 ff 45 33
+  +0x140: c9 ba 20 30 31 31 48 8b cb 45 8d 41 5b 48 83 c4
+  --- USYM & Refs ---
+  [+0x000] ScoutPlayerPrioritiesReference.cs:35
+  [+0x003] ScoutPlayerPrioritiesReference.cs:35
+  +0x005: JMP 0x0067d360 (ScoutPlayerPrioritiesReference.cs:35)
+  [+0x00a] :4294967295
+  [+0x010] ScoutPlayerPrioritiesReference.cs:35
+  [+0x01c] ScoutPlayerPrioritiesReference.cs:35
+  [+0x01f] ScoutPlayerPrioritiesReference.cs:35
+  [+0x027] ScoutPlayerPrioritiesReference.cs:35
+  [+0x02f] ScoutPlayerPrioritiesReference.cs:35
+  [+0x037] ScoutPlayerPrioritiesReference.cs:35
+  +0x046: CALL 0x014d6b00 ()
+  [+0x05c] ScoutPlayerPrioritiesReference.cs:35
+  [+0x064] ScoutPlayerPrioritiesReference.cs:35
+  +0x064: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  +0x074: CALL 0x001bc7a0 ()
+  [+0x079] ScoutPlayerPrioritiesReference.cs:35
+  +0x080: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x085] ScoutPlayerPrioritiesReference.cs:35
+  [+0x087] ScoutPlayerPrioritiesReference.cs:35
+  [+0x089] ScoutPlayerPrioritiesReference.cs:35
+  [+0x091] ScoutPlayerPrioritiesReference.cs:35
+  +0x0a0: CALL 0x014d6b00 ()
+  [+0x0a5] ScoutPlayerPrioritiesReference.cs:35
+  [+0x0b6] ScoutPlayerPrioritiesReference.cs:35
+  +0x0b6: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  +0x0c9: CALL 0x001bc7a0 ()
+  +0x0ce: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x0d5] ScoutPlayerPrioritiesReference.cs:35, SearchResultReference.cs:36
+  +0x0e1: CALL 0x001bc7a0 ()
+  +0x0e6: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x0ed] SearchResultReference.cs:36
+  [+0x0f6] ScoutPlayerPrioritiesReference.cs:35
+  +0x109: CALL 0x014d6ad0 ()
+  [+0x11f] :4294967295
+  [+0x120] ScoutingInfoReference.cs:43
+  [+0x129] ScoutPlayerPrioritiesReference.cs:27
+  +0x129: RIP [0x02e37b30] -> MetaUsage(tag=1, idx=30501)
+  +0x139: CALL 0x001bc7a0 ()
+  [+0x13e] ScoutPlayerPrioritiesReference.cs:29
+  [+0x14d] ScoutPlayerPrioritiesReference.cs:30
+  Method idx=10269 (GetPropertiesInternal): RVA=0x0067d360
+
+================ ScoutPlayerPrioritiesReference.GetPropertiesInternal (0x0067d360..0x0067d4ea, sz=394) ================
+  +0x000: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 72 01
+  +0x010: 00 00 48 89 7c 24 30 33 d2 8b 79 18 83 c7 04 e8
+  +0x020: 0c 39 51 00 3b f8 7e 11 4c 8b 05 b9 f4 77 02 8b
+  +0x030: d7 48 8b cb e8 47 db 5a 00 48 8b 0d f0 db 76 02
+  +0x040: 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75 05 e8 ed
+  +0x050: f3 b3 ff 33 d2 b9 47 20 69 72 e8 d1 11 c3 ff 4c
+  +0x060: 8b 43 10 4c 8b 0d fe ee 77 02 ff 43 1c 48 63 53
+  +0x070: 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81
+  +0x080: c0 00 00 00 48 8b cb 4d 8b 40 70 e8 70 a7 5d 00
+  +0x090: eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9
+  +0x0a0: 49 36 39 67 e8 87 11 c3 ff 4c 8b 43 10 4c 8b 0d
+  +0x0b0: b4 ee 77 02 ff 43 1c 48 63 53 18 41 3b 50 18 72
+  +0x0c0: 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00 00 00 48 8b
+  +0x0d0: cb 4d 8b 40 70 e8 26 a7 5d 00 eb 0b 8d 4a 01 89
+  +0x0e0: 4b 18 41 89 44 90 20 33 d2 b9 32 32 6a 73 e8 3d
+  +0x0f0: 11 c3 ff 4c 8b 43 10 4c 8b 0d 6a ee 77 02 ff 43
+  +0x100: 1c 48 63 53 18 41 3b 50 18 72 1b 49 8b 49 20 8b
+  +0x110: d0 4c 8b 81 c0 00 00 00 48 8b cb 4d 8b 40 70 e8
+  +0x120: dc a6 5d 00 eb 0b 8d 4a 01 89 4b 18 41 89 44 90
+  +0x130: 20 33 d2 b9 43 50 73 73 e8 f3 10 c3 ff 4c 8b 43
+  +0x140: 10 4c 8b 0d 20 ee 77 02 ff 43 1c 48 63 53 18 41
+  +0x150: 3b 50 18 72 1e 49 8b 49 20 8b d0 4c 8b 81 c0 00
+  +0x160: 00 00 48 8b cb 4d 8b 40 70 48 83 c4 20 5b e9 8d
+  +0x170: a6 5d 00 8d 4a 01 89 4b 18 41 89 44 90 20 48 83
+  +0x180: c4 20 5b c3 e8 17 f2 b3 ff cc
+  --- USYM & Refs ---
+  [+0x000] ScoutPlayerPrioritiesReference.cs:35
+  [+0x009] ScoutPlayerPrioritiesReference.cs:35
+  [+0x017] ScoutPlayerPrioritiesReference.cs:35
+  [+0x019] ScoutPlayerPrioritiesReference.cs:35
+  [+0x01c] ScoutPlayerPrioritiesReference.cs:35
+  [+0x01f] ScoutPlayerPrioritiesReference.cs:35
+  +0x01f: CALL 0x00b90c90 (IndexedSet.cs:124, IndexedSet.cs:125)
+  [+0x024] ScoutPlayerPrioritiesReference.cs:35
+  [+0x028] ScoutPlayerPrioritiesReference.cs:35
+  +0x028: RIP [0x02dfc848] -> MetaUsage(tag=6, idx=90535)
+  +0x034: CALL 0x00c2aee0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x039] ScoutPlayerPrioritiesReference.cs:35
+  +0x039: RIP [0x02deaf90] -> MetaUsage(tag=1, idx=34369)
+  +0x04e: CALL 0x001bc7a0 ()
+  [+0x053] ScoutPlayerPrioritiesReference.cs:35
+  +0x05a: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x05f] ScoutPlayerPrioritiesReference.cs:35, SearchResultReference.cs:36
+  +0x063: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x06a] SearchResultReference.cs:36
+  [+0x06d] SearchResultReference.cs:36
+  [+0x071] SearchResultReference.cs:36
+  [+0x077] SearchResultReference.cs:36
+  +0x08b: CALL 0x00c57b60 ()
+  [+0x092] SearchResultReference.cs:36
+  [+0x098] SearchResultReference.cs:36
+  [+0x09d] ScoutPlayerPrioritiesReference.cs:35
+  +0x0a4: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x0a9] ScoutPlayerPrioritiesReference.cs:35, SearchResultReference.cs:36
+  +0x0ad: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x0b4] SearchResultReference.cs:36
+  [+0x0b7] SearchResultReference.cs:36
+  [+0x0bb] SearchResultReference.cs:36
+  [+0x0c1] SearchResultReference.cs:36
+  +0x0d5: CALL 0x00c57b60 ()
+  [+0x0dc] SearchResultReference.cs:36
+  [+0x0e2] SearchResultReference.cs:36
+  [+0x0e7] ScoutPlayerPrioritiesReference.cs:35
+  +0x0ee: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x0f3] ScoutPlayerPrioritiesReference.cs:35, SearchResultReference.cs:36
+  +0x0f7: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x0fe] SearchResultReference.cs:36
+  [+0x101] SearchResultReference.cs:36
+  [+0x105] SearchResultReference.cs:36
+  [+0x10b] SearchResultReference.cs:36
+  +0x11f: CALL 0x00c57b60 ()
+  [+0x126] SearchResultReference.cs:36
+  [+0x12c] SearchResultReference.cs:36
+  [+0x131] ScoutPlayerPrioritiesReference.cs:35
+  +0x138: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x13d] ScoutPlayerPrioritiesReference.cs:35, SearchResultReference.cs:36
+  +0x141: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x148] SearchResultReference.cs:36
+  [+0x14b] SearchResultReference.cs:36
+  [+0x14f] SearchResultReference.cs:36
+  [+0x155] SearchResultReference.cs:36
+  [+0x169] ScoutPlayerPrioritiesReference.cs:35
+  [+0x16e] ScoutPlayerPrioritiesReference.cs:35, SearchResultReference.cs:36
+  +0x16e: JMP 0x00c57b60 ()
+  [+0x173] SearchResultReference.cs:36
+  [+0x179] SearchResultReference.cs:36
+  [+0x17e] ScoutPlayerPrioritiesReference.cs:35
+  [+0x184] ScoutPlayerPrioritiesReference.cs:35
+  +0x184: CALL 0x001bc700 ()
+  Method idx=10270 (GetPropertyCountInternal): RVA=0x003debe0
+
+================ ScoutPlayerPrioritiesReference.GetPropertyCountInternal (0x003debe0..0x003ded30, sz=336) ================
+  +0x000: b8 04 00 00 00 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x010: 40 53 48 83 ec 30 0f 57 c0 48 8b d9 0f 11 01 81
+  +0x020: fa 4f 50 42 52 76 35 81 fa 4a 34 50 61 74 08 81
+  +0x030: fa 65 6d 61 6e 75 5a 45 33 c0 48 8d 4c 24 20 33
+  +0x040: d2 0f 11 44 24 20 e8 d5 7e 0f 01 0f 10 44 24 20
+  +0x050: 48 8b c3 0f 11 03 48 83 c4 30 5b c3 81 fa 49 48
+  +0x060: 42 52 74 d3 81 fa 4f 50 42 52 75 25 45 33 c0 48
+  +0x070: 8d 4c 24 20 33 d2 0f 11 44 24 20 e8 a0 7e 0f 01
+  +0x080: 0f 10 44 24 20 48 8b c3 0f 11 03 48 83 c4 30 5b
+  +0x090: c3 48 8b 15 b8 33 a1 02 83 ba e4 00 00 00 00 75
+  +0x0a0: 27 48 8b ca e8 17 db dd ff 48 8b 15 a0 33 a1 02
+  +0x0b0: 83 ba e4 00 00 00 00 75 0f 48 8b ca e8 ff da dd
+  +0x0c0: ff 48 8b 15 88 33 a1 02 48 8b 92 b8 00 00 00 48
+  +0x0d0: 8d 4c 24 20 0f 57 c0 45 33 c9 45 33 c0 8b 12 0f
+  +0x0e0: 11 44 24 20 e8 07 7e 0f 01 0f 10 44 24 20 48 8b
+  +0x0f0: c3 0f 11 03 48 83 c4 30 5b c3 cc cc cc cc cc cc
+  +0x100: b8 65 52 62 52 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x110: 40 53 48 83 ec 20 48 8b d9 48 8b 49 38 8b 53 48
+  +0x120: 48 85 c9 74 51 4c 8b 49 10 0f ba f2 1f 4c 8b 15
+  +0x130: fc 6b a0 02 ff 41 1c 4c 63 41 18 45 3b 41 18 72
+  +0x140: 16 49 8b 42 20 4c 8b 80 c0 00 00 00 4d 8b 40 70
+  --- USYM & Refs ---
+  [+0x000] RibbonButtonEntry.cs:58, RibbonButtonEntry.cs:58
+  [+0x005] RibbonButtonEntry.cs:58
+  [+0x006] :4294967295
+  [+0x010] RibbonButtonEntry.cs:58
+  [+0x01c] RibbonButtonEntry.cs:58
+  [+0x01f] RibbonButtonEntry.cs:58
+  [+0x027] RibbonButtonEntry.cs:58
+  [+0x02f] RibbonButtonEntry.cs:58
+  [+0x037] RibbonButtonEntry.cs:58
+  +0x046: CALL 0x014d6b00 ()
+  [+0x05c] RibbonButtonEntry.cs:58
+  [+0x064] RibbonButtonEntry.cs:58
+  [+0x06c] RibbonButtonEntry.cs:58
+  +0x07b: CALL 0x014d6b00 ()
+  [+0x080] RibbonButtonEntry.cs:58
+  [+0x091] RibbonButtonEntry.cs:58
+  +0x091: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  +0x0a4: CALL 0x001bc7a0 ()
+  +0x0a9: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x0b0] RibbonButtonEntry.cs:58, FormationEntry.cs:16
+  +0x0bc: CALL 0x001bc7a0 ()
+  +0x0c1: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x0c8] FormationEntry.cs:16
+  [+0x0cf] RibbonButtonEntry.cs:58
+  +0x0e4: CALL 0x014d6ad0 ()
+  [+0x0e9] RibbonButtonEntry.cs:58
+  [+0x0fa] :4294967295
+  [+0x100] RibbonButtonEntry.cs:58, RibbonButtonEntry.cs:58, RibbonButtonEntry.cs:58, RibbonButtonEntry.cs:58
+  [+0x105] RibbonButtonEntry.cs:58, RibbonButtonEntry.cs:58
+  [+0x106] :4294967295
+  [+0x110] ScreenTrackingManager.cs:300
+  [+0x119] ScreenTrackingManager.cs:310
+  [+0x11d] ScreenTrackingManager.cs:310, Utilities.cs:132
+  [+0x120] ScreenTrackingManager.cs:310
+  [+0x125] ScreenTrackingManager.cs:310, ScreenTrackingManager.cs:38
+  [+0x129] ScreenTrackingManager.cs:310, Utilities.cs:132, Utilities.cs:127
+  [+0x12d] ScreenTrackingManager.cs:310
+  +0x12d: RIP [0x02de5910] -> MetaUsage(tag=6, idx=88044)
+  [+0x134] ScreenTrackingManager.cs:38
+  [+0x137] ScreenTrackingManager.cs:38
+  [+0x13b] ScreenTrackingManager.cs:38
+  [+0x141] ScreenTrackingManager.cs:38
+  Method idx=10271 (GetContexts): RVA=0x004c7f00
+
+================ ScoutPlayerPrioritiesReference.GetContexts (0x004c7f00..0x004c7f32, sz=50) ================
+  +0x000: 48 83 ec 38 48 8b 0d 15 10 91 02 c7 44 24 20 00
+  +0x010: 00 00 00 83 b9 e4 00 00 00 00 75 05 e8 7f 48 cf
+  +0x020: ff 33 d2 48 8d 4c 24 20 e8 a3 ed 00 01 48 83 c4
+  +0x030: 38 c3
+  --- USYM & Refs ---
+  [+0x000] CompetitionTacticReference.cs:28, CompetitionStageReference.cs:53
+  [+0x004] CompetitionTacticReference.cs:28, CompetitionStageReference.cs:53
+  +0x004: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  +0x01c: CALL 0x001bc7a0 ()
+  +0x028: CALL 0x014d6cd0 ()
+  [+0x02d] CompetitionTacticReference.cs:28, CompetitionStageReference.cs:53
+  Method idx=10272 (GetContextsInternal): RVA=0x0035df40
+
+================ ScoutPlayerPrioritiesReference.GetContextsInternal (0x0035df40..0x0035df72, sz=50) ================
+  +0x000: 48 83 ec 28 48 8b 0d d5 af a7 02 c7 44 24 48 00
+  +0x010: 00 00 00 83 b9 e4 00 00 00 00 75 05 e8 3f e8 e5
+  +0x020: ff 33 d2 48 8d 4c 24 48 e8 63 8d 17 01 48 83 c4
+  +0x030: 28 c3
+  --- USYM & Refs ---
+  [+0x000] InputRebindingData.cs:29, InputReference.cs:27
+  [+0x004] InputRebindingData.cs:29, InputReference.cs:27
+  +0x004: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  [+0x00b] InputRebindingData.cs:29, InputReference.cs:27
+  [+0x013] InputRebindingData.cs:29, InputReference.cs:27
+  +0x01c: CALL 0x001bc7a0 ()
+  [+0x021] InputRebindingData.cs:29, InputReference.cs:27
+  +0x028: CALL 0x014d6cd0 ()
+  [+0x02d] InputRebindingData.cs:29, InputReference.cs:27
+  Method idx=10273 (DerivesFrom): RVA=0x0067d300
+
+================ ScoutPlayerPrioritiesReference.DerivesFrom (0x0067d300..0x0067d450, sz=336) ================
+  +0x000: 66 90 81 fa 77 79 34 41 0f 94 c0 c3 cc cc cc cc
+  +0x010: 40 53 48 83 ec 20 48 8b 0d db 75 78 02 e8 8e f3
+  +0x020: b3 ff 48 8b 0d 07 a8 7b 02 48 8b d8 83 b9 e4 00
+  +0x030: 00 00 00 75 05 e8 66 f4 b3 ff 45 33 c9 ba 20 30
+  +0x040: 31 31 48 8b cb 45 8d 41 5b e8 22 56 01 01 48 8b
+  +0x050: c3 48 83 c4 20 5b c3 cc cc cc cc cc cc cc cc cc
+  +0x060: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 72 01
+  +0x070: 00 00 48 89 7c 24 30 33 d2 8b 79 18 83 c7 04 e8
+  +0x080: 0c 39 51 00 3b f8 7e 11 4c 8b 05 b9 f4 77 02 8b
+  +0x090: d7 48 8b cb e8 47 db 5a 00 48 8b 0d f0 db 76 02
+  +0x0a0: 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75 05 e8 ed
+  +0x0b0: f3 b3 ff 33 d2 b9 47 20 69 72 e8 d1 11 c3 ff 4c
+  +0x0c0: 8b 43 10 4c 8b 0d fe ee 77 02 ff 43 1c 48 63 53
+  +0x0d0: 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81
+  +0x0e0: c0 00 00 00 48 8b cb 4d 8b 40 70 e8 70 a7 5d 00
+  +0x0f0: eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9
+  +0x100: 49 36 39 67 e8 87 11 c3 ff 4c 8b 43 10 4c 8b 0d
+  +0x110: b4 ee 77 02 ff 43 1c 48 63 53 18 41 3b 50 18 72
+  +0x120: 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00 00 00 48 8b
+  +0x130: cb 4d 8b 40 70 e8 26 a7 5d 00 eb 0b 8d 4a 01 89
+  +0x140: 4b 18 41 89 44 90 20 33 d2 b9 32 32 6a 73 e8 3d
+  --- USYM & Refs ---
+  [+0x000] ScoutPlayerPrioritiesReference.cs:35
+  [+0x002] ScoutPlayerPrioritiesReference.cs:35
+  [+0x00b] ScoutPlayerPrioritiesReference.cs:35
+  [+0x00c] :4294967295
+  [+0x010] ScoutPlayerPrioritiesReference.cs:35
+  [+0x016] ScoutPlayerPrioritiesReference.cs:35
+  +0x016: RIP [0x02e048f8] -> MetaUsage(tag=1, idx=35886)
+  +0x01d: CALL 0x001bc6b0 ()
+  [+0x022] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:27
+  +0x022: RIP [0x02e37b30] -> MetaUsage(tag=1, idx=30501)
+  [+0x029] ScoutPlayerPrioritiesReference.cs:35
+  [+0x02c] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:27
+  +0x035: CALL 0x001bc7a0 ()
+  [+0x03a] ScoutPlayerPrioritiesReference.cs:29
+  +0x049: CALL 0x01692970 (InteropReference.cs:164)
+  [+0x04e] ScoutPlayerPrioritiesReference.cs:35
+  [+0x051] ScoutPlayerPrioritiesReference.cs:35
+  [+0x057] :4294967295
+  [+0x060] ScoutPlayerPrioritiesReference.cs:35
+  [+0x069] ScoutPlayerPrioritiesReference.cs:35
+  [+0x077] ScoutPlayerPrioritiesReference.cs:35
+  [+0x079] ScoutPlayerPrioritiesReference.cs:35
+  [+0x07c] ScoutPlayerPrioritiesReference.cs:35
+  [+0x07f] ScoutPlayerPrioritiesReference.cs:35
+  +0x07f: CALL 0x00b90c90 (IndexedSet.cs:124, IndexedSet.cs:125)
+  [+0x084] ScoutPlayerPrioritiesReference.cs:35
+  [+0x088] ScoutPlayerPrioritiesReference.cs:35
+  +0x088: RIP [0x02dfc848] -> MetaUsage(tag=6, idx=90535)
+  +0x094: CALL 0x00c2aee0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x099] ScoutPlayerPrioritiesReference.cs:35
+  +0x099: RIP [0x02deaf90] -> MetaUsage(tag=1, idx=34369)
+  +0x0ae: CALL 0x001bc7a0 ()
+  [+0x0b3] ScoutPlayerPrioritiesReference.cs:35
+  +0x0ba: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x0bf] ScoutPlayerPrioritiesReference.cs:35, SearchResultReference.cs:36
+  +0x0c3: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x0ca] SearchResultReference.cs:36
+  [+0x0cd] SearchResultReference.cs:36
+  [+0x0d1] SearchResultReference.cs:36
+  [+0x0d7] SearchResultReference.cs:36
+  +0x0eb: CALL 0x00c57b60 ()
+  [+0x0f2] SearchResultReference.cs:36
+  [+0x0f8] SearchResultReference.cs:36
+  [+0x0fd] ScoutPlayerPrioritiesReference.cs:35
+  +0x104: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x109] ScoutPlayerPrioritiesReference.cs:35, SearchResultReference.cs:36
+  +0x10d: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x114] SearchResultReference.cs:36
+  [+0x117] SearchResultReference.cs:36
+  [+0x11b] SearchResultReference.cs:36
+  [+0x121] SearchResultReference.cs:36
+  +0x135: CALL 0x00c57b60 ()
+  [+0x13c] SearchResultReference.cs:36
+  [+0x142] SearchResultReference.cs:36
+  [+0x147] ScoutPlayerPrioritiesReference.cs:35
+  Method idx=10274 (DerivesFromInternal): RVA=0x0067d2f0
+
+================ ScoutPlayerPrioritiesReference.DerivesFromInternal (0x0067d2f0..0x0067d440, sz=336) ================
+  +0x000: 66 90 81 f9 77 79 34 41 0f 94 c0 c3 cc cc cc cc
+  +0x010: 66 90 81 fa 77 79 34 41 0f 94 c0 c3 cc cc cc cc
+  +0x020: 40 53 48 83 ec 20 48 8b 0d db 75 78 02 e8 8e f3
+  +0x030: b3 ff 48 8b 0d 07 a8 7b 02 48 8b d8 83 b9 e4 00
+  +0x040: 00 00 00 75 05 e8 66 f4 b3 ff 45 33 c9 ba 20 30
+  +0x050: 31 31 48 8b cb 45 8d 41 5b e8 22 56 01 01 48 8b
+  +0x060: c3 48 83 c4 20 5b c3 cc cc cc cc cc cc cc cc cc
+  +0x070: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 72 01
+  +0x080: 00 00 48 89 7c 24 30 33 d2 8b 79 18 83 c7 04 e8
+  +0x090: 0c 39 51 00 3b f8 7e 11 4c 8b 05 b9 f4 77 02 8b
+  +0x0a0: d7 48 8b cb e8 47 db 5a 00 48 8b 0d f0 db 76 02
+  +0x0b0: 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75 05 e8 ed
+  +0x0c0: f3 b3 ff 33 d2 b9 47 20 69 72 e8 d1 11 c3 ff 4c
+  +0x0d0: 8b 43 10 4c 8b 0d fe ee 77 02 ff 43 1c 48 63 53
+  +0x0e0: 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81
+  +0x0f0: c0 00 00 00 48 8b cb 4d 8b 40 70 e8 70 a7 5d 00
+  +0x100: eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9
+  +0x110: 49 36 39 67 e8 87 11 c3 ff 4c 8b 43 10 4c 8b 0d
+  +0x120: b4 ee 77 02 ff 43 1c 48 63 53 18 41 3b 50 18 72
+  +0x130: 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00 00 00 48 8b
+  +0x140: cb 4d 8b 40 70 e8 26 a7 5d 00 eb 0b 8d 4a 01 89
+  --- USYM & Refs ---
+  [+0x000] ScoutPlayerPrioritiesReference.cs:35
+  [+0x002] ScoutPlayerPrioritiesReference.cs:35
+  [+0x00b] ScoutPlayerPrioritiesReference.cs:35
+  [+0x00c] :4294967295
+  [+0x010] ScoutPlayerPrioritiesReference.cs:35
+  [+0x012] ScoutPlayerPrioritiesReference.cs:35
+  [+0x01b] ScoutPlayerPrioritiesReference.cs:35
+  [+0x01c] :4294967295
+  [+0x020] ScoutPlayerPrioritiesReference.cs:35
+  [+0x026] ScoutPlayerPrioritiesReference.cs:35
+  +0x026: RIP [0x02e048f8] -> MetaUsage(tag=1, idx=35886)
+  +0x02d: CALL 0x001bc6b0 ()
+  [+0x032] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:27
+  +0x032: RIP [0x02e37b30] -> MetaUsage(tag=1, idx=30501)
+  [+0x039] ScoutPlayerPrioritiesReference.cs:35
+  [+0x03c] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:27
+  +0x045: CALL 0x001bc7a0 ()
+  [+0x04a] ScoutPlayerPrioritiesReference.cs:29
+  +0x059: CALL 0x01692970 (InteropReference.cs:164)
+  [+0x05e] ScoutPlayerPrioritiesReference.cs:35
+  [+0x061] ScoutPlayerPrioritiesReference.cs:35
+  [+0x067] :4294967295
+  [+0x070] ScoutPlayerPrioritiesReference.cs:35
+  [+0x079] ScoutPlayerPrioritiesReference.cs:35
+  [+0x087] ScoutPlayerPrioritiesReference.cs:35
+  [+0x089] ScoutPlayerPrioritiesReference.cs:35
+  [+0x08c] ScoutPlayerPrioritiesReference.cs:35
+  [+0x08f] ScoutPlayerPrioritiesReference.cs:35
+  +0x08f: CALL 0x00b90c90 (IndexedSet.cs:124, IndexedSet.cs:125)
+  [+0x094] ScoutPlayerPrioritiesReference.cs:35
+  [+0x098] ScoutPlayerPrioritiesReference.cs:35
+  +0x098: RIP [0x02dfc848] -> MetaUsage(tag=6, idx=90535)
+  +0x0a4: CALL 0x00c2aee0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x0a9] ScoutPlayerPrioritiesReference.cs:35
+  +0x0a9: RIP [0x02deaf90] -> MetaUsage(tag=1, idx=34369)
+  +0x0be: CALL 0x001bc7a0 ()
+  [+0x0c3] ScoutPlayerPrioritiesReference.cs:35
+  +0x0ca: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x0cf] ScoutPlayerPrioritiesReference.cs:35, SearchResultReference.cs:36
+  +0x0d3: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x0da] SearchResultReference.cs:36
+  [+0x0dd] SearchResultReference.cs:36
+  [+0x0e1] SearchResultReference.cs:36
+  [+0x0e7] SearchResultReference.cs:36
+  +0x0fb: CALL 0x00c57b60 ()
+  [+0x102] SearchResultReference.cs:36
+  [+0x108] SearchResultReference.cs:36
+  [+0x10d] ScoutPlayerPrioritiesReference.cs:35
+  +0x114: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x119] ScoutPlayerPrioritiesReference.cs:35, SearchResultReference.cs:36
+  +0x11d: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x124] SearchResultReference.cs:36
+  [+0x127] SearchResultReference.cs:36
+  [+0x12b] SearchResultReference.cs:36
+  [+0x131] SearchResultReference.cs:36
+  +0x145: CALL 0x00c57b60 ()
+  [+0x14c] SearchResultReference.cs:36
+  Method idx=10275 (GetInstance): RVA=0x0067d310
+
+================ ScoutPlayerPrioritiesReference.GetInstance (0x0067d310..0x0067d357, sz=71) ================
+  +0x000: 40 53 48 83 ec 20 48 8b 0d db 75 78 02 e8 8e f3
+  +0x010: b3 ff 48 8b 0d 07 a8 7b 02 48 8b d8 83 b9 e4 00
+  +0x020: 00 00 00 75 05 e8 66 f4 b3 ff 45 33 c9 ba 20 30
+  +0x030: 31 31 48 8b cb 45 8d 41 5b e8 22 56 01 01 48 8b
+  +0x040: c3 48 83 c4 20 5b c3
+  --- USYM & Refs ---
+  [+0x000] ScoutPlayerPrioritiesReference.cs:35
+  [+0x006] ScoutPlayerPrioritiesReference.cs:35
+  +0x006: RIP [0x02e048f8] -> MetaUsage(tag=1, idx=35886)
+  +0x00d: CALL 0x001bc6b0 ()
+  [+0x012] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:27
+  +0x012: RIP [0x02e37b30] -> MetaUsage(tag=1, idx=30501)
+  [+0x019] ScoutPlayerPrioritiesReference.cs:35
+  [+0x01c] ScoutPlayerPrioritiesReference.cs:35, ScoutPlayerPrioritiesReference.cs:27
+  +0x025: CALL 0x001bc7a0 ()
+  [+0x02a] ScoutPlayerPrioritiesReference.cs:29
+  +0x039: CALL 0x01692970 (InteropReference.cs:164)
+  [+0x03e] ScoutPlayerPrioritiesReference.cs:35
+  [+0x041] ScoutPlayerPrioritiesReference.cs:35
+
+--- Type 861: ScoutTeamPrioritiesReference (fields=0, methods=16) ---
+  Method idx=10276 (.ctor): RVA=0x0067dbc0
+
+================ ScoutTeamPrioritiesReference..ctor (0x0067dbc0..0x0067dbf7, sz=55) ================
+  +0x000: 40 53 48 83 ec 20 48 8b d9 48 8b 0d 60 9f 7b 02
+  +0x010: 83 b9 e4 00 00 00 00 75 05 e8 c2 eb b3 ff 45 33
+  +0x020: c9 ba 20 30 31 31 48 8b cb 45 8d 41 5c 48 83 c4
+  +0x030: 20 5b e9 79 4d 01 01
+  --- USYM & Refs ---
+  [+0x000] ScoutPlayerPrioritiesReference.cs:35
+  [+0x009] ScoutTeamPrioritiesReference.cs:26
+  +0x009: RIP [0x02e37b30] -> MetaUsage(tag=1, idx=30501)
+  +0x019: CALL 0x001bc7a0 ()
+  [+0x01e] ScoutTeamPrioritiesReference.cs:28
+  [+0x02d] ScoutTeamPrioritiesReference.cs:29
+  [+0x032] ScoutTeamPrioritiesReference.cs:28
+  +0x032: JMP 0x01692970 (InteropReference.cs:164)
+  Method idx=10277 (.ctor): RVA=0x004d2220
+
+================ ScoutTeamPrioritiesReference..ctor (0x004d2220..0x004d225d, sz=61) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 20 48 8b f9 48 8b da
+  +0x010: 48 8b 0d f9 58 96 02 83 b9 e4 00 00 00 00 75 05
+  +0x020: e8 5b a5 ce ff 45 33 c0 48 8b d3 48 8b cf 48 8b
+  +0x030: 5c 24 30 48 83 c4 20 5f e9 b3 09 1c 01
+  --- USYM & Refs ---
+  [+0x000] CompetitionStageReference.cs:48
+  [+0x010] CompetitionStageReference.cs:50
+  +0x010: RIP [0x02e37b30] -> MetaUsage(tag=1, idx=30501)
+  +0x020: CALL 0x001bc7a0 ()
+  [+0x025] CompetitionStageReference.cs:50
+  [+0x02e] CompetitionStageReference.cs:53
+  [+0x038] CompetitionStageReference.cs:50
+  +0x038: JMP 0x01692c10 (InteropReference.cs:64)
+  Method idx=10278 (get_Identifier): RVA=0x0067dc00
+
+================ ScoutTeamPrioritiesReference.get_Identifier (0x0067dc00..0x0067dd50, sz=336) ================
+  +0x000: b8 44 62 77 69 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x010: 81 f9 4a 37 51 4a 76 1b 81 f9 58 4f 6d 4b 74 10
+  +0x020: 81 f9 50 4f 74 63 74 08 81 f9 73 72 78 66 75 1b
+  +0x030: b0 01 c3 81 f9 20 20 35 32 74 f5 81 f9 41 4d 71
+  +0x040: 43 74 ed 81 f9 4a 37 51 4a 74 e5 32 c0 c3 cc cc
+  +0x050: 66 90 81 f9 32 74 35 6c 0f 94 c0 c3 cc cc cc cc
+  +0x060: 66 90 81 fa 32 74 35 6c 0f 94 c0 c3 cc cc cc cc
+  +0x070: 48 8b 0d 31 6e 78 02 e9 34 ea b3 ff cc cc cc cc
+  +0x080: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 06 02
+  +0x090: 00 00 48 89 7c 24 30 33 d2 8b 79 18 83 c7 06 e8
+  +0x0a0: ec 2f 51 00 3b f8 7e 11 4c 8b 05 99 eb 77 02 8b
+  +0x0b0: d7 48 8b cb e8 27 d2 5a 00 48 8b 0d d0 d2 76 02
+  +0x0c0: 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75 05 e8 cd
+  +0x0d0: ea b3 ff 33 d2 b9 41 4d 71 43 e8 b1 08 c3 ff 4c
+  +0x0e0: 8b 43 10 4c 8b 0d de e5 77 02 ff 43 1c 48 63 53
+  +0x0f0: 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81
+  +0x100: c0 00 00 00 48 8b cb 4d 8b 40 70 e8 50 9e 5d 00
+  +0x110: eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9
+  +0x120: 20 20 35 32 e8 67 08 c3 ff 4c 8b 43 10 4c 8b 0d
+  +0x130: 94 e5 77 02 ff 43 1c 48 63 53 18 41 3b 50 18 72
+  +0x140: 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00 00 00 48 8b
+  --- USYM & Refs ---
+  [+0x000] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x005] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x006] :4294967295
+  [+0x010] ScoutAssignmentsReference.cs:34, ScoutAssignmentsReference.cs:34
+  [+0x018] ScoutAssignmentsReference.cs:34
+  [+0x020] ScoutAssignmentsReference.cs:34
+  [+0x028] ScoutAssignmentsReference.cs:34
+  [+0x030] ScoutAssignmentsReference.cs:34
+  [+0x033] ScoutAssignmentsReference.cs:34
+  [+0x03b] ScoutAssignmentsReference.cs:34
+  [+0x043] ScoutAssignmentsReference.cs:34
+  [+0x04b] ScoutAssignmentsReference.cs:34
+  [+0x04d] ScoutAssignmentsReference.cs:34
+  [+0x04e] :4294967295
+  [+0x050] ScoutAssignmentsReference.cs:34
+  [+0x052] ScoutAssignmentsReference.cs:34
+  [+0x05b] ScoutAssignmentsReference.cs:34
+  [+0x05c] :4294967295
+  [+0x060] ScoutAssignmentsReference.cs:34
+  [+0x062] ScoutAssignmentsReference.cs:34
+  [+0x06b] ScoutAssignmentsReference.cs:34
+  [+0x06c] :4294967295
+  [+0x070] ScoutAssignmentsReference.cs:34, ScoutAssignmentsReference.cs:34
+  +0x070: RIP [0x02e04aa8] -> MetaUsage(tag=1, idx=35888)
+  +0x077: JMP 0x001bc6b0 ()
+  [+0x07c] :4294967295
+  [+0x080] ScoutAssignmentsReference.cs:34
+  [+0x089] ScoutAssignmentsReference.cs:34
+  [+0x097] ScoutAssignmentsReference.cs:34
+  [+0x099] ScoutAssignmentsReference.cs:34
+  [+0x09c] ScoutAssignmentsReference.cs:34
+  [+0x09f] ScoutAssignmentsReference.cs:34
+  +0x09f: CALL 0x00b90c90 (IndexedSet.cs:124, IndexedSet.cs:125)
+  [+0x0a4] ScoutAssignmentsReference.cs:34
+  [+0x0a8] ScoutAssignmentsReference.cs:34
+  +0x0a8: RIP [0x02dfc848] -> MetaUsage(tag=6, idx=90535)
+  +0x0b4: CALL 0x00c2aee0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x0b9] ScoutAssignmentsReference.cs:34
+  +0x0b9: RIP [0x02deaf90] -> MetaUsage(tag=1, idx=34369)
+  +0x0ce: CALL 0x001bc7a0 ()
+  [+0x0d3] ScoutAssignmentsReference.cs:34
+  +0x0da: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x0df] ScoutAssignmentsReference.cs:34, SearchResultReference.cs:36
+  +0x0e3: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x0ea] SearchResultReference.cs:36
+  [+0x0ed] SearchResultReference.cs:36
+  [+0x0f1] SearchResultReference.cs:36
+  [+0x0f7] SearchResultReference.cs:36
+  +0x10b: CALL 0x00c57b60 ()
+  [+0x112] SearchResultReference.cs:36
+  [+0x118] SearchResultReference.cs:36
+  [+0x11d] ScoutAssignmentsReference.cs:34
+  +0x124: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x129] ScoutAssignmentsReference.cs:34, SearchResultReference.cs:36
+  +0x12d: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x134] SearchResultReference.cs:36
+  [+0x137] SearchResultReference.cs:36
+  [+0x13b] SearchResultReference.cs:36
+  [+0x141] SearchResultReference.cs:36
+  Method idx=10279 (get_ID): RVA=0x0067dc00
+
+================ ScoutTeamPrioritiesReference.get_ID (0x0067dc00..0x0067dd50, sz=336) ================
+  +0x000: b8 44 62 77 69 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x010: 81 f9 4a 37 51 4a 76 1b 81 f9 58 4f 6d 4b 74 10
+  +0x020: 81 f9 50 4f 74 63 74 08 81 f9 73 72 78 66 75 1b
+  +0x030: b0 01 c3 81 f9 20 20 35 32 74 f5 81 f9 41 4d 71
+  +0x040: 43 74 ed 81 f9 4a 37 51 4a 74 e5 32 c0 c3 cc cc
+  +0x050: 66 90 81 f9 32 74 35 6c 0f 94 c0 c3 cc cc cc cc
+  +0x060: 66 90 81 fa 32 74 35 6c 0f 94 c0 c3 cc cc cc cc
+  +0x070: 48 8b 0d 31 6e 78 02 e9 34 ea b3 ff cc cc cc cc
+  +0x080: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 06 02
+  +0x090: 00 00 48 89 7c 24 30 33 d2 8b 79 18 83 c7 06 e8
+  +0x0a0: ec 2f 51 00 3b f8 7e 11 4c 8b 05 99 eb 77 02 8b
+  +0x0b0: d7 48 8b cb e8 27 d2 5a 00 48 8b 0d d0 d2 76 02
+  +0x0c0: 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75 05 e8 cd
+  +0x0d0: ea b3 ff 33 d2 b9 41 4d 71 43 e8 b1 08 c3 ff 4c
+  +0x0e0: 8b 43 10 4c 8b 0d de e5 77 02 ff 43 1c 48 63 53
+  +0x0f0: 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81
+  +0x100: c0 00 00 00 48 8b cb 4d 8b 40 70 e8 50 9e 5d 00
+  +0x110: eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9
+  +0x120: 20 20 35 32 e8 67 08 c3 ff 4c 8b 43 10 4c 8b 0d
+  +0x130: 94 e5 77 02 ff 43 1c 48 63 53 18 41 3b 50 18 72
+  +0x140: 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00 00 00 48 8b
+  --- USYM & Refs ---
+  [+0x000] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x005] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x006] :4294967295
+  [+0x010] ScoutAssignmentsReference.cs:34, ScoutAssignmentsReference.cs:34
+  [+0x018] ScoutAssignmentsReference.cs:34
+  [+0x020] ScoutAssignmentsReference.cs:34
+  [+0x028] ScoutAssignmentsReference.cs:34
+  [+0x030] ScoutAssignmentsReference.cs:34
+  [+0x033] ScoutAssignmentsReference.cs:34
+  [+0x03b] ScoutAssignmentsReference.cs:34
+  [+0x043] ScoutAssignmentsReference.cs:34
+  [+0x04b] ScoutAssignmentsReference.cs:34
+  [+0x04d] ScoutAssignmentsReference.cs:34
+  [+0x04e] :4294967295
+  [+0x050] ScoutAssignmentsReference.cs:34
+  [+0x052] ScoutAssignmentsReference.cs:34
+  [+0x05b] ScoutAssignmentsReference.cs:34
+  [+0x05c] :4294967295
+  [+0x060] ScoutAssignmentsReference.cs:34
+  [+0x062] ScoutAssignmentsReference.cs:34
+  [+0x06b] ScoutAssignmentsReference.cs:34
+  [+0x06c] :4294967295
+  [+0x070] ScoutAssignmentsReference.cs:34, ScoutAssignmentsReference.cs:34
+  +0x070: RIP [0x02e04aa8] -> MetaUsage(tag=1, idx=35888)
+  +0x077: JMP 0x001bc6b0 ()
+  [+0x07c] :4294967295
+  [+0x080] ScoutAssignmentsReference.cs:34
+  [+0x089] ScoutAssignmentsReference.cs:34
+  [+0x097] ScoutAssignmentsReference.cs:34
+  [+0x099] ScoutAssignmentsReference.cs:34
+  [+0x09c] ScoutAssignmentsReference.cs:34
+  [+0x09f] ScoutAssignmentsReference.cs:34
+  +0x09f: CALL 0x00b90c90 (IndexedSet.cs:124, IndexedSet.cs:125)
+  [+0x0a4] ScoutAssignmentsReference.cs:34
+  [+0x0a8] ScoutAssignmentsReference.cs:34
+  +0x0a8: RIP [0x02dfc848] -> MetaUsage(tag=6, idx=90535)
+  +0x0b4: CALL 0x00c2aee0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x0b9] ScoutAssignmentsReference.cs:34
+  +0x0b9: RIP [0x02deaf90] -> MetaUsage(tag=1, idx=34369)
+  +0x0ce: CALL 0x001bc7a0 ()
+  [+0x0d3] ScoutAssignmentsReference.cs:34
+  +0x0da: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x0df] ScoutAssignmentsReference.cs:34, SearchResultReference.cs:36
+  +0x0e3: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x0ea] SearchResultReference.cs:36
+  [+0x0ed] SearchResultReference.cs:36
+  [+0x0f1] SearchResultReference.cs:36
+  [+0x0f7] SearchResultReference.cs:36
+  +0x10b: CALL 0x00c57b60 ()
+  [+0x112] SearchResultReference.cs:36
+  [+0x118] SearchResultReference.cs:36
+  [+0x11d] ScoutAssignmentsReference.cs:34
+  +0x124: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x129] ScoutAssignmentsReference.cs:34, SearchResultReference.cs:36
+  +0x12d: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x134] SearchResultReference.cs:36
+  [+0x137] SearchResultReference.cs:36
+  [+0x13b] SearchResultReference.cs:36
+  [+0x141] SearchResultReference.cs:36
+  Method idx=10280 (AcceptsProperty): RVA=0x0067d680
+
+================ ScoutTeamPrioritiesReference.AcceptsProperty (0x0067d680..0x0067d7d0, sz=336) ================
+  +0x000: 81 fa 59 49 6d 31 75 03 b0 01 c3 81 fa 70 39 79
+  +0x010: 62 74 f5 81 fa 63 61 39 68 0f 94 c0 c3 cc cc cc
+  +0x020: 66 90 81 f9 44 62 77 69 0f 94 c0 c3 cc cc cc cc
+  +0x030: 66 90 81 fa 44 62 77 69 0f 94 c0 c3 cc cc cc cc
+  +0x040: 48 89 5c 24 10 57 48 83 ec 20 8b f9 c7 44 24 30
+  +0x050: 00 00 00 00 48 8b 0d 45 b8 75 02 48 8b da 83 b9
+  +0x060: e4 00 00 00 00 75 05 e8 b4 f0 b3 ff 33 d2 48 8d
+  +0x070: 4c 24 30 e8 d8 95 e5 00 81 ff 70 39 79 62 75 51
+  +0x080: 48 85 db 74 57 48 8b 53 10 4c 8b 05 e0 fe 7c 02
+  +0x090: ff 43 1c 48 63 4b 18 3b 4a 18 72 27 49 8b 40 20
+  +0x0a0: ba 45 35 65 78 48 8b cb 4c 8b 80 c0 00 00 00 4d
+  +0x0b0: 8b 40 70 e8 b8 a4 5d 00 48 8b 5c 24 38 48 83 c4
+  +0x0c0: 20 5f c3 8d 41 01 89 43 18 c7 44 8a 20 45 35 65
+  +0x0d0: 78 48 8b 5c 24 38 48 83 c4 20 5f c3 e8 9f ef b3
+  +0x0e0: ff cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x0f0: 48 89 5c 24 08 57 48 83 ec 20 48 8b 0d 9f b7 75
+  +0x100: 02 49 8b d8 c7 44 24 38 00 00 00 00 8b fa 83 b9
+  +0x110: e4 00 00 00 00 75 05 e8 04 f0 b3 ff 33 d2 48 8d
+  +0x120: 4c 24 38 e8 28 95 e5 00 81 ff 70 39 79 62 75 51
+  +0x130: 48 85 db 74 57 48 8b 53 10 4c 8b 05 30 fe 7c 02
+  +0x140: ff 43 1c 48 63 4b 18 3b 4a 18 72 27 49 8b 40 20
+  --- USYM & Refs ---
+  [+0x000] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x008] ScoutTeamPrioritiesReference.cs:34
+  [+0x00b] ScoutTeamPrioritiesReference.cs:34
+  [+0x01c] ScoutTeamPrioritiesReference.cs:34
+  [+0x01d] :4294967295
+  [+0x020] ScoutTeamPrioritiesReference.cs:34
+  [+0x022] ScoutTeamPrioritiesReference.cs:34
+  [+0x02b] ScoutTeamPrioritiesReference.cs:34
+  [+0x02c] :4294967295
+  [+0x030] ScoutTeamPrioritiesReference.cs:34
+  [+0x032] ScoutTeamPrioritiesReference.cs:34
+  [+0x03b] ScoutTeamPrioritiesReference.cs:34
+  [+0x03c] :4294967295
+  [+0x040] ScoutTeamPrioritiesReference.cs:34
+  [+0x04c] ScoutTeamPrioritiesReference.cs:34
+  [+0x054] ScoutTeamPrioritiesReference.cs:34
+  +0x054: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  +0x067: CALL 0x001bc7a0 ()
+  [+0x06c] ScoutTeamPrioritiesReference.cs:34
+  +0x073: CALL 0x014d6cd0 ()
+  [+0x078] ScoutTeamPrioritiesReference.cs:34
+  [+0x080] ScoutTeamPrioritiesReference.cs:34
+  [+0x085] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x089: RIP [0x02e4d5f0] -> MetaUsage(tag=6, idx=86700)
+  [+0x090] SearchResultReference.cs:36
+  [+0x093] SearchResultReference.cs:36
+  [+0x097] SearchResultReference.cs:36
+  [+0x09c] SearchResultReference.cs:36
+  +0x0b3: CALL 0x00c57bf0 ()
+  [+0x0b8] ScoutTeamPrioritiesReference.cs:34
+  [+0x0c3] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  [+0x0c9] SearchResultReference.cs:36
+  [+0x0d1] ScoutTeamPrioritiesReference.cs:34
+  [+0x0dc] ScoutTeamPrioritiesReference.cs:34
+  +0x0dc: CALL 0x001bc700 ()
+  [+0x0e2] :4294967295
+  [+0x0f0] ScoutTeamPrioritiesReference.cs:34
+  [+0x0fa] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x0fa: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  [+0x101] ScoutTeamPrioritiesReference.cs:34
+  [+0x104] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x10c] ScoutTeamPrioritiesReference.cs:34
+  [+0x10e] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x117: CALL 0x001bc7a0 ()
+  [+0x11c] ScoutTeamPrioritiesReference.cs:34
+  +0x123: CALL 0x014d6cd0 ()
+  [+0x128] ScoutTeamPrioritiesReference.cs:34
+  [+0x130] ScoutTeamPrioritiesReference.cs:34
+  [+0x135] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x139: RIP [0x02e4d5f0] -> MetaUsage(tag=6, idx=86700)
+  [+0x140] SearchResultReference.cs:36
+  [+0x143] SearchResultReference.cs:36
+  [+0x147] SearchResultReference.cs:36
+  [+0x14c] SearchResultReference.cs:36
+  Method idx=10281 (AcceptsPropertyInternal): RVA=0x0067d660
+
+================ ScoutTeamPrioritiesReference.AcceptsPropertyInternal (0x0067d660..0x0067d7b0, sz=336) ================
+  +0x000: 81 f9 59 49 6d 31 75 03 b0 01 c3 81 f9 70 39 79
+  +0x010: 62 74 f5 81 f9 63 61 39 68 0f 94 c0 c3 cc cc cc
+  +0x020: 81 fa 59 49 6d 31 75 03 b0 01 c3 81 fa 70 39 79
+  +0x030: 62 74 f5 81 fa 63 61 39 68 0f 94 c0 c3 cc cc cc
+  +0x040: 66 90 81 f9 44 62 77 69 0f 94 c0 c3 cc cc cc cc
+  +0x050: 66 90 81 fa 44 62 77 69 0f 94 c0 c3 cc cc cc cc
+  +0x060: 48 89 5c 24 10 57 48 83 ec 20 8b f9 c7 44 24 30
+  +0x070: 00 00 00 00 48 8b 0d 45 b8 75 02 48 8b da 83 b9
+  +0x080: e4 00 00 00 00 75 05 e8 b4 f0 b3 ff 33 d2 48 8d
+  +0x090: 4c 24 30 e8 d8 95 e5 00 81 ff 70 39 79 62 75 51
+  +0x0a0: 48 85 db 74 57 48 8b 53 10 4c 8b 05 e0 fe 7c 02
+  +0x0b0: ff 43 1c 48 63 4b 18 3b 4a 18 72 27 49 8b 40 20
+  +0x0c0: ba 45 35 65 78 48 8b cb 4c 8b 80 c0 00 00 00 4d
+  +0x0d0: 8b 40 70 e8 b8 a4 5d 00 48 8b 5c 24 38 48 83 c4
+  +0x0e0: 20 5f c3 8d 41 01 89 43 18 c7 44 8a 20 45 35 65
+  +0x0f0: 78 48 8b 5c 24 38 48 83 c4 20 5f c3 e8 9f ef b3
+  +0x100: ff cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x110: 48 89 5c 24 08 57 48 83 ec 20 48 8b 0d 9f b7 75
+  +0x120: 02 49 8b d8 c7 44 24 38 00 00 00 00 8b fa 83 b9
+  +0x130: e4 00 00 00 00 75 05 e8 04 f0 b3 ff 33 d2 48 8d
+  +0x140: 4c 24 38 e8 28 95 e5 00 81 ff 70 39 79 62 75 51
+  --- USYM & Refs ---
+  [+0x000] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x008] ScoutTeamPrioritiesReference.cs:34
+  [+0x00b] ScoutTeamPrioritiesReference.cs:34
+  [+0x013] ScoutTeamPrioritiesReference.cs:34
+  [+0x01c] ScoutTeamPrioritiesReference.cs:34
+  [+0x01d] :4294967295
+  [+0x020] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x028] ScoutTeamPrioritiesReference.cs:34
+  [+0x02b] ScoutTeamPrioritiesReference.cs:34
+  [+0x03c] ScoutTeamPrioritiesReference.cs:34
+  [+0x03d] :4294967295
+  [+0x040] ScoutTeamPrioritiesReference.cs:34
+  [+0x042] ScoutTeamPrioritiesReference.cs:34
+  [+0x04b] ScoutTeamPrioritiesReference.cs:34
+  [+0x04c] :4294967295
+  [+0x050] ScoutTeamPrioritiesReference.cs:34
+  [+0x052] ScoutTeamPrioritiesReference.cs:34
+  [+0x05b] ScoutTeamPrioritiesReference.cs:34
+  [+0x05c] :4294967295
+  [+0x060] ScoutTeamPrioritiesReference.cs:34
+  [+0x06c] ScoutTeamPrioritiesReference.cs:34
+  [+0x074] ScoutTeamPrioritiesReference.cs:34
+  +0x074: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  +0x087: CALL 0x001bc7a0 ()
+  [+0x08c] ScoutTeamPrioritiesReference.cs:34
+  +0x093: CALL 0x014d6cd0 ()
+  [+0x098] ScoutTeamPrioritiesReference.cs:34
+  [+0x0a0] ScoutTeamPrioritiesReference.cs:34
+  [+0x0a5] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x0a9: RIP [0x02e4d5f0] -> MetaUsage(tag=6, idx=86700)
+  [+0x0b0] SearchResultReference.cs:36
+  [+0x0b3] SearchResultReference.cs:36
+  [+0x0b7] SearchResultReference.cs:36
+  [+0x0bc] SearchResultReference.cs:36
+  +0x0d3: CALL 0x00c57bf0 ()
+  [+0x0d8] ScoutTeamPrioritiesReference.cs:34
+  [+0x0e3] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  [+0x0e9] SearchResultReference.cs:36
+  [+0x0f1] ScoutTeamPrioritiesReference.cs:34
+  [+0x0fc] ScoutTeamPrioritiesReference.cs:34
+  +0x0fc: CALL 0x001bc700 ()
+  [+0x102] :4294967295
+  [+0x110] ScoutTeamPrioritiesReference.cs:34
+  [+0x11a] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x11a: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  [+0x121] ScoutTeamPrioritiesReference.cs:34
+  [+0x124] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x12c] ScoutTeamPrioritiesReference.cs:34
+  [+0x12e] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x137: CALL 0x001bc7a0 ()
+  [+0x13c] ScoutTeamPrioritiesReference.cs:34
+  +0x143: CALL 0x014d6cd0 ()
+  [+0x148] ScoutTeamPrioritiesReference.cs:34
+  Method idx=10282 (GetPropertyTypeInternal): RVA=0x0067db00
+
+================ ScoutTeamPrioritiesReference.GetPropertyTypeInternal (0x0067db00..0x0067dbb5, sz=181) ================
+  +0x000: 40 53 48 83 ec 30 0f 57 c0 48 8b d9 0f 11 01 81
+  +0x010: fa 59 49 6d 31 75 25 45 33 c0 48 8d 4c 24 20 33
+  +0x020: d2 0f 11 44 24 20 e8 d5 8f e5 00 0f 10 44 24 20
+  +0x030: 48 8b c3 0f 11 03 48 83 c4 30 5b c3 81 fa 70 39
+  +0x040: 79 62 74 d3 81 fa 63 61 39 68 74 cb 48 8b 15 dd
+  +0x050: 44 77 02 83 ba e4 00 00 00 00 75 27 48 8b ca e8
+  +0x060: 3c ec b3 ff 48 8b 15 c5 44 77 02 83 ba e4 00 00
+  +0x070: 00 00 75 0f 48 8b ca e8 24 ec b3 ff 48 8b 15 ad
+  +0x080: 44 77 02 48 8b 92 b8 00 00 00 48 8d 4c 24 20 0f
+  +0x090: 57 c0 45 33 c9 45 33 c0 8b 12 0f 11 44 24 20 e8
+  +0x0a0: 2c 8f e5 00 0f 10 44 24 20 48 8b c3 0f 11 03 48
+  +0x0b0: 83 c4 30 5b c3
+  --- USYM & Refs ---
+  [+0x000] ScoutTeamPrioritiesReference.cs:34
+  [+0x00c] ScoutTeamPrioritiesReference.cs:34
+  [+0x00f] ScoutTeamPrioritiesReference.cs:34
+  [+0x017] ScoutTeamPrioritiesReference.cs:34
+  +0x026: CALL 0x014d6b00 ()
+  [+0x03c] ScoutTeamPrioritiesReference.cs:34
+  [+0x044] ScoutTeamPrioritiesReference.cs:34
+  [+0x04c] ScoutTeamPrioritiesReference.cs:34
+  +0x04c: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  +0x05f: CALL 0x001bc7a0 ()
+  +0x064: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x06b] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x077: CALL 0x001bc7a0 ()
+  +0x07c: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x083] SearchResultReference.cs:36
+  [+0x08a] ScoutTeamPrioritiesReference.cs:34
+  +0x09f: CALL 0x014d6ad0 ()
+  [+0x0a4] ScoutTeamPrioritiesReference.cs:34
+  Method idx=10283 (GetPropertyDescriptionInternal): RVA=0x0035e230
+
+================ ScoutTeamPrioritiesReference.GetPropertyDescriptionInternal (0x0035e230..0x0035e380, sz=336) ================
+  +0x000: 48 8b 05 89 04 a9 02 c3 cc cc cc cc cc cc cc cc
+  +0x010: 40 53 48 83 ec 30 0f 57 c0 48 8b d9 0f 11 01 81
+  +0x020: fa 4b 57 55 5a 74 79 81 fa 72 5a 78 64 74 71 81
+  +0x030: fa 4f 56 6e 6c 74 69 48 8b 15 c2 3d a9 02 83 ba
+  +0x040: e4 00 00 00 00 75 27 48 8b ca e8 21 e5 e5 ff 48
+  +0x050: 8b 15 aa 3d a9 02 83 ba e4 00 00 00 00 75 0f 48
+  +0x060: 8b ca e8 09 e5 e5 ff 48 8b 15 92 3d a9 02 48 8b
+  +0x070: 92 b8 00 00 00 48 8d 4c 24 20 0f 57 c0 45 33 c9
+  +0x080: 45 33 c0 8b 12 0f 11 44 24 20 e8 11 88 17 01 0f
+  +0x090: 10 44 24 20 48 8b c3 0f 11 03 48 83 c4 30 5b c3
+  +0x0a0: 45 33 c0 48 8d 4c 24 20 33 d2 0f 11 44 24 20 e8
+  +0x0b0: 1c 88 17 01 0f 10 44 24 20 48 8b c3 0f 11 03 48
+  +0x0c0: 83 c4 30 5b c3 cc cc cc cc cc cc cc cc cc cc cc
+  +0x0d0: b8 42 48 6e 75 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x0e0: 66 90 81 f9 55 36 55 77 0f 94 c0 c3 cc cc cc cc
+  +0x0f0: 66 90 81 f9 37 20 72 61 0f 94 c0 c3 cc cc cc cc
+  +0x100: 40 53 48 83 ec 20 48 8b 0d e3 64 ad 02 8b da 83
+  +0x110: b9 e4 00 00 00 00 75 05 e8 53 e4 e5 ff 81 fb 37
+  +0x120: 20 72 61 0f 94 c0 48 83 c4 20 5b c3 cc cc cc cc
+  +0x130: 48 85 d2 74 41 4c 8b 0d b4 64 ad 02 4c 8b 12 41
+  +0x140: 0f b6 81 30 01 00 00 41 38 82 30 01 00 00 72 26
+  --- USYM & Refs ---
+  [+0x000] InputRebindingData.cs:29, InputRebindingData.cs:29, InputReference.cs:27, InputReference.cs:27
+  +0x000: RIP [0x02dee6c0] -> STR ""
+  [+0x007] InputRebindingData.cs:29, InputReference.cs:27
+  [+0x008] :4294967295
+  [+0x010] InputRebindingData.cs:29
+  [+0x01c] InputRebindingData.cs:29
+  [+0x01f] InputRebindingData.cs:29
+  [+0x027] InputRebindingData.cs:29
+  [+0x02f] InputRebindingData.cs:29
+  [+0x037] InputRebindingData.cs:29
+  +0x037: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  +0x04a: CALL 0x001bc7a0 ()
+  +0x04f: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x056] InputRebindingData.cs:29, InputDataHandler.cs:15
+  +0x062: CALL 0x001bc7a0 ()
+  +0x067: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x06e] InputDataHandler.cs:15
+  [+0x075] InputRebindingData.cs:29
+  +0x08a: CALL 0x014d6ad0 ()
+  [+0x08f] InputRebindingData.cs:29
+  +0x0af: CALL 0x014d6b00 ()
+  [+0x0c5] :4294967295
+  [+0x0d0] InputRebindingData.cs:29, InputRebindingData.cs:29, InputRebindingData.cs:29, InputRebindingData.cs:29
+  [+0x0d5] InputRebindingData.cs:29, InputRebindingData.cs:29
+  [+0x0d6] :4294967295
+  [+0x0e0] InputReference.cs:27
+  [+0x0e2] InputReference.cs:27
+  [+0x0eb] InputReference.cs:27
+  [+0x0ec] :4294967295
+  [+0x0f0] InputReference.cs:27
+  [+0x0f2] InputReference.cs:27
+  [+0x0fb] InputReference.cs:27
+  [+0x0fc] :4294967295
+  [+0x100] InputReference.cs:27
+  [+0x106] InputReference.cs:27
+  +0x106: RIP [0x02e34820] -> MetaUsage(tag=1, idx=30202)
+  +0x118: CALL 0x001bc7a0 ()
+  [+0x11d] InputReference.cs:27
+  [+0x126] InputReference.cs:27
+  [+0x12c] :4294967295
+  [+0x130] InputReference.cs:25, InputReference.cs:26
+  +0x135: RIP [0x02e34820] -> MetaUsage(tag=1, idx=30202)
+  Method idx=10284 (GetProperties): RVA=0x0067d9b0
+
+================ ScoutTeamPrioritiesReference.GetProperties (0x0067d9b0..0x0067daf3, sz=323) ================
+  +0x000: 40 53 48 83 ec 20 48 8b da 48 85 d2 0f 84 2b 01
+  +0x010: 00 00 48 89 7c 24 30 48 8b cb 8b 7a 18 33 d2 83
+  +0x020: c7 03 e8 b9 32 51 00 3b f8 7e 11 4c 8b 05 66 ee
+  +0x030: 77 02 8b d7 48 8b cb e8 f4 d4 5a 00 48 8b 0d 9d
+  +0x040: d5 76 02 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75
+  +0x050: 05 e8 9a ed b3 ff 33 d2 b9 59 49 6d 31 e8 7e 0b
+  +0x060: c3 ff 4c 8b 43 10 4c 8b 0d ab e8 77 02 ff 43 1c
+  +0x070: 48 63 53 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0
+  +0x080: 4c 8b 81 c0 00 00 00 48 8b cb 4d 8b 40 70 e8 1d
+  +0x090: a1 5d 00 eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20
+  +0x0a0: 33 d2 b9 70 39 79 62 e8 34 0b c3 ff 4c 8b 43 10
+  +0x0b0: 4c 8b 0d 61 e8 77 02 ff 43 1c 48 63 53 18 41 3b
+  +0x0c0: 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00 00
+  +0x0d0: 00 48 8b cb 4d 8b 40 70 e8 d3 a0 5d 00 eb 0b 8d
+  +0x0e0: 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9 63 61 39
+  +0x0f0: 68 e8 ea 0a c3 ff 4c 8b 43 10 4c 8b 0d 17 e8 77
+  +0x100: 02 ff 43 1c 48 63 53 18 41 3b 50 18 72 1e 49 8b
+  +0x110: 49 20 8b d0 4c 8b 81 c0 00 00 00 48 8b cb 4d 8b
+  +0x120: 40 70 48 83 c4 20 5b e9 84 a0 5d 00 8d 4a 01 89
+  +0x130: 4b 18 41 89 44 90 20 48 83 c4 20 5b c3 e8 0e ec
+  +0x140: b3 ff cc
+  --- USYM & Refs ---
+  [+0x000] ScoutTeamPrioritiesReference.cs:34
+  [+0x009] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x017] ScoutTeamPrioritiesReference.cs:34
+  [+0x01a] ScoutTeamPrioritiesReference.cs:34
+  [+0x01d] ScoutTeamPrioritiesReference.cs:34
+  [+0x01f] ScoutTeamPrioritiesReference.cs:34
+  [+0x022] ScoutTeamPrioritiesReference.cs:34
+  +0x022: CALL 0x00b90c90 (IndexedSet.cs:124, IndexedSet.cs:125)
+  [+0x027] ScoutTeamPrioritiesReference.cs:34
+  [+0x02b] ScoutTeamPrioritiesReference.cs:34
+  +0x02b: RIP [0x02dfc848] -> MetaUsage(tag=6, idx=90535)
+  +0x037: CALL 0x00c2aee0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x03c] ScoutTeamPrioritiesReference.cs:34
+  +0x03c: RIP [0x02deaf90] -> MetaUsage(tag=1, idx=34369)
+  +0x051: CALL 0x001bc7a0 ()
+  [+0x056] ScoutTeamPrioritiesReference.cs:34
+  +0x05d: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x062] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x066: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x06d] SearchResultReference.cs:36
+  [+0x070] SearchResultReference.cs:36
+  [+0x074] SearchResultReference.cs:36
+  [+0x07a] SearchResultReference.cs:36
+  +0x08e: CALL 0x00c57b60 ()
+  [+0x095] SearchResultReference.cs:36
+  [+0x09b] SearchResultReference.cs:36
+  [+0x0a0] ScoutTeamPrioritiesReference.cs:34
+  +0x0a7: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x0ac] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x0b0: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x0b7] SearchResultReference.cs:36
+  [+0x0ba] SearchResultReference.cs:36
+  [+0x0be] SearchResultReference.cs:36
+  [+0x0c4] SearchResultReference.cs:36
+  +0x0d8: CALL 0x00c57b60 ()
+  [+0x0df] SearchResultReference.cs:36
+  [+0x0e5] SearchResultReference.cs:36
+  [+0x0ea] ScoutTeamPrioritiesReference.cs:34
+  +0x0f1: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x0f6] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x0fa: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x101] SearchResultReference.cs:36
+  [+0x104] SearchResultReference.cs:36
+  [+0x108] SearchResultReference.cs:36
+  [+0x10e] SearchResultReference.cs:36
+  [+0x122] ScoutTeamPrioritiesReference.cs:34
+  [+0x127] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x127: JMP 0x00c57b60 ()
+  [+0x12c] SearchResultReference.cs:36
+  [+0x132] SearchResultReference.cs:36
+  [+0x137] ScoutTeamPrioritiesReference.cs:34
+  [+0x13d] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x13d: CALL 0x001bc700 ()
+  Method idx=10285 (GetPropertiesInternal): RVA=0x0067d870
+
+================ ScoutTeamPrioritiesReference.GetPropertiesInternal (0x0067d870..0x0067d9b0, sz=320) ================
+  +0x000: 40 53 48 83 ec 20 48 8b d9 48 85 c9 0f 84 28 01
+  +0x010: 00 00 48 89 7c 24 30 33 d2 8b 79 18 83 c7 03 e8
+  +0x020: fc 33 51 00 3b f8 7e 11 4c 8b 05 a9 ef 77 02 8b
+  +0x030: d7 48 8b cb e8 37 d6 5a 00 48 8b 0d e0 d6 76 02
+  +0x040: 48 8b 7c 24 30 83 b9 e4 00 00 00 00 75 05 e8 dd
+  +0x050: ee b3 ff 33 d2 b9 59 49 6d 31 e8 c1 0c c3 ff 4c
+  +0x060: 8b 43 10 4c 8b 0d ee e9 77 02 ff 43 1c 48 63 53
+  +0x070: 18 41 3b 50 18 72 1b 49 8b 49 20 8b d0 4c 8b 81
+  +0x080: c0 00 00 00 48 8b cb 4d 8b 40 70 e8 60 a2 5d 00
+  +0x090: eb 0b 8d 4a 01 89 4b 18 41 89 44 90 20 33 d2 b9
+  +0x0a0: 70 39 79 62 e8 77 0c c3 ff 4c 8b 43 10 4c 8b 0d
+  +0x0b0: a4 e9 77 02 ff 43 1c 48 63 53 18 41 3b 50 18 72
+  +0x0c0: 1b 49 8b 49 20 8b d0 4c 8b 81 c0 00 00 00 48 8b
+  +0x0d0: cb 4d 8b 40 70 e8 16 a2 5d 00 eb 0b 8d 4a 01 89
+  +0x0e0: 4b 18 41 89 44 90 20 33 d2 b9 63 61 39 68 e8 2d
+  +0x0f0: 0c c3 ff 4c 8b 43 10 4c 8b 0d 5a e9 77 02 ff 43
+  +0x100: 1c 48 63 53 18 41 3b 50 18 72 1e 49 8b 49 20 8b
+  +0x110: d0 4c 8b 81 c0 00 00 00 48 8b cb 4d 8b 40 70 48
+  +0x120: 83 c4 20 5b e9 c7 a1 5d 00 8d 4a 01 89 4b 18 41
+  +0x130: 89 44 90 20 48 83 c4 20 5b c3 e8 51 ed b3 ff cc
+  --- USYM & Refs ---
+  [+0x000] ScoutTeamPrioritiesReference.cs:34
+  [+0x009] ScoutTeamPrioritiesReference.cs:34
+  [+0x017] ScoutTeamPrioritiesReference.cs:34
+  [+0x019] ScoutTeamPrioritiesReference.cs:34
+  [+0x01c] ScoutTeamPrioritiesReference.cs:34
+  [+0x01f] ScoutTeamPrioritiesReference.cs:34
+  +0x01f: CALL 0x00b90c90 (IndexedSet.cs:124, IndexedSet.cs:125)
+  [+0x024] ScoutTeamPrioritiesReference.cs:34
+  [+0x028] ScoutTeamPrioritiesReference.cs:34
+  +0x028: RIP [0x02dfc848] -> MetaUsage(tag=6, idx=90535)
+  +0x034: CALL 0x00c2aee0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x039] ScoutTeamPrioritiesReference.cs:34
+  +0x039: RIP [0x02deaf90] -> MetaUsage(tag=1, idx=34369)
+  +0x04e: CALL 0x001bc7a0 ()
+  [+0x053] ScoutTeamPrioritiesReference.cs:34
+  +0x05a: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x05f] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x063: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x06a] SearchResultReference.cs:36
+  [+0x06d] SearchResultReference.cs:36
+  [+0x071] SearchResultReference.cs:36
+  [+0x077] SearchResultReference.cs:36
+  +0x08b: CALL 0x00c57b60 ()
+  [+0x092] SearchResultReference.cs:36
+  [+0x098] SearchResultReference.cs:36
+  [+0x09d] ScoutTeamPrioritiesReference.cs:34
+  +0x0a4: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x0a9] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x0ad: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x0b4] SearchResultReference.cs:36
+  [+0x0b7] SearchResultReference.cs:36
+  [+0x0bb] SearchResultReference.cs:36
+  [+0x0c1] SearchResultReference.cs:36
+  +0x0d5: CALL 0x00c57b60 ()
+  [+0x0dc] SearchResultReference.cs:36
+  [+0x0e2] SearchResultReference.cs:36
+  [+0x0e7] ScoutTeamPrioritiesReference.cs:34
+  +0x0ee: CALL 0x002ae590 (FM.GamePlugin.AutogenBindings.cs:5894, FM.GamePlugin.AutogenBindings.cs:5899)
+  [+0x0f3] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x0f7: RIP [0x02dfc2c8] -> MetaUsage(tag=6, idx=90477)
+  [+0x0fe] SearchResultReference.cs:36
+  [+0x101] SearchResultReference.cs:36
+  [+0x105] SearchResultReference.cs:36
+  [+0x10b] SearchResultReference.cs:36
+  [+0x11f] ScoutTeamPrioritiesReference.cs:34
+  [+0x124] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x124: JMP 0x00c57b60 ()
+  [+0x129] SearchResultReference.cs:36
+  [+0x12f] SearchResultReference.cs:36
+  [+0x134] ScoutTeamPrioritiesReference.cs:34
+  [+0x13a] ScoutTeamPrioritiesReference.cs:34
+  +0x13a: CALL 0x001bc700 ()
+  Method idx=10286 (GetPropertyCountInternal): RVA=0x0035e220
+
+================ ScoutTeamPrioritiesReference.GetPropertyCountInternal (0x0035e220..0x0035e370, sz=336) ================
+  +0x000: b8 03 00 00 00 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x010: 48 8b 05 89 04 a9 02 c3 cc cc cc cc cc cc cc cc
+  +0x020: 40 53 48 83 ec 30 0f 57 c0 48 8b d9 0f 11 01 81
+  +0x030: fa 4b 57 55 5a 74 79 81 fa 72 5a 78 64 74 71 81
+  +0x040: fa 4f 56 6e 6c 74 69 48 8b 15 c2 3d a9 02 83 ba
+  +0x050: e4 00 00 00 00 75 27 48 8b ca e8 21 e5 e5 ff 48
+  +0x060: 8b 15 aa 3d a9 02 83 ba e4 00 00 00 00 75 0f 48
+  +0x070: 8b ca e8 09 e5 e5 ff 48 8b 15 92 3d a9 02 48 8b
+  +0x080: 92 b8 00 00 00 48 8d 4c 24 20 0f 57 c0 45 33 c9
+  +0x090: 45 33 c0 8b 12 0f 11 44 24 20 e8 11 88 17 01 0f
+  +0x0a0: 10 44 24 20 48 8b c3 0f 11 03 48 83 c4 30 5b c3
+  +0x0b0: 45 33 c0 48 8d 4c 24 20 33 d2 0f 11 44 24 20 e8
+  +0x0c0: 1c 88 17 01 0f 10 44 24 20 48 8b c3 0f 11 03 48
+  +0x0d0: 83 c4 30 5b c3 cc cc cc cc cc cc cc cc cc cc cc
+  +0x0e0: b8 42 48 6e 75 c3 cc cc cc cc cc cc cc cc cc cc
+  +0x0f0: 66 90 81 f9 55 36 55 77 0f 94 c0 c3 cc cc cc cc
+  +0x100: 66 90 81 f9 37 20 72 61 0f 94 c0 c3 cc cc cc cc
+  +0x110: 40 53 48 83 ec 20 48 8b 0d e3 64 ad 02 8b da 83
+  +0x120: b9 e4 00 00 00 00 75 05 e8 53 e4 e5 ff 81 fb 37
+  +0x130: 20 72 61 0f 94 c0 48 83 c4 20 5b c3 cc cc cc cc
+  +0x140: 48 85 d2 74 41 4c 8b 0d b4 64 ad 02 4c 8b 12 41
+  --- USYM & Refs ---
+  [+0x000] InputRebindingData.cs:29, InputRebindingData.cs:29
+  [+0x005] InputRebindingData.cs:29
+  [+0x006] :4294967295
+  [+0x010] InputRebindingData.cs:29, InputRebindingData.cs:29, InputReference.cs:27, InputReference.cs:27
+  +0x010: RIP [0x02dee6c0] -> STR ""
+  [+0x017] InputRebindingData.cs:29, InputReference.cs:27
+  [+0x018] :4294967295
+  [+0x020] InputRebindingData.cs:29
+  [+0x02c] InputRebindingData.cs:29
+  [+0x02f] InputRebindingData.cs:29
+  [+0x037] InputRebindingData.cs:29
+  [+0x03f] InputRebindingData.cs:29
+  [+0x047] InputRebindingData.cs:29
+  +0x047: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  +0x05a: CALL 0x001bc7a0 ()
+  +0x05f: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x066] InputRebindingData.cs:29, InputDataHandler.cs:15
+  +0x072: CALL 0x001bc7a0 ()
+  +0x077: RIP [0x02df2030] -> MetaUsage(tag=1, idx=34769)
+  [+0x07e] InputDataHandler.cs:15
+  [+0x085] InputRebindingData.cs:29
+  +0x09a: CALL 0x014d6ad0 ()
+  [+0x09f] InputRebindingData.cs:29
+  +0x0bf: CALL 0x014d6b00 ()
+  [+0x0d5] :4294967295
+  [+0x0e0] InputRebindingData.cs:29, InputRebindingData.cs:29, InputRebindingData.cs:29, InputRebindingData.cs:29
+  [+0x0e5] InputRebindingData.cs:29, InputRebindingData.cs:29
+  [+0x0e6] :4294967295
+  [+0x0f0] InputReference.cs:27
+  [+0x0f2] InputReference.cs:27
+  [+0x0fb] InputReference.cs:27
+  [+0x0fc] :4294967295
+  [+0x100] InputReference.cs:27
+  [+0x102] InputReference.cs:27
+  [+0x10b] InputReference.cs:27
+  [+0x10c] :4294967295
+  [+0x110] InputReference.cs:27
+  [+0x116] InputReference.cs:27
+  +0x116: RIP [0x02e34820] -> MetaUsage(tag=1, idx=30202)
+  +0x128: CALL 0x001bc7a0 ()
+  [+0x12d] InputReference.cs:27
+  [+0x136] InputReference.cs:27
+  [+0x13c] :4294967295
+  [+0x140] InputReference.cs:25, InputReference.cs:26
+  +0x145: RIP [0x02e34820] -> MetaUsage(tag=1, idx=30202)
+  Method idx=10287 (GetContexts): RVA=0x0067d770
+
+================ ScoutTeamPrioritiesReference.GetContexts (0x0067d770..0x0067d812, sz=162) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 20 48 8b 0d 9f b7 75
+  +0x010: 02 49 8b d8 c7 44 24 38 00 00 00 00 8b fa 83 b9
+  +0x020: e4 00 00 00 00 75 05 e8 04 f0 b3 ff 33 d2 48 8d
+  +0x030: 4c 24 38 e8 28 95 e5 00 81 ff 70 39 79 62 75 51
+  +0x040: 48 85 db 74 57 48 8b 53 10 4c 8b 05 30 fe 7c 02
+  +0x050: ff 43 1c 48 63 4b 18 3b 4a 18 72 27 49 8b 40 20
+  +0x060: ba 45 35 65 78 48 8b cb 4c 8b 80 c0 00 00 00 4d
+  +0x070: 8b 40 70 e8 08 a4 5d 00 48 8b 5c 24 30 48 83 c4
+  +0x080: 20 5f c3 8d 41 01 89 43 18 c7 44 8a 20 45 35 65
+  +0x090: 78 48 8b 5c 24 30 48 83 c4 20 5f c3 e8 ef ee b3
+  +0x0a0: ff cc
+  --- USYM & Refs ---
+  [+0x000] ScoutTeamPrioritiesReference.cs:34
+  [+0x00a] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x00a: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  [+0x011] ScoutTeamPrioritiesReference.cs:34
+  [+0x014] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x01c] ScoutTeamPrioritiesReference.cs:34
+  [+0x01e] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x027: CALL 0x001bc7a0 ()
+  [+0x02c] ScoutTeamPrioritiesReference.cs:34
+  +0x033: CALL 0x014d6cd0 ()
+  [+0x038] ScoutTeamPrioritiesReference.cs:34
+  [+0x040] ScoutTeamPrioritiesReference.cs:34
+  [+0x045] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x049: RIP [0x02e4d5f0] -> MetaUsage(tag=6, idx=86700)
+  [+0x050] SearchResultReference.cs:36
+  [+0x053] SearchResultReference.cs:36
+  [+0x057] SearchResultReference.cs:36
+  [+0x05c] SearchResultReference.cs:36
+  +0x073: CALL 0x00c57bf0 ()
+  [+0x078] ScoutTeamPrioritiesReference.cs:34
+  [+0x083] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  [+0x089] SearchResultReference.cs:36
+  [+0x091] ScoutTeamPrioritiesReference.cs:34
+  [+0x09c] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x09c: CALL 0x001bc700 ()
+  Method idx=10288 (GetContextsInternal): RVA=0x0067d6c0
+
+================ ScoutTeamPrioritiesReference.GetContextsInternal (0x0067d6c0..0x0067d762, sz=162) ================
+  +0x000: 48 89 5c 24 10 57 48 83 ec 20 8b f9 c7 44 24 30
+  +0x010: 00 00 00 00 48 8b 0d 45 b8 75 02 48 8b da 83 b9
+  +0x020: e4 00 00 00 00 75 05 e8 b4 f0 b3 ff 33 d2 48 8d
+  +0x030: 4c 24 30 e8 d8 95 e5 00 81 ff 70 39 79 62 75 51
+  +0x040: 48 85 db 74 57 48 8b 53 10 4c 8b 05 e0 fe 7c 02
+  +0x050: ff 43 1c 48 63 4b 18 3b 4a 18 72 27 49 8b 40 20
+  +0x060: ba 45 35 65 78 48 8b cb 4c 8b 80 c0 00 00 00 4d
+  +0x070: 8b 40 70 e8 b8 a4 5d 00 48 8b 5c 24 38 48 83 c4
+  +0x080: 20 5f c3 8d 41 01 89 43 18 c7 44 8a 20 45 35 65
+  +0x090: 78 48 8b 5c 24 38 48 83 c4 20 5f c3 e8 9f ef b3
+  +0x0a0: ff cc
+  --- USYM & Refs ---
+  [+0x000] ScoutTeamPrioritiesReference.cs:34
+  [+0x00c] ScoutTeamPrioritiesReference.cs:34
+  [+0x014] ScoutTeamPrioritiesReference.cs:34
+  +0x014: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  +0x027: CALL 0x001bc7a0 ()
+  [+0x02c] ScoutTeamPrioritiesReference.cs:34
+  +0x033: CALL 0x014d6cd0 ()
+  [+0x038] ScoutTeamPrioritiesReference.cs:34
+  [+0x040] ScoutTeamPrioritiesReference.cs:34
+  [+0x045] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x049: RIP [0x02e4d5f0] -> MetaUsage(tag=6, idx=86700)
+  [+0x050] SearchResultReference.cs:36
+  [+0x053] SearchResultReference.cs:36
+  [+0x057] SearchResultReference.cs:36
+  [+0x05c] SearchResultReference.cs:36
+  +0x073: CALL 0x00c57bf0 ()
+  [+0x078] ScoutTeamPrioritiesReference.cs:34
+  [+0x083] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  [+0x089] SearchResultReference.cs:36
+  [+0x091] ScoutTeamPrioritiesReference.cs:34
+  [+0x09c] ScoutTeamPrioritiesReference.cs:34
+  +0x09c: CALL 0x001bc700 ()
+  Method idx=10289 (DerivesFrom): RVA=0x0067d6b0
+
+================ ScoutTeamPrioritiesReference.DerivesFrom (0x0067d6b0..0x0067d800, sz=336) ================
+  +0x000: 66 90 81 fa 44 62 77 69 0f 94 c0 c3 cc cc cc cc
+  +0x010: 48 89 5c 24 10 57 48 83 ec 20 8b f9 c7 44 24 30
+  +0x020: 00 00 00 00 48 8b 0d 45 b8 75 02 48 8b da 83 b9
+  +0x030: e4 00 00 00 00 75 05 e8 b4 f0 b3 ff 33 d2 48 8d
+  +0x040: 4c 24 30 e8 d8 95 e5 00 81 ff 70 39 79 62 75 51
+  +0x050: 48 85 db 74 57 48 8b 53 10 4c 8b 05 e0 fe 7c 02
+  +0x060: ff 43 1c 48 63 4b 18 3b 4a 18 72 27 49 8b 40 20
+  +0x070: ba 45 35 65 78 48 8b cb 4c 8b 80 c0 00 00 00 4d
+  +0x080: 8b 40 70 e8 b8 a4 5d 00 48 8b 5c 24 38 48 83 c4
+  +0x090: 20 5f c3 8d 41 01 89 43 18 c7 44 8a 20 45 35 65
+  +0x0a0: 78 48 8b 5c 24 38 48 83 c4 20 5f c3 e8 9f ef b3
+  +0x0b0: ff cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x0c0: 48 89 5c 24 08 57 48 83 ec 20 48 8b 0d 9f b7 75
+  +0x0d0: 02 49 8b d8 c7 44 24 38 00 00 00 00 8b fa 83 b9
+  +0x0e0: e4 00 00 00 00 75 05 e8 04 f0 b3 ff 33 d2 48 8d
+  +0x0f0: 4c 24 38 e8 28 95 e5 00 81 ff 70 39 79 62 75 51
+  +0x100: 48 85 db 74 57 48 8b 53 10 4c 8b 05 30 fe 7c 02
+  +0x110: ff 43 1c 48 63 4b 18 3b 4a 18 72 27 49 8b 40 20
+  +0x120: ba 45 35 65 78 48 8b cb 4c 8b 80 c0 00 00 00 4d
+  +0x130: 8b 40 70 e8 08 a4 5d 00 48 8b 5c 24 30 48 83 c4
+  +0x140: 20 5f c3 8d 41 01 89 43 18 c7 44 8a 20 45 35 65
+  --- USYM & Refs ---
+  [+0x000] ScoutTeamPrioritiesReference.cs:34
+  [+0x002] ScoutTeamPrioritiesReference.cs:34
+  [+0x00b] ScoutTeamPrioritiesReference.cs:34
+  [+0x00c] :4294967295
+  [+0x010] ScoutTeamPrioritiesReference.cs:34
+  [+0x01c] ScoutTeamPrioritiesReference.cs:34
+  [+0x024] ScoutTeamPrioritiesReference.cs:34
+  +0x024: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  +0x037: CALL 0x001bc7a0 ()
+  [+0x03c] ScoutTeamPrioritiesReference.cs:34
+  +0x043: CALL 0x014d6cd0 ()
+  [+0x048] ScoutTeamPrioritiesReference.cs:34
+  [+0x050] ScoutTeamPrioritiesReference.cs:34
+  [+0x055] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x059: RIP [0x02e4d5f0] -> MetaUsage(tag=6, idx=86700)
+  [+0x060] SearchResultReference.cs:36
+  [+0x063] SearchResultReference.cs:36
+  [+0x067] SearchResultReference.cs:36
+  [+0x06c] SearchResultReference.cs:36
+  +0x083: CALL 0x00c57bf0 ()
+  [+0x088] ScoutTeamPrioritiesReference.cs:34
+  [+0x093] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  [+0x099] SearchResultReference.cs:36
+  [+0x0a1] ScoutTeamPrioritiesReference.cs:34
+  [+0x0ac] ScoutTeamPrioritiesReference.cs:34
+  +0x0ac: CALL 0x001bc700 ()
+  [+0x0b2] :4294967295
+  [+0x0c0] ScoutTeamPrioritiesReference.cs:34
+  [+0x0ca] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x0ca: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  [+0x0d1] ScoutTeamPrioritiesReference.cs:34
+  [+0x0d4] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x0dc] ScoutTeamPrioritiesReference.cs:34
+  [+0x0de] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x0e7: CALL 0x001bc7a0 ()
+  [+0x0ec] ScoutTeamPrioritiesReference.cs:34
+  +0x0f3: CALL 0x014d6cd0 ()
+  [+0x0f8] ScoutTeamPrioritiesReference.cs:34
+  [+0x100] ScoutTeamPrioritiesReference.cs:34
+  [+0x105] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x109: RIP [0x02e4d5f0] -> MetaUsage(tag=6, idx=86700)
+  [+0x110] SearchResultReference.cs:36
+  [+0x113] SearchResultReference.cs:36
+  [+0x117] SearchResultReference.cs:36
+  [+0x11c] SearchResultReference.cs:36
+  +0x133: CALL 0x00c57bf0 ()
+  [+0x138] ScoutTeamPrioritiesReference.cs:34
+  [+0x143] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  [+0x149] SearchResultReference.cs:36
+  Method idx=10290 (DerivesFromInternal): RVA=0x0067d6a0
+
+================ ScoutTeamPrioritiesReference.DerivesFromInternal (0x0067d6a0..0x0067d7f0, sz=336) ================
+  +0x000: 66 90 81 f9 44 62 77 69 0f 94 c0 c3 cc cc cc cc
+  +0x010: 66 90 81 fa 44 62 77 69 0f 94 c0 c3 cc cc cc cc
+  +0x020: 48 89 5c 24 10 57 48 83 ec 20 8b f9 c7 44 24 30
+  +0x030: 00 00 00 00 48 8b 0d 45 b8 75 02 48 8b da 83 b9
+  +0x040: e4 00 00 00 00 75 05 e8 b4 f0 b3 ff 33 d2 48 8d
+  +0x050: 4c 24 30 e8 d8 95 e5 00 81 ff 70 39 79 62 75 51
+  +0x060: 48 85 db 74 57 48 8b 53 10 4c 8b 05 e0 fe 7c 02
+  +0x070: ff 43 1c 48 63 4b 18 3b 4a 18 72 27 49 8b 40 20
+  +0x080: ba 45 35 65 78 48 8b cb 4c 8b 80 c0 00 00 00 4d
+  +0x090: 8b 40 70 e8 b8 a4 5d 00 48 8b 5c 24 38 48 83 c4
+  +0x0a0: 20 5f c3 8d 41 01 89 43 18 c7 44 8a 20 45 35 65
+  +0x0b0: 78 48 8b 5c 24 38 48 83 c4 20 5f c3 e8 9f ef b3
+  +0x0c0: ff cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x0d0: 48 89 5c 24 08 57 48 83 ec 20 48 8b 0d 9f b7 75
+  +0x0e0: 02 49 8b d8 c7 44 24 38 00 00 00 00 8b fa 83 b9
+  +0x0f0: e4 00 00 00 00 75 05 e8 04 f0 b3 ff 33 d2 48 8d
+  +0x100: 4c 24 38 e8 28 95 e5 00 81 ff 70 39 79 62 75 51
+  +0x110: 48 85 db 74 57 48 8b 53 10 4c 8b 05 30 fe 7c 02
+  +0x120: ff 43 1c 48 63 4b 18 3b 4a 18 72 27 49 8b 40 20
+  +0x130: ba 45 35 65 78 48 8b cb 4c 8b 80 c0 00 00 00 4d
+  +0x140: 8b 40 70 e8 08 a4 5d 00 48 8b 5c 24 30 48 83 c4
+  --- USYM & Refs ---
+  [+0x000] ScoutTeamPrioritiesReference.cs:34
+  [+0x002] ScoutTeamPrioritiesReference.cs:34
+  [+0x00b] ScoutTeamPrioritiesReference.cs:34
+  [+0x00c] :4294967295
+  [+0x010] ScoutTeamPrioritiesReference.cs:34
+  [+0x012] ScoutTeamPrioritiesReference.cs:34
+  [+0x01b] ScoutTeamPrioritiesReference.cs:34
+  [+0x01c] :4294967295
+  [+0x020] ScoutTeamPrioritiesReference.cs:34
+  [+0x02c] ScoutTeamPrioritiesReference.cs:34
+  [+0x034] ScoutTeamPrioritiesReference.cs:34
+  +0x034: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  +0x047: CALL 0x001bc7a0 ()
+  [+0x04c] ScoutTeamPrioritiesReference.cs:34
+  +0x053: CALL 0x014d6cd0 ()
+  [+0x058] ScoutTeamPrioritiesReference.cs:34
+  [+0x060] ScoutTeamPrioritiesReference.cs:34
+  [+0x065] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x069: RIP [0x02e4d5f0] -> MetaUsage(tag=6, idx=86700)
+  [+0x070] SearchResultReference.cs:36
+  [+0x073] SearchResultReference.cs:36
+  [+0x077] SearchResultReference.cs:36
+  [+0x07c] SearchResultReference.cs:36
+  +0x093: CALL 0x00c57bf0 ()
+  [+0x098] ScoutTeamPrioritiesReference.cs:34
+  [+0x0a3] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  [+0x0a9] SearchResultReference.cs:36
+  [+0x0b1] ScoutTeamPrioritiesReference.cs:34
+  [+0x0bc] ScoutTeamPrioritiesReference.cs:34
+  +0x0bc: CALL 0x001bc700 ()
+  [+0x0c2] :4294967295
+  [+0x0d0] ScoutTeamPrioritiesReference.cs:34
+  [+0x0da] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x0da: RIP [0x02dd8f20] -> MetaUsage(tag=1, idx=25084)
+  [+0x0e1] ScoutTeamPrioritiesReference.cs:34
+  [+0x0e4] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  [+0x0ec] ScoutTeamPrioritiesReference.cs:34
+  [+0x0ee] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:34
+  +0x0f7: CALL 0x001bc7a0 ()
+  [+0x0fc] ScoutTeamPrioritiesReference.cs:34
+  +0x103: CALL 0x014d6cd0 ()
+  [+0x108] ScoutTeamPrioritiesReference.cs:34
+  [+0x110] ScoutTeamPrioritiesReference.cs:34
+  [+0x115] ScoutTeamPrioritiesReference.cs:34, SearchResultReference.cs:36
+  +0x119: RIP [0x02e4d5f0] -> MetaUsage(tag=6, idx=86700)
+  [+0x120] SearchResultReference.cs:36
+  [+0x123] SearchResultReference.cs:36
+  [+0x127] SearchResultReference.cs:36
+  [+0x12c] SearchResultReference.cs:36
+  +0x143: CALL 0x00c57bf0 ()
+  [+0x148] ScoutTeamPrioritiesReference.cs:34
+  Method idx=10291 (GetInstance): RVA=0x0067d820
+
+================ ScoutTeamPrioritiesReference.GetInstance (0x0067d820..0x0067d867, sz=71) ================
+  +0x000: 40 53 48 83 ec 20 48 8b 0d 9b 71 78 02 e8 7e ee
+  +0x010: b3 ff 48 8b 0d f7 a2 7b 02 48 8b d8 83 b9 e4 00
+  +0x020: 00 00 00 75 05 e8 56 ef b3 ff 45 33 c9 ba 20 30
+  +0x030: 31 31 48 8b cb 45 8d 41 5c e8 12 51 01 01 48 8b
+  +0x040: c3 48 83 c4 20 5b c3
+  --- USYM & Refs ---
+  [+0x000] ScoutTeamPrioritiesReference.cs:34
+  [+0x006] ScoutTeamPrioritiesReference.cs:34
+  +0x006: RIP [0x02e049c8] -> MetaUsage(tag=1, idx=35887)
+  +0x00d: CALL 0x001bc6b0 ()
+  [+0x012] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:26
+  +0x012: RIP [0x02e37b30] -> MetaUsage(tag=1, idx=30501)
+  [+0x019] ScoutTeamPrioritiesReference.cs:34
+  [+0x01c] ScoutTeamPrioritiesReference.cs:34, ScoutTeamPrioritiesReference.cs:26
+  +0x025: CALL 0x001bc7a0 ()
+  [+0x02a] ScoutTeamPrioritiesReference.cs:28
+  +0x039: CALL 0x01692970 (InteropReference.cs:164)
+  [+0x03e] ScoutTeamPrioritiesReference.cs:34
+  [+0x041] ScoutTeamPrioritiesReference.cs:34
+
+--- Type 724: PersonSearchReference (fields=0, methods=16) ---
+  Method idx=8418 (.ctor): RVA=0x006542f0
+  Method idx=8419 (.ctor): RVA=0x004d2220
+  Method idx=8420 (get_Identifier): RVA=0x00654330
+  Method idx=8421 (get_ID): RVA=0x00654330
+  Method idx=8422 (AcceptsProperty): RVA=0x00652d70
+  Method idx=8423 (AcceptsPropertyInternal): RVA=0x00652ac0
+  Method idx=8424 (GetPropertyTypeInternal): RVA=0x00653c10
+  Method idx=8425 (GetPropertyDescriptionInternal): RVA=0x0035e230
+  Method idx=8426 (GetProperties): RVA=0x00653bf0
+  Method idx=8427 (GetPropertiesInternal): RVA=0x00652df0
+  Method idx=8428 (GetPropertyCountInternal): RVA=0x00653c00
+  Method idx=8429 (GetContexts): RVA=0x004c7f00
+  Method idx=8430 (GetContextsInternal): RVA=0x0035df40
+  Method idx=8431 (DerivesFrom): RVA=0x00652d90
+  Method idx=8432 (DerivesFromInternal): RVA=0x00652d80
+  Method idx=8433 (GetInstance): RVA=0x00652da0
+
+=== 2. Check all StreamedListView and StreamedTable methods for Reorderable / m_reorderable (+0x4e4) / m_disableSorting (+0x7a0) ===
+
+--- Type 5791: StreamedListView (methods=185) ---
+  Method idx=47153 (get_SourceData): RVA=0x015ace60
+  Method idx=47154 (set_SourceData): RVA=0x015ad680
+  Method idx=47155 (get_ReceivedAllSortingData): RVA=0x015acd40
+  Method idx=47156 (get_Dirty): RVA=0x015acc30
+  Method idx=47157 (set_Dirty): RVA=0x015ad130
+  Method idx=47158 (get_SortAscending): RVA=0x015ace40
+  Method idx=47159 (set_SortAscending): RVA=0x015ad650
+  Method idx=47160 (get_Panel): RVA=0x015acd30
+  Method idx=47161 (set_Panel): RVA=0x015ad4d0
+  Method idx=47162 (get_ScrollViewInitialised): RVA=0x015acd90
+  Method idx=47163 (set_ScrollViewInitialised): RVA=0x015ad540
+  Method idx=47164 (get_ListElement): RVA=0x015accf0
+  Method idx=47165 (get_Sortings): RVA=0x00815200
+  Method idx=47166 (add_OnSelectionChanged): RVA=0x015acbd0
+  Method idx=47167 (remove_OnSelectionChanged): RVA=0x015acf60
+  Method idx=47168 (add_OnElementInteracted): RVA=0x015acb40
+  Method idx=47169 (remove_OnElementInteracted): RVA=0x015aced0
+  Method idx=47170 (set_SelectingSameItemDeselects): RVA=0x015ad5c0
+  Method idx=47171 (get_ItemCount): RVA=0x015acca0
+  Method idx=47172 (get_Indices): RVA=0x0156e280
+  Method idx=47173 (get_ScrollViewToScroll): RVA=0x015acdd0
+  Method idx=47174 (set_ScrollViewToScroll): RVA=0x015ad580
+  Method idx=47175 (get_SortBinding): RVA=0x015ace50
+  Method idx=47176 (set_SortBinding): RVA=0x015ad660
+  Method idx=47177 (set_Binding): RVA=0x015acfc0
+  Method idx=47178 (get_Key): RVA=0x015acce0
+  Method idx=47179 (set_Key): RVA=0x015ad2d0
+  Method idx=47180 (get_BindableFlags): RVA=0x00292620
+  Method idx=47181 (get_OnSelectedColumnChangedCallback): RVA=0x015acd00
+  Method idx=47182 (set_OnSelectedColumnChangedCallback): RVA=0x015ad340
+  Method idx=47183 (get_Identifier): RVA=0x008315f0
+  Method idx=47184 (set_Identifier): RVA=0x015ad2b0
+  Method idx=47185 (get_DropGroup): RVA=0x00831610
+  Method idx=47186 (set_DropGroup): RVA=0x015ad170
+  Method idx=47187 (get_SharedPersistenceID): RVA=0x00831600
+  Method idx=47188 (set_SharedPersistenceID): RVA=0x00831640
+  Method idx=47189 (get_ScrollToElementBinding): RVA=0x015acd80
+  Method idx=47190 (set_ScrollToElementBinding): RVA=0x015ad520
+  Method idx=47191 (get_SetScrollToAsSelected): RVA=0x015ace30
+  Method idx=47192 (set_SetScrollToAsSelected): RVA=0x015ad640
+  Method idx=47193 (get_SetIgnorePickingMode): RVA=0x015ace20
+  Method idx=47194 (set_SetIgnorePickingMode): RVA=0x015ad620
+  Method idx=47195 (get_IsPaginated): RVA=0x015acc70
+  Method idx=47196 (get_FocusScrollType): RVA=0x015acc40
+  Method idx=47197 (set_FocusScrollType): RVA=0x015ad250
+  Method idx=47198 (get_VirtualisationController): RVA=0x015acea0
+  Method idx=47199 (get_Direction): RVA=0x015acc00
+  Method idx=47200 (set_Direction): RVA=0x015ad100
+  Method idx=47201 (get_SelectionMode): RVA=0x015acdf0
+  Method idx=47202 (set_SelectionMode): RVA=0x015ad5f0
+  Method idx=47203 (get_SelectedItemsBinding): RVA=0x015acde0
+  Method idx=47204 (set_SelectedItemsBinding): RVA=0x015ad5a0
+  Method idx=47205 (set_Reorderable): RVA=0x015ad4f0
+  Method idx=47206 (set_ListName): RVA=0x015ad2e0
+  Method idx=47207 (set_AlternateRows): RVA=0x015acf90
+  Method idx=47208 (set_DragScrollSpeed): RVA=0x015ad140
+  Method idx=47209 (set_MouseWheelScrollSize): RVA=0x015ad310
+  Method idx=47210 (get_Truncate): RVA=0x015ace70
+  Method idx=47211 (set_Truncate): RVA=0x015ad740
+  Method idx=47212 (set_OverprovisionPercent): RVA=0x015ad360
+  Method idx=47213 (set_FlexGrow): RVA=0x015ad1f0
+  Method idx=47214 (set_FlexShrink): RVA=0x015ad220
+  Method idx=47215 (get_TruncateLabelTemplate): RVA=0x00869dd0
+  Method idx=47216 (set_TruncateLabelTemplate): RVA=0x015ad6a0
+  Method idx=47217 (set_FixedElementSize): RVA=0x015ad1c0
+  Method idx=47218 (set_DynamicElements): RVA=0x015ad190
+  Method idx=47219 (set_HorizontalScrollerVisibility): RVA=0x015ad280
+  Method idx=47220 (set_VerticalScrollerVisibility): RVA=0x015ad770
+  Method idx=47221 (get_ScrollViewMode): RVA=0x015acda0
+  Method idx=47222 (set_ScrollViewMode): RVA=0x015ad550
+  Method idx=47223 (get_PaginationTemplate): RVA=0x015acd20
+  Method idx=47224 (set_PaginationTemplate): RVA=0x015ad3b0
+  Method idx=47225 (get_PaginationStyle): RVA=0x015acd10
+  Method idx=47226 (set_PaginationStyle): RVA=0x015ad390
+  Method idx=47227 (.ctor): RVA=0x015abdf0
+  Method idx=47228 (BindToData): RVA=0x015a49b0
+  Method idx=47229 (UnbindFromData): RVA=0x015aa970
+  Method idx=47230 (Refresh): RVA=0x015a9390
+  Method idx=47231 (CanBuild): RVA=0x015a50b0
+  Method idx=47232 (ShouldEnableContent): RVA=0x015a9c20
+  Method idx=47233 (UpdateEnabledState): RVA=0x015aab80
+  Method idx=47234 (OnSortingDataChanged): RVA=0x015a7ff0
+  Method idx=47235 (ProcessSortingDataChanged): RVA=0x015a8cb0
+  Method idx=47236 (PostSortingDataChanged): RVA=0x015a8610
+  Method idx=47237 (SetSorting): RVA=0x00000000
+  Method idx=47238 (UpdateSortingBinding): RVA=0x015ab800
+  Method idx=47239 (SetSortingBinding): RVA=0x015a9a80
+  Method idx=47240 (SetSortingBinding): RVA=0x015a9ae0
+  Method idx=47241 (HasSorting): RVA=0x015a5f20
+  Method idx=47242 (ApplySorting): RVA=0x015a4260
+  Method idx=47243 (BindSortPathNextDepth): RVA=0x015a4850
+  Method idx=47244 (SetNoSorting): RVA=0x015a99d0
+  Method idx=47245 (ClearSortingState): RVA=0x015a5180
+  Method idx=47246 (BindToDataInternal): RVA=0x002911e0
+  Method idx=47247 (OnSortBindingChanged): RVA=0x015a7ca0
+  Method idx=47248 (OnResetSortingEvent): RVA=0x015a7870
+  Method idx=47249 (UnbindFromDataInternal): RVA=0x015aa750
+  Method idx=47250 (OnViewAreaChanged): RVA=0x015a8340
+  Method idx=47251 (OnAttachToPanel): RVA=0x015a63e0
+  Method idx=47252 (OnDetachFromPanel): RVA=0x015a6b80
+  Method idx=47253 (OnCustomStyleResolved): RVA=0x015a68c0
+  Method idx=47254 (BeginStateChange): RVA=0x015a47a0
+  Method idx=47255 (BeginStateChange): RVA=0x015a47f0
+  Method idx=47256 (SetDirty): RVA=0x015a9780
+  Method idx=47257 (ClearDirty): RVA=0x015a5110
+  Method idx=47258 (EndStateChange): RVA=0x015a5350
+  Method idx=47259 (ResolveStateChanges): RVA=0x015a9620
+  Method idx=47260 (StateChanged): RVA=0x015a9c80
+  Method idx=47261 (GetItemFromView): RVA=0x015a5a10
+  Method idx=47262 (GetItemFromSource): RVA=0x015a59e0
+  Method idx=47263 (ViewIndexOf): RVA=0x015abba0
+  Method idx=47264 (SourceIndexOf): RVA=0x015a9c50
+  Method idx=47265 (OnMakeItem): RVA=0x00000000
+  Method idx=47266 (OnBindItem): RVA=0x00000000
+  Method idx=47267 (OnRebindItem): RVA=0x00000000
+  Method idx=47268 (OnUnbindItem): RVA=0x00000000
+  Method idx=47269 (OnMoveItemInternal): RVA=0x015a7480
+  Method idx=47270 (OnAddItemInternal): RVA=0x015a62e0
+  Method idx=47271 (OnRemoveItemInternal): RVA=0x015a76c0
+  Method idx=47272 (OnDestroyItem): RVA=0x002911e0
+  Method idx=47273 (RefreshInternal): RVA=0x015a9060
+  Method idx=47274 (Rebuild): RVA=0x015a8eb0
+  Method idx=47275 (RebuildInternal): RVA=0x002911e0
+  Method idx=47276 (OnMakeItemInternal): RVA=0x015a73c0
+  Method idx=47277 (OnBindItemInternal): RVA=0x015a67d0
+  Method idx=47278 (OnRebindItemInternal): RVA=0x015a7660
+  Method idx=47279 (OnUnbindItemInternal): RVA=0x015a8110
+  Method idx=47280 (OnSelectedItemsBindingValueChanged): RVA=0x015a7b00
+  Method idx=47281 (UpdateSelectedItems): RVA=0x015ab4a0
+  Method idx=47282 (ForcePickingMode): RVA=0x015a5680
+  Method idx=47283 (ResetIndices): RVA=0x015a9420
+  Method idx=47284 (SetList): RVA=0x015a9880
+  Method idx=47285 (ClearListSelectionWithoutNotify): RVA=0x015a5120
+  Method idx=47286 (ClearSelection): RVA=0x015a5150
+  Method idx=47287 (SetListSelectionWithoutNotify): RVA=0x015a9820
+  Method idx=47288 (SetListSelection): RVA=0x015a9850
+  Method idx=47289 (GetFirstVisible): RVA=0x015a59b0
+  Method idx=47290 (GetLastVisible): RVA=0x015a5a50
+  Method idx=47291 (UpdatePaginationOnViewAreaChanged): RVA=0x015ab2e0
+  Method idx=47292 (UpdatePaginationBindings): RVA=0x015ab0d0
+  Method idx=47293 (JumpToPage): RVA=0x015a6000
+  Method idx=47294 (NextPage): RVA=0x015a6110
+  Method idx=47295 (PreviousPage): RVA=0x015a86c0
+  Method idx=47296 (TryToAddToAnimationQueue): RVA=0x015aa090
+  Method idx=47297 (RunAnimationSequence): RVA=0x015a9670
+  Method idx=47298 (ProcessAnimationQueue): RVA=0x015a8700
+  Method idx=47299 (ExecuteAnimationIn): RVA=0x015a53a0
+  Method idx=47300 (ProcessOnStyleResolved): RVA=0x015a89a0
+  Method idx=47301 (CompleteAnimation): RVA=0x015a51f0
+  Method idx=47302 (ForceDescheduleAnimation): RVA=0x015a5520
+  Method idx=47303 (RemoveAnimationClasses): RVA=0x015a93e0
+  Method idx=47304 (RefreshAnimationBitArray): RVA=0x015a8f60
+  Method idx=47305 (OnScrollToElementBindingValueChanged): RVA=0x015a7a60
+  Method idx=47306 (TryScrollToCurrentElementOrCachedScrollOffset): RVA=0x015a9ee0
+  Method idx=47307 (TryScrollToTop): RVA=0x015aa040
+  Method idx=47308 (PerformScrollTo): RVA=0x015a84d0
+  Method idx=47309 (GetScrollToIndex): RVA=0x015a5a80
+  Method idx=47310 (OnScrollViewGeometryChanged): RVA=0x015a7ad0
+  Method idx=47311 (OnScrollBarGeometryChanged): RVA=0x015a7950
+  Method idx=47312 (OnScrollEventHorizontal): RVA=0x015a7960
+  Method idx=47313 (OnScrollEventVertical): RVA=0x015a79e0
+  Method idx=47314 (UpdateTruncateBinding): RVA=0x015ab9b0
+  Method idx=47315 (OnMakeTruncateLabel): RVA=0x015a7410
+  Method idx=47316 (OnBindTruncateLabel): RVA=0x015a6870
+  Method idx=47317 (OnUnbindTruncateLabel): RVA=0x015a82f0
+  Method idx=47318 (OnSelectionChangedInternal): RVA=0x015a7bb0
+  Method idx=47319 (GetSelectedItem): RVA=0x015a5b90
+  Method idx=47320 (GetSelectedItems): RVA=0x015a5d00
+  Method idx=47321 (SetElementDefaultStyle): RVA=0x015a97d0
+  Method idx=47322 (OnNavigateListPaginationInputAction): RVA=0x015945a0
+  Method idx=47323 (OnRightStickPageChangeTriggered): RVA=0x015a78c0
+  Method idx=47324 (OnInputActionExecuted): RVA=0x015a7270
+  Method idx=47325 (OnDigIn): RVA=0x015a6de0
+  Method idx=47326 (OnDigOut): RVA=0x015a6ec0
+  Method idx=47327 (OnActiveElementsChanged): RVA=0x015a6150
+  Method idx=47328 (GetDigInTarget): RVA=0x015a5810
+  Method idx=47329 (FindSelectedColumnElementForRowNavigatable): RVA=0x00294ea0
+  Method idx=47330 (OnGeometryChanged): RVA=0x015a70d0
+  Method idx=47331 (VisibilityChanged): RVA=0x015abc40
+  Method idx=47332 (OnFocusInEvent): RVA=0x015a6fa0
+  Method idx=47333 (OnFocusOutEvent): RVA=0x015a7090
+  Method idx=47334 (AsStreamedObjectList): RVA=0x015a4720
+  Method idx=47335 (.cctor): RVA=0x015abc60
+  Method idx=47336 (<ApplySorting>g__SetupRow|246_0): RVA=0x015aa320
+  Method idx=47337 (<UpdatePaginationOnViewAreaChanged>g__CreatePaginationWidget|295_0): RVA=0x015aa640
+
+--- Type 5967: StreamedTable (methods=177) ---
+  Method idx=48771 (get_InputActionSort): RVA=0x015f21f0
+  Method idx=48772 (get_InputActionJumpToTopOfTable): RVA=0x015aef40
+  Method idx=48773 (set_InitFunction): RVA=0x015f2550
+  Method idx=48774 (get_SelectionLimitBinding): RVA=0x015f2340
+  Method idx=48775 (set_SelectionLimitBinding): RVA=0x015f2900
+  Method idx=48776 (get_IsSelectionCellActive): RVA=0x015f2270
+  Method idx=48777 (get_ActiveSelectionCellID): RVA=0x015f20f0
+  Method idx=48778 (get_SelectionCellID): RVA=0x015f2320
+  Method idx=48779 (set_SelectionCellID): RVA=0x015f28c0
+  Method idx=48780 (get_DragCellID): RVA=0x015f21a0
+  Method idx=48781 (set_DragCellID): RVA=0x015f2430
+  Method idx=48782 (get_IsDragCellActive): RVA=0x015f2230
+  Method idx=48783 (get_RemoveCellID): RVA=0x015f22d0
+  Method idx=48784 (set_RemoveCellID): RVA=0x015f2840
+  Method idx=48785 (get_IsRemoveCellActive): RVA=0x015f2250
+  Method idx=48786 (get_AddEvents): RVA=0x015f2120
+  Method idx=48787 (set_AddEvents): RVA=0x015f2380
+  Method idx=48788 (set_MigrateAddEvent): RVA=0x015f25c0
+  Method idx=48789 (get_RowElementAsset): RVA=0x015f2300
+  Method idx=48790 (set_RowElementAsset): RVA=0x015f2890
+  Method idx=48791 (get_FactoryAsset): RVA=0x015f21c0
+  Method idx=48792 (set_FactoryAsset): RVA=0x015f2470
+  Method idx=48793 (get_ContextMenuData): RVA=0x015f2150
+  Method idx=48794 (set_ContextMenuData): RVA=0x015f23c0
+  Method idx=48795 (get_DisableRowContextMenu): RVA=0x015f2180
+  Method idx=48796 (set_DisableRowContextMenu): RVA=0x015f2410
+  Method idx=48797 (get_SortedColumn): RVA=0x015f2360
+  Method idx=48798 (set_SortedColumn): RVA=0x015f2930
+  Method idx=48799 (get_DisableSorting): RVA=0x015f2190
+  Method idx=48800 (set_DisableSorting): RVA=0x015f2420
+  Method idx=48801 (get_HeaderCellAsset): RVA=0x015f21e0
+  Method idx=48802 (set_HeaderCellAsset): RVA=0x015f24b0
+  Method idx=48803 (get_DefaultSelectedColumn): RVA=0x015f2170
+  Method idx=48804 (set_DefaultSelectedColumn): RVA=0x015f23f0
+  Method idx=48805 (get_ViewDropdownName): RVA=0x015f2370
+  Method idx=48806 (set_ViewDropdownName): RVA=0x015f2950
+  Method idx=48807 (get_ShowFooter): RVA=0x015f2350
+  Method idx=48808 (set_ShowFooter): RVA=0x015f2920
+  Method idx=48809 (get_ResizeColumnWidthsToFit): RVA=0x015f22f0
+  Method idx=48810 (set_ResizeColumnWidthsToFit): RVA=0x015f2880
+  Method idx=48811 (get_AllowColumnResizing): RVA=0x015f2140
+  Method idx=48812 (set_AllowColumnResizing): RVA=0x015f23b0
+  Method idx=48813 (get_AllowColumnReordering): RVA=0x015f2130
+  Method idx=48814 (set_AllowColumnReordering): RVA=0x015f23a0
+  Method idx=48815 (get_FooterBinding): RVA=0x015f21d0
+  Method idx=48816 (set_FooterBinding): RVA=0x015f2490
+  Method idx=48817 (get_SelectionEvents): RVA=0x015f2330
+  Method idx=48818 (set_SelectionEvents): RVA=0x015f28e0
+  Method idx=48819 (get_DefaultSelectFirstElement): RVA=0x015f2160
+  Method idx=48820 (set_DefaultSelectFirstElement): RVA=0x015f23e0
+  Method idx=48821 (set_MigrateSelectionEvent): RVA=0x015f27a0
+  Method idx=48822 (get_DragEvents): RVA=0x015f21b0
+  Method idx=48823 (set_DragEvents): RVA=0x015f2450
+  Method idx=48824 (set_MigrateDragEvent): RVA=0x015f2660
+  Method idx=48825 (get_RemoveEvents): RVA=0x015f22e0
+  Method idx=48826 (set_RemoveEvents): RVA=0x015f2860
+  Method idx=48827 (set_MigrateRemoveEvent): RVA=0x015f2700
+  Method idx=48828 (get_SelectedColumnIndex): RVA=0x015f2310
+  Method idx=48829 (set_SelectedColumnIndex): RVA=0x015f28b0
+  Method idx=48830 (UpdateSortShortcut): RVA=0x015f14d0
+  Method idx=48831 (get_NumSelectedItems): RVA=0x015f2290
+  Method idx=48832 (.ctor): RVA=0x015f1930
+  Method idx=48833 (RegisterEvents): RVA=0x015eef50
+  Method idx=48834 (OnAttachToPanel): RVA=0x015eb750
+  Method idx=48835 (GeneratePersistenceKeys): RVA=0x015e9600
+  Method idx=48836 (OnTableGeometryChangedEvent): RVA=0x015ee660
+  Method idx=48837 (AvailableTableWidthChanged): RVA=0x015e5f00
+  Method idx=48838 (OnScrollViewGeometryChanged): RVA=0x015ee0c0
+  Method idx=48839 (SetList): RVA=0x015ef610
+  Method idx=48840 (GetGridBreakpointForTable): RVA=0x00294ea0
+  Method idx=48841 (TrySetColumnsAndSort): RVA=0x015f0040
+  Method idx=48842 (ApplyPersistedSortingState): RVA=0x015e58c0
+  Method idx=48843 (CanBuild): RVA=0x015e7580
+  Method idx=48844 (RebuildInternal): RVA=0x015ee9c0
+  Method idx=48845 (OnMakeItem): RVA=0x015ecc60
+  Method idx=48846 (GetSelectedItemsContextValues): RVA=0x015ea5d0
+  Method idx=48847 (OnBindItem): RVA=0x015eb760
+  Method idx=48848 (OnRebindItem): RVA=0x015ed7d0
+  Method idx=48849 (OnUnbindItem): RVA=0x015ee670
+  Method idx=48850 (RefreshInternal): RVA=0x015eed80
+  Method idx=48851 (UpdateSortingIcons): RVA=0x00000000
+  Method idx=48852 (BindToDataInternal): RVA=0x015e6d70
+  Method idx=48853 (OnContextMenuAssetLoaded): RVA=0x015ec0b0
+  Method idx=48854 (OnRowElementAssetLoaded): RVA=0x015ee050
+  Method idx=48855 (OnFactoryAssetLoaded): RVA=0x015ec640
+  Method idx=48856 (UnbindFromDataInternal): RVA=0x015f0c00
+  Method idx=48857 (OnSelectionLimitBindingValueChanged): RVA=0x015ee1e0
+  Method idx=48858 (RecreateHeaders): RVA=0x015eecb0
+  Method idx=48859 (CreateHeader): RVA=0x015e8f00
+  Method idx=48860 (BindHeader): RVA=0x015e6230
+  Method idx=48861 (BindHeaders): RVA=0x015e6ca0
+  Method idx=48862 (UnbindHeader): RVA=0x015f0e40
+  Method idx=48863 (UnbindHeaders): RVA=0x015f0f50
+  Method idx=48864 (DestroyHeader): RVA=0x015e9220
+  Method idx=48865 (RecreateFooters): RVA=0x015eead0
+  Method idx=48866 (RebindFooters): RVA=0x015ee830
+  Method idx=48867 (CreateFooter): RVA=0x015e8e40
+  Method idx=48868 (DestroyFooter): RVA=0x015e91b0
+  Method idx=48869 (SetSorting): RVA=0x015efc40
+  Method idx=48870 (SetSorting): RVA=0x015efce0
+  Method idx=48871 (UpdatePersistedColumnSortingData): RVA=0x015f1290
+  Method idx=48872 (EntryForColumn): RVA=0x015e9450
+  Method idx=48873 (UpdateSortColum): RVA=0x015f1380
+  Method idx=48874 (SetNoSorting): RVA=0x015ef750
+  Method idx=48875 (MakeDefaultSelectedColumnHeader): RVA=0x015eb000
+  Method idx=48876 (OnHeaderClicked): RVA=0x015ec910
+  Method idx=48877 (TryFindSortedColumn): RVA=0x015eff70
+  Method idx=48878 (OnDigIn): RVA=0x015ec2d0
+  Method idx=48879 (OnDigOut): RVA=0x015ec310
+  Method idx=48880 (OnSortColumn): RVA=0x015ee250
+  Method idx=48881 (OnJumpToTopOfTable): RVA=0x015ecb70
+  Method idx=48882 (TryShowJumpToTopElement): RVA=0x015f0230
+  Method idx=48883 (EnableSortShortcut): RVA=0x015e93a0
+  Method idx=48884 (DisableSortShortcut): RVA=0x015e9340
+  Method idx=48885 (MakeColumnHeader): RVA=0x015eac30
+  Method idx=48886 (UpdateTotalDefaultWidth): RVA=0x015f1760
+  Method idx=48887 (ResetRemainingAvailableWidth): RVA=0x015ef1e0
+  Method idx=48888 (AddContextMenu): RVA=0x015e57e0
+  Method idx=48889 (ConfirmDeleteCustomView): RVA=0x015e78c0
+  Method idx=48890 (ConfirmRenameCustomView): RVA=0x015e7990
+  Method idx=48891 (CancelCustomViewDialog): RVA=0x00375880
+  Method idx=48892 (OnAddOnLoaded): RVA=0x015eb2c0
+  Method idx=48893 (OnPanelClosed): RVA=0x015ed5d0
+  Method idx=48894 (AddColumn): RVA=0x015e5510
+  Method idx=48895 (RemoveColumn): RVA=0x015ef090
+  Method idx=48896 (DestroyColumn): RVA=0x015e90b0
+  Method idx=48897 (ReplaceColumn): RVA=0x015ef1a0
+  Method idx=48898 (MoveColumn): RVA=0x015eb0e0
+  Method idx=48899 (AutoSizeColumn): RVA=0x015e5ae0
+  Method idx=48900 (ResizeColumnsIfUndersized): RVA=0x015ef450
+  Method idx=48901 (AutoSizeAllColumns): RVA=0x015e59b0
+  Method idx=48902 (GetAdditionalWidths): RVA=0x015e9910
+  Method idx=48903 (CreateCustomView): RVA=0x015e85d0
+  Method idx=48904 (UpdateStreamedTableView): RVA=0x015f1650
+  Method idx=48905 (GenerateCustomViewName): RVA=0x015e9570
+  Method idx=48906 (OnCreateContextMenuItem): RVA=0x015ec120
+  Method idx=48907 (MakeColumnFooter): RVA=0x015eaa00
+  Method idx=48908 (CreateDefaultSelectionCell): RVA=0x015e8950
+  Method idx=48909 (CreateCellForColumn): RVA=0x00000000
+  Method idx=48910 (OnStartColumnResizing): RVA=0x015ee290
+  Method idx=48911 (OnEndColumnResizing): RVA=0x015ec390
+  Method idx=48912 (ColumnsResized): RVA=0x015e77b0
+  Method idx=48913 (OnColumnSizeChanged): RVA=0x015ebb00
+  Method idx=48914 (InitialiseColumns): RVA=0x015ea870
+  Method idx=48915 (GetColumnWidths): RVA=0x015e9f40
+  Method idx=48916 (ClearColumns): RVA=0x015e7690
+  Method idx=48917 (CreateColumns): RVA=0x015e83b0
+  Method idx=48918 (CreateColumn): RVA=0x015e7dc0
+  Method idx=48919 (OnStartReorder): RVA=0x015ee350
+  Method idx=48920 (OnReorder): RVA=0x015edbe0
+  Method idx=48921 (OnEndReorder): RVA=0x015ec410
+  Method idx=48922 (OnViewAreaChanged): RVA=0x015ee6e0
+  Method idx=48923 (OnViewSet): RVA=0x015ee7a0
+  Method idx=48924 (SetSelectionCellStates): RVA=0x015ef890
+  Method idx=48925 (FindSelectedColumnElementForRowNavigatable): RVA=0x015e94c0
+  Method idx=48926 (OnSelectionChangedInternal): RVA=0x015ee100
+  Method idx=48927 (OnMoveItemInternal): RVA=0x015ed340
+  Method idx=48928 (OnAddItemInternal): RVA=0x015eb150
+  Method idx=48929 (OnRemoveItemInternal): RVA=0x015edad0
+  Method idx=48930 (OnNavigationMovement): RVA=0x015ed4c0
+  Method idx=48931 (CreateColumnsFromStaticList): RVA=0x015e8170
+  Method idx=48932 (CreateColumnsFromTableView): RVA=0x015e8350
+  Method idx=48933 (CreateColumnsFromTableViewCollection): RVA=0x015e82c0
+  Method idx=48934 (CanPopulateTable): RVA=0x015e7640
+  Method idx=48935 (UpdateCustomViewDropdown): RVA=0x015f10f0
+  Method idx=48936 (GetIdentifiers): RVA=0x015ea360
+  Method idx=48937 (GetContexts): RVA=0x015ea140
+  Method idx=48938 (GetBindingKind): RVA=0x015e9cf0
+  Method idx=48939 (<.ctor>b__206_0): RVA=0x015f0a70
+  Method idx=48940 (<.ctor>b__206_1): RVA=0x015f0b30
+  Method idx=48941 (<.ctor>b__206_2): RVA=0x015f0bf0
+  Method idx=48942 (<RegisterEvents>b__207_0): RVA=0x015f0830
+  Method idx=48943 (<SetList>g__SelectionIsValid|213_0): RVA=0x015f0870
+  Method idx=48944 (<OnBindItem>g__SetBindings|221_0): RVA=0x015f0580
+  Method idx=48945 (<TryShowJumpToTopElement>g__EnableJumpToTopOfTable|256_0): RVA=0x015f09d0
+  Method idx=48946 (<TryShowJumpToTopElement>g__DisableJumpToTopOfTable|256_1): RVA=0x015f0980
+  Method idx=48947 (<OnViewSet>b__297_0): RVA=0x015f0800

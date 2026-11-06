@@ -1,0 +1,353 @@
+=== 1. Dump rest of Bindings.OnNodeCreated (0x014c6770, 800) ===
+
+================ Bindings.OnNodeCreated_part2 (RVA=0x014c6770, size=800) ================
+  +0x000: 29 45 d7 0f 29 4d e7 e8 34 77 c6 ff 66 0f 7e f8
+  +0x010: 84 c0 74 67 48 8b bb 98 00 00 00 48 8d 4d b7 48
+  +0x020: 8b 5e 10 49 8b d6 4c 89 65 bf 4c 89 75 b7 e8 9d
+  +0x030: 4f cf fe 48 89 5d bf 48 85 ff 0f 84 a6 02 00 00
+  +0x040: 4c 8b 05 f1 b2 96 01 0f 28 45 b7 ff 47 1c 48 8b
+  +0x050: 57 10 48 63 4f 18 3b 4a 18 72 46 49 8b 40 20 48
+  +0x060: 8d 55 d7 48 8b cf 66 0f 7f 45 d7 4c 8b 80 c0 00
+  +0x070: 00 00 4d 8b 40 70 e8 85 52 76 ff 4c 8d 9c 24 c0
+  +0x080: 00 00 00 49 8b 5b 30 49 8b 73 40 41 0f 28 73 f0
+  +0x090: 41 0f 28 7b e0 49 8b e3 41 5f 41 5e 41 5c 5f 5d
+  +0x0a0: c3 8d 41 01 89 47 18 48 8d 41 02 48 83 c1 02 48
+  +0x0b0: 03 c0 48 c1 e1 04 48 03 ca 0f 11 04 c2 33 d2 e8
+  +0x0c0: 0c 4f cf fe eb b5 48 8b 43 78 48 85 c0 0f 84 0d
+  +0x0d0: 02 00 00 48 63 4d a7 45 33 c9 48 8b 40 10 4c 8b
+  +0x0e0: c7 48 8b 74 c8 20 48 8b cb 48 8b d6 e8 ef ea ff
+  +0x0f0: ff 48 85 f6 0f 84 e6 01 00 00 48 8b 45 a7 48 39
+  +0x100: 46 10 0f 85 73 ff ff ff 48 8b 8b 88 00 00 00 48
+  +0x110: 85 c9 0f 84 c8 01 00 00 0f 10 45 f7 4c 8b 05 f5
+  +0x120: 0f 92 01 48 8d 55 d7 0f 10 4d 07 0f 29 45 d7 0f
+  +0x130: 29 4d e7 e8 b8 77 c6 ff 84 c0 0f 84 3b ff ff ff
+  +0x140: 48 8b 45 bf 4c 39 66 28 76 0a 48 39 45 af 0f 84
+  +0x150: 27 ff ff ff 48 8b 8b 88 00 00 00 48 89 45 af 48
+  +0x160: 85 c9 0f 84 78 01 00 00 0f 28 45 a7 4c 8d 45 d7
+  +0x170: 0f 10 4d f7 4c 8b 0d 1d 12 92 01 48 8d 55 b7 66
+  +0x180: 0f 7f 45 d7 0f 10 45 07 0f 29 4d b7 0f 29 45 c7
+  +0x190: e8 9b 38 c7 ff 4c 39 66 28 76 51 48 8b 0d 76 3f
+  +0x1a0: 91 01 44 39 a1 e4 00 00 00 75 05 e8 80 5e cf fe
+  +0x1b0: 33 c9 e8 b9 85 00 00 44 38 66 40 77 07 33 c9 e8
+  +0x1c0: ec 85 00 00 4c 8b 46 20 4d 85 c0 0f 84 0f 01 00
+  +0x1d0: 00 4c 8b 4e 28 b9 06 00 00 00 48 8b 15 d7 75 95
+  +0x1e0: 01 e8 4a de b3 fe 33 c0 48 89 46 28 66 0f 7e f8
+  +0x1f0: 84 c0 0f 84 83 fe ff ff 48 8b bb 98 00 00 00 48
+  +0x200: 8d 4d b7 48 8b 5e 10 49 8b d6 4c 89 65 bf 4c 89
+  +0x210: 75 b7 e8 b9 4d cf fe 48 89 5d bf 48 85 ff 0f 84
+  +0x220: c8 00 00 00 e9 17 fe ff ff 4c 39 67 70 76 2d 48
+  +0x230: 8b 43 78 48 85 c0 0f 84 a4 00 00 00 48 63 4f 70
+  +0x240: 48 8b 40 10 48 8b 54 c8 20 48 85 d2 0f 84 8e 00
+  +0x250: 00 00 4c 39 62 20 0f 84 1f fe ff ff 33 d2 48 8b
+  +0x260: cb e8 aa a7 ff ff 45 33 c9 4c 8b c7 48 8b d0 48
+  +0x270: 8b cb e8 69 e9 ff ff e9 ff fd ff ff 48 8b 49 48
+  +0x280: 48 85 c9 74 5b 4c 8b 0d 0c d1 91 01 4c 8d 45 6f
+  +0x290: 48 8b 52 68 e8 27 ac c5 ff 84 c0 0f 84 da fd ff
+  +0x2a0: ff 48 8b 45 6f 48 85 c0 74 36 48 8b 40 70 48 39
+  +0x2b0: 47 70 0f 84 c3 fd ff ff 48 8b 53 78 48 85 d2 74
+  +0x2c0: 1f 48 8b 52 10 45 33 c9 48 63 c8 4c 8b c7 48 8b
+  +0x2d0: 54 ca 20 48 8b cb e8 05 e9 ff ff e9 9b fd ff ff
+  +0x2e0: e8 ab 5c cf fe cc e8 a5 5c cf fe cc e8 9f 5c cf
+  +0x2f0: fe cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x300: 48 8b c4 48 89 48 08 53 56 57 41 54 41 55 41 56
+  +0x310: 41 57 48 81 ec d0 01 00 00 0f 29 70 b8 0f 29 78
+  --- Annotations ---
+  +0x007: CALL 0x0112deb0 -> 
+  +0x076: CALL 0x00c2ba70 -> 
+  +0x0ec: CALL 0x014c5350 -> Bindings.SetTargetData
+  +0x133: CALL 0x0112e060 -> 
+  +0x190: CALL 0x0113a1a0 -> 
+  +0x1b2: CALL 0x014ceee0 -> Metric.DecOpenChannels
+  +0x1bf: CALL 0x014cef20 -> Metric.DecOpenPendingData
+  +0x224: JMP 0x014c67b0 -> 
+  +0x261: CALL 0x014c1180 -> Bindings.GetNewData
+  +0x272: CALL 0x014c5350 -> Bindings.SetTargetData
+  +0x274: JMP 0x013669e8 -> 
+  +0x277: JMP 0x014c67eb -> 
+  +0x294: CALL 0x01121630 -> 
+  +0x2d6: CALL 0x014c5350 -> Bindings.SetTargetData
+  +0x2db: JMP 0x014c67eb -> 
+
+=== 2. Dump Bindings.Update part 2 (0x014c7650, 3500) ===
+
+================ Bindings.Update_part2 (RVA=0x014c7650, size=3500) ================
+  +0x000: 56 10 48 8b cf e8 76 af ff ff 48 85 f6 0f 84 5c
+  +0x010: 0c 00 00 48 89 5e 70 49 8b 45 10 48 89 46 70 49
+  +0x020: 8b 4d 18 48 85 c9 0f 84 48 0c 00 00 4c 8b 05 fd
+  +0x030: b4 95 01 48 8b 56 60 e8 84 ba 5e ff 48 8b 5f 68
+  +0x040: 48 85 db 74 5a 48 8b 46 60 48 8b 4e 70 33 d2 89
+  +0x050: 54 24 32 66 89 54 24 36 66 c7 44 24 30 01 00 48
+  +0x060: 89 44 24 38 48 89 4c 24 40 48 89 54 24 48 48 8d
+  +0x070: 4c 24 48 e8 78 40 cf fe 48 8b 43 18 0f 10 44 24
+  +0x080: 30 0f 29 44 24 60 0f 10 4c 24 40 0f 29 4c 24 70
+  +0x090: 4c 8b 43 28 48 8d 54 24 60 48 8b 4b 40 ff d0 48
+  +0x0a0: 8b 0d 02 43 93 01 e8 65 b2 6b ff 4c 8b f0 48 8b
+  +0x0b0: 5e 18 0f 57 c0 48 85 db 74 2d 33 d2 48 8b cb e8
+  +0x0c0: dc 83 dd ff 8b 4b 10 33 d2 89 94 24 5c 01 00 00
+  +0x0d0: 48 89 84 24 50 01 00 00 89 8c 24 58 01 00 00 0f
+  +0x0e0: 28 84 24 50 01 00 00 4d 85 f6 0f 84 89 0b 00 00
+  +0x0f0: 66 0f 7f 44 24 50 4c 8b 05 2b 41 93 01 48 8d 54
+  +0x100: 24 50 49 8b ce e8 36 a6 6b ff 84 c0 74 6d 4c 8b
+  +0x110: 76 20 4d 85 f6 0f 84 63 0b 00 00 4d 8b 76 28 90
+  +0x120: 4d 85 f6 74 56 4c 3b f6 74 4b 41 f6 46 7c 02 76
+  +0x130: 0f 45 33 c0 49 8b 56 60 48 8b cf e8 c0 ab ff ff
+  +0x140: 49 8b 5e 28 48 85 db 74 2c f6 43 7c 02 76 0f 45
+  +0x150: 33 c0 48 8b 53 60 48 8b cf e8 a2 ab ff ff 45 33
+  +0x160: c9 41 b0 01 48 8b d3 48 8b cf e8 21 ab ff ff 48
+  +0x170: 8b 5b 30 eb cf 4d 8b 76 30 eb a5 48 85 f6 0f 84
+  +0x180: ff 0a 00 00 48 8b 5e 28 48 85 db 74 26 45 33 c0
+  +0x190: 48 8b 53 60 48 8b cf e8 64 ab ff ff 45 33 c9 45
+  +0x1a0: 33 c0 48 8b d3 48 8b cf e8 e3 aa ff ff 48 8b 5b
+  +0x1b0: 30 eb d5 41 80 7d 40 00 76 15 4d 39 65 30 74 0f
+  +0x1c0: 45 33 c0 49 8b 55 30 48 8b ce e8 81 94 00 00 48
+  +0x1d0: 8b 4f 50 48 85 c9 0f 84 ac 0a 00 00 4c 8b 0d 1d
+  +0x1e0: ba 91 01 4c 8d 84 24 20 02 00 00 48 8b 56 60 e8
+  +0x1f0: ec 9d c5 ff 84 c0 74 50 33 c0 8b d8 48 8b 84 24
+  +0x200: 20 02 00 00 48 85 c0 0f 84 80 0a 00 00 8b 70 18
+  +0x210: 3b de 7d 2c 48 85 c0 0f 84 75 0a 00 00 48 63 cb
+  +0x220: 48 8b 40 10 45 33 c0 48 8b 54 c8 20 48 8b cf e8
+  +0x230: cc aa ff ff ff c3 48 8b 84 24 20 02 00 00 eb d0
+  +0x240: 4c 8b bc 24 90 00 00 00 48 8b 84 24 a0 00 00 00
+  +0x250: 49 39 45 10 0f 85 84 f4 ff ff 48 8b 8f 88 00 00
+  +0x260: 00 48 85 c9 0f 84 2d 0a 00 00 0f 10 84 24 c0 00
+  +0x270: 00 00 0f 29 44 24 30 0f 10 8c 24 d0 00 00 00 0f
+  +0x280: 29 4c 24 40 4c 8b 05 ad ff 91 01 48 8d 54 24 30
+  +0x290: e8 7b 67 c6 ff 84 c0 0f 84 41 f4 ff ff 49 83 7d
+  +0x2a0: 28 00 76 1a 66 0f 73 df 08 66 48 0f 7e f8 48 39
+  +0x2b0: 84 24 a8 00 00 00 0f 84 22 f4 ff ff eb 08 48 8b
+  +0x2c0: 84 24 98 01 00 00 48 89 84 24 a8 00 00 00 48 8b
+  +0x2d0: 8f 88 00 00 00 48 85 c9 0f 84 be 09 00 00 0f 28
+  +0x2e0: 84 24 a0 00 00 00 66 0f 7f 44 24 50 0f 10 8c 24
+  +0x2f0: c0 00 00 00 0f 29 4c 24 30 0f 10 84 24 d0 00 00
+  +0x300: 00 0f 29 44 24 40 4c 8b 0d ab 01 92 01 4c 8d 44
+  +0x310: 24 50 48 8d 54 24 30 e8 34 28 c7 ff 49 83 7d 28
+  +0x320: 00 76 52 48 8b 0d 0e 2f 91 01 83 b9 e4 00 00 00
+  +0x330: 00 75 05 e8 18 4e cf fe 33 c9 e8 51 75 00 00 41
+  +0x340: 80 7d 40 00 77 07 33 c9 e8 83 75 00 00 4d 8b 45
+  +0x350: 20 4d 85 c0 0f 84 47 09 00 00 b9 06 00 00 00 4d
+  +0x360: 8b 4d 28 48 8b 15 6e 65 95 01 e8 e1 cd b3 fe 33
+  +0x370: c0 49 89 45 28 66 0f 7e f0 84 c0 0f 84 5d f3 ff
+  +0x380: ff 48 8b bf 98 00 00 00 49 8b 5d 10 33 c0 48 89
+  +0x390: 84 24 18 01 00 00 4c 89 bc 24 10 01 00 00 49 8b
+  +0x3a0: d7 48 8d 8c 24 10 01 00 00 e8 42 3d cf fe 48 89
+  +0x3b0: 9c 24 18 01 00 00 48 85 ff 0f 84 e7 08 00 00 0f
+  +0x3c0: 28 84 24 10 01 00 00 66 0f 7f 44 24 50 4c 8b 05
+  +0x3d0: 84 a0 96 01 48 8d 54 24 50 48 8b cf e8 4f 47 f1
+  +0x3e0: fe e9 f8 f2 ff ff 48 83 7e 70 00 76 2e 48 8b 47
+  +0x3f0: 78 48 85 c0 0f 84 b1 08 00 00 48 63 4e 70 48 8b
+  +0x400: 40 10 48 8b 54 c8 20 48 85 d2 0f 84 a0 08 00 00
+  +0x410: 48 83 7a 20 00 0f 84 c3 f2 ff ff 33 d2 48 8b cf
+  +0x420: e8 0b 97 ff ff 4c 8b e8 4c 89 bc 24 20 02 00 00
+  +0x430: 48 85 c0 0f 84 7c 08 00 00 48 8b 46 70 49 39 45
+  +0x440: 10 0f 84 97 f2 ff ff 4d 8b e7 48 85 c0 0f 86 2b
+  +0x450: 01 00 00 48 8b 47 78 48 85 c0 0f 84 5a 08 00 00
+  +0x460: 48 63 4e 70 48 8b 40 10 4c 8b 74 c8 20 4d 85 f6
+  +0x470: 0f 84 49 08 00 00 4d 8b 66 30 49 8b 4e 18 48 85
+  +0x480: c9 0f 84 3d 08 00 00 4c 8b 05 2a b2 95 01 48 8b
+  +0x490: 56 60 e8 89 66 7d ff 48 8b 46 60 49 39 46 28 0f
+  +0x4a0: 85 9b 00 00 00 48 8b 0d 8c 2d 91 01 83 b9 e4 00
+  +0x4b0: 00 00 00 75 05 e8 96 4c cf fe 33 c9 e8 cf 73 00
+  +0x4c0: 00 41 80 7e 40 00 77 07 33 c9 e8 01 74 00 00 4d
+  +0x4d0: 8b 46 20 4d 85 c0 0f 84 ed 07 00 00 b9 06 00 00
+  +0x4e0: 00 4c 8b 4e 60 48 8b 15 ec 63 95 01 e8 5f cc b3
+  +0x4f0: fe 33 c0 49 89 46 28 41 8b df 4d 8b 7e 18 4d 85
+  +0x500: ff 0f 84 c7 07 00 00 45 8b 7f 18 0f 1f 44 00 00
+  +0x510: 41 3b df 7d 28 49 8b 46 18 48 85 c0 0f 84 b1 07
+  +0x520: 00 00 48 63 cb 48 8b 40 10 45 33 c0 48 8b 54 c8
+  +0x530: 20 48 8b cf e8 c7 a7 ff ff ff c3 eb d3 45 33 ff
+  +0x540: 49 8b 46 18 48 85 c0 0f 84 8b 07 00 00 83 78 18
+  +0x550: 00 75 1e 4d 89 7e 20 49 8d 4e 20 33 d2 e8 8e 3b
+  +0x560: cf fe 45 33 c0 49 8b 56 10 48 8b cf e8 0f aa ff
+  +0x570: ff 48 85 f6 0f 84 63 07 00 00 4c 89 7e 70 49 8b
+  +0x580: 45 10 48 89 46 70 49 8b 4d 18 48 85 c9 0f 84 4f
+  +0x590: 07 00 00 4c 8b 05 96 af 95 01 48 8b 56 60 e8 1d
+  +0x5a0: b5 5e ff 48 8b 5f 68 48 85 db 74 5c 48 8b 46 60
+  +0x5b0: 48 8b 4e 70 44 89 7c 24 32 66 44 89 7c 24 36 66
+  +0x5c0: c7 44 24 30 01 00 48 89 44 24 38 48 89 4c 24 40
+  +0x5d0: 4c 89 7c 24 48 33 d2 48 8d 4c 24 48 e8 0f 3b cf
+  +0x5e0: fe 48 8b 43 18 0f 10 44 24 30 0f 29 44 24 60 0f
+  +0x5f0: 10 4c 24 40 0f 29 4c 24 70 4c 8b 43 28 48 8d 54
+  +0x600: 24 60 48 8b 4b 40 ff d0 48 8b 0d 99 3d 93 01 e8
+  +0x610: fc ac 6b ff 4c 8b f0 48 8b 5e 18 0f 57 c0 48 85
+  +0x620: db 74 2c 33 d2 48 8b cb e8 73 7e dd ff 8b 4b 10
+  +0x630: 44 89 bc 24 6c 01 00 00 48 89 84 24 60 01 00 00
+  +0x640: 89 8c 24 68 01 00 00 0f 28 84 24 60 01 00 00 4d
+  +0x650: 85 f6 0f 84 8f 06 00 00 66 0f 7f 44 24 50 4c 8b
+  +0x660: 05 c3 3b 93 01 48 8d 54 24 50 49 8b ce e8 ce a0
+  +0x670: 6b ff 84 c0 74 71 4c 8b 76 20 4d 85 f6 0f 84 69
+  +0x680: 06 00 00 4d 8b 76 28 4d 85 f6 74 5b 4c 3b f6 74
+  +0x690: 50 41 f6 46 7c 02 76 0f 45 33 c0 49 8b 56 60 48
+  +0x6a0: 8b cf e8 59 a6 ff ff 49 8b 5e 28 0f 1f 44 00 00
+  +0x6b0: 48 85 db 74 2c f6 43 7c 02 76 0f 45 33 c0 48 8b
+  +0x6c0: 53 60 48 8b cf e8 36 a6 ff ff 45 33 c9 41 b0 01
+  +0x6d0: 48 8b d3 48 8b cf e8 b5 a5 ff ff 48 8b 5b 30 eb
+  +0x6e0: cf 4d 8b 76 30 eb a0 48 85 f6 0f 84 01 06 00 00
+  +0x6f0: 48 8b 5e 28 48 85 db 74 26 45 33 c0 48 8b 53 60
+  +0x700: 48 8b cf e8 f8 a5 ff ff 45 33 c9 45 33 c0 48 8b
+  +0x710: d3 48 8b cf e8 77 a5 ff ff 48 8b 5b 30 eb d5 41
+  +0x720: 80 7d 40 00 76 15 4d 39 65 30 74 0f 45 33 c0 49
+  +0x730: 8b 55 30 48 8b ce e8 15 8f 00 00 48 8b 4f 50 48
+  +0x740: 85 c9 0f 84 ae 05 00 00 4c 8b 0d b1 b4 91 01 4c
+  +0x750: 8d 84 24 20 02 00 00 48 8b 56 60 e8 80 98 c5 ff
+  +0x760: 84 c0 0f 84 76 ef ff ff 41 8b df 48 8b 84 24 20
+  +0x770: 02 00 00 48 85 c0 0f 84 7f 05 00 00 8b 70 18 90
+  +0x780: 3b de 0f 8d 56 ef ff ff 48 85 c0 0f 84 6f 05 00
+  +0x790: 00 48 63 cb 48 8b 40 10 45 33 c0 48 8b 54 c8 20
+  +0x7a0: 48 8b cf e8 58 a5 ff ff ff c3 48 8b 84 24 20 02
+  +0x7b0: 00 00 eb cc 48 8b 4f 48 48 85 c9 0f 84 44 05 00
+  +0x7c0: 00 4c 8b 0d f0 bc 91 01 4c 8d 84 24 e8 00 00 00
+  +0x7d0: 48 8b 56 68 e8 07 98 c5 ff 84 c0 0f 84 fd ee ff
+  +0x7e0: ff 48 8b 84 24 e8 00 00 00 48 85 c0 0f 84 18 05
+  +0x7f0: 00 00 48 8b 40 70 48 39 46 70 0f 84 de ee ff ff
+  +0x800: 48 8b 57 78 48 85 d2 0f 84 02 05 00 00 48 63 c8
+  +0x810: 48 8b 42 10 4c 8b 6c c8 20 4c 89 bc 24 20 02 00
+  +0x820: 00 4d 85 ed 0f 84 ea 04 00 00 48 8b 46 70 49 39
+  +0x830: 45 10 0f 84 a6 ee ff ff 4d 8b e7 48 85 c0 0f 86
+  +0x840: 22 01 00 00 48 85 d2 0f 84 cc 04 00 00 48 63 4e
+  +0x850: 70 48 8b 42 10 4c 8b 74 c8 20 4d 85 f6 0f 84 bb
+  +0x860: 04 00 00 4d 8b 66 30 49 8b 4e 18 48 85 c9 0f 84
+  +0x870: af 04 00 00 4c 8b 05 3d ae 95 01 48 8b 56 60 e8
+  +0x880: 9c 62 7d ff 48 8b 46 60 49 39 46 28 0f 85 96 00
+  +0x890: 00 00 48 8b 0d 9f 29 91 01 83 b9 e4 00 00 00 00
+  +0x8a0: 75 05 e8 a9 48 cf fe 33 c9 e8 e2 6f 00 00 41 80
+  +0x8b0: 7e 40 00 77 07 33 c9 e8 14 70 00 00 4d 8b 46 20
+  +0x8c0: 4d 85 c0 0f 84 5f 04 00 00 b9 06 00 00 00 4c 8b
+  +0x8d0: 4e 60 48 8b 15 ff 5f 95 01 e8 72 c8 b3 fe 33 c0
+  +0x8e0: 49 89 46 28 41 8b df 4d 8b 7e 18 4d 85 ff 0f 84
+  +0x8f0: 39 04 00 00 45 8b 7f 18 41 3b df 7d 28 49 8b 46
+  +0x900: 18 48 85 c0 0f 84 28 04 00 00 48 63 cb 48 8b 40
+  +0x910: 10 45 33 c0 48 8b 54 c8 20 48 8b cf e8 df a3 ff
+  +0x920: ff ff c3 eb d3 45 33 ff 49 8b 46 18 48 85 c0 0f
+  +0x930: 84 02 04 00 00 83 78 18 00 75 1e 4d 89 7e 20 49
+  +0x940: 8d 4e 20 33 d2 e8 a6 37 cf fe 45 33 c0 49 8b 56
+  +0x950: 10 48 8b cf e8 27 a6 ff ff 48 85 f6 0f 84 da 03
+  +0x960: 00 00 4c 89 7e 70 49 8b 45 10 48 89 46 70 49 8b
+  +0x970: 4d 18 48 85 c9 0f 84 c6 03 00 00 4c 8b 05 ae ab
+  +0x980: 95 01 48 8b 56 60 e8 35 b1 5e ff 48 8b 5f 68 48
+  +0x990: 85 db 74 5c 48 8b 46 60 48 8b 4e 70 44 89 7c 24
+  +0x9a0: 32 66 44 89 7c 24 36 66 c7 44 24 30 01 00 48 89
+  +0x9b0: 44 24 38 48 89 4c 24 40 4c 89 7c 24 48 33 d2 48
+  +0x9c0: 8d 4c 24 48 e8 27 37 cf fe 48 8b 43 18 0f 10 44
+  +0x9d0: 24 30 0f 29 44 24 60 0f 10 4c 24 40 0f 29 4c 24
+  +0x9e0: 70 4c 8b 43 28 48 8d 54 24 60 48 8b 4b 40 ff d0
+  +0x9f0: 48 8b 0d b1 39 93 01 e8 14 a9 6b ff 4c 8b f0 48
+  +0xa00: 8b 5e 18 0f 57 c0 48 85 db 74 2c 33 d2 48 8b cb
+  +0xa10: e8 8b 7a dd ff 8b 4b 10 44 89 bc 24 bc 00 00 00
+  +0xa20: 48 89 84 24 b0 00 00 00 89 8c 24 b8 00 00 00 0f
+  +0xa30: 28 84 24 b0 00 00 00 4d 85 f6 0f 84 06 03 00 00
+  +0xa40: 66 0f 7f 44 24 50 4c 8b 05 db 37 93 01 48 8d 54
+  +0xa50: 24 50 49 8b ce e8 e6 9c 6b ff 84 c0 74 6d 4c 8b
+  +0xa60: 76 20 4d 85 f6 0f 84 e0 02 00 00 4d 8b 76 28 90
+  +0xa70: 4d 85 f6 74 56 4c 3b f6 74 4b 41 f6 46 7c 02 76
+  +0xa80: 0f 45 33 c0 49 8b 56 60 48 8b cf e8 70 a2 ff ff
+  +0xa90: 49 8b 5e 28 48 85 db 74 2c f6 43 7c 02 76 0f 45
+  +0xaa0: 33 c0 48 8b 53 60 48 8b cf e8 52 a2 ff ff 45 33
+  +0xab0: c9 41 b0 01 48 8b d3 48 8b cf e8 d1 a1 ff ff 48
+  +0xac0: 8b 5b 30 eb cf 4d 8b 76 30 eb a5 48 85 f6 0f 84
+  +0xad0: 7c 02 00 00 48 8b 5e 28 48 85 db 74 26 45 33 c0
+  +0xae0: 48 8b 53 60 48 8b cf e8 14 a2 ff ff 45 33 c9 45
+  +0xaf0: 33 c0 48 8b d3 48 8b cf e8 93 a1 ff ff 48 8b 5b
+  +0xb00: 30 eb d5 41 80 7d 40 00 76 15 4d 39 65 30 74 0f
+  +0xb10: 45 33 c0 49 8b 55 30 48 8b ce e8 31 8b 00 00 48
+  +0xb20: 8b 4f 50 48 85 c9 0f 84 29 02 00 00 4c 8b 0d cd
+  +0xb30: b0 91 01 4c 8d 84 24 20 02 00 00 48 8b 56 60 e8
+  +0xb40: 9c 94 c5 ff 84 c0 0f 84 92 eb ff ff 41 8b df 48
+  +0xb50: 8b 84 24 20 02 00 00 48 85 c0 0f 84 fa 01 00 00
+  +0xb60: 8b 70 18 3b de 0f 8d 73 eb ff ff 48 85 c0 0f 84
+  +0xb70: eb 01 00 00 48 63 cb 48 8b 40 10 45 33 c0 48 8b
+  +0xb80: 54 c8 20 48 8b cf e8 75 a1 ff ff ff c3 48 8b 84
+  +0xb90: 24 20 02 00 00 eb cc 48 8d 8c 24 78 01 00 00 e8
+  +0xba0: 2c 3e ff ff 48 8b 8c 24 70 01 00 00 48 85 c9 0f
+  +0xbb0: 85 b0 01 00 00 e9 72 e9 ff ff e8 f1 44 cf fe 90
+  +0xbc0: e8 eb 44 cf fe e8 e6 44 cf fe e8 e1 44 cf fe e8
+  +0xbd0: dc 44 cf fe e8 d7 44 cf fe e8 d2 44 cf fe e8 cd
+  +0xbe0: 44 cf fe e8 c8 44 cf fe e8 c3 44 cf fe e8 be 44
+  +0xbf0: cf fe e8 b9 44 cf fe e8 b4 44 cf fe e8 af 44 cf
+  +0xc00: fe e8 aa 44 cf fe e8 a5 44 cf fe e8 a0 44 cf fe
+  +0xc10: e8 9b 44 cf fe e8 96 44 cf fe e8 91 44 cf fe e8
+  +0xc20: 8c 44 cf fe e8 87 44 cf fe e8 82 44 cf fe e8 7d
+  +0xc30: 44 cf fe e8 78 44 cf fe e8 73 44 cf fe e8 6e 44
+  +0xc40: cf fe e8 69 44 cf fe e8 64 44 cf fe e8 5f 44 cf
+  +0xc50: fe e8 5a 44 cf fe e8 55 44 cf fe e8 50 44 cf fe
+  +0xc60: e8 4b 44 cf fe e8 46 44 cf fe e8 41 44 cf fe e8
+  +0xc70: 3c 44 cf fe e8 37 44 cf fe e8 32 44 cf fe e8 2d
+  +0xc80: 44 cf fe e8 28 44 cf fe e8 23 44 cf fe e8 1e 44
+  +0xc90: cf fe e8 19 44 cf fe e8 14 44 cf fe e8 0f 44 cf
+  +0xca0: fe e8 0a 44 cf fe e8 05 44 cf fe e8 00 44 cf fe
+  +0xcb0: e8 fb 43 cf fe e8 f6 43 cf fe e8 f1 43 cf fe e8
+  +0xcc0: ec 43 cf fe e8 e7 43 cf fe e8 e2 43 cf fe e8 dd
+  +0xcd0: 43 cf fe e8 d8 43 cf fe e8 d3 43 cf fe e8 ce 43
+  +0xce0: cf fe e8 c9 43 cf fe e8 c4 43 cf fe e8 bf 43 cf
+  +0xcf0: fe e8 ba 43 cf fe e8 b5 43 cf fe e8 b0 43 cf fe
+  +0xd00: e8 ab 43 cf fe e8 a6 43 cf fe e8 a1 43 cf fe e8
+  +0xd10: 9c 43 cf fe e8 97 43 cf fe e8 92 43 cf fe e8 8d
+  +0xd20: 43 cf fe e8 88 43 cf fe e8 83 43 cf fe e8 7e 43
+  +0xd30: cf fe e8 79 43 cf fe e8 74 43 cf fe e8 6f 43 cf
+  +0xd40: fe e8 6a 43 cf fe e8 65 43 cf fe e8 60 43 cf fe
+  +0xd50: e8 5b 43 cf fe e8 56 43 cf fe e8 51 43 cf fe e8
+  +0xd60: 4c 43 cf fe 90 e8 d6 43 cf fe cc cc cc cc cc cc
+  +0xd70: 40 53 48 83 ec 30 e8 65 a2 b4 fe 48 8b 05 6e 24
+  +0xd80: 95 01 83 b8 e4 00 00 00 00 75 27 48 8b c8 e8 bd
+  +0xd90: 43 cf fe 48 8b 05 56 24 95 01 83 b8 e4 00 00 00
+  +0xda0: 00 75 0f 48 8b c8 e8 a5 43 cf fe 48
+  --- Annotations ---
+  +0x005: CALL 0x014c25d0 -> Bindings.ReleaseData
+  +0x037: CALL 0x00ab3110 -> 
+  +0x0a6: CALL 0x00b82960 -> 
+  +0x0bf: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x105: CALL 0x00b81d90 -> 
+  +0x13b: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x159: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x16a: CALL 0x014c22e0 -> Bindings.MarkChildrenDirtyRecursive
+  +0x197: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x1a8: CALL 0x014c22e0 -> Bindings.MarkChildrenDirtyRecursive
+  +0x1ca: CALL 0x014d0ca0 -> Node.NotifyDataChanged
+  +0x1ef: CALL 0x01121630 -> 
+  +0x22f: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x290: CALL 0x0112e060 -> 
+  +0x317: CALL 0x0113a1a0 -> 
+  +0x33a: CALL 0x014ceee0 -> Metric.DecOpenChannels
+  +0x348: CALL 0x014cef20 -> Metric.DecOpenPendingData
+  +0x3e1: JMP 0x014c6d2e -> 
+  +0x420: CALL 0x014c1180 -> Bindings.GetNewData
+  +0x492: CALL 0x00c9e170 -> 
+  +0x4bc: CALL 0x014ceee0 -> Metric.DecOpenChannels
+  +0x4ca: CALL 0x014cef20 -> Metric.DecOpenPendingData
+  +0x534: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x56c: CALL 0x014c25d0 -> Bindings.ReleaseData
+  +0x59e: CALL 0x00ab3110 -> 
+  +0x60f: CALL 0x00b82960 -> 
+  +0x628: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x66d: CALL 0x00b81d90 -> 
+  +0x6a2: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x6c5: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x6d6: CALL 0x014c22e0 -> Bindings.MarkChildrenDirtyRecursive
+  +0x703: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x714: CALL 0x014c22e0 -> Bindings.MarkChildrenDirtyRecursive
+  +0x736: CALL 0x014d0ca0 -> Node.NotifyDataChanged
+  +0x75b: CALL 0x01121630 -> 
+  +0x7a3: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x7d4: CALL 0x01121630 -> 
+  +0x87f: CALL 0x00c9e170 -> 
+  +0x8a9: CALL 0x014ceee0 -> Metric.DecOpenChannels
+  +0x8b7: CALL 0x014cef20 -> Metric.DecOpenPendingData
+  +0x91c: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0x954: CALL 0x014c25d0 -> Bindings.ReleaseData
+  +0x986: CALL 0x00ab3110 -> 
+  +0x9f7: CALL 0x00b82960 -> 
+  +0xa10: CALL 0x0129faf0 -> String.GetRawStringData
+  +0xa55: CALL 0x00b81d90 -> 
+  +0xa8b: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0xaa9: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0xaba: CALL 0x014c22e0 -> Bindings.MarkChildrenDirtyRecursive
+  +0xae7: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0xaf8: CALL 0x014c22e0 -> Bindings.MarkChildrenDirtyRecursive
+  +0xb1a: CALL 0x014d0ca0 -> Node.NotifyDataChanged
+  +0xb3f: CALL 0x01121630 -> 
+  +0xb86: CALL 0x014c2350 -> Bindings.MarkNodeDirty
+  +0xb9f: CALL 0x014bc020 -> 
+  +0xbb5: JMP 0x014c6b7c -> 
+
+=== 3. Dump SpecificallyScoutedPersonReference & Related Types ===
+
+Type 909: FM.UI.SpecificallyScoutedPersonReference (fields=2, methods=13)

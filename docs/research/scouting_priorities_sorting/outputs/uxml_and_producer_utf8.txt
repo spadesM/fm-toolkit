@@ -1,0 +1,145 @@
+=== 1. Dump StreamedTable/UxmlSerializedData in ui-recruitment_assets_all.bundle ===
+
+==================== Obj 177 (RecruitmentScoutPrioritiesCard, pid=35620230135737672, size=13276) ====================
+
+==================== Obj 229 (ScoutPrioritiesBlock, pid=2056832882284531458, size=9320) ====================
+  [StreamedTable at dstart=8140]
+    +0x000 uxmlAssetId: 1922429255
+    +0x08c BindFunction: {'m_isAssigned': 0, 'm_target': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': []}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}
+    +0x0d0 FixedElementSize: 47.0
+    +0x0ec Reorderable: 1
+    +0x0f0 SelectionMode: 3
+    +0x110 Binding: {'m_kind': 1, 'm_direct': {'Path': {'m_path': 'Team.ScoutPriorities.SpecificallyScoutedPlayers'}, 'Nullable': 0}, 'm_visualFunction': {'m_isAssigned': 0, 'm_target': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': []}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}}
+    +0x16c SelectedItemsBinding: {'m_path': 'team.scoutpriorities.selectedplayers'}
+    +0x1ac VerticalScrollerVisibility_UxmlAttributeFlags: 1
+    +0x1b4 DynamicElements_UxmlAttributeFlags: 1
+    +0x1b8 FixedElementSize_UxmlAttributeFlags: 1
+    +0x1d4 Reorderable_UxmlAttributeFlags: 1
+    +0x1d8 SelectionMode_UxmlAttributeFlags: 1
+    +0x1f8 Binding_UxmlAttributeFlags: 1
+    +0x204 SelectedItemsBinding_UxmlAttributeFlags: 1
+    +0x20c InitFunction: {'m_isAssigned': 1, 'm_target': {'m_AssetGUID': 'f93b92def36a8474fa5798233a6a3fb8', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': [2, 80, 0, 0, 0, 42, 83, 73, 46, 86, 105, 115, 117, 97, 108, 83, 99, 114, 105, 112, 116, 105, 110, 103, 46, 65, 115, 115, 101, 116, 82, 101, 102, 101, 114, 101, 110, 99, 101, 86, 105, 115, 117, 97, 108, 65, 114, 103, 32, 49, 51, 97, 49, 102, 49, 56, 98, 100, 57, 51, 101, 56, 54, 48, 52, 56, 56, 99, 50, 99, 98, 56, 52, 97, 98, 98, 49, 49, 54, 56, 99, 1, 0, 1, 0, 77, 0, 0, 0, 62, 83, 73, 46, 86, 105, 115, 117, 97, 108, 83, 99, 114, 105, 112, 116, 105, 110, 103, 46, 71, 101, 110, 101, 114, 105, 99, 86, 105, 115, 117, 97, 108, 65, 114, 103, 96, 49, 91, 83, 73, 46, 66, 105, 110, 100, 97, 98, 108, 101, 46, 66, 105, 110, 100, 105, 110, 103, 80, 97, 116, 104, 93, 1, 12, 115, 101, 108, 101, 99, 116, 101, 100, 86, 105, 101, 119]}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}
+    +0x2ec RemoveEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x2f4 DragEvents: {'m_serializedEvents': '', 'm_bytes': [0, 1, 1, 1, 1, 207, 27, 222, 7, 0, 1, 207, 1, 1, 20, 84, 101, 97, 109, 46, 83, 99, 111, 117, 116, 80, 114, 105, 111, 114, 105, 116, 105, 101, 115, 188, 207, 1, 1, 9, 105, 116, 101, 109, 109, 111, 118, 101, 100, 188, 97, 0, 0, 0, 188]}
+    +0x334 SelectionEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x33c HeaderCellAsset: {'m_AssetGUID': 'f45d19f7c2614ae4782f06ccd001fbb1', 'm_SubObjectName': '', 'm_SubObjectType': ''}
+    +0x374 FactoryAsset: {'m_AssetGUID': '399c0aa9357f67847b91ba2fe4756083', 'm_SubObjectName': '', 'm_SubObjectType': ''}
+    +0x3a0 Preview: {'m_previewSource': 0, 'm_previewItemsCount': 0, 'm_previewTableViewAsset': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_previewStaticListColumns': [], 'm_previewGridBreakpoint': 0}
+    +0x3bc AddEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x3e8 DragCellID: drag-column
+    +0x428 InitFunction_UxmlAttributeFlags: 1
+    +0x430 DragEvents_UxmlAttributeFlags: 1
+    +0x438 HeaderCellAsset_UxmlAttributeFlags: 1
+    +0x440 FactoryAsset_UxmlAttributeFlags: 1
+    +0x468 DragCellID_UxmlAttributeFlags: 1
+    ERROR at references (+0x49c): unpack_from requires a buffer of at least 9324 bytes for unpacking 4 bytes at offset 9320 (actual buffer size is 9320)
+
+==================== Obj 263 (ScoutPrioritiesBlock-Small, pid=3674608651584989843, size=9224) ====================
+  [StreamedTable at dstart=8148]
+    +0x000 uxmlAssetId: -1509659977
+    +0x08c BindFunction: {'m_isAssigned': 0, 'm_target': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': []}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}
+    +0x0d0 FixedElementSize: 47.0
+    +0x0ec Reorderable: 1
+    +0x0f0 SelectionMode: 1
+    +0x110 Binding: {'m_kind': 1, 'm_direct': {'Path': {'m_path': 'Team.ScoutPriorities.SpecificallyScoutedPlayers'}, 'Nullable': 0}, 'm_visualFunction': {'m_isAssigned': 0, 'm_target': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': []}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}}
+    +0x188 VerticalScrollerVisibility_UxmlAttributeFlags: 1
+    +0x190 DynamicElements_UxmlAttributeFlags: 1
+    +0x194 FixedElementSize_UxmlAttributeFlags: 1
+    +0x1b0 Reorderable_UxmlAttributeFlags: 1
+    +0x1b4 SelectionMode_UxmlAttributeFlags: 1
+    +0x1d4 Binding_UxmlAttributeFlags: 1
+    +0x1e8 InitFunction: {'m_isAssigned': 1, 'm_target': {'m_AssetGUID': 'f93b92def36a8474fa5798233a6a3fb8', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': [2, 80, 0, 0, 0, 42, 83, 73, 46, 86, 105, 115, 117, 97, 108, 83, 99, 114, 105, 112, 116, 105, 110, 103, 46, 65, 115, 115, 101, 116, 82, 101, 102, 101, 114, 101, 110, 99, 101, 86, 105, 115, 117, 97, 108, 65, 114, 103, 32, 99, 49, 97, 52, 52, 102, 55, 101, 97, 97, 49, 54, 57, 56, 97, 52, 51, 97, 98, 55, 54, 54, 52, 98, 55, 99, 101, 51, 53, 48, 100, 97, 1, 0, 1, 0, 77, 0, 0, 0, 62, 83, 73, 46, 86, 105, 115, 117, 97, 108, 83, 99, 114, 105, 112, 116, 105, 110, 103, 46, 71, 101, 110, 101, 114, 105, 99, 86, 105, 115, 117, 97, 108, 65, 114, 103, 96, 49, 91, 83, 73, 46, 66, 105, 110, 100, 97, 98, 108, 101, 46, 66, 105, 110, 100, 105, 110, 103, 80, 97, 116, 104, 93, 1, 12, 115, 101, 108, 101, 99, 116, 101, 100, 86, 105, 101, 119]}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}
+    +0x2c8 RemoveEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x2d0 DragEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x2d8 SelectionEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x2e0 HeaderCellAsset: {'m_AssetGUID': 'f45d19f7c2614ae4782f06ccd001fbb1', 'm_SubObjectName': '', 'm_SubObjectType': ''}
+    +0x318 FactoryAsset: {'m_AssetGUID': '399c0aa9357f67847b91ba2fe4756083', 'm_SubObjectName': '', 'm_SubObjectType': ''}
+    +0x344 Preview: {'m_previewSource': 0, 'm_previewItemsCount': 0, 'm_previewTableViewAsset': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_previewStaticListColumns': [], 'm_previewGridBreakpoint': 0}
+    +0x360 AddEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x3c0 InitFunction_UxmlAttributeFlags: 1
+    +0x3d0 HeaderCellAsset_UxmlAttributeFlags: 1
+    +0x3d8 FactoryAsset_UxmlAttributeFlags: 1
+    ERROR at references (+0x434): unpack_from requires a buffer of at least 9228 bytes for unpacking 4 bytes at offset 9224 (actual buffer size is 9224)
+
+==================== Obj 360 (RecruitmentTeamReportPrioritiesTableBlock, pid=8842523188605194199, size=10852) ====================
+  [StreamedTable at dstart=5192]
+    +0x000 uxmlAssetId: 705053520
+    +0x004 name: Table
+    +0x048 name_UxmlAttributeFlags: 1
+    +0x094 BindFunction: {'m_isAssigned': 0, 'm_target': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': []}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}
+    +0x0f8 SelectionMode: 3
+    +0x118 Binding: {'m_kind': 1, 'm_direct': {'Path': {'m_path': 'team.ScoutTeamPriorities.SpecificallyScoutedTeams'}, 'Nullable': 0}, 'm_visualFunction': {'m_isAssigned': 0, 'm_target': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': []}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}}
+    +0x178 SelectedItemsBinding: {'m_path': 'team.ScoutTeamPriorities.SelectedTeams'}
+    +0x1bc VerticalScrollerVisibility_UxmlAttributeFlags: 1
+    +0x1e8 SelectionMode_UxmlAttributeFlags: 1
+    +0x208 Binding_UxmlAttributeFlags: 1
+    +0x214 SelectedItemsBinding_UxmlAttributeFlags: 1
+    +0x21c InitFunction: {'m_isAssigned': 1, 'm_target': {'m_AssetGUID': '446475dd53423864183c52075b8f0e32', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': [1, 80, 0, 0, 0, 42, 83, 73, 46, 86, 105, 115, 117, 97, 108, 83, 99, 114, 105, 112, 116, 105, 110, 103, 46, 65, 115, 115, 101, 116, 82, 101, 102, 101, 114, 101, 110, 99, 101, 86, 105, 115, 117, 97, 108, 65, 114, 103, 32, 55, 52, 50, 53, 100, 98, 56, 57, 54, 97, 56, 56, 48, 56, 55, 52, 54, 57, 100, 48, 54, 100, 102, 100, 98, 101, 102, 49, 55, 53, 51, 100, 1, 0, 1, 0]}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}
+    +0x2ac RemoveEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x2b4 DragEvents: {'m_serializedEvents': '', 'm_bytes': [0, 1, 1, 1, 1, 207, 27, 222, 7, 0, 1, 207, 1, 1, 24, 116, 101, 97, 109, 46, 83, 99, 111, 117, 116, 84, 101, 97, 109, 80, 114, 105, 111, 114, 105, 116, 105, 101, 115, 188, 207, 1, 1, 9, 105, 116, 101, 109, 109, 111, 118, 101, 100, 188, 97, 0, 0, 0, 188]}
+    +0x2f8 SelectionEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x300 HeaderCellAsset: {'m_AssetGUID': 'f45d19f7c2614ae4782f06ccd001fbb1', 'm_SubObjectName': '', 'm_SubObjectType': ''}
+    +0x338 FactoryAsset: {'m_AssetGUID': 'f836fc9dab933f04e833c2485e4ab5a6', 'm_SubObjectName': '', 'm_SubObjectType': ''}
+    +0x364 Preview: {'m_previewSource': 0, 'm_previewItemsCount': 0, 'm_previewTableViewAsset': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_previewStaticListColumns': [], 'm_previewGridBreakpoint': 0}
+    +0x380 AddEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x3e0 InitFunction_UxmlAttributeFlags: 1
+    +0x3e8 DragEvents_UxmlAttributeFlags: 1
+    +0x3f0 HeaderCellAsset_UxmlAttributeFlags: 1
+    +0x3f8 FactoryAsset_UxmlAttributeFlags: 1
+    +0x454 references: {'version': 1010, 'RefIds': []}
+
+==================== Obj 111 (ShortlistMainBlock, pid=-3707209232958208855, size=8892) ====================
+  [StreamedTable at dstart=5252]
+    +0x000 uxmlAssetId: -234115865
+    +0x004 name: table
+    +0x048 name_UxmlAttributeFlags: 1
+    +0x094 BindFunction: {'m_isAssigned': 0, 'm_target': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': []}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}
+    +0x0d4 DynamicElements: 1
+    +0x118 Binding: {'m_kind': 1, 'm_direct': {'Path': {'m_path': 'Team.Manager.HumanPersonSearch.PersonList'}, 'Nullable': 0}, 'm_visualFunction': {'m_isAssigned': 0, 'm_target': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': []}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}}
+    +0x18c VerticalScrollerVisibility_UxmlAttributeFlags: 1
+    +0x194 DynamicElements_UxmlAttributeFlags: 1
+    +0x1d8 Binding_UxmlAttributeFlags: 1
+    +0x1ec InitFunction: {'m_isAssigned': 1, 'm_target': {'m_AssetGUID': '446475dd53423864183c52075b8f0e32', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': [1, 80, 0, 0, 0, 42, 83, 73, 46, 86, 105, 115, 117, 97, 108, 83, 99, 114, 105, 112, 116, 105, 110, 103, 46, 65, 115, 115, 101, 116, 82, 101, 102, 101, 114, 101, 110, 99, 101, 86, 105, 115, 117, 97, 108, 65, 114, 103, 32, 53, 99, 102, 48, 48, 53, 98, 49, 49, 57, 49, 51, 52, 55, 99, 52, 101, 98, 99, 48, 54, 52, 102, 50, 53, 56, 99, 55, 98, 50, 57, 51, 1, 0, 1, 0]}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}
+    +0x27c RemoveEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x284 DragEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x28c SelectionEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x294 HeaderCellAsset: {'m_AssetGUID': 'f45d19f7c2614ae4782f06ccd001fbb1', 'm_SubObjectName': '', 'm_SubObjectType': ''}
+    +0x2cc FactoryAsset: {'m_AssetGUID': '49c25af415c53814d8d3ed658d867204', 'm_SubObjectName': '', 'm_SubObjectType': ''}
+    +0x2f8 Preview: {'m_previewSource': 0, 'm_previewItemsCount': 0, 'm_previewTableViewAsset': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_previewStaticListColumns': [], 'm_previewGridBreakpoint': 0}
+    +0x314 AddEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x374 InitFunction_UxmlAttributeFlags: 1
+    +0x384 HeaderCellAsset_UxmlAttributeFlags: 1
+    +0x38c FactoryAsset_UxmlAttributeFlags: 1
+    +0x3e8 references: {'version': 1011, 'RefIds': []}
+
+==================== Obj 103 (RecruitmentPlayerRecommendationsCard, pid=-4199721715365568519, size=32056) ====================
+  [StreamedTable at dstart=21732]
+    +0x000 uxmlAssetId: 1192772141
+    +0x08c BindFunction: {'m_isAssigned': 0, 'm_target': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': []}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}
+    +0x0cc DynamicElements: 1
+    +0x110 Binding: {'m_kind': 1, 'm_direct': {'Path': {'m_path': 'Team.Manager.ScoutingCentreActions.Players'}, 'Nullable': 0}, 'm_visualFunction': {'m_isAssigned': 0, 'm_target': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': []}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}}
+    +0x168 SelectedItemsBinding: {'m_path': 'team.manager.scoutingcentreactions.selectedplayers'}
+    +0x1b8 VerticalScrollerVisibility_UxmlAttributeFlags: 1
+    +0x1c0 DynamicElements_UxmlAttributeFlags: 1
+    +0x204 Binding_UxmlAttributeFlags: 1
+    +0x210 SelectedItemsBinding_UxmlAttributeFlags: 1
+    +0x218 InitFunction: {'m_isAssigned': 1, 'm_target': {'m_AssetGUID': 'f93b92def36a8474fa5798233a6a3fb8', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_inputs': {'m_variable': {'m_argumentBytes': [2, 80, 0, 0, 0, 42, 83, 73, 46, 86, 105, 115, 117, 97, 108, 83, 99, 114, 105, 112, 116, 105, 110, 103, 46, 65, 115, 115, 101, 116, 82, 101, 102, 101, 114, 101, 110, 99, 101, 86, 105, 115, 117, 97, 108, 65, 114, 103, 32, 97, 51, 102, 102, 51, 102, 99, 53, 50, 48, 53, 57, 50, 57, 53, 52, 49, 57, 55, 50, 99, 56, 52, 49, 102, 56, 55, 97, 98, 54, 50, 55, 1, 0, 1, 0, 77, 0, 0, 0, 62, 83, 73, 46, 86, 105, 115, 117, 97, 108, 83, 99, 114, 105, 112, 116, 105, 110, 103, 46, 71, 101, 110, 101, 114, 105, 99, 86, 105, 115, 117, 97, 108, 65, 114, 103, 96, 49, 91, 83, 73, 46, 66, 105, 110, 100, 97, 98, 108, 101, 46, 66, 105, 110, 100, 105, 110, 103, 80, 97, 116, 104, 93, 1, 12, 115, 101, 108, 101, 99, 116, 101, 100, 86, 105, 101, 119]}}, 'm_outputs': {'m_variable': {'m_argumentBytes': []}}}
+    +0x2f8 RemoveEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x300 DragEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x308 SelectionEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x328 FactoryAsset: {'m_AssetGUID': '49c25af415c53814d8d3ed658d867204', 'm_SubObjectName': '', 'm_SubObjectType': ''}
+    +0x354 Preview: {'m_previewSource': 0, 'm_previewItemsCount': 0, 'm_previewTableViewAsset': {'m_AssetGUID': '', 'm_SubObjectName': '', 'm_SubObjectType': ''}, 'm_previewStaticListColumns': [], 'm_previewGridBreakpoint': 0}
+    +0x370 AddEvents: {'m_serializedEvents': '', 'm_bytes': []}
+    +0x3d0 InitFunction_UxmlAttributeFlags: 1
+    +0x3e8 FactoryAsset_UxmlAttributeFlags: 1
+    +0x444 references: {'version': 1032, 'RefIds': []}
+
+=== 2. Search GameAssembly.dll for SpecificallyScoutedPerson ID 0x7443314a (4a 31 43 74) ===
+Found 0x7443314a at file_off=0x695554 RVA=0x00696f54 in None (0x00000000)
+Found 0x7443314a at file_off=0x695564 RVA=0x00696f64 in None (0x00000000)
+Found 0x7443314a at file_off=0x695971 RVA=0x00697371 in None (0x00000000)
+
+=== 3. Search GameAssembly.dll for SpecificallyScoutedTeam ID 0x53434c4b (4b 4c 43 53) ===
+Found 0x53434c4b at file_off=0x6959a4 RVA=0x006973a4 in None (0x00000000)
+Found 0x53434c4b at file_off=0x6959b4 RVA=0x006973b4 in None (0x00000000)
+Found 0x53434c4b at file_off=0x695d71 RVA=0x00697771 in None (0x00000000)

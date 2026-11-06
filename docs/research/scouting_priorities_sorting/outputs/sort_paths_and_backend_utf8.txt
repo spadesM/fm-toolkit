@@ -1,0 +1,317 @@
+=== 1. Disassemble Hash Function 0x002ae590 ===
+
+================ Hash_0x002ae590 (RVA=0x002ae590, size=336) ================
+  +0x000: 8b c1 c3 cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x010: 48 89 5c 24 08 57 48 83 ec 40 0f 57 c0 48 8b d9
+  +0x020: 0f 11 01 48 8b 0d 8e b5 b3 02 48 8b fa 83 b9 e4
+  +0x030: 00 00 00 00 75 1a e8 d5 e1 f0 ff 48 8b 0d 76 b5
+  +0x040: b3 02 83 b9 e4 00 00 00 00 75 05 e8 c0 e1 f0 ff
+  +0x050: 0f 10 07 45 33 c0 48 8d 54 24 20 48 8d 4c 24 30
+  +0x060: 0f 29 44 24 20 e8 f6 d5 7a 00 0f 10 44 24 30 0f
+  +0x070: 11 03 48 8b c3 48 8b 5c 24 50 48 83 c4 40 5f c3
+  +0x080: 48 89 5c 24 08 57 48 83 ec 40 0f 57 c9 48 8b d9
+  +0x090: 0f 11 09 48 8b 0d 1e b5 b3 02 48 8b fa 0f 57 c0
+  +0x0a0: 0f 11 44 24 20 83 b9 e4 00 00 00 00 75 1a e8 5d
+  +0x0b0: e1 f0 ff 48 8b 0d fe b4 b3 02 83 b9 e4 00 00 00
+  +0x0c0: 00 75 05 e8 48 e1 f0 ff 0f 10 07 45 33 c0 48 8d
+  +0x0d0: 54 24 20 48 8d 4c 24 30 0f 29 44 24 30 e8 8e d6
+  +0x0e0: 7a 00 0f 10 44 24 20 0f 11 03 48 8b c3 48 8b 5c
+  +0x0f0: 24 50 48 83 c4 40 5f c3 cc cc cc cc cc cc cc cc
+  +0x100: 0f b7 c1 c3 cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x110: 0f 10 02 48 8b c1 0f 10 4a 10 0f 11 01 0f 10 42
+  +0x120: 20 0f 11 49 10 0f 10 4a 30 0f 11 41 20 0f 11 49
+  +0x130: 30 c3 cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x140: 0f b6 c1 c3 cc cc cc cc cc cc cc cc cc cc cc cc
+  --- Annotations ---
+  +0x065: CALL 0x00a5bbf0 -> 
+  +0x0dd: CALL 0x00a5bd00 -> 
+
+=== 2. Disassemble StreamedTable.SetSorting, TrySetColumnsAndSort, SortComparer ===
+
+================ StreamedTable.SetSorting (RVA=0x015efc40, size=1024) ================
+  +0x000: 48 89 5c 24 08 48 89 74 24 10 57 48 83 ec 30 49
+  +0x010: 8b f8 8b f2 48 8b d9 45 33 c0 48 8b 89 88 09 00
+  +0x020: 00 33 d2 e8 b8 55 82 00 84 c0 75 50 48 8b 83 88
+  +0x030: 09 00 00 48 85 c0 74 54 48 83 78 38 00 74 3d 4c
+  +0x040: 8b 40 38 b9 02 00 00 00 48 8b 15 e1 76 85 01 4c
+  +0x050: 8b cf e8 89 27 a1 fe 48 85 c0 74 20 44 0f b6 48
+  +0x060: 54 4c 8b c7 48 c7 44 24 28 00 00 00 00 8b d6 48
+  +0x070: 8b cb 48 89 44 24 20 e8 24 00 00 00 48 8b 5c 24
+  +0x080: 40 48 8b 74 24 48 48 83 c4 30 5f c3 e8 2f ca bc
+  +0x090: fe cc cc cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x0a0: 48 89 6c 24 10 48 89 74 24 18 57 41 56 41 57 48
+  +0x0b0: 81 ec 80 00 00 00 4d 8b f0 8b ea 0f 57 c0 45 33
+  +0x0c0: c0 33 d2 45 0f b6 f9 0f 11 44 24 50 48 8b f9 e8
+  +0x0d0: 8c 4a fb ff 33 d2 49 8b ce e8 d2 10 cb ff 84 c0
+  +0x0e0: 0f 85 05 02 00 00 48 89 9c 24 a0 00 00 00 0f 29
+  +0x0f0: 74 24 70 48 8b 9c 24 c0 00 00 00 48 85 db 75 16
+  +0x100: 45 33 c0 49 8b d6 48 8b cf e8 02 97 ff ff 48 8b
+  +0x110: d8 48 85 c0 74 62 48 8b 8f 88 07 00 00 33 d2 48
+  +0x120: 89 4c 24 30 48 8d 4c 24 30 e8 e2 d5 ec ff 84 c0
+  +0x130: 74 76 48 85 db 0f 84 ec 01 00 00 83 7b 50 00 74
+  +0x140: 67 33 f6 45 0f b6 cf 4d 8b c6 48 89 74 24 20 8b
+  +0x150: d5 48 8b cf e8 e7 15 00 00 44 8b 43 50 45 0f b6
+  +0x160: cf 8b d5 48 89 74 24 20 48 8b cf e8 d0 9c fb ff
+  +0x170: 84 c0 0f 85 29 01 00 00 33 d2 48 8b cf e8 8e 55
+  +0x180: fb ff 0f 28 74 24 70 48 8b 9c 24 a0 00 00 00 4c
+  +0x190: 8d 9c 24 80 00 00 00 49 8b 6b 28 49 8b 73 30 49
+  +0x1a0: 8b e3 41 5f 41 5e 5f c3 48 8b 43 48 48 8d 4c 24
+  +0x1b0: 30 33 d2 48 89 44 24 30 e8 53 d5 ec ff 33 f6 84
+  +0x1c0: c0 0f 84 f5 00 00 00 48 8b 5b 48 48 89 5c 24 30
+  +0x1d0: 48 85 db 74 21 33 d2 48 8b cb e8 d1 fc ca ff 8b
+  +0x1e0: 4b 10 89 4c 24 48 89 74 24 4c 48 89 44 24 40 0f
+  +0x1f0: 28 74 24 40 eb 03 0f 57 f6 48 8b 1d 40 8b 84 01
+  +0x200: 48 85 db 0f 84 1e 01 00 00 8b 5b 10 45 0f b6 cf
+  +0x210: 4d 8b c6 48 89 74 24 20 8b d5 48 8b cf e8 1e 15
+  +0x220: 00 00 66 0f 6f c6 66 0f 73 d8 08 66 0f 7e c0 3b
+  +0x230: c3 74 47 48 8b 0d c6 d9 85 01 39 b1 e4 00 00 00
+  +0x240: 75 05 e8 19 c9 bc fe 45 33 c0 66 0f 7f 74 24 40
+  +0x250: 48 8d 54 24 40 48 8d 4c 24 60 e8 c1 1b ed ff 48
+  +0x260: 8b 15 42 aa 84 01 48 8d 4c 24 50 0f 10 00 0f 11
+  +0x270: 44 24 50 e8 28 32 81 ff eb 11 48 8b 05 af b9 a4
+  +0x280: 01 48 8b 88 b8 00 00 00 48 8b 01 45 0f b6 cf 48
+  +0x290: 89 74 24 20 4c 8b c0 8b d5 48 8b cf e8 ff 9b fb
+  +0x2a0: ff 45 0f b6 cf 48 89 74 24 20 4d 8b c6 8b d5 48
+  +0x2b0: 8b cf e8 99 13 00 00 e9 bc fe ff ff 41 b1 01 48
+  +0x2c0: 89 74 24 20 45 33 c0 8b d5 48 8b cf e8 6f 14 00
+  +0x2d0: 00 41 b1 01 48 89 74 24 20 45 33 c0 8b d5 48 8b
+  +0x2e0: cf e8 ba 9b fb ff e9 8d fe ff ff 33 f6 41 b1 01
+  +0x2f0: 45 33 c0 48 89 74 24 20 8b d5 48 8b cf e8 3e 14
+  +0x300: 00 00 45 0f b6 cf 48 89 74 24 20 45 33 c0 8b d5
+  +0x310: 48 8b cf e8 88 9b fb ff 33 d2 48 8b cf e8 ee 53
+  +0x320: fb ff e9 68 fe ff ff e8 94 c7 bc fe cc cc cc cc
+  +0x330: 48 89 5c 24 08 48 89 6c 24 10 48 89 74 24 18 57
+  +0x340: 41 56 41 57 48 83 ec 30 48 8b f1 33 db 4d 8b f1
+  +0x350: 4d 8b f8 48 8b ea 8b cb 48 8b 86 e0 08 00 00 48
+  +0x360: 85 c0 0f 84 8e 00 00 00 8d 7b 20 0f 1f 44 00 00
+  +0x370: 3b 48 18 7d 72 48 8b 86 e0 08 00 00 48 85 c0 74
+  +0x380: 75 48 8b 40 10 45 33 c0 48 8b cd 0f 10 04 38 66
+  +0x390: 48 0f 7e c2 0f 11 44 24 20 e8 c2 eb ca ff 84 c0
+  +0x3a0: 75 16 48 8b 86 e0 08 00 00 ff c3 48 83 c7 10 8b
+  +0x3b0: cb 48 85 c0 74 40 eb b8 0f 10 44 24 20 41 89 1f
+  +0x3c0: 66 0f 73 d8 08 66 0f 7e c0 41 88 06 b0 01 48 8b
+  +0x3d0: 5c 24 50 48 8b 6c 24 58 48 8b 74 24 60 48 83 c4
+  +0x3e0: 30 41 5f 41 5e 5f c3 41 c7 07 ff ff ff ff 32 c0
+  +0x3f0: 41 c6 06 00 eb d8 e8 c5 c6 bc fe cc cc cc cc cc
+  --- Annotations ---
+  +0x023: CALL 0x01e15220 -> Object.CompareBaseObjects, Object.op_Equality
+  +0x077: CALL 0x015efce0 -> StreamedTable.SetSorting
+  +0x0cf: CALL 0x015a47a0 -> StreamedListView.BeginStateChange
+  +0x0d9: CALL 0x012a0df0 -> String.IsNullOrEmpty
+  +0x109: CALL 0x015e9450 -> StreamedTable.EntryForColumn
+  +0x129: CALL 0x014bd350 -> BindingPath.IsValid, HierarchySearchFilter.get_IsValid
+  +0x154: CALL 0x015f1380 -> StreamedTable.UpdateSortColum
+  +0x16b: CALL 0x015a9a80 -> StreamedListView.SetSortingBinding
+  +0x17d: CALL 0x015a5350 -> StreamedListView.EndStateChange
+  +0x1b8: CALL 0x014bd350 -> BindingPath.IsValid, HierarchySearchFilter.get_IsValid
+  +0x1da: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x21d: CALL 0x015f1380 -> StreamedTable.UpdateSortColum
+  +0x25a: CALL 0x014c1a60 -> Bindings.GetProperties
+  +0x273: CALL 0x00e030e0 -> 
+  +0x29c: CALL 0x015a9ae0 -> StreamedListView.SetSortingBinding
+  +0x2b2: CALL 0x015f1290 -> StreamedTable.UpdatePersistedColumnSortingData
+  +0x2b7: JMP 0x015efdb8 -> 
+  +0x2cc: CALL 0x015f1380 -> StreamedTable.UpdateSortColum
+  +0x2e1: CALL 0x015a9ae0 -> StreamedListView.SetSortingBinding
+  +0x2e6: JMP 0x015efdb8 -> 
+  +0x2fd: CALL 0x015f1380 -> StreamedTable.UpdateSortColum
+  +0x313: CALL 0x015a9ae0 -> StreamedListView.SetSortingBinding
+  +0x31d: CALL 0x015a5350 -> StreamedListView.EndStateChange
+  +0x322: JMP 0x015efdcf -> 
+  +0x399: CALL 0x0129eba0 -> String.Equals, String.op_Equality
+
+================ StreamedTable.TrySetColumnsAndSort (RVA=0x015f0040, size=1536) ================
+  +0x000: 40 53 48 83 ec 40 33 c0 48 8b d9 48 89 44 24 60
+  +0x010: 48 89 44 24 50 48 39 81 58 07 00 00 0f 84 7e 01
+  +0x020: 00 00 48 8b 81 38 08 00 00 48 85 c0 0f 84 b6 01
+  +0x030: 00 00 48 8b 48 28 48 85 c9 0f 84 a9 01 00 00 83
+  +0x040: 79 18 00 0f 8e 57 01 00 00 48 8b 8b 88 09 00 00
+  +0x050: 45 33 c0 33 d2 e8 06 66 82 00 84 c0 0f 84 3e 01
+  +0x060: 00 00 33 d2 48 8b cb e8 74 25 ca fe 84 c0 0f 84
+  +0x070: 2c 01 00 00 80 bb b8 09 00 00 00 0f 85 25 01 00
+  +0x080: 00 48 8b 15 d0 48 82 01 48 8d 4c 24 60 e8 0e 8a
+  +0x090: 43 ff 84 c0 0f 84 0c 01 00 00 48 8b 4c 24 60 48
+  +0x0a0: 85 c9 0f 84 40 01 00 00 0f 10 83 60 08 00 00 45
+  +0x0b0: 33 c9 4c 8d 44 24 50 0f 10 8b 70 08 00 00 48 8d
+  +0x0c0: 54 24 20 0f 29 44 24 20 0f 29 4c 24 30 e8 ce 00
+  +0x0d0: 06 00 84 c0 0f 84 cc 00 00 00 48 8b 83 88 09 00
+  +0x0e0: 00 48 85 c0 0f 84 fe 00 00 00 4c 8b 40 38 4d 85
+  +0x0f0: c0 0f 84 f1 00 00 00 4c 8b 4c 24 50 33 c9 48 8b
+  +0x100: 15 2b 72 85 01 e8 d6 22 a1 fe 84 c0 0f 84 94 00
+  +0x110: 00 00 4c 8b 44 24 50 45 33 c9 33 d2 48 8b cb e8
+  +0x120: 5c 57 ff ff 48 8b 4c 24 60 48 85 c9 0f 84 b6 00
+  +0x130: 00 00 0f 10 83 a0 08 00 00 45 33 c9 4c 8d 44 24
+  +0x140: 50 0f 10 8b b0 08 00 00 48 8d 54 24 20 0f 29 44
+  +0x150: 24 20 0f 29 4c 24 30 e8 44 00 06 00 84 c0 74 40
+  +0x160: 48 8b 83 88 09 00 00 48 85 c0 74 7c 4c 8b 40 38
+  +0x170: 4d 85 c0 74 73 4c 8b 4c 24 50 33 c9 48 8b 15 ad
+  +0x180: 71 85 01 e8 58 22 a1 fe 84 c0 74 14 4c 8b 44 24
+  +0x190: 50 45 33 c9 48 8b cb 41 8d 51 01 e8 e0 56 ff ff
+  +0x1a0: 48 83 c4 40 5b c3 48 8b 8b b0 09 00 00 33 d2 e8
+  +0x1b0: fc 0b cb ff 48 8b cb 84 c0 74 16 48 8b 03 48 8b
+  +0x1c0: 90 a0 0d 00 00 ff 90 98 0d 00 00 48 83 c4 40 5b
+  +0x1d0: c3 4c 8b 83 b0 09 00 00 45 33 c9 33 d2 e8 1e fa
+  +0x1e0: ff ff 48 83 c4 40 5b c3 e8 d3 c4 bc fe cc cc cc
+  +0x1f0: 40 56 41 56 48 83 ec 58 48 8b f1 44 0f b6 f2 33
+  +0x200: c9 e8 9a a6 0c 00 84 c0 0f 84 4d 02 00 00 48 89
+  +0x210: bc 24 80 00 00 00 4c 89 7c 24 50 48 89 5c 24 70
+  +0x220: 48 8b 8e e0 07 00 00 41 8b fe 83 f7 01 45 33 ff
+  +0x230: 48 85 c9 0f 84 a9 00 00 00 33 d2 e8 50 88 94 00
+  +0x240: 48 8b d8 48 85 c0 0f 84 e5 02 00 00 4c 8b 10 41
+  +0x250: 0f b7 cf 4c 8b 0d de b9 83 01 41 0f b7 92 2e 01
+  +0x260: 00 00 66 44 3b fa 73 1c 4d 8b 82 b0 00 00 00 90
+  +0x270: 0f b7 c1 48 03 c0 4d 39 0c c0 74 47 66 ff c1 66
+  +0x280: 3b ca 72 ec 41 b8 30 00 00 00 49 8b d1 48 8b cb
+  +0x290: e8 6b ff bc fe 4c 8b 00 48 8b cb 48 8b 50 08 41
+  +0x2a0: ff d0 33 c9 45 33 c0 48 89 4c 24 40 48 8b d0 89
+  +0x2b0: 4c 24 48 48 8d 4c 24 40 e8 13 4f 74 ff 8b 44 24
+  +0x2c0: 48 eb 26 0f b7 c9 48 03 c9 41 8b 44 c8 08 83 c0
+  +0x2d0: 30 48 98 48 c1 e0 04 48 05 38 01 00 00 49 03 c2
+  +0x2e0: eb b3 33 c0 48 89 44 24 40 f2 0f 10 44 24 40 f2
+  +0x2f0: 0f 11 44 24 30 89 44 24 38 33 d2 8b cf e8 9e 27
+  +0x300: 89 ff 44 38 7c 24 30 74 18 48 8b 4c 24 34 45 33
+  +0x310: c0 48 8b d0 e8 e7 25 89 ff 84 c0 0f 85 28 01 00
+  +0x320: 00 48 8b 05 48 f4 7d 01 48 8b 88 b8 00 00 00 48
+  +0x330: 8b 39 48 85 ff 0f 84 f0 01 00 00 48 8b 15 de 64
+  +0x340: 83 01 b9 19 00 00 00 4c 8b c7 48 89 6c 24 78 e8
+  +0x350: 6c 1f a1 fe 41 8b df 83 f8 02 75 05 8d 68 ff eb
+  +0x360: 0d 83 f8 04 41 8b ef 0f 95 c3 40 0f 94 c5 48 8b
+  +0x370: 15 ab 64 83 01 b9 19 00 00 00 4c 8b c7 e8 3e 1f
+  +0x380: a1 fe 83 f8 02 74 07 83 f3 01 32 c0 eb 5c 48 8b
+  +0x390: 15 8b 64 83 01 b9 25 00 00 00 4c 8b c7 8b dd e8
+  +0x3a0: 1c 1f a1 fe 48 85 c0 75 02 eb 3f 48 8b 15 6e 64
+  +0x3b0: 83 01 b9 25 00 00 00 4c 8b c7 e8 01 1f a1 fe 48
+  +0x3c0: 3b f0 75 04 b0 01 eb 22 48 8b 15 51 64 83 01 b9
+  +0x3d0: 25 00 00 00 4c 8b c7 e8 e4 1e a1 fe 45 33 c0 48
+  +0x3e0: 8b d6 48 8b c8 e8 a6 a4 06 00 48 8b 6c 24 78 85
+  +0x3f0: db 0f 84 dc 00 00 00 84 c0 0f 84 d4 00 00 00 33
+  +0x400: d2 48 8b ce e8 27 c8 fb ff 84 c0 74 0d 44 38 be
+  +0x410: 00 05 00 00 0f 84 b9 00 00 00 48 8b 8e e0 07 00
+  +0x420: 00 48 85 c9 74 14 0f 57 db 4c 89 7c 24 20 45 33
+  +0x430: c0 41 0f b6 d6 e8 b6 1f 0d 00 45 84 f6 75 24 33
+  +0x440: d2 48 8b ce e8 f7 04 00 00 48 8b 5c 24 70 48 8b
+  +0x450: bc 24 80 00 00 00 4c 8b 7c 24 50 48 83 c4 58 41
+  +0x460: 5e 5e c3 48 8b 05 06 f3 7d 01 48 8b 88 b8 00 00
+  +0x470: 00 4c 8b 01 4d 85 c0 0f 84 ae 00 00 00 48 8b 15
+  +0x480: 9c 63 83 01 b9 11 00 00 00 e8 32 1e a1 fe 48 8b
+  +0x490: 0d b3 d8 85 01 48 8b f8 e8 d3 c1 bc fe 4c 8b 05
+  +0x4a0: 2c 77 83 01 45 33 c9 48 8b d6 48 8b c8 48 8b d8
+  +0x4b0: e8 eb 2d 8f ff 41 b9 0c 00 00 00 4c 89 7c 24 20
+  +0x4c0: 4c 8b c3 48 8b d7 48 8b ce e8 72 02 f1 ff e9 76
+  +0x4d0: ff ff ff 48 8b 8e e0 07 00 00 48 85 c9 74 12 0f
+  +0x4e0: 57 db 4c 89 7c 24 20 45 33 c0 33 d2 e8 ff 1e 0d
+  +0x4f0: 00 48 8b 05 78 f2 7d 01 48 8b 88 b8 00 00 00 4c
+  +0x500: 8b 01 4d 85 c0 74 24 48 8b 15 12 63 83 01 b9 11
+  +0x510: 00 00 00 e8 a8 1d a1 fe 45 33 c0 48 8b d0 48 8b
+  +0x520: ce e8 fa 04 f1 ff e9 1e ff ff ff e8 90 c1 bc fe
+  +0x530: cc e8 8a c1 bc fe cc cc cc cc cc cc cc cc cc cc
+  +0x540: 48 89 5c 24 08 48 89 74 24 10 4c 89 44 24 18 55
+  +0x550: 57 41 54 41 56 41 57 48 8b ec 48 83 ec 60 48 8b
+  +0x560: 35 db 83 84 01 45 33 e4 4c 8b b1 50 07 00 00 49
+  +0x570: 8b f9 44 8b fa 48 8b d9 48 85 f6 74 1e 33 d2 44
+  +0x580: 89 65 fc 48 8b ce e8 25 f5 ca ff 48 89 45 f0 8b
+  +0x590: 46 10 89 45 f8 0f 28 45 f0 eb 03 0f 57 c0 66 0f
+  +0x5a0: 7f 45 e0 48 85 ff 75 11 48 8b 15 79 79 81 01 33
+  +0x5b0: c9 e8 ca 1a 50 ff 48 8b f8 4d 85 f6 0f 84 ee 01
+  +0x5c0: 00 00 4c 89 64 24 30 4c 8d 45 e0 c7 44 24 28 01
+  +0x5d0: 00 00 00 48 8d 55 40 4c 8b cf 44 88 64 24 20 49
+  +0x5e0: 8b ce e8 29 50 ed ff 48 8b 83 88 09 00 00 48 85
+  +0x5f0: c0 0f 84 b9 01 00 00 44 38 60 20 74 77 48 8b 3d
+  --- Annotations ---
+  +0x055: CALL 0x01e166a0 -> Object.op_Inequality
+  +0x067: CALL 0x00292620 -> FMpediaDataReference.Equals, PrivacyPolicyReference.Equals, StaticDataReference.Equals, ApplicationReference.Equals
+  +0x08d: CALL 0x00a28ae0 -> 
+  +0x0cd: CALL 0x016501e0 -> Persistence.TryGet
+  +0x11f: CALL 0x015e58c0 -> StreamedTable.ApplyPersistedSortingState
+  +0x157: CALL 0x016501e0 -> Persistence.TryGet
+  +0x19b: CALL 0x015e58c0 -> StreamedTable.ApplyPersistedSortingState
+  +0x1af: CALL 0x012a0df0 -> String.IsNullOrEmpty
+  +0x1dd: CALL 0x015efc40 -> StreamedTable.SetSorting
+  +0x201: CALL 0x016ba8e0 -> NavigationManager.Exists
+  +0x23b: CALL 0x01f38ad0 -> VisualElement.get_style
+  +0x2b8: CALL 0x00d35210 -> 
+  +0x2fd: CALL 0x00e82ae0 -> 
+  +0x314: CALL 0x00e82940 -> StyleInt.op_Equality
+  +0x3e5: CALL 0x0165a8d0 -> VisualElementExtensions.IsChildOf, CascadingMenu.<OnFocusOutEvent>g__HasFocus|54_0
+  +0x404: CALL 0x015acc70 -> StreamedListView.get_IsPaginated
+  +0x435: CALL 0x016c2430 -> UIVisibilityListener.ChangeVisibility
+  +0x444: CALL 0x015f0980 -> StreamedTable.<TryShowJumpToTopElement>g__DisableJumpToTopOfTable|256_1
+  +0x4b0: CALL 0x00ee32e0 -> SerializationEventHandler..ctor, GroupChangedCallback..ctor, OnPhotoModeStartedCallback..ctor, OnPhotoModeStoppedCallback..ctor
+  +0x4c9: CALL 0x01500780 -> ShortcutElementExtensions.AddInputActionCallback
+  +0x4ce: JMP 0x015f0489 -> 
+  +0x4ec: CALL 0x016c2430 -> UIVisibilityListener.ChangeVisibility
+  +0x521: CALL 0x01500a60 -> ShortcutElementExtensions.RemoveInputActionCallback
+  +0x526: JMP 0x015f0489 -> 
+  +0x586: CALL 0x0129faf0 -> String.GetRawStringData
+  +0x5b1: CALL 0x00af20c0 -> 
+  +0x5e2: CALL 0x014c5650 -> Bindings.Set
+
+================ SortComparer (RVA=0x015b12d0, size=848) ================
+  +0x000: a0 00 00 00 45 33 c0 e8 b4 a7 0f 00 48 8b 05 b5
+  +0x010: df 88 01 0f b6 96 35 01 00 00 48 8b 88 b8 00 00
+  +0x020: 00 84 11 76 27 48 85 ff 0f 84 37 02 00 00 48 8b
+  +0x030: 8f 48 07 00 00 48 85 c9 0f 84 27 02 00 00 8b 96
+  +0x040: 9c 00 00 00 45 33 c0 e8 a4 47 a5 00 48 8b 05 75
+  +0x050: df 88 01 0f b6 96 34 01 00 00 48 8b 88 b8 00 00
+  +0x060: 00 84 11 76 27 48 85 ff 0f 84 f7 01 00 00 48 8b
+  +0x070: 8f 48 07 00 00 48 85 c9 0f 84 e7 01 00 00 8b 96
+  +0x080: 98 00 00 00 45 33 c0 e8 04 4d a5 00 48 8b 05 35
+  +0x090: df 88 01 0f b6 96 33 01 00 00 48 8b 88 b8 00 00
+  +0x0a0: 00 84 11 76 27 48 85 ff 0f 84 b7 01 00 00 48 8b
+  +0x0b0: 8f 48 07 00 00 48 85 c9 0f 84 a7 01 00 00 8b 96
+  +0x0c0: 94 00 00 00 45 33 c0 e8 b4 47 a5 00 48 8b 05 f5
+  +0x0d0: de 88 01 0f b6 96 31 01 00 00 48 8b 88 b8 00 00
+  +0x0e0: 00 84 11 0f 86 20 01 00 00 48 83 be 88 00 00 00
+  +0x0f0: 00 0f 84 12 01 00 00 48 8b 0d 9a df 88 01 48 8b
+  +0x100: 9e 88 00 00 00 83 b9 e4 00 00 00 00 75 05 e8 bd
+  +0x110: b3 c0 fe 48 8b 15 f6 89 87 01 48 8b cb e8 1e 31
+  +0x120: 56 ff 48 8b d8 48 85 ff 0f 84 37 01 00 00 33 d2
+  +0x130: 48 8b c8 e8 d8 7f 40 ff 48 8d 8f 60 06 00 00 84
+  +0x140: c0 0f 84 9f 00 00 00 48 8b d3 48 89 9f 60 06 00
+  +0x150: 00 e8 1a a3 c0 fe 48 8b 8f 60 06 00 00 33 d2 e8
+  +0x160: ac 7f 40 ff 48 8b 8f 78 07 00 00 84 c0 75 1e 48
+  +0x170: 85 c9 0f 84 ed 00 00 00 48 8b 81 28 05 00 00 48
+  +0x180: 85 c0 0f 84 dd 00 00 00 89 68 18 eb 7c 48 85 c9
+  +0x190: 0f 84 cf 00 00 00 48 8b 81 28 05 00 00 48 85 c0
+  +0x1a0: 0f 84 bf 00 00 00 c7 40 18 01 00 00 00 48 8b 8f
+  +0x1b0: 48 07 00 00 48 85 c9 0f 84 a8 00 00 00 45 33 c0
+  +0x1c0: 41 8d 50 02 e8 47 4a a5 00 48 8b 8f 48 07 00 00
+  +0x1d0: 48 85 c9 0f 84 8c 00 00 00 45 33 c0 0f 57 c9 e8
+  +0x1e0: ec 47 a5 00 eb 23 33 d2 48 89 af 60 06 00 00 e8
+  +0x1f0: 7c a2 c0 fe 48 8d 8f 68 06 00 00 48 89 af 68 06
+  +0x200: 00 00 33 d2 e8 67 a2 c0 fe 48 8b 05 b8 dd 88 01
+  +0x210: 48 8b 88 b8 00 00 00 0f b6 01 84 86 4b 01 00 00
+  +0x220: 76 1f 48 8b 96 28 01 00 00 48 85 ff 74 37 48 8d
+  +0x230: 8f d0 07 00 00 48 89 97 d0 07 00 00 e8 2f a2 c0
+  +0x240: fe 4c 8b 74 24 70 4c 8d 5c 24 60 49 8b 5b 18 49
+  +0x250: 8b 6b 20 49 8b 73 28 49 8b e3 5f c3 48 8b cb e8
+  +0x260: 4c a2 c0 fe cc e8 c6 b1 c0 fe cc cc cc cc cc cc
+  +0x270: 48 89 5c 24 08 57 48 83 ec 20 45 33 c0 48 8b da
+  +0x280: 48 8b f9 e8 a8 e6 a6 00 48 8b 15 d9 cb 84 01 48
+  +0x290: 85 db 74 24 4c 8b 03 0f b6 82 30 01 00 00 41 38
+  +0x2a0: 80 30 01 00 00 72 47 0f b6 c8 49 8b 80 c8 00 00
+  +0x2b0: 00 48 39 54 c8 f8 75 36 48 8b 05 09 dd 88 01 48
+  +0x2c0: 8b 88 b8 00 00 00 0f b6 01 84 87 a9 00 00 00 76
+  +0x2d0: 12 0f b6 87 a8 00 00 00 48 85 db 74 1a 88 83 60
+  +0x2e0: 05 00 00 48 8b 5c 24 30 48 83 c4 20 5f c3 48 8b
+  +0x2f0: cb e8 ba a1 c0 fe cc e8 34 b1 c0 fe cc cc cc cc
+  +0x300: 40 57 48 83 ec 40 4c 8b c2 48 8b f9 48 85 d2 0f
+  +0x310: 84 8a 00 00 00 48 8b 15 e4 b6 89 01 33 c0 49 39
+  +0x320: 10 49 0f 44 c0 48 85 c0 74 75 49 8b 08 48 8b 42
+  +0x330: 40 48 39 41 40 49 8b c8 75 6d 48 89 5c 24 50 e8
+  +0x340: 0c a3 c0 fe 48 8b 0d 15 0a 84 01 8b 1f 0f 10 00
+  --- Annotations ---
+  +0x007: CALL 0x016aba90 -> VirtualisedList.set_DynamicElements
+  +0x047: CALL 0x02005ac0 -> ScrollView.set_horizontalScrollerVisibility
+  +0x087: CALL 0x02006060 -> ScrollView.set_verticalScrollerVisibility
+  +0x0c7: CALL 0x02005b50 -> ScrollView.set_mode
+  +0x11d: CALL 0x00b14510 -> 
+  +0x133: CALL 0x009b93e0 -> 
+  +0x15f: CALL 0x009b93e0 -> 
+  +0x1c4: CALL 0x02005ee0 -> ScrollView.set_touchScrollBehavior
+  +0x1df: CALL 0x02005ca0 -> ScrollView.set_scrollDecelerationRate
+  +0x283: CALL 0x0201fc00 -> UxmlSerializedData.Deserialize
+
+=== 3. Find all methods of StreamedTable, PlayerReference, PersonReference, TeamReference ===
+
+=== 4. Inspect ui-tableviews_assets_all.bundle ===

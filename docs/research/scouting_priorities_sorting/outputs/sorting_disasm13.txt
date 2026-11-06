@@ -1,0 +1,1371 @@
+
+=== FM.UI.dll Type 861: ScoutTeamPrioritiesReference (tu=(74615, 0, 35887, -1, 30501, 35887, -1, 1056769, -1, 10276)) ===
+  Method 10276 (.ctor): RVA=0x0067dbc0 size=55
+  Method 10277 (.ctor): RVA=0x004d2220 size=61
+  Method 10278 (get_Identifier): RVA=0x0067dc00 size=64
+  Method 10279 (get_ID): RVA=0x0067dc00 size=64
+  Method 10280 (AcceptsProperty): RVA=0x0067d680 size=64
+  Method 10281 (AcceptsPropertyInternal): RVA=0x0067d660 size=64
+  Method 10282 (GetPropertyTypeInternal): RVA=0x0067db00 size=181
+  Method 10283 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 10284 (GetProperties): RVA=0x0067d9b0 size=323
+  Method 10285 (GetPropertiesInternal): RVA=0x0067d870 size=320
+  Method 10286 (GetPropertyCountInternal): RVA=0x0035e220 size=64
+  Method 10287 (GetContexts): RVA=0x0067d770 size=162
+  Method 10288 (GetContextsInternal): RVA=0x0067d6c0 size=162
+  Method 10289 (DerivesFrom): RVA=0x0067d6b0 size=64
+  Method 10290 (DerivesFromInternal): RVA=0x0067d6a0 size=64
+  Method 10291 (GetInstance): RVA=0x0067d820 size=71
+
+=== FM.UI.dll Type 909: SpecificallyScoutedPersonReference (tu=(76016, 0, 36675, -1, 33042, 36675, -1, 1056769, -1, 10924)) ===
+  Method 10924 (get_Identifier): RVA=0x00697370 size=64
+  Method 10925 (get_ID): RVA=0x00697370 size=64
+  Method 10926 (AcceptsPropertyInternal): RVA=0x00696ef0 size=64
+  Method 10927 (GetPropertyTypeInternal): RVA=0x00697200 size=356
+  Method 10928 (GetPropertyDescriptionInternal): RVA=0x0035e230 size=64
+  Method 10929 (GetProperties): RVA=0x006971f0 size=64
+  Method 10930 (GetPropertiesInternal): RVA=0x00696f80 size=616
+  Method 10931 (GetPropertyCountInternal): RVA=0x004d3ef0 size=64
+  Method 10932 (GetContextsInternal): RVA=0x0035df40 size=50
+  Method 10933 (DerivesFrom): RVA=0x00696f60 size=64
+  Method 10934 (DerivesFromInternal): RVA=0x00696f50 size=64
+  Method 10935 (GetInstance): RVA=0x00696f70 size=64
+  Method 10936 (.ctor): RVA=0x002911e0 size=64
+
+=== UnityEngine.UIElementsModule.dll Type 5369: ManagedObjectStore`1 (tu=(728464, 728242, 31625, -1, 33042, 31625, 670, 1048576, 21714, 44028)) ===
+  Method 44028 (.ctor): RVA=0x00000000 size=0
+  Method 44029 (GetValue): RVA=0x00000000 size=0
+  Method 44030 (UpdateValue): RVA=0x00000000 size=0
+
+=== System.Text.Json.dll Type 12639: PolymorphicSerializationState (tu=(1850005, 1820589, 34009, -1, 26834, 23952, -1, 256, 56667, -1)) ===
+
+=== System.Text.Json.dll Type 12690: JsonPolymorphicAttribute (tu=(1859762, 1859263, 30771, -1, 30660, 30771, -1, 1048833, 56949, -1)) ===
+
+=== System.Text.Json.dll Type 12764: PolymorphicTypeResolver (tu=(1853985, 1863438, 34012, -1, 33042, 34012, -1, 1048832, 57210, 98467)) ===
+  Method 98467 (.ctor): RVA=0x018c2650 size=1509
+  Method 98468 (get_UsesTypeDiscriminators): RVA=0x002f6a60 size=64
+  Method 98469 (get_TypeDiscriminatorPropertyNameUtf8): RVA=0x00290440 size=64
+  Method 98470 (TryGetDerivedJsonTypeInfo): RVA=0x018c24a0 size=360
+  Method 98471 (TryGetDerivedJsonTypeInfo): RVA=0x018c2400 size=157
+  Method 98472 (IsSupportedPolymorphicBaseType): RVA=0x018c2350 size=170
+  Method 98473 (IsSupportedDerivedType): RVA=0x018c2300 size=71
+  Method 98474 (CalculateNearestAncestor): RVA=0x018c1f50 size=547
+  Method 98475 (FindNearestPolymorphicBaseType): RVA=0x018c2180 size=375
+  Method 98476 (<FindNearestPolymorphicBaseType>g__ResolveAncestorTypeInfo|30_0): RVA=0x018c2610 size=50
+
+=== FM.GamePlugin.dll Type 13943: UiRecordID (tu=(2037976, 2007537, 39026, -1, 26834, 23952, -1, 257, 62342, -1)) ===
+
+=== SI.Bindable.dll Type 5967: StreamedTable (methods=177) ===
+  Method 48771 (get_InputActionSort): RVA=0x015f21f0 size=53
+  Method 48772 (get_InputActionJumpToTopOfTable): RVA=0x015aef40 size=53
+  Method 48773 (set_InitFunction): RVA=0x015f2550 size=106
+  Method 48774 (get_SelectionLimitBinding): RVA=0x015f2340 size=64
+  Method 48775 (set_SelectionLimitBinding): RVA=0x015f2900 size=64
+  Method 48776 (get_IsSelectionCellActive): RVA=0x015f2270 size=21
+  Method 48777 (get_ActiveSelectionCellID): RVA=0x015f20f0 size=47
+  Method 48778 (get_SelectionCellID): RVA=0x015f2320 size=64
+  Method 48779 (set_SelectionCellID): RVA=0x015f28c0 size=64
+  Method 48780 (get_DragCellID): RVA=0x015f21a0 size=64
+  Method 48781 (set_DragCellID): RVA=0x015f2430 size=64
+  Method 48782 (get_IsDragCellActive): RVA=0x015f2230 size=25
+  Method 48783 (get_RemoveCellID): RVA=0x015f22d0 size=64
+  Method 48784 (set_RemoveCellID): RVA=0x015f2840 size=64
+  Method 48785 (get_IsRemoveCellActive): RVA=0x015f2250 size=25
+  Method 48786 (get_AddEvents): RVA=0x015f2120 size=64
+  Method 48787 (set_AddEvents): RVA=0x015f2380 size=64
+  Method 48788 (set_MigrateAddEvent): RVA=0x015f25c0 size=156
+  Method 48789 (get_RowElementAsset): RVA=0x015f2300 size=64
+  Method 48790 (set_RowElementAsset): RVA=0x015f2890 size=64
+  Method 48791 (get_FactoryAsset): RVA=0x015f21c0 size=64
+  Method 48792 (set_FactoryAsset): RVA=0x015f2470 size=64
+  Method 48793 (get_ContextMenuData): RVA=0x015f2150 size=64
+  Method 48794 (set_ContextMenuData): RVA=0x015f23c0 size=64
+  Method 48795 (get_DisableRowContextMenu): RVA=0x015f2180 size=64
+  Method 48796 (set_DisableRowContextMenu): RVA=0x015f2410 size=64
+  Method 48797 (get_SortedColumn): RVA=0x015f2360 size=64
+  Method 48798 (set_SortedColumn): RVA=0x015f2930 size=64
+  Method 48799 (get_DisableSorting): RVA=0x015f2190 size=64
+  Method 48800 (set_DisableSorting): RVA=0x015f2420 size=64
+  Method 48801 (get_HeaderCellAsset): RVA=0x015f21e0 size=64
+  Method 48802 (set_HeaderCellAsset): RVA=0x015f24b0 size=149
+  Method 48803 (get_DefaultSelectedColumn): RVA=0x015f2170 size=64
+  Method 48804 (set_DefaultSelectedColumn): RVA=0x015f23f0 size=64
+  Method 48805 (get_ViewDropdownName): RVA=0x015f2370 size=64
+  Method 48806 (set_ViewDropdownName): RVA=0x015f2950 size=64
+  Method 48807 (get_ShowFooter): RVA=0x015f2350 size=64
+  Method 48808 (set_ShowFooter): RVA=0x015f2920 size=64
+  Method 48809 (get_ResizeColumnWidthsToFit): RVA=0x015f22f0 size=64
+  Method 48810 (set_ResizeColumnWidthsToFit): RVA=0x015f2880 size=64
+  Method 48811 (get_AllowColumnResizing): RVA=0x015f2140 size=64
+  Method 48812 (set_AllowColumnResizing): RVA=0x015f23b0 size=64
+  Method 48813 (get_AllowColumnReordering): RVA=0x015f2130 size=64
+  Method 48814 (set_AllowColumnReordering): RVA=0x015f23a0 size=64
+  Method 48815 (get_FooterBinding): RVA=0x015f21d0 size=64
+  Method 48816 (set_FooterBinding): RVA=0x015f2490 size=64
+  Method 48817 (get_SelectionEvents): RVA=0x015f2330 size=64
+  Method 48818 (set_SelectionEvents): RVA=0x015f28e0 size=64
+  Method 48819 (get_DefaultSelectFirstElement): RVA=0x015f2160 size=64
+  Method 48820 (set_DefaultSelectFirstElement): RVA=0x015f23e0 size=64
+  Method 48821 (set_MigrateSelectionEvent): RVA=0x015f27a0 size=156
+  Method 48822 (get_DragEvents): RVA=0x015f21b0 size=64
+  Method 48823 (set_DragEvents): RVA=0x015f2450 size=64
+  Method 48824 (set_MigrateDragEvent): RVA=0x015f2660 size=156
+  Method 48825 (get_RemoveEvents): RVA=0x015f22e0 size=64
+  Method 48826 (set_RemoveEvents): RVA=0x015f2860 size=64
+  Method 48827 (set_MigrateRemoveEvent): RVA=0x015f2700 size=156
+  Method 48828 (get_SelectedColumnIndex): RVA=0x015f2310 size=64
+  Method 48829 (set_SelectedColumnIndex): RVA=0x015f28b0 size=64
+  Method 48830 (UpdateSortShortcut): RVA=0x015f14d0 size=375
+  Method 48831 (get_NumSelectedItems): RVA=0x015f2290 size=55
+  Method 48832 (.ctor): RVA=0x015f1930 size=1975
+  Method 48833 (RegisterEvents): RVA=0x015eef50 size=312
+  Method 48834 (OnAttachToPanel): RVA=0x015eb750 size=64
+  Method 48835 (GeneratePersistenceKeys): RVA=0x015e9600 size=774
+  Method 48836 (OnTableGeometryChangedEvent): RVA=0x015ee660 size=64
+  Method 48837 (AvailableTableWidthChanged): RVA=0x015e5f00 size=801
+  Method 48838 (OnScrollViewGeometryChanged): RVA=0x015ee0c0 size=50
+  Method 48839 (SetList): RVA=0x015ef610 size=311
+  Method 48840 (GetGridBreakpointForTable): RVA=0x00294ea0 size=64
+  Method 48841 (TrySetColumnsAndSort): RVA=0x015f0040 size=494
+  Method 48842 (ApplyPersistedSortingState): RVA=0x015e58c0 size=229
+  Method 48843 (CanBuild): RVA=0x015e7580 size=177
+  Method 48844 (RebuildInternal): RVA=0x015ee9c0 size=259
+  Method 48845 (OnMakeItem): RVA=0x015ecc60 size=1757
+  Method 48846 (GetSelectedItemsContextValues): RVA=0x015ea5d0 size=664
+  Method 48847 (OnBindItem): RVA=0x015eb760 size=922
+  Method 48848 (OnRebindItem): RVA=0x015ed7d0 size=761
+  Method 48849 (OnUnbindItem): RVA=0x015ee670 size=110
+  Method 48850 (RefreshInternal): RVA=0x015eed80 size=450
+  Method 48851 (UpdateSortingIcons): RVA=0x00000000 size=0
+  Method 48852 (BindToDataInternal): RVA=0x015e6d70 size=2051
+  Method 48853 (OnContextMenuAssetLoaded): RVA=0x015ec0b0 size=99
+  Method 48854 (OnRowElementAssetLoaded): RVA=0x015ee050 size=99
+  Method 48855 (OnFactoryAssetLoaded): RVA=0x015ec640 size=713
+  Method 48856 (UnbindFromDataInternal): RVA=0x015f0c00 size=572
+  Method 48857 (OnSelectionLimitBindingValueChanged): RVA=0x015ee1e0 size=102
+  Method 48858 (RecreateHeaders): RVA=0x015eecb0 size=204
+  Method 48859 (CreateHeader): RVA=0x015e8f00 size=421
+  Method 48860 (BindHeader): RVA=0x015e6230 size=2659
+  Method 48861 (BindHeaders): RVA=0x015e6ca0 size=201
+  Method 48862 (UnbindHeader): RVA=0x015f0e40 size=270
+  Method 48863 (UnbindHeaders): RVA=0x015f0f50 size=412
+  Method 48864 (DestroyHeader): RVA=0x015e9220 size=275
+  Method 48865 (RecreateFooters): RVA=0x015eead0 size=473
+  Method 48866 (RebindFooters): RVA=0x015ee830 size=400
+  Method 48867 (CreateFooter): RVA=0x015e8e40 size=179
+  Method 48868 (DestroyFooter): RVA=0x015e91b0 size=99
+  Method 48869 (SetSorting): RVA=0x015efc40 size=146
+  Method 48870 (SetSorting): RVA=0x015efce0 size=653
+  Method 48871 (UpdatePersistedColumnSortingData): RVA=0x015f1290 size=234
+  Method 48872 (EntryForColumn): RVA=0x015e9450 size=109
+  Method 48873 (UpdateSortColum): RVA=0x015f1380 size=322
+  Method 48874 (SetNoSorting): RVA=0x015ef750 size=307
+  Method 48875 (MakeDefaultSelectedColumnHeader): RVA=0x015eb000 size=217
+  Method 48876 (OnHeaderClicked): RVA=0x015ec910 size=600
+  Method 48877 (TryFindSortedColumn): RVA=0x015eff70 size=204
+  Method 48878 (OnDigIn): RVA=0x015ec2d0 size=49
+  Method 48879 (OnDigOut): RVA=0x015ec310 size=118
+  Method 48880 (OnSortColumn): RVA=0x015ee250 size=53
+  Method 48881 (OnJumpToTopOfTable): RVA=0x015ecb70 size=230
+  Method 48882 (TryShowJumpToTopElement): RVA=0x015f0230 size=839
+  Method 48883 (EnableSortShortcut): RVA=0x015e93a0 size=168
+  Method 48884 (DisableSortShortcut): RVA=0x015e9340 size=90
+  Method 48885 (MakeColumnHeader): RVA=0x015eac30 size=973
+  Method 48886 (UpdateTotalDefaultWidth): RVA=0x015f1760 size=459
+  Method 48887 (ResetRemainingAvailableWidth): RVA=0x015ef1e0 size=616
+  Method 48888 (AddContextMenu): RVA=0x015e57e0 size=211
+  Method 48889 (ConfirmDeleteCustomView): RVA=0x015e78c0 size=204
+  Method 48890 (ConfirmRenameCustomView): RVA=0x015e7990 size=1061
+  Method 48891 (CancelCustomViewDialog): RVA=0x00375880 size=92
+  Method 48892 (OnAddOnLoaded): RVA=0x015eb2c0 size=1161
+  Method 48893 (OnPanelClosed): RVA=0x015ed5d0 size=503
+  Method 48894 (AddColumn): RVA=0x015e5510 size=714
+  Method 48895 (RemoveColumn): RVA=0x015ef090 size=261
+  Method 48896 (DestroyColumn): RVA=0x015e90b0 size=241
+  Method 48897 (ReplaceColumn): RVA=0x015ef1a0 size=57
+  Method 48898 (MoveColumn): RVA=0x015eb0e0 size=110
+  Method 48899 (AutoSizeColumn): RVA=0x015e5ae0 size=1048
+  Method 48900 (ResizeColumnsIfUndersized): RVA=0x015ef450 size=438
+  Method 48901 (AutoSizeAllColumns): RVA=0x015e59b0 size=290
+  Method 48902 (GetAdditionalWidths): RVA=0x015e9910 size=989
+  Method 48903 (CreateCustomView): RVA=0x015e85d0 size=887
+  Method 48904 (UpdateStreamedTableView): RVA=0x015f1650 size=270
+  Method 48905 (GenerateCustomViewName): RVA=0x015e9570 size=129
+  Method 48906 (OnCreateContextMenuItem): RVA=0x015ec120 size=423
+  Method 48907 (MakeColumnFooter): RVA=0x015eaa00 size=558
+  Method 48908 (CreateDefaultSelectionCell): RVA=0x015e8950 size=1263
+  Method 48909 (CreateCellForColumn): RVA=0x00000000 size=0
+  Method 48910 (OnStartColumnResizing): RVA=0x015ee290 size=178
+  Method 48911 (OnEndColumnResizing): RVA=0x015ec390 size=125
+  Method 48912 (ColumnsResized): RVA=0x015e77b0 size=267
+  Method 48913 (OnColumnSizeChanged): RVA=0x015ebb00 size=1456
+  Method 48914 (InitialiseColumns): RVA=0x015ea870 size=386
+  Method 48915 (GetColumnWidths): RVA=0x015e9f40 size=503
+  Method 48916 (ClearColumns): RVA=0x015e7690 size=276
+  Method 48917 (CreateColumns): RVA=0x015e83b0 size=541
+  Method 48918 (CreateColumn): RVA=0x015e7dc0 size=942
+  Method 48919 (OnStartReorder): RVA=0x015ee350 size=772
+  Method 48920 (OnReorder): RVA=0x015edbe0 size=1136
+  Method 48921 (OnEndReorder): RVA=0x015ec410 size=547
+  Method 48922 (OnViewAreaChanged): RVA=0x015ee6e0 size=191
+  Method 48923 (OnViewSet): RVA=0x015ee7a0 size=132
+  Method 48924 (SetSelectionCellStates): RVA=0x015ef890 size=935
+  Method 48925 (FindSelectedColumnElementForRowNavigatable): RVA=0x015e94c0 size=172
+  Method 48926 (OnSelectionChangedInternal): RVA=0x015ee100 size=214
+  Method 48927 (OnMoveItemInternal): RVA=0x015ed340 size=377
+  Method 48928 (OnAddItemInternal): RVA=0x015eb150 size=356
+  Method 48929 (OnRemoveItemInternal): RVA=0x015edad0 size=264
+  Method 48930 (OnNavigationMovement): RVA=0x015ed4c0 size=271
+  Method 48931 (CreateColumnsFromStaticList): RVA=0x015e8170 size=336
+  Method 48932 (CreateColumnsFromTableView): RVA=0x015e8350 size=95
+  Method 48933 (CreateColumnsFromTableViewCollection): RVA=0x015e82c0 size=132
+  Method 48934 (CanPopulateTable): RVA=0x015e7640 size=75
+  Method 48935 (UpdateCustomViewDropdown): RVA=0x015f10f0 size=403
+  Method 48936 (GetIdentifiers): RVA=0x015ea360 size=624
+  Method 48937 (GetContexts): RVA=0x015ea140 size=543
+  Method 48938 (GetBindingKind): RVA=0x015e9cf0 size=578
+  Method 48939 (<.ctor>b__206_0): RVA=0x015f0a70 size=187
+  Method 48940 (<.ctor>b__206_1): RVA=0x015f0b30 size=187
+  Method 48941 (<.ctor>b__206_2): RVA=0x015f0bf0 size=64
+  Method 48942 (<RegisterEvents>b__207_0): RVA=0x015f0830 size=62
+  Method 48943 (<SetList>g__SelectionIsValid|213_0): RVA=0x015f0870 size=259
+  Method 48944 (<OnBindItem>g__SetBindings|221_0): RVA=0x015f0580 size=630
+  Method 48945 (<TryShowJumpToTopElement>g__EnableJumpToTopOfTable|256_0): RVA=0x015f09d0 size=148
+  Method 48946 (<TryShowJumpToTopElement>g__DisableJumpToTopOfTable|256_1): RVA=0x015f0980 size=73
+  Method 48947 (<OnViewSet>b__297_0): RVA=0x015f0800 size=41
+
+================ StreamedListView.GetItemFromView (0x015a5a10..0x015a5a50, sz=64) ================
+  +0x000: 48 83 ec 28 48 8b 81 68 05 00 00 48 85 c0 74 2a
+  +0x010: 4c 8b 81 58 07 00 00 48 8b 40 10 48 63 d2 4d 85
+  +0x020: c0 74 17 44 8b 4c 90 20 33 c9 48 8b 15 e7 e9 87
+  +0x030: 01 48 83 c4 28 e9 66 ca a5 fe e8 b1 6c c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1267
+  [+0x004] StreamedListView.cs:1270
+  [+0x00b] StreamedListView.cs:1270
+  [+0x010] StreamedListView.cs:1270, StreamedListView.cs:1273
+  [+0x017] StreamedListView.cs:1270
+  [+0x01e] StreamedListView.cs:1270, StreamedListView.cs:1273
+  [+0x023] StreamedListView.cs:1273
+  +0x02a: RIP [0x02e24428] -> MetaUsage(tag=1, idx=29376)
+  [+0x031] StreamedListView.cs:1270
+  [+0x035] StreamedListView.cs:1270, StreamedListView.cs:1273
+  [+0x03a] StreamedListView.cs:1273
+  +0x03a: CALL 0x001bc700 ()
+
+================ StreamedListView.GetItemFromSource (0x015a59e0..0x015a5a0b, sz=43) ================
+  +0x000: 48 83 ec 28 4c 8b 81 58 07 00 00 4d 85 c0 74 15
+  +0x010: 44 8b ca 33 c9 48 8b 15 2c ea 87 01 48 83 c4 28
+  +0x020: e9 ab ca a5 fe e8 f6 6c c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1270
+  [+0x004] StreamedListView.cs:1273
+  [+0x00b] StreamedListView.cs:1273
+  [+0x010] StreamedListView.cs:1273
+  +0x015: RIP [0x02e24428] -> MetaUsage(tag=1, idx=29376)
+  [+0x01c] StreamedListView.cs:1273
+  [+0x020] StreamedListView.cs:1273
+  [+0x025] StreamedListView.cs:1273
+  +0x025: CALL 0x001bc700 ()
+
+================ StreamedListView.ViewIndexOf (0x015abba0..0x015abc31, sz=145) ================
+  +0x000: 40 53 48 83 ec 20 4c 8b 81 58 07 00 00 48 8b d9
+  +0x010: 4d 85 c0 74 67 4c 8b ca b9 07 00 00 00 48 8b 15
+  +0x020: 64 88 87 01 e8 57 68 a5 fe 44 8b c0 85 c0 78 52
+  +0x030: 4c 8b 8b 68 05 00 00 33 c9 8b c1 4d 85 c9 74 4b
+  +0x040: 45 8b 49 18 8d 51 20 4c 8b 93 68 05 00 00 66 90
+  +0x050: 41 3b c1 7d 1c 49 8b 42 10 44 39 04 02 74 0a ff
+  +0x060: c1 48 83 c2 04 8b c1 eb e7 8b c1 48 83 c4 20 5b
+  +0x070: c3 b8 ff ff ff ff 48 83 c4 20 5b c3 41 b8 ff ff
+  +0x080: ff ff 41 8b c0 48 83 c4 20 5b c3 e8 d0 0a c1 fe
+  +0x090: cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1273
+  [+0x006] StreamedListView.cs:1280, StreamedListView.cs:1301
+  [+0x00d] StreamedListView.cs:1273
+  [+0x010] StreamedListView.cs:1280, StreamedListView.cs:1301
+  [+0x015] StreamedListView.cs:1301
+  +0x01d: RIP [0x02e24428] -> MetaUsage(tag=1, idx=29376)
+  [+0x02c] StreamedListView.cs:1281
+  [+0x030] StreamedListView.cs:1286
+  [+0x03b] StreamedListView.cs:1286
+  [+0x040] StreamedListView.cs:1288
+  [+0x050] StreamedListView.cs:1286
+  [+0x055] StreamedListView.cs:1288
+  [+0x05f] StreamedListView.cs:1286
+  [+0x065] StreamedListView.cs:1286
+  [+0x067] StreamedListView.cs:1286
+  [+0x069] StreamedListView.cs:1290
+  [+0x06b] StreamedListView.cs:1295
+  [+0x071] StreamedListView.cs:1295
+  [+0x076] StreamedListView.cs:1295
+  [+0x07c] StreamedListView.cs:1280, StreamedListView.cs:1301
+  [+0x082] StreamedListView.cs:1283
+  [+0x085] StreamedListView.cs:1295
+  [+0x08b] StreamedListView.cs:1288
+  +0x08b: CALL 0x001bc700 ()
+
+================ StreamedListView.SourceIndexOf (0x015a9c50..0x015aa050, sz=1024) ================
+  +0x000: 4c 8b 81 58 07 00 00 4d 85 c0 74 14 4c 8b ca b9
+  +0x010: 07 00 00 00 48 8b 15 bd a7 87 01 e9 b0 87 a5 fe
+  +0x020: b8 ff ff ff ff c3 cc cc cc cc cc cc cc cc cc cc
+  +0x030: 40 53 57 41 56 48 83 ec 70 8b 81 60 07 00 00 48
+  +0x040: 8b d9 ff 81 50 05 00 00 89 84 24 a0 00 00 00 c7
+  +0x050: 84 24 90 00 00 00 06 00 00 00 48 8b 84 24 90 00
+  +0x060: 00 00 0f ba f0 1f 48 85 84 24 a0 00 00 00 0f 86
+  +0x070: ad 01 00 00 33 d2 e8 55 f7 ff ff 33 d2 48 8b cb
+  +0x080: e8 8b a5 ff ff 80 bb 05 06 00 00 00 0f 85 7a 01
+  +0x090: 00 00 f6 83 60 07 00 00 04 0f 84 6d 01 00 00 48
+  +0x0a0: 8d 8b c0 05 00 00 33 d2 e8 83 8e 27 ff 84 c0 0f
+  +0x0b0: 84 57 01 00 00 48 8b 0d a4 4e 83 01 e8 9f 29 c1
+  +0x0c0: fe 48 8b 15 18 5e 87 01 48 8b c8 4c 8b f0 e8 7d
+  +0x0d0: 06 68 ff 48 8b 93 38 07 00 00 48 85 d2 0f 84 9e
+  +0x0e0: 01 00 00 45 33 c0 48 8d 4c 24 50 e8 c0 8f 67 ff
+  +0x0f0: 0f 10 44 24 50 33 d2 48 8d 4c 24 30 0f 10 4c 24
+  +0x100: 60 0f 11 44 24 30 0f 11 4c 24 40 e8 40 93 bc ff
+  +0x110: 84 c0 0f 84 b4 00 00 00 48 89 ac 24 98 00 00 00
+  +0x120: 48 89 b4 24 a8 00 00 00 0f 1f 84 00 00 00 00 00
+  +0x130: 48 8b 74 24 40 0f b6 6c 24 48 48 85 f6 74 69 48
+  +0x140: 8b 0d 7a 68 84 01 e8 15 29 c1 fe 33 d2 48 8b c8
+  +0x150: 48 8b f8 e8 a8 89 0a 00 4c 8b 0d 91 69 87 01 4c
+  +0x160: 8b c6 ba 76 47 62 62 48 8b cf e8 01 c5 4e ff 4c
+  +0x170: 8b 0d 5a 65 87 01 44 0f b6 c5 ba 4d 6e 37 37 48
+  +0x180: 8b cf e8 59 c2 4e ff 48 8b 15 3a e8 85 01 48 8b
+  +0x190: cf e8 da 82 54 ff 4c 8b 05 fb 5e 87 01 48 8b d0
+  +0x1a0: 49 8b ce e8 e8 b5 ce fe 33 d2 48 8d 4c 24 30 e8
+  +0x1b0: 9c 92 bc ff 84 c0 0f 85 74 ff ff ff 48 8b b4 24
+  +0x1c0: a8 00 00 00 48 8b ac 24 98 00 00 00 48 8b 15 7d
+  +0x1d0: b8 85 01 49 8b ce 48 8b bb 50 07 00 00 e8 8e 82
+  +0x1e0: 54 ff 48 85 ff 0f 84 96 00 00 00 48 8d 93 c0 05
+  +0x1f0: 00 00 48 c7 44 24 20 00 00 00 00 41 b9 01 00 00
+  +0x200: 00 4c 8b c0 48 8b cf e8 e4 b8 f1 ff 83 a3 60 07
+  +0x210: 00 00 f9 80 a3 48 06 00 00 fb c6 83 05 06 00 00
+  +0x220: 00 f6 83 60 07 00 00 08 48 8b cb 75 3e f6 83 60
+  +0x230: 07 00 00 10 75 16 33 d2 e8 53 00 00 00 ff 8b 50
+  +0x240: 05 00 00 48 83 c4 70 41 5e 5f 5b c3 48 8b 03 48
+  +0x250: 8b 90 b0 0e 00 00 ff 90 a8 0e 00 00 ff 8b 50 05
+  +0x260: 00 00 48 83 c4 70 41 5e 5f 5b c3 33 d2 e8 ee ef
+  +0x270: ff ff ff 8b 50 05 00 00 48 83 c4 70 41 5e 5f 5b
+  +0x280: c3 e8 2a 28 c1 fe cc cc cc cc cc cc cc cc cc cc
+  +0x290: 40 53 48 83 ec 40 80 b9 b8 05 00 00 00 48 8b d9
+  +0x2a0: 48 c7 44 24 68 00 00 00 00 c7 44 24 60 00 00 00
+  +0x2b0: 00 c7 44 24 50 00 00 00 00 74 52 80 b9 70 07 00
+  +0x2c0: 00 00 74 49 48 8b 81 78 07 00 00 48 85 c0 0f 84
+  +0x2d0: 0a 01 00 00 48 83 b8 30 05 00 00 00 74 2f 48 81
+  +0x2e0: c1 60 05 00 00 33 d2 e8 44 8c 27 ff 84 c0 74 23
+  +0x2f0: 48 83 bb 70 05 00 00 00 74 19 48 8b 03 48 8b cb
+  +0x300: 48 8b 90 f0 0e 00 00 ff 90 e8 0e 00 00 48 83 c4
+  +0x310: 40 5b c3 48 8b 15 2e aa 86 01 48 8d 4c 24 68 e8
+  +0x320: 6c eb 47 ff 84 c0 74 e5 48 8b 4c 24 68 48 85 c9
+  +0x330: 0f 84 a8 00 00 00 0f 10 83 78 05 00 00 45 33 c9
+  +0x340: 4c 8d 44 24 60 0f 10 8b 88 05 00 00 48 8d 54 24
+  +0x350: 20 0f 29 44 24 20 0f 29 4c 24 30 e8 f0 62 0a 00
+  +0x360: 48 8b 4c 24 68 48 85 c9 74 74 0f 10 83 98 05 00
+  +0x370: 00 45 33 c9 4c 8d 44 24 50 0f 10 8b a8 05 00 00
+  +0x380: 48 8d 54 24 20 0f 29 44 24 20 0f 29 4c 24 30 e8
+  +0x390: bc 62 0a 00 48 8b 0d a5 5c 8a 01 f3 0f 10 44 24
+  +0x3a0: 60 f3 0f 10 4c 24 50 48 8b 81 b8 00 00 00 0f 2f
+  +0x3b0: 00 77 09 0f 2f 08 0f 86 51 ff ff ff 48 8b 8b 48
+  +0x3c0: 07 00 00 48 85 c9 74 16 0f 14 c1 45 33 c0 66 48
+  +0x3d0: 0f 7e c2 e8 28 bd a5 00 48 83 c4 40 5b c3 e8 cd
+  +0x3e0: 26 c1 fe cc cc cc cc cc cc cc cc cc cc cc cc cc
+  +0x3f0: 48 83 ec 28 48 8b 81 78 07 00 00 48 85 c0 74 38
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1295, StreamedListView.cs:1301
+  [+0x007] StreamedListView.cs:1301
+  [+0x00c] StreamedListView.cs:1301
+  +0x014: RIP [0x02e24428] -> MetaUsage(tag=1, idx=29376)
+  [+0x020] StreamedListView.cs:1301
+  [+0x025] StreamedListView.cs:1301
+  [+0x026] :4294967295
+  [+0x030] StreamedListView.cs:1232
+  [+0x039] StreamedListView.cs:1238
+  [+0x042] StreamedListView.cs:1237
+  [+0x048] StreamedListView.cs:1238
+  [+0x05a] Utilities.cs:116
+  [+0x066] Utilities.cs:117
+  [+0x06e] StreamedListView.cs:1238
+  [+0x074] StreamedListView.cs:1240
+  +0x076: CALL 0x015a9420 (StreamedListView.cs:1583)
+  [+0x07b] StreamedListView.cs:1241
+  +0x080: CALL 0x015a4260 (StreamedListView.cs:882)
+  [+0x085] StreamedListView.cs:1242
+  [+0x092] StreamedListView.cs:1242
+  [+0x09f] StreamedListView.cs:1244, StreamedListView.cs:825
+  [+0x0a6] StreamedListView.cs:825
+  +0x0a8: CALL 0x00822b80 (FMTacticsPanel.cs:98, FMTacticsPanel.cs:52)
+  [+0x0ad] StreamedListView.cs:825
+  [+0x0b5] StreamedListView.cs:830
+  +0x0b5: RIP [0x02ddebb0] -> MetaUsage(tag=1, idx=14414)
+  +0x0bc: CALL 0x001bc6b0 ()
+  [+0x0c1] StreamedListView.cs:830
+  +0x0c1: RIP [0x02e1fb30] -> MetaUsage(tag=6, idx=203183)
+  [+0x0cb] StreamedListView.cs:830
+  [+0x0ce] StreamedListView.cs:830
+  +0x0ce: CALL 0x00c2a3a0 (ListWithEvents.cs:8, ListWithEvents.cs:8)
+  [+0x0d3] StreamedListView.cs:831
+  [+0x0da] StreamedListView.cs:831
+  [+0x0e3] StreamedListView.cs:831
+  +0x0eb: CALL 0x00c22d00 (ListWithEvents.cs:8)
+  [+0x0f5] StreamedListView.cs:831
+  [+0x0fc] StreamedListView.cs:831
+  [+0x10b] StreamedListView.cs:831
+  +0x10b: CALL 0x011730a0 ()
+  [+0x110] StreamedListView.cs:831
+  [+0x130] StreamedListView.cs:831
+  [+0x135] StreamedListView.cs:831
+  [+0x13a] StreamedListView.cs:833
+  [+0x13f] StreamedListView.cs:838
+  +0x13f: RIP [0x02df0610] -> MetaUsage(tag=1, idx=34695)
+  +0x146: CALL 0x001bc6b0 ()
+  [+0x14b] StreamedListView.cs:838
+  [+0x150] StreamedListView.cs:838
+  [+0x153] StreamedListView.cs:838
+  +0x153: CALL 0x01652750 (ProjectConfigurationSystem.cs:83, RecordStreamSupport.cs:155)
+  [+0x158] StreamedListView.cs:839
+  +0x158: RIP [0x02e20740] -> MetaUsage(tag=6, idx=208365)
+  +0x16a: CALL 0x00a962c0 (RecordStreamSupport.cs:173)
+  [+0x16f] StreamedListView.cs:840
+  +0x16f: RIP [0x02e20320] -> MetaUsage(tag=6, idx=187036)
+  +0x182: CALL 0x00a96030 (ReadOnlyArray.cs:256)
+  [+0x187] StreamedListView.cs:841
+  +0x187: RIP [0x02e08618] -> MetaUsage(tag=6, idx=208861)
+  +0x191: CALL 0x00af20c0 (TypedValue.cs:213)
+  [+0x196] StreamedListView.cs:841
+  +0x196: RIP [0x02e1fce8] -> MetaUsage(tag=6, idx=203185)
+  +0x1a3: CALL 0x002953e0 ()
+  [+0x1a8] StreamedListView.cs:831
+  +0x1af: CALL 0x011730a0 ()
+  [+0x1b4] StreamedListView.cs:831
+  [+0x1cc] StreamedListView.cs:844
+  +0x1cc: RIP [0x02e056a0] -> MetaUsage(tag=6, idx=208814)
+  [+0x1d6] StreamedListView.cs:844
+  [+0x1dd] StreamedListView.cs:844
+  +0x1dd: CALL 0x00af20c0 (TypedValue.cs:213)
+  [+0x1e2] StreamedListView.cs:844
+  [+0x1eb] StreamedListView.cs:844
+  +0x207: CALL 0x014c5740 (Bindings.cs:1919, Bindings.cs:1927)
+  [+0x20c] StreamedListView.cs:1248
+  [+0x213] StreamedListView.cs:1249
+  [+0x221] StreamedListView.cs:1252
+  [+0x22d] StreamedListView.cs:1256
+  [+0x236] StreamedListView.cs:1262
+  +0x238: CALL 0x015a9ee0 (StreamedListView.cs:1911)
+  [+0x23d] StreamedListView.cs:1266
+  [+0x243] StreamedListView.cs:1267
+  [+0x24c] StreamedListView.cs:1258
+  [+0x25c] StreamedListView.cs:1266
+  [+0x262] StreamedListView.cs:1267
+  [+0x26b] StreamedListView.cs:1254
+  +0x26d: CALL 0x015a8eb0 (StreamedListView.cs:1420)
+  [+0x272] StreamedListView.cs:1266
+  [+0x278] StreamedListView.cs:1267
+  [+0x281] StreamedListView.cs:1244, StreamedListView.cs:844
+  +0x281: CALL 0x001bc700 ()
+  [+0x287] :4294967295
+  [+0x290] StreamedListView.cs:1911
+  [+0x296] StreamedListView.cs:1915
+  [+0x2bb] StreamedListView.cs:1915
+  [+0x2c4] StreamedListView.cs:1915
+  [+0x2cb] StreamedListView.cs:1915
+  [+0x2d4] StreamedListView.cs:1915
+  [+0x2de] StreamedListView.cs:1925
+  [+0x2e5] StreamedListView.cs:1925
+  +0x2e7: CALL 0x00822b80 (FMTacticsPanel.cs:98, FMTacticsPanel.cs:52)
+  [+0x2ec] StreamedListView.cs:1925
+  [+0x2f0] StreamedListView.cs:1925
+  [+0x2fa] StreamedListView.cs:1927
+  [+0x30d] StreamedListView.cs:1938
+  [+0x313] StreamedListView.cs:1929
+  +0x313: RIP [0x02e14998] -> MetaUsage(tag=6, idx=207776)
+  +0x31f: CALL 0x00a28ae0 (GameSubsystems.cs:39)
+  [+0x324] StreamedListView.cs:1929
+  [+0x328] StreamedListView.cs:1931
+  [+0x336] StreamedListView.cs:1931
+  +0x35b: CALL 0x016502a0 (Persistence.cs:676)
+  [+0x360] StreamedListView.cs:1932
+  [+0x36a] StreamedListView.cs:1932
+  +0x38f: CALL 0x016502a0 (Persistence.cs:676)
+  [+0x394] StreamedListView.cs:1933
+  +0x394: RIP [0x02e4fc90] -> MetaUsage(tag=1, idx=32042)
+  [+0x39b] StreamedListView.cs:1933
+  [+0x3b3] StreamedListView.cs:1933
+  [+0x3bc] StreamedListView.cs:1935
+  [+0x3c3] StreamedListView.cs:1935
+  [+0x3c8] StreamedListView.cs:1935
+  +0x3d3: CALL 0x02005d50 ()
+  [+0x3d8] StreamedListView.cs:1938
+  [+0x3de] StreamedListView.cs:1935
+  +0x3de: CALL 0x001bc700 ()
+  [+0x3e4] :4294967295
+  [+0x3f0] StreamedListView.cs:1938
+  [+0x3f4] StreamedListView.cs:1944
+  [+0x3fb] StreamedListView.cs:1944
+
+================ StreamedListView.OnBindItemInternal (0x015a67d0..0x015a6868, sz=152) ================
+  +0x000: 48 89 5c 24 08 48 89 74 24 10 57 48 83 ec 20 48
+  +0x010: 8b d9 41 8b f8 48 8b 89 08 06 00 00 48 8b f2 48
+  +0x020: 85 c9 74 6e 4c 8b 05 7d e2 8a 01 8b d7 e8 6e b5
+  +0x030: 88 ff 48 8b 8b 18 06 00 00 48 85 c9 74 54 4c 8b
+  +0x040: 0d 13 e3 83 01 44 8b c7 48 8b d6 e8 a0 59 b3 ff
+  +0x050: 33 d2 48 8b cb e8 f6 bd ce fe 48 8b 03 44 8b c7
+  +0x060: 48 8b d6 48 8b cb 4c 8b 88 40 0e 00 00 ff 90 38
+  +0x070: 0e 00 00 45 33 c9 4c 8b c6 8b d7 48 8b cb 48 8b
+  +0x080: 5c 24 30 48 8b 74 24 38 48 83 c4 20 5f e9 2e 38
+  +0x090: 00 00 e8 99 5e c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1460
+  [+0x015] StreamedListView.cs:1467
+  [+0x01f] StreamedListView.cs:1467
+  [+0x024] StreamedListView.cs:1467
+  +0x024: RIP [0x02e54a78] -> MetaUsage(tag=6, idx=140451)
+  +0x02d: CALL 0x00e31d70 (SortedList.cs:80)
+  [+0x032] StreamedListView.cs:1468
+  [+0x039] StreamedListView.cs:1468
+  [+0x03e] StreamedListView.cs:1468
+  +0x03e: RIP [0x02de4b28] -> MetaUsage(tag=6, idx=198079)
+  +0x04b: CALL 0x010dc1c0 ()
+  [+0x050] StreamedListView.cs:1470
+  +0x055: CALL 0x00292620 (BacktraceResult.cs:38, BacktraceSelfSSLCertificateHandler.cs:12)
+  [+0x05a] StreamedListView.cs:1475
+  [+0x073] StreamedListView.cs:1477
+  [+0x07e] StreamedListView.cs:1478
+  [+0x08d] StreamedListView.cs:1477
+  +0x08d: JMP 0x015aa090 (StreamedListView.cs:1713)
+  [+0x092] StreamedListView.cs:1468
+  +0x092: CALL 0x001bc700 ()
+
+================ StreamedListView.OnRebindItemInternal (0x015a7660..0x015a76b7, sz=87) ================
+  +0x000: 48 89 5c 24 08 48 89 74 24 10 57 48 83 ec 20 48
+  +0x010: 8b da 41 8b f0 33 d2 48 8b f9 e8 a1 af ce fe 48
+  +0x020: 8b 07 44 8b c6 48 8b d3 48 8b cf 4c 8b 88 50 0e
+  +0x030: 00 00 ff 90 48 0e 00 00 45 33 c9 4c 8b c3 8b d6
+  +0x040: 48 8b cf 48 8b 5c 24 30 48 8b 74 24 38 48 83 c4
+  +0x050: 20 5f e9 d9 29 00 00
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1478
+  [+0x015] StreamedListView.cs:1485
+  +0x01a: CALL 0x00292620 (BacktraceResult.cs:38, BacktraceSelfSSLCertificateHandler.cs:12)
+  [+0x01f] StreamedListView.cs:1490
+  [+0x038] StreamedListView.cs:1491
+  [+0x043] StreamedListView.cs:1492
+  [+0x052] StreamedListView.cs:1491
+  +0x052: JMP 0x015aa090 (StreamedListView.cs:1713)
+
+================ StreamedListView.OnUnbindItemInternal (0x015a8110..0x015a82ee, sz=478) ================
+  +0x000: 48 89 5c 24 10 48 89 74 24 18 57 48 83 ec 30 48
+  +0x010: 8b 81 90 07 00 00 48 8b f2 48 8b d9 48 89 44 24
+  +0x020: 20 33 d2 48 8d 4c 24 20 41 8b f8 e8 40 aa 27 ff
+  +0x030: 84 c0 74 1c 4c 8b 0b 44 8b c7 48 8b d6 48 8b cb
+  +0x040: 49 8b 81 58 0e 00 00 4d 8b 89 60 0e 00 00 ff d0
+  +0x050: 48 8b 8b 18 06 00 00 48 85 c9 0f 84 72 01 00 00
+  +0x060: 4c 8b 05 79 ca 83 01 48 8b d6 e8 51 ec b2 ff 48
+  +0x070: 8b 8b 08 06 00 00 48 85 c9 0f 84 53 01 00 00 4c
+  +0x080: 8b 05 82 ca 8a 01 8b d7 e8 33 e0 88 ff 48 8b 8b
+  +0x090: 00 07 00 00 48 c7 44 24 40 00 00 00 00 48 85 c9
+  +0x0a0: 0f 84 32 01 00 00 4c 8b 0d c3 d8 8a 01 4c 8d 44
+  +0x0b0: 24 40 8b d7 e8 87 18 89 ff 84 c0 0f 84 01 01 00
+  +0x0c0: 00 48 8b 0d 40 1e 87 01 48 8b 74 24 40 83 b9 e4
+  +0x0d0: 00 00 00 00 75 05 e8 b5 45 c1 fe 48 85 f6 0f 84
+  +0x0e0: f4 00 00 00 48 8b 15 8d 50 87 01 45 33 c0 48 8b
+  +0x0f0: ce e8 1a 52 98 00 48 8b 15 a3 4f 87 01 45 33 c0
+  +0x100: 48 8b ce e8 08 52 98 00 48 8b 8b 00 07 00 00 48
+  +0x110: 85 c9 0f 84 c0 00 00 00 4c 8b 05 89 d7 8a 01 8b
+  +0x120: d7 e8 0a df 88 ff 3b bb 30 07 00 00 0f 85 90 00
+  +0x130: 00 00 4c 8b 83 10 07 00 00 c7 83 30 07 00 00 ff
+  +0x140: ff ff ff 4d 85 c0 74 11 48 8b 15 61 66 88 01 b9
+  +0x150: 02 00 00 00 e8 07 a5 a5 fe 4c 8b 83 28 07 00 00
+  +0x160: 4d 85 c0 74 11 48 8b 15 44 66 88 01 b9 02 00 00
+  +0x170: 00 e8 ea a4 a5 fe 4c 8b 83 20 07 00 00 4d 85 c0
+  +0x180: 74 11 48 8b 15 27 66 88 01 b9 02 00 00 00 e8 cd
+  +0x190: a4 a5 fe 48 8b 83 00 07 00 00 48 85 c0 74 39 83
+  +0x1a0: 78 20 00 75 1d 4c 8b 83 18 07 00 00 4d 85 c0 74
+  +0x1b0: 11 48 8b 15 f8 65 88 01 b9 02 00 00 00 e8 9e a4
+  +0x1c0: a5 fe 48 8b 5c 24 48 48 8b 74 24 50 48 83 c4 30
+  +0x1d0: 5f c3 e8 19 44 c1 fe cc e8 13 44 c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1492
+  [+0x00f] StreamedListView.cs:1498
+  [+0x021] StreamedListView.cs:1498
+  +0x02b: CALL 0x00822b80 (FMTacticsPanel.cs:98, FMTacticsPanel.cs:52)
+  [+0x030] StreamedListView.cs:1498
+  [+0x034] StreamedListView.cs:1500
+  [+0x050] StreamedListView.cs:1503
+  [+0x057] StreamedListView.cs:1503
+  [+0x060] StreamedListView.cs:1503
+  +0x060: RIP [0x02de4bf0] -> MetaUsage(tag=6, idx=198080)
+  +0x06a: CALL 0x010d6dd0 ()
+  [+0x06f] StreamedListView.cs:1504
+  [+0x076] StreamedListView.cs:1504
+  [+0x07f] StreamedListView.cs:1504
+  +0x07f: RIP [0x02e54c18] -> MetaUsage(tag=6, idx=140462)
+  +0x088: CALL 0x00e361d0 (SortedList.cs:106)
+  [+0x08d] StreamedListView.cs:1505, StreamedListView.cs:1860
+  [+0x09d] StreamedListView.cs:1860
+  [+0x0a6] StreamedListView.cs:1860
+  +0x0a6: RIP [0x02e55a80] -> MetaUsage(tag=6, idx=204995)
+  +0x0b4: CALL 0x00e39a50 (SortedList.cs:319)
+  [+0x0b9] StreamedListView.cs:1860
+  [+0x0c1] StreamedListView.cs:1865
+  +0x0c1: RIP [0x02e1a018] -> MetaUsage(tag=1, idx=37110)
+  +0x0d6: CALL 0x001bc7a0 ()
+  [+0x0db] StreamedListView.cs:1865, StreamedListView.cs:1885
+  [+0x0e4] StreamedListView.cs:1885
+  +0x0e4: RIP [0x02e1d288] -> STR "streamed-list-view-item--animation-start"
+  +0x0f1: CALL 0x01f2d420 ()
+  [+0x0f6] StreamedListView.cs:1886
+  +0x0f6: RIP [0x02e1d1b0] -> STR "streamed-list-view-item--animation-in"
+  +0x103: CALL 0x01f2d420 ()
+  [+0x108] StreamedListView.cs:1866
+  [+0x10f] StreamedListView.cs:1866
+  [+0x118] StreamedListView.cs:1866
+  +0x118: RIP [0x02e559b8] -> MetaUsage(tag=6, idx=204994)
+  +0x121: CALL 0x00e36140 (SortedList.cs:319)
+  [+0x126] StreamedListView.cs:1869
+  [+0x132] StreamedListView.cs:1872
+  [+0x143] StreamedListView.cs:1872
+  [+0x148] StreamedListView.cs:1872
+  +0x148: RIP [0x02e2e8c0] -> MetaUsage(tag=1, idx=29845)
+  [+0x159] StreamedListView.cs:1873
+  [+0x160] StreamedListView.cs:1873
+  [+0x165] StreamedListView.cs:1873
+  +0x165: RIP [0x02e2e8c0] -> MetaUsage(tag=1, idx=29845)
+  [+0x176] StreamedListView.cs:1874
+  [+0x17d] StreamedListView.cs:1874
+  [+0x182] StreamedListView.cs:1874
+  +0x182: RIP [0x02e2e8c0] -> MetaUsage(tag=1, idx=29845)
+  [+0x193] StreamedListView.cs:1876
+  [+0x19a] StreamedListView.cs:1876
+  [+0x19f] StreamedListView.cs:1876
+  [+0x1a5] StreamedListView.cs:1878
+  [+0x1ac] StreamedListView.cs:1878
+  [+0x1b1] StreamedListView.cs:1878
+  +0x1b1: RIP [0x02e2e8c0] -> MetaUsage(tag=1, idx=29845)
+  [+0x1c2] StreamedListView.cs:1506
+  [+0x1d2] StreamedListView.cs:1504
+  +0x1d2: CALL 0x001bc700 ()
+  [+0x1d8] StreamedListView.cs:1505, StreamedListView.cs:1876
+  +0x1d8: CALL 0x001bc700 ()
+
+================ StreamedListView.RefreshInternal (0x015a9060..0x015a9387, sz=807) ================
+  +0x000: 48 89 5c 24 08 48 89 6c 24 10 48 89 74 24 18 57
+  +0x010: 48 81 ec 90 00 00 00 48 8b f9 48 8b 0d 7f af 89
+  +0x020: 01 e8 2a 36 c1 fe 33 c9 48 8b f0 c7 40 10 ff ff
+  +0x030: ff ff e8 49 18 11 00 33 ed 84 c0 74 7c 48 8b 0d
+  +0x040: 0c 67 82 01 48 8b 91 b8 00 00 00 4c 8b 02 4d 85
+  +0x050: c0 0f 84 ca 02 00 00 48 8b 15 a2 d7 87 01 8d 4d
+  +0x060: 25 e8 3a 92 a5 fe 48 85 c0 74 4e 4c 8b 05 76 8c
+  +0x070: 87 01 4c 8b 08 41 0f b6 88 30 01 00 00 41 38 89
+  +0x080: 30 01 00 00 72 33 0f b6 d1 49 8b 89 c8 00 00 00
+  +0x090: 4c 39 44 d1 f8 75 22 48 8b 97 78 07 00 00 45 33
+  +0x0a0: c0 48 8b c8 48 8b d8 e8 c4 17 0b 00 84 c0 74 09
+  +0x0b0: 8b 83 00 05 00 00 89 46 10 8b 87 60 07 00 00 83
+  +0x0c0: e0 ef 89 87 60 07 00 00 a8 08 0f 85 2e 02 00 00
+  +0x0d0: 48 8b 8f 78 07 00 00 48 39 af 58 07 00 00 0f 84
+  +0x0e0: 0c 02 00 00 48 85 c9 0f 84 34 02 00 00 48 39 a9
+  +0x0f0: 30 05 00 00 74 46 48 8b 9f 68 05 00 00 48 85 db
+  +0x100: 0f 84 1b 02 00 00 4c 8b 87 58 07 00 00 b9 01 00
+  +0x110: 00 00 48 8b 15 ff 35 87 01 8b 5b 18 e8 7f 91 a5
+  +0x120: fe 3b d8 7e 17 48 8b 8f 78 07 00 00 48 85 c9 0f
+  +0x130: 84 ec 01 00 00 33 d2 e8 84 02 10 00 48 8b 8f 78
+  +0x140: 07 00 00 48 85 c9 0f 84 d5 01 00 00 33 d2 e8 3d
+  +0x150: 02 10 00 33 d2 c6 87 b8 05 00 00 01 48 8b cf e8
+  +0x160: 1c 0d 00 00 48 39 af 80 06 00 00 74 12 48 8b 97
+  +0x170: 80 06 00 00 45 33 c0 48 8b cf e8 c1 22 00 00 33
+  +0x180: d2 48 8b cf e8 37 94 ce fe 84 c0 74 49 48 8b 87
+  +0x190: 78 07 00 00 48 85 c0 0f 84 84 01 00 00 4c 8b 80
+  +0x1a0: 30 05 00 00 4d 85 c0 74 1d 48 8b 15 68 35 87 01
+  +0x1b0: b9 01 00 00 00 e8 e6 90 a5 fe 83 f8 01 7c 07 0f
+  +0x1c0: b6 af 8e 06 00 00 85 ed 48 8b cf 0f 95 c2 45 33
+  +0x1d0: c0 e8 7a e4 04 00 33 d2 48 8b cf e8 40 19 00 00
+  +0x1e0: 83 7e 10 00 0f 8c 1e 01 00 00 48 8b 0d e7 03 89
+  +0x1f0: 01 48 8b 9f 78 07 00 00 83 b9 e4 00 00 00 00 75
+  +0x200: 05 e8 3a 35 c1 fe 48 8b 05 e3 de 86 01 48 8d 4c
+  +0x210: 24 60 45 33 c9 48 89 44 24 20 45 33 c0 48 8b d3
+  +0x220: e8 4b 5e 55 ff 0f 10 44 24 60 48 8b 0d df 0f 88
+  +0x230: 01 0f 10 4c 24 70 0f 11 44 24 30 0f 10 84 24 80
+  +0x240: 00 00 00 0f 11 4c 24 40 0f 11 44 24 50 e8 fe 33
+  +0x250: c1 fe 4c 8b 05 a7 10 85 01 45 33 c9 48 8b d6 48
+  +0x260: 8b c8 48 8b d8 e8 06 c6 c4 ff 4c 8b 0d b7 2f 85
+  +0x270: 01 48 8d 54 24 30 4c 8b c3 48 8d 4c 24 60 e8 8d
+  +0x280: 89 93 ff 0f 10 44 24 60 48 8b 15 d1 2e 85 01 48
+  +0x290: 8d 4c 24 30 0f 10 4c 24 70 0f 11 44 24 30 0f 10
+  +0x2a0: 84 24 80 00 00 00 0f 11 4c 24 40 0f 11 44 24 50
+  +0x2b0: e8 8b 7c 93 ff 48 85 c0 74 4e 48 8b 0d 8f 64 82
+  +0x2c0: 01 48 8b 91 b8 00 00 00 4c 8b 02 4d 85 c0 74 51
+  +0x2d0: 48 8b 15 29 d5 87 01 b9 3d 00 00 00 c6 44 24 28
+  +0x2e0: 00 4c 8b c8 c6 44 24 20 01 e8 42 b9 a5 fe eb 18
+  +0x2f0: 48 85 c9 74 2c 33 d2 e8 c4 00 10 00 eb 0a 33 d2
+  +0x300: 48 8b cf e8 48 fb ff ff 4c 8d 9c 24 90 00 00 00
+  +0x310: 49 8b 5b 10 49 8b 6b 18 49 8b 73 20 49 8b e3 5f
+  +0x320: c3 e8 7a 33 c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1364
+  [+0x01a] StreamedListView.cs:1364
+  +0x01a: RIP [0x02e44000] -> MetaUsage(tag=1, idx=47690)
+  +0x021: CALL 0x001bc6b0 ()
+  [+0x026] StreamedListView.cs:1371
+  [+0x028] StreamedListView.cs:1364
+  [+0x02b] StreamedListView.cs:1368
+  [+0x032] StreamedListView.cs:1371
+  +0x032: CALL 0x016ba8e0 (NavigationManager.cs:121, NavigationManager.cs:125)
+  [+0x037] StreamedListView.cs:1371
+  [+0x03d] StreamedListView.cs:1371, NavigationManager.cs:112
+  +0x03d: RIP [0x02dcf7b0] -> MetaUsage(tag=1, idx=32760)
+  [+0x04e] StreamedListView.cs:1371
+  [+0x057] StreamedListView.cs:1371
+  +0x057: RIP [0x02e26860] -> MetaUsage(tag=1, idx=29476)
+  [+0x066] StreamedListView.cs:1371
+  +0x06b: RIP [0x02e21d48] -> MetaUsage(tag=1, idx=37575)
+  [+0x097] StreamedListView.cs:1371
+  [+0x0a4] StreamedListView.cs:1371
+  [+0x0a7] StreamedListView.cs:1371
+  +0x0a7: CALL 0x0165a8d0 (VisualElementExtensions.cs:138)
+  [+0x0ac] StreamedListView.cs:1371
+  [+0x0b0] StreamedListView.cs:1373
+  [+0x0b6] StreamedListView.cs:1373
+  [+0x0b9] StreamedListView.cs:1376, StreamedListView.cs:1215
+  [+0x0bf] StreamedListView.cs:1215
+  [+0x0c8] StreamedListView.cs:1377
+  [+0x0d0] StreamedListView.cs:1383
+  [+0x0d7] StreamedListView.cs:1383
+  [+0x0e4] StreamedListView.cs:1390
+  [+0x0ed] StreamedListView.cs:1390
+  [+0x0f6] StreamedListView.cs:1390
+  [+0x0fd] StreamedListView.cs:1390
+  [+0x106] StreamedListView.cs:1390
+  +0x112: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x119] StreamedListView.cs:1390
+  [+0x11c] StreamedListView.cs:1390
+  [+0x121] StreamedListView.cs:1390
+  [+0x125] StreamedListView.cs:1393
+  [+0x12c] StreamedListView.cs:1393
+  [+0x135] StreamedListView.cs:1393
+  +0x137: CALL 0x016a9420 (VirtualisedList.cs:845)
+  [+0x13c] StreamedListView.cs:1396
+  [+0x143] StreamedListView.cs:1396
+  [+0x14c] StreamedListView.cs:1396
+  +0x14e: CALL 0x016a93f0 (VirtualisedList.cs:832)
+  [+0x153] StreamedListView.cs:1398
+  +0x15f: CALL 0x015a9ee0 (StreamedListView.cs:1911)
+  [+0x164] StreamedListView.cs:1400
+  [+0x16d] StreamedListView.cs:1402
+  +0x17a: CALL 0x015ab4a0 (StreamedListView.cs:1518)
+  [+0x17f] StreamedListView.cs:1405
+  +0x184: CALL 0x00292620 (BacktraceResult.cs:38, BacktraceSelfSSLCertificateHandler.cs:12)
+  [+0x189] StreamedListView.cs:1405
+  [+0x18d] StreamedListView.cs:1407, StreamedListView.cs:315
+  [+0x194] StreamedListView.cs:315
+  [+0x19d] StreamedListView.cs:315
+  [+0x1a9] StreamedListView.cs:315
+  +0x1a9: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x1ba] StreamedListView.cs:1407
+  [+0x1bf] StreamedListView.cs:1407
+  [+0x1c6] StreamedListView.cs:1407
+  +0x1d1: CALL 0x015f76b0 (DiggableVisualElement.cs:35)
+  [+0x1d6] StreamedListView.cs:1410
+  +0x1db: CALL 0x015aab80 (StreamedListView.cs:705)
+  [+0x1e0] StreamedListView.cs:1412
+  [+0x1ea] StreamedListView.cs:1414
+  +0x1ea: RIP [0x02e39638] -> MetaUsage(tag=1, idx=38992)
+  +0x201: CALL 0x001bc7a0 ()
+  [+0x206] StreamedListView.cs:1414
+  +0x206: RIP [0x02e17150] -> MetaUsage(tag=6, idx=209073)
+  +0x220: CALL 0x00aff0d0 (TypedValue.cs:625)
+  [+0x22a] StreamedListView.cs:1414
+  +0x22a: RIP [0x02e2a270] -> MetaUsage(tag=1, idx=52964)
+  [+0x231] StreamedListView.cs:1414
+  [+0x24d] StreamedListView.cs:1414
+  +0x24d: CALL 0x001bc6b0 ()
+  [+0x252] StreamedListView.cs:1414
+  +0x252: RIP [0x02dfa360] -> MethodDef idx=47362 <RefreshInternal>b__0
+  [+0x262] StreamedListView.cs:1414
+  [+0x265] StreamedListView.cs:1414
+  +0x265: CALL 0x011f58d0 (IFormatter.cs:31, IFormatter.cs:31)
+  [+0x26a] StreamedListView.cs:1414
+  +0x26a: RIP [0x02dfc288] -> MetaUsage(tag=6, idx=205391)
+  +0x27e: CALL 0x00ee1c70 (TypedValue.cs:699)
+  [+0x288] StreamedListView.cs:1414
+  +0x288: RIP [0x02dfc1c0] -> MetaUsage(tag=6, idx=205390)
+  [+0x294] StreamedListView.cs:1414
+  [+0x2b0] StreamedListView.cs:1414
+  +0x2b0: CALL 0x00ee0fa0 (TypedValue.cs:699)
+  [+0x2b5] StreamedListView.cs:1415
+  [+0x2ba] StreamedListView.cs:1417, NavigationManager.cs:112
+  +0x2ba: RIP [0x02dcf7b0] -> MetaUsage(tag=1, idx=32760)
+  [+0x2cb] StreamedListView.cs:1417
+  [+0x2d0] StreamedListView.cs:1417
+  +0x2d0: RIP [0x02e26860] -> MetaUsage(tag=1, idx=29476)
+  [+0x2ee] StreamedListView.cs:1417
+  [+0x2f0] StreamedListView.cs:1386
+  [+0x2f5] StreamedListView.cs:1386
+  +0x2f7: CALL 0x016a9420 (VirtualisedList.cs:845)
+  [+0x2fc] StreamedListView.cs:1387
+  [+0x2fe] StreamedListView.cs:1379
+  +0x303: CALL 0x015a8eb0 (StreamedListView.cs:1420)
+  [+0x308] StreamedListView.cs:1420
+  [+0x321] StreamedListView.cs:1386
+  +0x321: CALL 0x001bc700 ()
+
+================ StreamedListView.Rebuild (0x015a8eb0..0x015a8f57, sz=167) ================
+  +0x000: 40 53 48 83 ec 20 48 8b 11 48 8b d9 48 8b 82 68
+  +0x010: 0d 00 00 48 8b 92 70 0d 00 00 ff d0 84 c0 74 7b
+  +0x020: 83 a3 60 07 00 00 e7 48 8b 8b 78 07 00 00 48 85
+  +0x030: c9 74 6e 48 8b 93 68 05 00 00 45 33 c0 e8 9e 2d
+  +0x040: 10 00 48 8b 03 48 8b cb 48 8b 90 c0 0e 00 00 ff
+  +0x050: 90 b8 0e 00 00 48 8b 8b 78 07 00 00 c6 83 b8 05
+  +0x060: 00 00 01 48 85 c9 74 39 33 d2 e8 31 04 10 00 33
+  +0x070: d2 48 8b cb e8 b7 0f 00 00 33 d2 48 8b cb e8 4d
+  +0x080: 1c 00 00 48 8b 8b 40 05 00 00 48 85 c9 74 12 33
+  +0x090: d2 48 83 c4 20 5b e9 35 3b f1 ff 48 83 c4 20 5b
+  +0x0a0: c3 e8 aa 37 c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1420
+  [+0x006] StreamedListView.cs:1435
+  [+0x009] StreamedListView.cs:1420
+  [+0x00c] StreamedListView.cs:1435
+  [+0x01c] StreamedListView.cs:1435
+  [+0x020] StreamedListView.cs:1440, StreamedListView.cs:1215
+  [+0x027] StreamedListView.cs:1441
+  [+0x02e] StreamedListView.cs:1441
+  [+0x033] StreamedListView.cs:1441
+  +0x03d: CALL 0x016abc90 (VirtualisedList.cs:359)
+  [+0x042] StreamedListView.cs:1442
+  [+0x055] StreamedListView.cs:1445
+  [+0x063] StreamedListView.cs:1445
+  [+0x068] StreamedListView.cs:1445
+  +0x06a: CALL 0x016a9350 (VirtualisedList.cs:825)
+  [+0x06f] StreamedListView.cs:1446
+  +0x074: CALL 0x015a9ee0 (StreamedListView.cs:1911)
+  [+0x079] StreamedListView.cs:1447
+  +0x07e: CALL 0x015aab80 (StreamedListView.cs:705)
+  [+0x083] StreamedListView.cs:1448
+  [+0x08a] StreamedListView.cs:1448
+  [+0x08f] StreamedListView.cs:1448
+  [+0x091] StreamedListView.cs:1449
+  [+0x096] StreamedListView.cs:1448
+  +0x096: JMP 0x014bca80 (Binder.cs:114)
+  [+0x09b] StreamedListView.cs:1449
+  [+0x0a1] StreamedListView.cs:1448
+  +0x0a1: CALL 0x001bc700 ()
+
+================ StreamedListView.BindToData (0x015a49b0..0x015a50aa, sz=1786) ================
+  +0x000: 40 55 56 41 54 48 8d 6c 24 b9 48 81 ec a0 00 00
+  +0x010: 00 8b 91 50 05 00 00 45 33 e4 83 89 60 07 00 00
+  +0x020: 08 ff c2 4c 89 65 67 0f 57 c0 89 91 50 05 00 00
+  +0x030: 48 8b f1 0f 11 45 e7 85 d2 7f 24 48 8b 11 48 8b
+  +0x040: 82 18 0e 00 00 48 8b 92 20 0e 00 00 ff d0 83 a6
+  +0x050: 60 07 00 00 fe 33 d2 48 8b ce e8 71 61 00 00 48
+  +0x060: 8b 8e 40 05 00 00 48 89 9c 24 c8 00 00 00 48 89
+  +0x070: bc 24 d8 00 00 00 4c 89 b4 24 98 00 00 00 4c 89
+  +0x080: bc 24 90 00 00 00 48 85 c9 0f 84 65 06 00 00 33
+  +0x090: d2 e8 4a 7f f1 ff 33 d2 48 8b ce e8 d0 22 05 00
+  +0x0a0: 48 8b 0d 31 d2 86 01 e8 c4 3e 48 ff 48 8d 8e 50
+  +0x0b0: 07 00 00 48 89 86 50 07 00 00 48 8b d0 e8 ce 6c
+  +0x0c0: c1 fe 48 8b 0d 67 8b 8a 01 44 39 a1 e4 00 00 00
+  +0x0d0: 75 05 e8 19 7d c1 fe 33 d2 48 8b ce e8 9f d3 f6
+  +0x0e0: ff 4c 8b b6 50 07 00 00 33 d2 48 8b ce 48 8b d8
+  +0x0f0: e8 2b 88 cf fe 48 8b f8 48 85 c0 74 1e 33 d2 48
+  +0x100: 8b c8 e8 39 b0 cf ff 8b 4f 10 89 4d ff 44 89 65
+  +0x110: 03 48 89 45 f7 0f 28 45 f7 eb 03 0f 57 c0 45 33
+  +0x120: c9 66 0f 7f 45 f7 4c 8d 45 f7 4c 89 64 24 20 48
+  +0x130: 8b d3 49 8b ce e8 b6 c3 f6 ff 48 89 86 90 07 00
+  +0x140: 00 48 8d 4d 77 48 8b 86 c8 07 00 00 33 d2 48 89
+  +0x150: 45 77 e8 49 88 f1 ff 84 c0 74 4f 48 8b 86 90 07
+  +0x160: 00 00 48 8d 4d f7 48 8b 96 c8 07 00 00 45 33 c0
+  +0x170: 48 8b 9e 50 07 00 00 48 89 45 67 e8 30 89 f1 ff
+  +0x180: 4c 8b 8e 10 06 00 00 4c 8d 45 e7 48 8d 55 67 4c
+  +0x190: 89 64 24 20 48 8b cb 0f 10 00 0f 11 45 e7 e8 7d
+  +0x1a0: c2 f6 ff 48 89 86 40 07 00 00 48 8b 86 b8 07 00
+  +0x1b0: 00 48 8d 4d 77 33 d2 48 89 45 77 e8 e0 87 f1 ff
+  +0x1c0: 84 c0 74 56 48 8b 86 90 07 00 00 48 8d 4d f7 48
+  +0x1d0: 8b 96 b8 07 00 00 45 33 c0 80 8e 48 06 00 00 02
+  +0x1e0: 48 8b 9e 50 07 00 00 48 89 45 67 e8 c0 88 f1 ff
+  +0x1f0: 4c 8b 8e 58 05 00 00 4c 8d 45 e7 48 8d 55 67 4c
+  +0x200: 89 64 24 20 48 8b cb 0f 10 00 0f 11 45 e7 e8 0d
+  +0x210: c2 f6 ff 48 89 86 60 05 00 00 48 8b 86 88 07 00
+  +0x220: 00 48 8d 4d 77 33 d2 48 89 45 77 e8 70 87 f1 ff
+  +0x230: 84 c0 74 76 48 8b 86 90 07 00 00 48 8d 4d f7 48
+  +0x240: 8b 96 88 07 00 00 45 33 c0 80 8e 48 06 00 00 04
+  +0x250: 48 8b be 50 07 00 00 48 89 45 67 e8 50 88 f1 ff
+  +0x260: 48 8b 0d b9 60 83 01 0f 10 00 0f 11 45 e7 e8 8d
+  +0x270: 7a c1 fe 4c 8b 05 4e 17 88 01 45 33 c9 48 8b d6
+  +0x280: 48 8b c8 48 8b d8 e8 95 6f af ff 4c 8b cb 4c 89
+  +0x290: 64 24 20 4c 8d 45 e7 48 8b cf 48 8d 55 67 e8 7d
+  +0x2a0: c1 f6 ff 48 89 86 c0 05 00 00 48 8b 05 b7 53 87
+  +0x2b0: 01 44 39 a0 e4 00 00 00 75 0f 48 8b c8 e8 2e 7b
+  +0x2c0: c1 fe 48 8b 05 9f 53 87 01 48 8b 80 b8 00 00 00
+  +0x2d0: 45 33 c9 4c 8b c6 48 8b ce 48 8b 50 18 48 8b 05
+  +0x2e0: 3c 74 84 01 48 89 44 24 20 e8 d2 8e 43 ff 48 8b
+  +0x2f0: 05 73 53 87 01 45 33 c9 4c 8b c6 48 8b 88 b8 00
+  +0x300: 00 00 48 8b 05 8f 76 84 01 48 89 44 24 20 48 8b
+  +0x310: 51 20 48 8b ce e8 a6 8e 43 ff 48 8b 0d 9f d5 86
+  +0x320: 01 e8 4a 3c 48 ff 48 85 c0 0f 84 c5 03 00 00 4c
+  +0x330: 8b 05 8a ef 89 01 48 8b c8 48 8b 96 38 05 00 00
+  +0x340: e8 bb 8d 47 ff 48 8b 86 78 07 00 00 48 85 c0 0f
+  +0x350: 84 9f 03 00 00 48 8b 80 28 05 00 00 48 85 c0 0f
+  +0x360: 84 8f 03 00 00 83 78 18 01 0f 85 02 02 00 00 48
+  +0x370: 8b 0d ca 84 8a 01 48 8b 9e 50 06 00 00 e8 7e 79
+  +0x380: c1 fe 4c 8b 05 2f 13 88 01 45 33 c9 48 8b d6 48
+  +0x390: 8b c8 48 8b f8 e8 c6 e8 93 ff 48 85 db 0f 84 51
+  +0x3a0: 03 00 00 45 33 c0 48 8b d7 48 8b cb e8 ff 7a 10
+  +0x3b0: 00 33 c9 e8 78 5b 11 00 84 c0 74 6b 48 8b 05 3d
+  +0x3c0: aa 82 01 48 8b 88 b8 00 00 00 4c 8b 01 4d 85 c0
+  +0x3d0: 0f 84 1e 03 00 00 48 8b 15 d3 1a 88 01 b9 03 00
+  +0x3e0: 00 00 e8 69 d5 a5 fe 48 8b 0d ea 8f 8a 01 48 8b
+  +0x3f0: f8 e8 0a 79 c1 fe 4c 8b 05 7b 10 88 01 45 33 c9
+  +0x400: 48 8b d6 48 8b c8 48 8b d8 e8 22 e5 93 ff 41 b9
+  +0x410: 01 00 00 00 4c 89 64 24 20 4c 8b c3 48 8b d7 48
+  +0x420: 8b ce e8 a9 b9 f5 ff 48 8b 0d 5a 4a 83 01 e8 5d
+  +0x430: e1 73 ff 84 c0 74 56 48 8b 05 1a 4c 83 01 48 8b
+  +0x440: 40 20 f6 80 35 01 00 00 01 75 08 48 8b c8 e8 3d
+  +0x450: bb c1 fe 48 8b 80 c0 00 00 00 48 8b 40 10 f6 80
+  +0x460: 35 01 00 00 01 75 08 48 8b c8 e8 21 bb c1 fe 48
+  +0x470: 8b 80 b8 00 00 00 48 8b 08 48 85 c9 0f 84 72 02
+  +0x480: 00 00 45 33 c0 48 8b d6 e8 13 59 f5 ff 48 8b 8e
+  +0x490: 60 06 00 00 33 d2 e8 95 45 41 ff 84 c0 0f 84 ce
+  +0x4a0: 00 00 00 80 8e 48 06 00 00 08 48 8b 0d c7 f0 89
+  +0x4b0: 01 4c 8b be 60 06 00 00 44 39 a1 e4 00 00 00 75
+  +0x4c0: 0c e8 2a 79 c1 fe 48 8b 0d ab f0 89 01 48 8b 81
+  +0x4d0: b8 00 00 00 48 8b 78 18 48 85 ff 75 53 48 8b 0d
+  +0x4e0: d4 a8 84 01 48 8b 18 e8 14 78 c1 fe 4c 8b 05 8d
+  +0x4f0: 50 85 01 45 33 c9 48 8b d3 48 8b c8 48 8b f8 e8
+  +0x500: 6c 6a 73 ff 48 8b 05 6d f0 89 01 48 8b d7 48 8b
+  +0x510: 88 b8 00 00 00 48 89 79 18 48 8b 05 58 f0 89 01
+  +0x520: 48 8b 88 b8 00 00 00 48 83 c1 18 e8 60 68 c1 fe
+  +0x530: 48 8b 0d 19 46 85 01 44 39 a1 e4 00 00 00 75 05
+  +0x540: e8 ab 78 c1 fe 48 8b 05 f4 7f 89 01 48 8d 96 90
+  +0x550: 06 00 00 48 89 44 24 30 48 8d 4d 07 4c 89 64 24
+  +0x560: 28 4c 8b cf 4d 8b c7 48 89 74 24 20 e8 8f bf 4f
+  +0x570: ff 48 8b 8e 70 06 00 00 33 d2 e8 b1 44 41 ff 84
+  +0x580: c0 0f 84 ce 00 00 00 80 8e 48 06 00 00 10 48 8b
+  +0x590: 0d e3 ef 89 01 4c 8b be 70 06 00 00 44 39 a1 e4
+  +0x5a0: 00 00 00 75 0c e8 46 78 c1 fe 48 8b 0d c7 ef 89
+  +0x5b0: 01 48 8b 81 b8 00 00 00 48 8b 78 20 48 85 ff 75
+  +0x5c0: 53 48 8b 0d f0 a7 84 01 48 8b 18 e8 30 77 c1 fe
+  +0x5d0: 4c 8b 05 81 50 85 01 45 33 c9 48 8b d3 48 8b c8
+  +0x5e0: 48 8b f8 e8 88 69 73 ff 48 8b 05 89 ef 89 01 48
+  +0x5f0: 8b d7 48 8b 88 b8 00 00 00 48 89 79 20 48 8b 05
+  +0x600: 74 ef 89 01 48 8b 88 b8 00 00 00 48 83 c1 20 e8
+  +0x610: 7c 67 c1 fe 48 8b 0d 35 45 85 01 44 39 a1 e4 00
+  +0x620: 00 00 75 05 e8 c7 77 c1 fe 48 8b 05 10 7f 89 01
+  +0x630: 48 8d 96 c0 06 00 00 48 89 44 24 30 48 8d 4d 07
+  +0x640: 4c 89 64 24 28 4c 8b cf 4d 8b c7 48 89 74 24 20
+  +0x650: e8 ab be 4f ff 80 8e 48 06 00 00 01 4c 8b 86 20
+  +0x660: 06 00 00 4d 85 c0 74 0e 48 8b 15 49 5a 87 01 33
+  +0x670: c9 e8 4a d7 a5 fe 48 8b 06 48 8b ce 48 8b 90 c0
+  +0x680: 0d 00 00 ff 90 b8 0d 00 00 8b 86 50 05 00 00 ff
+  +0x690: c8 89 86 50 05 00 00 85 c0 7f 2d 44 39 a6 60 07
+  +0x6a0: 00 00 74 24 48 8b 06 48 8b ce 48 8b 90 20 0e 00
+  +0x6b0: 00 ff 90 18 0e 00 00 83 a6 60 07 00 00 fe 33 d2
+  +0x6c0: 48 8b ce e8 08 5b 00 00 4c 8b bc 24 90 00 00 00
+  +0x6d0: 4c 8b b4 24 98 00 00 00 48 8b bc 24 d8 00 00 00
+  +0x6e0: 48 8b 9c 24 c8 00 00 00 48 81 c4 a0 00 00 00 41
+  +0x6f0: 5c 5e 5d c3 e8 57 76 c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:581
+  [+0x011] StreamedListView.cs:585, StreamedListView.cs:1205
+  [+0x017] StreamedListView.cs:581
+  [+0x01a] StreamedListView.cs:585, StreamedListView.cs:1206, StreamedListView.cs:1211
+  [+0x021] StreamedListView.cs:1205
+  [+0x023] StreamedListView.cs:581
+  [+0x02a] StreamedListView.cs:585, StreamedListView.cs:1205
+  [+0x030] StreamedListView.cs:581
+  [+0x033] StreamedListView.cs:581
+  [+0x037] StreamedListView.cs:585, StreamedListView.cs:1206, StreamedListView.cs:1212, StreamedListView.cs:1226
+  [+0x03b] StreamedListView.cs:1229
+  [+0x04e] StreamedListView.cs:1230
+  [+0x055] StreamedListView.cs:1231
+  +0x05a: CALL 0x015aab80 (StreamedListView.cs:705)
+  [+0x05f] StreamedListView.cs:586
+  [+0x086] StreamedListView.cs:586
+  [+0x08f] StreamedListView.cs:586
+  +0x091: CALL 0x014bc990 (Binder.cs:63)
+  [+0x096] StreamedListView.cs:588
+  +0x09b: CALL 0x015f6d20 (DiggableVisualElement.cs:228)
+  [+0x0a0] StreamedListView.cs:590
+  +0x0a0: RIP [0x02e11c88] -> MetaUsage(tag=6, idx=207724)
+  +0x0a7: CALL 0x00a28920 (GameObjectExtensions.cs:18)
+  [+0x0ac] StreamedListView.cs:590
+  +0x0bd: CALL 0x001bb740 ()
+  [+0x0c2] StreamedListView.cs:591
+  +0x0c2: RIP [0x02e4d5e0] -> MetaUsage(tag=1, idx=23672)
+  +0x0d2: CALL 0x001bc7a0 ()
+  [+0x0d7] StreamedListView.cs:591
+  +0x0dc: CALL 0x01511e30 (BindableWidgetUtils.cs:285)
+  [+0x0e1] StreamedListView.cs:592
+  [+0x0e8] StreamedListView.cs:592
+  +0x0f0: CALL 0x0029d2d0 (BacktraceDatabaseRecord.cs:31, BacktraceDatabaseRecord.cs:36)
+  [+0x0f8] StreamedListView.cs:592, NavigationManager.cs:112
+  [+0x0fd] NavigationManager.cs:112
+  +0x102: CALL 0x0129faf0 ()
+  [+0x107] NavigationManager.cs:112
+  [+0x10a] NavigationManager.cs:112, Utilities.cs:117
+  [+0x10d] NavigationManager.cs:112
+  [+0x111] NavigationManager.cs:112, Utilities.cs:117
+  [+0x115] NavigationManager.cs:112
+  [+0x11e] StreamedListView.cs:592
+  +0x135: CALL 0x01510ea0 (BindingUtils.cs:27)
+  [+0x13a] StreamedListView.cs:592
+  [+0x141] StreamedListView.cs:594
+  +0x152: CALL 0x014bd350 (BindingPath.cs:95)
+  [+0x157] StreamedListView.cs:594
+  [+0x15b] StreamedListView.cs:597
+  [+0x162] StreamedListView.cs:597
+  +0x17b: CALL 0x014bd460 (BindingPath.cs:111)
+  [+0x180] StreamedListView.cs:597
+  +0x19e: CALL 0x01510dd0 (BindingUtils.cs:282)
+  [+0x1a3] StreamedListView.cs:597
+  [+0x1aa] StreamedListView.cs:600
+  [+0x1b1] StreamedListView.cs:600
+  +0x1bb: CALL 0x014bd350 (BindingPath.cs:95)
+  [+0x1c0] StreamedListView.cs:600
+  [+0x1c4] StreamedListView.cs:604
+  [+0x1cb] StreamedListView.cs:604
+  +0x1eb: CALL 0x014bd460 (BindingPath.cs:111)
+  [+0x1f0] StreamedListView.cs:604
+  +0x20e: CALL 0x01510dd0 (BindingUtils.cs:282)
+  [+0x213] StreamedListView.cs:604
+  [+0x21a] StreamedListView.cs:607
+  [+0x221] StreamedListView.cs:607
+  +0x22b: CALL 0x014bd350 (BindingPath.cs:95)
+  [+0x230] StreamedListView.cs:607
+  [+0x234] StreamedListView.cs:610
+  [+0x23b] StreamedListView.cs:610
+  +0x25b: CALL 0x014bd460 (BindingPath.cs:111)
+  [+0x260] StreamedListView.cs:610
+  +0x260: RIP [0x02ddacd0] -> MetaUsage(tag=1, idx=41894)
+  [+0x267] StreamedListView.cs:610
+  [+0x26e] StreamedListView.cs:610
+  +0x26e: CALL 0x001bc6b0 ()
+  [+0x273] StreamedListView.cs:610
+  +0x273: RIP [0x02e26378] -> MethodDef idx=47247 OnSortBindingChanged
+  [+0x283] StreamedListView.cs:610
+  [+0x286] StreamedListView.cs:610
+  +0x286: CALL 0x0109bbd0 ()
+  [+0x28b] StreamedListView.cs:610
+  +0x29e: CALL 0x01510dd0 (BindingUtils.cs:282)
+  [+0x2a3] StreamedListView.cs:610
+  [+0x2aa] StreamedListView.cs:613
+  +0x2aa: RIP [0x02e1a018] -> MetaUsage(tag=1, idx=37110)
+  +0x2bd: CALL 0x001bc7a0 ()
+  +0x2c2: RIP [0x02e1a018] -> MetaUsage(tag=1, idx=37110)
+  [+0x2c9] StreamedListView.cs:613
+  [+0x2d0] StreamedListView.cs:613
+  [+0x2d9] StreamedListView.cs:613
+  [+0x2dd] StreamedListView.cs:613
+  +0x2dd: RIP [0x02dec0d0] -> MetaUsage(tag=6, idx=206307)
+  +0x2e9: CALL 0x009ddb70 ()
+  [+0x2ee] StreamedListView.cs:614
+  +0x2ee: RIP [0x02e1a018] -> MetaUsage(tag=1, idx=37110)
+  [+0x2f5] StreamedListView.cs:614
+  [+0x2fb] StreamedListView.cs:614
+  [+0x302] StreamedListView.cs:614
+  +0x302: RIP [0x02dec348] -> MetaUsage(tag=6, idx=206310)
+  +0x315: CALL 0x009ddb70 ()
+  [+0x31a] StreamedListView.cs:616
+  +0x31a: RIP [0x02e12270] -> MetaUsage(tag=6, idx=207731)
+  +0x321: CALL 0x00a28920 (GameObjectExtensions.cs:18)
+  [+0x326] StreamedListView.cs:617
+  [+0x32f] StreamedListView.cs:617
+  +0x32f: RIP [0x02e43c70] -> MetaUsage(tag=6, idx=207282)
+  +0x340: CALL 0x00a1dab0 (EventList.cs:64)
+  [+0x345] StreamedListView.cs:619, StreamedListView.cs:397, StreamedListView.cs:399, StreamedListView.cs:401
+  [+0x34c] StreamedListView.cs:401
+  [+0x355] StreamedListView.cs:401
+  [+0x35c] StreamedListView.cs:399
+  [+0x365] StreamedListView.cs:619
+  [+0x36f] StreamedListView.cs:621
+  +0x36f: RIP [0x02e4d1f0] -> MetaUsage(tag=1, idx=5194)
+  [+0x376] StreamedListView.cs:621
+  [+0x37d] StreamedListView.cs:621
+  +0x37d: CALL 0x001bc6b0 ()
+  [+0x382] StreamedListView.cs:621
+  +0x382: RIP [0x02e26068] -> MethodDef idx=47323 OnRightStickPageChangeTriggered
+  [+0x392] StreamedListView.cs:621
+  [+0x395] StreamedListView.cs:621
+  +0x395: CALL 0x00ee3610 (TypedValue.cs:699)
+  [+0x39a] StreamedListView.cs:621
+  [+0x3a3] StreamedListView.cs:621
+  +0x3ac: CALL 0x016ac860 (INavigatable.cs:99)
+  [+0x3b1] StreamedListView.cs:623
+  +0x3b3: CALL 0x016ba8e0 (NavigationManager.cs:121, NavigationManager.cs:125)
+  [+0x3b8] StreamedListView.cs:623
+  [+0x3bc] StreamedListView.cs:625, NavigationManager.cs:112
+  +0x3bc: RIP [0x02dcf7b0] -> MetaUsage(tag=1, idx=32760)
+  [+0x3cd] StreamedListView.cs:625
+  [+0x3d6] StreamedListView.cs:625
+  +0x3d6: RIP [0x02e26860] -> MetaUsage(tag=1, idx=29476)
+  [+0x3e7] StreamedListView.cs:625
+  +0x3e7: RIP [0x02e4dd88] -> MetaUsage(tag=1, idx=5218)
+  [+0x3ee] StreamedListView.cs:625
+  [+0x3f1] StreamedListView.cs:625
+  +0x3f1: CALL 0x001bc6b0 ()
+  [+0x3f6] StreamedListView.cs:625
+  +0x3f6: RIP [0x02e25e28] -> MethodDef idx=47322 OnNavigateListPaginationInputAction
+  [+0x406] StreamedListView.cs:625
+  [+0x409] StreamedListView.cs:625
+  +0x409: CALL 0x00ee32e0 (TypedValue.cs:699, TypedValue.cs:699)
+  [+0x40e] StreamedListView.cs:625
+  +0x422: CALL 0x01500780 (IShortcutElement.cs:117)
+  [+0x427] StreamedListView.cs:628
+  +0x427: RIP [0x02dd9838] -> MetaUsage(tag=6, idx=203924)
+  +0x42e: CALL 0x00ce2f40 (ManualSingleton.cs:44)
+  [+0x433] StreamedListView.cs:628
+  [+0x437] StreamedListView.cs:630, ManualSingleton.cs:42
+  +0x437: RIP [0x02dd9a08] -> MetaUsage(tag=6, idx=203926)
+  +0x44e: CALL 0x001c0940 ()
+  +0x46a: CALL 0x001c0940 ()
+  [+0x479] StreamedListView.cs:630
+  [+0x482] StreamedListView.cs:630
+  +0x488: CALL 0x014fa750 (ShortcutData.cs:1389)
+  [+0x48d] StreamedListView.cs:634
+  +0x496: CALL 0x009b93e0 (AssetReference.cs:558, AssetReferenceExtensions.cs:15)
+  [+0x49b] StreamedListView.cs:634
+  [+0x4a3] StreamedListView.cs:636
+  [+0x4aa] StreamedListView.cs:643
+  +0x4aa: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  +0x4c1: CALL 0x001bc7a0 ()
+  +0x4c6: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  [+0x4cd] StreamedListView.cs:643
+  [+0x4d8] StreamedListView.cs:643
+  [+0x4dd] StreamedListView.cs:643
+  +0x4dd: RIP [0x02def768] -> MetaUsage(tag=1, idx=54763)
+  [+0x4e4] StreamedListView.cs:643
+  [+0x4e7] StreamedListView.cs:643
+  +0x4e7: CALL 0x001bc6b0 ()
+  [+0x4ec] StreamedListView.cs:643
+  +0x4ec: RIP [0x02df9f30] -> MethodDef idx=47355 <BindToData>b__232_0
+  [+0x4fc] StreamedListView.cs:643
+  [+0x4ff] StreamedListView.cs:643
+  +0x4ff: CALL 0x00cdb920 ()
+  [+0x504] StreamedListView.cs:643
+  +0x504: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  [+0x50b] StreamedListView.cs:643
+  +0x519: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  +0x52b: CALL 0x001bb740 ()
+  [+0x530] StreamedListView.cs:643
+  +0x530: RIP [0x02df9500] -> MetaUsage(tag=1, idx=35279)
+  +0x540: CALL 0x001bc7a0 ()
+  [+0x545] StreamedListView.cs:643
+  +0x545: RIP [0x02e3cef0] -> MetaUsage(tag=6, idx=208607)
+  +0x56c: CALL 0x00aa0eb0 (ResourcesSubsystem.cs:295)
+  [+0x571] StreamedListView.cs:647
+  +0x57a: CALL 0x009b93e0 (AssetReference.cs:558, AssetReferenceExtensions.cs:15)
+  [+0x57f] StreamedListView.cs:647
+  [+0x587] StreamedListView.cs:649
+  [+0x58e] StreamedListView.cs:656
+  +0x58e: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  +0x5a5: CALL 0x001bc7a0 ()
+  +0x5aa: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  [+0x5b1] StreamedListView.cs:656
+  [+0x5bc] StreamedListView.cs:656
+  [+0x5c1] StreamedListView.cs:656
+  +0x5c1: RIP [0x02def768] -> MetaUsage(tag=1, idx=54763)
+  [+0x5c8] StreamedListView.cs:656
+  [+0x5cb] StreamedListView.cs:656
+  +0x5cb: CALL 0x001bc6b0 ()
+  [+0x5d0] StreamedListView.cs:656
+  +0x5d0: RIP [0x02dfa008] -> MethodDef idx=47356 <BindToData>b__232_1
+  [+0x5e0] StreamedListView.cs:656
+  [+0x5e3] StreamedListView.cs:656
+  +0x5e3: CALL 0x00cdb920 ()
+  [+0x5e8] StreamedListView.cs:656
+  +0x5e8: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  [+0x5ef] StreamedListView.cs:656
+  +0x5fd: RIP [0x02e43f28] -> MetaUsage(tag=1, idx=47687)
+  +0x60f: CALL 0x001bb740 ()
+  [+0x614] StreamedListView.cs:656
+  +0x614: RIP [0x02df9500] -> MetaUsage(tag=1, idx=35279)
+  +0x624: CALL 0x001bc7a0 ()
+  [+0x629] StreamedListView.cs:656
+  +0x629: RIP [0x02e3cef0] -> MetaUsage(tag=6, idx=208607)
+  +0x650: CALL 0x00aa0eb0 (ResourcesSubsystem.cs:295)
+  [+0x655] StreamedListView.cs:659
+  [+0x65c] StreamedListView.cs:660
+  [+0x663] StreamedListView.cs:660
+  [+0x668] StreamedListView.cs:660
+  +0x668: RIP [0x02e1aa68] -> MetaUsage(tag=1, idx=28942)
+  [+0x676] StreamedListView.cs:662
+  [+0x689] StreamedListView.cs:663, StreamedListView.cs:1220
+  [+0x697] StreamedListView.cs:1221, StreamedListView.cs:1226
+  [+0x69b] StreamedListView.cs:1226
+  [+0x6a4] StreamedListView.cs:1229
+  [+0x6b7] StreamedListView.cs:1230
+  [+0x6be] StreamedListView.cs:1231
+  +0x6c3: CALL 0x015aab80 (StreamedListView.cs:705)
+  [+0x6d0] StreamedListView.cs:664
+  [+0x6f4] StreamedListView.cs:630
+  +0x6f4: CALL 0x001bc700 ()
+
+================ StreamedListView.SetList (0x015a9880..0x015a99c4, sz=324) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 20 83 89 60 07 00 00
+  +0x010: 02 48 8b fa 8b 91 50 05 00 00 48 8b d9 ff c2 89
+  +0x020: 91 50 05 00 00 85 d2 7f 24 48 8b 11 48 8b 82 18
+  +0x030: 0e 00 00 48 8b 92 20 0e 00 00 ff d0 83 a3 60 07
+  +0x040: 00 00 fe 33 d2 48 8b cb e8 b3 12 00 00 48 85 ff
+  +0x050: 75 52 48 8b 3d 87 cb 88 01 48 83 7f 38 00 75 08
+  +0x060: 48 8b cf e8 d8 70 c1 fe 48 8b 47 38 48 8b 40 10
+  +0x070: f6 80 35 01 00 00 01 75 08 48 8b c8 e8 3f 70 c1
+  +0x080: fe 83 b8 e4 00 00 00 00 75 08 48 8b c8 e8 8e 2e
+  +0x090: c1 fe 48 8b 47 38 48 8b 48 10 48 8b 81 b8 00 00
+  +0x0a0: 00 48 8b 38 48 8d 8b 58 07 00 00 48 89 bb 58 07
+  +0x0b0: 00 00 48 8b d7 e8 06 1e c1 fe 4c 8b 83 78 07 00
+  +0x0c0: 00 80 a3 48 06 00 00 fe 4d 85 c0 74 71 4d 8b 80
+  +0x0d0: 30 05 00 00 4d 85 c0 74 13 48 8b 15 18 2e 87 01
+  +0x0e0: b9 01 00 00 00 e8 96 89 a5 fe eb 02 33 c0 89 83
+  +0x0f0: 34 07 00 00 8b 83 50 05 00 00 ff c8 89 83 50 05
+  +0x100: 00 00 85 c0 7f 2d 83 bb 60 07 00 00 00 74 24 48
+  +0x110: 8b 03 48 8b cb 48 8b 90 20 0e 00 00 ff 90 18 0e
+  +0x120: 00 00 83 a3 60 07 00 00 fe 33 d2 48 8b cb e8 cd
+  +0x130: 11 00 00 48 8b 5c 24 30 48 83 c4 20 5f c3 e8 3d
+  +0x140: 2d c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1605
+  [+0x00a] StreamedListView.cs:1610, StreamedListView.cs:1206, StreamedListView.cs:1211
+  [+0x011] StreamedListView.cs:1605
+  [+0x014] StreamedListView.cs:1610, StreamedListView.cs:1205
+  [+0x01a] StreamedListView.cs:1605
+  [+0x01d] StreamedListView.cs:1610, StreamedListView.cs:1205
+  [+0x025] StreamedListView.cs:1206, StreamedListView.cs:1212, StreamedListView.cs:1226
+  [+0x029] StreamedListView.cs:1229
+  [+0x03c] StreamedListView.cs:1230
+  [+0x043] StreamedListView.cs:1231
+  +0x048: CALL 0x015aab80 (StreamedListView.cs:705)
+  [+0x04d] StreamedListView.cs:1612
+  [+0x052] StreamedListView.cs:1612
+  +0x052: RIP [0x02e36460] -> MetaUsage(tag=6, idx=165980)
+  [+0x059] Utilities.cs:117
+  +0x063: CALL 0x001c09c0 ()
+  [+0x068] Utilities.cs:117
+  +0x07c: CALL 0x001c0940 ()
+  +0x08d: CALL 0x001bc7a0 ()
+  [+0x092] Utilities.cs:117
+  [+0x0a1] StreamedListView.cs:1612
+  [+0x0a4] StreamedListView.cs:1612, StreamedListView.cs:293
+  +0x0b5: CALL 0x001bb740 ()
+  [+0x0ba] StreamedListView.cs:1614, StreamedListView.cs:315
+  [+0x0c1] StreamedListView.cs:1613
+  [+0x0c8] StreamedListView.cs:1614, StreamedListView.cs:315
+  [+0x0cd] StreamedListView.cs:315
+  [+0x0d9] StreamedListView.cs:315
+  +0x0d9: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x0ec] StreamedListView.cs:315
+  [+0x0f4] StreamedListView.cs:1616, StreamedListView.cs:1220
+  [+0x102] StreamedListView.cs:1221, StreamedListView.cs:1226
+  [+0x106] StreamedListView.cs:1226
+  [+0x10f] StreamedListView.cs:1229
+  [+0x122] StreamedListView.cs:1230
+  [+0x129] StreamedListView.cs:1231
+  +0x12e: CALL 0x015aab80 (StreamedListView.cs:705)
+  [+0x133] StreamedListView.cs:1617
+  [+0x13e] StreamedListView.cs:1614, StreamedListView.cs:315
+  +0x13e: CALL 0x001bc700 ()
+
+================ StreamedListView.PostSortingDataChanged (0x015a8610..0x015a86bf, sz=175) ================
+  +0x000: 48 89 5c 24 08 57 48 83 ec 20 4c 8b 81 58 07 00
+  +0x010: 00 48 8b d9 8b b9 00 06 00 00 4d 85 c0 0f 84 86
+  +0x020: 00 00 00 48 8b 15 3e 41 87 01 b9 01 00 00 00 e8
+  +0x030: bc 9c a5 fe 3b f8 75 66 48 8b 8b 68 05 00 00 48
+  +0x040: 85 c9 74 65 4c 8b 05 1d de 83 01 48 8b 93 d0 05
+  +0x050: 00 00 e8 c9 3f 6c ff 48 8b 03 48 8b cb 48 8b 90
+  +0x060: b0 0d 00 00 ff 90 a8 0d 00 00 83 8b 60 07 00 00
+  +0x070: 10 83 bb 50 05 00 00 00 7f 24 48 8b 03 48 8b cb
+  +0x080: 48 8b 90 20 0e 00 00 ff 90 18 0e 00 00 83 a3 60
+  +0x090: 07 00 00 fe 33 d2 48 8b cb e8 d2 24 00 00 48 8b
+  +0x0a0: 5c 24 30 48 83 c4 20 5f c3 e8 42 40 c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:771
+  [+0x00a] StreamedListView.cs:775, StreamedListView.cs:294
+  [+0x011] StreamedListView.cs:771
+  [+0x014] StreamedListView.cs:775, StreamedListView.cs:294
+  [+0x01a] StreamedListView.cs:294
+  [+0x023] StreamedListView.cs:294
+  +0x023: RIP [0x02e1c778] -> MetaUsage(tag=1, idx=29016)
+  [+0x034] StreamedListView.cs:294
+  [+0x036] StreamedListView.cs:775
+  [+0x038] StreamedListView.cs:777
+  [+0x03f] StreamedListView.cs:777
+  [+0x044] StreamedListView.cs:777
+  +0x044: RIP [0x02de6478] -> MetaUsage(tag=6, idx=88080)
+  +0x052: CALL 0x00c6c630 ()
+  [+0x057] StreamedListView.cs:778
+  [+0x06a] StreamedListView.cs:779, StreamedListView.cs:1211
+  [+0x071] StreamedListView.cs:1212, StreamedListView.cs:1226
+  [+0x07a] StreamedListView.cs:1229
+  [+0x08d] StreamedListView.cs:1230
+  [+0x094] StreamedListView.cs:1231
+  +0x099: CALL 0x015aab80 (StreamedListView.cs:705)
+  [+0x09e] StreamedListView.cs:781
+  [+0x0a9] StreamedListView.cs:777
+  +0x0a9: CALL 0x001bc700 ()
+
+================ StreamedListView.OnMoveItemInternal (0x015a7480..0x015a7660, sz=480) ================
+  +0x000: 40 53 57 41 56 48 83 ec 30 48 8b 81 68 05 00 00
+  +0x010: 48 8b 99 58 07 00 00 48 85 c0 0f 84 ba 01 00 00
+  +0x020: 48 8b 40 10 48 63 d2 8b 7c 90 20 48 8b 81 68 05
+  +0x030: 00 00 49 63 c8 48 8b 40 10 44 8b 74 88 20 41 3b
+  +0x040: fe 0f 84 4c 01 00 00 48 85 db 0f 84 8a 01 00 00
+  +0x050: 48 8b 15 51 cf 87 01 33 c9 48 89 6c 24 50 44 8b
+  +0x060: cf 48 89 74 24 58 4c 8b c3 4c 89 64 24 60 4c 89
+  +0x070: 7c 24 68 e8 b8 af a5 fe 4c 8b f8 41 3b fe bd 01
+  +0x080: 00 00 00 b8 ff ff ff ff 0f 4d e8 45 33 e4 66 90
+  +0x090: 4c 8b 13 41 0f b7 c4 4c 8b 0d 0a cf 87 01 41 0f
+  +0x0a0: b7 92 2e 01 00 00 66 44 3b e2 73 2c 4d 8b 82 b0
+  +0x0b0: 00 00 00 0f 1f 40 00 66 0f 1f 84 00 00 00 00 00
+  +0x0c0: 0f b7 c8 48 03 c9 4d 39 0c c8 0f 84 cc 00 00 00
+  +0x0d0: 66 ff c0 66 3b c2 72 e8 45 33 c0 49 8b d1 48 8b
+  +0x0e0: cb e8 da 8c c1 fe 4c 8b 08 8d 14 2f 4c 8b 40 08
+  +0x0f0: 48 8b cb 41 ff d1 4c 8b 1b 48 8b f0 4c 8b 0d a5
+  +0x100: ce 87 01 41 0f b7 d4 45 0f b7 93 2e 01 00 00 66
+  +0x110: 45 3b e2 73 24 4d 8b 83 b0 00 00 00 0f 1f 40 00
+  +0x120: 0f b7 ca 48 03 c9 4d 39 0c c8 0f 84 89 00 00 00
+  +0x130: 66 ff c2 66 41 3b d2 72 e7 41 b8 01 00 00 00 49
+  +0x140: 8b d1 48 8b cb e8 76 8c c1 fe 4c 8b 48 08 4c 8b
+  +0x150: c6 8b d7 48 8b cb ff 10 03 fd 41 3b fe 0f 85 2d
+  +0x160: ff ff ff 48 8b 15 3e ce 87 01 b9 01 00 00 00 4c
+  +0x170: 8b 64 24 60 45 8b ce 48 8b 74 24 58 4c 8b c3 48
+  +0x180: 8b 6c 24 50 4c 89 7c 24 20 e8 02 f1 a5 fe 4c 8b
+  +0x190: 7c 24 68 48 83 c4 30 41 5e 5f 5b c3 0f b7 c8 48
+  +0x1a0: 03 c9 49 63 44 c8 08 48 c1 e0 04 48 05 38 01 00
+  +0x1b0: 00 49 03 c2 e9 2d ff ff ff 0f b7 ca 48 03 c9 41
+  +0x1c0: 8b 44 c8 08 ff c0 48 98 48 c1 e0 04 48 05 38 01
+  +0x1d0: 00 00 49 03 c3 e9 70 ff ff ff e8 a1 50 c1 fe cc
+  --- USYM & Refs ---
+  [+0x000] StreamedListView.cs:1301
+  [+0x009] StreamedListView.cs:1312
+  [+0x017] StreamedListView.cs:1312
+  [+0x020] StreamedListView.cs:1312
+  [+0x02b] StreamedListView.cs:1313
+  [+0x032] StreamedListView.cs:1313
+  [+0x03e] StreamedListView.cs:1317
+  [+0x047] StreamedListView.cs:1322
+  [+0x050] StreamedListView.cs:1322
+  +0x050: RIP [0x02e24428] -> MetaUsage(tag=1, idx=29376)
+  [+0x059] StreamedListView.cs:1322
+  [+0x05e] StreamedListView.cs:1322
+  [+0x061] StreamedListView.cs:1322
+  [+0x066] StreamedListView.cs:1322
+  [+0x069] StreamedListView.cs:1322
+  [+0x073] StreamedListView.cs:1322
+  [+0x07b] StreamedListView.cs:1323
+  [+0x08b] StreamedListView.cs:1324
+  [+0x090] StreamedListView.cs:1326
+  +0x097: RIP [0x02e24428] -> MetaUsage(tag=1, idx=29376)
+  +0x0e1: CALL 0x001c0240 ()
+  [+0x0f6] StreamedListView.cs:1326
+  [+0x0f9] StreamedListView.cs:1326
+  [+0x0fc] StreamedListView.cs:1326
+  +0x0fc: RIP [0x02e24428] -> MetaUsage(tag=1, idx=29376)
+  +0x145: CALL 0x001c0240 ()
+  [+0x158] StreamedListView.cs:1324
+  [+0x15a] StreamedListView.cs:1324
+  [+0x163] StreamedListView.cs:1329
+  +0x163: RIP [0x02e24428] -> MetaUsage(tag=1, idx=29376)
+  [+0x193] StreamedListView.cs:1330
+  [+0x19c] StreamedListView.cs:1326
+  +0x1b4: JMP 0x015a7566 ()
+  [+0x1b9] StreamedListView.cs:1326
+  +0x1d5: JMP 0x015a75ca ()
+  [+0x1da] StreamedListView.cs:1322
+  +0x1da: CALL 0x001bc700 ()
