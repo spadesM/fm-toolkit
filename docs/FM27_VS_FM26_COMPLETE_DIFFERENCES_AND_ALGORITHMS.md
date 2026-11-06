@@ -3,12 +3,12 @@
 > **Scope & Methodology:** This report is based on a byte-level reverse-engineering comparison between the full installation trees of `C:\Program Files (x86)\Steam\steamapps\common\Football Manager 26` (`1,037` files, `7.55 GB`, DB `2620`) and `C:\Program Files (x86)\Steam\steamapps\common\Football Manager 27` (`1,279` files, `8.16 GB`, DB `2700`, Build `27.0.0+2486695`), as well as empirical `.fm` career save files (`Project_Super_Lig.fm` vs `Mahmut Çakar - Galatasaray.fm`).
 >
 > This document builds directly upon all 6 core FM26 reference reports in this repository and demonstrates—with exact equations, coefficients, and binary memory offsets—how every subsystem changed (or remained identical) in FM27:
-> 1. [FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md](file:///c:/Repos/fm26save/docs/FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md)
-> 2. [FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md](file:///c:/Repos/fm26save/docs/FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md)
-> 3. [FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md](file:///c:/Repos/fm26save/docs/FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md)
-> 4. [FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md](file:///c:/Repos/fm26save/docs/FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md)
-> 5. [FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md](file:///c:/Repos/fm26save/docs/FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md)
-> 6. [FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md](file:///c:/Repos/fm26save/docs/FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md)
+> 1. [FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md](./FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md)
+> 2. [FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md](./FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md)
+> 3. [FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md](./FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md)
+> 4. [FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md](./FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md)
+> 5. [FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md](./FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md)
+> 6. [FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md](./FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md)
 
 ---
 
@@ -16,22 +16,22 @@
 
 | # | System / Sub-Engine | FM26 Baseline (Reference Report) | FM27 State (`v27.0.0+2486695`) | Impact Severity |
 | :--- | :--- | :--- | :--- | :--- |
-| **1** | **Tactical Familiarity $\rightarrow$ Tactical Effectiveness & Complexity Engine** | Classic `Tactical Familiarity` bars; no tactical complexity penalty ([Report 1](file:///c:/Repos/fm26save/docs/FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md)) | **Brand-New Engine:** Added `simatch/constants/generated_tactical_complexity_constants.jsb`, `generated_tactical_effectiveness_constants.jsb`, and `generated_training_contribution_constants.jsb`, assigning `0..3` complexity scores (`Tactical Complexity`) to every team/player/opposition instruction and every IP/OOP role, feeding a `0..100` `Tactical Effectiveness` formula. | **REVOLUTIONARY (New Engine)** |
-| **2** | **Weekly Training Engine (`training.fmf`)** | `44` sessions, `3` units (`Offensive`, `Defensive`, `Goalkeeping`), `60%/20%/20%` split, separate `session_item_effects.jsb` ([Report 2](file:///c:/Repos/fm26save/docs/FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md)) | **Rebuilt from Scratch:** `59` sessions, `6` categories (`training_session_categories.jsb`), **`4` coaching units** (`attacking`, `midfield`, `defensive`, `goalkeeping`), physical/morale effects embedded directly per session, `8` new **Tactical Understanding** and `9` new **Match Preparation** sessions. `Natural Fitness` removed from Conditioning sessions! | **REVOLUTIONARY (Rewritten)** |
-| **3** | **Expected Goals (`xG`) Logistic Regression Models (`simatch.fmf`)** | Active model `26_1_4_1` (`9` version folders); Penalty xG = `76.83%` ([Report 1](file:///c:/Repos/fm26save/docs/FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md), [Report 3](file:///c:/Repos/fm26save/docs/FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md)) | Active model **`26_8_4_34`** (`11` version folders; 4 legacy FM23/24 models removed, 6 new `26_8_*` models added). Shot angle (`angle_shot_to_goal`) reward increased by `+66.8%`, blocker count penalty (`norm_players_between`) increased by **`+61.5%` to `+113%`**! Penalty xG = **`82.68%`**. | **HIGH (Recalibrated)** |
-| **4** | **Player Match Rating (`player_ratings_data.jsb`)** | Active version `v26.4.10.1`; `40` `RolePosition` bitmasks sharing `30` `role_data` tables ([Report 1](file:///c:/Repos/fm26save/docs/FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md)) | Active version **`v26.4.29.8`**; 5 previously shared roles split into **`35` independent `role_data` profiles**. Per-action points (`Goals`, `Assists`, `Tackles`, etc.) are unchanged, but **`90min Adjuster` was rebalanced across `36 / 40` roles** (`+0.10` to `+0.27` rating buff for midfielders/wingers/full-backs; `-0.01` to `-0.17` nerf for strikers/centre-backs/keepers). | **MEDIUM-HIGH** |
-| **5** | **Quick Match Engine (`QME` — `qme_distribution_data.jsb`)** | `3,137` probability distributions (`midfielder_centre`: only `66`, `goalkeeper`: `59`) ([Report 3](file:///c:/Repos/fm26save/docs/FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md)) | **`3,420` probability distributions (`+283`)**: `midfielder_centre` expanded `66` $\rightarrow$ **`263` (`+197`)** and `goalkeeper` `59` $\rightarrow$ **`110` (`+51`)**, fixing central midfielder and goalkeeper stat anomalies in background-simulated matches. | **MEDIUM** |
-| **6** | **Physics, Momentum, OOP Proximity Grid & Aerial Reach** | `ball_physics_22_0_5_0.bta`, `momentum_weightings_data.jsb`, `oop_attributes_scoring.jsb`, `oop_pitch_proximity_scores.jsb`, `tables.fmf` ([Report 1](file:///c:/Repos/fm26save/docs/FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md), [Report 6](file:///c:/Repos/fm26save/docs/FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md)) | **100% Byte-for-Byte (`SHA-256`) Identical!** Ball physics, 48 spatial momentum rules, 39 OOP role attribute scorings, `118 × 24` OOP proximity matrix, and jumping/aerial reach tables are unchanged. Tactical style `.stra` presets upgraded from `rts.B B` (`v2`) $\rightarrow$ **`rts.D D` (`v4`)**. | **UNCHANGED (except `.stra` v4)** |
-| **7** | **New `constants.fmf` Archive, Crowd Atmosphere (`Crowd`) & `sianim`** | No `constants.fmf`; `10` JSON schemas under `sianim` ([Report 4](file:///c:/Repos/fm26save/docs/FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md)) | New `data/game_simulation/constants.fmf` (`4` `.jsb`: `colour_pair`, `match_crowd`, `shuffle_draft`, `training`); database adds `TCct`/`ccrt`/`Lctd` (`Flares`, `Confetti`, `Flags`) crowd tendencies; `sianim` schemas expanded `10` $\rightarrow$ **`62` JSON files** (`+44` match animation schemas + `8` facial/skeleton schemas). | **HIGH** |
-| **8** | **Media, Portal News Engine & OOP Loan Contracts (`media.fmf`)** | Portal irrelevant story multiplier `0.5`; loan agreements tracked IP position/role only ([Report 2](file:///c:/Repos/fm26save/docs/FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md)) | `portal_weights.xml` cuts irrelevant story weight by `80%` (`0.5` $\rightarrow$ `0.1`), adds a 3-article read threshold (`portal_min_read_news_count_to_add_object_to_profile = 3`) and `7500/8500` reputation gates. Loan player unhappiness now tracks **OOP (Out-Of-Possession) position & role violations (`topi=1050, 1051`)**! | **MEDIUM-HIGH** |
-| **9** | **Master Database (`2700` vs `2620`) & Licensing (`.lnc`)** | `723,010` people (`495,248` men, `41,904` women), `96,343` clubs, `988,091` names, `31` `.lnc` files ([Report 3](file:///c:/Repos/fm26save/docs/FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md)) | `701,095` people (`473,764` men, **`47,736` women `+5,832`**), **`100,432` clubs (`+4,089`)**, `8,084` competitions (`+111`), **`1,063,170` names (`+75,079`)**. `lang_db.dat` Club table adds 7th string field `CLTn` (`League Table Name`). `30` restrictive `.lnc` files removed—unlocking official licenses (`Inter`, `AC Milan`, `Lazio`, `Atalanta`, `World Cup`)! | **HIGH** |
-| **10** | **`.fm` Save Container & `PersonBlock` Binary Shift** | `81` `.dat`/`.cmt` sections; `PersonBlockLayout` has `1` byte (`0x03`) at `birth+12`, `nation_id` at `+13`, `personality` at `+21` ([Report 5](file:///c:/Repos/fm26save/docs/FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md)) | **`75` sections** (6 `.cmt` history sections removed, 11 `.dat` sections bumped in schema version). `PersonBlock` inside `game_db.dat` and `people_db.dat` inserts **1 byte (`0x01`) at `birth+13`** (`0x03` $\rightarrow$ `0x03 0x01`), shifting `nation_id` (`13` $\rightarrow$ `14`), `personality` (`21` $\rightarrow$ `22`), and all subsequent fields by **`+1` byte**! | **CRITICAL (For Parsers / Tools)** |
+| **1** | **Tactical Familiarity $\rightarrow$ Tactical Effectiveness & Complexity Engine** | Classic `Tactical Familiarity` bars; no tactical complexity penalty ([Report 1](./FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md)) | **Brand-New Engine:** Added `simatch/constants/generated_tactical_complexity_constants.jsb`, `generated_tactical_effectiveness_constants.jsb`, and `generated_training_contribution_constants.jsb`, assigning `0..3` complexity scores (`Tactical Complexity`) to every team/player/opposition instruction and every IP/OOP role, feeding a `0..100` `Tactical Effectiveness` formula. | **REVOLUTIONARY (New Engine)** |
+| **2** | **Weekly Training Engine (`training.fmf`)** | `44` sessions, `3` units (`Offensive`, `Defensive`, `Goalkeeping`), `60%/20%/20%` split, separate `session_item_effects.jsb` ([Report 2](./FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md)) | **Rebuilt from Scratch:** `59` sessions, `6` categories (`training_session_categories.jsb`), **`4` coaching units** (`attacking`, `midfield`, `defensive`, `goalkeeping`), physical/morale effects embedded directly per session, `8` new **Tactical Understanding** and `9` new **Match Preparation** sessions. `Natural Fitness` removed from Conditioning sessions! | **REVOLUTIONARY (Rewritten)** |
+| **3** | **Expected Goals (`xG`) Logistic Regression Models (`simatch.fmf`)** | Active model `26_1_4_1` (`9` version folders); Penalty xG = `76.83%` ([Report 1](./FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md), [Report 3](./FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md)) | Active model **`26_8_4_34`** (`11` version folders; 4 legacy FM23/24 models removed, 6 new `26_8_*` models added). Shot angle (`angle_shot_to_goal`) reward increased by `+66.8%`, blocker count penalty (`norm_players_between`) increased by **`+61.5%` to `+113%`**! Penalty xG = **`82.68%`**. | **HIGH (Recalibrated)** |
+| **4** | **Player Match Rating (`player_ratings_data.jsb`)** | Active version `v26.4.10.1`; `40` `RolePosition` bitmasks sharing `30` `role_data` tables ([Report 1](./FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md)) | Active version **`v26.4.29.8`**; 5 previously shared roles split into **`35` independent `role_data` profiles**. Per-action points (`Goals`, `Assists`, `Tackles`, etc.) are unchanged, but **`90min Adjuster` was rebalanced across `36 / 40` roles** (`+0.10` to `+0.27` rating buff for midfielders/wingers/full-backs; `-0.01` to `-0.17` nerf for strikers/centre-backs/keepers). | **MEDIUM-HIGH** |
+| **5** | **Quick Match Engine (`QME` — `qme_distribution_data.jsb`)** | `3,137` probability distributions (`midfielder_centre`: only `66`, `goalkeeper`: `59`) ([Report 3](./FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md)) | **`3,420` probability distributions (`+283`)**: `midfielder_centre` expanded `66` $\rightarrow$ **`263` (`+197`)** and `goalkeeper` `59` $\rightarrow$ **`110` (`+51`)**, fixing central midfielder and goalkeeper stat anomalies in background-simulated matches. | **MEDIUM** |
+| **6** | **Physics, Momentum, OOP Proximity Grid & Aerial Reach** | `ball_physics_22_0_5_0.bta`, `momentum_weightings_data.jsb`, `oop_attributes_scoring.jsb`, `oop_pitch_proximity_scores.jsb`, `tables.fmf` ([Report 1](./FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md), [Report 6](./FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md)) | **100% Byte-for-Byte (`SHA-256`) Identical!** Ball physics, 48 spatial momentum rules, 39 OOP role attribute scorings, `118 × 24` OOP proximity matrix, and jumping/aerial reach tables are unchanged. Tactical style `.stra` presets upgraded from `rts.B B` (`v2`) $\rightarrow$ **`rts.D D` (`v4`)**. | **UNCHANGED (except `.stra` v4)** |
+| **7** | **New `constants.fmf` Archive, Crowd Atmosphere (`Crowd`) & `sianim`** | No `constants.fmf`; `10` JSON schemas under `sianim` ([Report 4](./FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md)) | New `data/game_simulation/constants.fmf` (`4` `.jsb`: `colour_pair`, `match_crowd`, `shuffle_draft`, `training`); database adds `TCct`/`ccrt`/`Lctd` (`Flares`, `Confetti`, `Flags`) crowd tendencies; `sianim` schemas expanded `10` $\rightarrow$ **`62` JSON files** (`+44` match animation schemas + `8` facial/skeleton schemas). | **HIGH** |
+| **8** | **Media, Portal News Engine & OOP Loan Contracts (`media.fmf`)** | Portal irrelevant story multiplier `0.5`; loan agreements tracked IP position/role only ([Report 2](./FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md)) | `portal_weights.xml` cuts irrelevant story weight by `80%` (`0.5` $\rightarrow$ `0.1`), adds a 3-article read threshold (`portal_min_read_news_count_to_add_object_to_profile = 3`) and `7500/8500` reputation gates. Loan player unhappiness now tracks **OOP (Out-Of-Possession) position & role violations (`topi=1050, 1051`)**! | **MEDIUM-HIGH** |
+| **9** | **Master Database (`2700` vs `2620`) & Licensing (`.lnc`)** | `723,010` people (`495,248` men, `41,904` women), `96,343` clubs, `988,091` names, `31` `.lnc` files ([Report 3](./FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md)) | `701,095` people (`473,764` men, **`47,736` women `+5,832`**), **`100,432` clubs (`+4,089`)**, `8,084` competitions (`+111`), **`1,063,170` names (`+75,079`)**. `lang_db.dat` Club table adds 7th string field `CLTn` (`League Table Name`). `30` restrictive `.lnc` files removed—unlocking official licenses (`Inter`, `AC Milan`, `Lazio`, `Atalanta`, `World Cup`)! | **HIGH** |
+| **10** | **`.fm` Save Container & `PersonBlock` Binary Shift** | `81` `.dat`/`.cmt` sections; `PersonBlockLayout` has `1` byte (`0x03`) at `birth+12`, `nation_id` at `+13`, `personality` at `+21` ([Report 5](./FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md)) | **`75` sections** (6 `.cmt` history sections removed, 11 `.dat` sections bumped in schema version). `PersonBlock` inside `game_db.dat` and `people_db.dat` inserts **1 byte (`0x01`) at `birth+13`** (`0x03` $\rightarrow$ `0x03 0x01`), shifting `nation_id` (`13` $\rightarrow$ `14`), `personality` (`21` $\rightarrow$ `22`), and all subsequent fields by **`+1` byte**! | **CRITICAL (For Parsers / Tools)** |
 
 ---
 
 ## 2. File Tree, Unity / IL2CPP / Burst Binary Architecture & `.jsb` Format Discovery
 
-Reference: [FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md](file:///c:/Repos/fm26save/docs/FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md).
+Reference: [FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md](./FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md).
 
 ### 2.1. Installation Tree & Native Binary Comparison (`FM26` vs `FM27`)
 
@@ -60,7 +60,7 @@ In FM27's `global-metadata.dat` (`v39`), **`30,036` new identifiers** not presen
 
 ### 2.3. New Discovery in the `.jsb` (Binary JSON) Format: Inline `Float64` Tags (`0x27` and `0x37`)
 
-In [`parse_jsb()`](file:///c:/Repos/fm26save/fm26save/formulas.py#L1577-L1656) inside [`fm26save/formulas.py`](file:///c:/Repos/fm26save/fm26save/formulas.py), `kind == 0x07` (`Float64`) reads an `8`-byte IEEE-754 `double` when `hi == 0` and returns an inline constant when `hi > 0`. Byte-level tracing across FM27's new `simatch/constants/*.jsb` files proved the exact inline encoding for `kind == 0x07`:
+In [`parse_jsb()`](../fm26save/formulas.py#L1577-L1656) inside [`fm26save/formulas.py`](../fm26save/formulas.py), `kind == 0x07` (`Float64`) reads an `8`-byte IEEE-754 `double` when `hi == 0` and returns an inline constant when `hi > 0`. Byte-level tracing across FM27's new `simatch/constants/*.jsb` files proved the exact inline encoding for `kind == 0x07`:
 - `tag = 0x07` (`hi = 0`): Followed by an `8`-byte IEEE-754 `Float64` (`struct.unpack_from("<d", buf, pos)`).
 - `tag = 0x17` (`hi = 1`): Inline **`0.0`**.
 - `tag = 0x27` (`hi = 2`): Inline **`0.5`** (`(hi - 1) * 0.5`).
@@ -73,7 +73,7 @@ In [`parse_jsb()`](file:///c:/Repos/fm26save/fm26save/formulas.py#L1577-L1656) i
 
 ## 3. FM27's Biggest Algorithmic Innovation: The `Tactical Complexity`, `Tactical Effectiveness` & `Training Contribution` Engine
 
-Reference: [FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md](file:///c:/Repos/fm26save/docs/FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md) & [FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md](file:///c:/Repos/fm26save/docs/FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md).
+Reference: [FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md](./FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md) & [FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md](./FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md).
 
 In FM26, no matter how many Team Instructions (`TI`), Player Instructions (`PI`), or complex roles (`Box-to-Box Playmaker`, `Overlapping CB`, `False Nine`, etc.) were stacked onto a tactic, there was no explicit engine-level **"Tactical Complexity Penalty" (`Tactical Complexity`)**.
 
@@ -251,7 +251,7 @@ $$\text{SessionScore} = \text{BaseRecencyScore}(\Delta \text{days}) \times M_{\t
 
 ## 4. Match Engine (`simatch.fmf`): Expected Goals (`xG`), Player Match Ratings & `QME` Differences
 
-Reference: [FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md](file:///c:/Repos/fm26save/docs/FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md), [FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md](file:///c:/Repos/fm26save/docs/FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md), and [FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md](file:///c:/Repos/fm26save/docs/FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md).
+Reference: [FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md](./FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md), [FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md](./FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md), and [FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md](./FM26_TACTICAL_ROLES_AND_BREAKDOWNS.md).
 
 ### 4.1. Expected Goals (`xG`) Logistic Regression Models (`v26.1.4.1` $\rightarrow$ `v26.8.4.34`)
 
@@ -294,7 +294,7 @@ The table below shows the **exact coefficient deltas (`÷ 10^7` scale)** between
 
 ### 4.2. Player Match Rating Engine (`player_ratings_data.jsb`: `v26.4.10.1` $\rightarrow$ `v26.4.29.8`)
 
-Reference: [FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md](file:///c:/Repos/fm26save/docs/FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md) Section 5.
+Reference: [FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md](./FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md) Section 5.
 
 1. **Unchanged Core Architecture:**
    - Starting match rating (`start_value`): **`6700` (`6.70`)** — unchanged.
@@ -354,7 +354,7 @@ Reference: [FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md](file:///c:/Repos/fm26save/
 
 ## 5. Weekly Training Engine (`training.fmf`): Transition from 3 Units to 4 Units & `59` New Session Schemas
 
-Reference: [FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md](file:///c:/Repos/fm26save/docs/FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md) Section 7 and [FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md](file:///c:/Repos/fm26save/docs/FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md).
+Reference: [FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md](./FM26_ENGINE_FORMULAS_AND_CALCULATIONS.md) Section 7 and [FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md](./FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md).
 
 In FM27, the `data/game_simulation/training.fmf` archive was completely redesigned:
 - **Removed File:** `training/session_item_effects.jsb` (the legacy `62`-item physical/morale sub-component table) was removed; physical and morale deltas (`condition`, `fatigue`, `happiness`, `injuries`, `sharpness`) are now embedded directly inside each session definition in `training/training_sessions.jsb`.
@@ -494,7 +494,7 @@ Changes across `25` XML schema files in `editor.fmf` directly explain the new fi
 
 ## 7. Pre-Game Master Database (`2700` vs `2620`), Licensing (`.lnc`), Wonderkids (`PA`) & Süper Lig Squads
 
-Reference: [FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md](file:///c:/Repos/fm26save/docs/FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md) (Systems 6, 9, 10, and 12).
+Reference: [FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md](./FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md) (Systems 6, 9, 10, and 12).
 
 ### 7.1. Master Database (`2620` vs `2700`) Binary Table Scale Comparison
 
@@ -604,7 +604,7 @@ Reference: [FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md](file:///c:/Repos/fm
 
 ## 8. `.fm` Save File (`27.0.0+2486695`) Schema & The `+1`-Byte `PersonBlockLayout` Shift Discovery
 
-Reference: [FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md](file:///c:/Repos/fm26save/docs/FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md), [`fm26save/_core/_layouts/__init__.py`](file:///c:/Repos/fm26save/fm26save/_core/_layouts/__init__.py), and [`fm26save/_core/_layouts/fm27_27_0_0.py`](file:///c:/Repos/fm26save/fm26save/_core/_layouts/fm27_27_0_0.py).
+Reference: [FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md](./FM26_SAVE_DATABASE_SCHEMA_AND_81_SECTIONS.md), [`fm26save/_core/_layouts/__init__.py`](../fm26save/_core/_layouts/__init__.py), and [`fm26save/_core/_layouts/fm27_27_0_0.py`](../fm26save/_core/_layouts/fm27_27_0_0.py).
 
 We compared the binary container and internal table schemas of `Mahmut Çakar - Galatasaray.fm` (`71,499,714 B`, `FM 27.0.0+2486695`) against `Project_Super_Lig.fm` (`227,961,825 B`, `FM 26.2.0`):
 
@@ -638,7 +638,7 @@ We compared the binary container and internal table schemas of `Mahmut Çakar - 
 
 ### 8.2. CRITICAL BINARY DISCOVERY: The `+1`-Byte `PersonBlockLayout` Shift in `game_db.dat` & `people_db.dat` and Other FM27 Layout Deltas
 
-When the FM26 parser ([`open_save`](file:///c:/Repos/fm26save/fm26save/__init__.py#L31)) was run with default FM26 layouts on an FM27 save file, `clubs` (`30,455`), `contracts` (`53,407`), `competitions` (`1,961`), and `stadiums` (`30,741`) parsed with **100% accuracy**, whereas `players` resolved `PersonBlock` records for `0` out of `54,107` players (`person_blocks = 0.0`).
+When the FM26 parser ([`open_save`](../fm26save/__init__.py#L31)) was run with default FM26 layouts on an FM27 save file, `clubs` (`30,455`), `contracts` (`53,407`), `competitions` (`1,961`), and `stadiums` (`30,741`) parsed with **100% accuracy**, whereas `players` resolved `PersonBlock` records for `0` out of `54,107` players (`person_blocks = 0.0`).
 
 Byte-level reverse engineering of `game_db.dat` Frame `#0` and `people_db.dat` proved that **the root cause is a single inserted byte (`0x01`)**:
 
@@ -662,14 +662,14 @@ FM27 PersonBlock (relative to birth_date_offset):
   +38..+40 : relation_present (+38), relation_count (+39), relation_entries (+40) [37,38,39 -> 38,39,40]
 ```
 
-In addition, [`fm26save/_core/_layouts/fm27_27_0_0.py`](file:///c:/Repos/fm26save/fm26save/_core/_layouts/fm27_27_0_0.py) documents and implements the 4 other binary layout adjustments verified for FM27 (`27.0.0+2486695`):
+In addition, [`fm26save/_core/_layouts/fm27_27_0_0.py`](../fm26save/_core/_layouts/fm27_27_0_0.py) documents and implements the 4 other binary layout adjustments verified for FM27 (`27.0.0+2486695`):
 - **`GAME_INFO` (`schema = 47`):** `filename_count_offset_after_db_version = 167`, `game_date_offset_after_db_version = 174`, `late_build_number_window_after_db_version = (176, 420)`.
 - **`STAFF` (`game_db`, `schema = 4000`):** Club staff list length prefixes widened from `1` byte (`u8`) to **`2` bytes (`u16`, `list_count_bytes = 2`)**.
 - **`TACTICS` (`tactics_man`, `schema = 26`):** `selection_end_marker = 0x4400`, `user_signature = 0x2244001b00000002`, `slot_tag = 0x440002`, `slot_constant = 0x000101`, `unit_lead = 0x020202`.
 - **`TRAINING` (`training_man`, `schema = 32`):** Updated for the 4-unit training calendar: `block_lead_byte = 2`, `block_tail_bytes = 32`, `day_block_bytes = 8`, `day_block_lead_byte = 4`, `week_name_offset = 62`, `week_record_fixed_bytes = 80`, `group_lead_byte = 2`, `group_label_marker = None`, `library_folder_offset = 62`, `groups_trailer_bytes = 4`.
 
 #### Verification Result (`Mahmut Çakar - Galatasaray.fm`)
-When these offsets in [`PersonBlockLayout`](file:///c:/Repos/fm26save/fm26save/_core/_layouts/__init__.py#L312-L361) and [`fm27_27_0_0.py`](file:///c:/Repos/fm26save/fm26save/_core/_layouts/fm27_27_0_0.py#L33-L41) are applied:
+When these offsets in [`PersonBlockLayout`](../fm26save/_core/_layouts/__init__.py#L312-L361) and [`fm27_27_0_0.py`](../fm26save/_core/_layouts/fm27_27_0_0.py#L33-L41) are applied:
 - Player resolution jumps from **`0 / 54,107 (0.00%)` to `54,107 / 54,107 (100.00%)`**!
 - All 8 hidden personality attributes (`Adaptability, Ambition, Controversy, Loyalty, Pressure, Professionalism, Sportsmanship, Temperament`), nationality (`nation_id`), birth date (`birth_date`), height (`height_cm`), `CA / PA`, positional ratings, and all 68 visible player attributes decode with **zero warnings (`0 ReaderCheckWarning`)**!
 

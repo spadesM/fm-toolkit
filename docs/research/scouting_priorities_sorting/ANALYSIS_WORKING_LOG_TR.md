@@ -1,7 +1,7 @@
 # FM26/FM27 Gözlemcilik Öncelikleri (Scout Priorities) Sıralama Analiz Raporu
 
 > [!IMPORTANT]
-> **Kalıcı sürüm repoda:** [docs/FM27_SCOUTING_PRIORITIES_SORTING_FIX_TR.md](file:///c:/Repos/fm26save/docs/FM27_SCOUTING_PRIORITIES_SORTING_FIX_TR.md). Yama aracı: [fm26save/ui_patches.py](file:///c:/Repos/fm26save/fm26save/ui_patches.py). Araştırma arşivi: [docs/research/scouting_priorities_sorting/](file:///c:/Repos/fm26save/docs/research/scouting_priorities_sorting/README.md). Bu dosya çalışma günlüğüdür.
+> **Kalıcı sürüm repoda:** [docs/FM27_SCOUTING_PRIORITIES_SORTING_FIX_TR.md](../../FM27_SCOUTING_PRIORITIES_SORTING_FIX_TR.md). Yama aracı: [fm26save/ui_patches.py](../../../fm26save/ui_patches.py). Araştırma arşivi: [docs/research/scouting_priorities_sorting/](./README.md). Bu dosya çalışma günlüğüdür.
 
 > [!WARNING]
 > **Önemli düzeltme (5.11.2026):** Bölüm 1–4'teki analizlerin tamamı yanlışlıkla **FM26** kurulumu (`Football Manager 26\`) üzerinde yapıldı; çünkü `resolve_fm_install_dir()` önce FM26 yolunu seçiyordu. Kullanıcının oyunu **FM27**'dir: `C:\Program Files (x86)\Steam\steamapps\common\Football Manager 27\` (GameAssembly.dll 59.361.792 bayt, 2.11.2026). FM27'de bundle yapısı farklıdır (`ui-recruitment_assets_all.bundle` yoktur). Bundan sonraki analizler [use_fm27.py](file:///C:/Users/mcaka/.gemini/antigravity/brain/f3fe4be7-d8a5-4ec7-895a-ec06f09f2529/scratch/use_fm27.py) ile FM27'ye yönlendirilir. FM26'dan elde edilen genel mekanizma bilgisi (SI.Bindable sıralama zinciri) FM27 için de büyük olasılıkla geçerlidir ama RVA'lar farklıdır.

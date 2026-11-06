@@ -32,17 +32,28 @@
    - **System 12 (`shared/data/database/db/2300..2620` — Multi-Version Evolution):** Walks `100%` of all **`9` database versions** (`2300`, `2310`, `2320`, `2330`, `2340`, `2400`, `2430`, `2600`, `2620` — **`4,945,820` total person records** across `83`-byte FM23/FM24 structs and `84`-byte FM26 structs), comparing entity growth, `-10`/`-95` wonderkid cohorts, and player `CA`/`PA` trajectories across FM23 $\rightarrow$ FM24 $\rightarrow$ FM26.
 6. **Byte-Level Save Differ (`fm26save.diff`) & Multi-Format Exporters (`fm26save.exporter`):**
    - Diff any two `.fm` saves across all 81 compressed sections (`diff_saves()`) and export any table or full save to **CSV (UTF-8-BOM)**, **JSON**, **JSONL**, or **SQLite (`.db`)**.
+7. **FM27 Save Support (`fm26save._core._layouts.fm27_27_0_0`):**
+   - Reads **FM27 `27.0.0+2486695`** saves alongside FM26 (shifted game-info / person-block offsets, `u16` staff-list counts, new mentoring-group framing); `FM26Editor` follows the same layout changes.
+8. **Director of Football Mode (`fm26save.dof`, `fm26save.dof_web`):**
+   - Coach tactical-identity profiler, head-coach candidate ranking, coach ↔ squad fit (autonomous XI + bench), capology / expiring contracts / transfer-target dashboard, safe `hire_head_coach` into a new `_DoF.fm` working copy, and a local web dashboard (`fm-toolkit dof serve`).
+9. **IL2CPP / GameAssembly Binary Decompiler (`fm26save.binary_decompiler`):**
+   - Decodes `global-metadata.dat` (IL2CPP v31), `GameAssembly.dll` method tables, `PropertyRegistration` FourCC names and the `*Reference` entity graph, `il2cpp.usym`, GamePlugin exports, `.fmf` lookup tables and Unity UI bundles (`fm-toolkit decompile-binaries`).
+10. **Unity UI Bundle Patches (`fm26save.unity_bundle`, `fm26save.ui_patches`):**
+    - Surgical UnityFS/LZ4 block patcher with backup, anchor re-location and "only the target byte changed" verification. Ships the **FM27 Scout Priorities sorting fix** (`python -m fm26save.ui_patches apply scout-priorities-sorting`).
 
 ---
 
 ## Documentation & Reverse-Engineering Reports (`docs/`)
 
-All technical documentation and empirical reports are written in **English** under [`docs/`](./docs):
+Technical documentation and empirical reports live under [`docs/`](./docs). Reports are in **English** unless marked **(TR)** (Turkish):
 
 | Document | Contents |
 | :--- | :--- |
 | **[`docs/FM27_SCOUTING_PRIORITIES_SORTING_FIX_TR.md`](./docs/FM27_SCOUTING_PRIORITIES_SORTING_FIX_TR.md)** (TR) | Root-cause analysis and fix for **FM27 Scouting → Scout Priorities list not sortable**: the `ScoutPrioritiesBlock` UXML ships `StreamedTable.DisableSorting = 1`. Covers the SI.Bindable sorting pipeline reverse-engineered from IL2CPP (`MakeColumnHeader` → `OnHeaderClicked` → `SetSorting` → `ApplySorting` → `SortComparer`), the surgical UnityFS/LZ4 block patch, and risks. Patch tool: `python -m fm26save.ui_patches apply scout-priorities-sorting`. Raw research archive: [`docs/research/scouting_priorities_sorting/`](./docs/research/scouting_priorities_sorting/README.md). |
 | **[`docs/FM27_VS_FM26_COMPLETE_DIFFERENCES_AND_ALGORITHMS.md`](./docs/FM27_VS_FM26_COMPLETE_DIFFERENCES_AND_ALGORITHMS.md)** | Complete byte-level, mathematical, and algorithmic comparison between **FM27 (`v27.0.0+2486695`, DB `2700`)** and **FM26 (`DB 2620`)**: the new `Tactical Complexity` (`0..3`), `Tactical Effectiveness` (`0..100`), and `Training Contribution` engines, `4`-unit / `59`-session `training.fmf` overhaul, recalibrated `xG` (`26_8_4_34`) and Match Rating (`v26.4.29.8`) `90min Adjuster` tables, `QME` (`3,420` distributions), Portal news weights, `OOP` loan promises, licensing (`.lnc` removal), and the `+1`-byte `PersonBlockLayout` shift in `.fm` saves. |
+| **[`docs/FM27_VS_FM26_COMPLETE_DIFFERENCES_AND_ALGORITHMS_TR.md`](./docs/FM27_VS_FM26_COMPLETE_DIFFERENCES_AND_ALGORITHMS_TR.md)** (TR) | Turkish edition of the FM27 vs FM26 algorithmic, engine, database and binary differences report. |
+| **[`docs/FM_TUM_VERITABANI_ALANLARI_VE_PARAMETRE_ETKILERI_REHBERI_TR.md`](./docs/FM_TUM_VERITABANI_ALANLARI_VE_PARAMETRE_ETKILERI_REHBERI_TR.md)** (TR) | Field-by-field guide to all 28 save tables, the `.dat` container sections and the `editor.fmf` database schemas, with the in-game engine effect of each parameter. |
+| **[`docs/GYR_BLACK_PANTHER_4231_REHBERI_TR.md`](./docs/GYR_BLACK_PANTHER_4231_REHBERI_TR.md)** (TR) | Position-by-position weighted attribute and player-profile guide for the *GYR – Black Panther 4-2-3-1* tactic (FM26 & FM27), scored with `fm26save.formulas`. |
 | **[`docs/FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md`](./docs/FM26_REVERSE_ENGINEERING_METHODOLOGY_AND_FILE_TREE.md)** | Step-by-step reverse-engineering methodology (`\x02\x01fmf.` trailer directory & Zstd framing, `.jsb` binary opcodes, FourCC alignment, differential save analysis, `client_db.dat` 43-byte city record layout) and **complete annotated file trees** for the game installation directory, `.fm` save container, and library architecture. |
 | **[`docs/FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md`](./docs/FM26_INTERNAL_GAME_LOGICS_AND_MECHANICS.md)** | Deep-dive reference into **22 core internal simulation logics** extracted from the engine files: Youth Intake & Newgen Pipeline (`NYRt`, `Crcb`, `Cytv`, `Cyfb`, `HOYD`, Height-to-Jumping caps), AI Team Selection (`4` `TPS_*` × `40` `TSF_*` weights), Match Rating (`6.70` base & `52` action deltas), Weekly Training (`44` sessions & `62` item effects), Player Progression & Coaching Stars, `xG`/`Momentum`/`QME`, `OOP` 24-zone grid, Medical/Injuries (`136`), Sugar Daddy/Takeovers/Work Permits, and Dynamics/Mentoring. |
 | **[`docs/FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md`](./docs/FM26_REVERSE_ENGINEERING_SAVE_AND_GAME_FILES.md)** | Complete specification of all decoded "unknown" save binary fields and empirical tables for all 12 reverse-engineered game installation systems. |
@@ -56,6 +67,8 @@ All technical documentation and empirical reports are written in **English** und
 
 ```bash
 pip install -e .
+pip install -e ".[ui-patches]"   # + lz4: needed to write Unity UI bundle patches
+pip install -e ".[research]"     # + lz4, capstone: IL2CPP disassembly research scripts
 ```
 
 ---
@@ -144,7 +157,27 @@ fm-toolkit diff "career_before.fm" "career_after.fm"
 # 7. Export a table to CSV/JSON/JSONL or the entire save to SQLite (.db)
 fm-toolkit export "MyCareerSave.fm" --table players --out players.csv
 fm-toolkit export "MyCareerSave.fm" --table sqlite --out full_save.db
+
+# 8. Director of Football mode (dashboard | coaches | squad-fit | targets | hire-coach | serve)
+fm-toolkit dof coaches "MyCareerSave.fm" --style gegenpress --min-ca 130 --top 10
+fm-toolkit dof squad-fit "MyCareerSave.fm" --coach "Klopp"
+fm-toolkit dof hire-coach "MyCareerSave.fm" --coach 123456 --years 3   # writes MyCareerSave_DoF.fm
+fm-toolkit dof serve "MyCareerSave.fm" --port 8765                     # local web dashboard
+
+# 9. Decompile game binaries (dump | bindings | metadata | usym | tables | game-plugin | fmf-all | ui-bundles)
+fm-toolkit decompile-binaries --mode bindings --entity PersonReference
+fm-toolkit decompile-binaries --mode dump --out-dir docs/decompiled_engine   # git-ignored, regenerate locally
+
+# 10. Unity UI bundle patches (close the game first; a .bak backup is kept)
+python -m fm26save.ui_patches list
+python -m fm26save.ui_patches apply scout-priorities-sorting --dry-run
+python -m fm26save.ui_patches apply scout-priorities-sorting
+python -m fm26save.ui_patches restore scout-priorities-sorting
 ```
+
+### Local Windows helper (`tools/`)
+
+- [`tools/fm27_boost.py`](./tools/fm27_boost.py) / [`tools/FM27_Performans_Modu.bat`](./tools/FM27_Performans_Modu.bat): sets the running `fm.exe` to high priority, pins UI/render threads to P-cores on hybrid Intel CPUs (masks tuned for Core Ultra 7 155H) and shortens UI layer transition delays in the live process. Single-player, local machine only; review the CPU masks before using it on other hardware.
 ---
 
 ## License & Legal Disclaimer
