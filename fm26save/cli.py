@@ -149,6 +149,21 @@ def main(argv: list[str] | None = None) -> int:
     )
     p_repack.add_argument("--validate", action="store_true", help="Validate repacked .fm save")
 
+    p_dec = sub.add_parser(
+        "decompile-binaries",
+        help="Decompile GameAssembly.dll (x86-64), global-metadata.dat (IL2CPP v31), il2cpp.usym & engine .fmf lookup tables",
+    )
+    p_dec.add_argument(
+        "--mode",
+        choices=["dump", "bindings", "metadata", "usym", "tables", "game-plugin", "fmf-all", "ui-bundles"],
+        default="dump",
+        help="Decompilation target mode (default: dump all to --out-dir)",
+    )
+    p_dec.add_argument("--fm-dir", default=None, help="FM26 / FM27 installation directory (auto-detected if omitted)")
+    p_dec.add_argument("--out-dir", default="docs/decompiled_engine", help="Output directory for --mode dump")
+    p_dec.add_argument("--entity", default=None, help="Filter specific *Reference class in --mode bindings (e.g. PersonReference, ClubReference)")
+    p_dec.add_argument("--filter", default=None, help="Filter substring for metadata or usym symbols")
+
     args = parser.parse_args(argv)
 
     if args.cmd == "info":
@@ -429,6 +444,39 @@ def main(argv: list[str] | None = None) -> int:
                 ed.set_section_bytes(sec_name.strip(), Path(bin_path.strip()).read_bytes())
             res = ed.save(args.out, validate_output=args.validate)
             print(json.dumps(res, ensure_ascii=False, indent=2))
+        return 0
+
+    if args.cmd == "decompile-binaries":
+        from fm26save.binary_decompiler import (
+            decompile_game_plugin_exports,
+            decompile_gameassembly_bindings,
+            decompile_global_metadata,
+            decompile_unity_ui_bundles,
+            decompile_usym_symbols,
+            dump_decompiled_codebase,
+            extract_all_fmf_and_config_archives,
+            extract_engine_lookup_tables,
+        )
+
+        if args.mode == "dump":
+            res = dump_decompiled_codebase(args.fm_dir, output_dir=args.out_dir)
+        elif args.mode == "bindings":
+            res = decompile_gameassembly_bindings(args.fm_dir)
+            if args.entity:
+                res = res["reference_classes"].get(args.entity, {"error": f"Entity {args.entity!r} not found"})
+        elif args.mode == "metadata":
+            res = decompile_global_metadata(args.fm_dir, filter_namespace_or_image=args.filter)
+        elif args.mode == "usym":
+            res = decompile_usym_symbols(args.fm_dir, filter_substr=args.filter)
+        elif args.mode == "game-plugin":
+            res = decompile_game_plugin_exports(args.fm_dir)
+        elif args.mode == "fmf-all":
+            res = extract_all_fmf_and_config_archives(args.fm_dir)
+        elif args.mode == "ui-bundles":
+            res = decompile_unity_ui_bundles(args.fm_dir)
+        else:
+            res = extract_engine_lookup_tables(args.fm_dir)
+        print(json.dumps(res, ensure_ascii=False, indent=2))
         return 0
 
     return 0
