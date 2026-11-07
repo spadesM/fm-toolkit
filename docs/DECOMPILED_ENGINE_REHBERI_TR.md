@@ -56,12 +56,15 @@ python -m fm26save.cli decompile-binaries --mode report `
 
 Tüm dökümü diske yazmadan belirli bir alt sistemi incelemek için:
 - `--mode metadata --filter PersonSearch` -> `global-metadata.dat` içinden eşleşen C# tiplerini, enum'ları ve metot imzalarını döndürür.
-- `--mode bindings --filter ScoutPriorities` -> `GameAssembly.dll` içinden FourCC property/context kayıtlarını ve `*Reference` sınıflarını döndürür.
-- `--mode usym --filter Scouting` -> `il2cpp.usym` sembol tablosundan SI'ın orijinal C#/C++ kaynak dosya yollarını ve RVA adreslerini döndürür.
+- `--mode bindings --entity PersonReference` -> `GameAssembly.dll` içinden FourCC property/context kayıtlarını ve `*Reference` sınıflarını döndürür.
+- `--mode usym --filter Scouting` -> `il2cpp.usym` sembol tablosundan SI'ın orijinal C#/C++ kaynak dosya yollarını, RVA adreslerini ve `mapped_csharp_method_count` sayısını döndürür.
+- `--mode csharp-bodies --filter ScoutPrioritiesTableFactory` -> Seçilen C# sınıf veya metodunun `GameAssembly.dll` içindeki x86-64 makine kodunu `il2cpp.usym` `.cs:satır` numaraları (`[L...]`) ve çözümlenmiş `call` hedefleriyle söker.
 - `--mode tables` -> `tables.fmf`, `simatch.fmf`, `training.fmf`, `simatchshared.fmf` içindeki ikili JSB tablolarını çözer.
-- `--mode plugin` -> `game_plugin.dll` ve `lib_burst_generated.dll` PE64 C++ export tablosunu çıkarır.
-- `--mode fmf` -> Tüm `.fmf` arşivlerinin dizinlerini ve `filters.fmf` (`person_filter_metadata.xml`) oyuncu arama filtrelerini çıkarır.
-- `--mode ui-bundles` -> UnityFS v8 (LZ4) UI `.bundle` dosyalarını açarak `.uxml`/`.asset` yollarını ve veri bağlama (`binding`) ifadelerini listeler.
+- `--mode game-plugin` -> `game_plugin.dll` ve `lib_burst_generated.dll` PE64 C++ export tablosunu, `.pdata` (`139.131` C++ fonksiyonu) istatistiklerini, `224` `ActionContributor` ve `58` `SearchFilter` vtable sınıfını çıkarır.
+- `--mode fmf-all` -> Tüm `.fmf` arşivlerinin dizinlerini, `filters.fmf` oyuncu arama filtrelerini, `constants.fmf` sabitlerini, `non_pl_hist_{index,id,dt}.dat` (`3,52` milyon personel kariyer satırı), `summary.dat` (`96.171` kulüp özeti) ve `lang_db_general.dat` (`401` Zstd çerçevesi) verilerini çıkarır.
+- `--mode ui-bundles` -> Tüm 69 UnityFS v8 (LZ4) UI/Bindable `.bundle` dosyasını açarak `.uxml`/`.asset` yollarını, `174` `TableFactory` sınıfını, `2.102` `binding.*` sütun bağlamasını, `592` `TableView` şablonunu ve veri bağlama (`binding`) ifadelerini listeler.
+
+> **Ayrıntılı Teknik Referans:** Kısmen çözümlenmiş 5 sistemin tam ikili şema referansı için bkz. [`FM27_PARTIAL_FILES_FULL_DECOMPILATION_TR.md`](FM27_PARTIAL_FILES_FULL_DECOMPILATION_TR.md).
 
 ---
 

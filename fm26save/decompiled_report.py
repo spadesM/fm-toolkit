@@ -99,9 +99,29 @@ def render_object_model_markdown(dump_dir: str | Path) -> str:
             w(f"| {label} | {bc[k]:,} |")
     if usym:
         w(f"| `il2cpp.usym` sembol kaydı | {usym.get('symbol_count', 0):,} |")
+        if usym.get("mapped_csharp_method_count"):
+            w(f"| `il2cpp.usym` RVA-eşlenmiş C# metodu | {usym.get('mapped_csharp_method_count', 0):,} |")
         w(f"| `il2cpp.usym` kaynak dosya yolu | {usym.get('source_file_count', 0):,} |")
-    if plugin.get("game_plugin_dll", {}).get("exists"):
-        w(f"| `game_plugin.dll` native export | {plugin['game_plugin_dll'].get('export_count', 0):,} |")
+    gp_dll = plugin.get("game_plugin_dll", {})
+    if gp_dll.get("exists"):
+        w(f"| `game_plugin.dll` native export | {gp_dll.get('export_count', 0):,} |")
+        pdt = gp_dll.get("pdata_function_table", {})
+        if pdt.get("valid_code_functions"):
+            w(f"| `game_plugin.dll` `.pdata` C++ fonksiyonu | {pdt['valid_code_functions']:,} ({pdt.get('total_code_bytes', 0):,} bayt) |")
+        if gp_dll.get("action_contributor_vtables_count"):
+            w(f"| `game_plugin.dll` `ActionContributor` vtable sınıfı | {gp_dll['action_contributor_vtables_count']:,} |")
+        if gp_dll.get("search_filter_vtables_count"):
+            w(f"| `game_plugin.dll` `SearchFilter` vtable sınıfı | {gp_dll['search_filter_vtables_count']:,} |")
+    nph = fmf.get("non_player_career_history", {})
+    if nph.get("dt_row_count"):
+        w(f"| `non_pl_hist_dt.dat` personel kariyer geçmişi satırı (24B) | {nph['dt_row_count']:,} |")
+    sdat = fmf.get("summary_dat", {})
+    if sdat.get("club_summary_record_count"):
+        w(f"| `summary.dat` kulüp özet kaydı (25B) | {sdat['club_summary_record_count']:,} |")
+    if ui.get("table_factory_count"):
+        w(f"| UI `TableFactory` sınıfı (`ui-tablefactories`) | {ui['table_factory_count']:,} |")
+        w(f"| UI `TableFactory` sütun `binding.*` yolu | {ui.get('table_factory_sort_binding_count', 0):,} |")
+        w(f"| UI `TableView` / `TableSettings` şablonu (`ui-tableviews`) | {ui.get('table_view_count', 0):,} |")
     w("")
 
     # 3. assemblies
@@ -214,6 +234,10 @@ def render_object_model_markdown(dump_dir: str | Path) -> str:
         w("")
         w(f"{ui.get('bundle_count', 0)} bundle, {ui.get('total_extracted_asset_paths', 0):,} asset yolu, "
           f"{ui.get('total_unique_ui_binding_paths', 0):,} benzersiz UI binding yolu.")
+        if ui.get("table_factory_count"):
+            w(f"Ayrıca `ui-tablefactories_assets_all.bundle` içinde **{ui['table_factory_count']:,}** `TableFactory` "
+              f"ve **{ui.get('table_factory_sort_binding_count', 0):,}** `binding.*` sütun bağlaması; "
+              f"`ui-tableviews_assets_all.bundle` içinde **{ui.get('table_view_count', 0):,}** `TableView`/`TableSettings` şablonu yer alır.")
         w("")
         w("| Bundle | Sıkıştırılmış | Açılmış | Asset yolu | Binding yolu |")
         w("|---|---:|---:|---:|---:|")
@@ -221,6 +245,11 @@ def render_object_model_markdown(dump_dir: str | Path) -> str:
             w(f"| `{b}` | {d.get('compressed_size_bytes', 0):,} | {d.get('decompressed_size_bytes', 0):,} | "
               f"{d.get('asset_count', 0):,} | {d.get('binding_path_count', 0):,} |")
         w("")
+        if ui.get("table_factories"):
+            w("### 9.1 `TableFactory` sınıfları (`ui-tablefactories_assets_all.bundle`)")
+            w("")
+            w(", ".join(f"`{tf}`" for tf in ui["table_factories"]))
+            w("")
 
     # 10. usym source tree
     files = usym.get("source_files", [])
@@ -241,17 +270,44 @@ def render_object_model_markdown(dump_dir: str | Path) -> str:
             w(f"| `{_md_escape(k)}` | {n:,} |")
         w("")
 
-    # 11. other datasets
-    w("## 11. Diğer çıktılar")
+    # 11. C++ Native Engine (game_plugin.dll) & Database / FMF Tables
+    w("## 11. C++ Native Motor (`game_plugin.dll`) ve Veritabanı / FMF Tabloları")
     w("")
+    if gp_dll.get("exists"):
+        pdt = gp_dll.get("pdata_function_table", {})
+        w(f"- **`game_plugin.dll`**: `{gp_dll.get('size_bytes', 0):,}` bayt, `{gp_dll.get('export_count', 0)}` adlandırılmış export, "
+          f"`.pdata` istisna dizininde **`{pdt.get('valid_code_functions', 0):,}`** C++ fonksiyonu (`{pdt.get('total_code_bytes', 0):,}` bayt makine kodu).")
+        acs = gp_dll.get("action_contributor_vtables", [])
+        if acs:
+            w(f"- **`ActionContributor` vtable sınıfları ({len(acs)} adet)**: "
+              + ", ".join(f"`{a['fourcc']}`" for a in acs[:40])
+              + (f" … (+{len(acs) - 40})" if len(acs) > 40 else "") + ".")
+        sfs = gp_dll.get("search_filter_vtables", [])
+        if sfs:
+            w(f"- **`SearchFilter` native vtable sınıfları ({len(sfs)} adet)**: "
+              + ", ".join(f"`{s['fourcc']}`" for s in sfs) + ".")
+    if nph.get("dt_row_count"):
+        w(f"- **`non_pl_hist_{{index,id,dt}}.dat`** (`{nph.get('db_folder', '')}`): "
+          f"`{nph.get('person_index_count', 0):,}` personel indeksi, `{nph.get('id_node_count', 0):,}` bağlı liste düğümü (`8` bayt), "
+          f"**`{nph['dt_row_count']:,}`** kariyer geçmişi satırı (`24` bayt `<IHHHHHHBBBBi`).")
+    if sdat.get("club_summary_record_count"):
+        w(f"- **`summary.dat`** (`{sdat.get('path', '')}`): "
+          f"`{sdat.get('continent_count', 0)}` kıta, `{sdat.get('nation_count', 0)}` ülke, "
+          f"**`{sdat['club_summary_record_count']:,}`** kulüp özet kaydı (`25` bayt `\\xff\\xff\\xff\\xff\\x09`).")
+    lgen = fmf.get("lang_db_general_dat", {})
+    if lgen.get("zstd_frame_count"):
+        w(f"- **`lang_db_general.dat`**: `{lgen['zstd_frame_count']}` Zstd çerçevesi (`{lgen.get('language_block_count', 0)}` dil × `16` tablo: "
+          f"`{lgen.get('generic_competition_overrides', 0)}` turnuva, `{lgen.get('generic_club_overrides', 0)}` kulüp, "
+          f"`{lgen.get('generic_award_overrides', 0)}` ödül, `{lgen.get('generic_stadium_overrides', 0)}` stadyum jenerik ad tablosu).")
+    cfmf = fmf.get("constants_fmf", {})
+    if cfmf:
+        w("- **`constants.fmf`**: " + ", ".join(f"`{k}`" for k in cfmf) + ".")
     if tables:
-        w("- `engine_lookup_tables.json`: " + ", ".join(f"`{k}`" for k in tables) + ".")
+        w("- **`engine_lookup_tables.json`**: " + ", ".join(f"`{k}`" for k in tables) + ".")
     if fmf:
         inv = fmf.get("fmf_archives_inventory", {})
-        w(f"- `all_fmf_configs_and_filters.json`: {len(inv)} `.fmf` arşivi envanteri, "
+        w(f"- **`all_fmf_configs_and_filters.json`**: {len(inv)} `.fmf` arşivi envanteri, "
           f"{len(fmf.get('person_search_filters', []))} oyuncu arama filtresi ve ayar/mağaza/versus XML'leri.")
-    if plugin:
-        w("- `game_plugin_native_exports.json`: `game_plugin.dll` ve `lib_burst_generated.dll` export tabloları.")
     w("")
     return "\n".join(out)
 

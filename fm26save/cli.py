@@ -182,10 +182,11 @@ def main(argv: list[str] | None = None) -> int:
     )
     p_dec.add_argument(
         "--mode",
-        choices=["dump", "report", "bindings", "metadata", "usym", "tables", "game-plugin", "fmf-all", "ui-bundles"],
+        choices=["dump", "report", "bindings", "metadata", "usym", "csharp-bodies", "tables", "game-plugin", "fmf-all", "ui-bundles"],
         default="dump",
         help="Decompilation target mode (default: dump all to --out-dir; 'report' renders a structure-only "
-        "Markdown object-model summary from an existing dump in --out-dir)",
+        "Markdown object-model summary from an existing dump in --out-dir; 'csharp-bodies' disassembles "
+        "compiled C# methods with il2cpp.usym .cs:line annotations)",
     )
     p_dec.add_argument(
         "--fm-dir",
@@ -559,6 +560,7 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.cmd == "decompile-binaries":
         from fm26save.binary_decompiler import (
+            decompile_csharp_method_bodies,
             decompile_game_plugin_exports,
             decompile_gameassembly_bindings,
             decompile_global_metadata,
@@ -583,6 +585,8 @@ def main(argv: list[str] | None = None) -> int:
             res = decompile_global_metadata(args.fm_dir, filter_namespace_or_image=args.filter)
         elif args.mode == "usym":
             res = decompile_usym_symbols(args.fm_dir, filter_substr=args.filter)
+        elif args.mode == "csharp-bodies":
+            res = decompile_csharp_method_bodies(args.fm_dir, filter_substr=args.filter)
         elif args.mode == "game-plugin":
             res = decompile_game_plugin_exports(args.fm_dir)
         elif args.mode == "fmf-all":

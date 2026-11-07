@@ -800,31 +800,62 @@ def decompile_usym_symbols(
         end = str_blob.find(b"\x00", off)
         return str_blob[off:end].decode("utf-8", errors="replace")
 
-    # Extract all unique C:/TeamCity/.../*.cs and C++ source file paths from the string table in O(N_str)
-    all_usym_strs = [s.decode("utf-8", errors="replace") for s in str_blob.split(b"\x00") if s]
+    # Pre-build offset -> string map from the string table in O(N_str)
+    file_map: dict[int, str] = {}
+    pos = 0
+    all_usym_strs: list[str] = []
+    for raw_part in str_blob.split(b"\x00"):
+        if raw_part:
+            decoded = raw_part.decode("utf-8", errors="replace")
+            file_map[pos] = decoded
+            all_usym_strs.append(decoded)
+        pos += len(raw_part) + 1
+
     source_files = [s for s in all_usym_strs if s.endswith((".cs", ".cpp", ".h", ".hpp", ".c", ".cc", ".inl"))]
 
-    # Sample or filter symbol records (24 bytes each: rva_or_addr, sym_str_off, file_str_off, line, ...)
+    # Map every compiled C# method_index (in hybrid IL2CPP v31/v39 usym) to its GameAssembly RVA range & .cs source file
+    mv = memoryview(data)[records_off:str_table_off]
+    method_rva_map: dict[int, list[int]] = {}
+    for rva_u64, method_idx, file_off, line, parent_idx in struct.iter_unpack("<QIIII", mv):
+        if method_idx == 0xFFFFFFFF or parent_idx != 0xFFFFFFFF:
+            continue
+        cur = method_rva_map.get(method_idx)
+        if cur is None:
+            method_rva_map[method_idx] = [rva_u64, rva_u64, file_off, line, line]
+        else:
+            if rva_u64 < cur[0]:
+                cur[0] = rva_u64
+            if rva_u64 > cur[1]:
+                cur[1] = rva_u64
+            if cur[2] == 0xFFFFFFFF and file_off != 0xFFFFFFFF:
+                cur[2] = file_off
+            if line != 0xFFFFFFFF:
+                if cur[3] == 0xFFFFFFFF or line < cur[3]:
+                    cur[3] = line
+                if cur[4] == 0xFFFFFFFF or line > cur[4]:
+                    cur[4] = line
+
+    # Sample or filter symbol records (24 bytes each: <QIIII -> rva_u64, method_index_or_sym, file_str_off, line, parent_idx)
     limit = min(sym_count, max_records) if max_records is not None else min(sym_count, 5000)
     records: list[dict[str, Any]] = []
     flt = filter_substr.lower() if filter_substr else None
 
     scan_limit = sym_count if flt else limit
     for i in range(scan_limit):
-        rva, parent_idx, sym_off, file_off, line, flags = struct.unpack_from("<IIIIII", data, records_off + i * 24)
-        sym_name = get_ustr(sym_off)
-        file_name = get_ustr(file_off)
+        rva_u64, method_or_sym, file_off, line, parent_idx = struct.unpack_from("<QIIII", data, records_off + i * 24)
+        file_name = file_map.get(file_off, get_ustr(file_off)) if file_off != 0xFFFFFFFF else ""
+        sym_name = f"method_index:{method_or_sym}" if method_or_sym != 0xFFFFFFFF else ""
         if flt and flt not in sym_name.lower() and flt not in file_name.lower():
             continue
         records.append(
             {
                 "index": i,
-                "rva": f"0x{rva:08x}",
-                "parent": parent_idx,
+                "rva": f"0x{rva_u64:08x}",
+                "method_index": None if method_or_sym == 0xFFFFFFFF else method_or_sym,
+                "parent": None if parent_idx == 0xFFFFFFFF else parent_idx,
                 "symbol": sym_name,
                 "source_file": file_name,
-                "line": line,
-                "flags": flags,
+                "line": None if line == 0xFFFFFFFF else line,
             }
         )
         if len(records) >= limit:
@@ -834,11 +865,22 @@ def decompile_usym_symbols(
         "usym_path": str(usym_path),
         "version": version,
         "symbol_count": sym_count,
+        "mapped_csharp_method_count": len(method_rva_map),
         "string_table_offset": str_table_off,
         "string_table_size": len(str_blob),
         "source_file_count": len(source_files),
         "source_files": source_files,
         "records_sample": records,
+        "_method_rva_map": {
+            mid: {
+                "rva_start": f"0x{vals[0]:08x}",
+                "rva_end": f"0x{vals[1]:08x}",
+                "source_file": file_map.get(vals[2], "") if vals[2] != 0xFFFFFFFF else "",
+                "line_start": None if vals[3] == 0xFFFFFFFF else vals[3],
+                "line_end": None if vals[4] == 0xFFFFFFFF else vals[4],
+            }
+            for mid, vals in method_rva_map.items()
+        },
     }
 
 
@@ -983,6 +1025,7 @@ def decompile_game_plugin_exports(
             opt_size = struct.unpack_from("<H", hdr_bytes, e_lfanew + 20)[0]
             image_base = struct.unpack_from("<Q", hdr_bytes, e_lfanew + 24 + 24)[0]
             exp_rva, exp_sz = struct.unpack_from("<II", hdr_bytes, e_lfanew + 24 + 112)
+            exc_rva, exc_sz = struct.unpack_from("<II", hdr_bytes, e_lfanew + 24 + 112 + 3 * 8)
             sec_off = e_lfanew + 24 + opt_size
             sections: list[tuple[str, int, int, int, int]] = []
             for i in range(num_sec):
@@ -998,12 +1041,55 @@ def decompile_game_plugin_exports(
                         return off if off < file_sz else -1
                 return -1
 
+            pdata_info: dict[str, Any] = {
+                "pdata_rva": f"0x{exc_rva:08x}",
+                "pdata_size_bytes": exc_sz,
+                "runtime_function_entries": 0,
+                "valid_code_functions": 0,
+                "total_code_bytes": 0,
+                "largest_functions_top50": [],
+            }
+            if exc_rva and exc_sz:
+                exc_off = rva_to_off(exc_rva)
+                if 0 <= exc_off and exc_off + exc_sz <= file_sz:
+                    n_pdata = exc_sz // 12
+                    f.seek(exc_off)
+                    pdata_ints = struct.unpack(f"<{n_pdata * 3}I", f.read(n_pdata * 12))
+                    code_sec_end = sections[0][1] + sections[0][2] if sections else 0x05000000
+                    code_funcs: list[tuple[int, int, int, int]] = []
+                    tot_code = 0
+                    for idx_p in range(0, len(pdata_ints), 3):
+                        b_rva, e_rva, u_rva = pdata_ints[idx_p], pdata_ints[idx_p + 1], pdata_ints[idx_p + 2]
+                        if 0x1000 <= b_rva < e_rva <= code_sec_end:
+                            sz_f = e_rva - b_rva
+                            code_funcs.append((b_rva, e_rva, sz_f, u_rva))
+                            tot_code += sz_f
+                    code_funcs.sort(key=lambda x: -x[2])
+                    pdata_info = {
+                        "pdata_rva": f"0x{exc_rva:08x}",
+                        "pdata_size_bytes": exc_sz,
+                        "runtime_function_entries": n_pdata,
+                        "valid_code_functions": len(code_funcs),
+                        "total_code_bytes": tot_code,
+                        "largest_functions_top50": [
+                            {
+                                "start_rva": f"0x{b:08x}",
+                                "end_rva": f"0x{e:08x}",
+                                "start_va": f"0x{image_base + b:016x}",
+                                "size_bytes": sz_f,
+                                "unwind_rva": f"0x{u:08x}",
+                            }
+                            for b, e, sz_f, u in code_funcs[:50]
+                        ],
+                    }
+
             if not exp_rva or not exp_sz:
                 return {
                     "exists": True,
                     "path": str(dll_path),
                     "size_bytes": file_sz,
                     "sections": [s[0] for s in sections],
+                    "pdata_function_table": pdata_info,
                     "export_count": 0,
                     "exports": [],
                 }
@@ -1014,6 +1100,7 @@ def decompile_game_plugin_exports(
                     "path": str(dll_path),
                     "size_bytes": file_sz,
                     "sections": [s[0] for s in sections],
+                    "pdata_function_table": pdata_info,
                     "export_count": 0,
                     "exports": [],
                 }
@@ -1068,6 +1155,48 @@ def decompile_game_plugin_exports(
                         "va": f"0x{image_base + fn_rva:016x}",
                     }
                 )
+
+            # Scan .data1 / .edata (section #1) for C++ FourCC vtable hierarchies (ActionContributor & SearchFilter)
+            action_contributors: list[dict[str, Any]] = []
+            search_filter_vtables: list[dict[str, Any]] = []
+            if len(sections) >= 2:
+                code_vaddr, _, code_raddr, code_rsize = sections[0][1], sections[0][2], sections[0][3], sections[0][4]
+                data_vaddr, _, data_raddr, data_rsize = sections[1][1], sections[1][2], sections[1][3], sections[1][4]
+                if code_raddr + code_rsize <= file_sz and data_raddr + data_rsize <= file_sz:
+                    f.seek(code_raddr)
+                    code_bytes = f.read(code_rsize)
+                    f.seek(data_raddr)
+                    data_bytes = f.read(data_rsize)
+                    qwords = struct.unpack_from(f"<{len(data_bytes) // 8}Q", data_bytes, 0)
+                    code_lo = image_base + code_vaddr
+                    code_hi = code_lo + code_rsize
+                    pair_groups: dict[tuple[int, int], list[dict[str, Any]]] = {}
+                    for qi in range(len(qwords) - 12):
+                        s1 = qwords[qi + 1]
+                        if code_lo <= s1 < code_hi:
+                            c_off = s1 - code_lo
+                            if c_off + 6 <= len(code_bytes) and code_bytes[c_off] == 0xB8 and code_bytes[c_off + 5] == 0xC3:
+                                u32 = struct.unpack_from("<I", code_bytes, c_off + 1)[0]
+                                fc = fourcc_to_ascii(u32)
+                                if not fc.startswith("0x") and any(ch.isalpha() for ch in fc):
+                                    s3, s4 = qwords[qi + 3], qwords[qi + 4]
+                                    if code_lo <= s3 < code_hi and code_lo <= s4 < code_hi:
+                                        pair_groups.setdefault((s3, s4), []).append(
+                                            {
+                                                "fourcc": fc,
+                                                "id_hex": f"0x{u32:08x}",
+                                                "vtable_va": f"0x{image_base + data_vaddr + qi * 8:016x}",
+                                                "get_id_va": f"0x{s1:016x}",
+                                                "slot2_va": f"0x{qwords[qi + 2]:016x}",
+                                                "can_contribute_or_eval_va": f"0x{qwords[qi + 10]:016x}",
+                                            }
+                                        )
+                    sorted_groups = sorted(pair_groups.values(), key=len, reverse=True)
+                    if len(sorted_groups) >= 1:
+                        action_contributors = sorted_groups[0]
+                    if len(sorted_groups) >= 2:
+                        search_filter_vtables = sorted_groups[1]
+
         return {
             "exists": True,
             "path": str(dll_path),
@@ -1077,6 +1206,11 @@ def decompile_game_plugin_exports(
                 {"name": n, "vaddr": f"0x{va:08x}", "vsize": vs, "rsize": rs}
                 for n, va, vs, _, rs in sections
             ],
+            "pdata_function_table": pdata_info,
+            "action_contributor_vtables_count": len(action_contributors),
+            "action_contributor_vtables": action_contributors,
+            "search_filter_vtables_count": len(search_filter_vtables),
+            "search_filter_vtables": search_filter_vtables,
             "export_count": len(exports),
             "subsystem_counts": by_subsystem,
             "exports": exports,
@@ -1244,6 +1378,201 @@ def extract_all_fmf_and_config_archives(
                     }
                 )
 
+    # 8. Extract constants.fmf (colour pair, match crowd, draft, and training constants)
+    constants_fmf = root / "data/game_simulation/constants.fmf"
+    result["constants_fmf"] = {}
+    if constants_fmf.exists():
+        c_frames = extract_fmf_frames(constants_fmf)
+        c_dirs = read_fmf_directory(constants_fmf)
+        for idx, d in enumerate(c_dirs):
+            nm = d.get("name", f"frame_{idx}")
+            if idx < len(c_frames) and nm.endswith(".jsb"):
+                parsed = parse_jsb(c_frames[idx][1])
+                result["constants_fmf"][nm] = {
+                    "size_bytes": len(c_frames[idx][1]),
+                    "parsed": parsed[0] if parsed else None,
+                }
+
+    # 9. Decode latest DB folder's non_pl_hist_{index,id,dt}.dat, summary.dat, and lang_db_general.dat
+    db_root = root / "shared/data/database/db"
+    latest_fm_dir: Path | None = None
+    if db_root.exists():
+        fm_dirs = sorted(db_root.glob("*/*_fm"))
+        if fm_dirs:
+            latest_fm_dir = fm_dirs[-1]
+
+    result["non_player_career_history"] = {}
+    result["summary_dat"] = {}
+    result["lang_db_general_dat"] = {}
+
+    if latest_fm_dir is not None:
+        # 9a. non_pl_hist_index.dat + non_pl_hist_id.dat + non_pl_hist_dt.dat
+        idx_p = latest_fm_dir / "non_pl_hist_index.dat"
+        id_p = latest_fm_dir / "non_pl_hist_id.dat"
+        dt_p = latest_fm_dir / "non_pl_hist_dt.dat"
+        if idx_p.exists() and id_p.exists() and dt_p.exists():
+            try:
+                import zstandard as zstd
+
+                dctx = zstd.ZstdDecompressor()
+                idx_raw = idx_p.read_bytes()
+                idx_dec = dctx.decompress(idx_raw[12:], max_output_size=30_000_000)
+                person_cnt = struct.unpack_from("<I", idx_dec, 0)[0]
+
+                def _decomp_tadc(p: Path) -> bytes:
+                    raw_b = p.read_bytes()
+                    out_b = bytearray()
+                    pos_b = 8
+                    while pos_b < len(raw_b):
+                        z_off = raw_b.find(b"\x28\xb5\x2f\xfd", pos_b)
+                        if z_off == -1:
+                            break
+                        nxt_off = raw_b.find(b"\x28\xb5\x2f\xfd", z_off + 4)
+                        chunk_b = raw_b[z_off : nxt_off if nxt_off != -1 else len(raw_b)]
+                        try:
+                            out_b.extend(dctx.decompress(chunk_b, max_output_size=16_000_000))
+                        except Exception:
+                            with dctx.stream_reader(raw_b[z_off:]) as reader:
+                                out_b.extend(reader.read())
+                        pos_b = nxt_off if nxt_off != -1 else len(raw_b)
+                    return bytes(out_b)
+
+                id_dec = _decomp_tadc(id_p)
+                dt_dec = _decomp_tadc(dt_p)
+                row_cnt = len(dt_dec) // 24
+                sample_rows: list[dict[str, Any]] = []
+                for r in range(min(20, row_cnt)):
+                    c_uid, s_day, s_yr, e_day, e_yr, j_day, j_yr, role_id, r_flags, scope_id, leave_id, sec_uid = (
+                        struct.unpack_from("<IHHHHHHBBBBi", dt_dec, r * 24)
+                    )
+                    sample_rows.append(
+                        {
+                            "row_index": r,
+                            "club_or_nation_uid": c_uid,
+                            "start_date": f"{s_yr}-day{s_day:03d}",
+                            "end_date": None if e_yr == 0xFFFF else f"{e_yr}-day{e_day:03d}",
+                            "reference_date": None if j_yr == 0xFFFF else f"{j_yr}-day{j_day:03d}",
+                            "job_role_id": role_id,
+                            "role_flags": r_flags,
+                            "squad_scope": scope_id,
+                            "leaving_reason": leave_id,
+                            "secondary_uid": sec_uid,
+                        }
+                    )
+                result["non_player_career_history"] = {
+                    "db_folder": latest_fm_dir.relative_to(root).as_posix(),
+                    "index_magic": idx_raw[:6].decode("latin1"),
+                    "id_magic": id_p.read_bytes()[:6].decode("latin1"),
+                    "dt_magic": dt_p.read_bytes()[:6].decode("latin1"),
+                    "person_index_count": person_cnt,
+                    "id_node_count": len(id_dec) // 8,
+                    "id_decompressed_bytes": len(id_dec),
+                    "dt_row_count": row_cnt,
+                    "dt_row_stride_bytes": 24,
+                    "dt_decompressed_bytes": len(dt_dec),
+                    "dt_row_struct_format": "<IHHHHHHBBBBi",
+                    "sample_rows": sample_rows,
+                }
+            except Exception as exc:
+                result["non_player_career_history"] = {"error": str(exc)}
+
+        # 9b. summary.dat
+        sum_p = latest_fm_dir / "summary.dat"
+        if sum_p.exists():
+            try:
+                sum_raw = sum_p.read_bytes()
+                pos_s = 8
+                n_cont = struct.unpack_from("<I", sum_raw, pos_s)[0]
+                pos_s += 4
+                continents: list[dict[str, Any]] = []
+
+                def _parse_sum_comp(buf: bytes, p_off: int) -> tuple[dict[str, Any], int]:
+                    _sent, _tag, comp_uid, _z1, _z2, rep, _b1, _b2, _s1, _s2, _s3, _dd, _dy = struct.unpack_from(
+                        "<iBIIIbbBhhhhH", buf, p_off
+                    )
+                    p_off += 30
+                    n_win = struct.unpack_from("<I", buf, p_off)[0]
+                    p_off += 4
+                    winners = list(struct.unpack_from(f"<{n_win}I", buf, p_off))
+                    p_off += 4 * n_win
+                    n_yr = struct.unpack_from("<I", buf, p_off)[0]
+                    p_off += 4
+                    years = list(struct.unpack_from(f"<{n_yr}H", buf, p_off))
+                    p_off += 2 * n_yr
+                    n_fl = struct.unpack_from("<I", buf, p_off)[0]
+                    p_off += 4 + n_fl
+                    n_ru = struct.unpack_from("<I", buf, p_off)[0]
+                    p_off += 4 + 4 * n_ru
+                    return {"comp_uid": comp_uid, "reputation": rep, "recent_winners": winners, "years": years}, p_off
+
+                for _ in range(n_cont):
+                    _sent, _tag, cont_uid, rep = struct.unpack_from("<iBIH", sum_raw, pos_s)
+                    pos_s += 11
+                    n_c1 = struct.unpack_from("<I", sum_raw, pos_s)[0]
+                    pos_s += 4
+                    men_comps = []
+                    for _ in range(n_c1):
+                        cp_d, pos_s = _parse_sum_comp(sum_raw, pos_s)
+                        men_comps.append(cp_d)
+                    n_c2 = struct.unpack_from("<I", sum_raw, pos_s)[0]
+                    pos_s += 4
+                    women_comps = []
+                    for _ in range(n_c2):
+                        cp_d, pos_s = _parse_sum_comp(sum_raw, pos_s)
+                        women_comps.append(cp_d)
+                    pos_s += 6
+                    continents.append(
+                        {
+                            "continent_uid": cont_uid,
+                            "reputation": rep,
+                            "men_competitions": men_comps,
+                            "women_competitions": women_comps,
+                        }
+                    )
+                n_nations = struct.unpack_from("<I", sum_raw, pos_s)[0] if pos_s + 4 <= len(sum_raw) else 251
+                ver_s = struct.unpack_from("<H", sum_raw, 6)[0]
+                club_summary_count = (
+                    sum_raw.count(b"\xff\xff\xff\xff\x09")
+                    if ver_s >= 3
+                    else sum_raw.count(b"\xff\xff\xff\xff\x08")
+                )
+                result["summary_dat"] = {
+                    "path": sum_p.relative_to(root).as_posix(),
+                    "size_bytes": len(sum_raw),
+                    "header_magic": sum_raw[:6].decode("latin1"),
+                    "version": ver_s,
+                    "continent_count": n_cont,
+                    "continents": continents,
+                    "nation_count": n_nations,
+                    "club_summary_record_count": club_summary_count,
+                    "club_summary_record_stride_bytes": 25 if ver_s >= 3 else 23,
+                }
+            except Exception as exc:
+                result["summary_dat"] = {"error": str(exc)}
+
+        # 9c. lang_db_general.dat
+        lgen_p = latest_fm_dir / "lang_db_general.dat"
+        if lgen_p.exists():
+            try:
+                lg_frames = extract_fmf_frames(lgen_p)
+                comp_cnt = struct.unpack_from("<I", lg_frames[1][1], 8)[0] if len(lg_frames) > 1 and len(lg_frames[1][1]) >= 12 else 0
+                club_cnt = struct.unpack_from("<I", lg_frames[2][1], 8)[0] if len(lg_frames) > 2 and len(lg_frames[2][1]) >= 12 else 0
+                award_cnt = struct.unpack_from("<I", lg_frames[6][1], 8)[0] if len(lg_frames) > 6 and len(lg_frames[6][1]) >= 12 else 0
+                stad_cnt = struct.unpack_from("<I", lg_frames[7][1], 8)[0] if len(lg_frames) > 7 and len(lg_frames[7][1]) >= 12 else 0
+                result["lang_db_general_dat"] = {
+                    "path": lgen_p.relative_to(root).as_posix(),
+                    "size_bytes": lgen_p.stat().st_size,
+                    "zstd_frame_count": len(lg_frames),
+                    "language_block_count": (len(lg_frames) - 1) // 16,
+                    "tables_per_language": 16,
+                    "generic_competition_overrides": comp_cnt,
+                    "generic_club_overrides": club_cnt,
+                    "generic_award_overrides": award_cnt,
+                    "generic_stadium_overrides": stad_cnt,
+                }
+            except Exception as exc:
+                result["lang_db_general_dat"] = {"error": str(exc)}
+
     return result
 
 
@@ -1252,8 +1581,16 @@ def extract_all_fmf_and_config_archives(
 # ==============================================================================
 
 
+try:
+    import lz4.block as _lz4_block
+except ImportError:
+    _lz4_block = None
+
+
 def lz4_decompress_block(src: bytes, uncompressed_size: int) -> bytes:
-    """Pure-Python raw LZ4 block decompressor for UnityFS v8 archive blocks."""
+    """Fast C-accelerated (with pure-Python fallback) raw LZ4 block decompressor for UnityFS v8 archive blocks."""
+    if _lz4_block is not None:
+        return _lz4_block.decompress(src, uncompressed_size=uncompressed_size)
     dst = bytearray()
     pos = 0
     n = len(src)
@@ -1329,10 +1666,10 @@ def unpack_unityfs_bundle(bundle_path: Path) -> bytes:
 def decompile_unity_ui_bundles(
     fm_install_dir: str | os.PathLike[str] | None = None,
 ) -> dict[str, Any]:
-    """Decompress all non-art Unity UI & Bindable ``.bundle`` files (``sibindable_assets_all.bundle``,
-    ``ui-columns_assets_all.bundle``, ``ui-datacollections_assets_all.bundle``, ``ui-panelids-uxml_assets_all.bundle``,
-    ``ui-tableviews_assets_all.bundle``, ``ui-tactics_assets_all.bundle``, ``ui-visualfunctions_assets_all.bundle``, etc.)
-    and extract their embedded ``GlobalMapping`` root bindings, ``Assets/.../*.uxml`` & ``*.asset`` paths, and UI binding paths."""
+    """Decompress all Unity UI & Bindable ``.bundle`` files (all 67 ``ui-*.bundle`` files plus
+    ``sibindable_assets_all.bundle`` and ``shortcutdata_assets_all.bundle``) and extract their embedded
+    ``GlobalMapping`` root bindings, ``Assets/...`` paths, ``TableFactory`` definitions, ``TableView`` presets,
+    and UI binding paths."""
     root = resolve_fm_install_dir(fm_install_dir)
     aa_dir = root / "fm_Data/StreamingAssets/aa/StandaloneWindows64"
     if not aa_dir.exists():
@@ -1341,40 +1678,16 @@ def decompile_unity_ui_bundles(
     target_bundles = [
         "sibindable_assets_all.bundle",
         "shortcutdata_assets_all.bundle",
-        "ui-calendar_assets_all.bundle",
-        "ui-charts_assets_all.bundle",
-        "ui-columns_assets_all.bundle",
-        "ui-datacollections_assets_all.bundle",
-        "ui-dynamiccardcollections_assets_all.bundle",
-        "ui-factoryxml_assets_all.bundle",
-        "ui-fmpedia_assets_all.bundle",
-        "ui-match_assets_all.bundle",
-        "ui-panelids_assets_all.bundle",
-        "ui-panelids-uxml_assets_all.bundle",
-        "ui-preferences_assets_all.bundle",
-        "ui-recruitment_assets_all.bundle",
-        "ui-settings_assets_all.bundle",
-        "ui-staticdataentries_assets_all.bundle",
-        "ui-tablefactories_assets_all.bundle",
-        "ui-tableviews_assets_all.bundle",
-        "ui-tactics_assets_all.bundle",
-        "ui-tileslayouts_assets_all.bundle",
-        "ui-visualfunctions_assets_all.bundle",
-        "ui-widgets_assets_all.bundle",
     ]
-    # FM27 moved most UXML into `ui-visualtreeassets_assets_*preload.bundle` files and renamed or merged
-    # several FM26 bundles: also pick up every other non-art UI bundle that is present on disk.
     for extra in sorted(aa_dir.glob("ui-*.bundle")):
-        name = extra.name
-        if name in target_bundles or any(
-            k in name for k in ("texture", "image", "background", "icon", "font", "mainmenu", "tifo", "animation", "credits")
-        ):
-            continue
-        if name.startswith("ui-visualtreeassets_") or name.endswith("_assets_all.bundle"):
-            target_bundles.append(name)
+        if extra.name not in target_bundles:
+            target_bundles.append(extra.name)
 
     bundles_out: dict[str, Any] = {}
     all_bind_paths: set[str] = set()
+    table_factories: list[str] = []
+    table_factory_sort_bindings: list[str] = []
+    table_views: list[str] = []
     total_assets = 0
 
     for bname in target_bundles:
@@ -1386,7 +1699,7 @@ def decompile_unity_ui_bundles(
             set(
                 m.group(0).decode("ascii")
                 for m in re.finditer(
-                    rb"(?i)Assets/[A-Za-z0-9_.\-/ ]+\.(?:uxml|asset|uss|json|xml|png|jpg)",
+                    rb"(?i)Assets/[A-Za-z0-9_.\-/ ]+\.(?:uxml|asset|uss|json|xml|png|jpg|ttf|otf|mat|shader)",
                     raw,
                 )
             )
@@ -1395,11 +1708,29 @@ def decompile_unity_ui_bundles(
             set(
                 m.group(0).decode("ascii")
                 for m in re.finditer(
-                    rb"(?:person|player|club|team|match|comp|stadium|contract|tactic|staff|human|game|settings)\.[A-Za-z0-9_.]+",
+                    rb"(?i)(?:person|player|club|team|match|comp|stadium|contract|tactic|staff|human|game|settings|binding|row|selection)\.[A-Za-z0-9_.]+",
                     raw,
                 )
             )
         )
+        if bname == "ui-tablefactories_assets_all.bundle":
+            table_factories = sorted(
+                set(m.group(0).decode("ascii") for m in re.finditer(rb"[A-Za-z0-9_]+TableFactory", raw))
+            )
+            table_factory_sort_bindings = sorted(
+                set(m.group(0).decode("ascii") for m in re.finditer(rb"binding\.[A-Za-z0-9_.]+", raw))
+            )
+        elif bname == "ui-tableviews_assets_all.bundle":
+            table_views = sorted(
+                set(
+                    m.group(1).decode("ascii")
+                    for m in re.finditer(
+                        rb"([A-Za-z0-9_\-]{4,80}(?:TableSettings|TableView|Table|View|Block|List))",
+                        raw,
+                    )
+                    if any(k in m.group(1) for k in (b"Table", b"View", b"Settings"))
+                )
+            )
         all_bind_paths.update(bind_paths)
         total_assets += len(assets)
         bundles_out[bname] = {
@@ -1415,8 +1746,139 @@ def decompile_unity_ui_bundles(
         "bundle_count": len(bundles_out),
         "total_extracted_asset_paths": total_assets,
         "total_unique_ui_binding_paths": len(all_bind_paths),
+        "table_factory_count": len(table_factories),
+        "table_factories": table_factories,
+        "table_factory_sort_binding_count": len(table_factory_sort_bindings),
+        "table_factory_sort_bindings": table_factory_sort_bindings,
+        "table_view_count": len(table_views),
+        "table_views": table_views,
         "all_unique_ui_binding_paths": sorted(all_bind_paths),
         "bundles": bundles_out,
+    }
+
+
+def decompile_csharp_method_bodies(
+    fm_install_dir: str | os.PathLike[str] | None = None,
+    *,
+    filter_substr: str | None = None,
+    max_methods: int = 25,
+) -> dict[str, Any]:
+    """Disassemble compiled C# method bodies in ``GameAssembly.dll`` using ``il2cpp.usym`` RVA ranges,
+    annotating instructions with original ``.cs:line`` source numbers and resolving ``call`` targets."""
+    root = resolve_fm_install_dir(fm_install_dir)
+    ga_path = root / "GameAssembly.dll"
+    usym_path = root / "fm_Data/il2cpp_data/il2cpp.usym"
+    if not usym_path.exists():
+        usym_path = root / "il2cpp.usym"
+    meta_data = decompile_global_metadata(root, include_all_methods=True)
+    usym_data = decompile_usym_symbols(root, max_records=10)
+    rva_map: dict[int, dict[str, Any]] = usym_data.get("_method_rva_map", {})
+
+    # Map start RVA -> (TypeFullName.MethodName, method_index)
+    rva_to_method_name: dict[int, str] = {}
+    matched_methods: list[dict[str, Any]] = []
+    flt = (filter_substr or "").lower()
+
+    for t in meta_data["types"]:
+        t_full = f"{t['namespace']}.{t['name']}" if t["namespace"] else t["name"]
+        for m in t["methods"]:
+            mid = m["method_index"]
+            rm = rva_map.get(mid)
+            if not rm:
+                continue
+            r_start = int(rm["rva_start"], 16)
+            r_end = int(rm["rva_end"], 16)
+            full_sig = f"{t_full}.{m['name']}({', '.join(m['parameters'])})"
+            rva_to_method_name[r_start] = full_sig
+            if not flt or flt in full_sig.lower() or flt in rm.get("source_file", "").lower():
+                matched_methods.append(
+                    {
+                        "image": t["image"],
+                        "type": t_full,
+                        "method": m["name"],
+                        "parameters": m["parameters"],
+                        "method_index": mid,
+                        "token": m["token"],
+                        "rva_start": rm["rva_start"],
+                        "rva_end": rm["rva_end"],
+                        "source_file": rm.get("source_file", ""),
+                        "line_start": rm.get("line_start"),
+                        "line_end": rm.get("line_end"),
+                    }
+                )
+
+    # Collect per-RVA line annotations from il2cpp.usym for the matched methods
+    target_mids = {m["method_index"] for m in matched_methods[:max_methods]}
+    rva_line_map: dict[int, int] = {}
+    if target_mids and usym_path.exists():
+        raw_u = usym_path.read_bytes()
+        sym_cnt = struct.unpack_from("<I", raw_u, 8)[0]
+        mv_u = memoryview(raw_u)[24 : 24 + sym_cnt * 24]
+        for rva_u64, mid_u, _foff, line_u, parent_u in struct.iter_unpack("<QIIII", mv_u):
+            if mid_u in target_mids and parent_u == 0xFFFFFFFF and line_u != 0xFFFFFFFF:
+                rva_line_map[rva_u64] = line_u
+
+    # Disassemble matched methods from GameAssembly.dll
+    try:
+        import capstone
+
+        cs = capstone.Cs(capstone.CS_ARCH_X86, capstone.CS_MODE_64)
+    except Exception:
+        cs = None
+
+    disassembled: list[dict[str, Any]] = []
+    with open(ga_path, "rb") as f_ga:
+        hdr_b = f_ga.read(4096)
+        e_lfanew = struct.unpack_from("<I", hdr_b, 0x3C)[0]
+        num_sec = struct.unpack_from("<H", hdr_b, e_lfanew + 6)[0]
+        opt_size = struct.unpack_from("<H", hdr_b, e_lfanew + 20)[0]
+        sec_off = e_lfanew + 24 + opt_size
+        sections: list[tuple[int, int, int, int]] = []
+        for i in range(num_sec):
+            s = hdr_b[sec_off + i * 40 : sec_off + (i + 1) * 40]
+            vsize, vaddr, rsize, raddr = struct.unpack_from("<IIII", s, 8)
+            sections.append((vaddr, vsize, raddr, rsize))
+
+        def _rva_to_off(rva: int) -> int:
+            for vaddr, vsize, raddr, rsize in sections:
+                if vaddr <= rva < vaddr + max(vsize, rsize):
+                    return raddr + (rva - vaddr)
+            return -1
+
+        for m in matched_methods[:max_methods]:
+            r_start = int(m["rva_start"], 16)
+            r_end = max(int(m["rva_end"], 16) + 32, r_start + 32)
+            f_off = _rva_to_off(r_start)
+            code_slice = b""
+            if f_off >= 0:
+                f_ga.seek(f_off)
+                code_slice = f_ga.read(min(r_end - r_start, 4096))
+            insns_out: list[str] = []
+            if cs is not None and code_slice:
+                for insn in cs.disasm(code_slice, r_start):
+                    ln = rva_line_map.get(insn.address)
+                    ln_tag = f" [L{ln}]" if ln is not None else ""
+                    call_comment = ""
+                    if insn.mnemonic in ("call", "jmp") and insn.op_str.startswith("0x"):
+                        try:
+                            tgt_rva = int(insn.op_str, 16)
+                            if tgt_rva in rva_to_method_name:
+                                call_comment = f" ; -> {rva_to_method_name[tgt_rva]}"
+                        except ValueError:
+                            pass
+                    insns_out.append(f"0x{insn.address:08x}: {insn.mnemonic:8s} {insn.op_str}{ln_tag}{call_comment}")
+                    if insn.address >= int(m["rva_end"], 16) and insn.mnemonic in ("ret", "jmp", "int3"):
+                        break
+            m_copy = dict(m)
+            m_copy["instruction_count"] = len(insns_out)
+            m_copy["disassembly"] = insns_out
+            disassembled.append(m_copy)
+
+    return {
+        "total_mapped_csharp_methods": len(rva_map),
+        "matched_method_count": len(matched_methods),
+        "disassembled_count": len(disassembled),
+        "methods": disassembled,
     }
 
 
@@ -1438,10 +1900,25 @@ def dump_decompiled_codebase(
     meta_data = decompile_global_metadata(fm_install_dir)
     ga_data = decompile_gameassembly_bindings(fm_install_dir)
     usym_data = decompile_usym_symbols(fm_install_dir, max_records=2000)
+    method_rva_map: dict[int, dict[str, Any]] = usym_data.pop("_method_rva_map", {})
     tables_data = extract_engine_lookup_tables(fm_install_dir)
     gp_data = decompile_game_plugin_exports(fm_install_dir)
     fmf_all_data = extract_all_fmf_and_config_archives(fm_install_dir)
     ui_bundles_data = decompile_unity_ui_bundles(fm_install_dir)
+
+    # Attach il2cpp.usym RVA ranges & source file/line spans onto every method in meta_data["types"]
+    if method_rva_map:
+        for t in meta_data["types"]:
+            for m in t["methods"]:
+                rm = method_rva_map.get(m["method_index"])
+                if rm:
+                    m["rva_start"] = rm["rva_start"]
+                    m["rva_end"] = rm["rva_end"]
+                    if rm.get("source_file"):
+                        m["source_file"] = rm["source_file"]
+                    if rm.get("line_start") is not None:
+                        m["line_start"] = rm["line_start"]
+                        m["line_end"] = rm["line_end"]
 
     # 1. Write properties_and_contexts.json
     (out_path / "properties_and_contexts.json").write_text(
@@ -1522,7 +1999,7 @@ def dump_decompiled_codebase(
 
     # 9. Generate C# stub file DecompiledReferences.cs for all 892 Reference entities
     cs_lines: list[str] = [
-        "// Auto-decompiled from GameAssembly.dll (x86-64) + global-metadata.dat (IL2CPP v31)",
+        "// Auto-decompiled from GameAssembly.dll (x86-64) + global-metadata.dat (IL2CPP v31/v39)",
         "// Generated by fm26save.binary_decompiler",
         "using System;",
         "using System.Collections.Generic;",
@@ -1560,7 +2037,7 @@ def dump_decompiled_codebase(
     # 10. Generate full C# codebase file DecompiledAllGameAssemblies.cs for all 5,350+ FM/SI/Assembly-CSharp types
     all_cs: list[str] = [
         "// Complete Decompiled C# Type, Enum, Field, Property & Method Definitions for Football Manager",
-        "// Extracted from global-metadata.dat (IL2CPP v31) + GameAssembly.dll",
+        "// Extracted from global-metadata.dat (IL2CPP v31/v39) + GameAssembly.dll + il2cpp.usym",
         "using System;",
         "",
     ]
@@ -1592,7 +2069,13 @@ def dump_decompiled_codebase(
             for m in t["methods"]:
                 safe_mn = re.sub(r"[^A-Za-z0-9_]", "_", m["name"])
                 p_sig = ", ".join(f"object {re.sub(r'[^A-Za-z0-9_]', '_', pn) or f'p{i}'}" for i, pn in enumerate(m["parameters"]))
-                all_cs.append(f"        public object {safe_mn}({p_sig}) => null; // MethodIdx={m['method_index']} Token={m['token']}")
+                rva_info = (
+                    f" RVA={m['rva_start']}..{m['rva_end']}"
+                    + (f" Src={Path(m['source_file']).name}:{m.get('line_start')}" if m.get("source_file") else "")
+                    if "rva_start" in m
+                    else ""
+                )
+                all_cs.append(f"        public object {safe_mn}({p_sig}) => null; // MethodIdx={m['method_index']} Token={m['token']}{rva_info}")
         all_cs.append("    }")
         all_cs.append("}")
         all_cs.append("")
@@ -1652,11 +2135,19 @@ def dump_decompiled_codebase(
             "bindings_counts": ga_data["counts"],
             "usym_source_files": usym_data["source_file_count"],
             "usym_symbols": usym_data["symbol_count"],
+            "usym_mapped_csharp_methods": usym_data.get("mapped_csharp_method_count", 0),
             "game_plugin_exports": gp_data["game_plugin_dll"]["export_count"],
+            "game_plugin_pdata_functions": gp_data["game_plugin_dll"].get("pdata_function_table", {}).get("valid_code_functions", 0),
+            "game_plugin_action_contributors": gp_data["game_plugin_dll"].get("action_contributor_vtables_count", 0),
+            "game_plugin_search_filter_vtables": gp_data["game_plugin_dll"].get("search_filter_vtables_count", 0),
             "fmf_archives_count": len(fmf_all_data["fmf_archives_inventory"]),
             "person_search_filters_count": len(fmf_all_data["person_search_filters"]),
+            "non_pl_hist_rows": fmf_all_data.get("non_player_career_history", {}).get("dt_row_count", 0),
+            "summary_dat_clubs": fmf_all_data.get("summary_dat", {}).get("club_summary_record_count", 0),
             "ui_bundles_decompiled": ui_bundles_data["bundle_count"],
             "ui_extracted_asset_paths": ui_bundles_data["total_extracted_asset_paths"],
             "ui_unique_binding_paths": ui_bundles_data["total_unique_ui_binding_paths"],
+            "ui_table_factories": ui_bundles_data.get("table_factory_count", 0),
+            "ui_table_views": ui_bundles_data.get("table_view_count", 0),
         },
     }

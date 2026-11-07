@@ -8,7 +8,9 @@
 | | |
 |---|---|
 | Oyun | **FM26** |
-| Not | Bu döküm `manifest.json` içermiyor (eski sürümle üretilmiş); kaynak yolu `usym_source_tree.json` içinden tahmin edildi. |
+| Üretim zamanı | 2026-11-07T11:39:06 |
+| `GameAssembly.dll` | 53,639,168 bayt, 2026-06-09T19:11:18, SHA1 `24bc8f47edb25c72d84634ab5a93b58e31656089` |
+| `global-metadata.dat` | 15,586,328 bayt, SHA1 `516b10591746a2bc817b246587d238f31a7af060` |
 
 ## 2. Genel sayılar
 
@@ -27,8 +29,17 @@
 | `*Reference` varlık sınıfı | 892 |
 | Çekirdek DB tablosu varlığı (`0x4442xxxx`) | 19 |
 | `il2cpp.usym` sembol kaydı | 1,593,548 |
+| `il2cpp.usym` RVA-eşlenmiş C# metodu | 35,187 |
 | `il2cpp.usym` kaynak dosya yolu | 2,619 |
 | `game_plugin.dll` native export | 247 |
+| `game_plugin.dll` `.pdata` C++ fonksiyonu | 121,829 (66,007,595 bayt) |
+| `game_plugin.dll` `ActionContributor` vtable sınıfı | 213 |
+| `game_plugin.dll` `SearchFilter` vtable sınıfı | 58 |
+| `non_pl_hist_dt.dat` personel kariyer geçmişi satırı (24B) | 5,330,298 |
+| `summary.dat` kulüp özet kaydı (25B) | 1 |
+| UI `TableFactory` sınıfı (`ui-tablefactories`) | 217 |
+| UI `TableFactory` sütun `binding.*` yolu | 1,951 |
+| UI `TableView` / `TableSettings` şablonu (`ui-tableviews`) | 575 |
 
 ## 3. FM / SI assembly'leri
 
@@ -1285,32 +1296,92 @@ Toplam **8,225** FourCC ↔ property adı eşlemesi (`PropertyRegistration.Initi
 
 ## 9. Unity UI bundle envanteri
 
-22 bundle, 11,635 asset yolu, 2,014 benzersiz UI binding yolu.
+77 bundle, 34,831 asset yolu, 8,757 benzersiz UI binding yolu.
+Ayrıca `ui-tablefactories_assets_all.bundle` içinde **217** `TableFactory` ve **1,951** `binding.*` sütun bağlaması; `ui-tableviews_assets_all.bundle` içinde **575** `TableView`/`TableSettings` şablonu yer alır.
 
 | Bundle | Sıkıştırılmış | Açılmış | Asset yolu | Binding yolu |
 |---|---:|---:|---:|---:|
-| `shortcutdata_assets_all.bundle` | 20,239 | 82,140 | 72 | 0 |
-| `sibindable_assets_all.bundle` | 2,167 | 5,056 | 1 | 0 |
-| `ui-calendar_assets_all.bundle` | 215,011 | 1,590,148 | 189 | 38 |
+| `shortcutdata_assets_all.bundle` | 20,239 | 82,140 | 72 | 2 |
+| `sibindable_assets_all.bundle` | 2,167 | 5,056 | 1 | 1 |
+| `ui-backgrounds_assets_.bundle` | 1,539,684 | 1,868,008 | 7 | 0 |
+| `ui-backgrounds_assets_1x.bundle` | 206,670 | 237,436 | 10 | 0 |
+| `ui-backgrounds_assets_2x.bundle` | 319,025 | 417,148 | 9 | 0 |
+| `ui-backgrounds_assets_3x.bundle` | 557,533 | 806,080 | 9 | 0 |
+| `ui-backgrounds_assets_4x.bundle` | 797,695 | 1,276,124 | 9 | 0 |
+| `ui-backgrounds_assets_common.bundle` | 27,955,289 | 30,213,040 | 68 | 0 |
+| `ui-bounds_assets_all.bundle` | 1,591 | 3,628 | 2 | 0 |
+| `ui-calendar_assets_all.bundle` | 215,011 | 1,590,148 | 189 | 92 |
 | `ui-charts_assets_all.bundle` | 19,739 | 116,816 | 25 | 2 |
-| `ui-columns_assets_all.bundle` | 185,443 | 1,245,428 | 227 | 82 |
-| `ui-datacollections_assets_all.bundle` | 136,448 | 597,208 | 477 | 0 |
-| `ui-dynamiccardcollections_assets_all.bundle` | 74,669 | 816,004 | 30 | 1 |
-| `ui-factoryxml_assets_all.bundle` | 484,397 | 3,269,500 | 595 | 122 |
-| `ui-fmpedia_assets_all.bundle` | 24,580 | 148,984 | 8 | 0 |
-| `ui-match_assets_all.bundle` | 691,286 | 5,066,376 | 360 | 293 |
-| `ui-panelids-uxml_assets_all.bundle` | 1,415,996 | 12,908,240 | 753 | 741 |
-| `ui-panelids_assets_all.bundle` | 112,515 | 459,524 | 709 | 0 |
-| `ui-preferences_assets_all.bundle` | 105,783 | 860,004 | 31 | 114 |
-| `ui-recruitment_assets_all.bundle` | 447,123 | 3,463,952 | 186 | 100 |
-| `ui-settings_assets_all.bundle` | 10,383 | 34,132 | 19 | 5 |
+| `ui-columns_assets_all.bundle` | 185,443 | 1,245,428 | 227 | 237 |
+| `ui-credits_assets_all.bundle` | 237,781 | 1,530,460 | 42 | 1 |
+| `ui-datacollections_assets_all.bundle` | 136,448 | 597,208 | 477 | 2 |
+| `ui-dynamiccardcollections_assets_all.bundle` | 74,669 | 816,004 | 30 | 3 |
+| `ui-factoryxml_assets_all.bundle` | 484,397 | 3,269,500 | 595 | 509 |
+| `ui-fmpedia_assets_all.bundle` | 24,580 | 148,984 | 8 | 2 |
+| `ui-fonts_assets_assets_uiassets_fonts_licenced_fifa_worldcup.bundle` | 5,760,360 | 34,169,192 | 20 | 0 |
+| `ui-fonts_assets_bundesliga.bundle` | 135,153 | 1,227,084 | 2 | 0 |
+| `ui-fonts_assets_efl.bundle` | 1,076,522 | 8,032,018 | 14 | 0 |
+| `ui-fonts_assets_fmuniverse.bundle` | 291,873 | 1,531,676 | 2 | 0 |
+| `ui-fonts_assets_premierleague.bundle` | 419,284 | 2,426,324 | 4 | 0 |
+| `ui-fonts_assets_production.bundle` | 19,542,209 | 51,711,696 | 21 | 0 |
+| `ui-fonts_assets_uefa_championsleague.bundle` | 214,724 | 1,249,708 | 2 | 0 |
+| `ui-fonts_assets_uefa_europa.bundle` | 201,933 | 1,379,458 | 2 | 0 |
+| `ui-fonts_assets_uefa_supercup.bundle` | 101,965 | 1,142,392 | 2 | 0 |
+| `ui-fonts_assets_uefa_uwcl.bundle` | 134,315 | 227,460 | 4 | 0 |
+| `ui-icons_assets_1x.bundle` | 289,461 | 1,389,220 | 1,126 | 0 |
+| `ui-icons_assets_2x.bundle` | 522,632 | 3,327,260 | 1,128 | 0 |
+| `ui-icons_assets_3x.bundle` | 591,625 | 2,246,568 | 1,127 | 0 |
+| `ui-icons_assets_4x.bundle` | 695,691 | 3,105,268 | 1,127 | 0 |
+| `ui-iconspriteatlases_assets_1x.bundle` | 1,230,905 | 1,592,728 | 0 | 0 |
+| `ui-iconspriteatlases_assets_2x.bundle` | 2,481,572 | 3,145,628 | 0 | 0 |
+| `ui-iconspriteatlases_assets_3x.bundle` | 3,564,110 | 4,732,348 | 0 | 0 |
+| `ui-iconspriteatlases_assets_4x.bundle` | 4,609,342 | 6,148,168 | 0 | 0 |
+| `ui-mainmenu-assets_assets_all.bundle` | 1,801,381 | 2,426,696 | 12 | 0 |
+| `ui-managercreation_assets_all.bundle` | 588,122 | 4,000,068 | 227 | 34 |
+| `ui-managercreationimages_assets_all.bundle` | 9,688,175 | 9,998,760 | 607 | 1 |
+| `ui-match_assets_all.bundle` | 691,286 | 5,066,376 | 360 | 363 |
+| `ui-newgen-portraits_assets_all.bundle` | 73,602,576 | 79,799,476 | 14,001 | 0 |
+| `ui-panelids-uxml_assets_all.bundle` | 1,415,996 | 12,908,240 | 753 | 1,607 |
+| `ui-panelids_assets_all.bundle` | 112,515 | 459,524 | 709 | 7 |
+| `ui-preferences_assets_all.bundle` | 105,783 | 860,004 | 31 | 115 |
+| `ui-prematch-backgrounds_assets_1x.bundle` | 3,501 | 9,512 | 1 | 0 |
+| `ui-prematch-backgrounds_assets_2x.bundle` | 4,007 | 10,608 | 1 | 0 |
+| `ui-prematch-backgrounds_assets_3x.bundle` | 4,347 | 11,288 | 1 | 0 |
+| `ui-prematch-backgrounds_assets_4x.bundle` | 5,035 | 12,760 | 1 | 0 |
+| `ui-prematch-backgrounds_assets_common.bundle` | 508,028 | 1,010,024 | 26 | 0 |
+| `ui-recruitment_assets_all.bundle` | 447,123 | 3,463,952 | 186 | 256 |
+| `ui-settings_assets_all.bundle` | 10,383 | 34,132 | 19 | 6 |
 | `ui-staticdataentries_assets_all.bundle` | 25,708 | 94,624 | 125 | 0 |
-| `ui-tablefactories_assets_all.bundle` | 165,812 | 794,760 | 273 | 351 |
-| `ui-tableviews_assets_all.bundle` | 216,558 | 1,035,024 | 860 | 3 |
-| `ui-tactics_assets_all.bundle` | 370,501 | 2,362,856 | 428 | 141 |
-| `ui-tileslayouts_assets_all.bundle` | 819,628 | 2,694,992 | 4,411 | 1 |
-| `ui-visualfunctions_assets_all.bundle` | 573,907 | 2,342,952 | 346 | 0 |
-| `ui-widgets_assets_all.bundle` | 1,605,114 | 10,907,716 | 1,510 | 470 |
+| `ui-styles_assets_.bundle` | 7,084 | 21,868 | 0 | 0 |
+| `ui-styles_assets_1x.bundle` | 141,500 | 441,656 | 6 | 0 |
+| `ui-styles_assets_2x.bundle` | 171,968 | 482,348 | 6 | 0 |
+| `ui-styles_assets_3x.bundle` | 249,446 | 579,056 | 6 | 0 |
+| `ui-styles_assets_4x.bundle` | 350,492 | 744,048 | 6 | 0 |
+| `ui-styles_assets_common.bundle` | 305,998 | 930,116 | 3 | 2 |
+| `ui-styles_assets_default.bundle` | 756,534 | 3,185,740 | 31 | 0 |
+| `ui-styles_assets_match.bundle` | 23,733 | 82,384 | 1 | 0 |
+| `ui-tablefactories_assets_all.bundle` | 165,812 | 794,760 | 273 | 1,971 |
+| `ui-tableviews_assets_all.bundle` | 216,558 | 1,035,024 | 860 | 28 |
+| `ui-tacticalanimations_assets_all.bundle` | 449,749 | 3,606,688 | 153 | 2 |
+| `ui-tactics_assets_all.bundle` | 370,501 | 2,362,856 | 428 | 248 |
+| `ui-textures_assets_all.bundle` | 6,093,075 | 10,871,264 | 388 | 2 |
+| `ui-tifo-buttons_assets_all.bundle` | 65,677 | 479,016 | 109 | 2 |
+| `ui-tifo-datadisplay_assets_all.bundle` | 20,466 | 130,860 | 8 | 3 |
+| `ui-tifo-icons-controller-keyboard_assets_all.bundle` | 2,217 | 4,972 | 1 | 0 |
+| `ui-tifo-icons-controller-nintendo_assets_all.bundle` | 7,880 | 31,268 | 2 | 0 |
+| `ui-tifo-icons-scalingicons_assets_all.bundle` | 9,681 | 43,588 | 2 | 0 |
+| `ui-tifo-icons-specialicons_assets_all.bundle` | 9,821 | 43,296 | 1 | 0 |
+| `ui-tifo-layouts_assets_all.bundle` | 10,340 | 48,316 | 1 | 2 |
+| `ui-tifo-nationflags_assets_all.bundle` | 12,847 | 72,048 | 4 | 1 |
+| `ui-tifo-thumbnails_assets_all.bundle` | 6,537 | 23,216 | 1 | 0 |
+| `ui-tiles_assets_all.bundle` | 5,900,077 | 44,419,688 | 2,853 | 3,996 |
+| `ui-tileslayouts_assets_all.bundle` | 819,628 | 2,694,992 | 4,411 | 7 |
+| `ui-visualfunctions_assets_all.bundle` | 573,907 | 2,342,952 | 346 | 2 |
+| `ui-widgets_assets_all.bundle` | 1,605,114 | 10,907,716 | 1,510 | 1,123 |
+
+### 9.1 `TableFactory` sınıfları (`ui-tablefactories_assets_all.bundle`)
+
+`AboutPastWinnersCompactTableFactory`, `AboutPastWinnersTableFactory`, `AboutRankingsTableFactory`, `AddRemoveLeaguesTableFactory`, `AgentOfferedPlayerTableFactory`, `AgentTableFactory`, `AgreedPlayingTimeTableFactory`, `AttributeHolderTableFactory`, `AttributesComparsionTableFactory`, `BlockedJobRolePotentialStaffToReplaceTableFactory`, `BudgetAdjustmentDialogPlayersTableFactory`, `CareerStatsSeasonStatsTableFactory`, `CareerStatsTableFactory`, `ChooseFolderBrowseCardTableFactory`, `ChoosePictureBrowseCardTableFactory`, `ClubBalanceTableFactory`, `ClubBoardHeroTableFactory`, `ClubBoardMembersTableFactory`, `ClubBoardRequestsTableFactory`, `ClubBoardTableFactory`, `ClubCodeOfConductTableFactory`, `ClubCoefficientTableFactory`, `ClubHistoryRecordsInGameTableFactory`, `ClubHistoryRecordsLeagueAllTimeRecordsTableFactory`, `ClubInfoHistoryBlockPendingTransfersTableFactory`, `ClubInfoPreviousFinishesTableFactory`, `ClubSelectionTableFactory`, `ClubSupportersExpectationsTableFactory`, `ClubTableFactory`, `ClubsListTableFactory`, `CoachingAttributesDataTableFactory`, `CompDebugTransferTableFactory`, `CompDebugTransferTotalsTableFactory`, `CompetitionAboutAveragePointsTableFactory`, `CompetitionAboutAwardWinnersBestPlayersTableFactory`, `CompetitionAboutAwardWinnersBestSquadTableFactory`, `CompetitionAboutAwardWinnersBestTeamsTableFactory`, `CompetitionClubsStadiumsCardTableFactory`, `CompetitionLeagueCombinedTableFactory`, `CompetitionLeagueTableFactory`, `CompetitionSiteAboutDraftHistoryCardTableFactory`, `CompetitionSiteAboutDraftSelectionTableFactory`, `CompetitionSiteInsAndOutsTransfersTableFactory`, `CompetitionSitePastTransfersTableFactory`, `CompetitionSitePlayerStatsTableFactory`, `CompetitionSiteSeasonTicketsCardTableFactory`, `CompetitionSiteSquadRewardsTableFactory`, `CompetitionSiteTeamStatsTableFactory`, `CompetitionStatsInjuryTableFactory`, `CompetitionTableFactory`, `CompetitionTeamInjuryTableFactory`, `CompetitionTransferWindowReportTransferActivityTableFactory`, `CompetitionWaiverListPickOrderTableFactory`, `CompetitionXGStagesTableFactory`, `CompetitionsClubsSponsorshipIncomeTableFactory`, `CompetitionsNationsListTableFactory`, `ContinentClubsInfoTableFactory`, `ContractCompetitionBonusActivatedClubTableFactory`, `ContractCompetitionBonusActivatedPlayerTableFactory`, `ContractExpiresTableFactory`, `ConversationSummaryPlayerTargetTableFactory`, `ConversationSummaryPromisesTableFactory`, `DynamicsBuyinEventTableFactory`, `DynamicsPlayerIssuesTableFactory`, `DynamicsPlayerMindsetTableFactory`, `DynamicsSquadPlayerBuyinTableFactory`, `EstimatedTradeValueTableFactory`, `ExpectedFormationTableFactory`, `FfpPlayersTableFactory`, `FileSummaryDetailsManagersCardTableFactory`, `FileSummaryDetailsNationsCardTableFactory`, `FinancesWagesTableFactory`, `ForcedResultsTableFactory`, `GlobalSearchResultsAwardTabTableFactory`, `GlobalSearchResultsClubsTabTableFactory`, `GlobalSearchResultsCompTabTableFactory`, `GlobalSearchResultsMessageTabTableFactory`, `GlobalSearchResultsNationalTeamContainerTabTableFactory`, `GlobalSearchResultsNationsTabTableFactory`, `GlobalSearchResultsPeopleTabTableFactory`, `GlobalSearchResultsStadiumsTapTableFactory`, `HallOfFameContentDetailsTableFactory`, `HallOfFameContentRankTableFactory`, `HighlightedPersonnelTableFactory`, `IGESearchResultsClubsTabTableFactory`, `IGESearchResultsCompTabTableFactory`, `IGESearchResultsLanguageTabTableFactory`, `IGESearchResultsNationsTabTableFactory`, `IGESearchResultsPeopleTabTableFactory`, `InterestedClubsTableFactory`, `IntermediariesTableFactory`, `JobBoardTableFactory`, `JobCentreTableFactory`, `JobHistoryTableFactory`, `JobMarketTableFactory`, `LastMatchTableFactory`, `LatestScoresCompetitionTableFactory`, `LeaguePositionRulesTableFactory`, `LeagueTableTooltipTableFactory`, `LeaguesSummaryTableFactory`, `LoadGameBrowseCardTableFactory`, `LoadGameLocalCardTableFactory`, `MLSCombinePerformanceResultsTableFactory`, `ManagerMilestoneInfoTableFactory`, `ManagerMovementTableFactory`, `MatchClientsTooltipTableFactory`, `MatchFocusTableFactory`, `MatchStatsTableFactory`, `MentalAttributesDataTableFactory`, `MyRelationshipsTableFactory`, `NationAgreementTableFactory`, `NationClubCoefficientTableFactory`, `NationCompetitionTableFactory`, `NationEligibilityTableFactory`, `NationKnowledgeShortTableFactory`, `NationKnowledgeTableFactory`, `NationLeagueStructureTableFactory`, `NationSelectionTableFactory`, `NationSiteRankingsTableFactory`, `NonPlayerReportOverviewHistoryTileTableFactory`, `NonPlayerTableFactory`, `NonPlayerViewableAttributesDataTableFactory`, `NotInterestedPlayersTableFactory`, `OddsTableFactory`, `OnThePitchComparisonReportTableFactory`, `OnlineLobbyLeagueTableFactory`, `OnlineLobbyTableFactory`, `OnlineManagerOptionsTableFactory`, `PassMapsTableFactory`, `PastManagersTableFactory`, `PastWinnersTableFactory`, `PersonInterestedClubTableFactory`, `PersonTransferOfferTableFactory`, `PlayerActiveTransferInfoTableFactory`, `PlayerBuyinTableFactory`, `PlayerFormTableFactory`, `PlayerIndividualTrainingTableFactory`, `PlayerInjuryHeroTableFactory`, `PlayerInjuryTableFactory`, `PlayerInvolvedInMatchesTableFactory`, `PlayerLast5MatchesFormTableFactory`, `PlayerMLSRightsTableFactory`, `PlayerMentoringGroupTableFactory`, `PlayerPositionalRolesTableFactory`, `PlayerReportBansAndDisciplineTableFactory`, `PlayerReportDevelopmentProgressReportTableFactory`, `PlayerReportScoutedSquadComparisonPlayersTableFactory`, `PlayerSearchSmallTableFactory`, `PlayerSeasonStatsTableFactory`, `PlayerTableFactory`, `PlayerTargetsTableFactory`, `PlayingTimeExpectationsTableFactory`, `PortalMatchesTableFactory`, `PositionalStatsTableFactory`, `PressConferenceInviteTableFactory`, `PressConferenceJournalistTableFactory`, `PreviousMeetingHeadToHeadLeagueTableTableFactory`, `PrioritiseFutureTransferItemTableFactory`, `PrivateInteractionsPlayerTableFactory`, `PrivateInteractionsSpectatorsTableFactory`, `QualificationPlacesTableFactory`, `RecruitmentDofTargetsTableFactory`, `RecruitmentFeedbackTableFactory`, `RecruitmentFocusStaffTableFactory`, `RivalsBlockTableFactory`, `RoleAbilityTableFactory`, `RumouredClubsTableFactory`, `SaveGameBrowseCardTableFactory`, `SaveGameLocalCardTableFactory`, `ScoutAssignmentTableFactory`, `ScoutingCompetitionTableFactory`, `ScoutingFocusTableFactory`, `SetPieceFrequencyTableFactory`, `SetPieceInstructionsTableFactory`, `SetPiecePenaltyCandidatesTableFactory`, `SetPiecePriorityListTableFactory`, `SetPieceTakerListTableFactory`, `ShortcutsPreferencesCardTableFactory`, `SigningsOfTheSeasonNewsTableFactory`, `SpecificallyScoutedPersonTableFactory`, `SpecificallyScoutedTeamTableFactory`, `SquadActiveBansTableFactory`, `SquadDevelopmentTableFactory`, `SquadDisciplineTableFactory`, `SquadPotentialBansTableFactory`, `SquadPromisesTableFactory`, `StaffAssignmentsTableFactory`, `StaffContractDecisionsTableFactory`, `StaffMeetingSuggestionTableFactory`, `StaffTransferActivityTableFactory`, `StatsInjuryListTableFactory`, `StatsSuspensionTableFactory`, `SteamDownloadTableFactory`, `SubstitutesTableFactory`, `SuggestedInternationalSquadTableFactory`, `TacticAnalysisTableFactory`, `TacticOppositionInstructionTableFactory`, `TacticTeamSelectionTableFactory`, `TeamHierarchyTableFactory`, `TeamMeetingTableFactory`, `TeamReportPrioritiesTableFactory`, `TeamTalkPlayerReactionTableFactory`, `TendencyDataTableFactory`, `TopContinentClubsTableFactory`, `TrainingUnitTableFactory`, `TransferActivityTradeInfoTableFactory`, `TransferConfidenceTableFactory`, `TransferRoomAdvertResponsesTableFactory`, `TransferRoomAdvertsTableFactory`, `TransferRoomPitchActivityTableFactory`, `TransferRumoursTableFactory`, `TransferWindowTableFactory`, `WelcomePackPlayersTableFactory`, `WorkPermitStatusTableFactory`, `WorldKnowledgeNationTableFactory`, `WorldKnowledgeRegionTableFactory`, `YouthCandidatesPreviewTableFactory`
 
 ## 10. `il2cpp.usym` kaynak ağacı (klasör bazında dosya sayısı)
 
@@ -1347,9 +1418,13 @@ Toplam **8,225** FourCC ↔ property adı eşlemesi (`PropertyRegistration.Initi
 | `…/shared/packages/com.si.services` | 3 |
 | `…/shared/packages/com.si.interop` | 3 |
 
-## 11. Diğer çıktılar
+## 11. C++ Native Motor (`game_plugin.dll`) ve Veritabanı / FMF Tabloları
 
-- `engine_lookup_tables.json`: `jumping_reach_table`, `aerial_reach_table`, `qme_stat_relevant_attributes`, `oop_attributes_scoring`, `player_ratings_data`, `team_picking_weights_master`, `training_tables`, `simatch_extra_tables`, `simatchshared_tables`.
-- `all_fmf_configs_and_filters.json`: 13 `.fmf` arşivi envanteri, 445 oyuncu arama filtresi ve ayar/mağaza/versus XML'leri.
-- `game_plugin_native_exports.json`: `game_plugin.dll` ve `lib_burst_generated.dll` export tabloları.
+- **`game_plugin.dll`**: `514,894,848` bayt, `247` adlandırılmış export, `.pdata` istisna dizininde **`121,829`** C++ fonksiyonu (`66,007,595` bayt makine kodu).
+- **`ActionContributor` vtable sınıfları (213 adet)**: `rPNN`, `yMKr`, `9pYX`, `4tL6`, `tNfl`, `nfE8`, `lLC5`, `gaS9`, `m Xp`, `l1d1`, `tauq`, `EkSD`, `D3uF`, `Ojlv`, `5Lbk`, `pdVZ`, `Jye1`, `z5DD`, `hb8D`, `PcdS`, `dC3h`, `IJRw`, `Pnbw`, `YIEn`, `5i7a`, `LG7g`, `FdnA`, `YHl3`, `NOpa`, `nyw9`, `o8HG`, `NZbJ`, `WmR5`, `m4Vg`, `ibpz`, `uDxN`, `6vNa`, `QhWI`, `BURq`, `kgYH` … (+173).
+- **`SearchFilter` native vtable sınıfları (58 adet)**: `phfr`, `pwei`, `pftr`, `pdpr`, `pllr`, `pmqr`, `pnat`, `ptrl`, `pcfr`, `phap`, `pffr`, `pfST`, `pf20`, `p100`, `p200`, `p2pa`, `p500`, `pfrd`, `pfpc`, `pfij`, `pftx`, `pfpu`, `pfdt`, `bpnt`, `pofr`, `pftr`, `pRoI`, `pRoO`, `psct`, `pjob`, `pemp`, `prep`, `pcar`, `ppar`, `pEfe`, `pnam`, `pcbd`, `pdat`, `papp`, `bsnr`, `bsdv`, `pbas`, `phei`, `pfav`, `plng`, `pval`, `pEwg`, `pask`, `pwag`, `pinj`, `pcit`, `pntf`, `pPpM`, `Nsta`, `pmfr`, `SEfr`, `agfr`, `ppir`.
+- **`non_pl_hist_{index,id,dt}.dat`** (`shared/data/database/db/2620/2620_fm`): `2,584,911` personel indeksi, `2,577,205` bağlı liste düğümü (`8` bayt), **`5,330,298`** kariyer geçmişi satırı (`24` bayt `<IHHHHHHBBBBi`).
+- **`summary.dat`** (`shared/data/database/db/2620/2620_fm/summary.dat`): `6` kıta, `251` ülke, **`1`** kulüp özet kaydı (`25` bayt `\xff\xff\xff\xff\x09`).
+- **`engine_lookup_tables.json`**: `jumping_reach_table`, `aerial_reach_table`, `qme_stat_relevant_attributes`, `oop_attributes_scoring`, `player_ratings_data`, `team_picking_weights_master`, `training_tables`, `simatch_extra_tables`, `simatchshared_tables`.
+- **`all_fmf_configs_and_filters.json`**: 13 `.fmf` arşivi envanteri, 445 oyuncu arama filtresi ve ayar/mağaza/versus XML'leri.
 
