@@ -182,14 +182,31 @@ def main(argv: list[str] | None = None) -> int:
     )
     p_dec.add_argument(
         "--mode",
-        choices=["dump", "bindings", "metadata", "usym", "tables", "game-plugin", "fmf-all", "ui-bundles"],
+        choices=["dump", "report", "bindings", "metadata", "usym", "tables", "game-plugin", "fmf-all", "ui-bundles"],
         default="dump",
-        help="Decompilation target mode (default: dump all to --out-dir)",
+        help="Decompilation target mode (default: dump all to --out-dir; 'report' renders a structure-only "
+        "Markdown object-model summary from an existing dump in --out-dir)",
     )
-    p_dec.add_argument("--fm-dir", default=None, help="FM26 / FM27 installation directory (auto-detected if omitted)")
-    p_dec.add_argument("--out-dir", default="docs/decompiled_engine", help="Output directory for --mode dump")
+    p_dec.add_argument(
+        "--fm-dir",
+        default=None,
+        help="FM26 / FM27 installation directory (default: $FM_INSTALL_DIR, else auto-detect; FM26 wins if both are installed)",
+    )
+    p_dec.add_argument("--out-dir", default="docs/decompiled_engine", help="Dump directory (written by 'dump', read by 'report')")
+    p_dec.add_argument("--report-path", default=None, help="Markdown path for --mode report (default: docs/object_model/<GAME>_OBJECT_MODEL.md)")
     p_dec.add_argument("--entity", default=None, help="Filter specific *Reference class in --mode bindings (e.g. PersonReference, ClubReference)")
     p_dec.add_argument("--filter", default=None, help="Filter substring for metadata or usym symbols")
+
+    # 12. patch-ui
+    p_pui = sub.add_parser(
+        "patch-ui",
+        help="List, check status, apply, or restore FM27 UI & game_plugin.dll patches (scout-priorities-sorting, scout-player-limit)",
+    )
+    p_pui.add_argument("action", choices=["list", "status", "apply", "restore"], help="Patch action")
+    p_pui.add_argument("patch", nargs="?", default=None, help="Patch key (scout-priorities-sorting | scout-player-limit)")
+    p_pui.add_argument("--fm-dir", default=None, help="Football Manager 27 installation directory")
+    p_pui.add_argument("--dry-run", action="store_true", help="Verify only, do not write")
+    p_pui.add_argument("--max-players", type=int, default=None, help="Max players for scout-player-limit (default: 5000)")
 
     args = parser.parse_args(argv)
 
@@ -554,6 +571,10 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.mode == "dump":
             res = dump_decompiled_codebase(args.fm_dir, output_dir=args.out_dir)
+        elif args.mode == "report":
+            from fm26save.decompiled_report import write_object_model_report
+
+            res = write_object_model_report(args.out_dir, args.report_path)
         elif args.mode == "bindings":
             res = decompile_gameassembly_bindings(args.fm_dir)
             if args.entity:
@@ -572,6 +593,20 @@ def main(argv: list[str] | None = None) -> int:
             res = extract_engine_lookup_tables(args.fm_dir)
         print(json.dumps(res, ensure_ascii=False, indent=2))
         return 0
+
+    if args.cmd == "patch-ui":
+        from fm26save.ui_patches import main as ui_patches_main
+
+        sub_argv: list[str] = [args.action]
+        if args.patch:
+            sub_argv.append(args.patch)
+        if args.fm_dir:
+            sub_argv.extend(["--fm-dir", args.fm_dir])
+        if args.dry_run:
+            sub_argv.append("--dry-run")
+        if args.max_players is not None:
+            sub_argv.extend(["--max-players", str(args.max_players)])
+        return ui_patches_main(sub_argv)
 
     return 0
 

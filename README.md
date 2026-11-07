@@ -36,10 +36,12 @@
    - Reads **FM27 `27.0.0+2486695`** saves alongside FM26 (shifted game-info / person-block offsets, `u16` staff-list counts, new mentoring-group framing); `FM26Editor` follows the same layout changes.
 8. **Director of Football Mode (`fm26save.dof`, `fm26save.dof_web`):**
    - Coach tactical-identity profiler, head-coach candidate ranking, coach ↔ squad fit (autonomous XI + bench), capology / expiring contracts / transfer-target dashboard, safe `hire_head_coach` into a new `_DoF.fm` working copy, and a local web dashboard (`fm-toolkit dof serve`).
-9. **IL2CPP / GameAssembly Binary Decompiler (`fm26save.binary_decompiler`):**
-   - Decodes `global-metadata.dat` (IL2CPP v31), `GameAssembly.dll` method tables, `PropertyRegistration` FourCC names and the `*Reference` entity graph, `il2cpp.usym`, GamePlugin exports, `.fmf` lookup tables and Unity UI bundles (`fm-toolkit decompile-binaries`).
-10. **Unity UI Bundle Patches (`fm26save.unity_bundle`, `fm26save.ui_patches`):**
-    - Surgical UnityFS/LZ4 block patcher with backup, anchor re-location and "only the target byte changed" verification. Ships the **FM27 Scout Priorities sorting fix** (`python -m fm26save.ui_patches apply scout-priorities-sorting`).
+9. **IL2CPP / GameAssembly Binary Decompiler & Object Model Reporter (`fm26save.binary_decompiler`, `fm26save.decompiled_report`):**
+   - Decodes `global-metadata.dat` (**IL2CPP v31** for FM26 and **IL2CPP v39** for FM27), `GameAssembly.dll` method tables, `PropertyRegistration` FourCC names and the `*Reference` entity graph, `il2cpp.usym`, GamePlugin exports, `.fmf` lookup tables and Unity UI bundles (`fm-toolkit decompile-binaries --mode dump|report`).
+10. **Unity UI Bundle & `game_plugin.dll` Patches (`fm26save.unity_bundle`, `fm26save.ui_patches`):**
+    - Surgical UnityFS/LZ4 block patcher and x86-64 instruction-anchored native binary patcher with backup, anchor re-location and byte-level verification. Ships:
+      - **FM27 Scout Priorities sorting fix** (`python -m fm26save.ui_patches apply scout-priorities-sorting`)
+      - **FM27 Scouting 50-player selection limit unlocker** (`python -m fm26save.ui_patches apply scout-player-limit --max-players 5000`)
 
 ---
 
@@ -50,6 +52,9 @@ Technical documentation and empirical reports live under [`docs/`](./docs). Repo
 | Document | Contents |
 | :--- | :--- |
 | **[`docs/FM27_SCOUTING_PRIORITIES_SORTING_FIX_TR.md`](./docs/FM27_SCOUTING_PRIORITIES_SORTING_FIX_TR.md)** (TR) | Root-cause analysis and fix for **FM27 Scouting → Scout Priorities list not sortable**: the `ScoutPrioritiesBlock` UXML ships `StreamedTable.DisableSorting = 1`. Covers the SI.Bindable sorting pipeline reverse-engineered from IL2CPP (`MakeColumnHeader` → `OnHeaderClicked` → `SetSorting` → `ApplySorting` → `SortComparer`), the surgical UnityFS/LZ4 block patch, and risks. Patch tool: `python -m fm26save.ui_patches apply scout-priorities-sorting`. Raw research archive: [`docs/research/scouting_priorities_sorting/`](./docs/research/scouting_priorities_sorting/README.md). |
+| **[`docs/FM27_SCOUTING_50_PLAYER_LIMIT_FIX_TR.md`](./docs/FM27_SCOUTING_50_PLAYER_LIMIT_FIX_TR.md)** (TR) | Root-cause analysis and fix for the **FM27 50-player scouting selection limit** in Player Database / Shortlist / Scouting tables: `EvaluateScoutPlayersAction` (`VA = 0x180FDE520` in `game_plugin.dll`) checks `cmp rcx, 0x198` (`51 * 8` bytes at `VA = 0x180FDEBD4`, raw offset `0x00FDDFD4`) and sets FourCC `'tmpa'` (*Too Many Players Action*) when 51+ eligible players are selected. Patch tool: `python -m fm26save.ui_patches apply scout-player-limit [--max-players 5000]`. |
+| **[`docs/DECOMPILED_ENGINE_REHBERI_TR.md`](./docs/DECOMPILED_ENGINE_REHBERI_TR.md)** (TR) | Complete guide to regenerating the git-ignored `docs/decompiled_engine/` dump from any FM26 (IL2CPP v31) or FM27 (IL2CPP v39) installation, schema of all 11 generated files, and structure-only object model report generation. |
+| **[`docs/object_model/FM26_OBJECT_MODEL.md`](./docs/object_model/FM26_OBJECT_MODEL.md)** & **[`docs/object_model/FM27_OBJECT_MODEL.md`](./docs/object_model/FM27_OBJECT_MODEL.md)** | Public, structure-only reference catalogs of all 63 `*Reference` native binding entities (1,341 FourCC property codes), 2,405 `editor.fmf` schema properties, 189 C# assemblies (24,185 types in FM26 / 23,607 in FM27), and 372 Unity Addressable UI bundles. |
 | **[`docs/FM27_VS_FM26_COMPLETE_DIFFERENCES_AND_ALGORITHMS.md`](./docs/FM27_VS_FM26_COMPLETE_DIFFERENCES_AND_ALGORITHMS.md)** | Complete byte-level, mathematical, and algorithmic comparison between **FM27 (`v27.0.0+2486695`, DB `2700`)** and **FM26 (`DB 2620`)**: the new `Tactical Complexity` (`0..3`), `Tactical Effectiveness` (`0..100`), and `Training Contribution` engines, `4`-unit / `59`-session `training.fmf` overhaul, recalibrated `xG` (`26_8_4_34`) and Match Rating (`v26.4.29.8`) `90min Adjuster` tables, `QME` (`3,420` distributions), Portal news weights, `OOP` loan promises, licensing (`.lnc` removal), and the `+1`-byte `PersonBlockLayout` shift in `.fm` saves. |
 | **[`docs/FM27_VS_FM26_COMPLETE_DIFFERENCES_AND_ALGORITHMS_TR.md`](./docs/FM27_VS_FM26_COMPLETE_DIFFERENCES_AND_ALGORITHMS_TR.md)** (TR) | Turkish edition of the FM27 vs FM26 algorithmic, engine, database and binary differences report. |
 | **[`docs/FM_TUM_VERITABANI_ALANLARI_VE_PARAMETRE_ETKILERI_REHBERI_TR.md`](./docs/FM_TUM_VERITABANI_ALANLARI_VE_PARAMETRE_ETKILERI_REHBERI_TR.md)** (TR) | Field-by-field guide to all 28 save tables, the `.dat` container sections and the `editor.fmf` database schemas, with the in-game engine effect of each parameter. |
@@ -164,15 +169,17 @@ fm-toolkit dof squad-fit "MyCareerSave.fm" --coach "Klopp"
 fm-toolkit dof hire-coach "MyCareerSave.fm" --coach 123456 --years 3   # writes MyCareerSave_DoF.fm
 fm-toolkit dof serve "MyCareerSave.fm" --port 8765                     # local web dashboard
 
-# 9. Decompile game binaries (dump | bindings | metadata | usym | tables | game-plugin | fmf-all | ui-bundles)
+# 9. Decompile game binaries & generate object model reports (dump | report | bindings | metadata | usym | tables | game-plugin | fmf-all | ui-bundles)
 fm-toolkit decompile-binaries --mode bindings --entity PersonReference
 fm-toolkit decompile-binaries --mode dump --out-dir docs/decompiled_engine   # git-ignored, regenerate locally
+fm-toolkit decompile-binaries --mode report --out-dir docs/decompiled_engine # writes docs/object_model/<GAME>_OBJECT_MODEL.md
 
-# 10. Unity UI bundle patches (close the game first; a .bak backup is kept)
+# 10. Unity UI bundle & game_plugin.dll patches (close the game first; a .bak backup is kept)
 python -m fm26save.ui_patches list
-python -m fm26save.ui_patches apply scout-priorities-sorting --dry-run
 python -m fm26save.ui_patches apply scout-priorities-sorting
+python -m fm26save.ui_patches apply scout-player-limit --max-players 5000
 python -m fm26save.ui_patches restore scout-priorities-sorting
+python -m fm26save.ui_patches restore scout-player-limit
 ```
 
 ### Local Windows helper (`tools/`)
