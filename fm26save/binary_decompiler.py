@@ -1883,6 +1883,788 @@ def decompile_csharp_method_bodies(
 
 
 # ==============================================================================
+# 7B. COMPLETE DECOMPILATION OF ALL REMAINING GAME FILES (CATEGORY 2)
+# ==============================================================================
+
+_UNITY_CLASS_ID_NAMES: dict[int, str] = {
+    1: "GameObject",
+    4: "Transform",
+    13: "InputManager",
+    20: "Camera",
+    21: "Material",
+    23: "MeshRenderer",
+    28: "Texture2D",
+    33: "MeshFilter",
+    43: "Mesh",
+    48: "Shader",
+    49: "TextAsset",
+    54: "Rigidbody",
+    65: "BoxCollider",
+    74: "AnimationClip",
+    82: "AudioSource",
+    83: "AudioClip",
+    89: "Cubemap",
+    91: "AnimatorController",
+    95: "Animator",
+    104: "RenderSettings",
+    108: "Light",
+    114: "MonoBehaviour",
+    115: "MonoScript",
+    128: "Font",
+    129: "PlayerSettings",
+    141: "BuildSettings",
+    142: "AssetBundle",
+    150: "PreloadData",
+    157: "LightmapSettings",
+    212: "SpriteRenderer",
+    213: "Sprite",
+    222: "CanvasRenderer",
+    223: "Canvas",
+    224: "RectTransform",
+    687078895: "SpriteAtlas",
+}
+
+
+def _parse_serialized_file_v22(path: Path) -> dict[str, Any]:
+    """Parse a Unity SerializedFile (v22) container header, serialized type table,
+    object table, script table, and external file reference list."""
+    data = path.read_bytes()
+    if len(data) < 64:
+        return {"file": path.name, "size_bytes": len(data), "valid": False}
+    hdr_ver = struct.unpack_from(">I", data, 8)[0]
+    endian = data[16]
+    meta_size = struct.unpack_from(">I", data, 20)[0]
+    file_size, data_offset, _ = struct.unpack_from(">QQq", data, 24)
+    pos = 48
+    try:
+        end_s = data.index(b"\x00", pos)
+        unity_ver = data[pos:end_s].decode("ascii", errors="replace")
+        pos = end_s + 1
+        plat = struct.unpack_from("<i", data, pos)[0]
+        pos += 4
+        has_tree = data[pos] != 0
+        pos += 1
+        type_cnt = struct.unpack_from("<i", data, pos)[0]
+        pos += 4
+        types: list[dict[str, Any]] = []
+        if not has_tree and 0 <= type_cnt <= 10000:
+            for _ in range(type_cnt):
+                cid = struct.unpack_from("<i", data, pos)[0]
+                is_strip = data[pos + 4]
+                script_idx = struct.unpack_from("<h", data, pos + 5)[0]
+                pos += 7
+                if cid == 114 or cid < 0:
+                    script_id = data[pos : pos + 16].hex()
+                    pos += 16
+                else:
+                    script_id = None
+                old_hash = data[pos : pos + 16].hex()
+                pos += 16
+                types.append(
+                    {
+                        "class_id": cid,
+                        "class_name": _UNITY_CLASS_ID_NAMES.get(cid, f"Class_{cid}"),
+                        "is_stripped": is_strip,
+                        "script_type_index": script_idx,
+                        "script_id": script_id,
+                        "old_type_hash": old_hash,
+                    }
+                )
+        obj_cnt = 0
+        script_cnt = 0
+        ext_cnt = 0
+        externals: list[dict[str, Any]] = []
+        objs_by_class: dict[str, int] = {}
+        if not has_tree and len(types) == type_cnt:
+            obj_cnt = struct.unpack_from("<i", data, pos)[0]
+            pos += 4
+            while pos % 4 != 0:
+                pos += 1
+            for _ in range(obj_cnt):
+                _, _, _, tidx = struct.unpack_from("<qQII", data, pos)
+                pos += 24
+                cname = (
+                    types[tidx]["class_name"]
+                    if 0 <= tidx < len(types)
+                    else f"TypeIdx_{tidx}"
+                )
+                objs_by_class[cname] = objs_by_class.get(cname, 0) + 1
+            script_cnt = struct.unpack_from("<i", data, pos)[0]
+            pos += 4 + script_cnt * 12
+            ext_cnt = struct.unpack_from("<i", data, pos)[0]
+            pos += 4
+            for _ in range(ext_cnt):
+                e0 = data.index(b"\x00", pos)
+                pos = e0 + 1
+                guid = data[pos : pos + 16].hex()
+                etype = struct.unpack_from("<i", data, pos + 16)[0]
+                pos += 20
+                e1 = data.index(b"\x00", pos)
+                epath = data[pos:e1].decode("utf-8", errors="replace")
+                pos = e1 + 1
+                externals.append({"path": epath, "guid": guid, "type": etype})
+    except Exception as exc:  # pragma: no cover - defensive fallback
+        return {
+            "file": path.name,
+            "size_bytes": len(data),
+            "version": hdr_ver,
+            "error": str(exc),
+        }
+
+    res_s = path.with_suffix(path.suffix + ".resS") if path.suffix else path.parent / (path.name + ".resS")
+    return {
+        "file": path.name,
+        "size_bytes": len(data),
+        "ress_file": res_s.name if res_s.exists() else None,
+        "ress_size_bytes": res_s.stat().st_size if res_s.exists() else 0,
+        "serialized_version": hdr_ver,
+        "endianness": "little" if endian == 0 else "big",
+        "metadata_size": meta_size,
+        "header_file_size": file_size,
+        "data_offset": data_offset,
+        "unity_version": unity_ver,
+        "target_platform": plat,
+        "enable_type_tree": has_tree,
+        "type_count": type_cnt,
+        "object_count": obj_cnt,
+        "script_type_count": script_cnt,
+        "external_reference_count": ext_cnt,
+        "external_references": externals,
+        "objects_by_class": dict(sorted(objs_by_class.items(), key=lambda kv: -kv[1])),
+    }
+
+
+def _parse_pe64_summary(path: Path) -> dict[str, Any]:
+    """Extract PE64 section layout, export count, and .pdata function count for any Windows DLL/EXE."""
+    st_size = path.stat().st_size
+    with open(path, "rb") as f:
+        hdr = f.read(4096)
+        if len(hdr) < 0x100 or hdr[:2] != b"MZ":
+            return {"file": path.name, "size_bytes": st_size, "is_pe64": False}
+        pe_off = struct.unpack_from("<I", hdr, 0x3C)[0]
+        if pe_off + 24 > len(hdr) or hdr[pe_off : pe_off + 4] != b"PE\x00\x00":
+            return {"file": path.name, "size_bytes": st_size, "is_pe64": False}
+        machine, num_sec, timestamp = struct.unpack_from("<HHI", hdr, pe_off + 4)
+        opt_sz = struct.unpack_from("<H", hdr, pe_off + 20)[0]
+        opt_off = pe_off + 24
+        magic = struct.unpack_from("<H", hdr, opt_off)[0]
+        is_pe64 = magic == 0x20B
+        dd_off = opt_off + (112 if is_pe64 else 96)
+        exp_rva, exp_sz = struct.unpack_from("<II", hdr, dd_off)
+        pdata_rva, pdata_sz = struct.unpack_from("<II", hdr, dd_off + 3 * 8)
+        sec_off = opt_off + opt_sz
+        sections: list[dict[str, Any]] = []
+        for i in range(num_sec):
+            sh = hdr[sec_off + i * 40 : sec_off + (i + 1) * 40]
+            if len(sh) < 40:
+                break
+            sname = sh[:8].rstrip(b"\x00").decode("ascii", errors="replace")
+            vsz, va, rsz, rptr = struct.unpack_from("<IIII", sh, 8)
+            sections.append(
+                {
+                    "name": sname,
+                    "virtual_address": f"0x{va:08x}",
+                    "virtual_size": vsz,
+                    "raw_size": rsz,
+                    "raw_ptr": rptr,
+                }
+            )
+
+        def _rva_to_off(rva: int) -> int:
+            for s in sections:
+                va = int(s["virtual_address"], 16)
+                span = max(s["virtual_size"], s["raw_size"])
+                if va <= rva < va + span:
+                    return s["raw_ptr"] + (rva - va)
+            return -1
+
+        export_count = 0
+        sample_exports: list[str] = []
+        if exp_rva and exp_sz:
+            e_off = _rva_to_off(exp_rva)
+            if e_off >= 0:
+                f.seek(e_off)
+                edir = f.read(40)
+                if len(edir) == 40:
+                    num_funcs, num_names, _, names_rva, _ = struct.unpack_from("<IIIII", edir, 20)
+                    export_count = num_names or num_funcs
+                    n_off = _rva_to_off(names_rva)
+                    if n_off >= 0 and num_names > 0:
+                        f.seek(n_off)
+                        n_rvas = struct.unpack_from(f"<{min(8, num_names)}I", f.read(4 * min(8, num_names)))
+                        for nrva in n_rvas:
+                            so = _rva_to_off(nrva)
+                            if so >= 0:
+                                f.seek(so)
+                                sbytes = f.read(96).split(b"\x00", 1)[0]
+                                sample_exports.append(sbytes.decode("ascii", errors="replace"))
+
+        pdata_functions = pdata_sz // 12 if pdata_sz else 0
+        return {
+            "file": path.name,
+            "relative_path": path.name,
+            "size_bytes": st_size,
+            "is_pe64": is_pe64,
+            "machine": f"0x{machine:04x}",
+            "timestamp": timestamp,
+            "section_count": len(sections),
+            "sections": sections,
+            "export_count": export_count,
+            "sample_exports": sample_exports,
+            "pdata_function_count": pdata_functions,
+        }
+
+
+def decompile_all_remaining_game_files(
+    fm_install_dir: str | os.PathLike[str] | None = None,
+) -> dict[str, Any]:
+    """Decompile all Category 2 (previously untouched) binary, archive, animation, catalog,
+    Unity runtime, and native PE64 files across the entire Football Manager installation:
+
+    1. Complete installation file inventory (every file by extension & top-level directory).
+    2. All ``.bundle`` files (`534` in FM27 / `568` in FM26) via `BlocksInfo` + CAB directory nodes.
+    3. Unity Addressables binary catalogs (`aa/catalog.bin` & `AddrData/catalog_info.bin`, magic `0x0DE38942` v2),
+       `aa/settings.json`, `aa/AddressablesLink/link.xml`, and `fm_Data/manifest.dat` (`BuildVerifierUtilities.ReadManifest`).
+    4. `shared/data/sianim/` 3D animation engine:
+       - `animations/*.cat` (`CAT\\x00` v38/v37 backward-walked animation clip packages + `STAB` string table),
+       - `animations/*.amd` (v4 Motion Matching Databases with 11-byte segment descriptors + frame feature spans),
+       - `schemas/*.json` (`41` match action clip schemas),
+       - `skeletons/` (`config.xml` + `18` male/female skeleton rig & dev UI JSON definitions).
+    5. Unity SerializedFile v22 containers (`globalgamemanagers`, `globalgamemanagers.assets`,
+       `resources.assets`, `sharedassets0.assets`, `level0`, `unity default resources`, `unity_builtin_extra`)
+       and runtime configs (`RuntimeInitializeOnLoads.json`, `ScriptingAssemblies.json`, `boot.config`, `app.info`).
+    6. All 15 native PE64 binaries (`fm.exe`, `UnityPlayer.dll`, `GameAssembly.dll`, and all 12 `Plugins/x86_64/*.dll`).
+    7. Database `lang_db.dat` (`400` localized FMF tables), `fmc` (FM Console/Touch database variant), and all historical DB versions (`2300`..`2700`).
+    """
+    from fm26save.unity_bundle import read_bundle
+
+    root = resolve_fm_install_dir(fm_install_dir)
+
+    # 1. Full Installation File Inventory
+    total_files = 0
+    total_bytes = 0
+    by_ext: dict[str, dict[str, int]] = {}
+    by_top_dir: dict[str, dict[str, int]] = {}
+    for p in sorted(root.rglob("*")):
+        if not p.is_file():
+            continue
+        sz = p.stat().st_size
+        total_files += 1
+        total_bytes += sz
+        ext = p.suffix.lower() or "<no_ext>"
+        ed = by_ext.setdefault(ext, {"count": 0, "bytes": 0})
+        ed["count"] += 1
+        ed["bytes"] += sz
+        rel_parts = p.relative_to(root).parts
+        top_key = rel_parts[0] if len(rel_parts) > 1 else "<root>"
+        td = by_top_dir.setdefault(top_key, {"count": 0, "bytes": 0})
+        td["count"] += 1
+        td["bytes"] += sz
+
+    installation_inventory = {
+        "total_files": total_files,
+        "total_bytes": total_bytes,
+        "by_extension": dict(sorted(by_ext.items(), key=lambda kv: -kv[1]["bytes"])),
+        "by_top_directory": dict(sorted(by_top_dir.items(), key=lambda kv: -kv[1]["bytes"])),
+    }
+
+    # 2. All .bundle files in fm_Data/StreamingAssets/aa/StandaloneWindows64 + fm_Data/Resources
+    aa_bundle_dir = root / "fm_Data/StreamingAssets/aa/StandaloneWindows64"
+    res_bundle_dir = root / "fm_Data/Resources"
+    all_bundle_paths = sorted(aa_bundle_dir.glob("*.bundle")) if aa_bundle_dir.exists() else []
+    if res_bundle_dir.exists():
+        all_bundle_paths.extend(sorted(res_bundle_dir.glob("*.bundle")))
+
+    total_bundle_comp = 0
+    total_bundle_uncomp = 0
+    total_cab_nodes = 0
+    bundles_by_category: dict[str, dict[str, Any]] = {}
+    for bp in all_bundle_paths:
+        c_sz = bp.stat().st_size
+        total_bundle_comp += c_sz
+        cat = bp.name.split("_")[0].split("-")[0]
+        cat_d = bundles_by_category.setdefault(
+            cat,
+            {
+                "bundle_count": 0,
+                "compressed_bytes": 0,
+                "uncompressed_bytes": 0,
+                "cab_node_count": 0,
+                "sample_bundles": [],
+            },
+        )
+        cat_d["bundle_count"] += 1
+        cat_d["compressed_bytes"] += c_sz
+        try:
+            b = read_bundle(bp)
+            u_sz = b.uncompressed_size
+            total_bundle_uncomp += u_sz
+            cat_d["uncompressed_bytes"] += u_sz
+            bi = b.blocks_info
+            blk_cnt = struct.unpack_from(">I", bi, 16)[0]
+            npos = 20 + blk_cnt * 10
+            node_cnt = struct.unpack_from(">I", bi, npos)[0]
+            npos += 4
+            nodes: list[dict[str, Any]] = []
+            for _ in range(node_cnt):
+                _, n_sz, n_fl = struct.unpack_from(">QQI", bi, npos)
+                npos += 20
+                end_s = bi.find(b"\x00", npos)
+                n_name = bi[npos:end_s].decode("utf-8", errors="replace")
+                npos = end_s + 1
+                nodes.append({"name": n_name, "size": n_sz, "flags": n_fl})
+            total_cab_nodes += len(nodes)
+            cat_d["cab_node_count"] += len(nodes)
+            if len(cat_d["sample_bundles"]) < 4:
+                cat_d["sample_bundles"].append(
+                    {
+                        "bundle": bp.name,
+                        "compressed_bytes": c_sz,
+                        "uncompressed_bytes": u_sz,
+                        "block_count": len(b.blocks),
+                        "cab_nodes": [n["name"] for n in nodes[:4]],
+                    }
+                )
+        except Exception:
+            pass
+
+    addressable_bundles_inventory = {
+        "total_bundles": len(all_bundle_paths),
+        "total_compressed_bytes": total_bundle_comp,
+        "total_uncompressed_bytes": total_bundle_uncomp,
+        "total_cab_nodes": total_cab_nodes,
+        "category_count": len(bundles_by_category),
+        "categories": dict(
+            sorted(bundles_by_category.items(), key=lambda kv: -kv[1]["uncompressed_bytes"])
+        ),
+    }
+
+    # 3. Unity Addressables Binary Catalogs (aa/catalog.bin & AddrData/catalog_info.bin) + settings.json + link.xml + manifest.dat
+    catalogs_out: dict[str, Any] = {}
+    for rel_cat in (
+        "fm_Data/StreamingAssets/aa/catalog.bin",
+        "fm_Data/StreamingAssets/AddrData/catalog_info.bin",
+    ):
+        cp = root / rel_cat
+        if not cp.exists():
+            continue
+        raw = cp.read_bytes()
+        if len(raw) >= 36:
+            magic, ver, keys_off, id_off, inst_off, scene_off, init_off, hash_off = struct.unpack_from(
+                "<8I", raw, 0
+            )
+            keys_byte_len = struct.unpack_from("<I", raw, keys_off - 4)[0] if keys_off >= 4 else 0
+            key_cnt = keys_byte_len // 8
+            entries_end = id_off - 4
+            entry_group_cnt = (
+                (entries_end - (keys_off + keys_byte_len)) // 4
+                if entries_end >= keys_off + keys_byte_len
+                else 0
+            )
+            id_len = struct.unpack_from("<I", raw, id_off - 4)[0] if id_off >= 4 else 0
+            locator_id = (
+                raw[id_off : id_off + id_len].decode("utf-8", errors="replace")
+                if id_off + id_len <= len(raw)
+                else ""
+            )
+            hash_len = struct.unpack_from("<I", raw, hash_off - 4)[0] if hash_off >= 4 else 0
+            build_hash = (
+                raw[hash_off : hash_off + hash_len].decode("utf-8", errors="replace")
+                if hash_off + hash_len <= len(raw)
+                else ""
+            )
+            blob = raw[hash_off + hash_len :]
+            ascii_strs = [
+                m.group(0).decode("ascii", errors="ignore")
+                for m in re.finditer(rb"[A-Za-z0-9_./\-]{8,200}", blob)
+            ]
+            bundle_strs = sorted({s for s in ascii_strs if s.endswith(".bundle")})
+            catalogs_out[Path(rel_cat).name] = {
+                "relative_path": rel_cat,
+                "size_bytes": len(raw),
+                "magic": f"0x{magic:08x}",
+                "version": ver,
+                "locator_id": locator_id,
+                "build_result_hash": build_hash,
+                "key_count": key_cnt,
+                "entry_group_count": entry_group_cnt,
+                "header_offsets": {
+                    "keys_offset": f"0x{keys_off:06x}",
+                    "id_offset": f"0x{id_off:06x}",
+                    "instance_provider_offset": f"0x{inst_off:06x}",
+                    "scene_provider_offset": f"0x{scene_off:06x}",
+                    "init_objects_array_offset": f"0x{init_off:06x}",
+                    "build_result_hash_offset": f"0x{hash_off:06x}",
+                },
+                "unique_bundle_references_count": len(bundle_strs),
+                "sample_bundle_references": bundle_strs[:25],
+            }
+
+    aa_settings_path = root / "fm_Data/StreamingAssets/aa/settings.json"
+    aa_settings = (
+        json.loads(aa_settings_path.read_text(encoding="utf-8", errors="replace"))
+        if aa_settings_path.exists()
+        else {}
+    )
+    link_xml_path = root / "fm_Data/StreamingAssets/aa/AddressablesLink/link.xml"
+    link_xml_info: dict[str, Any] = {"exists": link_xml_path.exists()}
+    if link_xml_path.exists():
+        ltxt = link_xml_path.read_text(encoding="utf-8", errors="replace")
+        asm_names = re.findall(r'<assembly\s+fullname="([^"]+)"', ltxt)
+        type_names = re.findall(r'<type\s+fullname="([^"]+)"', ltxt)
+        link_xml_info = {
+            "exists": True,
+            "size_bytes": link_xml_path.stat().st_size,
+            "assembly_count": len(asm_names),
+            "preserved_type_count": len(type_names),
+            "sample_assemblies": asm_names[:20],
+        }
+
+    # Parse fm_Data/manifest.dat (BuildVerifierUtilities.ReadManifest)
+    manifest_dat_path = root / "fm_Data/manifest.dat"
+    manifest_dat_info: dict[str, Any] = {"exists": manifest_dat_path.exists()}
+    if manifest_dat_path.exists():
+        mraw = manifest_dat_path.read_bytes()
+        # Detect FM27 25-byte binary MD5 format (u32 path_hash + i32 len=16 + 16B md5 + '\n')
+        # vs FM26 37-byte ASCII hex MD5 format (u32 path_hash + 32B ascii_md5 + '\n')
+        m_records: list[dict[str, Any]] = []
+        rec_fmt = "unknown"
+        rec_size = 0
+        if len(mraw) >= 25 and len(mraw) % 25 == 0 and struct.unpack_from("<I", mraw, 4)[0] == 16 and mraw[24] == 0x0A:
+            rec_fmt = "FM27_25B_binary_md5 (uint32 path_hash + int32 len=16 + 16B md5 + '\\n')"
+            rec_size = 25
+            for off in range(0, len(mraw), 25):
+                phash, hlen = struct.unpack_from("<II", mraw, off)
+                md5_hex = mraw[off + 8 : off + 8 + hlen].hex()
+                m_records.append({"path_hash": f"0x{phash:08x}", "md5": md5_hex})
+        elif len(mraw) >= 37 and len(mraw) % 37 == 0 and mraw[36] == 0x0A:
+            rec_fmt = "FM26_37B_ascii_md5 (uint32 path_hash + 32B ascii_md5 + '\\n')"
+            rec_size = 37
+            for off in range(0, len(mraw), 37):
+                phash = struct.unpack_from("<I", mraw, off)[0]
+                md5_hex = mraw[off + 4 : off + 36].decode("ascii", errors="replace")
+                m_records.append({"path_hash": f"0x{phash:08x}", "md5": md5_hex})
+        non_zero = sum(1 for r in m_records if r["path_hash"] != "0x00000000")
+        manifest_dat_info = {
+            "exists": True,
+            "size_bytes": len(mraw),
+            "format": rec_fmt,
+            "record_size_bytes": rec_size,
+            "record_count": len(m_records),
+            "non_zero_path_hashes": non_zero,
+            "zero_path_hashes": len(m_records) - non_zero,
+            "sample_records": m_records[:15],
+        }
+
+    # 4. sianim 3D Match Animation Engine (shared/data/sianim/)
+    sianim_dir = root / "shared/data/sianim"
+    cat_archives: dict[str, Any] = {}
+    amd_databases: dict[str, Any] = {}
+    action_schemas: list[dict[str, Any]] = []
+    skeleton_files: list[dict[str, Any]] = []
+    if sianim_dir.exists():
+        anim_dir = sianim_dir / "animations"
+        if anim_dir.exists():
+            for cat_file in sorted(anim_dir.glob("*.cat")):
+                cdata = cat_file.read_bytes()
+                pos = len(cdata)
+                last_u32 = struct.unpack_from("<I", cdata, pos - 4)[0] if pos >= 4 else 0
+                stab_strings: list[str] = []
+                if 0 < last_u32 < pos and cdata[pos - last_u32 : pos - last_u32 + 4] == b"STAB":
+                    stab_start = pos - last_u32
+                    raw_strs = cdata[stab_start + 4 : pos - 4].split(b"\x00")
+                    if raw_strs and raw_strs[-1] == b"":
+                        raw_strs.pop()
+                    stab_strings = [s.decode("utf-8", errors="replace") for s in raw_strs]
+                    pos = stab_start
+                clip_cnt = 0
+                tot_sections = 0
+                tot_tracks = 0
+                cat_ver = struct.unpack_from("<I", cdata, 4)[0] if len(cdata) >= 8 else 0
+                while pos > 0:
+                    clip_sz = struct.unpack_from("<I", cdata, pos - 4)[0]
+                    clip_start = pos - clip_sz
+                    if clip_start < 0 or cdata[clip_start : clip_start + 4] != b"CAT\x00":
+                        break
+                    sec_cnt = cdata[pos - 5]
+                    t_base = pos - 5 - sec_cnt * 9
+                    tot_tracks += sum(cdata[t_base + i * 9 + 8] for i in range(sec_cnt))
+                    tot_sections += sec_cnt
+                    clip_cnt += 1
+                    pos = clip_start
+                stab_cats: dict[str, int] = {}
+                for s in stab_strings:
+                    pref = s.split("/")[0] if "/" in s else "<root>"
+                    stab_cats[pref] = stab_cats.get(pref, 0) + 1
+                cat_archives[cat_file.name] = {
+                    "size_bytes": len(cdata),
+                    "magic": "CAT\\x00",
+                    "version": cat_ver,
+                    "walked_to_offset": pos,
+                    "clip_count": clip_cnt,
+                    "total_bone_sections": tot_sections,
+                    "total_animation_tracks": tot_tracks,
+                    "stab_string_count": len(stab_strings),
+                    "stab_categories": dict(sorted(stab_cats.items(), key=lambda kv: -kv[1])),
+                    "sample_stab_clip_names": stab_strings[:20],
+                }
+
+            for amd_file in sorted(anim_dir.glob("*.amd")):
+                adata = amd_file.read_bytes()
+                ver = adata[0] if adata else 0
+                seg_cnt = struct.unpack_from("<H", adata, 1)[0] if len(adata) >= 3 else 0
+                if len(adata) <= 32:
+                    amd_databases[amd_file.name] = {
+                        "size_bytes": len(adata),
+                        "version": ver,
+                        "header_hex": adata.hex(),
+                        "segment_count": 0,
+                    }
+                    continue
+                segs = [struct.unpack_from("<IIHB", adata, 3 + i * 11) for i in range(seg_cnt)]
+                tot_spans = sum(s[1] - s[0] for s in segs)
+                rem_bytes = len(adata) - (3 + seg_cnt * 11 + 2)
+                amd_databases[amd_file.name] = {
+                    "size_bytes": len(adata),
+                    "version": ver,
+                    "segment_count": seg_cnt,
+                    "total_frame_spans": tot_spans,
+                    "feature_payload_bytes": rem_bytes,
+                    "bytes_per_frame_span": round(rem_bytes / tot_spans, 2) if tot_spans else 0.0,
+                    "sample_segments": [
+                        {
+                            "start_frame": s[0],
+                            "end_frame": s[1],
+                            "clip_state_id": s[2],
+                            "flags": s[3],
+                        }
+                        for s in segs[:10]
+                    ],
+                }
+
+        schemas_dir = sianim_dir / "schemas"
+        if schemas_dir.exists():
+            for sp in sorted(schemas_dir.glob("*.json")):
+                try:
+                    s_obj = json.loads(sp.read_text(encoding="utf-8", errors="replace"))
+                    action_schemas.append(
+                        {
+                            "file": sp.name,
+                            "size_bytes": sp.stat().st_size,
+                            "keys": list(s_obj.keys()) if isinstance(s_obj, dict) else [],
+                        }
+                    )
+                except Exception:
+                    action_schemas.append({"file": sp.name, "size_bytes": sp.stat().st_size})
+
+        for sk_sub in ("skeletons", "skeletons_dev_ui_data"):
+            sk_dir = sianim_dir / sk_sub
+            if sk_dir.exists():
+                for skp in sorted(sk_dir.rglob("*")):
+                    if skp.is_file():
+                        skeleton_files.append(
+                            {
+                                "relative_path": skp.relative_to(sianim_dir).as_posix(),
+                                "size_bytes": skp.stat().st_size,
+                            }
+                        )
+
+    sianim_summary = {
+        "cat_archive_count": len(cat_archives),
+        "total_cat_clips": sum(c["clip_count"] for c in cat_archives.values()),
+        "total_cat_bone_sections": sum(c["total_bone_sections"] for c in cat_archives.values()),
+        "total_cat_tracks": sum(c["total_animation_tracks"] for c in cat_archives.values()),
+        "cat_archives": cat_archives,
+        "amd_database_count": len(amd_databases),
+        "total_amd_segments": sum(a.get("segment_count", 0) for a in amd_databases.values()),
+        "total_amd_frame_spans": sum(a.get("total_frame_spans", 0) for a in amd_databases.values()),
+        "amd_databases": amd_databases,
+        "action_schema_count": len(action_schemas),
+        "action_schemas": action_schemas,
+        "skeleton_file_count": len(skeleton_files),
+        "skeleton_files": skeleton_files,
+    }
+
+    # 5. Unity SerializedFile v22 Containers & Runtime Configs (fm_Data/)
+    serialized_containers: list[dict[str, Any]] = []
+    for rel_sf in (
+        "fm_Data/globalgamemanagers",
+        "fm_Data/globalgamemanagers.assets",
+        "fm_Data/resources.assets",
+        "fm_Data/sharedassets0.assets",
+        "fm_Data/level0",
+        "fm_Data/Resources/unity default resources",
+        "fm_Data/Resources/unity_builtin_extra",
+    ):
+        sfp = root / rel_sf
+        if sfp.exists():
+            serialized_containers.append(_parse_serialized_file_v22(sfp))
+
+    runtime_init_path = root / "fm_Data/RuntimeInitializeOnLoads.json"
+    scripting_asm_path = root / "fm_Data/ScriptingAssemblies.json"
+    boot_cfg_path = root / "fm_Data/boot.config"
+    app_info_path = root / "fm_Data/app.info"
+
+    runtime_init_entries = 0
+    if runtime_init_path.exists():
+        try:
+            ri_obj = json.loads(runtime_init_path.read_text(encoding="utf-8", errors="replace"))
+            runtime_init_entries = len(ri_obj.get("root", [])) if isinstance(ri_obj, dict) else 0
+        except Exception:
+            pass
+
+    scripting_asm_names: list[str] = []
+    if scripting_asm_path.exists():
+        try:
+            sa_obj = json.loads(scripting_asm_path.read_text(encoding="utf-8", errors="replace"))
+            scripting_asm_names = sa_obj.get("names", []) if isinstance(sa_obj, dict) else []
+        except Exception:
+            pass
+
+    boot_cfg_kv: dict[str, str] = {}
+    if boot_cfg_path.exists():
+        for ln in boot_cfg_path.read_text(encoding="utf-8", errors="replace").splitlines():
+            if "=" in ln:
+                k, v = ln.split("=", 1)
+                boot_cfg_kv[k.strip()] = v.strip()
+
+    unity_runtime_containers = {
+        "serialized_containers_count": len(serialized_containers),
+        "total_serialized_objects": sum(c.get("object_count", 0) for c in serialized_containers),
+        "serialized_containers": serialized_containers,
+        "runtime_initialize_on_loads_count": runtime_init_entries,
+        "scripting_assemblies_count": len(scripting_asm_names),
+        "scripting_assemblies": scripting_asm_names,
+        "boot_config": boot_cfg_kv,
+        "app_info": (
+            app_info_path.read_text(encoding="utf-8", errors="replace").splitlines()
+            if app_info_path.exists()
+            else []
+        ),
+    }
+
+    # 6. All Native PE64 Binaries (fm.exe, UnityPlayer.dll, GameAssembly.dll, Plugins/x86_64/*.dll)
+    pe_paths: list[Path] = []
+    for top_pe in ("fm.exe", "UnityPlayer.dll", "GameAssembly.dll", "crashpad_handler.exe"):
+        tp = root / top_pe
+        if tp.exists():
+            pe_paths.append(tp)
+    plugins_dir = root / "fm_Data/Plugins/x86_64"
+    if plugins_dir.exists():
+        pe_paths.extend(sorted(plugins_dir.glob("*.dll")))
+
+    pe_summaries = [_parse_pe64_summary(pp) for pp in pe_paths]
+    all_native_pe64_binaries = {
+        "binary_count": len(pe_summaries),
+        "total_exports": sum(b.get("export_count", 0) for b in pe_summaries),
+        "total_pdata_functions": sum(b.get("pdata_function_count", 0) for b in pe_summaries),
+        "binaries": pe_summaries,
+    }
+
+    # 7. Database lang_db.dat, fmc (Console/Touch DB variant), and all historical DB versions (2300..2700)
+    db_root = root / "shared/data/database/db"
+    db_versions: list[dict[str, Any]] = []
+    lang_db_summary: dict[str, Any] = {}
+    fmc_variant_summary: dict[str, Any] = {}
+    if db_root.exists():
+        for vdir in sorted(db_root.iterdir()):
+            if not vdir.is_dir():
+                continue
+            v_files = [f for f in vdir.rglob("*") if f.is_file()]
+            db_versions.append(
+                {
+                    "version": vdir.name,
+                    "file_count": len(v_files),
+                    "total_bytes": sum(f.stat().st_size for f in v_files),
+                    "subfolders": sorted([d.name for d in vdir.iterdir() if d.is_dir()]),
+                }
+            )
+            for sub in sorted(vdir.iterdir()):
+                if not sub.is_dir():
+                    continue
+                if sub.name.endswith("_fm"):
+                    ldb = sub / "lang_db.dat"
+                    if ldb.exists():
+                        try:
+                            import zstandard
+
+                            lraw = ldb.read_bytes()
+                            z_magic = b"\x28\xb5\x2f\xfd"
+                            z_positions: list[int] = []
+                            zp = 0
+                            while True:
+                                idx = lraw.find(z_magic, zp)
+                                if idx == -1:
+                                    break
+                                z_positions.append(idx)
+                                zp = idx + 4
+                            dctx = zstandard.ZstdDecompressor()
+                            row_counts_17: list[int] = []
+                            for fi in range(min(17, len(z_positions))):
+                                f_start = z_positions[fi]
+                                f_end = z_positions[fi + 1] if fi + 1 < len(z_positions) else len(lraw)
+                                dec = dctx.decompress(lraw[f_start:f_end], max_output_size=20_000_000)
+                                rc = (
+                                    struct.unpack_from("<I", dec, 8)[0]
+                                    if len(dec) >= 12 and dec[:6] == b"\x03\x01tad."
+                                    else 0
+                                )
+                                row_counts_17.append(rc)
+                            lang_db_summary = {
+                                "path": ldb.relative_to(root).as_posix(),
+                                "size_bytes": len(lraw),
+                                "zstd_frame_count": len(z_positions),
+                                "language_count": (len(z_positions) - 1) // 16,
+                                "tables_per_language": 16,
+                                "nations_count": row_counts_17[0] if len(row_counts_17) > 0 else 0,
+                                "competitions_count": row_counts_17[1] if len(row_counts_17) > 1 else 0,
+                                "clubs_count": row_counts_17[2] if len(row_counts_17) > 2 else 0,
+                                "cities_count": row_counts_17[3] if len(row_counts_17) > 3 else 0,
+                                "continents_count": row_counts_17[4] if len(row_counts_17) > 4 else 0,
+                                "languages_table_count": row_counts_17[5] if len(row_counts_17) > 5 else 0,
+                                "awards_count": row_counts_17[6] if len(row_counts_17) > 6 else 0,
+                                "stadiums_count": row_counts_17[7] if len(row_counts_17) > 7 else 0,
+                                "regions_count": row_counts_17[8] if len(row_counts_17) > 8 else 0,
+                                "descriptions_count": row_counts_17[12] if len(row_counts_17) > 12 else 0,
+                                "injuries_count": row_counts_17[13] if len(row_counts_17) > 13 else 0,
+                                "total_rows_per_language": sum(row_counts_17[1:17]),
+                            }
+                        except Exception:
+                            pass
+                elif sub.name.endswith("_fmc"):
+                    fmc_files = sorted([f for f in sub.iterdir() if f.is_file()])
+                    fmc_dt = sub / "non_pl_hist_dt.dat"
+                    fmc_dt_rows = (fmc_dt.stat().st_size - 8) // 24 if fmc_dt.exists() and fmc_dt.stat().st_size >= 8 else 0
+                    fmc_variant_summary = {
+                        "folder": sub.relative_to(root).as_posix(),
+                        "file_count": len(fmc_files),
+                        "total_bytes": sum(f.stat().st_size for f in fmc_files),
+                        "non_pl_hist_dt_rows": fmc_dt_rows,
+                        "files": [{"name": f.name, "size_bytes": f.stat().st_size} for f in fmc_files],
+                    }
+
+    return {
+        "installation_inventory": installation_inventory,
+        "addressable_bundles_inventory": addressable_bundles_inventory,
+        "addressable_catalogs_and_manifest": {
+            "catalogs": catalogs_out,
+            "settings_json": aa_settings,
+            "addressables_link_xml": link_xml_info,
+            "manifest_dat": manifest_dat_info,
+        },
+        "sianim_animation_engine": sianim_summary,
+        "unity_runtime_containers": unity_runtime_containers,
+        "all_native_pe64_binaries": all_native_pe64_binaries,
+        "database_variants_and_lang_db": {
+            "db_version_count": len(db_versions),
+            "db_versions": db_versions,
+            "lang_db_dat": lang_db_summary,
+            "fmc_console_variant": fmc_variant_summary,
+        },
+    }
+
+
+# ==============================================================================
 # 8. ONE-SHOT FULL DECOMPILED CODEBASE DUMPER (JSON + C# STUBS)
 # ==============================================================================
 
@@ -1905,6 +2687,7 @@ def dump_decompiled_codebase(
     gp_data = decompile_game_plugin_exports(fm_install_dir)
     fmf_all_data = extract_all_fmf_and_config_archives(fm_install_dir)
     ui_bundles_data = decompile_unity_ui_bundles(fm_install_dir)
+    remaining_data = decompile_all_remaining_game_files(fm_install_dir)
 
     # Attach il2cpp.usym RVA ranges & source file/line spans onto every method in meta_data["types"]
     if method_rva_map:
@@ -1994,6 +2777,12 @@ def dump_decompiled_codebase(
     # 8. Write unity_ui_bundles_decompiled.json
     (out_path / "unity_ui_bundles_decompiled.json").write_text(
         json.dumps(ui_bundles_data, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+    # 8B. Write all_remaining_files_decompiled.json
+    (out_path / "all_remaining_files_decompiled.json").write_text(
+        json.dumps(remaining_data, indent=2, ensure_ascii=False),
         encoding="utf-8",
     )
 
@@ -2090,6 +2879,7 @@ def dump_decompiled_codebase(
         "game_plugin_native_exports.json",
         "all_fmf_configs_and_filters.json",
         "unity_ui_bundles_decompiled.json",
+        "all_remaining_files_decompiled.json",
         "DecompiledReferences.cs",
         "DecompiledAllGameAssemblies.cs",
     ]
@@ -2149,5 +2939,13 @@ def dump_decompiled_codebase(
             "ui_unique_binding_paths": ui_bundles_data["total_unique_ui_binding_paths"],
             "ui_table_factories": ui_bundles_data.get("table_factory_count", 0),
             "ui_table_views": ui_bundles_data.get("table_view_count", 0),
+            "total_installation_files": remaining_data["installation_inventory"]["total_files"],
+            "total_bundles_inventoried": remaining_data["addressable_bundles_inventory"]["total_bundles"],
+            "total_cab_nodes": remaining_data["addressable_bundles_inventory"]["total_cab_nodes"],
+            "sianim_cat_clips": remaining_data["sianim_animation_engine"]["total_cat_clips"],
+            "sianim_amd_segments": remaining_data["sianim_animation_engine"]["total_amd_segments"],
+            "manifest_dat_records": remaining_data["addressable_catalogs_and_manifest"]["manifest_dat"].get("record_count", 0),
+            "unity_serialized_objects": remaining_data["unity_runtime_containers"]["total_serialized_objects"],
+            "native_pe64_binaries": remaining_data["all_native_pe64_binaries"]["binary_count"],
         },
     }

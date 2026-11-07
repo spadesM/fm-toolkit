@@ -73,6 +73,7 @@ from fm26save.formulas import (
     read_fmf_directory,
 )
 from fm26save.binary_decompiler import (
+    decompile_all_remaining_game_files,
     decompile_csharp_method_bodies,
     decompile_game_plugin_exports,
     decompile_gameassembly_bindings,
@@ -429,6 +430,7 @@ __all__ = [
     "decode_players_enriched_relations",
     "decode_staff_enriched",
     "decode_tactics_lineup",
+    "decompile_all_remaining_game_files",
     "decompile_csharp_method_bodies",
     "decompile_game_plugin_exports",
     "decompile_gameassembly_bindings",

@@ -62,9 +62,12 @@ Tüm dökümü diske yazmadan belirli bir alt sistemi incelemek için:
 - `--mode tables` -> `tables.fmf`, `simatch.fmf`, `training.fmf`, `simatchshared.fmf` içindeki ikili JSB tablolarını çözer.
 - `--mode game-plugin` -> `game_plugin.dll` ve `lib_burst_generated.dll` PE64 C++ export tablosunu, `.pdata` (`139.131` C++ fonksiyonu) istatistiklerini, `224` `ActionContributor` ve `58` `SearchFilter` vtable sınıfını çıkarır.
 - `--mode fmf-all` -> Tüm `.fmf` arşivlerinin dizinlerini, `filters.fmf` oyuncu arama filtrelerini, `constants.fmf` sabitlerini, `non_pl_hist_{index,id,dt}.dat` (`3,52` milyon personel kariyer satırı), `summary.dat` (`96.171` kulüp özeti) ve `lang_db_general.dat` (`401` Zstd çerçevesi) verilerini çıkarır.
-- `--mode ui-bundles` -> Tüm 69 UnityFS v8 (LZ4) UI/Bindable `.bundle` dosyasını açarak `.uxml`/`.asset` yollarını, `174` `TableFactory` sınıfını, `2.102` `binding.*` sütun bağlamasını, `592` `TableView` şablonunu ve veri bağlama (`binding`) ifadelerini listeler.
+- `--mode ui-bundles` -> Tüm 69 UnityFS v8 (LZ4) UI/Bindable `.bundle` dosyasını açarak `.uxml`/`.asset` yollarını, `220` `TableFactory` sınıfını, `2.102` `binding.*` sütun bağlamasını, `592` `TableView` şablonunu ve veri bağlama (`binding`) ifadelerini listeler.
+- `--mode remaining` -> Kurulumdaki kalan tüm dosyaları (**Kategori 2 — `%100` kapsama**): tüm `534` UnityFS `.bundle` arşivini (`24` kategori, `764` CAB düğümü), `aa/catalog.bin` (`29.020` anahtar) ve `AddrData/catalog_info.bin` (`37.582` anahtar) ikili kataloglarını, `fm_Data/manifest.dat` (`1.239` MD5 kaydı), `sianim` 3B animasyon motorunu (`5.932` `CAT\x00` klip, `545.744` kemik bölümü, `557.440` iz, `5.819` `STAB` klip yolu, `5.500` `.amd` Motion Matching segmenti, `44` aksiyon şeması, `19` iskelet dosyası), `7` Unity `SerializedFile v22` konteynerini (`8.498` nesne), `17` native PE64 ikilisini ve `lang_db.dat` (`401` Zstd çerçevesi / `229.555` yerelleştirilmiş satır × `25` dil) verilerini çıkarır.
 
-> **Ayrıntılı Teknik Referans:** Kısmen çözümlenmiş 5 sistemin tam ikili şema referansı için bkz. [`FM27_PARTIAL_FILES_FULL_DECOMPILATION_TR.md`](FM27_PARTIAL_FILES_FULL_DECOMPILATION_TR.md).
+> **Ayrıntılı Teknik Referans:**
+> - Kısmen çözümlenmiş 5 sistemin (Kategori 1) tam ikili şema referansı için bkz. [`FM27_PARTIAL_FILES_FULL_DECOMPILATION_TR.md`](FM27_PARTIAL_FILES_FULL_DECOMPILATION_TR.md).
+> - Kalan tüm dosyaların (Kategori 2 — `%100` kurulum kapsaması) tam ikili şema referansı için bkz. [`FM27_ALL_REMAINING_FILES_FULL_DECOMPILATION_TR.md`](FM27_ALL_REMAINING_FILES_FULL_DECOMPILATION_TR.md).
 
 ---
 
@@ -76,9 +79,10 @@ from fm26save import (
     write_object_model_report,
     decompile_global_metadata,
     decompile_gameassembly_bindings,
+    decompile_all_remaining_game_files,
 )
 
-# 1. Tüm 11 dosyayı docs/decompiled_engine altına üret
+# 1. Tüm 12 dosyayı docs/decompiled_engine altına üret
 summary = dump_decompiled_codebase(
     fm_install_dir=r"C:\Program Files (x86)\Steam\steamapps\common\Football Manager 27",
     output_dir="docs/decompiled_engine_fm27",
@@ -93,9 +97,9 @@ write_object_model_report(
 
 ---
 
-## 4. `docs/decompiled_engine/` Dosya Şeması (11 Dosya)
+## 4. `docs/decompiled_engine/` Dosya Şeması (12 Dosya)
 
-`--mode dump` çalıştırıldığında hedef dizinde aşağıdaki **11 dosya** oluşturulur:
+`--mode dump` çalıştırıldığında hedef dizinde aşağıdaki **12 dosya** oluşturulur:
 
 | # | Dosya Adı | İçerik ve Yapısal Şema |
 |---|---|---|
@@ -105,11 +109,12 @@ write_object_model_report(
 | 4 | `enums_and_structs.json` | `global-metadata.dat` içinden çözülen tüm enum sabitleri (`enums`: tam ad -> `{ad: sayısal_değer}`) ve `FM.*` / `SI.*` / `Assembly-CSharp` C# tiplerinin (`fm_si_types`) alan (`fields`), özellik (`properties`) ve metot (`methods`) tanımları. |
 | 5 | `engine_lookup_tables.json` | `tables.fmf`, `simatch.fmf`, `training.fmf` ve `simatchshared.fmf` içindeki derlenmiş `.jsb` simülasyon tabloları (`jumping_reach_table`, `aerial_reach_table`, `qme_stat_relevant_attributes`, `oop_attributes_scoring`, `player_ratings_data`, `team_picking_weights_master`, `training_tables`). |
 | 6 | `usym_source_tree.json` | `il2cpp.usym` sembol tablosundan çıkarılan SI iç kaynak kodu dosya ağacı (`source_files`) ve örnek RVA -> kaynak satır (`records_sample`) eşlemeleri. |
-| 7 | `game_plugin_native_exports.json` | `fm_Data/Plugins/x86_64/game_plugin.dll` ve `lib_burst_generated.dll` içindeki tüm C/C++ P/Invoke export fonksiyonları, RVA/VA adresleri ve alt sistem dağılımı. |
-| 8 | `all_fmf_configs_and_filters.json` | Oyun kurulumundaki tüm `.fmf` arşivlerinin dosya envanteri, `filters.fmf` içindeki `person_search_filters`, `achievements.xml`, `leaderboards.xml`, `settings_xmls`, `versus_comps_xmls`, `sianim_skeletons` ve `shared/data` altındaki `.dat`/`.dbc`/`.edt`/`.lnc` envanteri. |
-| 9 | `unity_ui_bundles_decompiled.json` | LZ4 ile sıkıştırılmış UnityFS v8 UI `.bundle` dosyalarından çıkarılan `Assets/.../*.uxml` / `*.asset` yolları ve benzersiz UI veri bağlama (`player.*`, `person.*`, `club.*` vb.) yolları. |
-| 10 | `DecompiledReferences.cs` | Tüm `*Reference` sınıflarını kalıtım zinciri, FourCC sabitleri ve `public object <Property> { get; }` bildirimleriyle sunan tek parça C# referans dosyası. |
-| 11 | `DecompiledAllGameAssemblies.cs` | Tüm `FM.*` ve `SI.*` C# sınıflarını, struct'larını, enum sabitlerini, alanlarını ve metot imzalarını içeren kapsamlı C# bildirim dosyası. |
+| 7 | `game_plugin_native_exports.json` | `fm_Data/Plugins/x86_64/game_plugin.dll` ve `lib_burst_generated.dll` içindeki tüm C/C++ P/Invoke export fonksiyonları, RVA/VA adresleri, `.pdata` fonksiyon tablosu ve `ActionContributor` / `SearchFilter` vtable sınıfları. |
+| 8 | `all_fmf_configs_and_filters.json` | Oyun kurulumundaki tüm `.fmf` arşivlerinin dosya envanteri, `filters.fmf` içindeki `person_search_filters`, `non_pl_hist_*.dat`, `summary.dat`, `lang_db_general.dat`, `constants.fmf` ve `shared/data` altındaki `.dat`/`.dbc`/`.edt`/`.lnc` envanteri. |
+| 9 | `unity_ui_bundles_decompiled.json` | LZ4 ile sıkıştırılmış UnityFS v8 UI `.bundle` dosyalarından çıkarılan `Assets/.../*.uxml` / `*.asset` yolları, `TableFactory` sınıfları, `TableView` şablonları ve benzersiz UI veri bağlama (`player.*`, `person.*`, `club.*` vb.) yolları. |
+| 10 | `all_remaining_files_decompiled.json` | Kurulumdaki kalan tüm dosyaların (`1.283` dosya / `%100` kapsama) decompile çıktısı: `534` `.bundle` CAB dizini (`24` kategori), `aa/catalog.bin` & `AddrData/catalog_info.bin` (`0x0DE38942` v2), `fm_Data/manifest.dat`, `sianim/*.cat` (`5.932` `CAT\x00` klip + `STAB`) & `*.amd` (`5.500` segment), `7` `SerializedFile v22` konteyneri, `17` native PE64 ikilisi ve `lang_db.dat` (`401` Zstd çerçevesi). |
+| 11 | `DecompiledReferences.cs` | Tüm `*Reference` sınıflarını kalıtım zinciri, FourCC sabitleri ve `public object <Property> { get; }` bildirimleriyle sunan tek parça C# referans dosyası. |
+| 12 | `DecompiledAllGameAssemblies.cs` | Tüm `FM.*` ve `SI.*` C# sınıflarını, struct'larını, enum sabitlerini, alanlarını ve metot imzalarını içeren kapsamlı C# bildirim dosyası. |
 
 ---
 

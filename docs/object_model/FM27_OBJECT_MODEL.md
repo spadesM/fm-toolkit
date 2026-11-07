@@ -40,6 +40,13 @@
 | UI `TableFactory` sınıfı (`ui-tablefactories`) | 220 |
 | UI `TableFactory` sütun `binding.*` yolu | 2,102 |
 | UI `TableView` / `TableSettings` şablonu (`ui-tableviews`) | 592 |
+| Kurulumdaki toplam dosya sayısı (`100%` kapsama) | 1,283 (9,225,428,268 bayt) |
+| Tüm UnityFS `.bundle` arşivleri (24 kategori) | 534 (764 CAB düğümü) |
+| `sianim/*.cat` 3B maç animasyon klibi (`CAT\x00`) | 5,932 (557,440 iz) |
+| `sianim/*.amd` Motion Matching segmenti | 5,500 (165,699 kare) |
+| `fm_Data/manifest.dat` doğrulama kaydı (MD5) | 1,239 |
+| Unity `SerializedFile v22` nesnesi (`fm_Data/*`) | 8,498 |
+| Native PE64 ikili dosyası (`EXE`/`DLL`) | 17 (533,123 `.pdata` fonksiyonu) |
 
 ## 3. FM / SI assembly'leri
 
@@ -1539,4 +1546,102 @@ Ayrıca `ui-tablefactories_assets_all.bundle` içinde **220** `TableFactory` ve 
 - **`constants.fmf`**: `constants/generated_colour_pair_constants.jsb`, `constants/generated_match_crowd_constants.jsb`, `constants/generated_shuffle_draft_constants.jsb`, `constants/generated_training_constants.jsb`.
 - **`engine_lookup_tables.json`**: `jumping_reach_table`, `aerial_reach_table`, `qme_stat_relevant_attributes`, `oop_attributes_scoring`, `player_ratings_data`, `team_picking_weights_master`, `training_tables`, `simatch_extra_tables`, `simatchshared_tables`.
 - **`all_fmf_configs_and_filters.json`**: 14 `.fmf` arşivi envanteri, 445 oyuncu arama filtresi ve ayar/mağaza/versus XML'leri.
+
+## 12. Tüm Kurulum Envanteri, Addressable Katalogları, `sianim` 3B Animasyon Motoru ve Unity Runtime Konteynerleri
+
+### 12.1 Tüm UnityFS `.bundle` Kategorileri (`BlocksInfo` CAB Dizin Özeti)
+
+Toplam **534** `.bundle` dosyası, **4,264,347,140** bayt sıkıştırılmış, **8,244,629,304** bayt açılmış, **764** CAB düğümü.
+
+| Kategori | Bundle | Sıkıştırılmış (Bayt) | Açılmış (Bayt) | CAB Düğümü |
+|---|---:|---:|---:|---:|
+| `art` | 355 | 3,515,313,430 | 6,232,702,167 | 520 |
+| `ui` | 67 | 198,189,454 | 837,870,132 | 95 |
+| `match` | 4 | 202,767,780 | 539,104,284 | 7 |
+| `scenes` | 12 | 120,727,416 | 325,961,892 | 30 |
+| `videos` | 3 | 99,600,802 | 103,396,155 | 6 |
+| `shaders` | 62 | 37,193,757 | 54,791,256 | 63 |
+| `stadiums` | 7 | 27,166,602 | 49,902,119 | 14 |
+| `audio` | 1 | 45,581,448 | 48,620,876 | 2 |
+| `changingroom` | 1 | 8,016,711 | 35,703,888 | 2 |
+| `promobanner` | 1 | 7,290,331 | 8,779,264 | 2 |
+| `vfx` | 1 | 1,827,834 | 5,025,416 | 2 |
+| `f87a5c426c04c02c5c32c1ef21ae2ad6` | 2 | 283,980 | 1,186,428 | 3 |
+| `globalobjects` | 1 | 144,957 | 608,248 | 1 |
+| `gamemodules` | 7 | 101,247 | 455,243 | 7 |
+| `characterbuilder` | 1 | 50,075 | 207,644 | 1 |
+| `fantasydraft` | 1 | 26,049 | 104,548 | 1 |
+| `settings` | 1 | 12,058 | 67,988 | 1 |
+| `shortcutdata` | 1 | 14,995 | 39,024 | 1 |
+| `initscene` | 1 | 11,556 | 37,260 | 1 |
+| `stadiumbuilder` | 1 | 13,231 | 27,636 | 1 |
+| `graphics` | 1 | 6,768 | 20,296 | 1 |
+| `projectconfigurationassets` | 1 | 2,826 | 8,700 | 1 |
+| `sibindable` | 1 | 2,422 | 5,684 | 1 |
+| `performance` | 1 | 1,411 | 3,156 | 1 |
+
+### 12.2 Unity Addressables İkili Katalogları (`0x0DE38942` v2) ve `manifest.dat`
+
+- **`fm_Data/StreamingAssets/aa/catalog.bin`**: `3,269,712` bayt, sihirli sayı `0x0de38942` (v2), Locator ID `AddressablesMainContentCatalog`, Build Hash `7eb98230c27092580c839722562a28fa`, **`29,020`** anahtar-konum çifti, `1,302` benzersiz `.bundle` referansı.
+- **`fm_Data/StreamingAssets/AddrData/catalog_info.bin`**: `5,497,964` bayt, sihirli sayı `0x0de38942` (v2), Locator ID `AddressablesMainContentCatalog`, Build Hash `6658876dbc881cca10bbd77f47c4be19`, **`37,582`** anahtar-konum çifti, `539` benzersiz `.bundle` referansı.
+- **`aa/AddressablesLink/link.xml`**: `162,851` bayt, `50` assembly, `1,618` korunan tip.
+- **`fm_Data/manifest.dat`**: `30,975` bayt, format `FM27_25B_binary_md5 (uint32 path_hash + int32 len=16 + 16B md5 + '\n')`, **`1,239`** dosya doğrulama kaydı (`1,235` aktif hash).
+
+### 12.3 `sianim` 3B Maç Animasyon Motoru (`*.cat`, `*.amd`, Şemalar ve İskeletler)
+
+| `.cat` Arşivi | Boyut (Bayt) | Sürüm | `CAT\x00` Klip | Kemik Bölümü | Animasyon İzi | `STAB` Dizesi |
+|---|---:|---:|---:|---:|---:|---:|
+| `locomotion_female.cat` | 29,717,081 | v38 | 49 | 4,508 | 3,773 | 0 |
+| `locomotion_male.cat` | 35,442,004 | v38 | 52 | 4,784 | 3,996 | 0 |
+| `locomotion_official.cat` | 3,026,725 | v38 | 12 | 1,104 | 956 | 0 |
+| `pack.cat` | 29,800,182 | v38 | 5,819 | 535,348 | 548,715 | 5,819 |
+
+| `.amd` Motion Matching DB | Boyut (Bayt) | Sürüm | Segment Sayısı (11B) | Toplam Kare Aralığı | Kare Başına Bayt |
+|---|---:|---:|---:|---:|---:|
+| `locomotion.amd` | 5 | v4 | 0 | 0 | 0 |
+| `locomotion_female.amd` | 7,076,130 | v4 | 1,503 | 45,100 | 156.53 |
+| `locomotion_male.amd` | 8,259,025 | v4 | 1,447 | 51,824 | 159.06 |
+| `locomotion_official.amd` | 648,569 | v4 | 2,550 | 68,775 | 9.02 |
+
+- **Maç Aksiyon Şemaları (`shared/data/sianim/schemas/*.json`)**: `44` şema dosyası.
+- **İskelet Rig ve Dev UI Dosyaları (`shared/data/sianim/skeletons*`)**: `19` dosya.
+
+### 12.4 Unity `SerializedFile v22` Konteynerleri (`fm_Data/`)
+
+| Konteyner | Boyut (Bayt) | `.resS` Boyutu | Unity Sürümü | Tip | Nesne | Script Tipi | Dış Referans |
+|---|---:|---:|---|---:|---:|---:|---:|
+| `globalgamemanagers` | 388,132 | 0 | `6000.3.18f1-custom` | 19 | 19 | 0 | 5 |
+| `globalgamemanagers.assets` | 1,860,728 | 4,173,536 | `6000.3.18f1-custom` | 50 | 5,964 | 42 | 2 |
+| `resources.assets` | 1,249,176 | 1,595,600 | `6000.3.18f1-custom` | 62 | 2,019 | 50 | 2 |
+| `sharedassets0.assets` | 362,700 | 416 | `6000.3.18f1-custom` | 7 | 20 | 1 | 2 |
+| `level0` | 40,524 | 0 | `6000.3.18f1-custom` | 34 | 328 | 24 | 3 |
+| `unity default resources` | 5,923,140 | 0 | `6000.3.11f1` | 8 | 99 | 1 | 0 |
+| `unity_builtin_extra` | 491,796 | 0 | `6000.3.18f1-custom` | 1 | 49 | 0 | 0 |
+
+### 12.5 Tüm Native PE64 İkili Dosyaları (`EXE` / `DLL`)
+
+| Dosya | Boyut (Bayt) | Bölüm | Export | `.pdata` Fonksiyonu |
+|---|---:|---:|---:|---:|
+| `fm.exe` | 667,648 | 6 | 4 | 315 |
+| `UnityPlayer.dll` | 36,528,040 | 8 | 2 | 111,094 |
+| `GameAssembly.dll` | 59,361,792 | 8 | 373 | 175,972 |
+| `BacktraceCrashpadWindows.dll` | 178,688 | 7 | 3 | 550 |
+| `crashpad_handler.dll` | 630,784 | 7 | 0 | 1,800 |
+| `EOSSDK-Win64-Shipping.dll` | 19,531,704 | 7 | 680 | 65,926 |
+| `game_plugin.dll` | 404,308,480 | 13 | 282 | 145,090 |
+| `icudt65.dll` | 3,072 | 2 | 1 | 0 |
+| `icuin65.dll` | 2,632,704 | 6 | 5,766 | 7,287 |
+| `icuuc65.dll` | 1,890,304 | 6 | 3,002 | 4,782 |
+| `lib_burst_generated.dll` | 1,013,248 | 5 | 1,116 | 1,822 |
+| `msvcp140.dll` | 642,720 | 6 | 1,515 | 1,365 |
+| `PartyWin.dll` | 4,038,728 | 6 | 157 | 10,526 |
+| `PlayFabMultiplayerWin.dll` | 1,882,656 | 6 | 79 | 5,294 |
+| `steam_api64.dll` | 317,080 | 6 | 1,054 | 810 |
+| `vcruntime140.dll` | 178,848 | 8 | 71 | 383 |
+| `vcruntime140_1.dll` | 50,256 | 6 | 3 | 107 |
+
+### 12.6 Veritabanı Sürümleri (`2300`..`2700`) ve `lang_db.dat` Yerelleştirme Veritabanı
+
+- **`shared/data/database/db/2700/2700_fm/lang_db.dat`**: `90,962,133` bayt, **`401`** Zstd çerçevesi (`25` dil × `16` tablo; dil başına **`229,555`** yerelleştirilmiş satır: `251` ülke, `8,084` turnuva, `100,432` kulüp, `58,475` şehir, `3,902` ödül, `52,406` stadyum, `1,681` sakatlık).
+- **Tarihsel Veritabanı Sürümleri**: `2300` (25 dosya, 169,100,689 B), `2330` (25 dosya, 100,965,023 B), `2340` (25 dosya, 97,979,550 B), `2400` (34 dosya, 264,696,849 B), `2430` (34 dosya, 198,067,149 B), `2600` (54 dosya, 306,565,435 B), `2620` (54 dosya, 362,201,325 B), `2700` (52 dosya, 389,580,039 B).
 
