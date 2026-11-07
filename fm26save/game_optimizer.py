@@ -25,85 +25,164 @@ from typing import Any
 
 BOOT_CONFIG_KNOWN_KEYS: list[dict[str, Any]] = [
     {
-        "key": "gfx-enable-gfx-jobs",
-        "default": "1",
-        "type": "bool01",
-        "title_tr": "Çok İş Parçacıklı Grafik İş Kuyruğu (Gfx Jobs)",
-        "title_en": "Multi-Threaded Graphics Jobs (Gfx Jobs)",
-        "desc_tr": "Unity render komutlarının birden fazla CPU çekirdeğine dağıtılmasını sağlar (1 = Açık).",
-        "desc_en": "Distributes Unity render command generation across worker threads (1 = Enabled).",
-    },
-    {
-        "key": "gfx-enable-native-gfx-jobs",
-        "default": "1",
-        "type": "bool01",
-        "title_tr": "Yerel (Native) Grafik İş Parçacıkları",
-        "title_en": "Native Graphics Jobs",
-        "desc_tr": "D3D11/D3D12/Vulkan sürücüsüne yerel C++ iş parçacıklarından doğrudan görev gönderir (1 = Açık).",
-        "desc_en": "Submits rendering tasks directly from native C++ worker threads (1 = Enabled).",
-    },
-    {
-        "key": "gfx-threading-mode",
-        "default": "6",
-        "type": "int",
-        "title_tr": "Unity Grafik İş Parçacığı Modu (Gfx Threading Mode)",
-        "title_en": "Unity Graphics Threading Mode",
-        "desc_tr": "Unity 6000.3 dahili render iş parçacığı kipi (FM27 varsayılanı: 6 = Split/Native Jobs).",
-        "desc_en": "Unity 6000.3 internal render threading mode (FM27 default: 6 = Split/Native Jobs).",
-    },
-    {
-        "key": "gc-max-time-slice",
-        "default": "3",
-        "type": "int",
-        "title_tr": "Artımlı Bellek Temizleyici (GC) Maksimum Dilim Süresi (ms)",
-        "title_en": "Incremental GC Max Time Slice (ms)",
-        "desc_tr": "Kare başına Garbage Collector'a ayrılan maksimum milisaniye (1-3 ms mikro takılmaları azaltır).",
-        "desc_en": "Maximum milliseconds per frame spent on incremental garbage collection (1-3 ms reduces micro-stutter).",
-    },
-    {
         "key": "job-worker-count",
+        "category": "CPU & Job System",
         "default": "",
         "type": "int_optional",
-        "title_tr": "Unity Job System İşçi Çekirdek Sayısı (Job Worker Count)",
-        "title_en": "Unity Job System Worker Thread Count",
+        "title_tr": "Unity Job System İşçi Çekirdek Sayısı (job-worker-count)",
+        "title_en": "Unity Job System Worker Thread Count (job-worker-count)",
         "desc_tr": "Simülasyon ve UI akışı için kullanılan paralel iş parçacığı sayısı (Boş = Otomatik, önerilen: Mantıksal Çekirdek - 2).",
         "desc_en": "Parallel worker threads for simulation & UI streaming (Empty = Auto, recommended: Logical Cores - 2).",
     },
     {
-        "key": "vr-enabled",
-        "default": "0",
-        "type": "bool01",
-        "title_tr": "VR Alt Sistemi (0 = Devre Dışı / Hızlı Başlangıç)",
-        "title_en": "VR Subsystem (0 = Disabled / Faster Startup)",
-        "desc_tr": "VR başlatma kontrollerini kapatarak oyun açılış süresini kısaltır.",
-        "desc_en": "Disables VR subsystem initialization checks for faster game startup.",
+        "key": "job-worker-maximum-count",
+        "category": "CPU & Job System",
+        "default": "",
+        "type": "int_optional",
+        "title_tr": "Maksimum Job Worker Üst Sınırı (job-worker-maximum-count)",
+        "title_en": "Job Worker Maximum Cap (job-worker-maximum-count)",
+        "desc_tr": "Yoğun haftalık simülasyon anlarında Job System'in açabileceği tavan iş parçacığı sayısı (Örn: 16 veya 24).",
+        "desc_en": "Upper ceiling of worker threads Unity Job System can spawn during peak simulation bursts.",
     },
     {
-        "key": "wait-for-native-debugger",
-        "default": "0",
-        "type": "bool01",
-        "title_tr": "Native Debugger Beklemesi",
-        "title_en": "Wait For Native Debugger",
-        "desc_tr": "Açılışta yerel hata ayıklayıcı bekler (Normal kullanımda mutlaka 0 olmalıdır).",
-        "desc_en": "Waits for a native debugger on startup (Should always be 0 in normal use).",
+        "key": "scripting-runtime-version",
+        "category": "CPU & Job System",
+        "default": "latest",
+        "type": "text",
+        "title_tr": "IL2CPP Çalışma Zamanı Sürümü (scripting-runtime-version)",
+        "title_en": "IL2CPP Scripting Runtime Version",
+        "desc_tr": "IL2CPP yürütme çalışma zamanı profili (Varsayılan: latest).",
+        "desc_en": "IL2CPP execution runtime profile (Default: latest).",
     },
     {
-        "key": "hdr-display-enabled",
-        "default": "0",
-        "type": "bool01",
-        "title_tr": "HDR Ekran Çıkışı Desteği",
-        "title_en": "HDR Display Output",
-        "desc_tr": "Destekleyen monitörlerde yüksek dinamik aralık (HDR) çıktısını etkinleştirir.",
-        "desc_en": "Enables High Dynamic Range display output on supported monitors.",
+        "key": "gc-max-time-slice",
+        "category": "Bellek & Garbage Collector",
+        "default": "3",
+        "type": "int",
+        "title_tr": "Artımlı Bellek Temizleyici (GC) Maksimum Dilim Süresi (ms)",
+        "title_en": "Incremental GC Max Time Slice (ms)",
+        "desc_tr": "Kare başına Garbage Collector'a ayrılan maksimum milisaniye (1 ms = en akıcı maç motoru, 3-5 ms = hızlı ekran geçişi).",
+        "desc_en": "Maximum milliseconds per frame spent on incremental garbage collection (1-3 ms reduces micro-stutter).",
     },
     {
         "key": "call-ondisable-when-unloaded-from-bundles",
+        "category": "Bellek & Garbage Collector",
         "default": "1",
         "type": "bool01",
         "title_tr": "Bundle Boşaltılırken OnDisable Çağrısı",
         "title_en": "Call OnDisable When Unloaded From Bundles",
         "desc_tr": "UI ve sahne bundle'ları bellekten boşaltılırken temizlik geri çağrısını çalıştırır (1 = Bellek sızıntısını önler).",
         "desc_en": "Runs cleanup callbacks when UI/scene bundles unload (1 = Prevents memory leaks).",
+    },
+    {
+        "key": "gfx-enable-gfx-jobs",
+        "category": "GPU & Direct3D Render",
+        "default": "1",
+        "type": "bool01",
+        "title_tr": "Çok İş Parçacıklı Grafik İş Kuyruğu (gfx-enable-gfx-jobs)",
+        "title_en": "Multi-Threaded Graphics Jobs (gfx-enable-gfx-jobs)",
+        "desc_tr": "Unity render komutlarının birden fazla CPU çekirdeğine dağıtılmasını sağlar (1 = Açık, 0 = Kapalı).",
+        "desc_en": "Distributes Unity render command generation across worker threads (1 = Enabled).",
+    },
+    {
+        "key": "gfx-enable-native-gfx-jobs",
+        "category": "GPU & Direct3D Render",
+        "default": "1",
+        "type": "bool01",
+        "title_tr": "Yerel (Native) Grafik İş Parçacıkları (gfx-enable-native-gfx-jobs)",
+        "title_en": "Native Graphics Jobs (gfx-enable-native-gfx-jobs)",
+        "desc_tr": "D3D11/D3D12/Vulkan sürücüsüne yerel C++ iş parçacıklarından doğrudan görev gönderir (1 = Açık).",
+        "desc_en": "Submits rendering tasks directly from native C++ worker threads (1 = Enabled).",
+    },
+    {
+        "key": "gfx-threading-mode",
+        "category": "GPU & Direct3D Render",
+        "default": "6",
+        "type": "int",
+        "title_tr": "Unity Grafik İş Parçacığı Kipi (gfx-threading-mode)",
+        "title_en": "Unity Graphics Threading Mode (gfx-threading-mode)",
+        "desc_tr": "Unity 6000.3 dahili render iş parçacığı kipi (FM27 varsayılanı: 6 = Split/Native Jobs, 4 = MultiThreaded).",
+        "desc_en": "Unity 6000.3 internal render threading mode (FM27 default: 6 = Split/Native Jobs).",
+    },
+    {
+        "key": "disable-gpu-skinning",
+        "category": "GPU & Direct3D Render",
+        "default": "0",
+        "type": "bool01",
+        "title_tr": "GPU İskelet Animasyonunu Devre Dışı Bırak (disable-gpu-skinning)",
+        "title_en": "Disable GPU Skinning (disable-gpu-skinning)",
+        "desc_tr": "0 = 3D maç motorunda oyuncu iskelet animasyonlarını GPU üzerinde işler (Önerilen: 0; eski GPU'larda 1).",
+        "desc_en": "0 = Processes 3D match player skeleton skinning on GPU (Recommended: 0).",
+    },
+    {
+        "key": "force-d3d11-blt-model",
+        "category": "GPU & Direct3D Render",
+        "default": "0",
+        "type": "bool01",
+        "title_tr": "D3D11 Blt Sunum Modelini Zorla (force-d3d11-blt-model)",
+        "title_en": "Force D3D11 Blt Swapchain Model",
+        "desc_tr": "Pencereli modda G-Sync/FreeSync titremesi yaşıyorsanız 1 yaparak klasik BitBlt takas zincirini kullanabilirsiniz.",
+        "desc_en": "Set to 1 if experiencing windowed G-Sync/FreeSync flicker.",
+    },
+    {
+        "key": "hdr-display-enabled",
+        "category": "Pencere, HDR & Sistem",
+        "default": "0",
+        "type": "bool01",
+        "title_tr": "HDR Ekran Çıkışı Desteği (hdr-display-enabled)",
+        "title_en": "HDR Display Output (hdr-display-enabled)",
+        "desc_tr": "Destekleyen monitörlerde yüksek dinamik aralık (HDR) çıktısını etkinleştirir (1 = Açık, 0 = Kapalı).",
+        "desc_en": "Enables High Dynamic Range display output on supported monitors.",
+    },
+    {
+        "key": "vr-enabled",
+        "category": "Pencere, HDR & Sistem",
+        "default": "0",
+        "type": "bool01",
+        "title_tr": "VR Alt Sistemi (vr-enabled)",
+        "title_en": "VR Subsystem (vr-enabled)",
+        "desc_tr": "0 = VR başlatma kontrollerini kapatarak oyun açılış süresini kısaltır.",
+        "desc_en": "0 = Disables VR subsystem initialization checks for faster game startup.",
+    },
+    {
+        "key": "single-instance",
+        "category": "Pencere, HDR & Sistem",
+        "default": "",
+        "type": "bool01_optional",
+        "title_tr": "Tek Örnek Kilidi (single-instance)",
+        "title_en": "Single Instance Lock (single-instance)",
+        "desc_tr": "1 = Aynı anda yalnızca tek bir fm.exe çalışmasına izin verir; boş/0 = birden fazla örnek açılabilir.",
+        "desc_en": "1 = Restricts to a single running fm.exe instance.",
+    },
+    {
+        "key": "wait-for-native-debugger",
+        "category": "Tanılama & Profiler",
+        "default": "0",
+        "type": "bool01",
+        "title_tr": "Native Debugger Beklemesi (wait-for-native-debugger)",
+        "title_en": "Wait For Native Debugger",
+        "desc_tr": "Açılışta yerel hata ayıklayıcı bekler (Normal kullanımda mutlaka 0 olmalıdır).",
+        "desc_en": "Waits for a native debugger on startup (Should always be 0 in normal use).",
+    },
+    {
+        "key": "player-connection-debug",
+        "category": "Tanılama & Profiler",
+        "default": "0",
+        "type": "bool01",
+        "title_tr": "Unity Player Bağlantı Hata Ayıklaması (player-connection-debug)",
+        "title_en": "Unity Player Connection Debug",
+        "desc_tr": "0 = Arka planda ağ/debug soketi dinlemesini kapatır.",
+        "desc_en": "0 = Disables background debug socket listener.",
+    },
+    {
+        "key": "profiler-enable",
+        "category": "Tanılama & Profiler",
+        "default": "0",
+        "type": "bool01",
+        "title_tr": "Dahili Profiler Kaydı (profiler-enable)",
+        "title_en": "Internal Profiler Recording",
+        "desc_tr": "0 = Performans ek yükünü önlemek için dahili profiler'ı kapalı tutar.",
+        "desc_en": "0 = Keeps internal profiler disabled to avoid CPU overhead.",
     },
 ]
 
@@ -149,7 +228,7 @@ def read_boot_config(fm_dir: Path) -> dict[str, Any]:
     }
 
 
-def write_boot_config(fm_dir: Path, updates: dict[str, Any]) -> dict[str, Any]:
+def write_boot_config(fm_dir: Path, updates: dict[str, Any], raw_text: str | None = None) -> dict[str, Any]:
     """Update ``fm_Data/boot.config`` with automatic ``.bak`` backup."""
     path = _boot_config_path(fm_dir)
     if not path.exists():
@@ -158,9 +237,15 @@ def write_boot_config(fm_dir: Path, updates: dict[str, Any]) -> dict[str, Any]:
     if not bak.exists():
         shutil.copy2(path, bak)
 
+    if raw_text is not None:
+        path.write_text(raw_text.strip() + "\n", encoding="utf-8")
+        return read_boot_config(fm_dir)
+
     cur = read_boot_config(fm_dir)["values"]
     for k, v in updates.items():
         ks = str(k).strip()
+        if not ks:
+            continue
         if v is None or str(v).strip() == "":
             cur.pop(ks, None)
         else:
