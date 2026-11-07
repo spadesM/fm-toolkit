@@ -23,6 +23,8 @@ Directly decompiles and extracts:
 
 from __future__ import annotations
 
+import datetime
+import hashlib
 import json
 import os
 import re
@@ -39,11 +41,19 @@ DEFAULT_FM_PATHS: tuple[Path, ...] = (
 
 
 def resolve_fm_install_dir(fm_install_dir: str | os.PathLike[str] | None = None) -> Path:
-    """Locate the Football Manager 26 / 27 installation directory."""
+    """Locate the Football Manager 26 / 27 installation directory.
+
+    Resolution order: explicit ``fm_install_dir`` -> ``FM_INSTALL_DIR`` environment variable ->
+    :data:`DEFAULT_FM_PATHS` (FM26 first, then FM27). When both games are installed, pass
+    ``fm_install_dir`` (CLI: ``--fm-dir``) or set ``FM_INSTALL_DIR`` to target FM27 explicitly.
+    """
     if fm_install_dir is not None:
         p = Path(fm_install_dir)
         if p.exists():
             return p
+    env_dir = os.environ.get("FM_INSTALL_DIR")
+    if env_dir and Path(env_dir).exists():
+        return Path(env_dir)
     for cand in DEFAULT_FM_PATHS:
         if cand.exists():
             return cand
@@ -62,8 +72,112 @@ def fourcc_to_ascii(u32: int) -> str:
 
 
 # ==============================================================================
-# 1. GLOBAL-METADATA.DAT (IL2CPP v31) DECOMPILER
+# 1. GLOBAL-METADATA.DAT (IL2CPP v31 & v39) DECOMPILER
 # ==============================================================================
+
+
+def _parse_metadata_header(meta: bytes) -> dict[str, int]:
+    """Return version-normalized offsets, sizes, and entry sizes for IL2CPP v31 (FM26) and v39 (FM27)."""
+    sanity, version = struct.unpack_from("<II", meta, 0)
+    if version >= 38:
+        # IL2CPP v39 (Unity 6000.3+ / FM27): (offset, size, count) 3-tuples after (sanity, version)
+        hdr = struct.unpack_from("<80I", meta, 0)
+        return {
+            "sanity": sanity,
+            "version": version,
+            "str_lit_off": hdr[2],
+            "str_lit_sz": hdr[3],
+            "str_lit_cnt": hdr[4],
+            "str_lit_data_off": hdr[5],
+            "str_lit_data_sz": hdr[6],
+            "str_off": hdr[8],
+            "str_sz": hdr[9],
+            "events_off": hdr[11],
+            "events_sz": hdr[12],
+            "props_off": hdr[14],
+            "props_sz": hdr[15],
+            "methods_off": hdr[17],
+            "methods_sz": hdr[18],
+            "param_def_off": hdr[20],
+            "param_def_sz": hdr[21],
+            "field_def_off": hdr[23],
+            "field_def_sz": hdr[24],
+            "def_data_off": hdr[26],
+            "def_data_sz": hdr[27],
+            "params_off": hdr[32],
+            "params_sz": hdr[33],
+            "fields_off": hdr[35],
+            "fields_sz": hdr[36],
+            "types_off": hdr[59],
+            "types_sz": hdr[60],
+            "images_off": hdr[62],
+            "images_sz": hdr[63],
+            "image_stride": 36,
+            "type_stride": 76,
+            "method_stride": 30,
+            "field_stride": 10,
+            "param_stride": 10,
+            "prop_stride": 20,
+            "field_def_stride": 10,
+        }
+    hdr = struct.unpack_from("<64I", meta, 0)
+    return {
+        "sanity": sanity,
+        "version": version,
+        "str_lit_off": hdr[2],
+        "str_lit_sz": hdr[3],
+        "str_lit_cnt": hdr[3] // 8,
+        "str_lit_data_off": hdr[4],
+        "str_lit_data_sz": hdr[5],
+        "str_off": hdr[6],
+        "str_sz": hdr[7],
+        "events_off": hdr[8],
+        "events_sz": hdr[9],
+        "props_off": hdr[10],
+        "props_sz": hdr[11],
+        "methods_off": hdr[12],
+        "methods_sz": hdr[13],
+        "param_def_off": hdr[14],
+        "param_def_sz": hdr[15],
+        "field_def_off": hdr[16],
+        "field_def_sz": hdr[17],
+        "def_data_off": hdr[18],
+        "def_data_sz": hdr[19],
+        "params_off": hdr[22],
+        "params_sz": hdr[23],
+        "fields_off": hdr[24],
+        "fields_sz": hdr[25],
+        "types_off": hdr[40],
+        "types_sz": hdr[41],
+        "images_off": hdr[42],
+        "images_sz": hdr[43],
+        "image_stride": 40,
+        "type_stride": 88,
+        "method_stride": 36,
+        "field_stride": 12,
+        "param_stride": 12,
+        "prop_stride": 20,
+        "field_def_stride": 12,
+    }
+
+
+def _extract_string_literals(meta: bytes, mh: dict[str, int]) -> list[str]:
+    str_lit_off = mh["str_lit_off"]
+    str_lit_data_off = mh["str_lit_data_off"]
+    if mh["version"] >= 38:
+        cnt = mh["str_lit_cnt"]
+        if cnt <= 1:
+            return []
+        offsets = struct.unpack_from(f"<{cnt}I", meta, str_lit_off)
+        return [
+            meta[str_lit_data_off + offsets[i] : str_lit_data_off + offsets[i + 1]].decode("utf-8", errors="replace")
+            for i in range(cnt - 1)
+        ]
+    lit_cnt = mh["str_lit_sz"] // 8
+    return [
+        meta[str_lit_data_off + data_idx : str_lit_data_off + data_idx + length].decode("utf-8", errors="replace")
+        for length, data_idx in (struct.unpack_from("<II", meta, str_lit_off + i * 8) for i in range(lit_cnt))
+    ]
 
 
 def decompile_global_metadata(
@@ -72,28 +186,32 @@ def decompile_global_metadata(
     include_all_methods: bool = False,
     filter_namespace_or_image: str | None = None,
 ) -> dict[str, Any]:
-    """Decompile ``global-metadata.dat`` (IL2CPP v31) into structured assemblies, types, enums, fields, methods, properties, and string literals."""
+    """Decompile ``global-metadata.dat`` (IL2CPP v31 in FM26 / v39 in FM27) into structured assemblies, types, enums, fields, methods, properties, and string literals."""
     root = resolve_fm_install_dir(fm_install_dir)
     meta_path = root / "fm_Data/il2cpp_data/Metadata/global-metadata.dat"
     if not meta_path.exists() and root.name == "global-metadata.dat":
         meta_path = root
     meta = meta_path.read_bytes()
 
-    hdr = struct.unpack_from("<64I", meta, 0)
-    sanity, version = hdr[0], hdr[1]
-    str_lit_off, str_lit_sz = hdr[2], hdr[3]
-    str_lit_data_off, str_lit_data_sz = hdr[4], hdr[5]
-    str_off, str_sz = hdr[6], hdr[7]
-    events_off, events_sz = hdr[8], hdr[9]
-    props_off, props_sz = hdr[10], hdr[11]
-    methods_off, methods_sz = hdr[12], hdr[13]
-    param_def_off, param_def_sz = hdr[14], hdr[15]
-    field_def_off, field_def_sz = hdr[16], hdr[17]
-    def_data_off, def_data_sz = hdr[18], hdr[19]
-    params_off, params_sz = hdr[22], hdr[23]
-    fields_off, fields_sz = hdr[24], hdr[25]
-    types_off, types_sz = hdr[40], hdr[41]
-    images_off, images_sz = hdr[42], hdr[43]
+    mh = _parse_metadata_header(meta)
+    sanity, version = mh["sanity"], mh["version"]
+    is_v39 = version >= 38
+    str_off, str_sz = mh["str_off"], mh["str_sz"]
+    props_off, props_sz = mh["props_off"], mh["props_sz"]
+    methods_off, methods_sz = mh["methods_off"], mh["methods_sz"]
+    field_def_off, field_def_sz = mh["field_def_off"], mh["field_def_sz"]
+    def_data_off, def_data_sz = mh["def_data_off"], mh["def_data_sz"]
+    params_off, params_sz = mh["params_off"], mh["params_sz"]
+    fields_off, fields_sz = mh["fields_off"], mh["fields_sz"]
+    types_off, types_sz = mh["types_off"], mh["types_sz"]
+    images_off, images_sz = mh["images_off"], mh["images_sz"]
+    image_stride = mh["image_stride"]
+    type_stride = mh["type_stride"]
+    method_stride = mh["method_stride"]
+    field_stride = mh["field_stride"]
+    param_stride = mh["param_stride"]
+    prop_stride = mh["prop_stride"]
+    field_def_stride = mh["field_def_stride"]
 
     def get_mstr(off: int) -> str:
         if off < 0 or off >= str_sz:
@@ -101,14 +219,11 @@ def decompile_global_metadata(
         end = meta.find(b"\x00", str_off + off)
         return meta[str_off + off : end].decode("utf-8", errors="replace")
 
-    # 1. String Literals (8 bytes each: length, dataIndex)
-    lit_cnt = str_lit_sz // 8
-    string_literals: list[str] = [
-        meta[str_lit_data_off + data_idx : str_lit_data_off + data_idx + length].decode("utf-8", errors="replace")
-        for length, data_idx in (struct.unpack_from("<II", meta, str_lit_off + i * 8) for i in range(lit_cnt))
-    ]
+    # 1. String Literals
+    string_literals = _extract_string_literals(meta, mh)
+    lit_cnt = len(string_literals)
 
-    # 2. Field Default Values (12 bytes each: fieldIndex, typeIndex, dataIndex)
+    # 2. Field Default Values
     def _read_compressed_int(pos: int) -> int:
         if pos < 0 or pos >= def_data_sz:
             return 0
@@ -129,41 +244,68 @@ def decompile_global_metadata(
         return b0
 
     field_defaults: dict[int, int] = {}
-    for i in range(field_def_sz // 12):
-        f_idx, t_idx, d_idx = struct.unpack_from("<iii", meta, field_def_off + i * 12)
+    fd_fmt = "<iHi" if is_v39 else "<iii"
+    for i in range(field_def_sz // field_def_stride):
+        f_idx, _t_idx, d_idx = struct.unpack_from(fd_fmt, meta, field_def_off + i * field_def_stride)
         if d_idx >= 0:
             field_defaults[f_idx] = _read_compressed_int(d_idx)
 
-    # 3. Images / Assemblies (40 bytes each: <10i)
+    # 3. Images / Assemblies (40 bytes in v31; 36 bytes in v39)
     images: list[dict[str, Any]] = []
     type_to_image: dict[int, str] = {}
-    for img_i in range(images_sz // 40):
-        u = struct.unpack_from("<10i", meta, images_off + img_i * 40)
-        iname = get_mstr(u[0])
-        t_start, t_cnt = u[2], u[3]
+    for img_i in range(images_sz // image_stride):
+        base_img = images_off + img_i * image_stride
+        if is_v39:
+            name_i, asm_i, t_start, t_cnt = struct.unpack_from("<iiHH", meta, base_img)
+            ep_idx, tok_u = struct.unpack_from("<iI", meta, base_img + 20)
+        else:
+            u = struct.unpack_from("<10i", meta, base_img)
+            name_i, asm_i, t_start, t_cnt, ep_idx, tok_u = u[0], u[1], u[2], u[3], u[6], u[7] & 0xFFFFFFFF
+        iname = get_mstr(name_i)
         images.append(
             {
                 "image_index": img_i,
                 "name": iname,
-                "assembly_index": u[1],
+                "assembly_index": asm_i,
                 "type_start": t_start,
                 "type_count": t_cnt,
-                "entry_point_index": u[6],
-                "token": f"0x{u[7] & 0xFFFFFFFF:08x}",
+                "entry_point_index": ep_idx,
+                "token": f"0x{tok_u:08x}",
             }
         )
         for ti in range(t_start, t_start + t_cnt):
             type_to_image[ti] = iname
 
-    # 4. Types (88 bytes each: <22i), Enums, Fields, Properties, Methods
+    # 4. Types (88 bytes in v31; 76 bytes in v39), Enums, Fields, Properties, Methods
     types_list: list[dict[str, Any]] = []
     enums_dict: dict[str, dict[str, Any]] = {}
-    num_types = types_sz // 88
+    num_types = types_sz // type_stride
 
     for ti in range(num_types):
-        u = struct.unpack_from("<22i", meta, types_off + ti * 88)
-        tname = get_mstr(u[0])
-        tnamespace = get_mstr(u[1])
+        base_td = types_off + ti * type_stride
+        if is_v39:
+            tu = struct.unpack_from("<13i8Hii", meta, base_td)
+            tname = get_mstr(tu[0])
+            tnamespace = get_mstr(tu[1])
+            f_start_v = tu[5]
+            m_start_v = tu[6]
+            p_start_v = tu[8]
+            m_cnt_v = tu[13]
+            p_cnt_v = tu[14]
+            f_cnt_v = tu[15]
+            bitfield_v = tu[21]
+        else:
+            u = struct.unpack_from("<22i", meta, base_td)
+            tname = get_mstr(u[0])
+            tnamespace = get_mstr(u[1])
+            f_start_v = u[8]
+            m_start_v = u[9]
+            p_start_v = u[11]
+            m_cnt_v = u[16] & 0xFFFF
+            p_cnt_v = (u[16] >> 16) & 0xFFFF
+            f_cnt_v = u[17] & 0xFFFF
+            bitfield_v = u[20]
+
         iname = type_to_image.get(ti, "")
         full_name = f"{tnamespace}.{tname}" if tnamespace else tname
 
@@ -172,33 +314,18 @@ def decompile_global_metadata(
             if flt not in full_name.lower() and flt not in iname.lower():
                 continue
 
-        flags = u[6] & 0xFFFFFFFF
-        f_start = u[7]
-        m_start = u[8]
-        p_start = u[9]
-        f_cnt = u[16] & 0xFFFF
-        m_cnt = (u[16] >> 16) & 0xFFFF
-        # Note: in IL2CPP v31 layout of Il2CppTypeDefinition (22 int32s):
-        # u[7] = fieldStart, u[8] = methodStart, u[9] = eventStart, u[10] = propertyStart
-        # Wait: let's support exact v31 field/method/property offsets verified on FM26/FM27:
-        # In FM26/FM27 v31: u[8] is fieldStart, u[9] is methodStart, u[11] is propertyStart,
-        # u[16] & 0xFFFF is method_count, (u[16] >> 16) & 0xFFFF is property_count,
-        # (u[17] & 0xFFFF) is field_count, bitfield is u[20]!
-        f_start_v31 = u[8]
-        m_start_v31 = u[9]
-        p_start_v31 = u[11]
-        m_cnt_v31 = u[16] & 0xFFFF
-        p_cnt_v31 = (u[16] >> 16) & 0xFFFF
-        f_cnt_v31 = u[17] & 0xFFFF
-        bitfield_v31 = u[20]
-        is_enum = bool((bitfield_v31 >> 1) & 1)
-        is_valuetype = bool(bitfield_v31 & 1)
+        is_enum = bool((bitfield_v >> 1) & 1)
+        is_valuetype = bool(bitfield_v & 1)
 
         fields: list[dict[str, Any]] = []
-        if f_start_v31 >= 0 and f_cnt_v31 > 0:
-            for fi in range(f_start_v31, f_start_v31 + f_cnt_v31):
-                if (fi + 1) * 12 <= fields_sz:
-                    fni, fti, ftok = struct.unpack_from("<iiI", meta, fields_off + fi * 12)
+        if f_start_v >= 0 and f_cnt_v > 0:
+            for fi in range(f_start_v, f_start_v + f_cnt_v):
+                if (fi + 1) * field_stride <= fields_sz:
+                    if is_v39:
+                        fni, fti, ftok_hi = struct.unpack_from("<iiH", meta, fields_off + fi * field_stride)
+                        ftok = (ftok_hi << 16) | ((fi + 1) & 0xFFFF)
+                    else:
+                        fni, fti, ftok = struct.unpack_from("<iiI", meta, fields_off + fi * field_stride)
                     fname = get_mstr(fni)
                     f_entry: dict[str, Any] = {"name": fname, "type_index": fti, "token": f"0x{ftok:08x}"}
                     if fi in field_defaults:
@@ -220,29 +347,36 @@ def decompile_global_metadata(
             }
 
         props: list[str] = []
-        if p_start_v31 >= 0 and p_cnt_v31 > 0:
-            for pi in range(p_start_v31, p_start_v31 + p_cnt_v31):
-                if (pi + 1) * 20 <= props_sz:
-                    pni = struct.unpack_from("<i", meta, props_off + pi * 20)[0]
+        if p_start_v >= 0 and p_cnt_v > 0:
+            for pi in range(p_start_v, p_start_v + p_cnt_v):
+                if (pi + 1) * prop_stride <= props_sz:
+                    pni = struct.unpack_from("<i", meta, props_off + pi * prop_stride)[0]
                     props.append(get_mstr(pni))
 
         methods: list[dict[str, Any]] = []
         if (
             include_all_methods
             or any(k in iname for k in ("FM", "SI.", "Assembly-CSharp", "SceneLoadTest"))
-        ) and m_start_v31 >= 0 and m_cnt_v31 > 0:
-            for mi in range(m_start_v31, m_start_v31 + m_cnt_v31):
-                if (mi + 1) * 36 <= methods_sz:
-                    mu = struct.unpack_from("<7i4H", meta, methods_off + mi * 36)
-                    mname = get_mstr(mu[0])
-                    param_start = mu[4]
-                    mtok = mu[6] & 0xFFFFFFFF
-                    param_cnt = mu[10]
+        ) and m_start_v >= 0 and m_cnt_v > 0:
+            for mi in range(m_start_v, m_start_v + m_cnt_v):
+                if (mi + 1) * method_stride <= methods_sz:
+                    if is_v39:
+                        mu = struct.unpack_from("<iiiihIHHHH", meta, methods_off + mi * method_stride)
+                        mname = get_mstr(mu[0])
+                        param_start = mu[3]
+                        mtok = mu[5]
+                        param_cnt = mu[9]
+                    else:
+                        mu = struct.unpack_from("<7i4H", meta, methods_off + mi * method_stride)
+                        mname = get_mstr(mu[0])
+                        param_start = mu[4]
+                        mtok = mu[6] & 0xFFFFFFFF
+                        param_cnt = mu[10]
                     params: list[str] = []
                     if param_start >= 0 and param_cnt > 0:
                         for pmi in range(param_start, param_start + param_cnt):
-                            if (pmi + 1) * 12 <= params_sz:
-                                pm_ni = struct.unpack_from("<i", meta, params_off + pmi * 12)[0]
+                            if (pmi + 1) * param_stride <= params_sz:
+                                pm_ni = struct.unpack_from("<i", meta, params_off + pmi * param_stride)[0]
                                 params.append(get_mstr(pm_ni))
                     methods.append(
                         {
@@ -263,9 +397,9 @@ def decompile_global_metadata(
                 "full_name": full_name,
                 "is_enum": is_enum,
                 "is_valuetype": is_valuetype,
-                "field_count": f_cnt_v31,
-                "method_count": m_cnt_v31,
-                "property_count": p_cnt_v31,
+                "field_count": f_cnt_v,
+                "method_count": m_cnt_v,
+                "property_count": p_cnt_v,
                 "fields": fields,
                 "properties": props,
                 "methods": methods,
@@ -277,13 +411,13 @@ def decompile_global_metadata(
         "sanity": f"0x{sanity:08x}",
         "version": version,
         "counts": {
-            "images": images_sz // 40,
+            "images": images_sz // image_stride,
             "types": num_types,
             "enums": len(enums_dict),
-            "fields": fields_sz // 12,
-            "methods": methods_sz // 36,
-            "properties": props_sz // 20,
-            "parameters": params_sz // 12,
+            "fields": fields_sz // field_stride,
+            "methods": methods_sz // method_stride,
+            "properties": props_sz // prop_stride,
+            "parameters": params_sz // param_stride,
             "string_literals": lit_cnt,
         },
         "images": images,
@@ -302,10 +436,10 @@ def decompile_gameassembly_bindings(
     fm_install_dir: str | os.PathLike[str] | None = None,
 ) -> dict[str, Any]:
     """Disassemble ``GameAssembly.dll`` and ``global-metadata.dat`` to extract:
-    - All 127 ``Il2CppCodeGenModule`` method pointer tables
-    - All ``8,270+`` FourCC -> Property Name registrations (`PropertyRegistration.Initialise`)
-    - All ``220+`` FourCC -> Context Name registrations (`ContextRegistration.Initialise`)
-    - All ``874+`` ``*Reference`` classes (`PersonReference`, `ClubReference`, `StadiumReference`, etc.)
+    - All ``Il2CppCodeGenModule`` method pointer tables
+    - All FourCC -> Property Name registrations (`PropertyRegistration.Initialise`)
+    - All FourCC -> Context Name registrations (`ContextRegistration.Initialise`)
+    - All ``*Reference`` classes (`PersonReference`, `ClubReference`, `StadiumReference`, etc.)
       with their Entity FourCC ID, `DerivesFrom`, `Properties`, `ParameterizedProperties`, `Contexts`,
       and `ChildEntityReferences` (`GetPropertyTypeInternal`).
     """
@@ -315,19 +449,17 @@ def decompile_gameassembly_bindings(
     pe = ga_path.read_bytes()
     meta = meta_path.read_bytes()
 
-    hdr = struct.unpack_from("<64I", meta, 0)
-    str_lit_off, str_lit_sz = hdr[2], hdr[3]
-    str_lit_data_off, str_lit_data_sz = hdr[4], hdr[5]
-    str_off, str_sz = hdr[6], hdr[7]
-    methods_off, methods_sz = hdr[12], hdr[13]
-    types_off, types_sz = hdr[40], hdr[41]
-    images_off, images_sz = hdr[42], hdr[43]
+    mh = _parse_metadata_header(meta)
+    is_v39 = mh["version"] >= 38
+    str_off, str_sz = mh["str_off"], mh["str_sz"]
+    methods_off, _methods_sz = mh["methods_off"], mh["methods_sz"]
+    types_off, _types_sz = mh["types_off"], mh["types_sz"]
+    images_off, images_sz = mh["images_off"], mh["images_sz"]
+    image_stride = mh["image_stride"]
+    type_stride = mh["type_stride"]
+    method_stride = mh["method_stride"]
 
-    lit_cnt = str_lit_sz // 8
-    literals: list[str] = [
-        meta[str_lit_data_off + data_idx : str_lit_data_off + data_idx + length].decode("utf-8", errors="replace")
-        for length, data_idx in (struct.unpack_from("<II", meta, str_lit_off + i * 8) for i in range(lit_cnt))
-    ]
+    literals = _extract_string_literals(meta, mh)
 
     def get_mstr(off: int) -> str:
         if off < 0 or off >= str_sz:
@@ -429,10 +561,33 @@ def decompile_gameassembly_bindings(
     ctx_map: dict[int, str] = {}
     ctx_assembly_map: dict[int, str] = {}
 
-    for img_i in range(images_sz // 40):
-        iu = struct.unpack_from("<10i", meta, images_off + img_i * 40)
-        iname = get_mstr(iu[0])
-        t_start, t_cnt = iu[2], iu[3]
+    def _unpack_img(img_i: int) -> tuple[str, int, int]:
+        base_img = images_off + img_i * image_stride
+        if is_v39:
+            name_i, _asm_i, t_start, t_cnt = struct.unpack_from("<iiHH", meta, base_img)
+        else:
+            iu = struct.unpack_from("<10i", meta, base_img)
+            name_i, t_start, t_cnt = iu[0], iu[2], iu[3]
+        return get_mstr(name_i), t_start, t_cnt
+
+    def _unpack_td(ti: int) -> tuple[str, str, int, int]:
+        base_td = types_off + ti * type_stride
+        if is_v39:
+            tu = struct.unpack_from("<13i8Hii", meta, base_td)
+            return get_mstr(tu[0]), get_mstr(tu[1]), tu[6], tu[13]
+        tu = struct.unpack_from("<22i", meta, base_td)
+        return get_mstr(tu[0]), get_mstr(tu[1]), tu[9], tu[16] & 0xFFFF
+
+    def _unpack_md(mi: int) -> tuple[str, int]:
+        base_md = methods_off + mi * method_stride
+        if is_v39:
+            mu = struct.unpack_from("<iiiihIHHHH", meta, base_md)
+            return get_mstr(mu[0]), (mu[5] & 0xFFFFFF) - 1
+        mu = struct.unpack_from("<7i4H", meta, base_md)
+        return get_mstr(mu[0]), (mu[6] & 0xFFFFFF) - 1
+
+    for img_i in range(images_sz // image_stride):
+        iname, t_start, t_cnt = _unpack_img(img_i)
         if iname not in modules:
             continue
         _, m_cnt_mod, m_ptrs_va = modules[iname]
@@ -440,15 +595,11 @@ def decompile_gameassembly_bindings(
         if ptrs_off < 0 or m_cnt_mod == 0:
             continue
         for ti in range(t_start, t_start + t_cnt):
-            tu = struct.unpack_from("<22i", meta, types_off + ti * 88)
-            tname = get_mstr(tu[0])
+            tname, _tnamespace, m_start, m_cnt = _unpack_td(ti)
             if tname in ("PropertyRegistration", "ContextRegistration"):
-                m_start = tu[9]
-                m_cnt = tu[16] & 0xFFFF
                 for mi in range(m_start, m_start + m_cnt):
-                    mu = struct.unpack_from("<7i4H", meta, methods_off + mi * 36)
-                    if get_mstr(mu[0]) == "Initialise":
-                        rid = (mu[6] & 0xFFFFFF) - 1
+                    mname, rid = _unpack_md(mi)
+                    if mname == "Initialise":
                         if not (0 <= rid < m_cnt_mod):
                             continue
                         va = struct.unpack_from("<Q", pe, ptrs_off + rid * 8)[0]
@@ -478,10 +629,8 @@ def decompile_gameassembly_bindings(
     entity_id_to_class: dict[int, str] = {}
     ref_candidates: list[tuple[str, int, str, str, int, int, int, int]] = []
 
-    for img_i in range(images_sz // 40):
-        iu = struct.unpack_from("<10i", meta, images_off + img_i * 40)
-        iname = get_mstr(iu[0])
-        t_start, t_cnt = iu[2], iu[3]
+    for img_i in range(images_sz // image_stride):
+        iname, t_start, t_cnt = _unpack_img(img_i)
         if iname not in modules:
             continue
         _, m_cnt_mod, m_ptrs_va = modules[iname]
@@ -489,21 +638,15 @@ def decompile_gameassembly_bindings(
         if ptrs_off < 0 or m_cnt_mod == 0:
             continue
         for ti in range(t_start, t_start + t_cnt):
-            tu = struct.unpack_from("<22i", meta, types_off + ti * 88)
-            tname = get_mstr(tu[0])
-            tnamespace = get_mstr(tu[1])
+            tname, tnamespace, m_start, m_cnt = _unpack_td(ti)
             if not tname.endswith("Reference"):
                 continue
-            m_start = tu[9]
-            m_cnt = tu[16] & 0xFFFF
             if m_cnt == 0:
                 continue
             ref_candidates.append((iname, ti, tnamespace, tname, m_start, m_cnt, ptrs_off, m_cnt_mod))
             for mi in range(m_start, m_start + m_cnt):
-                mu = struct.unpack_from("<7i4H", meta, methods_off + mi * 36)
-                mname = get_mstr(mu[0])
+                mname, rid = _unpack_md(mi)
                 if mname in ("get_ID", "get_Identifier"):
-                    rid = (mu[6] & 0xFFFFFF) - 1
                     if 0 <= rid < m_cnt_mod:
                         va = struct.unpack_from("<Q", pe, ptrs_off + rid * 8)[0]
                         if va > 0:
@@ -529,9 +672,7 @@ def decompile_gameassembly_bindings(
         child_entity_refs: list[str] = []
 
         for mi in range(m_start, m_start + m_cnt):
-            mu = struct.unpack_from("<7i4H", meta, methods_off + mi * 36)
-            mname = get_mstr(mu[0])
-            rid = (mu[6] & 0xFFFFFF) - 1
+            mname, rid = _unpack_md(mi)
             if not (0 <= rid < m_cnt_mod):
                 continue
             va = struct.unpack_from("<Q", pe, ptrs_off + rid * 8)[0]
@@ -1221,6 +1362,16 @@ def decompile_unity_ui_bundles(
         "ui-visualfunctions_assets_all.bundle",
         "ui-widgets_assets_all.bundle",
     ]
+    # FM27 moved most UXML into `ui-visualtreeassets_assets_*preload.bundle` files and renamed or merged
+    # several FM26 bundles: also pick up every other non-art UI bundle that is present on disk.
+    for extra in sorted(aa_dir.glob("ui-*.bundle")):
+        name = extra.name
+        if name in target_bundles or any(
+            k in name for k in ("texture", "image", "background", "icon", "font", "mainmenu", "tifo", "animation", "credits")
+        ):
+            continue
+        if name.startswith("ui-visualtreeassets_") or name.endswith("_assets_all.bundle"):
+            target_bundles.append(name)
 
     bundles_out: dict[str, Any] = {}
     all_bind_paths: set[str] = set()
@@ -1447,20 +1598,55 @@ def dump_decompiled_codebase(
         all_cs.append("")
     (out_path / "DecompiledAllGameAssemblies.cs").write_text("\n".join(all_cs), encoding="utf-8")
 
+    files_written = [
+        "properties_and_contexts.json",
+        "entity_reference_graph.json",
+        "enums_and_structs.json",
+        "engine_lookup_tables.json",
+        "usym_source_tree.json",
+        "game_plugin_native_exports.json",
+        "all_fmf_configs_and_filters.json",
+        "unity_ui_bundles_decompiled.json",
+        "DecompiledReferences.cs",
+        "DecompiledAllGameAssemblies.cs",
+    ]
+
+    # 11. manifest.json: which installation / build the dump was taken from (for reproducibility)
+    root = resolve_fm_install_dir(fm_install_dir)
+    ga_file = root / "GameAssembly.dll"
+    meta_file = root / "fm_Data/il2cpp_data/Metadata/global-metadata.dat"
+
+    def _file_info(p: Path) -> dict[str, Any]:
+        if not p.exists():
+            return {"exists": False}
+        st = p.stat()
+        return {
+            "exists": True,
+            "size_bytes": st.st_size,
+            "modified": datetime.datetime.fromtimestamp(st.st_mtime).isoformat(timespec="seconds"),
+            "sha1": hashlib.sha1(p.read_bytes()).hexdigest(),
+        }
+
+    manifest = {
+        "generator": "fm26save.binary_decompiler.dump_decompiled_codebase",
+        "generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
+        "fm_install_dir": str(root),
+        "game": "FM27" if "27" in root.name else ("FM26" if "26" in root.name else root.name),
+        "source_files": {
+            "GameAssembly.dll": _file_info(ga_file),
+            "global-metadata.dat": _file_info(meta_file),
+        },
+        "outputs": {
+            name: (out_path / name).stat().st_size for name in files_written if (out_path / name).exists()
+        },
+    }
+    (out_path / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")
+    files_written.append("manifest.json")
+
     return {
         "output_dir": str(out_path.resolve()),
-        "files_written": [
-            "properties_and_contexts.json",
-            "entity_reference_graph.json",
-            "enums_and_structs.json",
-            "engine_lookup_tables.json",
-            "usym_source_tree.json",
-            "game_plugin_native_exports.json",
-            "all_fmf_configs_and_filters.json",
-            "unity_ui_bundles_decompiled.json",
-            "DecompiledReferences.cs",
-            "DecompiledAllGameAssemblies.cs",
-        ],
+        "fm_install_dir": str(root),
+        "files_written": files_written,
         "summary": {
             "metadata_counts": meta_data["counts"],
             "bindings_counts": ga_data["counts"],

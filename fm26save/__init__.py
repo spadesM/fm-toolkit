@@ -82,6 +82,10 @@ from fm26save.binary_decompiler import (
     extract_all_fmf_and_config_archives,
     extract_engine_lookup_tables,
 )
+from fm26save.decompiled_report import (
+    render_object_model_markdown,
+    write_object_model_report,
+)
 from fm26save.game_files import (
     extract_all_game_files_summary,
     extract_dbc_and_lnc_rules,
@@ -473,9 +477,11 @@ __all__ = [
     "position_familiarity_multiplier",
     "rank_player_roles",
     "read_fmf_directory",
+    "render_object_model_markdown",
     "resolve_nation",
     "resolve_nation_info",
     "serialize_record",
+    "write_object_model_report",
     "write_packed_date_into",
     "FM27_FORMATIONS",
     "FM27_TACTICAL_STYLES",
