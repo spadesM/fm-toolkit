@@ -398,10 +398,25 @@ from fm26save.dof import (  # noqa: E402
     scan_coach_candidates,
 )
 from fm26save.dof_web import serve_dof_dashboard  # noqa: E402
+from fm26save.game_localization import (  # noqa: E402
+    PLAYER_ATTRIBUTE_GROUPS,
+    STAFF_ATTRIBUTE_GROUPS,
+    get_game_terms,
+    list_game_languages,
+    translate_game_term,
+)
+from fm26save.studio import StudioState, serve_studio  # noqa: E402
 
 
 __all__ = [
     "ALL_28_TABLES",
+    "PLAYER_ATTRIBUTE_GROUPS",
+    "STAFF_ATTRIBUTE_GROUPS",
+    "StudioState",
+    "get_game_terms",
+    "list_game_languages",
+    "serve_studio",
+    "translate_game_term",
     "ATTRIBUTE_CATEGORIES",
     "CA_POSITION_WEIGHTS_10",
     "CONTRACT_UNKNOWN_DESCRIPTIONS",

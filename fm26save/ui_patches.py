@@ -112,6 +112,132 @@ PATCHES: dict[str, AnyPatch] = {
                 "Atanan gözlemci / kalan ilerleme / görev süresi sütunlarının sıralama yolu yoktur."
             ),
         ),
+        BytePatch(
+            key="dof-transfer-targets-sorting",
+            title="Futbol Direktörü (DoF) > Transfer Hedefleri ana tablosunda sütun sıralamasını aç (DisableSorting 1 -> 0)",
+            bundle="ui-visualtreeassets_assets_gameworldvisualtreeassetpreload.bundle",
+            offset=0x1112214,
+            original=1,
+            patched=0,
+            anchor=bytes.fromhex(
+                "26000000526563727569746d656e74446f465472616e73666572546172676574734d61696e426c6f636b000000000000000000000000000000000000050000002200"
+            ),
+            anchor_delta=0x5BB8,
+            original_sha1="68a0857a8ee72920160e7ff3fac0913c5ff3b3e3",
+            notes="RecruitmentDoFTransferTargetsMainBlock içindeki 'dof-transfer-targets-table' tablosunda sütun başlığı sıralamasını etkinleştirir.",
+        ),
+        BytePatch(
+            key="dof-transfer-targets-global-sorting",
+            title="Futbol Direktörü (DoF) > Transfer Hedefleri global tablo bloğunda sıralamayı aç (DisableSorting 1 -> 0)",
+            bundle="ui-visualtreeassets_assets_globalvisualtreeassetpreload.bundle",
+            offset=0x163782C,
+            original=1,
+            patched=0,
+            anchor=bytes.fromhex(
+                "27000000526563727569746d656e74446f665472616e73666572546172676574735461626c65426c6f636b000000000000000000000000000000000002000000150000"
+            ),
+            anchor_delta=0x3060,
+            original_sha1="f90e1712551338b4edfbaa9ae425e88a4bb8b126",
+            notes="RecruitmentDofTransferTargetsTableBlock içindeki StreamedTable üzerinde sıralamayı etkinleştirir.",
+        ),
+        BytePatch(
+            key="set-piece-takers-sorting",
+            title="Taktikler > Duran Top Kullanıcıları (StreamedTable_TakersList) tablosunda sıralamayı aç (DisableSorting 1 -> 0)",
+            bundle="ui-visualtreeassets_assets_globalvisualtreeassetpreload.bundle",
+            offset=0x12B2E40,
+            original=1,
+            patched=0,
+            anchor=bytes.fromhex(
+                "1b000000536574506965636554616b657273426c6f636b54656d706c6174650000000000000000000000000000000000020000001a0000"
+            ),
+            anchor_delta=0x16B4,
+            original_sha1="f90e1712551338b4edfbaa9ae425e88a4bb8b126",
+            notes="SetPieceTakersBlockTemplate içindeki 'StreamedTable_TakersList' tablosunda sütun sıralamasını etkinleştirir.",
+        ),
+        BytePatch(
+            key="penalty-takers-sorting",
+            title="Taktikler > Penaltı Kullanıcıları (SetPiecePenaltyTakersTable) tablosunda sıralamayı aç (DisableSorting 1 -> 0)",
+            bundle="ui-visualtreeassets_assets_gameworldvisualtreeassetpreload.bundle",
+            offset=0x12A91B8,
+            original=1,
+            patched=0,
+            anchor=bytes.fromhex(
+                "180000004f6e546865506974636850656e616c74696573426c6f636b00000000000000000000000000000000070000001d000000"
+            ),
+            anchor_delta=0x887C,
+            original_sha1="68a0857a8ee72920160e7ff3fac0913c5ff3b3e3",
+            notes="OnThePitchPenaltiesBlock içindeki 'SetPiecePenaltyTakersTable' tablosunda sütun sıralamasını etkinleştirir.",
+        ),
+        BytePatch(
+            key="contract-similar-players-sorting",
+            title="Sözleşme / Maaş Dağılımı > Benzer Süre Alan Oyuncular tablosunda sıralamayı aç (DisableSorting 1 -> 0)",
+            bundle="ui-visualtreeassets_assets_globalvisualtreeassetpreload.bundle",
+            offset=0x1522674,
+            original=1,
+            patched=0,
+            anchor=bytes.fromhex(
+                "28000000436f6e7472616374427265616b646f776e46696e616e6369616c427265616b646f776e426c6f636b000000000000000000000000000000000400000019000000"
+            ),
+            anchor_delta=0x3B38,
+            original_sha1="f90e1712551338b4edfbaa9ae425e88a4bb8b126",
+            notes="ContractBreakdownFinancialBreakdownBlock içindeki 'TablePlayersWithSimilarPlayingTime' tablosunda sıralamayı açar.",
+        ),
+        BytePatch(
+            key="club-all-staff-sorting",
+            title="Kulüp > Tüm Personel / Görev Listesi (StreamedTable_JobsList) tablosunda sıralamayı aç (DisableSorting 1 -> 0)",
+            bundle="ui-visualtreeassets_assets_gameworldvisualtreeassetpreload.bundle",
+            offset=0x187D48C,
+            original=1,
+            patched=0,
+            anchor=bytes.fromhex(
+                "11000000436c7562416c6c5374616666426c6f636b000000000000000000000000000000000000000200000017"
+            ),
+            anchor_delta=0x1420,
+            original_sha1="68a0857a8ee72920160e7ff3fac0913c5ff3b3e3",
+            notes="ClubAllStaffBlock içindeki 'StreamedTable_JobsList' tablosunda sütun sıralamasını etkinleştirir.",
+        ),
+        BytePatch(
+            key="squad-planner-sorting",
+            title="Kadro Planlayıcı (RecruitmentSquadPlannerTableBlock) kulüp tablosunda sıralamayı aç (DisableSorting 1 -> 0)",
+            bundle="ui-visualtreeassets_assets_gameworldvisualtreeassetpreload.bundle",
+            offset=0x1BBEB00,
+            original=1,
+            patched=0,
+            anchor=bytes.fromhex(
+                "21000000526563727569746d656e745371756164506c616e6e65725461626c65426c6f636b000000000000000000000000000000000000000100000011"
+            ),
+            anchor_delta=0x5734,
+            original_sha1="68a0857a8ee72920160e7ff3fac0913c5ff3b3e3",
+            notes="RecruitmentSquadPlannerTableBlock içindeki 'club-table' tablosunda sütun sıralamasını etkinleştirir.",
+        ),
+        BytePatch(
+            key="team-reserves-compact-sorting",
+            title="Takım > Yedek / Alt Kadro Kompakt tablosunda sıralamayı aç (DisableSorting 1 -> 0)",
+            bundle="ui-visualtreeassets_assets_gameworldvisualtreeassetpreload.bundle",
+            offset=0x9FFFD4,
+            original=1,
+            patched=0,
+            anchor=bytes.fromhex(
+                "220000005465616d52657365727665735371756164436f6d706163745461626c65426c6f636b000000000000000000000000000000000000010000001800"
+            ),
+            anchor_delta=0xAE8,
+            original_sha1="68a0857a8ee72920160e7ff3fac0913c5ff3b3e3",
+            notes="TeamReservesSquadCompactTableBlock içindeki StreamedTable üzerinde sütun sıralamasını etkinleştirir.",
+        ),
+        BytePatch(
+            key="welcome-pack-best-xi-sorting",
+            title="Kulüp Karşılama Paketi > En İyi 11 (WelcomePackBestXIBlock) tablosunda sıralamayı aç (DisableSorting 1 -> 0)",
+            bundle="ui-visualtreeassets_assets_globalvisualtreeassetpreload.bundle",
+            offset=0x174E064,
+            original=1,
+            patched=0,
+            anchor=bytes.fromhex(
+                "1600000057656c636f6d655061636b426573745849426c6f636b000000000000000000000000000000000000030000001f00"
+            ),
+            anchor_delta=0x2A08,
+            original_sha1="f90e1712551338b4edfbaa9ae425e88a4bb8b126",
+            notes="WelcomePackBestXIBlock içindeki 'PlayersTable' tablosunda sütun sıralamasını etkinleştirir.",
+        ),
         DllImm32Patch(
             key="scout-player-limit",
             title="Oyuncu Merkezi / Gözlemcilik çoklu seçimde 50 oyuncu gözlemleme sınırını yükselt (cmp rcx, (N+1)*8)",
@@ -357,6 +483,357 @@ def restore(fm_dir: Path, patch: AnyPatch) -> int:
     shutil.copy2(bak, path)
     print(f"[{patch.key}] restored {path.name} from backup")
     return 0
+
+
+def get_all_patches_status(fm_dir: Path) -> list[dict]:
+    """Return structured status metadata for all registered patches in ``PATCHES``."""
+    stream_cache: dict[str, bytes] = {}
+    results: list[dict] = []
+    for p in PATCHES.values():
+        if isinstance(p, DllImm32Patch):
+            path = _dll_path(fm_dir, p)
+            bak = path.with_name(path.name + ".bak")
+            if not path.exists():
+                results.append({
+                    "key": p.key,
+                    "title": p.title,
+                    "kind": "dll_imm32",
+                    "target_file": p.dll_name,
+                    "state": "MISSING",
+                    "is_patched": False,
+                    "current_value": None,
+                    "default_value": p.default_max_players,
+                    "original_value": p.original_max_players,
+                    "backup_exists": bak.exists(),
+                    "notes": p.notes,
+                })
+                continue
+            try:
+                off = _locate_dll_imm32(path, p)
+                with path.open("rb") as f:
+                    f.seek(off)
+                    imm32 = struct.unpack("<I", f.read(4))[0]
+                orig_imm32 = (p.original_max_players + 1) * 8
+                max_players = (imm32 // 8) - 1 if (imm32 >= 8 and imm32 % 8 == 0) else None
+                is_patched = imm32 != orig_imm32 and max_players is not None
+                state = "ORIGINAL" if imm32 == orig_imm32 else (f"PATCHED({max_players})" if is_patched else f"UNKNOWN({imm32:#x})")
+            except Exception as exc:
+                state = f"ERROR({exc})"
+                is_patched = False
+                max_players = None
+            results.append({
+                "key": p.key,
+                "title": p.title,
+                "kind": "dll_imm32",
+                "target_file": p.dll_name,
+                "state": state,
+                "is_patched": is_patched,
+                "current_value": max_players,
+                "default_value": p.default_max_players,
+                "original_value": p.original_max_players,
+                "backup_exists": bak.exists(),
+                "notes": p.notes,
+            })
+        else:
+            path = _bundle_path(fm_dir, p)
+            bak = path.with_name(path.name + ".bak")
+            if not path.exists():
+                results.append({
+                    "key": p.key,
+                    "title": p.title,
+                    "kind": "bundle_byte",
+                    "target_file": p.bundle,
+                    "state": "MISSING",
+                    "is_patched": False,
+                    "current_value": None,
+                    "default_value": p.patched,
+                    "original_value": p.original,
+                    "backup_exists": bak.exists(),
+                    "notes": p.notes,
+                })
+                continue
+            try:
+                if p.bundle not in stream_cache:
+                    stream_cache[p.bundle] = unity_bundle.decompress(path)
+                stream = stream_cache[p.bundle]
+                off = _locate(stream, p)
+                val = int(stream[off])
+                is_patched = val == p.patched
+                state = "PATCHED" if is_patched else ("ORIGINAL" if val == p.original else f"UNKNOWN({val:#x})")
+            except Exception as exc:
+                state = f"ERROR({exc})"
+                is_patched = False
+                val = None
+            results.append({
+                "key": p.key,
+                "title": p.title,
+                "kind": "bundle_byte",
+                "target_file": p.bundle,
+                "state": state,
+                "is_patched": is_patched,
+                "current_value": val,
+                "default_value": p.patched,
+                "original_value": p.original,
+                "backup_exists": bak.exists(),
+                "notes": p.notes,
+            })
+    return results
+
+
+def _parse_bundle_reftrees_and_objs(raw: bytes) -> tuple[list[tuple[int, int, int, int, int]], dict[str, list[tuple[int, int, str, str, int, int]]]]:
+    """Parse UnityFS SerializedFile ObjectInfo table and RefTypes TypeTree nodes from decompressed stream."""
+    data_offset = struct.unpack_from(">Q", raw, 32)[0]
+    pos = 48
+    end = raw.find(b"\x00", pos)
+    pos = end + 1 + 5
+    type_count = struct.unpack_from("<i", raw, pos)[0]
+    pos += 4
+    for _ in range(type_count):
+        class_id = struct.unpack_from("<i", raw, pos)[0]
+        script_type_index = struct.unpack_from("<h", raw, pos + 5)[0]
+        pos += 7
+        if class_id == 114 or script_type_index >= 0:
+            pos += 16
+        pos += 16
+        nn, ssz = struct.unpack_from("<II", raw, pos)
+        pos += 8 + nn * 32 + ssz
+        dep_cnt = struct.unpack_from("<i", raw, pos)[0]
+        pos += 4 + dep_cnt * 4
+
+    obj_count = struct.unpack_from("<i", raw, pos)[0]
+    pos += 4
+    objs: list[tuple[int, int, int, int, int]] = []
+    for i in range(obj_count):
+        pos = (pos + 3) & ~3
+        pid, bstart, bsize, tid = struct.unpack_from("<qQII", raw, pos)
+        pos += 24
+        objs.append((i, pid, data_offset + bstart, bsize, tid))
+
+    script_count = struct.unpack_from("<i", raw, pos)[0]
+    pos += 4
+    for _ in range(script_count):
+        pos += 4
+        pos = (pos + 3) & ~3
+        pos += 8
+
+    ext_count = struct.unpack_from("<i", raw, pos)[0]
+    pos += 4
+    for _ in range(ext_count):
+        e = raw.find(b"\x00", pos)
+        pos = e + 1 + 16 + 4
+        e2 = raw.find(b"\x00", pos)
+        pos = e2 + 1
+
+    ref_type_count = struct.unpack_from("<i", raw, pos)[0]
+    pos += 4
+    ref_trees: dict[str, list[tuple[int, int, str, str, int, int]]] = {}
+    for _ in range(ref_type_count):
+        class_id = struct.unpack_from("<i", raw, pos)[0]
+        script_type_index = struct.unpack_from("<h", raw, pos + 5)[0]
+        pos += 7
+        if class_id == 114 or script_type_index >= 0:
+            pos += 16
+        pos += 16
+        nn, ssz = struct.unpack_from("<II", raw, pos)
+        pos += 8
+        nodes_off = pos
+        pos += nn * 32
+        str_buf = raw[pos : pos + ssz]
+        pos += ssz
+
+        def get_rtstr(off: int, sb: bytes = str_buf) -> str:
+            if off & 0x80000000:
+                return f"common_{off & 0x7FFFFFFF}"
+            e = sb.find(b"\x00", off)
+            return sb[off:e].decode("ascii", errors="replace")
+
+        nodes: list[tuple[int, int, str, str, int, int]] = []
+        for i in range(nn):
+            ver, lvl, tflags, t_off, n_off, bsz, idx, mflag, rhash = struct.unpack_from(
+                "<HBBIiiiiQ", raw, nodes_off + i * 32
+            )
+            nodes.append((lvl, tflags, get_rtstr(t_off), get_rtstr(n_off), bsz, mflag))
+        e1 = raw.find(b"\x00", pos)
+        cls_name = raw[pos:e1].decode("utf-8", errors="replace")
+        pos = e1 + 1
+        e2 = raw.find(b"\x00", pos)
+        pos = e2 + 1
+        e3 = raw.find(b"\x00", pos)
+        pos = e3 + 1
+        ref_trees[cls_name] = nodes
+    return objs, ref_trees
+
+
+def _walk_typetree_node(
+    nodes: list[tuple[int, int, str, str, int, int]],
+    data: bytes,
+    pos: int,
+    node_idx: int = 0,
+) -> tuple[int, object]:
+    lvl, tflags, tname, nname, bsz, mflag = nodes[node_idx]
+    children = []
+    i = node_idx + 1
+    while i < len(nodes) and nodes[i][0] > lvl:
+        if nodes[i][0] == lvl + 1:
+            children.append(i)
+        i += 1
+    if tname in ("common_840", "string"):
+        slen = struct.unpack_from("<I", data, pos)[0]
+        pos += 4
+        sval = data[pos : pos + slen].decode("utf-8", errors="replace")
+        pos += slen
+        pos = (pos + 3) & ~3
+        return pos, sval
+    if tflags & 1:
+        cnt = struct.unpack_from("<I", data, pos)[0]
+        pos += 4
+        elem_node = children[1]
+        arr = []
+        for _ in range(cnt):
+            pos, ev = _walk_typetree_node(nodes, data, pos, elem_node)
+            arr.append(ev)
+        if mflag & 0x4000:
+            pos = (pos + 3) & ~3
+        return pos, arr
+    if not children:
+        if bsz == 1:
+            v: object = data[pos]
+        elif bsz == 2:
+            v = struct.unpack_from("<H", data, pos)[0]
+        elif bsz == 4:
+            if tname in ("common_161", "float"):
+                v = round(struct.unpack_from("<f", data, pos)[0], 2)
+            else:
+                v = struct.unpack_from("<i", data, pos)[0]
+        elif bsz == 8:
+            v = struct.unpack_from("<q", data, pos)[0]
+        else:
+            v = data[pos : pos + bsz].hex()
+        pos += bsz
+        if mflag & 0x4000:
+            pos = (pos + 3) & ~3
+        return pos, v
+    if len(children) == 1 and nodes[children[0]][3] in ("common_49", "Array"):
+        pos, arr = _walk_typetree_node(nodes, data, pos, children[0])
+        if mflag & 0x4000:
+            pos = (pos + 3) & ~3
+        return pos, arr
+    obj: dict[str, object] = {}
+    for c in children:
+        c_name = nodes[c][3]
+        pos, cv = _walk_typetree_node(nodes, data, pos, c)
+        obj[c_name] = cv
+    if mflag & 0x4000:
+        pos = (pos + 3) & ~3
+    return pos, obj
+
+
+def scan_all_streamed_tables(fm_dir: Path, only_unsortable_by_default: bool = True) -> list[dict]:
+    """Scan all UI VisualTreeAsset preload bundles and list ``StreamedTable`` instances and their ``DisableSorting`` byte."""
+    aa = fm_dir / AA_DIR
+    if not aa.exists():
+        return []
+    items: list[dict] = []
+    for bp in sorted(aa.glob("ui-visualtreeassets*.bundle")):
+        bname = bp.name
+        try:
+            cur_stream = unity_bundle.decompress(bp)
+            bak_path = bp.with_name(bp.name + ".bak")
+            orig_stream = unity_bundle.decompress(bak_path) if bak_path.exists() else cur_stream
+            objs, ref_trees = _parse_bundle_reftrees_and_objs(orig_stream)
+        except Exception:
+            continue
+        if "StreamedTable/UxmlSerializedData" not in ref_trees:
+            continue
+        st_nodes = ref_trees["StreamedTable/UxmlSerializedData"]
+        top_children = [i for i, n in enumerate(st_nodes) if n[0] == 1]
+
+        for _oi, (_idx, pid, abs_off, bsize, _tid) in enumerate(objs):
+            chunk = orig_stream[abs_off : abs_off + bsize]
+            if b"StreamedTable/UxmlSerializedData" not in chunk:
+                continue
+            ln = struct.unpack_from("<I", chunk, 28)[0] if len(chunk) >= 32 else 0
+            vta_name = chunk[32 : 32 + ln].decode("utf-8", "replace") if 0 < ln < 200 else "UnknownVTA"
+            pos = 0
+            while True:
+                idx = chunk.find(b"StreamedTable/UxmlSerializedData", pos)
+                if idx < 0:
+                    break
+                pos = idx + 1
+                p = idx + 64
+                fields: dict[str, object] = {}
+                offsets: dict[str, int] = {}
+                for c in top_children:
+                    cname = st_nodes[c][3]
+                    if cname == "references":
+                        break
+                    start = p
+                    try:
+                        p, val = _walk_typetree_node(st_nodes, chunk, p, c)
+                    except Exception:
+                        break
+                    if not cname.endswith("_UxmlAttributeFlags"):
+                        fields[cname] = val
+                        offsets[cname] = abs_off + start
+                ds_off = offsets.get("DisableSorting")
+                if ds_off is None or ds_off >= len(cur_stream):
+                    continue
+                orig_ds = int(orig_stream[ds_off])
+                cur_ds = int(cur_stream[ds_off])
+                if only_unsortable_by_default and orig_ds != 1 and cur_ds != 1:
+                    continue
+                binding_obj = fields.get("Binding")
+                binding_str = binding_obj.get("m_path", "") if isinstance(binding_obj, dict) else str(binding_obj or "")
+                items.append({
+                    "bundle": bname,
+                    "vta_name": vta_name,
+                    "path_id": pid,
+                    "table_name": str(fields.get("name") or ""),
+                    "binding": str(binding_str or ""),
+                    "offset": ds_off,
+                    "offset_hex": f"{ds_off:#x}",
+                    "disable_sorting": cur_ds,
+                    "original_disable_sorting": orig_ds,
+                    "sorting_enabled": cur_ds == 0,
+                    "is_modified": cur_ds != orig_ds,
+                })
+    return items
+
+
+def set_streamed_table_sorting(fm_dir: Path, bundle_name: str, offset: int, disable_sorting: int) -> dict:
+    """Set ``DisableSorting`` (`0` = sortable, `1` = disabled) at ``offset`` in ``bundle_name``."""
+    if disable_sorting not in (0, 1):
+        raise ValueError("disable_sorting must be 0 or 1")
+    path = fm_dir / AA_DIR / bundle_name
+    if not path.exists():
+        raise FileNotFoundError(f"Bundle not found: {path}")
+    bundle = unity_bundle.read_bundle(path)
+    stream = unity_bundle.decompress(bundle)
+    if not (0 <= offset < len(stream)):
+        raise ValueError(f"Offset {offset:#x} out of range for {bundle_name}")
+    # Verify that StreamedTable/UxmlSerializedData header precedes offset within 0x500 bytes
+    window_start = max(0, offset - 0x500)
+    if b"StreamedTable/UxmlSerializedData" not in stream[window_start:offset]:
+        raise RuntimeError(f"Offset {offset:#x} is not inside a StreamedTable/UxmlSerializedData block")
+    cur_val = int(stream[offset])
+    if cur_val == disable_sorting:
+        return {"ok": True, "changed": False, "bundle": bundle_name, "offset": offset, "disable_sorting": cur_val}
+    new_bytes = unity_bundle.patch_bytes(bundle, {offset: bytes([disable_sorting])})
+    bak = path.with_name(path.name + ".bak")
+    if not bak.exists():
+        shutil.copy2(path, bak)
+    tmp = path.with_name(path.name + ".patched.tmp")
+    tmp.write_bytes(new_bytes)
+    try:
+        verify_stream = unity_bundle.decompress(tmp)
+        if int(verify_stream[offset]) != disable_sorting:
+            raise RuntimeError("Verification failed after patching StreamedTable")
+        shutil.move(str(tmp), str(path))
+    finally:
+        if tmp.exists():
+            tmp.unlink()
+    return {"ok": True, "changed": True, "bundle": bundle_name, "offset": offset, "disable_sorting": disable_sorting}
+
 
 
 def main(argv: list[str] | None = None) -> int:

@@ -202,13 +202,24 @@ def main(argv: list[str] | None = None) -> int:
     # 12. patch-ui
     p_pui = sub.add_parser(
         "patch-ui",
-        help="List, check status, apply, or restore FM27 UI & game_plugin.dll patches (scout-priorities-sorting, scout-player-limit)",
+        help="List, check status, apply, or restore FM27 UI & game_plugin.dll patches (scout-priorities-sorting, scout-player-limit, etc.)",
     )
     p_pui.add_argument("action", choices=["list", "status", "apply", "restore"], help="Patch action")
-    p_pui.add_argument("patch", nargs="?", default=None, help="Patch key (scout-priorities-sorting | scout-player-limit)")
+    p_pui.add_argument("patch", nargs="?", default=None, help="Patch key (scout-priorities-sorting | scout-player-limit | ...)")
     p_pui.add_argument("--fm-dir", default=None, help="Football Manager 27 installation directory")
     p_pui.add_argument("--dry-run", action="store_true", help="Verify only, do not write")
     p_pui.add_argument("--max-players", type=int, default=None, help="Max players for scout-player-limit (default: 5000)")
+
+    # 13. studio (All-in-One Web UI Command Center)
+    p_studio = sub.add_parser(
+        "studio",
+        help="Launch FM27/FM26 Studio Web UI: Save & Pre-Game DB Editor, Game Optimization Suite, Binary/Bundle Patcher & 21-Language Term Localization",
+    )
+    p_studio.add_argument("--save", default=None, help="Optional initial .fm save file path (auto-discovers saves if omitted)")
+    p_studio.add_argument("--fm-dir", default=None, help="Optional FM27/FM26 installation directory (auto-detects if omitted)")
+    p_studio.add_argument("--host", default="127.0.0.1", help="Bind host (default: 127.0.0.1)")
+    p_studio.add_argument("--port", type=int, default=8780, help="Port for FM Studio web server (default: 8780)")
+    p_studio.add_argument("--no-browser", action="store_true", help="Do not auto-open browser on startup")
 
     args = parser.parse_args(argv)
 
@@ -615,6 +626,18 @@ def main(argv: list[str] | None = None) -> int:
         if args.max_players is not None:
             sub_argv.extend(["--max-players", str(args.max_players)])
         return ui_patches_main(sub_argv)
+
+    if args.cmd == "studio":
+        from fm26save.studio import serve_studio
+
+        serve_studio(
+            args.save,
+            fm_dir=args.fm_dir,
+            host=args.host,
+            port=args.port,
+            open_browser=not args.no_browser,
+        )
+        return 0
 
     return 0
 
