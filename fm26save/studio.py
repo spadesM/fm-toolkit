@@ -91,22 +91,19 @@ PERSONALITY_FIELDS: list[tuple[str, str, str]] = [
 
 STAFF_PREFERENCE_FIELDS: list[tuple[str, str, str]] = [
     ("attacking", "Hücum Eğilimi (Attacking)", "Attacking"),
-    ("depth", "Savunma Derinliği (Depth)", "Depth"),
     ("directness", "Direkt Oyun (Directness)", "Directness"),
-    ("flamboyancy", "Gösterişlilik (Flamboyancy)", "Flamboyancy"),
-    ("flexibility", "Taktiksel Esneklik (Flexibility)", "Flexibility"),
-    ("free_roles", "Serbest Roller (Free Roles)", "Free Roles"),
-    ("marking", "Adam Markajı (Marking)", "Marking"),
-    ("offside", "Ofsayt Tuzağı (Offside)", "Offside"),
-    ("pressing", "Ön Alan Presi (Pressing)", "Pressing"),
-    ("sitting_back", "Geride Bekleme (Sitting Back)", "Sitting Back"),
     ("tempo", "Oyun Temposu (Tempo)", "Tempo"),
-    ("use_of_playmaker", "Oyun Kurucu Kullanımı (Playmaker)", "Use of Playmaker"),
-    ("use_of_substitutions", "Oyuncu Değişikliği Kullanımı", "Use of Substitutions"),
     ("width", "Oyun Genişliği (Width)", "Width"),
+    ("trigger_press", "Ön Alan Presi (Trigger Press)", "Trigger Press"),
+    ("flexibility", "Taktiksel Esneklik (Flexibility)", "Flexibility"),
     ("hardness_of_training", "Antrenman Sertliği (1-20)", "Hardness of Training"),
     ("squad_rotation", "Kadro Rotasyonu (1-20)", "Squad Rotation"),
-    ("youth_policy", "Genç Oyuncu Politikası (1-20)", "Youth Policy"),
+    ("buying_players", "Oyuncu Transfer Eğilimi", "Buying Players"),
+    ("mind_games", "Zihin Oyunları (Mind Games)", "Mind Games"),
+    ("business", "Ticari Yaklaşım (Business)", "Business"),
+    ("interference", "Müdahalecilik (Interference)", "Interference"),
+    ("patience", "Sabır Seviyesi (Patience)", "Patience"),
+    ("resources", "Kaynak Kullanımı (Resources)", "Resources"),
 ]
 
 SQUAD_STATUS_CATALOG: list[dict[str, Any]] = [
@@ -391,6 +388,7 @@ class StudioState:
                         "common_name": p.common_name or "",
                         "age": p.age or 0,
                         "birth_date": str(p.birth_date) if p.birth_date else "",
+                        "nation_id": p.nation_id,
                         "nationality_id": p.nation_id,
                         "nationality": sv.nation_name(p.nation_id, lang="tr"),
                         "second_nation_ids": list(p.second_nation_ids) if p.second_nation_ids else [],
@@ -425,6 +423,7 @@ class StudioState:
                         "all_injuries": p_injs,
                         "suspensions_count": len(p.suspensions) if p.suspensions else 0,
                         "trait_bits": p.trait_bits or 0,
+                        "trait_bits_str": str(p.trait_bits or 0),
                     }
                     players_list.append(row)
                     players_by_uid[p.uid] = row
@@ -479,6 +478,7 @@ class StudioState:
                     fac = facilities_by_club.get(c.uid)
                     corp_raw = getattr(fac.corporate_facilities, "raw", 0) if fac and fac.corporate_facilities else 0
                     st_info = stadium_by_club_uid.get(c.uid)
+                    nat_str = sv.nation_name(c.nation_id, lang="tr")
                     c_dict = {
                         "uid": c.uid,
                         "unique_id": c.unique_id,
@@ -486,8 +486,10 @@ class StudioState:
                         "short_name": c.short_name or "",
                         "reputation": c.reputation or 0,
                         "last_league_position": c.last_league_position,
+                        "last_league_pos": c.last_league_position,
                         "nation_id": c.nation_id,
-                        "nation_name": sv.nation_name(c.nation_id, lang="tr"),
+                        "nation_name": nat_str,
+                        "nationality": nat_str,
                         "fa_nation_id": c.fa_nation_id,
                         "city_id": c.city_id,
                         "parent_club_uid": c.parent_club_uid,
@@ -524,8 +526,10 @@ class StudioState:
                     staff_enriched = sv.staff_enriched()
                     for s in staff_enriched:
                         cuid = s.get("club_uid")
+                        rs = raw_staff_by_uid.get(s["uid"])
                         s["club_name"] = club_map.get(cuid, "") if cuid else (s.get("club_name") or "")
                         s["role_name"] = s.get("role_tr") or s.get("role_en") or s.get("departments") or ""
+                        s["team_id"] = rs.team_id if rs else s.get("team_id")
                         staff_by_uid[s["uid"]] = s
                     staff_enriched.sort(key=lambda r: (r.get("ca") or 0, r.get("pa") or 0), reverse=True)
                 except Exception:
@@ -705,6 +709,30 @@ class StudioState:
         trait_bits = int(target.trait_bits or 0)
         active_bits = [b for b in range(64) if (trait_bits >> b) & 1]
         role_breakdown = analyze_player_role_breakdown(target, top_n_per_group=5)
+        role_breakdown["top_in_possession"] = [
+            {
+                **r,
+                "role_tr": r.get("role_name_tr") or r.get("role_name_en") or "",
+                "score": r.get("effective_role_score_20") or 0,
+            }
+            for r in role_breakdown.get("overall_top_in_possession", [])
+        ]
+        role_breakdown["top_out_of_possession"] = [
+            {
+                **r,
+                "role_tr": r.get("oop_role_name_tr") or r.get("oop_role_name_en") or "",
+                "score": r.get("effective_oop_score_20") or 0,
+            }
+            for r in role_breakdown.get("overall_top_out_of_possession", [])
+        ]
+        role_breakdown["top_combinations"] = [
+            {
+                **r,
+                "role_tr": f"{r.get('in_possession_tr', '')} + {r.get('out_of_possession_tr', '')}".strip(" +"),
+                "score": r.get("combined_dual_score_20") or 0,
+            }
+            for r in role_breakdown.get("best_dual_role_combinations", [])
+        ]
         season_stats = idx.get("season_stats_by_player", {}).get(uid, [])
 
         return {
@@ -716,6 +744,7 @@ class StudioState:
             "contract": contract_detail,
             "season_stats": season_stats,
             "trait_bits": trait_bits,
+            "trait_bits_str": str(trait_bits),
             "active_trait_bits": active_bits,
             "role_breakdown": role_breakdown,
         }
@@ -794,7 +823,7 @@ class StudioState:
         return {
             "summary": st,
             "block40_20": st.get("coaching_and_scouting_20") or {},
-            "block40_raw": st.get("coaching_and_scouting_raw") or {},
+            "block40_raw": st.get("coaching_and_scouting_raw100") or st.get("coaching_and_scouting_raw") or {},
             "preferences": prefs,
             "personality": personality,
         }
@@ -845,6 +874,46 @@ class StudioState:
         else:
             filtered = rows
         return {"table": table_name, "total": len(filtered), "rows": filtered[:limit]}
+
+    def query_league_table_rows(self, q: str = "", limit: int = 150) -> dict[str, Any]:
+        """Return flattened LeagueTableRow entries across all league tables in the save."""
+        raw_res = self.query_any_save_table("league-tables", q="", limit=5000)
+        flat_rows: list[dict[str, Any]] = []
+        for ti, tbl in enumerate(raw_res.get("rows", [])):
+            if isinstance(tbl, dict) and isinstance(tbl.get("rows"), list):
+                for row in tbl["rows"]:
+                    if isinstance(row, dict):
+                        total_split = row.get("total") or {
+                            "played": row.get("played", 0),
+                            "won": row.get("won", 0),
+                            "drawn": row.get("drawn", 0),
+                            "lost": row.get("lost", 0),
+                            "goals_for": row.get("goals_for", 0),
+                            "goals_against": row.get("goals_against", 0),
+                            "points": row.get("points", 0),
+                        }
+                        flat_rows.append(
+                            {
+                                "table_index": ti,
+                                "competition_id": tbl.get("competition_id"),
+                                "competition_name": tbl.get("competition_name"),
+                                "total": total_split,
+                                **row,
+                            }
+                        )
+            elif isinstance(tbl, dict):
+                flat_rows.append(tbl)
+        ql = q.strip().lower()
+        if ql:
+            filtered = [
+                r for r in flat_rows
+                if ql in (r.get("club_name") or "").lower()
+                or ql == str(r.get("team_id"))
+                or ql == str(r.get("club_uid"))
+            ]
+        else:
+            filtered = flat_rows
+        return {"table": "league-tables", "total": len(filtered), "rows": filtered[:limit]}
 
     def get_patches_cached(self, force_refresh: bool = False) -> list[dict[str, Any]]:
         with self._lock:
@@ -1163,11 +1232,12 @@ class StudioState:
                         applied.append(ed.max_out_staff(s_uid))
                     else:
                         stf = payload.get("staff_fields") or {}
-                        s_attrs = {
-                            k: int(v)
-                            for k, v in (payload.get("staff_attributes") or {}).items()
-                            if v not in (None, "")
-                        }
+                        b40_key_to_idx = {key: idx for idx, key, _ in STAFF_BLOCK40_FIELDS}
+                        s_attrs: dict[int | str, int] = {}
+                        for k, v in (payload.get("staff_attributes") or {}).items():
+                            if v not in (None, ""):
+                                mapped_k = b40_key_to_idx.get(str(k), k)
+                                s_attrs[mapped_k] = int(v)
                         s_prefs = {
                             k: int(v)
                             for k, v in (payload.get("staff_preferences") or {}).items()
@@ -1301,6 +1371,8 @@ class StudioState:
         with self._lock:
             if "summary" not in self._pregame_cache:
                 master = extract_master_db_tables(self.fm_dir, sample_limit=60)
+                if isinstance(master, dict) and "tables" not in master:
+                    master["tables"] = master.get("client_db_tables") or master.get("server_db_tables") or []
                 people = extract_pregame_people_and_history_db(self.fm_dir)
                 multi = extract_multi_version_database_evolution(self.fm_dir)
                 self._pregame_cache["summary"] = {
@@ -1433,7 +1505,7 @@ def build_studio_handler(state: StudioState) -> type[BaseHTTPRequestHandler]:
                 if path == "/api/league-tables":
                     q = first("q", "")
                     limit = int(first("limit", "150") or 150)
-                    self._send_json(state.query_any_save_table("league-tables", q=q, limit=limit))
+                    self._send_json(state.query_league_table_rows(q=q, limit=limit))
                     return
 
                 if path == "/api/save-sections":
@@ -1572,10 +1644,10 @@ def build_studio_handler(state: StudioState) -> type[BaseHTTPRequestHandler]:
 
                 if path == "/api/patches/apply-all-sorting":
                     for p in PATCHES.values():
-                        if p.key.endswith("-sorting"):
+                        if p.key.startswith("ui-sort-") or p.key.endswith("-sorting"):
                             apply_ui_patch(state.fm_dir, p, dry_run=False)
                     state.invalidate_patch_caches()
-                    self._send_json({"ok": True, "patches": state.get_patches_cached()})
+                    self._send_json({"ok": True, "patches": state.get_patches_cached(force_refresh=True)})
                     return
 
                 if path == "/api/patches/restore":

@@ -672,6 +672,28 @@ code.inline {
   border-radius: 4px;
   color: #93c5fd;
 }
+
+.ico {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  flex-shrink: 0;
+}
+.ico-accent { stroke: var(--accent); }
+.ico-blue { stroke: var(--blue); }
+.ico-amber { stroke: var(--amber); }
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
 </style>
 </head>
 <body>
@@ -696,10 +718,16 @@ code.inline {
       <select id="sel-fmdir" onchange="onContextChange()"></select>
     </div>
     <div class="ctx-pill lang-pill" title="Arayüz dili sabit kalırken oyuncu/personel nitelik, pozisyon ve rol terimlerini oyunun resmi 21 .ltc dilinden birinde canlı gösterir">
-      <label>🌐 Oyun İçi Terim Dili (.ltc)</label>
+      <label style="display:flex;align-items:center;gap:5px;">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Oyun İçi Terim Dili (.ltc)
+      </label>
       <select id="sel-gamelang" onchange="onGameLangChange()"></select>
     </div>
-    <button class="btn btn-xs" onclick="refreshAll()" title="Bellek önbelleğini ve görünümü yenile">↻ Yenile</button>
+    <button class="btn btn-xs" onclick="refreshAll()" title="Bellek önbelleğini ve görünümü yenile">
+      <svg class="ico" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
+      Yenile
+    </button>
   </div>
 </header>
 
@@ -709,47 +737,76 @@ code.inline {
     <div>
       <div class="nav-section-title">1. Kayıt & Oyun DB Editörü</div>
       <button class="nav-btn active" data-tab="tab-overview" onclick="switchTab('tab-overview')">
-        <span class="nav-left">📊 Genel Bakış & Tarih</span>
+        <span class="nav-left">
+          <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          Genel Bakış & Tarih
+        </span>
       </button>
       <button class="nav-btn" data-tab="tab-players" onclick="switchTab('tab-players')">
-        <span class="nav-left">⚽ Oyuncu & Sözleşme Editörü</span>
+        <span class="nav-left">
+          <svg class="ico" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Oyuncu & Sözleşme Editörü
+        </span>
         <span class="nav-badge" id="nav-cnt-players">-</span>
       </button>
       <button class="nav-btn" data-tab="tab-clubs" onclick="switchTab('tab-clubs')">
-        <span class="nav-left">🏛️ Kulüp, Finans & Stadyum</span>
+        <span class="nav-left">
+          <svg class="ico" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Kulüp, Finans & Stadyum
+        </span>
         <span class="nav-badge" id="nav-cnt-clubs">-</span>
       </button>
       <button class="nav-btn" data-tab="tab-staff" onclick="switchTab('tab-staff')">
-        <span class="nav-left">👔 Personel, Hoca & DoF</span>
+        <span class="nav-left">
+          <svg class="ico" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          Personel, Hoca & DoF
+        </span>
         <span class="nav-badge" id="nav-cnt-staff">-</span>
       </button>
       <button class="nav-btn" data-tab="tab-world" onclick="switchTab('tab-world')">
-        <span class="nav-left">🏆 Lig, Taktik, 11 & İsimler</span>
+        <span class="nav-left">
+          <svg class="ico" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          Lig, Taktik, 11 & İsimler
+        </span>
       </button>
       <button class="nav-btn" data-tab="tab-explorer" onclick="switchTab('tab-explorer')">
-        <span class="nav-left">🗄️ 28 Tablo & Pre-Game DB</span>
+        <span class="nav-left">
+          <svg class="ico" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          28 Tablo & Pre-Game DB
+        </span>
         <span class="nav-badge">28+81</span>
       </button>
 
       <div class="nav-section-title">2. Oyun Optimizasyonu</div>
       <button class="nav-btn" data-tab="tab-optimization" onclick="switchTab('tab-optimization')">
-        <span class="nav-left">⚡ Motor (boot.config) & Disk</span>
+        <span class="nav-left">
+          <svg class="ico" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Motor (boot.config) & Disk
+        </span>
         <span class="nav-badge" id="nav-badge-opt">14+</span>
       </button>
 
       <div class="nav-section-title">3. Oyun Dosyası Yamaları</div>
       <button class="nav-btn" data-tab="tab-patches" onclick="switchTab('tab-patches')">
-        <span class="nav-left">🔧 DLL Sınır & 252 Tablo Yaması</span>
+        <span class="nav-left">
+          <svg class="ico" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+          DLL Sınır & 252 Tablo Yaması
+        </span>
         <span class="nav-badge" id="nav-badge-patches">262</span>
       </button>
       <button class="nav-btn" data-tab="tab-rules" onclick="switchTab('tab-rules')">
-        <span class="nav-left">📜 Kurallar (.edt / .lnc / .dbc)</span>
+        <span class="nav-left">
+          <svg class="ico" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Kurallar (.edt / .lnc / .dbc)
+        </span>
       </button>
     </div>
 
     <div class="sidebar-footer">
       <div id="sidebar-save-meta">Yükleniyor...</div>
-      <div style="margin-top:4px;color:#34d399;font-family:var(--font-mono);font-size:10px;" id="sidebar-perf-pill">⚡ In-Memory Cache Aktif (&lt;1ms)</div>
+      <div style="margin-top:4px;color:#34d399;font-family:var(--font-mono);font-size:10px;display:flex;align-items:center;gap:6px;" id="sidebar-perf-pill">
+        <span class="status-dot"></span> In-Memory Cache Aktif (&lt;1ms)
+      </div>
     </div>
   </aside>
 
@@ -764,7 +821,10 @@ code.inline {
         <div class="card">
           <div class="card-header">
             <div>
-              <div class="card-title">📅 Oyun İçi Küresel Tarih & Çıktı Ayarları</div>
+              <div class="card-title">
+                <svg class="ico ico-accent" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Oyun İçi Küresel Tarih & Çıktı Ayarları
+              </div>
               <div class="card-sub">Kayıt dosyasındaki aktif oyun tarihini veya varsayılan kayıt hedefini doğrudan değiştirin</div>
             </div>
           </div>
@@ -779,7 +839,7 @@ code.inline {
             </div>
           </div>
           <div style="margin-top:10px;display:flex;gap:8px;align-items:center;">
-            <button class="btn btn-primary" onclick="saveGlobalDate()">💾 Oyun Tarihini Kaydet</button>
+            <button class="btn btn-primary" onclick="saveGlobalDate()">Oyun Tarihini Kaydet</button>
             <span class="card-sub" id="ov-save-path-label"></span>
           </div>
         </div>
@@ -787,7 +847,10 @@ code.inline {
         <div class="card">
           <div class="card-header">
             <div>
-              <div class="card-title">🌐 Aktif Oyun İçi Terim Lokalizasyonu Önizlemesi</div>
+              <div class="card-title">
+                <svg class="ico ico-blue" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Aktif Oyun İçi Terim Lokalizasyonu Önizlemesi
+              </div>
               <div class="card-sub">Üst bardaki <b>Oyun İçi Terim Dili (.ltc)</b> seçimine göre canlı çözümlenen oyun içi karşılıklar</div>
             </div>
             <span class="badge badge-green" id="ov-lang-badge">Turkish</span>
@@ -798,23 +861,29 @@ code.inline {
 
       <div class="grid-3">
         <div class="card">
-          <div class="card-title" style="margin-bottom:6px;">⚽ 1. Tüm Veritabanları & Tam Kapsamlı Editör</div>
+          <div class="card-title" style="margin-bottom:6px;">
+            <span class="badge badge-green">01</span> Tüm Veritabanları & Tam Kapsamlı Editör
+          </div>
           <div class="card-sub" style="margin-bottom:10px;">
             <b>Oyuncu:</b> CA/PA, 3 İtibar, Kulüp Transferi, 52 Nitelik (1-20 veya 1-100 ham ölçek), 15 Pozisyon, 8 Kişilik, 64-bit Oyun Karakteri (Traits), Sözleşme + Bonuslar + Bireysel Maddeler (Clauses) ve Sezon İstatistikleri.<br>
             <b>Kulüp & Stadyum:</b> 11 Aylık Finans Alanı, Sponsorluklar, Tesisler ve 14 Stadyum/Saha Boyutu alanı.<br>
-            <b>Personel:</b> CA/PA, 50+ Rol (r4), 26 Antrenörlük/Gözlemcilik Niteliği, 17 Taktiksel Tercih ve 8 Kişilik alanı.
+            <b>Personel:</b> CA/PA, 50+ Rol (r4), 26 Antrenörlük/Gözlemcilik Niteliği, 14 Taktiksel Tercih ve 8 Kişilik alanı.
           </div>
           <button class="btn btn-primary" onclick="switchTab('tab-players')">Oyuncu Editörünü Aç →</button>
         </div>
         <div class="card">
-          <div class="card-title" style="margin-bottom:6px;">⚡ 2. Oyun Optimizasyon Merkezi</div>
+          <div class="card-title" style="margin-bottom:6px;">
+            <span class="badge badge-blue">02</span> Oyun Optimizasyon Merkezi
+          </div>
           <div class="card-sub" style="margin-bottom:10px;">
             Unity 6000.0.55f1-fm <code class="inline">boot.config</code> içerisindeki <b>14 kategorize edilmiş motor parametresi</b> (Job Worker Count, GC Incremental Time Slice, GFX Threading/Jobs, HDR, Direct3D Flip Model), özel anahtar ekleyici, doğrudan ham metin editörü ve başlangıç videoları (<code class="inline">Videos_disabled</code>) kontrolü.
           </div>
           <button class="btn btn-blue" onclick="switchTab('tab-optimization')">Optimizasyon Merkezini Aç →</button>
         </div>
         <div class="card">
-          <div class="card-title" style="margin-bottom:6px;">🔧 3. Oyun Dosyası & Bundle Yamalayıcı</div>
+          <div class="card-title" style="margin-bottom:6px;">
+            <span class="badge badge-amber">03</span> Oyun Dosyası & Bundle Yamalayıcı
+          </div>
           <div class="card-sub" style="margin-bottom:10px;">
             <code class="inline">game_plugin.dll</code> içerisindeki 50 oyuncu sınırını istediğiniz herhangi bir tam sayıya (<code class="inline">50..50000</code>) ayarlayın, 10 hazır UI sıralama yamasını veya oyun içindeki <b>252 adet <code class="inline">StreamedTable</code></b> nesnesinin her birinin sıralama kilidini tek tek açın/kapatın.
           </div>
@@ -886,9 +955,9 @@ code.inline {
                 <div class="card-sub" id="pl-ed-sub">Soldaki tablodan bir oyuncuya tıkladığınızda tüm 52 niteliği, 15 pozisyonu, kişiliği, oyun karakteri ve sözleşme maddeleri &lt;1ms içinde burada açılır.</div>
               </div>
               <div style="display:flex;gap:5px;flex-wrap:wrap;" id="pl-quick-presets-bar">
-                <button class="btn btn-xs btn-amber" onclick="presetPlayerWonderkid()" title="Opsiyonel Önayar: CA=175, PA=200, Kondisyon=100%">✨ Wonderkid</button>
-                <button class="btn btn-xs btn-blue" onclick="presetPlayerFitness()" title="Opsiyonel Önayar: Kondisyon=100%, Keskinlik=100%">🔋 %100 Kondisyon</button>
-                <button class="btn btn-xs btn-danger" onclick="savePlayerEdits(true)" title="Opsiyonel Önayar: CA/PA=200, Tüm 52 Nitelik=20, 15 Pozisyon=20">🚀 Tamamını 20 (Max) Yap</button>
+                <button class="btn btn-xs btn-amber" onclick="presetPlayerWonderkid()" title="Opsiyonel Önayar: CA=175, PA=200, Kondisyon=100%">Wonderkid</button>
+                <button class="btn btn-xs btn-blue" onclick="presetPlayerFitness()" title="Opsiyonel Önayar: Kondisyon=100%, Keskinlik=100%">%100 Kondisyon</button>
+                <button class="btn btn-xs btn-danger" onclick="savePlayerEdits(true)" title="Opsiyonel Önayar: CA/PA=200, Tüm 52 Nitelik=20, 15 Pozisyon=20">Tamamını 20 (Max) Yap</button>
               </div>
             </div>
 
@@ -964,17 +1033,17 @@ code.inline {
                       <select class="select" id="ed-pl-nation"></select>
                     </div>
                     <div class="form-field"><label>Boy (cm, 140-220)</label><input type="number" min="140" max="220" class="input input-mono" id="ed-pl-height"></div>
-                    <div class="form-field"><label>Forma Numarası (1-99)</label><input type="number" min="0" max="99" class="input input-mono" id="ed-pl-shirt"></div>
-                    <div class="form-field"><label>Vücut Tipi Kodu (1-5)</label><input type="number" min="1" max="5" class="input input-mono" id="ed-pl-bodytype"></div>
+                    <div class="form-field"><label>Forma Numarası (1-99)</label><input type="number" min="0" max="99" class="input input-mono" id="ed-pl-shirt" placeholder="Değiştirme"></div>
+                    <div class="form-field"><label>Vücut Tipi Kodu (1-5)</label><input type="number" min="1" max="5" class="input input-mono" id="ed-pl-bodytype" placeholder="Değiştirme"></div>
                     <div class="form-field"><label id="lbl-lfoot">Sol Ayak (1-20)</label><input type="number" min="1" max="20" class="input input-mono" id="ed-pl-lfoot"></div>
                     <div class="form-field"><label id="lbl-rfoot">Sağ Ayak (1-20)</label><input type="number" min="1" max="20" class="input input-mono" id="ed-pl-rfoot"></div>
                   </div>
                   <div style="margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
                     <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;">
-                      <input type="checkbox" id="ed-pl-heal" checked> 🩺 Tüm Sakatlıkları İyileştir
+                      <input type="checkbox" id="ed-pl-heal" checked> Tüm Sakatlıkları İyileştir
                     </label>
                     <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;">
-                      <input type="checkbox" id="ed-pl-unsuspend" checked> 🟨 Tüm Cezaları Temizle
+                      <input type="checkbox" id="ed-pl-unsuspend" checked> Tüm Cezaları Temizle
                     </label>
                   </div>
                 </div>
@@ -986,7 +1055,7 @@ code.inline {
                   <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
                     <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:700;color:#60a5fa;">
                       <input type="checkbox" id="ed-pl-raw-scale" onchange="togglePlayerAttrScale()">
-                      🔬 1–100 Ham (Internal Raw) Ölçekte Düzenle
+                      1–100 Ham (Internal Raw) Ölçekte Düzenle
                     </label>
                     <span class="card-sub" id="pl-scale-hint">Şu an: 1–20 Görünür Oyun Ölçeği</span>
                   </div>
@@ -1023,7 +1092,7 @@ code.inline {
                 <div class="attr-group-box">
                   <div class="attr-group-header">
                     <span class="attr-group-title">8 Gizli Kişilik Niteliği (1–20)</span>
-                    <button class="btn btn-xs btn-amber" onclick="presetModelCitizenPersonality()">🌟 Model Vatandaş Kişiliği</button>
+                    <button class="btn btn-xs btn-amber" onclick="presetModelCitizenPersonality()">Model Vatandaş Kişiliği</button>
                   </div>
                   <div class="form-grid" id="pl-pers-grid"></div>
                 </div>
@@ -1033,7 +1102,7 @@ code.inline {
                     <span class="attr-group-title">Oyun Karakteri / Oyun İçi Tercihler (64-Bit Trait Bitmask)</span>
                     <div style="display:flex;align-items:center;gap:6px;">
                       <span class="card-sub">Ham 64-bit Maske:</span>
-                      <input type="number" class="input input-sm input-mono" id="ed-pl-trait-raw" style="width:150px;" onchange="syncTraitChipsFromRaw()">
+                      <input type="text" class="input input-sm input-mono" id="ed-pl-trait-raw" style="width:170px;" onchange="syncTraitChipsFromRaw()">
                     </div>
                   </div>
                   <div class="trait-grid" id="pl-traits-grid"></div>
@@ -1117,8 +1186,8 @@ code.inline {
               <div class="sticky-action-bar">
                 <div class="card-sub" id="pl-save-status-hint">Değişikliklerinizi kaydettiğinizde aktif kayıt güncellenir.</div>
                 <div style="display:flex;gap:8px;">
-                  <button class="btn" onclick="selectPlayer(STATE.selectedPlayerUid)">↺ Sıfırla</button>
-                  <button class="btn btn-primary" onclick="savePlayerEdits(false)">💾 Oyuncu Değişikliklerini Kaydet (.fm)</button>
+                  <button class="btn" onclick="selectPlayer(STATE.selectedPlayerUid)">Sıfırla</button>
+                  <button class="btn btn-primary" onclick="savePlayerEdits(false)">Oyuncu Değişikliklerini Kaydet (.fm)</button>
                 </div>
               </div>
             </div>
@@ -1170,7 +1239,7 @@ code.inline {
                 <div class="card-sub" id="cl-ed-sub">Kulüp kimliği, 11 finans alanı, sponsorluk sözleşmeleri, kurumsal tesisler ve 14 stadyum alanı</div>
               </div>
               <div style="display:flex;gap:5px;">
-                <button class="btn btn-xs btn-amber" onclick="presetClubSugarDaddy()">💰 +250M€ Bakiye & Transfer Bütçesi</button>
+                <button class="btn btn-xs btn-amber" onclick="presetClubSugarDaddy()">+250M€ Bakiye & Transfer Bütçesi</button>
               </div>
             </div>
 
@@ -1266,7 +1335,7 @@ code.inline {
 
               <div class="sticky-action-bar">
                 <span class="card-sub">Kulüp, finans, sponsorluk ve stadyum alanlarını tek seferde kaydeder.</span>
-                <button class="btn btn-primary" onclick="saveClubAndStadiumEdits()">💾 Kulüp & Stadyum Değişikliklerini Kaydet</button>
+                <button class="btn btn-primary" onclick="saveClubAndStadiumEdits()">Kulüp & Stadyum Değişikliklerini Kaydet</button>
               </div>
             </div>
           </div>
@@ -1280,7 +1349,7 @@ code.inline {
         <input type="text" class="input" id="stf-q" placeholder="Teknik direktör, gözlemci, fizyo veya kulüp ara..." style="width:260px;" oninput="debouncedLoadStaff()">
         <input type="text" class="input" id="stf-role" placeholder="Rol filtrele (Menajer, Gözlemci...)" style="width:200px;" oninput="debouncedLoadStaff()">
         <button class="btn btn-primary" onclick="loadStaff()">Personel Listele</button>
-        <button class="btn btn-blue" onclick="loadDofReport()">🧠 Futbol Direktörü (DoF) Analizi</button>
+        <button class="btn btn-blue" onclick="loadDofReport()">Futbol Direktörü (DoF) Analizi</button>
         <span class="card-sub" id="stf-count-label" style="margin-left:auto;"></span>
       </div>
 
@@ -1309,16 +1378,16 @@ code.inline {
             <div class="card-header">
               <div>
                 <div class="card-title" id="stf-ed-title">Bir personel seçin</div>
-                <div class="card-sub" id="stf-ed-sub">CA/PA, 50+ Rol (r4), 26 Antrenörlük/Gözlemcilik/Sağlık niteliği, 17 Taktiksel Tercih ve 8 Kişilik</div>
+                <div class="card-sub" id="stf-ed-sub">CA/PA, 50+ Rol (r4), 26 Antrenörlük/Gözlemcilik/Sağlık niteliği, 14 Taktiksel Tercih ve 8 Kişilik</div>
               </div>
-              <button class="btn btn-xs btn-danger" onclick="saveStaffEdits(true)">🚀 Tüm Personel Niteliklerini 20 Yap</button>
+              <button class="btn btn-xs btn-danger" onclick="saveStaffEdits(true)">Tüm Personel Niteliklerini 20 Yap</button>
             </div>
 
             <div id="stf-inspector-body" style="display:none;flex-direction:column;flex:1;">
               <div class="subtabs">
                 <button class="subtab-btn active" data-subtab="stf-sub-identity" onclick="switchSubTab('stf', 'stf-sub-identity')">1. Kimlik, Rol (r4) & Sözleşme</button>
                 <button class="subtab-btn" data-subtab="stf-sub-attrs" onclick="switchSubTab('stf', 'stf-sub-attrs')">2. 26 Nitelik (block_40)</button>
-                <button class="subtab-btn" data-subtab="stf-sub-prefs" onclick="switchSubTab('stf', 'stf-sub-prefs')">3. 17 Taktik Tercih & 8 Kişilik</button>
+                <button class="subtab-btn" data-subtab="stf-sub-prefs" onclick="switchSubTab('stf', 'stf-sub-prefs')">3. 14 Taktik Tercih & 8 Kişilik</button>
                 <button class="subtab-btn" data-subtab="stf-sub-dof" onclick="switchSubTab('stf', 'stf-sub-dof')">4. DoF Hoca Atama</button>
               </div>
 
@@ -1355,7 +1424,7 @@ code.inline {
 
               <div class="subtab-panel" id="stf-sub-prefs">
                 <div class="attr-group-box">
-                  <div class="attr-group-header"><span class="attr-group-title">17 Taktiksel & Yönetim Tercihi (1–20)</span></div>
+                  <div class="attr-group-header"><span class="attr-group-title">14 Taktiksel & Yönetim Tercihi (1–20)</span></div>
                   <div class="form-grid" id="stf-prefs-grid"></div>
                 </div>
                 <div class="attr-group-box">
@@ -1372,8 +1441,8 @@ code.inline {
                     <div class="form-field"><label>Sözleşme Süresi (Yıl)</label><input type="number" class="input input-mono" id="dof-years" value="3"></div>
                   </div>
                   <div style="margin-top:8px;display:flex;gap:8px;">
-                    <button class="btn btn-amber" onclick="hireSelectedCoach()">✍️ Seçili Personeli Teknik Direktör Olarak Ata</button>
-                    <button class="btn btn-blue" onclick="loadDofReport()">📊 Kulüp Kadro & DoF Raporu Üret</button>
+                    <button class="btn btn-amber" onclick="hireSelectedCoach()">Seçili Personeli Teknik Direktör Olarak Ata</button>
+                    <button class="btn btn-blue" onclick="loadDofReport()">Kulüp Kadro & DoF Raporu Üret</button>
                   </div>
                   <div id="dof-report-box" style="margin-top:10px;font-size:12px;"></div>
                 </div>
@@ -1381,7 +1450,7 @@ code.inline {
 
               <div class="sticky-action-bar">
                 <span class="card-sub">Personel nitelik, tercih, kişilik ve sözleşme alanlarını kaydeder.</span>
-                <button class="btn btn-primary" onclick="saveStaffEdits(false)">💾 Personel Değişikliklerini Kaydet</button>
+                <button class="btn btn-primary" onclick="saveStaffEdits(false)">Personel Değişikliklerini Kaydet</button>
               </div>
             </div>
           </div>
@@ -1396,7 +1465,7 @@ code.inline {
         <div class="card">
           <div class="card-header">
             <div>
-              <div class="card-title">🏆 Lig Puan Durumu Editörü (Toplam + İç Saha + Deplasman)</div>
+              <div class="card-title">Lig Puan Durumu Editörü (Toplam + İç Saha + Deplasman)</div>
               <div class="card-sub">Bir takımın lig tablosundaki tüm istatistiklerini ayrıntılı olarak değiştirin</div>
             </div>
             <button class="btn btn-xs" onclick="loadLeagueTablePreview()">Tabloyu Yükle</button>
@@ -1439,11 +1508,11 @@ code.inline {
             </div>
           </div>
           <div style="margin-top:8px;">
-            <button class="btn btn-primary" onclick="saveLeagueTableEdit()">💾 Puan Durumu Satırını Kaydet</button>
+            <button class="btn btn-primary" onclick="saveLeagueTableEdit()">Puan Durumu Satırını Kaydet</button>
           </div>
           <div class="table-wrap" style="max-height:170px;margin-top:8px;">
             <table>
-              <thead><tr><th>Takım ID</th><th>Pos</th><th>O</th><th>G</th><th>B</th><th>M</th><th>GF</th><th>GA</th><th>Puan</th></tr></thead>
+              <thead><tr><th>Takım / ID</th><th>Pos</th><th>O</th><th>G</th><th>B</th><th>M</th><th>GF</th><th>GA</th><th>Puan</th></tr></thead>
               <tbody id="lt-preview-tbody"></tbody>
             </table>
           </div>
@@ -1452,7 +1521,7 @@ code.inline {
         <!-- Tactics, 26-Man Lineup, Transfer Windows, Hall of Fame & Name Pool -->
         <div class="card" style="display:flex;flex-direction:column;gap:10px;">
           <div class="attr-group-box">
-            <div class="attr-group-header"><span class="attr-group-title">📋 Taktik Kaydı & 26 Kişilik Maç Kadrosu (Lineup Slot) Editörü</span></div>
+            <div class="attr-group-header"><span class="attr-group-title">Taktik Kaydı & 26 Kişilik Maç Kadrosu (Lineup Slot) Editörü</span></div>
             <div class="form-grid">
               <div class="form-field"><label>Taktik İndeksi</label><input type="number" class="input input-mono" id="tac-idx" value="0"></div>
               <div class="form-field"><label>Mentalite (1-20)</label><input type="number" class="input input-mono" id="tac-ment" placeholder="12"></div>
@@ -1465,12 +1534,12 @@ code.inline {
               <div class="form-field"><label>Takım Blok İndeksi</label><input type="number" class="input input-mono" id="lu-block" value="0"></div>
             </div>
             <div style="margin-top:6px;display:flex;gap:6px;">
-              <button class="btn btn-xs btn-primary" onclick="saveTacticAndLineupEdit()">💾 Taktik / Kadro Yuvasını Kaydet</button>
+              <button class="btn btn-xs btn-primary" onclick="saveTacticAndLineupEdit()">Taktik / Kadro Yuvasını Kaydet</button>
             </div>
           </div>
 
           <div class="attr-group-box">
-            <div class="attr-group-header"><span class="attr-group-title">🔄 Transfer Penceresi Tarihleri & Hall of Fame / İsim Havuzu</span></div>
+            <div class="attr-group-header"><span class="attr-group-title">Transfer Penceresi Tarihleri & Hall of Fame / İsim Havuzu</span></div>
             <div class="form-grid">
               <div class="form-field"><label>Pencere İndeksi</label><input type="number" class="input input-mono" id="tw-idx" value="0"></div>
               <div class="form-field"><label>Başlangıç Gün/Ay</label>
@@ -1500,8 +1569,8 @@ code.inline {
               <div class="form-field"><label>Yeni İsim Metni</label><input type="text" class="input input-sm" id="np-val" placeholder="Yeni İsim"></div>
             </div>
             <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;">
-              <button class="btn btn-xs btn-blue" onclick="saveTransferWindowEdit()">💾 Transfer Penceresini Kaydet</button>
-              <button class="btn btn-xs btn-amber" onclick="saveNamePoolEdit()">💾 İsim Havuzu Kaydını Değiştir</button>
+              <button class="btn btn-xs btn-blue" onclick="saveTransferWindowEdit()">Transfer Penceresini Kaydet</button>
+              <button class="btn btn-xs btn-amber" onclick="saveNamePoolEdit()">İsim Havuzu Kaydını Değiştir</button>
             </div>
           </div>
         </div>
@@ -1520,8 +1589,8 @@ code.inline {
           <option value="500">500 Kayıt</option>
         </select>
         <button class="btn btn-primary" onclick="loadSaveTable()">Tabloyu Göster</button>
-        <button class="btn" onclick="loadSaveSections()">📦 81 Zstd Bölümü</button>
-        <button class="btn btn-blue" onclick="loadPregameDb()">💿 Oyun İçi Pre-Game DB (master_db)</button>
+        <button class="btn" onclick="loadSaveSections()">81 Zstd Bölümü</button>
+        <button class="btn btn-blue" onclick="loadPregameDb()">Oyun İçi Pre-Game DB (master_db)</button>
         <span class="card-sub" id="exp-status" style="margin-left:auto;"></span>
       </div>
       <div class="card" style="flex:1;overflow:auto;" id="exp-container"></div>
@@ -1535,22 +1604,22 @@ code.inline {
         <div class="card">
           <div class="card-header">
             <div>
-              <div class="card-title">⚙️ Unity 6000.0.55f1-fm Motor Parametreleri (`boot.config`) — 14+ Ayar</div>
+              <div class="card-title">Unity 6000.0.55f1-fm Motor Parametreleri (`boot.config`) — 14+ Ayar</div>
               <div class="card-sub">Önayarları yardımcı olarak kullanabilir veya her bir motor anahtarını / özel anahtarları tek tek düzenleyebilirsiniz</div>
             </div>
             <div style="display:flex;gap:4px;flex-wrap:wrap;">
-              <button class="btn btn-xs btn-primary" onclick="applyBootPreset('low_latency_max_fps')">🚀 Max FPS</button>
-              <button class="btn btn-xs btn-blue" onclick="applyBootPreset('fast_simulation_multicore')">⚡ Hızlı Sim</button>
-              <button class="btn btn-xs" onclick="applyBootPreset('balanced')">⚖️ Dengeli</button>
-              <button class="btn btn-xs btn-amber" onclick="applyBootPreset('low_vram_laptop')">🔋 Düşük VRAM</button>
-              <button class="btn btn-xs btn-danger" onclick="restoreBootConfig()">↺ Yedekten Dön</button>
+              <button class="btn btn-xs btn-primary" onclick="applyBootPreset('low_latency_max_fps')">Max FPS</button>
+              <button class="btn btn-xs btn-blue" onclick="applyBootPreset('fast_simulation_multicore')">Hızlı Simülasyon</button>
+              <button class="btn btn-xs" onclick="applyBootPreset('balanced')">Dengeli</button>
+              <button class="btn btn-xs btn-amber" onclick="applyBootPreset('low_vram_laptop')">Düşük VRAM</button>
+              <button class="btn btn-xs btn-danger" onclick="restoreBootConfig()">Yedekten Dön</button>
             </div>
           </div>
 
           <div id="boot-keys-form" style="display:flex;flex-direction:column;gap:8px;max-height:420px;overflow-y:auto;padding-right:4px;"></div>
 
           <div class="attr-group-box" style="margin-top:8px;">
-            <div class="attr-group-header"><span class="attr-group-title">➕ Özel `boot.config` Anahtarı Ekle (Custom Key=Value)</span></div>
+            <div class="attr-group-header"><span class="attr-group-title">+ Özel `boot.config` Anahtarı Ekle (Custom Key=Value)</span></div>
             <div style="display:flex;gap:6px;align-items:center;">
               <input type="text" class="input input-sm input-mono" id="boot-custom-key" placeholder="Örn: gc-max-time-slice" style="flex:1;">
               <input type="text" class="input input-sm input-mono" id="boot-custom-val" placeholder="Değer (Örn: 2)" style="width:130px;">
@@ -1559,25 +1628,25 @@ code.inline {
           </div>
 
           <div style="margin-top:10px;display:flex;justify-content:flex-end;gap:8px;">
-            <button class="btn btn-primary" onclick="saveBootConfigForm()">💾 Formdaki `boot.config` Değerlerini Kaydet</button>
+            <button class="btn btn-primary" onclick="saveBootConfigForm()">Formdaki `boot.config` Değerlerini Kaydet</button>
           </div>
         </div>
 
         <div class="card" style="display:flex;flex-direction:column;gap:12px;">
           <div class="attr-group-box">
             <div class="attr-group-header">
-              <span class="attr-group-title">📝 Doğrudan Ham `boot.config` Metin Editörü</span>
-              <button class="btn btn-xs btn-primary" onclick="saveBootConfigRaw()">💾 Ham Metni Doğrudan Kaydet</button>
+              <span class="attr-group-title">Doğrudan Ham `boot.config` Metin Editörü</span>
+              <button class="btn btn-xs btn-primary" onclick="saveBootConfigRaw()">Ham Metni Doğrudan Kaydet</button>
             </div>
             <textarea id="boot-raw-textarea" class="input input-mono" style="width:100%;height:150px;resize:vertical;font-size:11.5px;"></textarea>
           </div>
 
           <div class="attr-group-box">
             <div class="attr-group-header">
-              <span class="attr-group-title">🎬 Başlangıç & Lisans Videoları Bypass (`Videos_disabled`)</span>
+              <span class="attr-group-title">Başlangıç & Lisans Videoları Bypass (`Videos_disabled`)</span>
               <div style="display:flex;gap:6px;">
-                <button class="btn btn-xs btn-primary" onclick="toggleVideos(true)">⚡ Tüm Videoları Devre Dışı Bırak</button>
-                <button class="btn btn-xs" onclick="toggleVideos(false)">↺ Videoları Geri Yükle</button>
+                <button class="btn btn-xs btn-primary" onclick="toggleVideos(true)">Tüm Videoları Devre Dışı Bırak</button>
+                <button class="btn btn-xs" onclick="toggleVideos(false)">Videoları Geri Yükle</button>
               </div>
             </div>
             <div class="table-wrap" style="max-height:145px;">
@@ -1589,7 +1658,7 @@ code.inline {
           </div>
 
           <div class="attr-group-box">
-            <div class="attr-group-header"><span class="attr-group-title">🎨 Unity URP Kalite Profilleri & Disk Dağılımı</span></div>
+            <div class="attr-group-header"><span class="attr-group-title">Unity URP Kalite Profilleri & Disk Dağılımı</span></div>
             <div id="opt-urp-badges" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;"></div>
             <div class="table-wrap" style="max-height:145px;">
               <table>
@@ -1607,12 +1676,12 @@ code.inline {
       <div class="card">
         <div class="card-header">
           <div>
-            <div class="card-title">🔧 1. Native `game_plugin.dll` Oyuncu / Gözlemci Sınırı & Hazır UI Sıralama Yamaları</div>
+            <div class="card-title">1. Native `game_plugin.dll` Oyuncu / Gözlemci Sınırı & Hazır UI Sıralama Yamaları</div>
             <div class="card-sub">50 oyuncu sınırını önayarla değil, istediğiniz herhangi bir tam sayıya (<code class="inline">1..100000</code>) ayarlayabilirsiniz. Her işlem öncesi <code class="inline">.bak</code> yedeği alınır.</div>
           </div>
           <div style="display:flex;gap:6px;">
-            <button class="btn btn-blue" onclick=" loadPatches(true)">↻ Durumları Yeniden Tara</button>
-            <button class="btn btn-primary" onclick="applyAllSortingPatches()">✨ 10 Hazır Sıralama Yamasını Uygula</button>
+            <button class="btn btn-blue" onclick="loadPatches(true)">Durumları Yeniden Tara</button>
+            <button class="btn btn-primary" onclick="applyAllSortingPatches()">10 Hazır Sıralama Yamasını Uygula</button>
           </div>
         </div>
         <div class="table-wrap" style="max-height:310px;">
@@ -1634,7 +1703,7 @@ code.inline {
       <div class="card" style="flex:1;display:flex;flex-direction:column;">
         <div class="card-header">
           <div>
-            <div class="card-title">🔓 2. Evrensel `StreamedTable` Sıralama Kilidi Açıcı (252 Oyun İçi Tablo)</div>
+            <div class="card-title">2. Evrensel `StreamedTable` Sıralama Kilidi Açıcı (252 Oyun İçi Tablo)</div>
             <div class="card-sub">UI bundle dosyalarındaki tüm <code class="inline">StreamedTable</code> nesnelerinin <code class="inline">m_disableSorting</code> bayrağını (<code class="inline">0 = Sıralanabilir</code>, <code class="inline">1 = Kilitli</code>) tek tek değiştirin</div>
           </div>
           <div style="display:flex;gap:8px;align-items:center;">
@@ -1649,9 +1718,9 @@ code.inline {
             <thead>
               <tr>
                 <th>Bundle Dosyası</th>
-                <th>Tablo (`m_name`)</th>
+                <th>Tablo (`m_name` / VTA)</th>
                 <th>Ofset</th>
-                <th>Kolon Sayısı</th>
+                <th>Veri Bağlantısı (Binding)</th>
                 <th>Durum (`m_disableSorting`)</th>
                 <th>İşlem</th>
               </tr>
@@ -1668,12 +1737,12 @@ code.inline {
         <div class="card" style="display:flex;flex-direction:column;gap:10px;">
           <div class="card-header">
             <div>
-              <div class="card-title">💰 Görsel `sugardaddy.edt` Editörü</div>
+              <div class="card-title">Görsel `sugardaddy.edt` Editörü</div>
               <div class="card-sub">Kulüplere <code class="inline">FRONT_END</code>, <code class="inline">BACK_END</code> veya <code class="inline">UNDERWRITER</code> zengin başkan tanımlayın</div>
             </div>
             <div style="display:flex;gap:6px;">
               <button class="btn btn-xs" onclick="addSugarDaddyRow()">+ Yeni Satır Ekle</button>
-              <button class="btn btn-xs btn-primary" onclick="saveSugarDaddyEdt()">💾 `sugardaddy.edt` Kaydet</button>
+              <button class="btn btn-xs btn-primary" onclick="saveSugarDaddyEdt()">`sugardaddy.edt` Kaydet</button>
             </div>
           </div>
           <div class="table-wrap" style="max-height:240px;">
@@ -1684,7 +1753,7 @@ code.inline {
           </div>
 
           <div class="attr-group-box">
-            <div class="attr-group-header"><span class="attr-group-title">📁 Tüm `.edt`, `.lnc` ve `.dbc` Kural Dosyaları</span></div>
+            <div class="attr-group-header"><span class="attr-group-title">Tüm `.edt`, `.lnc` ve `.dbc` Kural Dosyaları</span></div>
             <div class="table-wrap" style="max-height:250px;">
               <table>
                 <thead><tr><th>Kategori</th><th>Dosya Adı</th><th>Boyut</th><th>Durum</th><th>İşlem</th></tr></thead>
@@ -1697,14 +1766,14 @@ code.inline {
         <div class="card" style="display:flex;flex-direction:column;gap:10px;">
           <div class="card-header">
             <div>
-              <div class="card-title">📝 `.edt` & `.lnc` Komut Oluşturucu ve Doğrudan Kod Editörü</div>
+              <div class="card-title">`.edt` & `.lnc` Komut Oluşturucu ve Doğrudan Kod Editörü</div>
               <div class="card-sub" id="rule-editor-path-label">Soldaki listeden bir `.edt` veya `.lnc` dosyasına tıklayın</div>
             </div>
-            <button class="btn btn-primary" onclick="saveRuleTextFile()">💾 Dosyayı Kaydet (.bak Yedekli)</button>
+            <button class="btn btn-primary" onclick="saveRuleTextFile()">Dosyayı Kaydet (.bak Yedekli)</button>
           </div>
 
           <div class="attr-group-box">
-            <div class="attr-group-header"><span class="attr-group-title">⚡ Hızlı `.edt` / `.lnc` Direktif Ekle (Quick Directive Builder)</span></div>
+            <div class="attr-group-header"><span class="attr-group-title">Hızlı `.edt` / `.lnc` Direktif Ekle (Quick Directive Builder)</span></div>
             <div style="display:flex;gap:6px;flex-wrap:wrap;">
               <button class="btn btn-xs" onclick="insertDirectiveTemplate('BOOST_TEAM')">+ BOOST_TEAM (Bütçe & İtibar)</button>
               <button class="btn btn-xs" onclick="insertDirectiveTemplate('TRANSFER_EMBARGO')">+ TRANSFER_EMBARGO</button>
@@ -1977,9 +2046,12 @@ async function onContextChange() {
     const fm_dir = document.getElementById('sel-fmdir').value;
     const ov = await apiPost('/api/context', { save_path, fm_dir });
     STATE.overview = ov;
+    if (ov.active_game_terms) STATE.terms = ov.active_game_terms;
     populateCatalogDropdowns();
     renderOverview();
-    loadPlayers();
+    applyLocalizedLabels();
+    const activePane = document.querySelector('.tab-pane.active');
+    if (activePane) switchTab(activePane.id);
     showToast('Aktif kayıt / oyun dizini güncellendi.');
   } catch (err) {
     showToast('Bağlam değiştirilemedi: ' + err.message, true);
@@ -2064,7 +2136,7 @@ async function selectPlayer(uid) {
     document.querySelectorAll('#pl-tbody tr').forEach(tr => tr.classList.toggle('selected-row', tr.id === 'pl-row-' + uid));
     const detail = await apiGet('/api/player-detail?uid=' + uid);
     const dt = (performance.now() - t0).toFixed(1);
-    document.getElementById('sidebar-perf-pill').textContent = `⚡ Son Detay Sorgusu: ${dt} ms`;
+    document.getElementById('sidebar-perf-pill').innerHTML = `<span class="status-dot"></span> Son Detay Sorgusu: ${dt} ms`;
     STATE.selectedPlayerDetail = detail;
     renderPlayerInspector(detail);
   } catch (err) {
@@ -2093,10 +2165,10 @@ function renderPlayerInspector(d) {
   document.getElementById('ed-pl-joindate').value = s.club_join_date || '';
   document.getElementById('ed-pl-bdate').value = s.birth_date || '';
   document.getElementById('ed-pl-age').value = s.age ?? 20;
-  document.getElementById('ed-pl-nation').value = String(s.nation_id ?? '');
+  document.getElementById('ed-pl-nation').value = String(s.nation_id ?? s.nationality_id ?? '');
   document.getElementById('ed-pl-height').value = s.height_cm ?? 180;
-  document.getElementById('ed-pl-shirt').value = s.squad_number ?? 0;
-  document.getElementById('ed-pl-bodytype').value = s.body_type_code ?? 3;
+  document.getElementById('ed-pl-shirt').value = s.squad_number != null ? s.squad_number : '';
+  document.getElementById('ed-pl-bodytype').value = s.body_type_code != null ? s.body_type_code : '';
   document.getElementById('ed-pl-lfoot').value = s.left_foot ?? 10;
   document.getElementById('ed-pl-rfoot').value = s.right_foot ?? 20;
 
@@ -2146,8 +2218,9 @@ function renderPlayerInspector(d) {
     `;
   }).join('');
 
-  document.getElementById('ed-pl-trait-raw').value = d.trait_bits ?? 0;
-  renderTraitChips(BigInt(d.trait_bits || 0));
+  const traitMaskStr = d.trait_bits_str != null ? String(d.trait_bits_str) : String(d.trait_bits ?? '0');
+  document.getElementById('ed-pl-trait-raw').value = traitMaskStr;
+  renderTraitChips(BigInt(traitMaskStr || '0'));
 
   // Subtab 5: Contract & Clauses
   const ct = d.contract || {};
@@ -2318,7 +2391,7 @@ function renderTraitChips(maskBig) {
   }).join('');
 
   const activeBits = [];
-  for (let b = 0n; b < 63n; b++) {
+  for (let b = 0n; b <= 63n; b++) {
     if (((maskBig >> b) & 1n) === 1n) activeBits.push(Number(b));
   }
   document.getElementById('pl-active-bits-label').textContent = activeBits.length
@@ -2336,7 +2409,7 @@ function toggleTraitBit(bit) {
 
 function toggleCustomTraitBit() {
   const bit = parseInt(document.getElementById('ed-pl-custom-bit').value, 10);
-  if (isNaN(bit) || bit < 0 || bit > 62) return showToast('Lütfen 0 ile 62 arasında bir bit numarası girin.', true);
+  if (isNaN(bit) || bit < 0 || bit > 63) return showToast('Lütfen 0 ile 63 arasında bir bit numarası girin.', true);
   toggleTraitBit(bit);
 }
 
@@ -2473,7 +2546,7 @@ async function savePlayerEdits(maxOut = false) {
     };
 
     const res = await apiPost('/api/save-edit', payload);
-    showToast(`✅ Oyuncu düzenlemeleri kaydedildi: ${res.output_path}`);
+    showToast(`Oyuncu düzenlemeleri kaydedildi: ${res.output_path}`);
     await initStudio();
     await loadPlayers();
     await selectPlayer(STATE.selectedPlayerUid);
@@ -2665,7 +2738,7 @@ async function saveClubAndStadiumEdits() {
     }
 
     const res = await apiPost('/api/save-edit', payload);
-    showToast(`✅ Kulüp, finans ve stadyum değişiklikleri kaydedildi: ${res.output_path}`);
+    showToast(`Kulüp, finans ve stadyum değişiklikleri kaydedildi: ${res.output_path}`);
     await initStudio();
     await loadClubs();
     await selectClub(STATE.selectedClubUid);
@@ -2795,7 +2868,7 @@ async function saveStaffEdits(maxOut = false) {
     };
 
     const res = await apiPost('/api/save-edit', payload);
-    showToast(`✅ Personel değişiklikleri kaydedildi: ${res.output_path}`);
+    showToast(`Personel değişiklikleri kaydedildi: ${res.output_path}`);
     await initStudio();
     await loadStaff();
     await selectStaff(STATE.selectedStaffUid);
@@ -2810,7 +2883,7 @@ async function hireSelectedCoach() {
     const club_uid = document.getElementById('dof-club-uid').value || 1909;
     const years = document.getElementById('dof-years').value || 3;
     const res = await apiPost('/api/dof-hire', { coach: STATE.selectedStaffUid, club_uid, years });
-    showToast(`✅ Personel #${STATE.selectedStaffUid} kulüp #${club_uid} teknik direktörü olarak atandı!`);
+    showToast(`Personel #${STATE.selectedStaffUid} kulüp #${club_uid} teknik direktörü olarak atandı.`);
     await initStudio();
     await loadStaff();
   } catch (err) {
@@ -2825,13 +2898,20 @@ async function loadDofReport() {
     const coach = STATE.selectedStaffUid || '';
     const d = await apiGet(`/api/dof?club_uid=${encodeURIComponent(club_uid)}&coach=${encodeURIComponent(coach)}`);
     const box = document.getElementById('dof-report-box');
-    const cinfo = d.club || {};
-    const topC = (d.top_coach_candidates || []).slice(0, 6);
+    const sinfo = d.save_info || {};
+    const cap = d.capology || {};
+    const fit = d.coach_squad_fit || {};
+    const topFit = (fit.best_fits || []).slice(0, 5);
+    const misfits = (fit.misfits || []).slice(0, 3);
     box.innerHTML = `
-      <div style="padding:8px;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;">
-        <div><b>Kulüp:</b> ${cinfo.name || '-'} • <b>Kadro Boyutu:</b> ${(d.squad_audit && d.squad_audit.squad_size) || '-'}</div>
-        <div style="margin-top:6px;font-weight:700;color:var(--accent);">Önerilen En İyi Teknik Direktör Adayları:</div>
-        ${topC.map(c => `<div style="display:flex;justify-content:space-between;padding:2px 0;"><span>${c.name} (${c.current_club || 'Boşta'})</span><span class="badge badge-green">CA ${c.ca} / Skor ${c.dof_fit_score || ''}</span></div>`).join('')}
+      <div style="padding:10px;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;display:flex;flex-direction:column;gap:6px;">
+        <div><b>Kulüp:</b> ${sinfo.managed_club_name || ('#' + (sinfo.managed_club_uid || club_uid))} • <b>Kadro Boyutu:</b> ${cap.squad_size ?? '-'} • <b>Yıllık Maaş:</b> ${fmtMoney(cap.total_annual_payroll)}</div>
+        ${fit.coach ? `
+          <div><b>Analiz Edilen Hoca:</b> ${fit.coach.name} (CA ${fit.coach.ca || '-'}) • <b>Diziliş:</b> ${fit.preferred_formation || '-'} • <b>Stil:</b> ${fit.tactical_style || '-'} • <span class="badge badge-green">Kadro Uyum: ${fit.average_squad_fit ?? '-'}/100</span></div>
+          <div style="font-weight:700;color:var(--accent);margin-top:2px;">En Yüksek Taktiksel Uyumlu Oyuncular:</div>
+          ${topFit.map(p => `<div style="display:flex;justify-content:space-between;padding:2px 0;"><span>${p.name} (${p.best_role || p.position || '-'})</span><span class="badge badge-green">Uyum ${p.fit_score ?? p.score ?? '-'}</span></div>`).join('')}
+          ${misfits.length ? `<div style="font-weight:700;color:var(--amber);margin-top:2px;">Sistem Uyumsuzluğu Riski Olanlar:</div>` + misfits.map(p => `<div style="display:flex;justify-content:space-between;padding:2px 0;"><span>${p.name}</span><span class="badge badge-amber">Uyum ${p.fit_score ?? p.score ?? '-'}</span></div>`).join('') : ''}
+        ` : `<div class="card-sub">Taktiksel kadro uyum analizi için soldaki tablodan bir teknik direktör seçin.</div>`}
       </div>
     `;
   } catch (err) {
@@ -2850,7 +2930,7 @@ async function loadLeagueTablePreview() {
       const aw = r.away || {};
       return `
         <tr onclick='fillLeagueRowForm(${JSON.stringify({team_id:r.team_id, tot, hm, aw})})'>
-          <td style="font-family:var(--font-mono);">${r.team_id}</td>
+          <td><b>${r.club_name || ('#' + r.team_id)}</b> <span style="font-family:var(--font-mono);color:var(--text-muted);font-size:10.5px;">(#${r.team_id})</span></td>
           <td>${r.position ?? '-'}</td>
           <td>${tot.played ?? '-'}</td>
           <td>${tot.won ?? '-'}</td>
@@ -2917,7 +2997,7 @@ async function saveLeagueTableEdit() {
         away_points: document.getElementById('lt-apts').value,
       }
     });
-    showToast(`✅ Puan durumu kaydedildi: ${res.output_path}`);
+    showToast(`Puan durumu kaydedildi: ${res.output_path}`);
     loadLeagueTablePreview();
   } catch (err) {
     showToast('Puan durumu kaydedilemedi: ' + err.message, true);
@@ -2948,7 +3028,7 @@ async function saveTacticAndLineupEdit() {
       };
     }
     const res = await apiPost('/api/save-edit', body);
-    showToast(`✅ Taktik / Kadro yuvası kaydedildi: ${res.output_path}`);
+    showToast(`Taktik / Kadro yuvası kaydedildi: ${res.output_path}`);
   } catch (err) {
     showToast('Taktik kaydedilemedi: ' + err.message, true);
   }
@@ -2967,7 +3047,7 @@ async function saveTransferWindowEdit() {
         window_type: document.getElementById('tw-type').value,
       }
     });
-    showToast(`✅ Transfer penceresi kaydedildi: ${res.output_path}`);
+    showToast(`Transfer penceresi kaydedildi: ${res.output_path}`);
   } catch (err) {
     showToast('Transfer penceresi kaydedilemedi: ' + err.message, true);
   }
@@ -2983,7 +3063,7 @@ async function saveNamePoolEdit() {
       output_path: document.getElementById('global-output-path').value.trim(),
       name_pool_edit: { pool_kind, name_id, new_name }
     });
-    showToast(`✅ İsim havuzu (${pool_kind} #${name_id} → ${new_name}) kaydedildi: ${res.output_path}`);
+    showToast(`İsim havuzu (${pool_kind} #${name_id} → ${new_name}) kaydedildi: ${res.output_path}`);
   } catch (err) {
     showToast('İsim havuzu değiştirilemedi: ' + err.message, true);
   }
@@ -3018,7 +3098,8 @@ async function loadPregameDb() {
   try {
     document.getElementById('exp-status').textContent = 'Pre-Game Master DB taranıyor...';
     const data = await apiGet('/api/pregame-db');
-    const tables = (data.master_db && data.master_db.tables) || [];
+    const mdb = data.master_db || {};
+    const tables = mdb.tables || mdb.client_db_tables || mdb.server_db_tables || [];
     document.getElementById('exp-status').textContent = `Pre-Game Master DB (${tables.length} TPKB Tablosu)`;
     renderGenericJsonTable(tables);
   } catch (err) {
@@ -3066,7 +3147,7 @@ async function loadOptimization() {
       <div class="stat-card">
         <span class="stat-label">Motor Parametreleri (boot.config)</span>
         <span class="stat-val">${Object.keys(bc.values || {}).length} Anahtar</span>
-        <span class="stat-meta">${bc.backup_exists ? '✅ .bak Yedeği Mevcut' : 'Orijinal Dosya'}</span>
+        <span class="stat-meta">${bc.backup_exists ? '.bak Yedeği Mevcut' : 'Orijinal Dosya'}</span>
       </div>
       <div class="stat-card">
         <span class="stat-label">Başlangıç Videoları</span>
@@ -3156,7 +3237,7 @@ async function saveBootConfigForm() {
       if (v !== '') values[inp.dataset.key] = v;
     });
     await apiPost('/api/optimization/boot-config', { values });
-    showToast('✅ `boot.config` parametreleri kaydedildi (.bak yedekli).');
+    showToast('`boot.config` parametreleri kaydedildi (.bak yedekli).');
     loadOptimization();
   } catch (err) {
     showToast('boot.config kaydedilemedi: ' + err.message, true);
@@ -3167,7 +3248,7 @@ async function saveBootConfigRaw() {
   try {
     const raw_text = document.getElementById('boot-raw-textarea').value;
     await apiPost('/api/optimization/boot-config', { raw_text });
-    showToast('✅ Ham `boot.config` metni doğrudan kaydedildi.');
+    showToast('Ham `boot.config` metni doğrudan kaydedildi.');
     loadOptimization();
   } catch (err) {
     showToast('Ham boot.config kaydedilemedi: ' + err.message, true);
@@ -3177,7 +3258,7 @@ async function saveBootConfigRaw() {
 async function applyBootPreset(preset) {
   try {
     await apiPost('/api/optimization/boot-preset', { preset });
-    showToast(`✅ "${preset}" önayarı uygulandı — tüm alanları aşağıdan özelleştirmeye devam edebilirsiniz.`);
+    showToast(`"${preset}" önayarı uygulandı — tüm alanları aşağıdan özelleştirmeye devam edebilirsiniz.`);
     loadOptimization();
   } catch (err) {
     showToast('Önayar uygulanamadı: ' + err.message, true);
@@ -3187,7 +3268,7 @@ async function applyBootPreset(preset) {
 async function restoreBootConfig() {
   try {
     await apiPost('/api/optimization/boot-restore', {});
-    showToast('✅ Orijinal `boot.config` yedekten geri yüklendi.');
+    showToast('Orijinal `boot.config` yedekten geri yüklendi.');
     loadOptimization();
   } catch (err) {
     showToast('Geri yüklenemedi: ' + err.message, true);
@@ -3197,7 +3278,7 @@ async function restoreBootConfig() {
 async function toggleVideos(disable) {
   try {
     await apiPost('/api/optimization/videos-toggle', { disable });
-    showToast(disable ? '⚡ Başlangıç videoları devre dışı bırakıldı.' : '↺ Başlangıç videoları geri yüklendi.');
+    showToast(disable ? 'Başlangıç videoları devre dışı bırakıldı.' : 'Başlangıç videoları geri yüklendi.');
     loadOptimization();
   } catch (err) {
     showToast('Video işlemi başarısız: ' + err.message, true);
@@ -3210,33 +3291,40 @@ async function loadPatches(force = false) {
     const data = await apiGet('/api/patches' + (force ? '?refresh=1' : ''));
     const patches = data.patches || [];
     document.getElementById('patches-tbody').innerHTML = patches.map(p => {
-      const isLimit = p.key === 'custom-Work-Space-player-limit';
-      const statusBadge = p.status === 'patched'
-        ? `<span class="badge badge-green">Yamalı (${p.current_max_players || 'Aktif'})</span>`
-        : (p.status === 'unpatched' ? `<span class="badge badge-amber">Varsayılan (${p.current_max_players || 'Kilitli'})</span>` : `<span class="badge badge-red">${p.status}</span>`);
+      const isLimit = (p.key === 'scout-player-limit' || p.key === 'custom-Work-Space-player-limit');
+      const isPatched = Boolean(p.is_patched || p.state === 'patched' || p.status === 'patched');
+      const curValText = p.current_value || p.current_max_players || (isPatched ? 'Aktif' : 'Varsayılan');
+      const statusBadge = isPatched
+        ? `<span class="badge badge-green">Yamalı (${curValText})</span>`
+        : `<span class="badge badge-amber">Varsayılan (${curValText})</span>`;
+
+      const numMatch = String(curValText).match(/\d+/);
+      const curLimitNum = numMatch ? parseInt(numMatch[0], 10) : 500;
+      const targetFile = p.target_file || p.bundle || '-';
+      const descText = p.title || p.description || p.key;
 
       const controls = isLimit ? `
         <div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap;">
-          <input type="number" min="1" max="100000" class="input input-sm input-mono" id="patch-max-players-input" value="${p.current_max_players || 500}" style="width:90px;" title="İstediğiniz herhangi bir tam sayıyı girin">
+          <input type="number" min="1" max="100000" class="input input-sm input-mono" id="patch-max-players-input" value="${curLimitNum}" style="width:90px;" title="İstediğiniz herhangi bir tam sayıyı girin">
           <button class="btn btn-xs" onclick="document.getElementById('patch-max-players-input').value=250">250</button>
           <button class="btn btn-xs" onclick="document.getElementById('patch-max-players-input').value=1000">1000</button>
           <button class="btn btn-xs" onclick="document.getElementById('patch-max-players-input').value=5000">5000</button>
           <button class="btn btn-xs" onclick="document.getElementById('patch-max-players-input').value=25000">25000</button>
           <button class="btn btn-xs btn-primary" onclick="applyPatch('${p.key}', document.getElementById('patch-max-players-input').value)">Uygula</button>
-          ${p.backup_exists ? `<button class="btn btn-xs btn-danger" onclick="restorePatch('${p.key}')">↺ Yedek</button>` : ''}
+          ${p.backup_exists ? `<button class="btn btn-xs btn-danger" onclick="restorePatch('${p.key}')">Yedek</button>` : ''}
         </div>
       ` : `
         <div style="display:flex;gap:6px;">
           <button class="btn btn-xs btn-primary" onclick="applyPatch('${p.key}', null)">Yamayı Uygula</button>
-          ${p.backup_exists ? `<button class="btn btn-xs btn-danger" onclick="restorePatch('${p.key}')">↺ Yedekten Dön</button>` : ''}
+          ${p.backup_exists ? `<button class="btn btn-xs btn-danger" onclick="restorePatch('${p.key}')">Yedekten Dön</button>` : ''}
         </div>
       `;
 
       return `
         <tr>
           <td><code class="inline">${p.key}</code></td>
-          <td style="font-family:var(--font-mono);font-size:11px;">${p.bundle}</td>
-          <td style="white-space:normal;max-width:340px;">${p.description}</td>
+          <td style="font-family:var(--font-mono);font-size:11px;">${targetFile}</td>
+          <td style="white-space:normal;max-width:340px;">${descText}</td>
           <td>${statusBadge}</td>
           <td>${controls}</td>
         </tr>
@@ -3254,7 +3342,7 @@ async function applyPatch(key, maxPlayers) {
       body.max_players = parseInt(maxPlayers, 10);
     }
     await apiPost('/api/patches/apply', body);
-    showToast(`✅ "${key}" yaması başarıyla uygulandı.`);
+    showToast(`"${key}" yaması başarıyla uygulandı.`);
     loadPatches(true);
   } catch (err) {
     showToast('Yama uygulanamadı: ' + err.message, true);
@@ -3264,7 +3352,7 @@ async function applyPatch(key, maxPlayers) {
 async function applyAllSortingPatches() {
   try {
     await apiPost('/api/patches/apply-all-sorting', {});
-    showToast('✅ 10 hazır UI tablo sıralama yamasının tamamı uygulandı.');
+    showToast('10 hazır UI tablo sıralama yamasının tamamı uygulandı.');
     loadPatches(true);
   } catch (err) {
     showToast('Toplu yama hatası: ' + err.message, true);
@@ -3274,7 +3362,7 @@ async function applyAllSortingPatches() {
 async function restorePatch(key) {
   try {
     await apiPost('/api/patches/restore', { key });
-    showToast(`↺ "${key}" orijinal yedeğinden geri yüklendi.`);
+    showToast(`"${key}" orijinal yedeğinden geri yüklendi.`);
     loadPatches(true);
   } catch (err) {
     showToast('Geri yükleme hatası: ' + err.message, true);
@@ -3295,16 +3383,23 @@ async function loadStreamedTables(force = false) {
 function renderStreamedTables() {
   const q = (document.getElementById('st-filter-q').value || '').trim().toLowerCase();
   const rows = (STATE.streamedTables || []).filter(t =>
-    !q || (t.table_name || '').toLowerCase().includes(q) || (t.bundle || '').toLowerCase().includes(q)
+    !q
+    || (t.table_name || '').toLowerCase().includes(q)
+    || (t.vta_name || '').toLowerCase().includes(q)
+    || (t.binding || '').toLowerCase().includes(q)
+    || (t.bundle || '').toLowerCase().includes(q)
   );
   document.getElementById('streamed-tables-tbody').innerHTML = rows.slice(0, 260).map(t => {
     const locked = Number(t.disable_sorting) === 1;
+    const tName = t.vta_name || t.table_name || '-';
+    const bindText = t.binding || t.table_name || '-';
+    const offText = t.offset_hex ? `${t.offset_hex} (${t.offset})` : t.offset;
     return `
       <tr>
         <td style="font-family:var(--font-mono);font-size:11px;">${t.bundle}</td>
-        <td><b>${t.table_name}</b></td>
-        <td style="font-family:var(--font-mono);">${t.offset}</td>
-        <td style="font-family:var(--font-mono);">${t.column_count}</td>
+        <td><b>${tName}</b></td>
+        <td style="font-family:var(--font-mono);">${offText}</td>
+        <td style="font-family:var(--font-mono);color:var(--text-muted);">${bindText}</td>
         <td>
           <span class="badge ${locked ? 'badge-amber' : 'badge-green'}">
             ${locked ? '1 — Sıralama Kilitli' : '0 — Sıralanabilir'}
@@ -3313,7 +3408,7 @@ function renderStreamedTables() {
         <td>
           <button class="btn btn-xs ${locked ? 'btn-primary' : 'btn-amber'}"
             onclick="toggleStreamedTable('${t.bundle}', ${t.offset}, ${locked ? 0 : 1})">
-            ${locked ? '🔓 Sıralamayı Aç (0 Yap)' : '🔒 Kilitle (1 Yap)'}
+            ${locked ? 'Sıralamayı Aç (0 Yap)' : 'Kilitle (1 Yap)'}
           </button>
         </td>
       </tr>
@@ -3324,7 +3419,7 @@ function renderStreamedTables() {
 async function toggleStreamedTable(bundle, offset, disable_sorting) {
   try {
     await apiPost('/api/patches/streamed-table-toggle', { bundle, offset, disable_sorting });
-    showToast(`✅ ${bundle} @ ${offset} → m_disableSorting=${disable_sorting} uygulandı.`);
+    showToast(`${bundle} @ ${offset} → m_disableSorting=${disable_sorting} uygulandı.`);
     loadStreamedTables(true);
   } catch (err) {
     showToast('StreamedTable değiştirilemedi: ' + err.message, true);
@@ -3346,7 +3441,7 @@ async function loadRules() {
         <td>${f.size_kb} KB</td>
         <td><span class="badge ${f.enabled ? 'badge-green' : 'badge-red'}">${f.enabled ? 'Aktif' : 'Devre Dışı'}</span></td>
         <td style="display:flex;gap:5px;">
-          ${f.editable_text ? `<button class="btn btn-xs btn-blue" onclick="openRuleTextFile('${f.rel_path.replace(/\\/g, '/')}')">📝 Düzenle</button>` : ''}
+          ${f.editable_text ? `<button class="btn btn-xs btn-blue" onclick="openRuleTextFile('${f.rel_path.replace(/\\/g, '/')}')">Düzenle</button>` : ''}
           <button class="btn btn-xs ${f.enabled ? 'btn-danger' : 'btn-primary'}" onclick="toggleRuleFile('${f.rel_path.replace(/\\/g, '/')}', ${f.enabled})">
             ${f.enabled ? 'Devre Dışı Bırak' : 'Aktifleştir'}
           </button>
@@ -3371,7 +3466,7 @@ function renderSugarDaddyTable() {
         </select>
       </td>
       <td><input type="number" class="input input-sm input-mono" value="${e.start_flag ?? 1}" oninput="STATE.sugarDaddyEntries[${i}].start_flag=parseInt(this.value||1,10)" style="width:65px;"></td>
-      <td><button class="btn btn-xs btn-danger" onclick="STATE.sugarDaddyEntries.splice(${i},1);renderSugarDaddyTable()">✕</button></td>
+      <td><button class="btn btn-xs btn-danger" onclick="STATE.sugarDaddyEntries.splice(${i},1);renderSugarDaddyTable()">Sil</button></td>
     </tr>
   `).join('');
 }
@@ -3387,7 +3482,7 @@ async function saveSugarDaddyEdt() {
       db_version: STATE.activeRuleDbVersion,
       entries: STATE.sugarDaddyEntries,
     });
-    showToast('✅ `sugardaddy.edt` kaydedildi (.bak yedekli).');
+    showToast('`sugardaddy.edt` kaydedildi (.bak yedekli).');
     loadRules();
   } catch (err) {
     showToast('sugardaddy.edt kaydedilemedi: ' + err.message, true);
@@ -3427,7 +3522,7 @@ async function saveRuleTextFile() {
       rel_path: STATE.activeRuleRelPath,
       content,
     });
-    showToast(`✅ ${STATE.activeRuleRelPath} kaydedildi (.bak yedekli).`);
+    showToast(`${STATE.activeRuleRelPath} kaydedildi (.bak yedekli).`);
   } catch (err) {
     showToast('Kural dosyası kaydedilemedi: ' + err.message, true);
   }
@@ -3440,7 +3535,7 @@ async function toggleRuleFile(rel_path, currentlyEnabled) {
       rel_path,
       disable: currentlyEnabled,
     });
-    showToast(`✅ Dosya durumu değiştirildi: ${rel_path}`);
+    showToast(`Dosya durumu değiştirildi: ${rel_path}`);
     loadRules();
   } catch (err) {
     showToast('Dosya durumu değiştirilemedi: ' + err.message, true);

@@ -183,13 +183,12 @@ PLAYER_ATTRIBUTE_GROUPS: dict[str, list[str]] = {
     ],
     "goalkeeping": [
         "aerial_reach", "command_of_area", "communication", "eccentricity",
-        "handling", "kicking", "one_on_ones", "reflexes", "rushing_out",
-        "tendency_to_punch", "throwing",
+        "handling", "kicking", "one_on_ones", "punching", "reflexes",
+        "rushing_out", "throwing",
     ],
     "hidden": [
         "consistency", "important_matches", "injury_proneness", "versatility",
-        "dirtiness", "adaptability", "ambition", "controversy", "loyalty",
-        "pressure", "professionalism", "sportsmanship", "temperament",
+        "dirtiness",
     ],
 }
 
@@ -217,6 +216,31 @@ def _clean_ltc_str(s: str) -> str:
     return s.replace("\u200b", "").strip()
 
 
+LANGUAGE_LABELS_TR: dict[str, str] = {
+    "turkish": "Türkçe",
+    "english": "İngilizce (UK)",
+    "english (us)": "İngilizce (ABD)",
+    "german": "Almanca",
+    "spanish": "İspanyolca",
+    "spanish (latam)": "İspanyolca (Latin Amerika)",
+    "french": "Fransızca",
+    "italian": "İtalyanca",
+    "portuguese": "Portekizce",
+    "dutch": "Felemenkçe",
+    "polish": "Lehçe",
+    "greek": "Yunanca",
+    "russian": "Rusça",
+    "arabic": "Arapça",
+    "danish": "Danca",
+    "norwegian": "Norveççe",
+    "swedish": "İsveççe",
+    "indonesian": "Endonezce",
+    "japanese": "Japonca",
+    "korean": "Korece",
+    "chinese": "Çince (Basitleştirilmiş)",
+}
+
+
 def list_game_languages() -> list[dict[str, str]]:
     """Return metadata for all 21 official FM in-game languages."""
     preferred_order = [
@@ -230,45 +254,132 @@ def list_game_languages() -> list[dict[str, str]]:
     for code in preferred_order:
         if code in BUILTIN_GAME_LANGUAGES:
             seen.add(code)
+            native = BUILTIN_GAME_LANGUAGES[code]["name"]
+            label_tr = LANGUAGE_LABELS_TR.get(code, code.title())
             out.append({
                 "code": code,
-                "name": BUILTIN_GAME_LANGUAGES[code]["name"],
+                "name": native,
+                "native": native,
+                "label": label_tr,
             })
     for code, data in sorted(BUILTIN_GAME_LANGUAGES.items()):
         if code not in seen:
-            out.append({"code": code, "name": data["name"]})
+            native = data["name"]
+            out.append({
+                "code": code,
+                "name": native,
+                "native": native,
+                "label": LANGUAGE_LABELS_TR.get(code, code.title()),
+            })
     return out
 
 
-def get_game_terms(lang_code: str = "turkish", fm_dir: Path | None = None) -> dict[str, Any]:
-    """Return localized in-game terms for ``lang_code`` (default: ``'turkish'``).
+def _build_structured_game_terms(code: str, name: str, terms: dict[str, str]) -> dict[str, Any]:
+    player_attrs = dict(terms)
+    if "punching" not in player_attrs and "tendency_to_punch" in player_attrs:
+        player_attrs["punching"] = player_attrs["tendency_to_punch"]
+    if "tendency_to_punch" not in player_attrs and "punching" in player_attrs:
+        player_attrs["tendency_to_punch"] = player_attrs["punching"]
+    if "free_kick_taking" not in player_attrs and "free_kicks" in player_attrs:
+        player_attrs["free_kick_taking"] = player_attrs["free_kicks"]
 
-    Uses the embedded 21-language dictionary extracted from ``languages.fmf`` for
-    instant ``O(1)`` response, and falls back to live ``languages.fmf`` extraction
-    if a custom ``.ltc`` language code is requested.
-    """
-    norm = (lang_code or "turkish").strip().lower()
-    if norm in BUILTIN_GAME_LANGUAGES:
-        data = BUILTIN_GAME_LANGUAGES[norm]
-        return {
-            "code": data["code"],
-            "name": data["name"],
-            "terms": dict(data["terms"]),
-            "player_attribute_groups": PLAYER_ATTRIBUTE_GROUPS,
-            "staff_attribute_groups": STAFF_ATTRIBUTE_GROUPS,
-        }
-    if fm_dir is not None:
-        live = extract_ltc_terms_from_fmf(fm_dir, norm)
-        if live is not None:
-            return live
-    fallback = BUILTIN_GAME_LANGUAGES["english"]
+    staff_attrs = dict(terms)
+    staff_aliases = {
+        "attacking_coaching": "attack_coaching",
+        "defending_coaching": "defence_coaching",
+        "technical_coaching": "technique_coaching",
+        "set_pieces_coaching": "set_piece_coaching",
+        "mental_coaching": "mental_coaching_abbr",
+        "people_management": "motivating",
+        "tactical_style_knowledge": "tactical_knowledge",
+        "adaptability_role": "adaptability",
+        "coaching_adaptability": "adaptability",
+        "determination_role": "determination",
+        "gk_shot_stopping_coaching": "shot_stopping",
+        "gk_distribution_coaching": "distribution",
+        "gk_handling_and_distribution_coaching": "distribution",
+        "negotiating_or_data_analysis": "negotiating",
+        "authority_or_eccentricity": "eccentricity",
+        "fitness_knowledge": "fitness_coaching",
+        "scouting_networking": "judging_player_potential",
+        "player_ability_assessment": "judging_player_ability",
+        "player_potential_assessment": "judging_player_potential",
+        "staff_ability_assessment": "judging_staff_ability",
+    }
+    for alias_k, src_k in staff_aliases.items():
+        if src_k in terms and terms[src_k]:
+            staff_attrs[alias_k] = terms[src_k]
+
+    positions = {
+        "gk": terms.get("pos_gk", "GK"),
+        "sw": terms.get("pos_dc", "SW"),
+        "dl": terms.get("pos_dl", "DL"),
+        "dc": terms.get("pos_dc", "DC"),
+        "dr": terms.get("pos_dr", "DR"),
+        "wbl": terms.get("pos_wbl", "WBL"),
+        "wbr": terms.get("pos_wbr", "WBR"),
+        "dm": terms.get("pos_dm", "DM"),
+        "ml": terms.get("pos_ml", "ML"),
+        "mc": terms.get("pos_mc", "MC"),
+        "mr": terms.get("pos_mr", "MR"),
+        "aml": terms.get("pos_aml", "AML"),
+        "amc": terms.get("pos_amc", "AMC"),
+        "amr": terms.get("pos_amr", "AMR"),
+        "st": terms.get("pos_st", "ST"),
+        "stc": terms.get("pos_st", "ST"),
+    }
+    for pk, pv in list(positions.items()):
+        positions[f"pos_{pk}"] = pv
+
+    general = {
+        k: terms.get(k, k)
+        for k in (
+            "current_ability", "potential_ability", "current_reputation",
+            "home_reputation", "world_reputation", "reputation",
+            "preferred_foot", "left_foot", "right_foot", "height", "weight",
+            "age", "value", "wage", "condition", "morale", "form",
+            "position", "nationality", "squad_status", "contract_expires",
+        )
+    }
+    groups = {
+        "technical": terms.get("cat_technical", "Technical"),
+        "mental": terms.get("cat_mental", "Mental"),
+        "physical": terms.get("cat_physical", "Physical"),
+        "goalkeeping": terms.get("cat_goalkeeping", "Goalkeeping"),
+        "hidden": terms.get("cat_hidden", "Hidden"),
+        "coaching": terms.get("cat_coaching", "Coaching"),
+        "scouting": terms.get("cat_scouting", "Scouting"),
+        "medical": terms.get("cat_medical", "Medical"),
+    }
+    label_tr = LANGUAGE_LABELS_TR.get(code, code.title())
     return {
-        "code": fallback["code"],
-        "name": fallback["name"],
-        "terms": dict(fallback["terms"]),
+        "code": code,
+        "language": code,
+        "name": name,
+        "language_label": f"{label_tr} ({name})",
+        "terms": dict(terms),
+        "player_attributes": player_attrs,
+        "staff_attributes": staff_attrs,
+        "positions": positions,
+        "general": general,
+        "groups": groups,
         "player_attribute_groups": PLAYER_ATTRIBUTE_GROUPS,
         "staff_attribute_groups": STAFF_ATTRIBUTE_GROUPS,
     }
+
+
+def get_game_terms(lang_code: str = "turkish", fm_dir: Path | None = None) -> dict[str, Any]:
+    """Return localized in-game terms for ``lang_code`` (default: ``'turkish'``)."""
+    norm = (lang_code or "turkish").strip().lower()
+    if norm in BUILTIN_GAME_LANGUAGES:
+        data = BUILTIN_GAME_LANGUAGES[norm]
+        return _build_structured_game_terms(data["code"], data["name"], data["terms"])
+    if fm_dir is not None:
+        live = extract_ltc_terms_from_fmf(fm_dir, norm)
+        if live is not None:
+            return _build_structured_game_terms(live["code"], live["name"], live["terms"])
+    fallback = BUILTIN_GAME_LANGUAGES["english"]
+    return _build_structured_game_terms(fallback["code"], fallback["name"], fallback["terms"])
 
 
 def translate_game_term(term_key: str, lang_code: str = "turkish") -> str:

@@ -191,19 +191,33 @@ def _boot_config_path(fm_dir: Path) -> Path:
     return fm_dir / "fm_Data/boot.config"
 
 
+def _build_known_keys_schema() -> dict[str, dict[str, Any]]:
+    schema: dict[str, dict[str, Any]] = {}
+    for item in BOOT_CONFIG_KNOWN_KEYS:
+        d = dict(item)
+        d["label_tr"] = item.get("title_tr", item["key"])
+        d["label_en"] = item.get("title_en", item["key"])
+        schema[item["key"]] = d
+    return schema
+
+
 def read_boot_config(fm_dir: Path) -> dict[str, Any]:
     """Read and parse ``fm_Data/boot.config`` along with hardware recommendations."""
     path = _boot_config_path(fm_dir)
     bak = path.with_name(path.name + ".bak")
     cpu_threads = os.cpu_count() or 8
     recommended_workers = max(2, cpu_threads - 2)
+    schema = _build_known_keys_schema()
     if not path.exists():
         return {
             "exists": False,
             "path": str(path),
             "backup_exists": False,
+            "raw": "",
+            "raw_text": "",
             "values": {},
             "known_keys": BOOT_CONFIG_KNOWN_KEYS,
+            "known_keys_schema": schema,
             "cpu_logical_cores": cpu_threads,
             "recommended_job_workers": recommended_workers,
         }
@@ -221,8 +235,10 @@ def read_boot_config(fm_dir: Path) -> dict[str, Any]:
         "path": str(path),
         "backup_exists": bak.exists(),
         "raw": raw,
+        "raw_text": raw,
         "values": values,
         "known_keys": BOOT_CONFIG_KNOWN_KEYS,
+        "known_keys_schema": schema,
         "cpu_logical_cores": cpu_threads,
         "recommended_job_workers": recommended_workers,
     }
@@ -260,6 +276,7 @@ def apply_boot_preset(fm_dir: Path, preset: str) -> dict[str, Any]:
     """Apply a curated optimization preset to ``fm_Data/boot.config``."""
     cpu_threads = os.cpu_count() or 8
     rec_workers = max(2, cpu_threads - 2)
+    max_workers = max(4, cpu_threads)
     presets: dict[str, dict[str, Any]] = {
         "default": {
             "gfx-enable-gfx-jobs": "1",
@@ -268,6 +285,7 @@ def apply_boot_preset(fm_dir: Path, preset: str) -> dict[str, Any]:
             "hdr-display-enabled": "0",
             "gc-max-time-slice": "3",
             "job-worker-count": "",
+            "job-worker-maximum-count": "",
             "vr-enabled": "",
         },
         "balanced": {
@@ -278,6 +296,8 @@ def apply_boot_preset(fm_dir: Path, preset: str) -> dict[str, Any]:
             "gc-max-time-slice": "2",
             "job-worker-count": "",
             "vr-enabled": "0",
+            "player-connection-debug": "0",
+            "profiler-enable": "0",
         },
         "max_fps_multicore": {
             "gfx-enable-gfx-jobs": "1",
@@ -286,7 +306,10 @@ def apply_boot_preset(fm_dir: Path, preset: str) -> dict[str, Any]:
             "hdr-display-enabled": "0",
             "gc-max-time-slice": "2",
             "job-worker-count": str(rec_workers),
+            "job-worker-maximum-count": str(max_workers),
             "vr-enabled": "0",
+            "player-connection-debug": "0",
+            "profiler-enable": "0",
         },
         "low_latency": {
             "gfx-enable-gfx-jobs": "1",
@@ -296,6 +319,44 @@ def apply_boot_preset(fm_dir: Path, preset: str) -> dict[str, Any]:
             "gc-max-time-slice": "1",
             "job-worker-count": str(rec_workers),
             "vr-enabled": "0",
+            "player-connection-debug": "0",
+            "profiler-enable": "0",
+        },
+        "low_latency_max_fps": {
+            "gfx-enable-gfx-jobs": "1",
+            "gfx-enable-native-gfx-jobs": "1",
+            "wait-for-native-debugger": "0",
+            "hdr-display-enabled": "0",
+            "gc-max-time-slice": "1",
+            "job-worker-count": str(rec_workers),
+            "job-worker-maximum-count": str(max_workers),
+            "vr-enabled": "0",
+            "player-connection-debug": "0",
+            "profiler-enable": "0",
+        },
+        "fast_simulation_multicore": {
+            "gfx-enable-gfx-jobs": "1",
+            "gfx-enable-native-gfx-jobs": "1",
+            "wait-for-native-debugger": "0",
+            "hdr-display-enabled": "0",
+            "gc-max-time-slice": "4",
+            "job-worker-count": str(rec_workers),
+            "job-worker-maximum-count": str(max_workers),
+            "vr-enabled": "0",
+            "player-connection-debug": "0",
+            "profiler-enable": "0",
+        },
+        "low_vram_laptop": {
+            "gfx-enable-gfx-jobs": "1",
+            "gfx-enable-native-gfx-jobs": "0",
+            "wait-for-native-debugger": "0",
+            "hdr-display-enabled": "0",
+            "gc-max-time-slice": "3",
+            "job-worker-count": str(max(2, cpu_threads // 2)),
+            "vr-enabled": "0",
+            "call-ondisable-when-unloaded-from-bundles": "1",
+            "player-connection-debug": "0",
+            "profiler-enable": "0",
         },
     }
     if preset not in presets:
@@ -333,6 +394,7 @@ def inspect_disk_and_optimization_state(fm_dir: Path) -> dict[str, Any]:
                     "filename": p.name,
                     "size_mb": round(p.stat().st_size / (1024 * 1024), 2),
                     "disabled": is_disabled,
+                    "status": "disabled" if is_disabled else "active",
                 })
 
     db_root = _find_db_root(fm_dir)
@@ -348,6 +410,28 @@ def inspect_disk_and_optimization_state(fm_dir: Path) -> dict[str, Any]:
                     "size_mb": round(total_bytes / (1024 * 1024), 2),
                     "is_latest": d.name in ("2700", "2630"),
                 })
+
+    # Compute top-level subdirectory disk footprint
+    subdirs_info: list[dict[str, Any]] = []
+    total_dir_bytes = 0
+    if fm_dir.exists():
+        for child in sorted(fm_dir.iterdir()):
+            try:
+                if child.is_file():
+                    sz = child.stat().st_size
+                    total_dir_bytes += sz
+                elif child.is_dir():
+                    cfiles = [f for f in child.rglob("*") if f.is_file()]
+                    sz = sum(f.stat().st_size for f in cfiles)
+                    total_dir_bytes += sz
+                    subdirs_info.append({
+                        "name": child.name,
+                        "files": len(cfiles),
+                        "size_mb": round(sz / (1024 * 1024), 1),
+                    })
+            except OSError:
+                continue
+    subdirs_info.sort(key=lambda r: r["size_mb"], reverse=True)
 
     # Check active .bak files across the installation
     bak_files: list[dict[str, Any]] = []
@@ -365,6 +449,8 @@ def inspect_disk_and_optimization_state(fm_dir: Path) -> dict[str, Any]:
     urp_profiles = [
         {
             "profile": "URP-HighFidelity (Yüksek Kalite)",
+            "tier": "URP-HighFidelity (Yüksek Kalite)",
+            "bundle": "MSAA 4x • Scale 1.0 • 150m Gölge",
             "srp_batcher": True,
             "dynamic_batching": False,
             "msaa": "4x",
@@ -375,6 +461,8 @@ def inspect_disk_and_optimization_state(fm_dir: Path) -> dict[str, Any]:
         },
         {
             "profile": "URP-Balanced (Dengeli)",
+            "tier": "URP-Balanced (Dengeli)",
+            "bundle": "MSAA 2x • Scale 1.0 • 80m Gölge",
             "srp_batcher": True,
             "dynamic_batching": False,
             "msaa": "2x",
@@ -385,6 +473,8 @@ def inspect_disk_and_optimization_state(fm_dir: Path) -> dict[str, Any]:
         },
         {
             "profile": "URP-Performant (Maksimum FPS / Laptop)",
+            "tier": "URP-Performant (Maksimum FPS / Laptop)",
+            "bundle": "MSAA 1x • Scale 0.85 • 40m Gölge",
             "srp_batcher": True,
             "dynamic_batching": False,
             "msaa": "1x (Kapalı)",
@@ -395,15 +485,29 @@ def inspect_disk_and_optimization_state(fm_dir: Path) -> dict[str, Any]:
         },
     ]
 
+    disabled_cnt = sum(1 for v in videos if v["disabled"])
+    active_cnt = len(videos) - disabled_cnt
+
     return {
         "fm_dir": str(fm_dir),
         "boot_config": read_boot_config(fm_dir),
         "videos": videos,
         "videos_total_mb": round(sum(v["size_mb"] for v in videos), 2),
-        "videos_disabled_count": sum(1 for v in videos if v["disabled"]),
+        "videos_disabled_count": disabled_cnt,
+        "intro_videos": {
+            "videos": videos,
+            "bypass_active": disabled_cnt > 0 and active_cnt == 0,
+            "active_count": active_cnt,
+            "disabled_count": disabled_cnt,
+        },
+        "disk_footprint": {
+            "total_gb": round(total_dir_bytes / (1024 ** 3), 2),
+            "subdirectories": subdirs_info,
+        },
         "db_versions": db_versions,
         "backups": bak_files,
         "urp_profiles": urp_profiles,
+        "urp_quality_tiers": urp_profiles,
     }
 
 
@@ -559,24 +663,30 @@ def list_edt_lnc_dbc_files(fm_dir: Path, db_version: str | None = None) -> dict[
                 {"tr": f"{clean_name} oyun kural/veri dosyası", "en": f"{clean_name} game rule/data file"},
             )
             rel_path = p.relative_to(vdir).as_posix()
+            sz = p.stat().st_size
             items.append({
                 "name": clean_name,
                 "filename": p.name,
                 "rel_path": rel_path,
                 "category": root_cat,
                 "ext": ext,
-                "size_bytes": p.stat().st_size,
+                "size_bytes": sz,
+                "size_kb": round(sz / 1024, 1),
                 "disabled": is_disabled,
+                "enabled": not is_disabled,
                 "editable_text": ext in (".edt", ".ddt", ".lnc"),
                 "backup_exists": p.with_name(clean_name + ".bak").exists(),
                 "desc_tr": desc["tr"],
                 "desc_en": desc["en"],
             })
+    sd = read_sugardaddy_edt(fm_dir, vdir.name)
     return {
         "db_version": vdir.name,
+        "active_version": vdir.name,
         "db_version_path": str(vdir),
         "files": items,
-        "sugar_daddy": read_sugardaddy_edt(fm_dir, vdir.name),
+        "sugar_daddy": sd,
+        "sugardaddy": sd,
     }
 
 
@@ -602,6 +712,7 @@ def read_sugardaddy_edt(fm_dir: Path, db_version: str | None = None) -> dict[str
                 "type": sd_type,
                 "club": club,
                 "alter_starting_finances": flag == "1",
+                "start_flag": 1 if flag == "1" else 0,
             })
     return {
         "exists": True,
@@ -638,7 +749,11 @@ def write_sugardaddy_edt(fm_dir: Path, entries: list[dict[str, Any]], db_version
         if sd_type not in ("FRONT_END", "BACK_END", "UNDERWRITER"):
             sd_type = "FRONT_END"
         enabled = bool(item.get("enabled", True))
-        alter = "1" if item.get("alter_starting_finances", item.get("keep_after_departure", False)) else "0"
+        sflag = item.get("start_flag")
+        if sflag is not None:
+            alter = "1" if str(sflag) == "1" or bool(sflag) else "0"
+        else:
+            alter = "1" if item.get("alter_starting_finances", item.get("keep_after_departure", False)) else "0"
         prefix = "" if enabled else "#"
         body_lines.append(f'{prefix}"SUGAR_DADDY" "{sd_type}" "{club}" "{alter}"')
 
@@ -659,6 +774,7 @@ def read_text_rule_file(fm_dir: Path, rel_path: str, db_version: str | None = No
     clean_name = target.name[: -len(".disabled")] if target.name.endswith(".disabled") else target.name
     return {
         "rel_path": rel_path,
+        "path": str(target),
         "name": clean_name,
         "encoding": enc,
         "backup_exists": target.with_name(clean_name + ".bak").exists(),
